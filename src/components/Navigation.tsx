@@ -1,19 +1,21 @@
 "use client"
 
+import { useLanguage } from '@/context/language-context'
+import { useTranslation } from '@/hooks/useTranslation'
 import { useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
-// Constants
-const NAVIGATION_LINKS = [
-  { href: "/#home", label: "Home", isSection: true, priority: 1 },
-  { href: "/projects", label: "Projects", isSection: false, priority: 2 },
-  { href: "/experience", label: "Experience", isSection: false, priority: 3 },
-  { href: "/services", label: "Services", isSection: false, priority: 4 },
-  { href: "/#about", label: "About", isSection: true, priority: 5 },
-  { href: "/contact", label: "Contact", isSection: false, priority: 6 },
-] as const;
+// Types
+const createNavigationLinks = (t: (key: string) => string) => [
+  { href: "/#home", label: t('navigation.links.home'), isSection: true, priority: 1 },
+  { href: "/projects", label: t('navigation.links.projects'), isSection: false, priority: 2 },
+  { href: "/experience", label: t('navigation.links.experience'), isSection: false, priority: 3 },
+  { href: "/services", label: t('navigation.links.services'), isSection: false, priority: 4 },
+  { href: "/#about", label: t('navigation.links.about'), isSection: true, priority: 5 },
+  { href: "/contact", label: t('navigation.links.contact'), isSection: false, priority: 6 },
+]
 
 // Types
 interface NavLinkProps {
@@ -54,6 +56,8 @@ const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
   const pathname = usePathname()
   const router = useRouter()
 
@@ -62,12 +66,14 @@ export function Navigation() {
     
     if (link.isSection) {
       if (pathname !== '/') {
-        await router.push('/')
-        setTimeout(() => {
-          scrollToSection(link.href)
-        }, 100)
+        // Navigate to home page with hash
+        await router.push(`/${link.href}`)
       } else {
-        scrollToSection(link.href)
+        // If already on home page, just scroll
+        const element = document.getElementById(link.href.replace('/#', ''))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
       }
     } else {
       await router.push(link.href)
@@ -81,23 +87,16 @@ export function Navigation() {
     element?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const sortedLinks = [...NAVIGATION_LINKS].sort((a, b) => a.priority - b.priority)
+  const navigationLinks = createNavigationLinks(t)
+  const sortedLinks = [...navigationLinks].sort((a, b) => a.priority - b.priority)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
-      <nav className="container mx-auto px-6 py-4">
-        {/* Main Navigation Bar */}
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.a 
-            href="/#home"
-            onClick={(e) => handleNavigation(e, NAVIGATION_LINKS[0])}
-            className="text-xl font-bold text-white"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            MY
-          </motion.a>
+    <nav className="container mx-auto px-6 py-4">
+      <div className="flex items-center justify-between">
+        <motion.a href="/#home" className="text-xl font-bold text-white">
+          {t('navigation.logo')}
+        </motion.a>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-8">

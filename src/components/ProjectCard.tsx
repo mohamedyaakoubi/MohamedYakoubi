@@ -1,84 +1,80 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
-import type { Project } from "@/types/project"
 import Image from "next/image"
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import { useLanguage } from '@/context/language-context'
+import { useTranslation } from '@/hooks/useTranslation'
+import type { Project } from "@/types/project"
 
 interface ProjectCardProps {
   project: Project
+  index: number
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, index }: ProjectCardProps) {
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
+
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden group w-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden 
+                 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
     >
-      {/* Project Image */}
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={project.image}
-          alt={project.name}
+          alt={t(`projects.names.${project.name}`)}
           fill
-          className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+          className="object-cover transition-transform duration-700 
+                   ease-in-out group-hover:scale-110 group-hover:rotate-1"
+          sizes="(max-width: 768px) 100vw,
+                 (max-width: 1200px) 50vw,
+                 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="px-2 py-1 text-xs font-medium rounded-full 
-                         bg-blue-500/20 text-white backdrop-blur-sm">
-            {project.category}
-          </span>
-          <span className="ml-2 px-2 py-1 text-xs font-medium rounded-full 
-                         bg-gray-500/20 text-white backdrop-blur-sm">
-            {project.status}
-          </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent 
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs px-2 py-1 bg-white/20 text-white rounded-full
+                           backdrop-blur-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Project Details */}
-      <div className="p-6 space-y-4">
-        <h3 className="text-xl font-bold text-gray-800 dark:text-white">
-          {project.name}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2
+                     group-hover:text-blue-500 dark:group-hover:text-blue-400 
+                     transition-colors duration-300">
+          {t(`projects.names.${project.name}`)}
         </h3>
-        
-        <p className="text-gray-600 dark:text-gray-300 text-sm">
-          {project.description}
+        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+          {t(`projects.descriptions.${project.name}`)}
         </p>
-
-        {/* Features */}
-        <ul className="space-y-2">
-          {project.features.map((feature) => (
-            <li 
-              key={feature} 
-              className="flex items-center text-sm text-gray-600 dark:text-gray-400"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
-          {project.technologies.map(tech => (
-            <span
-              key={tech}
-              className="text-xs px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700 
-                       text-gray-600 dark:text-gray-300 whitespace-nowrap"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Links */}
-        <div className="flex flex-wrap justify-end gap-4 pt-4">
+        <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'}`}>
           {project.githubUrl && (
-            <ProjectLink href={project.githubUrl} icon={FaGithub} label="View Source" />
+            <ProjectLink
+              href={project.githubUrl}
+              icon={FaGithub}
+              label={t('projects.repository.links.viewSource')}
+            />
           )}
           {project.demoUrl && (
-            <ProjectLink href={project.demoUrl} icon={FaExternalLinkAlt} label="Live Demo" />
+            <ProjectLink
+              href={project.demoUrl}
+              icon={FaExternalLinkAlt}
+              label={t('projects.repository.links.liveDemo')}
+            />
           )}
         </div>
       </div>
@@ -86,19 +82,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
   )
 }
 
-function ProjectLink({ href, icon: Icon, label }: { href: string; icon: any; label: string }) {
+interface ProjectLinkProps {
+  href: string
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  label: string
+}
+
+function ProjectLink({ href, icon: Icon, label }: ProjectLinkProps) {
   return (
     <motion.a
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 
-                 hover:text-blue-500 transition-colors"
+      className="flex items-center text-sm text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
-      <Icon size={16} />
-      <span>{label}</span>
+      <Icon className="mr-1" />
+      {label}
     </motion.a>
   )
 }

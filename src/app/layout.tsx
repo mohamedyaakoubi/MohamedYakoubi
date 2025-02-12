@@ -1,11 +1,9 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Navigation } from "@/components/Navigation"
-import { PageTransition } from "@/components/PageTransition"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ThemeToggle } from "@/components/theme-toggle"
 import "./globals.css"
-import type React from "react"
+import { LanguageProvider } from '@/context/language-context'
+import { ThemeProvider } from "@/components/theme-provider"
+import ClientLayout from "@/components/ClientLayout"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -34,13 +32,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <main>
-            <Navigation />
-            <ThemeToggle />
-            <PageTransition>{children}</PageTransition>
-          </main>
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <ClientLayout>{children}</ClientLayout>
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   )
