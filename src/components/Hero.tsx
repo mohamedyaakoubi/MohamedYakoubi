@@ -104,7 +104,7 @@ export function Hero() {
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <motion.a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/mohamedyaakoubi"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
@@ -115,7 +115,7 @@ export function Hero() {
                   <span>GitHub</span>
                 </motion.a>
                 <motion.a
-                  href="https://www.linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/yaakoubi-mohamed/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
@@ -126,7 +126,7 @@ export function Hero() {
                   <span>LinkedIn</span>
                 </motion.a>
                 <motion.a
-                  href="/your-cv.pdf"
+                  href="/Mohamed_Yaakoubi.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

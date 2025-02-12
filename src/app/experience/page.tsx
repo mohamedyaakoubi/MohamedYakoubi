@@ -2,8 +2,12 @@
 
 import { motion } from "framer-motion"
 import { Building2, Calendar, MapPin } from "lucide-react"
+import type { Experience } from "@/types/experience"
 
-const experiences = [
+
+
+
+const experiences: Experience[] = [
   {
     title: "Linguistic Editor",
     company: "DeepL",
@@ -111,10 +115,32 @@ const experiences = [
     ],
   },
 ]
+interface ExperienceContentProps {
+  experience: Experience;
+}
 
+function ExperienceContent({ experience }: ExperienceContentProps) {
+  return (
+    <div>
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{experience.title}</h3>
+      <div className="mt-2 text-gray-600 dark:text-gray-300">
+        <p className="flex items-center"><Building2 className="w-4 h-4 mr-2" />{experience.company}</p>
+        <p className="flex items-center"><MapPin className="w-4 h-4 mr-2" />{experience.location}</p>
+        <p className="flex items-center"><Calendar className="w-4 h-4 mr-2" />{experience.period}</p>
+      </div>
+      <ul className="mt-4 list-disc list-inside text-gray-600 dark:text-gray-300">
+        {experience.description.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// Create a separate component for experience content
 export default function Experience() {
   return (
-    <div className="container mx-auto px-6 py-32 bg-gray-100 dark:bg-gray-900">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 bg-gray-100 dark:bg-gray-900">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,11 +148,11 @@ export default function Experience() {
       >
         Professional Experience
       </motion.h1>
-  
-      <div className="relative">
+
+      <div className="relative max-w-7xl mx-auto">
         {/* Timeline line */}
-        <div className="absolute left-0 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 transform -translate-x-1/2" />
-  
+        <div className="absolute left-4 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 transform md:-translate-x-1/2" />
+
         {/* Experience items */}
         {experiences.map((exp, index) => (
           <motion.div
@@ -134,79 +160,25 @@ export default function Experience() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="relative grid md:grid-cols-2 gap-8 mb-12"
+            className="relative mb-8 md:mb-12"
           >
             {/* Timeline dot */}
-            <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform -translate-x-1/2 mt-1.5">
+            <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform -translate-x-1/2 mt-6 z-10">
               <div className="absolute inset-[2px] bg-gray-100 dark:bg-gray-900 rounded-full" />
             </div>
-  
-            {/* Content */}
-            {index % 2 === 0 ? (
-  <>
-    <div className="md:text-left md:pr-8 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
-      <h3 className="text-xl font-bold text-gradient bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-        {exp.title}
-      </h3>
-      <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400 my-2">
-        <div className="flex items-center gap-1">
-          <Building2 className="w-4 h-4" />
-          <span>{exp.company}</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <MapPin className="w-4 h-4" />
-          <span>{exp.location}</span>
-        </div>
-      </div>
-      <div className="flex items-center gap-1 text-gray-500 dark:text-gray-500 mb-4">
-        <Calendar className="w-4 h-4" />
-        <span>{exp.period}</span>
-      </div>
-      <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-        {exp.description.map((item, i) => (
-          <li key={i} className="text-sm leading-relaxed">
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div /> {/* Empty column */}
-  </>
-) : (
-  <>
-  <div /> {/* Empty column */}
-  <div className="md:text-left md:pl-8 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                  <h3 className="text-xl font-bold text-gradient bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                    {exp.title}
-                  </h3>
-                  <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400 my-2">
-                    <div className="flex items-center gap-1">
-                      <Building2 className="w-4 h-4" />
-                      <span>{exp.company}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      <span>{exp.location}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1 text-gray-500 dark:text-gray-500 mb-4">
-                    <Calendar className="w-4 h-4" />
-                    <span>{exp.period}</span>
-                  </div>
-                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="text-sm leading-relaxed">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </>
-            )}
+
+            <div className={`ml-12 md:ml-0 ${
+              index % 2 === 0 
+                ? 'md:mr-[50%] md:pr-12' 
+                : 'md:ml-[50%] md:pl-12'
+            }`}>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                <ExperienceContent experience={exp} />
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
     </div>
   )
 }
-

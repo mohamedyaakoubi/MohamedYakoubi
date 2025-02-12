@@ -50,32 +50,33 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
   return (
     <div>
       {/* Search and Filter */}
-      <div className="mb-8 space-y-4">
-        <div className="flex justify-between items-center">
-          <input
-            type="text"
-            placeholder="Search projects..."
-            className="w-full max-w-xs px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 
-                       bg-white dark:bg-gray-800 text-gray-800 dark:text-white"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <div className="flex gap-2">
-            {["all", "AI/ML", "Web Development", "Healthcare", "Tools"].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setCategory(cat as ProjectCategory)}
-                className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                  category === cat
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+<div className="mb-8 space-y-4">
+  <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+    <input
+      type="text"
+      placeholder="Search projects..."
+      className="w-full md:w-64 px-4 py-2 rounded-lg border border-gray-200 
+                 dark:border-gray-700 bg-white dark:bg-gray-800 
+                 text-gray-800 dark:text-white"
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+    <div className="flex flex-wrap gap-2">
+      {["all", "AI/ML", "Web Development", "Healthcare", "Tools"].map((cat) => (
+        <button
+          key={cat}
+          onClick={() => setCategory(cat as ProjectCategory)}
+          className={`px-3 py-1 text-xs md:text-sm rounded-full transition-colors ${
+            category === cat
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300"
+          }`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
 
       {/* Featured Projects */}
       <motion.div
@@ -99,7 +100,7 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
         </div>
       </motion.div>
 
-      // ...existing imports...
+    
 
 {/* GitHub Repositories */}
 <div>

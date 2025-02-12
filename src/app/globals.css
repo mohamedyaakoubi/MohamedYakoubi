@@ -169,6 +169,36 @@
   .animate-blink {
     animation: blink 1s infinite;
   }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .experience-timeline {
+    @apply relative max-w-7xl mx-auto;
+  }
+
+  .timeline-line {
+    @apply absolute left-4 md:left-1/2 h-full w-0.5 
+           bg-gradient-to-b from-blue-500 to-purple-500 
+           transform md:-translate-x-1/2;
+  }
+
+  .experience-card {
+    @apply bg-white dark:bg-gray-800 
+           rounded-xl p-6
+           shadow-md hover:shadow-lg 
+           transition-all duration-300;
+  }
+
+  @media (max-width: 768px) {
+    .experience-card {
+      @apply w-[calc(100%-3rem)];
+    }
+  }
 }
 
 /* Custom Animations */
