@@ -79,6 +79,16 @@ export default {
         downloadCV: "Télécharger CV"
       }
     },
+    chat: {
+      title: "Discuter avec Mon Portfolio IA",
+      placeholder: "Posez des questions sur mon parcours...",
+       welcomeMessage: "👋 Bonjour! Je suis votre assistant IA. N'hésitez pas à me poser des questions sur Mohamed!",
+      sendButton: "Envoyer",
+      thinking: "Réflexion...",
+      errorPrefix: "Erreur:",
+      toggleOpen: "Ouvrir le chat",
+      toggleClose: "Fermer le chat"
+    },
     
     navigation: {
       logo: "M Y",

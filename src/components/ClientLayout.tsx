@@ -6,6 +6,7 @@ import { Navigation } from "./Navigation"
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageSelector } from "./LanguageSelector"
 import { PageTransition } from "./PageTransition"
+import Chat from './Chat'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { language, setLanguage } = useLanguage()
@@ -31,6 +32,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           <ThemeToggle />
         </div>
         <PageTransition>{children}</PageTransition>
+        <Chat />
       </div>
     )
   }

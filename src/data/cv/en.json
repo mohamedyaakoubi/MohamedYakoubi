@@ -1,0 +1,302 @@
+{
+  "name": "Mohamed Yaakoubi",
+  "title": "AI Specialist & Computer Science Student",
+  "introduction": "Self-motivated and fast-learning individual with a deep passion for technology, computer science, and personal growth. Currently pursuing a Computer Science degree while working in AI evaluation and localization.",
+  "education": [
+    {
+      "degree": "Licentiate Degree in Computer Science",
+      "institution": "Faculty of Sciences in Sfax",
+      "period": "2024-2027",
+      "status": "Current"
+    },
+    {
+      "degree": "Integrated Preparatory Cycle in Computer Science",
+      "period": "2021-2024",
+      "achievements": "Final GPA: 1.88"
+    },
+    {
+      "degree": "Baccalaureate in Experimental Sciences",
+      "institution": "Feriana Secondary High School",
+      "period": "2020-2021"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Localization Vendor Coordinator",
+      "company": "Uber",
+      "location": "Remote, Sfax",
+      "period": "Since July 2024",
+      "responsibilities": [
+        "Managing Arabic-English localization efforts",
+        "Optimizing user experiences",
+        "Contributing to AI model improvement through annotation"
+      ]
+    },
+    {
+      "role": "Language Data and Quality Reviewer",
+      "company": "Volga Partners",
+      "location": "Remote, Sfax",
+      "period": "Since July 2024",
+      "responsibilities": [
+        "Providing language data review services",
+        "Evaluating and processing language data",
+        "Ensuring high-quality deliverables"
+      ]
+    },
+    {
+      "role": "Linguistic AI Evaluator (Arabic Maghrebi QA)",
+      "company": "Meta AI via RWS",
+      "location": "Remote, Sfax",
+      "period": "Since November 2024",
+      "responsibilities": [
+        "Evaluating Arabic prompts and LLM responses",
+        "Providing detailed feedback for AI improvement",
+        "Specializing in Arabic Maghrebi language evaluation"
+      ]
+    }
+  ],
+  "freelance": [
+    {
+      "role": "Editor",
+      "company": "Unbabel",
+      "period": "Since March 2020",
+      "description": "Arabic-English translation review"
+    },
+    {
+      "role": "AI Data Annotator",
+      "company": "Toloka",
+      "period": "February 2024 - August 2024",
+      "description": "Data annotation and labeling for AI development"
+    }
+  ],
+  "volunteer": [
+    {
+      "role": "KYC Validator",
+      "organization": "Pi Network",
+      "period": "Since July 2024"
+    },
+    {
+      "role": "Subtitle Editor",
+      "organization": "TED Translators",
+      "period": "Since April 2024"
+    }
+  ],
+  "skills": {
+    "programming": [
+      "Python",
+      "TypeScript",
+      "C",
+      "HTML/CSS",
+      "JavaScript"
+    ],
+    "frameworks": [
+      "React",
+      "Node.js",
+      "Tailwind CSS"
+    ],
+    "cloud": [
+      "Azure AI",
+      "Azure Cognitive Search",
+      "Firebase"
+    ],
+    "tools": [
+      "VS Code",
+      "CodeBlocks",
+      "Postman",
+      "Smartcat"
+    ],
+    "ai": [
+      "LLM Evaluation",
+      "Data Annotation",
+      "AI Model Testing"
+    ]
+  },
+  "projects": [
+    {
+      "name": "Abu Dhabi AI Spark Hackathon",
+      "achievement": "Top 10 Team",
+      "year": 2024,
+      "description": "AI-powered search engine for Abu Dhabi Open-Data Platform"
+    },
+    {
+      "name": "NotYet Platform",
+      "event": "UVT AI Hackathon",
+      "placement": "4th Place",
+      "year": 2024,
+      "description": "Career and educational growth platform using Azure AI Studio"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "IBM Artificial Intelligence Fundamentals",
+      "issuer": "IBM"
+    },
+    {
+      "name": "Cisco Networking Basics",
+      "issuer": "Cisco"
+    },
+    {
+      "name": "Introduction to Cybersecurity",
+      "issuer": "Cisco"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Arabic",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "Professional"
+    },
+    {
+      "language": "French",
+      "level": "Limited Working"
+    },
+    {
+      "language": "German",
+      "level": "Elementary"
+    }
+  ],
+  "interests": [
+    "Gaming (CS:GO, Warzone, League of Legends)",
+    "Traveling",
+    "Chess",
+    "Camping"
+  ],
+  "vision": {
+    "statement": "Mohamed's long-term goal is to leverage AI and machine learning technologies to impact society positively.",
+    "focus_areas": [
+      "Localization",
+      "Education",
+      "Healthcare"
+    ],
+    "aspirations": [
+      "Building innovative solutions for real-world problems",
+      "Collaborating on open-source projects",
+      "Contributing to AI-powered applications"
+    ]
+  },
+  "services": [
+    {
+      "category": "Language Services",
+      "name": "Translation & Localization",
+      "features": [
+        "Technical document translation",
+        "Legal document translation",
+        "Website and app localization",
+        "Marketing content adaptation",
+        "AI-powered translation post-editing"
+      ],
+      "workProcess": [
+        "Initial content review",
+        "Translation and localization",
+        "Post-editing for AI-generated translations",
+        "Quality assurance and proofreading",
+        "Final review and delivery"
+      ]
+    },
+    {
+      "category": "AI & Data Services",
+      "name": "AI Data Annotation & Evaluation",
+      "features": [
+        "AI prompt and response evaluation",
+        "Linguistic AI testing (Arabic-English)",
+        "Dataset annotation and quality assurance",
+        "Sentiment analysis and intent recognition",
+        "Model output assessment and feedback"
+      ],
+      "workProcess": [
+        "Data collection and preprocessing",
+        "Annotation and tagging",
+        "Quality control and validation",
+        "Feedback and model improvement recommendations"
+      ]
+    },
+    {
+      "category": "Career Development",
+      "name": "Resume Writing & Review",
+      "features": [
+        "Resume drafting from scratch",
+        "ATS optimization",
+        "Industry-specific formatting",
+        "Cover letter writing",
+        "Detailed feedback on existing resumes"
+      ],
+      "workProcess": [
+        "Initial consultation",
+        "Resume structure planning",
+        "Content drafting and optimization",
+        "Final review and refinement"
+      ]
+    },
+    {
+      "category": "Tech & IT Services",
+      "name": "Technical Support & IT Consulting",
+      "features": [
+        "Software troubleshooting",
+        "IT infrastructure consultation",
+        "System setup and optimization",
+        "Tech tools training",
+        "Cybersecurity awareness guidance"
+      ],
+      "workProcess": [
+        "Issue assessment",
+        "Diagnosis and solution planning",
+        "Implementation and testing",
+        "Final review and recommendations"
+      ]
+    },
+    {
+      "category": "Education & Training",
+      "name": "Educational Consulting",
+      "features": [
+        "University application support",
+        "Course and skill development advice",
+        "Scholarship and grant research",
+        "Career guidance for students",
+        "Personalized learning strategies"
+      ],
+      "workProcess": [
+        "Initial consultation",
+        "Academic or career assessment",
+        "Customized guidance plan",
+        "Ongoing support and mentoring"
+      ]
+    },
+    {
+      "category": "Business & Research",
+      "name": "Project Management & Research Assistance",
+      "features": [
+        "End-to-end project coordination",
+        "Deadline and resource management",
+        "Market and academic research",
+        "Comprehensive data analysis",
+        "Report writing and documentation"
+      ],
+      "workProcess": [
+        "Project or research briefing",
+        "Planning and execution",
+        "Data collection and analysis",
+        "Final report and presentation"
+      ]
+    },
+    {
+      "category": "Career Development",
+      "name": "Career Development Coaching",
+      "features": [
+        "Resume and cover letter optimization",
+        "Interview preparation",
+        "Job search strategies",
+        "Professional networking guidance",
+        "Long-term career planning"
+      ],
+      "workProcess": [
+        "Initial consultation",
+        "Skill and career assessment",
+        "Customized development plan",
+        "Ongoing mentorship and support"
+      ]
+    }
+  ]
+}

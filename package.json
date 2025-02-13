@@ -1,6 +1,7 @@
 {
   "name": "my",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,12 +10,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/mistral": "^1.1.9",
     "@formspree/react": "^2.5.1",
+    "@huggingface/inference": "^3.3.3",
+    "@mistralai/mistralai": "^1.5.0",
     "@octokit/rest": "^21.1.0",
+    "@vercel/analytics": "^1.5.0",
+    "ai": "^4.1.37",
+    "chromadb": "^1.10.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "country-flag-icons": "^1.5.16",
     "framer-motion": "^12.4.2",
+    "langchain": "^0.3.15",
     "lucide-react": "^0.475.0",
     "next": "15.1.7",
     "next-themes": "^0.4.4",

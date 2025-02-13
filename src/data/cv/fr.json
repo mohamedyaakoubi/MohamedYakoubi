@@ -1,0 +1,302 @@
+{
+    "name": "Mohamed Yaakoubi",
+    "title": "Spécialiste en IA & Étudiant en Informatique",
+    "introduction": "Personne autonome et apprenante rapide avec une passion profonde pour la technologie, l'informatique et le développement personnel. Actuellement en cursus d'informatique tout en travaillant dans l'évaluation de l'IA et la localisation.",
+    "education": [
+      {
+        "degree": "Licence en Informatique",
+        "institution": "Faculté des Sciences de Sfax",
+        "period": "2024-2027",
+        "status": "En cours"
+      },
+      {
+        "degree": "Cycle Préparatoire Intégré en Informatique",
+        "period": "2021-2024",
+        "achievements": "Moyenne finale : 1.88"
+      },
+      {
+        "degree": "Baccalauréat en Sciences Expérimentales",
+        "institution": "Lycée Secondaire de Feriana",
+        "period": "2020-2021"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Coordinateur de Localisation",
+        "company": "Uber",
+        "location": "Télétravail, Sfax",
+        "period": "Depuis Juillet 2024",
+        "responsibilities": [
+          "Gestion des efforts de localisation arabe-anglais",
+          "Optimisation des expériences utilisateurs",
+          "Contribution à l'amélioration des modèles d'IA par l'annotation"
+        ]
+      },
+      {
+        "role": "Réviseur de Données et Qualité Linguistique",
+        "company": "Volga Partners",
+        "location": "Télétravail, Sfax",
+        "period": "Depuis Juillet 2024",
+        "responsibilities": [
+          "Fourniture de services de révision de données linguistiques",
+          "Évaluation et traitement des données linguistiques",
+          "Assurance de livrables de haute qualité"
+        ]
+      },
+      {
+        "role": "Évaluateur d'IA Linguistique (QA Arabe Maghrébin)",
+        "company": "Meta AI via RWS",
+        "location": "Télétravail, Sfax",
+        "period": "Depuis Novembre 2024",
+        "responsibilities": [
+          "Évaluation des prompts arabes et des réponses LLM",
+          "Fourniture de retours détaillés pour l'amélioration de l'IA",
+          "Spécialisation dans l'évaluation de l'arabe maghrébin"
+        ]
+      }
+    ],
+    "freelance": [
+      {
+        "role": "Éditeur",
+        "company": "Unbabel",
+        "period": "Depuis Mars 2020",
+        "description": "Révision de traduction arabe-anglais"
+      },
+      {
+        "role": "Annotateur de Données IA",
+        "company": "Toloka",
+        "period": "Février 2024 - Août 2024",
+        "description": "Annotation et étiquetage de données pour le développement de l'IA"
+      }
+    ],
+    "volunteer": [
+      {
+        "role": "Validateur KYC",
+        "organization": "Réseau Pi",
+        "period": "Depuis Juillet 2024"
+      },
+      {
+        "role": "Éditeur de Sous-titres",
+        "organization": "TED Translators",
+        "period": "Depuis Avril 2024"
+      }
+    ],
+    "skills": {
+      "programming": [
+        "Python",
+        "TypeScript",
+        "C",
+        "HTML/CSS",
+        "JavaScript"
+      ],
+      "frameworks": [
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "cloud": [
+        "Azure AI",
+        "Azure Cognitive Search",
+        "Firebase"
+      ],
+      "tools": [
+        "VS Code",
+        "CodeBlocks",
+        "Postman",
+        "Smartcat"
+      ],
+      "ai": [
+        "Évaluation de LLM",
+        "Annotation de Données",
+        "Test de Modèles d'IA"
+      ]
+    },
+    "projects": [
+      {
+        "name": "Hackathon IA d'Abu Dhabi",
+        "achievement": "Top 10 Équipes",
+        "year": "2024",
+        "description": "Moteur de recherche alimenté par l'IA pour la plateforme Open-Data d'Abu Dhabi"
+      },
+      {
+        "name": "Plateforme NotYet",
+        "event": "Hackathon IA UVT",
+        "placement": "4ème Place",
+        "year": "2024",
+        "description": "Plateforme de développement professionnel et éducatif utilisant Azure AI Studio"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Fondamentaux de l'IA IBM",
+        "issuer": "IBM"
+      },
+      {
+        "name": "Bases des Réseaux Cisco",
+        "issuer": "Cisco"
+      },
+      {
+        "name": "Introduction à la Cybersécurité",
+        "issuer": "Cisco"
+      }
+    ],
+    "languages": [
+      {
+        "language": "Arabe",
+        "level": "Langue Maternelle"
+      },
+      {
+        "language": "Anglais",
+        "level": "Professionnel"
+      },
+      {
+        "language": "Français",
+        "level": "Professionnel Limité"
+      },
+      {
+        "language": "Allemand",
+        "level": "Débutant"
+      }
+    ],
+    "interests": [
+      "Jeux Vidéo (CS:GO, Warzone, League of Legends)",
+      "Voyages",
+      "Échecs",
+      "Camping"
+    ],
+    "vision": {
+      "statement": "L'objectif à long terme de Mohamed est d'utiliser les technologies d'IA et d'apprentissage automatique pour impacter positivement la société.",
+      "focus_areas": [
+        "Localisation",
+        "Éducation",
+        "Santé"
+      ],
+      "aspirations": [
+        "Construire des solutions innovantes pour des problèmes réels",
+        "Collaborer sur des projets open-source",
+        "Contribuer aux applications basées sur l'IA"
+      ]
+    },
+    "services": [
+      {
+        "category": "Services Linguistiques",
+        "name": "Traduction & Localisation",
+        "features": [
+          "Traduction de documents techniques",
+          "Traduction de documents juridiques",
+          "Localisation de sites web et d'applications",
+          "Adaptation de contenu marketing",
+          "Post-édition de traduction assistée par IA"
+        ],
+        "workProcess": [
+          "Revue initiale du contenu",
+          "Traduction et localisation",
+          "Post-édition des traductions générées par IA",
+          "Assurance qualité et relecture",
+          "Révision finale et livraison"
+        ]
+      },
+      {
+        "category": "Services IA & Données",
+        "name": "Annotation & Évaluation de Données IA",
+        "features": [
+          "Évaluation des prompts et réponses IA",
+          "Test IA linguistique (arabe-anglais)",
+          "Annotation de datasets et assurance qualité",
+          "Analyse de sentiment et reconnaissance d'intention",
+          "Évaluation des sorties de modèles et feedback"
+        ],
+        "workProcess": [
+          "Collecte et prétraitement des données",
+          "Annotation et étiquetage",
+          "Contrôle qualité et validation",
+          "Feedback et recommandations d'amélioration"
+        ]
+      },
+      {
+        "category": "Développement de Carrière",
+        "name": "Rédaction & Révision de CV",
+        "features": [
+          "Rédaction de CV depuis zéro",
+          "Optimisation ATS",
+          "Mise en forme spécifique au secteur",
+          "Rédaction de lettres de motivation",
+          "Feedback détaillé sur les CV existants"
+        ],
+        "workProcess": [
+          "Consultation initiale",
+          "Planification de la structure du CV",
+          "Rédaction et optimisation du contenu",
+          "Révision finale et peaufinage"
+        ]
+      },
+      {
+        "category": "Services Tech & IT",
+        "name": "Support Technique & Conseil IT",
+        "features": [
+          "Dépannage logiciel",
+          "Consultation infrastructure IT",
+          "Configuration et optimisation système",
+          "Formation aux outils techniques",
+          "Conseils en sensibilisation à la cybersécurité"
+        ],
+        "workProcess": [
+          "Évaluation du problème",
+          "Diagnostic et planification de solution",
+          "Implémentation et test",
+          "Révision finale et recommandations"
+        ]
+      },
+      {
+        "category": "Éducation & Formation",
+        "name": "Conseil en Éducation",
+        "features": [
+          "Soutien aux candidatures universitaires",
+          "Conseils en développement de compétences",
+          "Recherche de bourses et subventions",
+          "Orientation professionnelle pour étudiants",
+          "Stratégies d'apprentissage personnalisées"
+        ],
+        "workProcess": [
+          "Consultation initiale",
+          "Évaluation académique ou professionnelle",
+          "Plan d'orientation personnalisé",
+          "Soutien et mentorat continu"
+        ]
+      },
+      {
+        "category": "Affaires & Recherche",
+        "name": "Gestion de Projet & Assistance à la Recherche",
+        "features": [
+          "Coordination de projet de bout en bout",
+          "Gestion des délais et ressources",
+          "Recherche marché et académique",
+          "Analyse de données complète",
+          "Rédaction de rapports et documentation"
+        ],
+        "workProcess": [
+          "Briefing projet ou recherche",
+          "Planification et exécution",
+          "Collecte et analyse de données",
+          "Rapport final et présentation"
+        ]
+      },
+      {
+        "category": "Développement de Carrière",
+        "name": "Coaching en Développement de Carrière",
+        "features": [
+          "Optimisation de CV et lettre de motivation",
+          "Préparation aux entretiens",
+          "Stratégies de recherche d'emploi",
+          "Guide de networking professionnel",
+          "Planification de carrière à long terme"
+        ],
+        "workProcess": [
+          "Consultation initiale",
+          "Évaluation des compétences et de carrière",
+          "Plan de développement personnalisé",
+          "Mentorat et soutien continu"
+        ]
+      }
+    ]
+  }

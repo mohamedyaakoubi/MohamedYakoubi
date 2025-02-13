@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/context/language-context'
 import { ThemeProvider } from "@/components/theme-provider"
 import ClientLayout from "@/components/ClientLayout"
 
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {

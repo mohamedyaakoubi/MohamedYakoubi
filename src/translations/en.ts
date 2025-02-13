@@ -10,6 +10,16 @@ export default {
         downloadCV: "Download CV"
       }
     },
+    chat: {
+      title: "Chat with My Portfolio AI",
+      placeholder: "Ask about my background...",
+      welcomeMessage: "👋 Hi! I'm your AI assistant. Feel free to ask me anything about Mohamed!",
+      sendButton: "Send",
+      thinking: "Thinking...",
+      errorPrefix: "Error:",
+      toggleOpen: "Open chat",
+      toggleClose: "Close chat"
+    },
     navigation: {
       logo: "M Y",
       links: {
