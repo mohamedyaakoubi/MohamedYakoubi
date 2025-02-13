@@ -197,7 +197,7 @@ function calculateRelevance(text: string, query: string): number {
     return score;
 }
 
-export async function findRelevantDocuments(query: string, documents: Document[]): Promise<string[]> {
+async function findRelevantDocuments(query: string, documents: Document[]): Promise<string[]> {
     // Score each document
     const scoredDocs = documents.map(doc => ({
         content: doc.pageContent,
