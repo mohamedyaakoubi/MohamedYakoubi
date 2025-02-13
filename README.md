@@ -1,6 +1,6 @@
 [![](https://visitcount.itsvg.in/api?id=mohamedyaakoubi&label=Profile%20Views&color=11&icon=5&pretty=false)](https://visitcount.itsvg.in)
 
-![Banner](header.png)
+![Banner](/public/ReadMe/header.png)
 
 <!--❓- Intro-->
 <h3 style="text-align: center; position: relative;">
@@ -82,7 +82,7 @@ I'm Mohamed Yaakoubi, a self-motivated, fast learner who picks up new skills qui
 
 ## Badges
 
-<img src="artificial-intelligence-fundamentals (3).png" alt="AI Fundamentals Badge"/> <img src="networking-basics.png" alt="networking basics badge from Cisco"/> <img src="introduction-to-cybersecurity.png" alt="networking basics badge from Cisco"/>
+<img src="/public/ReadMe/artificial-intelligence-fundamentals (3).png" alt="AI Fundamentals Badge"/> <img src="/public/ReadMe/networking-basics.png" alt="networking basics badge from Cisco"/> <img src="/public/ReadMe/introduction-to-cybersecurity.png" alt="networking basics badge from Cisco"/>
 
 
 
