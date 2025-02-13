@@ -175,17 +175,19 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
                         shadow-md hover:shadow-xl transition-all duration-500 
                         transform hover:-translate-y-1"
             >
-              {repo.homepage && (
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={`/projects/${repo.name}.jpg`}
-                    alt={repo.name}
-                    fill
-                    className="object-cover transform transition-transform duration-500
-                             group-hover:scale-110"
-                  />
-                </div>
-              )}
+           {repo.homepage && (
+  <div className="group relative h-48 w-full overflow-hidden bg-gray-100 dark:bg-gray-700">
+    <Image
+      src={`/projects/${repo.name}.PNG`}
+      alt={repo.name}
+      fill
+      className="object-cover object-top transition-all duration-500 group-hover:scale-110"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      priority={index < 3}
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+  </div>
+)}
               <div className="p-6">
                 <div className="flex justify-between items-start">
                   <h3 className="text-lg font-semibold text-gray-800 dark:text-white">

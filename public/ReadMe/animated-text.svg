@@ -1,0 +1,22 @@
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text {
+      font: bold 2em sans-serif;
+      fill: #E91E63;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 2s steps(40, end) infinite alternate, blink-caret .5s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #E91E63; }
+    }
+  </style>
+  <text x="0" y="40" class="text" id="animated-text">Welcome!</text>
+</svg>

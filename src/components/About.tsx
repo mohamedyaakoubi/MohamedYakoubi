@@ -10,7 +10,10 @@ import {
   GitBranch,
   Cloud,
   Database,
-  LineChart
+  LineChart,
+  Flame,    // Add for Firebase
+  TableProperties,  // Add for SQL
+  Send     // Add for Postman
 } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -38,6 +41,8 @@ const getSkills = (t: (key: string) => string) => [
       { name: t('skills.items.TypeScript'), icon: Code },
       { name: t('skills.items.React'), icon: Code },
       { name: t('skills.items.Next_js'), icon: Server },
+      { name: t('skills.items.Firebase'), icon: Flame },      // Changed icon
+      { name: t('skills.items.SQL'), icon: TableProperties }
 
 
     ],
@@ -63,10 +68,8 @@ const getSkills = (t: (key: string) => string) => [
       { name: t('skills.items.GitHub'), icon: GitBranch },
       { name: t('skills.items.VS Code'), icon: Terminal },
       { name: t('skills.items.Azure'), icon: Cloud },
-      { name: t('skills.items.Docker'), icon: Cloud },
-      { name: t('skills.items.Kubernetes'), icon: Cloud },
-      { name: t('skills.items.AWS'), icon: Cloud },
       { name: t('skills.items.Linux'), icon: Terminal },
+      { name: t('skills.items.Postman'), icon: Send },  
     ],
   },
 ]

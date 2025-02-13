@@ -1,17 +1,17 @@
 export default {
     hero: {
         greeting: "مرحباً، أنا",
-        tagline: "نحو آفاق أعلى",
+        tagline: "آخذك نحو آفاق أعلى",
         roles: [
-          "متخصص في الذكاء الاصطناعي",
+          "متخصص ناشئ في الذكاء الاصطناعي",
           "مطور ويب",
-          "خبير التوطين",
-          "متعلم دائم"
+          "خبير توطين",
+          "متعلم ذاتي"
         ],
         cta: {
-          github: "جيتهب",
+          github: "Github",
           linkedin: "لينكدإن",
-          upwork: "وظفني",
+          upwork: "قم بتوظيفي",
           downloadCV: "تحميل السيرة الذاتية"
         }
       },
@@ -24,7 +24,7 @@ export default {
           about: "عني",
           contact: "تواصل معي"
         },
-        logo: "م ي"
+        logo: "MY"
       },
       social: {
         github: "جيتهب",
@@ -215,7 +215,7 @@ export default {
         },
         sections: {
           featured: "المشاريع المميزة",
-          github: "مشاريع جيتهب"
+          github: "مشاريع GitHub"
         },
         repository: {
             noDescription: "لا يوجد وصف",
@@ -257,9 +257,9 @@ export default {
           }
         ,
         names: {
-          "NotYet": "نوت يِت",
-          "DocuMed": "دوكيوميد",
-          "Potential": "بوتنشال"
+          "NotYet": "NotYet",
+          "DocuMed": "DocuMed",
+          "Potential": "Potential"
         },
         descriptions: {
           "NotYet": "تطبيق ويب مدعوم بالذكاء الاصطناعي لمساعدة الطلاب والباحثين عن عمل في تونس في تطوير مسارهم المهني",
@@ -361,16 +361,16 @@ export default {
       "Freelance Editor (Arabic to English & English to Arabic)": "محرر مستقل (العربية إلى الإنجليزية والإنجليزية إلى العربية)"
     },
     companies: {
-      "DeepL": "ديب إل",
-      "RWS": "آر دبليو إس",
-      "Uber": "أوبر",
-      "Volga Partners": "فولغا بارتنرز",
-      "Pi Network": "شبكة باي",
-      "Toloka": "تولوكا",
-      "Premise": "بريمايس",
-      "TED Translators": "مترجمو تيد",
-      "Unbabel": "أنبابل",
-      "Uber (via Volga Partners)": "أوبر (عبر فولغا بارتنرز)"
+      "DeepL": "DeepL",
+      "RWS": "RWS",
+      "Uber": "Uber",
+      "Volga Partners": "Volga Partners",
+      "Pi Network": "Pi Network",
+      "Toloka": "Toloka",
+      "Premise": "Premise",
+      "TED Translators":  "TED Translators",
+      "Unbabel": "Unbabel",
+      "Uber (via Volga Partners)": "Uber (via Volga Partners)"
     },
     locations: {
       "Sfax (Remote)": "صفاقس (عن بُعد)"
@@ -456,29 +456,33 @@ skills: {
       
       // Web Development
       "HTML/CSS": "HTML/CSS",
-      "JavaScript": "جافاسكريبت",
-      "TypeScript": "تايبسكريبت",
-      "React": "رياكت",
-      "Next_js": "نكست.جي إس",
+      "JavaScript": "JavaScript",
+      "TypeScript": "TypeScript",
+      "React": "React",
+      "Next_js": "Next.js",
       
       // AI & ML
-      "TensorFlow": "تينسورفلو",
-      "PyTorch": "بايتورش",
-      "Scikit-learn": "سايكت-ليرن",
-      "Machine Learning": "تعلم الآلة",
-      "Deep Learning": "التعلم العميق",
-      "Natural Language Processing": "معالجة اللغات الطبيعية",
-      "Computer Vision": "الرؤية الحاسوبية",
+      "TensorFlow": "TensorFlow",
+      "PyTorch": "PyTorch",
+      "Scikit-learn": "Scikit-learn",
+      "Machine Learning": "Machine Learning",
+      "Deep Learning": "Deep Learning",
+      "Natural Language Processing": "NLP",
+      "Computer Vision": "Computer Vision",
+      "Docker": "Docker",
+      "Kubernetes": "Kubernetes",
+      "AWS": "AWS",
+      "Firebase": "Firebase",
+      "SQL": "SQL",
+      "Postman": "Postman",
+      
       
       // Tools & Cloud
-      "Git": "جيت",
-      "GitHub": "جيتهب",
-      "VS Code": "في إس كود",
-      "Azure": "أزور",
-      "Docker": "دوكر",
-      "Kubernetes": "كوبرنتس",
-      "AWS": "أمازون ويب سيرفيسز",
-      "Linux": "لينكس"
+      "Git": "Git",
+      "GitHub": "GitHub",
+      "VS Code": "VS Code",
+      "Azure": "Azure",
+      "Linux": "Linux"
     },
     levels: {
       "Beginner": "مبتدئ",

@@ -463,7 +463,10 @@ projects: {
       "Docker": "Docker",
       "Kubernetes": "Kubernetes",
       "AWS": "AWS",
-      "Linux": "Linux"
+      "Linux": "Linux",
+      "Firebase": "Firebase",
+      "SQL": "SQL",
+      "Postman": "Postman"
     },
     levels: {
       "Beginner": "Beginner",

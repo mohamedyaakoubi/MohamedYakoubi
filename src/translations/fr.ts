@@ -32,7 +32,10 @@ export default {
             "Docker": "Docker",
             "Kubernetes": "Kubernetes",
             "AWS": "AWS",
-            "Linux": "Linux"
+            "Linux": "Linux",
+            "Firebase": "Firebase",
+            "SQL": "SQL",
+            "Postman": "Postman"
           },
           levels: {
             "Beginner": "Débutant",
@@ -62,7 +65,7 @@ export default {
       
     hero: {
       greeting: "Bonjour, je suis",
-      tagline: "Vers de nouveaux sommets",
+      tagline: "Vous amener à de plus hauts sommets",
       roles: [
         "Spécialiste IA émergent",
         "Développeur Web",
