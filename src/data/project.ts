@@ -24,7 +24,7 @@ export const featuredProjects: Project[] = [
     description: "Web-based medical documentation and management platform for healthcare professionals.",
     longDescription: "DocuMed simplifies medical record management by providing a digital platform for organizing patient records, prescriptions, and appointments. It was developed as part of the MentorNations Bootcamp using React and Firebase.",
     technologies: ["React", "Firebase"],
-    demoUrl: "https://documed-demo.vercel.app",
+    demoUrl: "https://docu-med.vercel.app/",
     githubUrl: "https://github.com/mohamedyaakoubi/documed", 
     image: "/Documed.PNG",
     features: [
