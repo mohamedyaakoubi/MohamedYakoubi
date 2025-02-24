@@ -111,7 +111,7 @@ This project is MIT licensed - see [LICENSE.md](LICENSE.md)
 **Mohamed Yaakoubi**
 - Portfolio: [mohamed-yakoubi.vercel.app](https://mohamed-yakoubi.vercel.app)
 - LinkedIn: [yaakoubi-mohamed](https://linkedin.com/in/yaakoubi-mohamed)
-- GitHub: [@yakoubimed](https://github.com/yaakoubimohamed)
+- GitHub: [@yakoubimed](https://github.com/mohamedyaakoubi)
 
 ---
 
