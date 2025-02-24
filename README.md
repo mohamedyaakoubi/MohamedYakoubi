@@ -1,21 +1,21 @@
 # 🤖 AI-Powered Portfolio with Chat Application
 
-![Banner](/public/ReadMe/header.png)
+A modern, AI-powered portfolio featuring an intelligent chat system built with Next.js 13 and Mistral AI.
 
 ## 📌 Overview
 
-A modern, AI-powered Portfolio with chat application built with Next.js 13, TypeScript, and integrated with the Mistral AI API. This project demonstrates full-stack development capabilities, clean code practices, and seamless AI integration.
+This project showcases a full-stack development approach combining modern web technologies with AI capabilities. The portfolio includes a sophisticated chat interface powered by Mistral AI, demonstrating both technical proficiency and practical application of AI integration.
 
 ### 🌟 Key Features
 
-- **Real-time Chat Interface**: Smooth, responsive chat experience with server-side streaming
-- **Multi-language Support**: Full internationalization (English, French, and Arabic)
-- **Theme Customization**: Dynamic light/dark mode with smooth transitions
-- **Accessibility**: ARIA compliant with keyboard navigation support
-- **AI Integration**: Leverages Mistral AI's API for intelligent responses
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **AI-Powered Chat**: Real-time conversation with Mistral AI integration
+- **Multilingual**: Full support for English, French, and Arabic
+- **Theme Switching**: Smooth dark/light mode transitions with sound effects
+- **Responsive Design**: Mobile-first approach using Tailwind CSS
+- **Accessibility**: ARIA-compliant with keyboard navigation
+- **Real-time Updates**: Server-side streaming for instant responses
 
-## 🛠️ Technical Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 - Next.js 13 (App Router)
@@ -30,92 +30,89 @@ A modern, AI-powered Portfolio with chat application built with Next.js 13, Type
 - LangChain
 - Streaming Response Handling
 
-### Development Tools
-- ESLint
-- Prettier
-- Husky (pre-commit hooks)
-- Jest (testing)
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js (v18+)
-- npm/yarn
-- Mistral AI API key
-
-### Installation
-
-1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/chat-application.git
-cd chat-application
+Node.js >= 18
+npm or yarn
+Mistral AI API key
+```
+
+### Setup
+1. Clone and install:
+```bash
+git clone https://github.com/mohamedyaakoubi/MohamedYakoubi.git
+cd portfolio-chat
 npm install
 ```
-2. Copy the example environment file and add your Mistral AI API key
+
+2. Configure environment:
 ```bash
 cp .env.example .env.local
 # Add your Mistral AI API key to .env.local
 ```
-3. Start the development server
+
+3. Run development server:
 ```bash
 npm run dev
 ```
-### 🎯 Project Structure
 
+## 📂 Project Structure
+```
 src/
-├── app/                  # Next.js app router pages
-├── components/          # React components
-│   ├── Chat/           # Chat-related components
-│   ├── ui/             # Reusable UI components
-│   └── ...
-├── context/            # React context providers
-├── hooks/              # Custom React hooks
-├── translations/       # i18n translation files
-└── types/             # TypeScript type definitions
+├── app/                # Next.js pages & API routes
+├── components/        # React components
+│   ├── Chat/         # Chat interface components
+│   └── ui/           # Shared UI components
+├── context/          # React contexts
+├── hooks/            # Custom hooks
+├── translations/     # i18n files
+└── types/           # TypeScript definitions
+```
 
-### Example of Mistral AI API integration
+## 💡 Implementation Highlights
+
+### Chat Integration
 ```typescript
-const response = await fetch('/api/chat', {
+const chatResponse = await fetch('/api/chat', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ 
-    messages: [...messages, userMessage],
-    language: language
-  }),
+    messages,
+    language 
+  })
 });
 ```
-## Internationalization
-Support for multiple languages (EN, FR, AR)
-RTL layout support for Arabic
-Language-specific AI responses
-## Streaming Responses
-Real-time message streaming
-Progress indicators
-Error handling and retry mechanism
-## 🎨 UI/UX Features
-Smooth animations
-Loading states
-Error handling
-Responsive design
-Accessibility features
-## 📈 Performance
-Optimized bundle size
-Lazy loading
-Image optimization
-Efficient state management
+
+### Key Features
+- **Streaming**: Real-time message streaming with progress indicators
+- **Multilingual**: Language-specific responses and RTL support
+- **Error Handling**: Robust error management with retry mechanism
+- **State Management**: Efficient React state handling
+- **Accessibility**: Screen reader support and keyboard navigation
+
+
 ## 🤝 Contributing
-Fork the repository
-Create a feature branch
-Commit changes
-Push to the branch
-Open a pull request
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 ## 📝 License
-MIT License - see LICENSE.md
 
-### 🙋‍♂️ Author
-Mohamed Yaakoubi
+This project is MIT licensed - see [LICENSE.md](LICENSE.md)
 
-LinkedIn: [Mohamed Yaakoubi](https://www.linkedin.com/in/yaakoubi-mohamed/)
-Portfolio: https://mohamed-yakoubi.vercel.app/
+## 👤 Author
 
-### Built with ❤️ using Next.js and Mistral AI
+**Mohamed Yaakoubi**
+- Portfolio: [mohamed-yakoubi.vercel.app](https://mohamed-yakoubi.vercel.app)
+- LinkedIn: [yaakoubi-mohamed](https://linkedin.com/in/yaakoubi-mohamed)
+- GitHub: [@yakoubimed](https://github.com/yaakoubimohamed)
+
+---
+
+<p align="center">Built with ❤️ using Next.js and Mistral AI</p>
