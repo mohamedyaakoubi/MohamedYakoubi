@@ -153,7 +153,7 @@ export function Hero() {
 
 {/* Upwork button */}
 <motion.a
-  href="https://www.upwork.com/freelancers/~01547a383d32d66a36?mp_source=share"
+  href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
   target="_blank"
   rel="noopener noreferrer"
   whileHover={{ scale: 1.05 }}
