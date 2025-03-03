@@ -112,7 +112,7 @@ export default function Contact() {
     <FaLinkedin className="w-6 h-6" />
   </a>
   <a
-    href="https://www.upwork.com/freelancers/~01547a383d32d66a36?mp_source=share"
+    href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
     target="_blank"
     rel="noopener noreferrer"
     className="text-[#6fda44] hover:text-[#5cb536]"
