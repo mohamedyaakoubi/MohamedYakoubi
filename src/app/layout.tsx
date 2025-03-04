@@ -41,7 +41,16 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // Remove Twitter section since you don't use it
+  twitter: {
+    card: 'summary_large_image',
+    site: '@Mohamed0Yakoubi',
+    creator: '@Mohamed0Yakoubi',
+    title: 'Mohamed Yaakoubi | Emerging AI and Technology Specialist',
+    description: 'Expert in AI/ML, web development, and localization services with expertise in Next.js, React, and machine learning technologies.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pic.jpg-ZVOn8cZhvmsJOsRLossXo8UgDkmffp.jpeg'
+    ]
+  },
   
   // Update alternates for your language selector implementation
   alternates: {
