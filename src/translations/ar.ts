@@ -519,6 +519,8 @@ skills: {
       "Professional": "مهني",
       "Conversational": "محادثة"
     }
+  },
+  companies: {
+    workedwith: "الشركات التي عملت معها",
   }
 }
-  

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://mohamed-yakoubi.vercel.app/',
     siteName: 'Mohamed Yaakoubi Portfolio',
-    title: 'Mohamed Yaakoubi | AI Specialist & Web Developer',
+    title: 'Mohamed Yaakoubi | Emerging AI Specialist',
     description: 'Expert in AI/ML, web development, and localization services with expertise in Next.js, React, and machine learning technologies.',
     images: [
       {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pic.jpg-ZVOn8cZhvmsJOsRLossXo8UgDkmffp.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Mohamed Yaakoubi - AI Specialist & Web Developer',
+        alt: 'Mohamed Yaakoubi - Emerging AI Specialist',
       },
     ],
   },
@@ -61,6 +61,9 @@ export const metadata: Metadata = {
       'ar': 'https://mohamed-yakoubi.vercel.app/',
     },
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -75,6 +78,13 @@ export default function RootLayout({
         <meta property="linkedin:author" content="Mohamed Yaakoubi" />
         <meta property="linkedin:title" content="Emerging AI and Technology Specialist | Machine Translation Post-Editor at Unbabel | AI Annotator & Evaluator | Localization Vendor Coordinator at Uber | Language Data and Quality Reviewer at Volga Partners" />
         <meta property="linkedin:description" content="Driven, adaptable, and passionate about advancing technology, I am a fast learner who thrives on tackling complex challenges and acquiring new skills quickly. With hands-on experience in AI, web development, and localization, I seek opportunities that foster innovation and personal growth. I am dedicated to leveraging my technical and problem-solving abilities to create solutions that make a meaningful difference. Eager to join collaborative environments, I aim to contribute effectively and grow alongside motivated teams." />
+        <meta property="og:see_also" content="https://github.com/mohamedyaakoubi" />
+  <meta name="github:profile" content="mohamedyaakoubi" />
+  <meta name="github:card" content="summary" />
+  <meta name="twitter:label1" content="GitHub" />
+  <meta name="twitter:data1" content="@mohamedyaakoubi" />
+  <meta property="og:see_also" content="https://mohamedyaakoubi.link/" />
+  <meta name="gravatar:profile" content="mohamedyaakoubi" />
       </head>
       <body className={inter.className}>
         <LanguageProvider>

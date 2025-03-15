@@ -11,7 +11,6 @@ export function useTranslation(lang: Language) {
     const t = useCallback(
       (key: string) => {
         try {
-          console.log(`Translating key: ${key} for language: ${lang}`)
           const keys = key.split('.')
           let value: any = translations[lang]
           

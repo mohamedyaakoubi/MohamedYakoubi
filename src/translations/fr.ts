@@ -507,5 +507,8 @@ export default {
           "Provide feedback to improve translation quality and consistency": "Fourniture de retours pour améliorer la qualité et la cohérence des traductions",
           "Conduct quality checks to maintain high translation standards": "Réalisation de contrôles qualité pour maintenir des standards de traduction élevés"
         }
+      },
+      companies: {
+        workedwith: "Entreprises avec lesquelles j'ai collaboré"
       }
     }

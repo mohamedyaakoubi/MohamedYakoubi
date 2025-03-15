@@ -502,5 +502,8 @@ projects: {
       "Professional": "Professional",
       "Conversational": "Conversational"
     }
+  },
+  companies: {
+    workedwith: "Companies I've Worked With"
   }
 }

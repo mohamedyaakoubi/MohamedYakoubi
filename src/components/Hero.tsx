@@ -112,7 +112,6 @@ export function Hero() {
       </span>
             </motion.h1>
 
-    {/* Rest of your existing content... */}
 
             <motion.div 
         initial={{ opacity: 0, y: 20 }} 
