@@ -6,6 +6,7 @@ import { Navigation } from "./Navigation"
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageSelector } from "./LanguageSelector"
 import { PageTransition } from "./PageTransition"
+import ScrollToTopButton from './ui/ScrollToTopButton'
 import Chat from './Chat'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -33,6 +34,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         </div>
         <PageTransition>{children}</PageTransition>
         <Chat />
+        <ScrollToTopButton />
       </div>
     )
   }

@@ -5,15 +5,11 @@ import { motion } from "framer-motion"
 import { FaGithub, FaLinkedin, FaFileDownload } from "react-icons/fa"
 import { useTheme } from "next-themes"
 import { useTypewriter } from "@/hooks/useTypewriter"
-import { SiUpwork } from "react-icons/si"  // Add this import
+import { SiUpwork } from "react-icons/si"
 import type { Language } from "@/types/language"
 import { useLanguage } from "@/context/language-context"
 import { useTranslation } from "@/hooks/useTranslation"
-
-
-
-
-const phrases = ["Emerging AI Specialist", "Web Developer", "Localization Expert", "Continuous Learner"]
+import Image from "next/image"
 
 export function Hero() {
   const { theme, setTheme } = useTheme()
@@ -26,6 +22,7 @@ export function Hero() {
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang)
   }
+  
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -43,33 +40,50 @@ export function Hero() {
 
   return (
     <>
- 
       {/* Home Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Background Elements */}
+      <section id="home" className="relative min-h-screen flex flex-col items-center justify-center">
+        {/* Background Elements with Next.js Image */}
         <div className="hero-background">
-        {/* Light theme background */}
+          {/* Light theme background */}
           <div
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            className="absolute inset-0 transition-opacity duration-1000"
             style={{
-              backgroundImage:
-                'url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hero-light.jpg-wzxoumtgBbXiRKjNYxMdak9ZFenr3p.jpeg")',
               opacity: currentTheme === "light" ? 1 : 0,
             }}
           >
-            <div className="absolute inset-0 bg-white/50" />
+            <div className="absolute inset-0 overflow-hidden">
+              <Image 
+                src="/hero-light.jpg"
+                alt="Light background"
+                fill
+                priority
+                sizes="100vw"
+                quality={90}
+                className="object-cover fixed-bg"
+              />
+            </div>
+            <div className="absolute inset-0 bg-white/15" />
           </div>
 
           {/* Dark theme background */}
           <div
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            className="absolute inset-0 transition-opacity duration-1000"
             style={{
-              backgroundImage:
-                'url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hero-dark.jpg-OyPCbiNXVPCGYlGZkEpO12lCUk2Ixu.jpeg")',
               opacity: currentTheme === "dark" ? 1 : 0,
             }}
           >
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 overflow-hidden">
+              <Image 
+                src="/hero-dark.jpg"
+                alt="Dark background"
+                fill
+                priority
+                sizes="100vw"
+                quality={90}
+                className="object-cover fixed-bg"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/15" />
           </div>
         </div>
 
@@ -196,12 +210,21 @@ export function Hero() {
   }}
   onClick={handleScroll}
   className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer z-30"
+  aria-label={t('hero.scrollToAbout')}
+  role="button"
+  tabIndex={0}
+  onKeyDown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleScroll(e as any);
+    }
+  }}
 >
   <svg 
     width="40" 
     height="40" 
     viewBox="0 0 24 24" 
     className="dark:text-white text-gray-900"
+    aria-hidden="true"
   >
     <motion.path
       fill="none"

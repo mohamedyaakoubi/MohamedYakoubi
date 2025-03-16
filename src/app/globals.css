@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -87,10 +86,6 @@
 
 /* Reusable Components */
 @layer components {
-  .hero-background {
-    @apply absolute inset-0 transition-opacity duration-1000;
-    z-index: 1;
-  }
   .name-container {
     @apply relative flex justify-center items-center w-full py-4;
     z-index: 50;
@@ -257,8 +252,68 @@
     letter-spacing: 0.01em;
   }
 
-}
+  .hero-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
 
+  /* Add overlay for better text contrast if needed */
+  .hero-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Subtle overlay */
+    z-index: 1;
+  }
+  .fixed-bg {
+    object-position: center;
+    object-fit: cover;
+    width: 100%; 
+    height: 100%;
+  }
+  /* Fix position of background images */
+  .bg-fixed {
+    background-attachment: fixed !important;
+  }
+  
+  /* Make sections stack properly */
+  section {
+    position: relative;
+    z-index: 1; /* Above the background */
+  }
+  
+  /* Special treatment for About section */
+  #about {
+    position: relative;
+    z-index: 10;
+    background-color: var(--background);
+  }
+}
+@supports (transform: translate3d(0,0,0)) {
+  .fixed-bg {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    object-fit: cover;
+    z-index: 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+}
 /* Utilities */
 @layer utilities {
 /* RTL Support */

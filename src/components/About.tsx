@@ -9,7 +9,7 @@ export function About() {
   const { t } = useTranslation(language)
   
   return (
-    <section className="py-20 bg-gray-100 dark:bg-gray-900">
+    <section className="py-20 bg-gray-100 dark:bg-gray-900 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div>
@@ -24,8 +24,8 @@ export function About() {
             </p>
           </motion.div>
           
-          {/* Image */}
-          <motion.div
+              {/* Image */}
+              <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}

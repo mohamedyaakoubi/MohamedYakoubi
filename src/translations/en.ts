@@ -67,6 +67,7 @@ export default {
         second: "I am committed to leveraging my technical capabilities and problem-solving skills to create solutions that make a meaningful difference. Enthusiastic about joining collaborative environments, I aim to contribute effectively and grow alongside motivated teams."
       }
     },
+    scrollToAbout: "Scroll to About section",
     services: {
       title: "Services",
       description: "Professional services tailored to meet your needs",

@@ -137,6 +137,7 @@ export default {
         second: "Je m'engage à utiliser mes capacités techniques et mes compétences en résolution de problèmes pour créer des solutions qui font une différence significative. Enthousiaste à l'idée de rejoindre des environnements collaboratifs, je vise à contribuer efficacement et à évoluer aux côtés d'équipes motivées."
       }
     },
+    scrollToAbout: "En savoir plus",
     services: {
       title: "Services",
       description: "Services professionnels adaptés à vos besoins",
