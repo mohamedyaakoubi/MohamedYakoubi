@@ -37,11 +37,11 @@ export function middleware(request: NextRequest) {
 
 // Configure the middleware to run for all routes
 export const config = {
-  matcher: [
-    /*
-     * Match all paths except static assets which are handled by Next.js directly
-     * and shouldn't be modified by middleware
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|gif|png|svg|webp)).*)'
-  ],
-}
+    matcher: [
+      /*
+       * Match all paths except static assets which are handled by Next.js directly
+       * and shouldn't be modified by middleware
+       */
+      '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|gif|png|svg|webp|xml)).*)'
+    ],
+  }
