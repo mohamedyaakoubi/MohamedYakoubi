@@ -6,20 +6,17 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 export default function Analytics() {
   return (
     <>
-      {/* Google Analytics or other analytics script - add your actual tracking ID */}
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID`}
+      {/* Google Analytics - use Next.js Script component */}
+      <Script 
+        src="https://www.googletagmanager.com/gtag/js?id=G-0NVCDPTBCZ" 
+        strategy="afterInteractive"
       />
-      <Script
-        id="ga-script"
-        strategy="lazyOnload"
-      >
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'YOUR-GA-ID');
+          gtag('config', 'G-0NVCDPTBCZ');
         `}
       </Script>
       
