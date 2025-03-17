@@ -15,6 +15,7 @@
     "@mistralai/mistralai": "^1.5.0",
     "@octokit/rest": "^21.1.0",
     "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "ai": "^4.1.37",
     "chromadb": "^1.10.4",
     "class-variance-authority": "^0.7.1",
@@ -38,6 +39,7 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
     "postcss": "^8",
+    "purgecss": "^7.0.2",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

@@ -1,25 +1,39 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, IBM_Plex_Sans_Arabic } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from '@/context/language-context'
 import { ThemeProvider } from "@/components/theme-provider"
 import ClientLayout from "@/components/ClientLayout"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
-// Configure fonts with subsets
+// Simplify font configurations
 const inter = Inter({ 
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter"
+  variable: "--font-inter",
 })
 
 const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '700'],
   subsets: ['arabic'],
   display: 'swap',
   variable: '--font-ibm-plex',
 })
 
+// Define viewport separately
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#171717' },
+  ],
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mohamed-yakoubi.vercel.app'),
   title: "Mohamed Yaakoubi | Emerging AI and Technology Specialist Portfolio",
   description: "Expert in AI/ML, web development, and localization services. View my projects, services and experience in AI, React, Next.js and more.",
   keywords: [
@@ -74,6 +88,19 @@ export const metadata: Metadata = {
     apple: '/icon-192.png',
     shortcut: '/favicon.ico',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: '7RkYGVcLiInN-GqBR9z9vjQKFjwWo54z1BsU0vemYi4', // Add your verification ID if you have one
+  },
 }
 
 export default function RootLayout({
@@ -84,7 +111,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        {/* Moved viewport meta to viewport export above */}
         <meta property="linkedin:author" content="Mohamed Yaakoubi" />
         <meta property="linkedin:title" content="Emerging AI and Technology Specialist | Machine Translation Post-Editor at Unbabel | AI Annotator & Evaluator | Localization Vendor Coordinator at Uber | Language Data and Quality Reviewer at Volga Partners" />
         <meta property="linkedin:description" content="Driven, adaptable, and passionate about advancing technology, I am a fast learner who thrives on tackling complex challenges and acquiring new skills quickly. With hands-on experience in AI, web development, and localization, I seek opportunities that foster innovation and personal growth. I am dedicated to leveraging my technical and problem-solving abilities to create solutions that make a meaningful difference. Eager to join collaborative environments, I aim to contribute effectively and grow alongside motivated teams." />
@@ -96,22 +123,65 @@ export default function RootLayout({
         <meta property="og:see_also" content="https://mohamedyaakoubi.link/" />
         <meta name="gravatar:profile" content="mohamedyaakoubi" />
         
-        {/* Remove the problematic onLoad handler and use Next.js font optimization instead */}
+        {/* Font optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          {/* Prefetch important routes */}
-  <link rel="prefetch" href="/api/chat" />
+          
+        {/* Prefetch important routes */}
+        <link rel="prefetch" href="/api/chat" />
   
-  {/* Preload critical assets */}
-  <link rel="preload" href="/hero-light.webp" as="image" />
+        {/* Preload critical assets with optimized attributes */}
+        <link 
+          rel="preload" 
+          href="/hero-light.webp" 
+          as="image" 
+          fetchPriority="high"
+          type="image/webp" 
+        />
+        {/* Preload sound file for theme toggle */}
+        <link 
+          rel="preload" 
+          href="/sounds/light.mp3" 
+          as="audio" 
+          type="audio/mpeg" 
+        />
+
+        {/* Adding structured data for better SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Mohamed Yaakoubi",
+              "url": "https://mohamed-yakoubi.vercel.app/",
+              "jobTitle": "Emerging AI and Technology Specialist",
+              "knowsAbout": ["Machine Learning", "Web Development", "React", "Next.js", "Typescript", "Translation", "Localization", "AI Annotation"],
+              "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pic.jpg-ZVOn8cZhvmsJOsRLossXo8UgDkmffp.jpeg",
+              "description": "A passionate Emerging AI specialist with versatile background",
+              "alumniOf": "Faculty of sciecnes in Sfax",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "DeepL"
+              },
+              "sameAs": [
+                "https://github.com/mohamedyaakoubi",
+                "https://linkedin.com/in/yaakoubi-mohamed",
+                "https://x.com/Mohamed0Yakoubi",
+                "https://mohamedyaakoubi.link/"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`${inter.variable} ${ibmPlexSansArabic.variable} ${inter.className} overflow-x-hidden max-w-full`}>
-  <LanguageProvider>
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      <ClientLayout>{children}</ClientLayout>
-    </ThemeProvider>
-  </LanguageProvider>
-</body>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <ClientLayout>{children}</ClientLayout>
+          </ThemeProvider>
+        </LanguageProvider>
+        <SpeedInsights />
+      </body>
     </html>
   )
 }

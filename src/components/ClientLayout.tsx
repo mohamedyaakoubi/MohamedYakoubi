@@ -14,7 +14,10 @@ const Chat = dynamic(() => import('./Chat'), {
   loading: () => null,
   ssr: false
 })
-
+// Import analytics component
+const Analytics = dynamic(() => import('./Analytics'), {
+  ssr: false
+})
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { language, setLanguage } = useLanguage()
     const [mounted, setMounted] = useState(false)
@@ -56,6 +59,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <Suspense fallback={null}>
           <ScrollToTopButton />
         </Suspense>
+        
+        {/* Analytics */}
+        <Analytics />
       </div>
     )
 }

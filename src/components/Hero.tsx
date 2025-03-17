@@ -44,47 +44,49 @@ export function Hero() {
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center">
         {/* Background Elements with Next.js Image */}
         <div className="hero-background">
-          {/* Light theme background */}
-          <div
-            className="absolute inset-0 transition-opacity duration-1000"
-            style={{
-              opacity: currentTheme === "light" ? 1 : 0,
-            }}
-          >
-            <div className="absolute inset-0 overflow-hidden">
-              <Image 
-                src="/hero-light.jpg"
-                alt="Light background"
-                fill
-                priority
-                sizes="100vw"
-                quality={85}
-                className="object-cover fixed-bg"
-              />
-            </div>
-            <div className="absolute inset-0 bg-white/15" />
-          </div>
+        {/* Light theme background */}
+<div
+  className="absolute inset-0 transition-opacity duration-1000"
+  style={{
+    opacity: currentTheme === "light" ? 1 : 0,
+  }}
+>
+  <div className="absolute inset-0 overflow-hidden">
+    <Image 
+      src="/hero-light.webp"
+      alt="Light background"
+      fill
+      priority={true}
+      sizes="100vw"
+      quality={85}
+      className="object-cover fixed-bg"
+      fetchPriority="high"
+    />
+  </div>
+  <div className="absolute inset-0 bg-white/15" />
+</div>
 
-          {/* Dark theme background */}
-          <div
-            className="absolute inset-0 transition-opacity duration-1000"
-            style={{
-              opacity: currentTheme === "dark" ? 1 : 0,
-            }}
-          >
-            <div className="absolute inset-0 overflow-hidden">
-              <Image 
-                src="/hero-dark.jpg"
-                alt="Dark background"
-                fill
-                priority
-                sizes="100vw"
-                quality={85}
-                className="object-cover fixed-bg"
-              />
-            </div>
-            <div className="absolute inset-0 bg-black/15" />
-          </div>
+{/* Dark theme background */}
+<div
+  className="absolute inset-0 transition-opacity duration-1000"
+  style={{
+    opacity: currentTheme === "dark" ? 1 : 0,
+  }}
+>
+  <div className="absolute inset-0 overflow-hidden">
+    <Image 
+      src="/hero-dark.webp"
+      alt="Dark background"
+      fill
+      priority={false}  // Don't prioritize this one
+      sizes="100vw"
+      quality={85}
+      loading="lazy"    // Lazy load the dark theme image
+      className="object-cover fixed-bg"
+    />
+  </div>
+  <div className="absolute inset-0 bg-black/15" />
+</div>
         </div>
 
         
@@ -92,39 +94,40 @@ export function Hero() {
 {/* Content */}
 <div className="relative z-20 text-center px-6">
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mb-4"
-            >
-              <span className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
-        {t('hero.greeting')}
-       
-     
-<span className="block text-4xl md:text-6xl font-bold mb-4">
-<div className="name-container">
-  <motion.span 
-    className="name-text-wrapper"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 0.6 }}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="max-w-4xl mx-auto"
+>
+  <motion.h1
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.5 }}
+    className="mb-4"
   >
-    <span className="gradient-name">
-      {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
-    </span>
-  </motion.span>
-</div>
-</span>
-        {t('hero.tagline')}
+    <span 
+      className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300"
+      id="hero-headline" // Adding ID to LCP element
+    >
+      {t('hero.greeting')}
+      <span className="block text-4xl md:text-6xl font-bold mb-4">
+        <div className="name-container">
+          <motion.span 
+            className="name-text-wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <span className="gradient-name">
+              {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
+            </span>
+          </motion.span>
+        </div>
       </span>
-            </motion.h1>
+      {t('hero.tagline')}
+    </span>
+  </motion.h1>
 
 
             <motion.div 
