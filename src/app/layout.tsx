@@ -1,12 +1,11 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, IBM_Plex_Sans_Arabic } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from '@/context/language-context'
 import { ThemeProvider } from "@/components/theme-provider"
 import ClientLayout from "@/components/ClientLayout"
-import { IBM_Plex_Sans_Arabic } from "next/font/google"
 
-// Configure fonts - Next.js will optimize these automatically
+// Configure fonts with subsets
 const inter = Inter({ 
   subsets: ["latin"],
   display: "swap",

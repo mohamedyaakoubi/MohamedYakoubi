@@ -22,7 +22,7 @@ export default function Contact() {
   if (state.succeeded) {
     return (
       <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen">
-        <div className="container mx-auto px-6 py-32">
+        <div className="container mx-auto px-4 sm:px-6 py-32">
           <div className="max-w-4xl mx-auto">
             <motion.h1 className="text-4xl font-bold mb-12 text-center">
               {t('contact.form.success')}
@@ -34,8 +34,8 @@ export default function Contact() {
   }
 
   return (
-    <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen">
-      <div className="container mx-auto px-6 py-32">
+    <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 py-32">
         <div className="max-w-4xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -44,6 +44,7 @@ export default function Contact() {
           >
             {t('contact.title')}
           </motion.h1>
+
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
@@ -196,38 +197,38 @@ export default function Contact() {
           </motion.form>
         </div>
 
-     {/* Buy Me a Coffee Section - More reliable rendering */}
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }} // Changed from whileInView to animate
-  transition={{ delay: 0.6, duration: 0.5 }}
-  className="max-w-lg mx-auto mt-16"
->
-  <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
-    <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
-      {t('contact.coffee.title')}
-    </h3>
-    <p className="text-gray-600 dark:text-gray-300 mb-4">
-      {t('contact.coffee.description')}
-    </p>
-    <motion.a
-  href="https://www.buymeacoffee.com/medykb"
-  target="_blank"
-  rel="noopener noreferrer"
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="inline-block"
->
-  <Image
-    src="/api/coffee-button"
-    alt={t('contact.coffee.buttonAlt')}
-    width={217}
-    height={48}
-    className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-  />
-</motion.a>
-  </div>
-  </motion.div>
+     {/* Buy Me a Coffee Section */}
+     <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="max-w-lg mx-auto mt-16"
+        >
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
+            <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
+              {t('contact.coffee.title')}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              {t('contact.coffee.description')}
+            </p>
+            <motion.a
+              href="https://www.buymeacoffee.com/medykb"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block"
+            >
+              <Image
+                src="/api/coffee-button"
+                alt={t('contact.coffee.buttonAlt')}
+                width={217}
+                height={48}
+                className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              />
+            </motion.a>
+          </div>
+        </motion.div>
         </div>
       </div>
     </div>

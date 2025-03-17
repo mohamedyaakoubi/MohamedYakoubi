@@ -40,7 +40,6 @@ const nextConfig = {
     ];
   },
   
-  // Add rewrites separately from headers
   async rewrites() {
     return [
       {
@@ -54,7 +53,6 @@ const nextConfig = {
     ];
   },
   
-  // Image optimization configuration
   images: {
     domains: [
       'hebbkx1anhila5yf.public.blob.vercel-storage.com', 
@@ -66,5 +64,4 @@ const nextConfig = {
   },
 };
 
-// Export with ES modules syntax
-export default nextConfig;
+module.exports = nextConfig;
