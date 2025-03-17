@@ -15,21 +15,24 @@ export default function Projects() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const fetchedRepos = await getGithubRepos("mohamedyaakoubi")
-        setRepos(fetchedRepos)
-      } catch (error) {
-        console.error("Failed to fetch GitHub repos:", error)
-        setError(t('projects.error'))
-      } finally {
-        setLoading(false)
-      }
+  // Update the useEffect hook
+useEffect(() => {
+  const fetchRepos = async () => {
+    try {
+      console.log("Fetching GitHub repositories...");
+      const fetchedRepos = await getGithubRepos("mohamedyaakoubi");
+      console.log("Repos fetched:", fetchedRepos?.length || 0);
+      setRepos(fetchedRepos);
+    } catch (error) {
+      console.error("Failed to fetch GitHub repos:", error);
+      setError(t('projects.error') || "Failed to load GitHub repositories");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    fetchRepos()
-  }, []) // Remove t from dependencies to avoid infinite loop
+  fetchRepos();
+}, []);  // Keep the empty dependency array
 
   if (loading) {
     return (

@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa"
 import { SiUpwork } from "react-icons/si"
 import { useForm, ValidationError } from '@formspree/react'
-
+import Image from 'next/image'
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("mnnjbdyb")
@@ -21,26 +21,29 @@ export default function Contact() {
 
   if (state.succeeded) {
     return (
-      <div className="container mx-auto px-6 py-32 bg-gray-100 dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <motion.h1 className="text-4xl font-bold mb-12 text-center">
-            {t('contact.form.success')}
-          </motion.h1>
+      <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen">
+        <div className="container mx-auto px-6 py-32">
+          <div className="max-w-4xl mx-auto">
+            <motion.h1 className="text-4xl font-bold mb-12 text-center">
+              {t('contact.form.success')}
+            </motion.h1>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto px-6 py-32 bg-gray-100 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
-        >
-          {t('contact.title')}
-        </motion.h1>
+    <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen">
+      <div className="container mx-auto px-6 py-32">
+        <div className="max-w-4xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
+          >
+            {t('contact.title')}
+          </motion.h1>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
@@ -208,22 +211,25 @@ export default function Contact() {
       {t('contact.coffee.description')}
     </p>
     <motion.a
-      href="https://www.buymeacoffee.com/medykb"
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="inline-block"
-    >
-      <img 
-        src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=medykb&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
-        alt={t('contact.coffee.buttonAlt')}
-        className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-      />
-    </motion.a>
+  href="https://www.buymeacoffee.com/medykb"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="inline-block"
+>
+  <Image
+    src="/api/coffee-button"
+    alt={t('contact.coffee.buttonAlt')}
+    width={217}
+    height={48}
+    className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+  />
+</motion.a>
   </div>
-</motion.div>
-</div>
+  </motion.div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }

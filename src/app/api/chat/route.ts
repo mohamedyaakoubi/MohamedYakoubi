@@ -106,17 +106,23 @@ export async function POST(request: Request) {
         const stream = new ReadableStream({
             async start(controller) {
                 try {
+                    // Send an initial empty chunk for faster TTFB
+                    controller.enqueue(encoder.encode(''));
+                    
                     for await (const chunk of result) {
                         const streamChunk = chunk as unknown as StreamChunk;
                         const content = streamChunk.data.choices[0]?.delta?.content;
                         
                         if (content) {
+                            controller.enqueue(encoder.encode(content));
+                            
+                            // Store the full message for context (no change to logic)
                             fullMessage += content;
                         }
+                        
+                        // Flush after each chunk for real-time streaming
+                        await new Promise(resolve => setTimeout(resolve, 0));
                     }
-
-                    // Send the complete message as plain text
-                    controller.enqueue(encoder.encode(fullMessage.trim() + '\n'));
                 } catch (error) {
                     console.error('Stream error:', error);
                 } finally {
@@ -127,9 +133,11 @@ export async function POST(request: Request) {
 
         return new Response(stream, {
             headers: {
-                'Content-Type': 'text/plain',
-                'Cache-Control': 'no-cache',
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache, no-transform',
                 'Connection': 'keep-alive',
+                'X-Content-Type-Options': 'nosniff',
+                'Transfer-Encoding': 'chunked'
             },
         });
 

@@ -20,56 +20,56 @@ export interface Repository {
   disabled: boolean
 }
 
+// Update the getGithubRepos function to be more resilient
 export async function getGithubRepos(username: string): Promise<Repository[]> {
   try {
+    // Remove the localhost check or make it based on environment
+    const isLocal = process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true';
+    
+    if (isLocal) {
+      console.log("Using mock GitHub data");
+      return [
+        {
+          id: 1,
+          name: "sample-repo",
+          full_name: `${username}/sample-repo`,
+          description: "This is a sample repository",
+          html_url: `https://github.com/${username}/sample-repo`,
+          homepage: null,
+          language: "TypeScript",
+          stargazers_count: 5,
+          watchers_count: 5,
+          forks_count: 2,
+          private: false,
+          archived: false,
+          disabled: false
+        }
+      ];
+    }
+    
+    // For production, use API route
+    console.log(`Fetching GitHub repos for ${username}`);
     const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=6`,
-      {
+      `/api/github?username=${encodeURIComponent(username)}`,
+      { 
+        cache: 'no-store',
         headers: {
-          Accept: 'application/vnd.github.v3+json',
-        },
-        next: { revalidate: 3600 } // Cache for 1 hour
+          'Content-Type': 'application/json',
+        }
       }
-    )
+    );
 
     if (!response.ok) {
-      throw new Error('Failed to fetch GitHub repos')
+      const errorData = await response.text();
+      console.error('GitHub API response not OK:', response.status, errorData);
+      throw new Error(`Failed to fetch GitHub repos: ${response.status}`);
     }
 
-    const repos: Repository[] = await response.json()
-    return repos
+    const repos: Repository[] = await response.json();
+    console.log(`Fetched ${repos.length} GitHub repositories`);
+    return repos;
   } catch (error) {
-    console.error('Error fetching GitHub repos:', error)
-    return []
+    console.error('Error fetching GitHub repos:', error);
+    return [];
   }
 }
-
-
-export async function getRepoTopics(username: string, repo: string): Promise<string[]> {
-  try {
-    const response = await octokit.repos.getAllTopics({
-      owner: username,
-      repo: repo,
-    })
-
-    return response.data.names
-  } catch (error) {
-    console.error("Error fetching repository topics:", error)
-    return []
-  }
-}
-
-export async function getRepoLanguages(username: string, repo: string): Promise<Record<string, number>> {
-  try {
-    const response = await octokit.repos.listLanguages({
-      owner: username,
-      repo: repo,
-    })
-
-    return response.data
-  } catch (error) {
-    console.error("Error fetching repository languages:", error)
-    return {}
-  }
-}
-

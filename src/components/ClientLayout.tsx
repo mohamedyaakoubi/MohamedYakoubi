@@ -1,13 +1,19 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useLanguage } from '@/context/language-context'
 import { Navigation } from "./Navigation"
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageSelector } from "./LanguageSelector"
 import { PageTransition } from "./PageTransition"
-import ScrollToTopButton from './ui/ScrollToTopButton'
-import Chat from './Chat'
+import dynamic from 'next/dynamic'
+
+// Dynamically import non-critical components
+const ScrollToTopButton = dynamic(() => import('./ui/ScrollToTopButton'), { ssr: false })
+const Chat = dynamic(() => import('./Chat'), { 
+  loading: () => null,
+  ssr: false
+})
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { language, setLanguage } = useLanguage()
@@ -15,6 +21,19 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   
     useEffect(() => {
       setMounted(true)
+      
+      // Register service worker
+      if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.location.hostname !== 'localhost') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
     }, [])
   
     if (!mounted) {
@@ -24,17 +43,19 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     return (
       <div className={language === 'ar' ? 'rtl' : 'ltr'}>
         <Navigation />
-        {/* Repositioned container for buttons */}
         <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
-          <LanguageSelector 
-            currentLang={language} 
-            onChange={setLanguage} 
-          />
+          <LanguageSelector currentLang={language} onChange={setLanguage} />
           <ThemeToggle />
         </div>
         <PageTransition>{children}</PageTransition>
-        <Chat />
-        <ScrollToTopButton />
+        
+        {/* Lazy-loaded non-critical UI elements */}
+        <Suspense fallback={null}>
+          <Chat />
+        </Suspense>
+        <Suspense fallback={null}>
+          <ScrollToTopButton />
+        </Suspense>
       </div>
     )
-  }
+}

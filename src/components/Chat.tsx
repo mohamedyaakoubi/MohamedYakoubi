@@ -100,60 +100,69 @@ export default function Chat() {
   };
   
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  // Update the streaming implementation in the handleSubmit function
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!input.trim() || isLoading) return;
 
-    const userMessage = { role: 'user' as const, content: input };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
+  const userMessage = { role: 'user' as const, content: input };
+  setMessages(prev => [...prev, userMessage]);
+  setInput('');
+  setIsLoading(true);
 
-    try {
-        const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                messages: [...messages, userMessage],
-                language: language
-            }),
-        });
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        messages: [...messages, userMessage],
+        language: language
+      }),
+    });
 
-      if (!response.ok) throw new Error('Failed to fetch response');
+    if (!response.ok) throw new Error('Failed to fetch response');
 
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error('No reader available');
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error('No reader available');
 
-      let accumulatedContent = '';
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+    // Add placeholder for bot message
+    setMessages(prev => [...prev, { 
+      role: 'assistant', 
+      content: '' 
+    }]);
 
-        const text = new TextDecoder().decode(value);
-        accumulatedContent += text;
-
-        // Update the UI with accumulated content
-        setMessages(prev => {
-          const newMessages = [...prev];
-          const lastMessage = newMessages[newMessages.length - 1];
-          if (lastMessage?.role === 'assistant') {
-            lastMessage.content = accumulatedContent;
-            return [...newMessages];
-          }
-          return [...newMessages, { role: 'assistant', content: accumulatedContent }];
-        });
-      }
-    } catch (error) {
-      console.error('Chat error:', error);
-      setError(error instanceof Error ? error : new Error('An unknown error occurred'));
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: 'Sorry, I encountered an error. Please try again.' 
-      }]);
-    } finally {
-      setIsLoading(false);
+    // Process chunks as they arrive
+    let fullText = '';
+    const decoder = new TextDecoder();
+    
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const text = decoder.decode(value, { stream: true });
+      fullText += text;
+      
+      // Update the last message with the accumulated text
+      setMessages(prev => {
+        const newMessages = [...prev];
+        newMessages[newMessages.length - 1] = { 
+          role: 'assistant', 
+          content: fullText 
+        };
+        return newMessages;
+      });
     }
-  };
+  } catch (error) {
+    console.error('Chat error:', error);
+    setError(error instanceof Error ? error : new Error('An unknown error occurred'));
+    setMessages(prev => [...prev, { 
+      role: 'assistant', 
+      content: t('chat.error') || 'Sorry, I encountered an error. Please try again.' 
+    }]);
+  } finally {
+    setIsLoading(false);
+  }
+};
   
 
   return (

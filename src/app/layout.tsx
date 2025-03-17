@@ -100,14 +100,19 @@ export default function RootLayout({
         {/* Remove the problematic onLoad handler and use Next.js font optimization instead */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          {/* Prefetch important routes */}
+  <link rel="prefetch" href="/api/chat" />
+  
+  {/* Preload critical assets */}
+  <link rel="preload" href="/hero-light.webp" as="image" />
       </head>
-      <body className={`${inter.variable} ${ibmPlexSansArabic.variable} ${inter.className}`}>
-        <LanguageProvider>
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            <ClientLayout>{children}</ClientLayout>
-          </ThemeProvider>
-        </LanguageProvider>
-      </body>
+      <body className={`${inter.variable} ${ibmPlexSansArabic.variable} ${inter.className} overflow-x-hidden max-w-full`}>
+  <LanguageProvider>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      <ClientLayout>{children}</ClientLayout>
+    </ThemeProvider>
+  </LanguageProvider>
+</body>
     </html>
   )
 }

@@ -58,7 +58,7 @@ export function Hero() {
                 fill
                 priority
                 sizes="100vw"
-                quality={90}
+                quality={85}
                 className="object-cover fixed-bg"
               />
             </div>
@@ -79,7 +79,7 @@ export function Hero() {
                 fill
                 priority
                 sizes="100vw"
-                quality={90}
+                quality={85}
                 className="object-cover fixed-bg"
               />
             </div>
