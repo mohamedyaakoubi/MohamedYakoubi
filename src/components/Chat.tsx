@@ -174,32 +174,37 @@ const handleSubmit = async (e: React.FormEvent) => {
   style={{ display: 'none' }}
 />
       <div className="fixed bottom-6 right-6 pointer-events-auto">
-        <button
-          onClick={handleChatToggle}
-          className={`
-            relative
-            w-11 h-11
-            flex items-center justify-center
-            rounded-full shadow-lg
-            bg-gradient-to-r from-blue-500 to-purple-500 text-white
-            hover:shadow-blue-500/25 hover:shadow-xl
-            transition-all duration-500 ease-out transform 
-            hover:scale-105
-            z-[9999]
-          `}
-          aria-label={isOpen ? t('chat.toggleClose') : t('chat.toggleOpen')}
-        >
-    <span className="text-xl leading-none">
-            {isOpen ? '×' : '💬'}
-          </span>
-        {/* Notification Badge */}
-{showNotification && !hasOpenedChat && (
-  <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full 
-    flex items-center justify-center text-xs font-bold animate-notification">
-    1
+      <button
+  onClick={handleChatToggle}
+  style={{ 
+    width: '44px',
+    height: '44px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '9999px'
+  }}
+  className={`
+    relative
+    shadow-lg
+    bg-gradient-to-r from-blue-500 to-purple-500 text-white
+    hover:shadow-blue-500/25 hover:shadow-xl
+    transition-all duration-500 ease-out transform 
+    hover:scale-105
+    z-[9999]
+  `}
+  aria-label={isOpen ? t('chat.toggleClose') : t('chat.toggleOpen')}
+>
+  <span className="text-xl leading-none">
+    {isOpen ? '×' : '💬'}
   </span>
-)}
-        </button>
+  {showNotification && !hasOpenedChat && (
+    <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full 
+      flex items-center justify-center text-xs font-bold animate-notification">
+      1
+    </span>
+  )}
+</button>
         
 {/* Welcome Message Tooltip */}
 {showNotification && !hasOpenedChat && (

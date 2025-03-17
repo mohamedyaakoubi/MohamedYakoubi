@@ -754,3 +754,32 @@
 .animate-notification {
   animation: notification 0.5s ease-out forwards;
 }
+.gradient-name {
+  background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+/* Fix for header size */
+header nav {
+  min-height: 64px !important;
+}
+
+/* Fix for chat button size */
+.chat-button-fix {
+  width: 44px !important;
+  height: 44px !important;
+}
+/* Add to globals.css */
+@media screen {
+  .gradient-name {
+    background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-size: clamp(1.875rem, 5vw, 3.75rem) !important;
+  }
+}

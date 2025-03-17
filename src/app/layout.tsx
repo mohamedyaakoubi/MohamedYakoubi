@@ -11,6 +11,8 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  preload: true,
+  fallback: ['system-ui', 'sans-serif']
 })
 
 const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
@@ -18,6 +20,8 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
   display: 'swap',
   variable: '--font-ibm-plex',
+  preload: true,
+  fallback: ['Arial', 'sans-serif']
 })
 
 // Define viewport separately

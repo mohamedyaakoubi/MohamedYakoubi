@@ -100,34 +100,50 @@ export function Hero() {
   transition={{ duration: 0.8 }}
   className="max-w-4xl mx-auto"
 >
-  <motion.h1
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.5 }}
-    className="mb-4"
+<motion.h1
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5 }}
+  className="mb-4"
+>
+  <span 
+    className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300"
+    id="hero-headline" // Adding ID to LCP element
   >
-    <span 
-      className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300"
-      id="hero-headline" // Adding ID to LCP element
-    >
-      {t('hero.greeting')}
-      <span className="block text-4xl md:text-6xl font-bold mb-4">
-        <div className="name-container">
-          <motion.span 
-            className="name-text-wrapper"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+    {t('hero.greeting')}
+    <span className="block text-4xl md:text-6xl font-bold mb-4">
+      <div className="name-container">
+        <motion.span 
+          className="name-text-wrapper"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          <span 
+            className="gradient-name"
+            style={{
+              background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              display: 'inline-block',
+              fontWeight: 700,
+              lineHeight: 1.4,
+              fontSize: 'clamp(1.875rem, 5vw, 3.75rem)',
+              padding: '0.2em 0',
+              textRendering: 'geometricPrecision',
+              WebkitFontSmoothing: 'antialiased',
+              MozOsxFontSmoothing: 'grayscale'
+            }}
           >
-            <span className="gradient-name">
-              {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
-            </span>
-          </motion.span>
-        </div>
-      </span>
-      {t('hero.tagline')}
+            {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
+          </span>
+        </motion.span>
+      </div>
     </span>
-  </motion.h1>
+    {t('hero.tagline')}
+  </span>
+</motion.h1>
 
 
             <motion.div 
