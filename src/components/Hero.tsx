@@ -106,43 +106,37 @@ export function Hero() {
   transition={{ delay: 0.5 }}
   className="mb-4"
 >
-  <span 
-    className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300"
-    id="hero-headline" // Adding ID to LCP element
-  >
+{/* Hero greeting - LCP element */}
+<h1 id="hero-headline" className="mb-4 text-center">
+  <span className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
     {t('hero.greeting')}
-    <span className="block text-4xl md:text-6xl font-bold mb-4">
-      <div className="name-container">
-        <motion.span 
-          className="name-text-wrapper"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <span 
-            className="gradient-name"
-            style={{
-              background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-              display: 'inline-block',
-              fontWeight: 700,
-              lineHeight: 1.4,
-              fontSize: 'clamp(1.875rem, 5vw, 3.75rem)',
-              padding: '0.2em 0',
-              textRendering: 'geometricPrecision',
-              WebkitFontSmoothing: 'antialiased',
-              MozOsxFontSmoothing: 'grayscale'
-            }}
-          >
-            {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
-          </span>
-        </motion.span>
-      </div>
+  </span>
+  
+  {/* Name - static without motion to improve LCP */}
+  <div className="block text-4xl md:text-6xl font-bold mb-4">
+    <span 
+      className="gradient-name" // Using the class from globals.css
+      style={{
+        display: 'inline-block',
+        fontWeight: 700,
+        background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent',
+        fontSize: 'clamp(1.875rem, 5vw, 3.75rem)',
+        padding: '0.2em 0',
+        lineHeight: 1.4,
+        transform: 'translateZ(0)', // Force GPU acceleration
+      }}
+    >
+      {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
     </span>
+  </div>
+  
+  <span className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
     {t('hero.tagline')}
   </span>
+</h1>
 </motion.h1>
 
 

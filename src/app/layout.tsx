@@ -150,6 +150,32 @@ export default function RootLayout({
           type="audio/mpeg" 
         />
 
+
+{/* Add this critical CSS inline instead */}
+<style dangerouslySetInnerHTML={{ __html: `
+  /* Preload critical styles for hero headline */
+  #hero-headline {
+    font-family: ${inter.style.fontFamily};
+    font-display: swap;
+  }
+  
+  /* Ensure gradient works without JS */
+  @media screen {
+    #hero-headline span[style*="background"] {
+      background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      color: transparent !important;
+      font-weight: 700 !important;
+    }
+  }
+
+  /* Ensure the hero content is visible immediately */
+  section#home .relative.z-20.text-center.px-6 {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+`}} />
         {/* Adding structured data for better SEO */}
         <script
           type="application/ld+json"

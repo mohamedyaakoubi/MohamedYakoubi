@@ -773,13 +773,41 @@ header nav {
   width: 44px !important;
   height: 44px !important;
 }
-/* Add to globals.css */
-@media screen {
-  .gradient-name {
-    background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    font-size: clamp(1.875rem, 5vw, 3.75rem) !important;
+/* Add these at the bottom of the file */
+
+/* Critical styles for LCP */
+#hero-headline {
+  visibility: visible !important;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
+}
+
+.gradient-name {
+  background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-weight: 700 !important;
+  font-display: block !important;
+  text-rendering: optimizeSpeed !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-feature-settings: normal !important;
+  will-change: auto !important;
+  line-height: 1.4 !important;
+}
+
+/* Fixes for responsive sizing */
+@media (min-width: 768px) {
+  header nav {
+    min-height: 64px !important;
   }
+}
+
+/* Fix for chat button & other elements */
+.fixed.bottom-6.right-6.pointer-events-auto button {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
 }
