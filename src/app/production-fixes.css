@@ -1,0 +1,19 @@
+/* Critical fixes for production mode */
+
+/* Header sizing fix */
+header {
+    min-height: 64px !important;
+  }
+  
+  header nav {
+    min-height: 64px !important;
+  }
+  
+  /* Chat button size */
+  .fixed.bottom-6.right-6 button,
+  button[aria-label*="chat"] {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }

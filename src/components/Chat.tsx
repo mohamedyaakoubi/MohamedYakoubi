@@ -179,28 +179,44 @@ const handleSubmit = async (e: React.FormEvent) => {
   style={{ 
     width: '44px',
     height: '44px',
+    minWidth: '44px',
+    minHeight: '44px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '9999px'
+    borderRadius: '9999px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+    color: 'white',
+    position: 'relative',
+    zIndex: 9999,
+    transition: 'all 500ms ease-out',
+    transform: 'translateZ(0)' // Force hardware acceleration
   }}
-  className={`
-    relative
-    shadow-lg
-    bg-gradient-to-r from-blue-500 to-purple-500 text-white
-    hover:shadow-blue-500/25 hover:shadow-xl
-    transition-all duration-500 ease-out transform 
-    hover:scale-105
-    z-[9999]
-  `}
   aria-label={isOpen ? t('chat.toggleClose') : t('chat.toggleOpen')}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = 'scale(1.05)';
+    e.currentTarget.style.boxShadow = '0 8px 15px rgba(59, 130, 246, 0.25)';
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = 'scale(1)';
+    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+  }}
 >
   <span className="text-xl leading-none">
     {isOpen ? '×' : '💬'}
   </span>
   {showNotification && !hasOpenedChat && (
-    <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full 
-      flex items-center justify-center text-xs font-bold animate-notification">
+    <span 
+      className="absolute -top-2 -right-2 flex items-center justify-center text-xs font-bold"
+      style={{
+        width: '20px',
+        height: '20px',
+        backgroundColor: '#ef4444',
+        borderRadius: '50%',
+        animation: 'notification 0.5s ease-out forwards'
+      }}
+    >
       1
     </span>
   )}

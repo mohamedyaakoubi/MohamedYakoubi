@@ -7,6 +7,13 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'min-h-[64px]',
+    'w-[44px]',
+    'h-[44px]',
+    'min-w-[44px]',
+    'min-h-[44px]',
+  ],
   theme: {
   	extend: {
 		fontFamily: {
