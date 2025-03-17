@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mohamed-yakoubi.vercel.app'),
-  title: "Mohamed Yaakoubi | Emerging AI and Technology Specialist Portfolio",
+  title: "Mohamed Yaakoubi | Emerging AI and Technology Specialist",
   description: "Expert in AI/ML, web development, and localization services. View my projects, services and experience in AI, React, Next.js and more.",
   keywords: [
     "Mohamed Yaakoubi",
