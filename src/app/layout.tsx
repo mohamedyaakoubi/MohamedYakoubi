@@ -185,40 +185,59 @@ export default function RootLayout({
       transform: translateZ(0);
     }
   `}} />
-        {/* Adding structured data for better SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Mohamed Yaakoubi",
-              "url": "https://mohamed-yakoubi.vercel.app/",
-              "jobTitle": "Emerging AI and Technology Specialist",
-              "knowsAbout": ["Machine Learning", "Web Development", "React", "Next.js", "Typescript", "Translation", "Localization", "AI Annotation"],
-              "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pic.jpg-ZVOn8cZhvmsJOsRLossXo8UgDkmffp.jpeg",
-              "description": "A passionate Emerging AI specialist with versatile background",
-              "alumniOf": "Faculty of sciecnes in Sfax",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "DeepL"
-              },
-              "sameAs": [
-                "https://github.com/mohamedyaakoubi",
-                "https://linkedin.com/in/yaakoubi-mohamed",
-                "https://x.com/Mohamed0Yakoubi",
-                "https://mohamedyaakoubi.link/",
-                "https://www.upwork.com/freelancers/~0118c281163fef05cb",
-                "https://www.instagram.com/mohamed__yaakoubi/",
-                "https://www.freelances.tn/freelance/mohamed-yaakoubi",
-                "https://www.buymeacoffee.com/medykb",
-                "https://www.fiverr.com/s/wkZqrpg",
-                "https://www.proz.com/profile/3972649"
+       {/* Adding structured data for better SEO */}
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mohamed Yaakoubi",
+      "url": "https://mohamed-yakoubi.vercel.app/",
+      "jobTitle": "Emerging AI and Technology Specialist",
+      "knowsAbout": ["Machine Learning", "Web Development", "React", "Next.js", "Typescript", "Translation", "Localization", "AI Annotation"],
+      "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pic.jpg-ZVOn8cZhvmsJOsRLossXo8UgDkmffp.jpeg",
+      "description": "A passionate Emerging AI specialist with versatile background",
+      "alumniOf": "Faculty of sciecnes in Sfax",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "DeepL"
+      },
+      "sameAs": [
+        "https://github.com/mohamedyaakoubi",
+        "https://linkedin.com/in/yaakoubi-mohamed",
+        "https://x.com/Mohamed0Yakoubi",
+        "https://mohamedyaakoubi.link/",
+        "https://www.upwork.com/freelancers/~0118c281163fef05cb",
+        "https://www.instagram.com/mohamed__yaakoubi/",
+        "https://www.freelances.tn/freelance/mohamed-yaakoubi",
+        "https://www.buymeacoffee.com/medykb",
+        "https://www.fiverr.com/s/wkZqrpg",
+        "https://www.proz.com/profile/3972649"
+      ]
+    })
+  }}
+/>
 
-              ]
-            })
-          }}
-        />
+{/* Add CV/Resume structured data */}
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org/",
+      "@type": "DigitalDocument",
+      "name": "Mohamed Yaakoubi's CV",
+      "description": "Professional resume of Mohamed Yaakoubi, Emerging AI and Technology Specialist",
+      "encodingFormat": "application/pdf",
+      "about": {
+        "@type": "Person",
+        "name": "Mohamed Yaakoubi"
+      },
+      "url": "https://mohamed-yakoubi.vercel.app/Mohamed_Yaakoubi.pdf",
+      "dateModified": "2025-02-12"
+    })
+  }}
+/>
       </head>
       <body className={`${inter.variable} ${ibmPlexSansArabic.variable} ${inter.className} overflow-x-hidden max-w-full`}>
         <LanguageProvider>

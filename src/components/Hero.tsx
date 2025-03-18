@@ -77,16 +77,20 @@ const AnimatedContent = ({ typedText, language, t }: AnimatedContentProps) => {
           </motion.a>
 
           <motion.a
-            href="/Mohamed_Yaakoubi.pdf"
-            target="_blank"
-            rel="noopener noreferrer me"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 text-white"
-          >
-            <FaFileDownload className="w-5 h-5" />
-            <span>{t('hero.cta.downloadCV')}</span>
-          </motion.a>
+  href="/Mohamed_Yaakoubi.pdf"
+  target="_blank"
+  rel="noopener noreferrer me"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 text-white"
+  data-testid="cv-download"
+  aria-label="Download Mohamed Yaakoubi's CV"
+  title="Download my professional resume (PDF)"
+  type="application/pdf"
+>
+  <FaFileDownload className="w-5 h-5" />
+  <span>{t('hero.cta.downloadCV')}</span>
+</motion.a>
         </div>
       </motion.div>
     </motion.div>
