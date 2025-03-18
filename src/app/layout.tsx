@@ -199,7 +199,12 @@ export default function RootLayout({
                 "https://github.com/mohamedyaakoubi",
                 "https://linkedin.com/in/yaakoubi-mohamed",
                 "https://x.com/Mohamed0Yakoubi",
-                "https://mohamedyaakoubi.link/"
+                "https://mohamedyaakoubi.link/",
+                "https://www.upwork.com/freelancers/~0118c281163fef05cb",
+                "https://www.instagram.com/mohamed__yaakoubi/",
+                "https://www.freelances.tn/freelance/mohamed-yaakoubi",
+                "https://www.buymeacoffee.com/medykb",
+
               ]
             })
           }}

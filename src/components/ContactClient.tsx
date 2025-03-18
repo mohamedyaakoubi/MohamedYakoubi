@@ -101,7 +101,7 @@ export default function Contact() {
   <a
     href="https://github.com/mohamedyaakoubi"
     target="_blank"
-    rel="noopener noreferrer"
+    rel="noopener noreferrer me"
     className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
     aria-label={t('social.github')}
   >
@@ -110,7 +110,7 @@ export default function Contact() {
   <a
     href="https://www.linkedin.com/in/yaakoubi-mohamed/"
     target="_blank"
-    rel="noopener noreferrer"
+    rel="noopener noreferrer me"
     className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
     aria-label={t('social.linkedin')}
   >
@@ -119,7 +119,7 @@ export default function Contact() {
   <a
     href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
     target="_blank"
-    rel="noopener noreferrer"
+    rel="noopener noreferrer me"
     className="text-[#6fda44] hover:text-[#5cb536]"
     aria-label={t('social.upwork')}
   >
@@ -128,7 +128,7 @@ export default function Contact() {
   <a
     href="https://www.instagram.com/mohamed__yaakoubi/"
     target="_blank"
-    rel="noopener noreferrer"
+    rel="noopener noreferrer me"
     className="text-[#E4405F] hover:text-[#d62e4c]"
     aria-label={t('social.instagram')}
   >
@@ -215,7 +215,7 @@ export default function Contact() {
             <motion.a
               href="https://www.buymeacoffee.com/medykb"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer me"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block"
