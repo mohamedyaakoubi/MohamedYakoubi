@@ -96,45 +96,67 @@ export default function Contact() {
       </p>
     </div>
   </div>
-
   <div className={`flex ${language === 'ar' ? 'space-x-reverse space-x-6' : 'space-x-6'} pt-6`}>
-  <a
+  {/* GitHub */}
+  <motion.a
     href="https://github.com/mohamedyaakoubi"
     target="_blank"
     rel="noopener noreferrer me"
     className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
     aria-label={t('social.github')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
   >
     <FaGithub className="w-6 h-6" />
-  </a>
+  </motion.a>
   
-  <a
+  {/* LinkedIn */}
+  <motion.a
     href="https://www.linkedin.com/in/yaakoubi-mohamed/"
     target="_blank"
     rel="noopener noreferrer me"
     className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
     aria-label={t('social.linkedin')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
   >
     <FaLinkedin className="w-6 h-6" />
-  </a>
+  </motion.a>
   
-  <a
+  {/* Upwork */}
+  <motion.a
     href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#6fda44] hover:text-[#5cb536]"
     aria-label={t('social.upwork')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
   >
     <SiUpwork className="w-6 h-6" />
-  </a>
+  </motion.a>
   
-  {/* Freelances.tn with proper SVG image */}
-  <a
+  {/* Freelances.tn */}
+  <motion.a
     href="https://www.freelances.tn/freelance/mohamed-yaakoubi"
     target="_blank"
     rel="noopener noreferrer me"
     className="text-blue-600 hover:text-blue-700"
     aria-label={t('social.freelances') || "Freelances.tn"}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
   >
     <div className="w-6 h-6 relative">
       <Image 
@@ -145,28 +167,64 @@ export default function Contact() {
         className="w-6 h-6 object-contain"
       />
     </div>
-  </a>
+  </motion.a>
   
   {/* Fiverr */}
-  <a
+  <motion.a
     href="https://www.fiverr.com/s/wkZqrpg"
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#1dbf73] hover:text-[#19a463]"
     aria-label={t('social.fiverr') || "Fiverr"}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
   >
     <SiFiverr className="w-6 h-6" />
-  </a>
+  </motion.a>
   
-  <a
+  {/* Instagram */}
+  <motion.a
     href="https://www.instagram.com/mohamed__yaakoubi/"
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#E4405F] hover:text-[#d62e4c]"
     aria-label={t('social.instagram')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
   >
     <FaInstagram className="w-6 h-6" />
-  </a>
+  </motion.a>
+  
+  {/* Proz.com */}
+  <motion.a
+    href="https://www.proz.com/profile/3972649"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#0068C5] hover:text-[#004F97]"
+    aria-label={t('social.proz') || "Proz.com"}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="w-10 h-10 relative flex items-center justify-center -mt-2 -ml-3">
+      <Image 
+        src="/companies/proz_logo.webp" 
+        alt="Proz.com" 
+        width={40} 
+        height={40}
+        className="w-10 h-10 object-contain"
+        priority={false}
+      />
+    </div>
+  </motion.a>
 </div>
           </motion.div>
 
