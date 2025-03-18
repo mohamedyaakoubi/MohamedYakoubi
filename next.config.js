@@ -15,15 +15,32 @@ const nextConfig = {
     ];
   },
   
+  
   images: {
-    domains: [
-      'hebbkx1anhila5yf.public.blob.vercel-storage.com', 
-      'api.github.com', 
-      'img.buymeacoffee.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.github.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.buymeacoffee.com',
+      },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    formats: ['image/webp'],
+    minimumCacheTTL: 31536000, // 1 year
   },
+  
+  // Keep only valid experimental options
+  experimental: {
+    optimizeCss: true,
+  }
 };
 
 module.exports = nextConfig;

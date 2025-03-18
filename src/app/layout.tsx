@@ -151,32 +151,40 @@ export default function RootLayout({
           type="audio/mpeg" 
         />
 
-
-{/* Add this critical CSS inline instead */}
+{/* Add this critical CSS inline */}
 <style dangerouslySetInnerHTML={{ __html: `
-  /* Preload critical styles for hero headline */
-  #hero-headline {
-    font-family: ${inter.style.fontFamily};
-    font-display: swap;
-  }
-  
-  /* Ensure gradient works without JS */
-  @media screen {
-    #hero-headline span[style*="background"] {
+    /* Preload critical styles for hero headline */
+    #hero-headline {
+      font-family: ${inter.style.fontFamily};
+      font-display: swap;
+      content-visibility: auto;
+      contain-intrinsic-size: auto;
+    }
+    
+    /* Ensure gradient works without JS */
+    .gradient-name {
       background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       color: transparent !important;
       font-weight: 700 !important;
+      line-height: 1.4 !important;
+      /* Optimize font rendering */
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
-  }
 
-  /* Ensure the hero content is visible immediately */
-  section#home .relative.z-20.text-center.px-6 {
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-`}} />
+    /* Ensure the hero content is visible immediately */
+    section#home .relative.z-20.text-center.px-6 {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* Force hardware acceleration for critical elements */
+    #hero-headline, .gradient-name {
+      transform: translateZ(0);
+    }
+  `}} />
         {/* Adding structured data for better SEO */}
         <script
           type="application/ld+json"

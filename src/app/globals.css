@@ -278,9 +278,12 @@
   .fixed-bg {
     object-position: center;
     object-fit: cover;
-    width: 100%; 
+    width: 100%;
     height: 100%;
+    will-change: transform;
+    content-visibility: auto;
   }
+  
   /* Fix position of background images */
   .bg-fixed {
     background-attachment: fixed !important;
@@ -398,7 +401,24 @@
     margin-right: 0.75rem;
   }
 }
+/* Optimize loading for light/dark modes */
+@media (prefers-color-scheme: light) {
+  .hero-background [style*="light"] {
+    content-visibility: visible;
+  }
+  .hero-background [style*="dark"] {
+    content-visibility: auto;
+  }
+}
 
+@media (prefers-color-scheme: dark) {
+  .hero-background [style*="dark"] {
+    content-visibility: visible;
+  }
+  .hero-background [style*="light"] {
+    content-visibility: auto;
+  }
+}
 /* Custom Animations */
 @keyframes fadeIn {
   from {
@@ -777,25 +797,23 @@ header nav {
 
 /* Critical styles for LCP */
 #hero-headline {
-  visibility: visible !important;
   content-visibility: auto;
-  contain-intrinsic-size: auto 200px;
+  contain-intrinsic-size: auto;
 }
-
 .gradient-name {
   background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
   font-weight: 700 !important;
-  font-display: block !important;
-  text-rendering: optimizeSpeed !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  font-feature-settings: normal !important;
-  will-change: auto !important;
   line-height: 1.4 !important;
+  /* Optimize font rendering */
+  font-display: swap !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
 }
+
 
 /* Fixes for responsive sizing */
 @media (min-width: 768px) {
