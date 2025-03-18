@@ -150,7 +150,7 @@ export function Hero() {
                       <motion.a
                         href={t('social.links.github')}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer me"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/20 transition-colors flex items-center gap-2 dark:text-white text-gray-900"
@@ -163,7 +163,7 @@ export function Hero() {
                       <motion.a
                         href="https://www.linkedin.com/in/yaakoubi-mohamed/"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer me"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-[#0A66C2] px-6 py-3 rounded-full hover:bg-[#004182] transition-colors flex items-center gap-2 text-white"
@@ -176,7 +176,7 @@ export function Hero() {
                       <motion.a
                         href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer me"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-[#6fda44] px-6 py-3 rounded-full hover:bg-[#5cb536] transition-colors flex items-center gap-2 text-white"
@@ -189,7 +189,7 @@ export function Hero() {
                       <motion.a
                         href="/Mohamed_Yaakoubi.pdf"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer me"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 text-white"

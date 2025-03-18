@@ -35,12 +35,16 @@ export default {
       github: "GitHub",
       linkedin: "LinkedIn",
       upwork: "Upwork",
+      freelances: "Freelances.tn",
+      fiverr: "Fiverr",
       instagram: "Instagram",
       links: {
         github: "https://github.com/mohamedyaakoubi",
         linkedin: "https://www.linkedin.com/in/yaakoubi-mohamed/",
         upwork: "https://www.upwork.com/freelancers/~01547a383d32d66a36?mp_source=share",
-        instagram: "https://www.instagram.com/mohamed__yaakoubi/"
+        freelances: "https://www.freelances.tn/freelance/mohamed-yaakoubi",
+        fiverr: "https://www.fiverr.com/s/wkZqrpg",
+        instagram: "https://www.instagram.com/mohamed__yaakoubi/",
       },
       labels: {
         github: "GitHub Profile",

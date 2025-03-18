@@ -10,7 +10,7 @@ import {
   FaLinkedin,
   FaInstagram 
 } from "react-icons/fa"
-import { SiUpwork } from "react-icons/si"
+import { SiFiverr, SiUpwork } from "react-icons/si"
 import { useForm, ValidationError } from '@formspree/react'
 import Image from 'next/image'
 
@@ -107,6 +107,7 @@ export default function Contact() {
   >
     <FaGithub className="w-6 h-6" />
   </a>
+  
   <a
     href="https://www.linkedin.com/in/yaakoubi-mohamed/"
     target="_blank"
@@ -116,6 +117,7 @@ export default function Contact() {
   >
     <FaLinkedin className="w-6 h-6" />
   </a>
+  
   <a
     href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
     target="_blank"
@@ -125,6 +127,37 @@ export default function Contact() {
   >
     <SiUpwork className="w-6 h-6" />
   </a>
+  
+  {/* Freelances.tn with proper SVG image */}
+  <a
+    href="https://www.freelances.tn/freelance/mohamed-yaakoubi"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-blue-600 hover:text-blue-700"
+    aria-label={t('social.freelances') || "Freelances.tn"}
+  >
+    <div className="w-6 h-6 relative">
+      <Image 
+        src="/freelances.webp" 
+        alt="Freelances.tn" 
+        width={24} 
+        height={24}
+        className="w-6 h-6 object-contain"
+      />
+    </div>
+  </a>
+  
+  {/* Fiverr */}
+  <a
+    href="https://www.fiverr.com/s/wkZqrpg"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#1dbf73] hover:text-[#19a463]"
+    aria-label={t('social.fiverr') || "Fiverr"}
+  >
+    <SiFiverr className="w-6 h-6" />
+  </a>
+  
   <a
     href="https://www.instagram.com/mohamed__yaakoubi/"
     target="_blank"
