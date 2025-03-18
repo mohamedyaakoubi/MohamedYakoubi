@@ -36,11 +36,6 @@ const nextConfig = {
     formats: ['image/webp'],
     minimumCacheTTL: 31536000, // 1 year
   },
-  
-  // Keep only valid experimental options
-  experimental: {
-    optimizeCss: true,
-  }
 };
 
 module.exports = nextConfig;
