@@ -127,7 +127,7 @@ export default function RootLayout({
         <meta name="twitter:data1" content="@mohamedyaakoubi" />
         <meta property="og:see_also" content="https://mohamedyaakoubi.link/" />
         <meta name="gravatar:profile" content="mohamedyaakoubi" />
-        
+        <meta name="msvalidate.01" content="567F2213DA2A1DE09D5C5ADF16CDE77B" />
         {/* Font optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
