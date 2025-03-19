@@ -199,20 +199,32 @@ export function Hero() {
         </div>
 
        {/* Content - Optimize for LCP */}
-       <div className="relative z-20 text-center px-6">
+<div className="relative z-20 text-center px-6">
   <div className="max-w-4xl mx-auto">
-    {/* Make the H1 simpler and guaranteed to be rendered */}
-    <h1 id="hero-headline" className="mb-4 text-center gradient-name text-4xl md:text-6xl font-bold">
-      Mohamed Yaakoubi
+    {/* Static content rendered immediately for fast LCP */}
+         {/* Add this noscript tag for crawlers */}
+         <noscript>
+             <div>Mohamed Yaakoubi | Emerging AI and Technology Specialist</div>
+           </noscript>
+    <h1 id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
+      <span className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
+        {t('hero.greeting')}
+      </span>
+      
+      {/* Name - rendered immediately without animations */}
+      <span 
+        className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
+        style={{
+          fontWeight: 700,
+        }}
+      >
+        {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
+      </span>
+      
+      <span className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
+        {t('hero.tagline')}
+      </span>
     </h1>
-    
-    <div className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
-      {t('hero.greeting')}
-    </div>
-    
-    <div className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
-      {t('hero.tagline')}
-    </div>
 
             {/* Animated elements render after critical content loads */}
             {mounted && (

@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       {/* Plain text H1 that will be directly in the HTML source */}
-      <h1 style={{
+      <div style={{
         position: 'absolute',
         top: '0',
         left: '0',
@@ -34,7 +34,7 @@ export default function HomePage() {
         borderWidth: '0',
       }}>
         Mohamed Yaakoubi | Emerging AI and Technology Specialist
-      </h1>
+      </div>
       
       <HomeClient />
     </>
