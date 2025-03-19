@@ -131,7 +131,7 @@ export default function RootLayout({
         {/* Font optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          
+        <link rel="alternate" href="https://mohamed-yakoubi.vercel.app/sitemap" title="HTML Sitemap" />
         {/* Prefetch important routes */}
         <link rel="prefetch" href="/api/chat" />
   

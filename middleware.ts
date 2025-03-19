@@ -1,15 +1,31 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+const isCrawler = (userAgent: string | null) => {
+  if (!userAgent) return false;
+  return /bot|crawl|spider|slurp|bingbot|msnbot|yandex|baidu/i.test(userAgent);
+}
+
 export function middleware(request: NextRequest) {
   // Clone the request headers
   const requestHeaders = new Headers(request.headers)
+  // Add this line to get userAgent from the request
+  const userAgent = request.headers.get('user-agent');
+  
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   })
-
+  
+  // If it's a crawler, don't apply the same middleware rules
+  if (isCrawler(userAgent)) {
+    // Return minimal headers for crawlers
+    const response = NextResponse.next();
+    response.headers.set('X-Robots-Tag', 'index, follow');
+    return response;
+  }
+  
   // Add security headers
   response.headers.set('Content-Security-Policy', 
     "default-src 'self'; " +
@@ -23,6 +39,7 @@ export function middleware(request: NextRequest) {
     "base-uri 'self'; " +
     "form-action 'self';"
   )
+  
   
   // Additional security headers
   response.headers.set('X-DNS-Prefetch-Control', 'on')

@@ -1,14 +1,10 @@
 import type { Viewport } from 'next'
 import HomeClient from '@/components/HomeClient'
-// Define viewport separately - this is now in a server component
-// Add these export constants
-// In src/app/page.tsx
-export const config = {
-  unstable_runtimeJS: false,
-  unstable_JsPreload: false
-}
-export const dynamic = 'force-static';  // Prefer static rendering
+
+// Keep these export constants
+export const dynamic = 'force-static';
 export const generateStaticParams = async () => { return [{}] };
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -23,8 +19,8 @@ export const viewport: Viewport = {
 export default function HomePage() {
   return (
     <>
-      {/* Add this hidden HTML specifically for search engines */}
-      <div aria-hidden="true" className="sr-only">
+      {/* IMPORTANT: Remove aria-hidden and sr-only so Bing can see the H1 */}
+      <div className="visually-hidden-unless-focused">
         <h1>Mohamed Yaakoubi | Emerging AI and Technology Specialist</h1>
         <p>Expert in AI/ML, web development, and localization services with expertise in Next.js, React, and machine learning technologies.</p>
       </div>
