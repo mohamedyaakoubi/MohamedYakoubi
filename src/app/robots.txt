@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+User-agent: bingbot
+Allow: /
+Disallow: /api/
+
+User-agent: msnbot
+Allow: /
+Disallow: /api/
+
+Sitemap: https://mohamed-yakoubi.vercel.app/sitemap.xml

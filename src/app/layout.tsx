@@ -7,6 +7,7 @@ import ClientLayout from "@/components/ClientLayout"
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import "./production-fixes.css" 
 import { StaticSEO } from '@/components/StaticSEO'
+import { StaticHome } from '@/components/StaticHome' 
 
 // Simplify font configurations
 const inter = Inter({ 
@@ -242,6 +243,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${ibmPlexSansArabic.variable} ${inter.className} overflow-x-hidden max-w-full`}>
       <StaticSEO />
+      <StaticHome />
         <LanguageProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <ClientLayout>{children}</ClientLayout>
