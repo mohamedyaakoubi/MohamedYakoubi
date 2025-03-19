@@ -27,7 +27,9 @@
 
   /* Typography */
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    font-size: revert;
+    font-weight: revert;
+    margin: revert;
   }
 
   h2 {
@@ -831,15 +833,13 @@ header nav {
 }
 /* Add this class for visually-hidden content that is still available to search engines */
 .visually-hidden-unless-focused {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  position: relative;
+  overflow: visible;
+  width: auto;
+  height: auto;
+  clip: auto;
+  white-space: normal;
+  opacity: 1;
 }
 
 .visually-hidden-unless-focused:focus-within {

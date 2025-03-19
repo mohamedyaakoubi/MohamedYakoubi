@@ -19,11 +19,22 @@ export const viewport: Viewport = {
 export default function HomePage() {
   return (
     <>
-      {/* IMPORTANT: Remove aria-hidden and sr-only so Bing can see the H1 */}
-      <div className="visually-hidden-unless-focused">
-        <h1>Mohamed Yaakoubi | Emerging AI and Technology Specialist</h1>
-        <p>Expert in AI/ML, web development, and localization services with expertise in Next.js, React, and machine learning technologies.</p>
-      </div>
+      {/* Plain text H1 that will be directly in the HTML source */}
+      <h1 style={{
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: '1px',
+        height: '1px',
+        padding: '10px',
+        margin: '0',
+        overflow: 'hidden',
+        clip: 'rect(0, 0, 0, 0)',
+        whiteSpace: 'nowrap',
+        borderWidth: '0',
+      }}>
+        Mohamed Yaakoubi | Emerging AI and Technology Specialist
+      </h1>
       
       <HomeClient />
     </>
