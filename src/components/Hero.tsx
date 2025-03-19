@@ -155,7 +155,7 @@ export function Hero() {
             <div className="absolute inset-0 overflow-hidden">
               <Image 
                 src="/hero-light.webp"
-                alt=""
+                alt="hero-light-background"
                 fill
                 priority={true}
                 sizes="100vw"
@@ -179,7 +179,7 @@ export function Hero() {
               <div className="absolute inset-0 overflow-hidden">
                 <Image 
                   src="/hero-dark.webp"
-                  alt=""
+                  alt="hero-dark-background"
                   fill
                   priority={false}
                   sizes="100vw"
