@@ -36,6 +36,7 @@ const nextConfig = {
     formats: ['image/webp'],
     minimumCacheTTL: 31536000, // 1 year
   },
+  
 };
 
 module.exports = nextConfig;
