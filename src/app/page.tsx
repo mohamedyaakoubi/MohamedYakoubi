@@ -2,6 +2,11 @@ import type { Viewport } from 'next'
 import HomeClient from '@/components/HomeClient'
 // Define viewport separately - this is now in a server component
 // Add these export constants
+// In src/app/page.tsx
+export const config = {
+  unstable_runtimeJS: false,
+  unstable_JsPreload: false
+}
 export const dynamic = 'force-static';  // Prefer static rendering
 export const generateStaticParams = async () => { return [{}] };
 export const viewport: Viewport = {
