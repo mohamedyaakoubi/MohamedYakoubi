@@ -105,10 +105,6 @@ export function Hero() {
   const phrases = t('hero.roles')
   const typedText = useTypewriter(phrases)
 
-    // Add a default SEO H1 fallback for crawlers
-    const seoTitle = language === 'ar' ? 'محمد يعقوبي | أخصائي تكنولوجيا الذكاء الاصطناعي الناشئة' : 'Mohamed Yaakoubi | Emerging AI and Technology Specialist'
-    const seoGreeting = language === 'ar' ? 'مرحبا، أنا' : 'Hello, I am'
-    const seoTagline = language === 'ar' ? 'متخصص في الذكاء الاصطناعي وتطوير الويب' : 'Specialist in AI and Web Development'
   
   // Eagerly load critical content
   useEffect(() => {
@@ -206,7 +202,7 @@ export function Hero() {
          <noscript>
              <div>Mohamed Yaakoubi | Emerging AI and Technology Specialist</div>
            </noscript>
-    <h1 id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
+    <div id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
       <span className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
         {t('hero.greeting')}
       </span>
@@ -224,7 +220,7 @@ export function Hero() {
       <span className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
         {t('hero.tagline')}
       </span>
-    </h1>
+    </div>
 
             {/* Animated elements render after critical content loads */}
             {mounted && (

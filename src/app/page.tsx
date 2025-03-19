@@ -19,7 +19,6 @@ export const viewport: Viewport = {
 export default function HomePage() {
   return (
     <>
-      {/* Plain text H1 that will be directly in the HTML source */}
       <div style={{
         position: 'absolute',
         top: '0',
