@@ -1,7 +1,7 @@
 export function StaticHome() {
     return (
       <div style={{ display: 'none' }}>
-        <h1>Mohamed Yaakoubi | Emerging AI and Technology Specialist</h1>
+        <div>Mohamed Yaakoubi | Emerging AI and Technology Specialist</div>
         <p>Expert in AI/ML, web development, and localization services. View my projects, services and experience in AI, React, Next.js and more.</p>
         
         <h2>Services</h2>
