@@ -47,7 +47,7 @@ export function About() {
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden 
                         ring-4 ring-white dark:ring-gray-800 shadow-xl">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pic.jpg-ZVOn8cZhvmsJOsRLossXo8UgDkmffp.jpeg"
+                src="/profile.jpg"
                 alt="Mohamed Yaakoubi"
                 fill
                 className="object-cover object-top transition-all duration-500 
