@@ -1,7 +1,18 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove the headers section to avoid conflicts with middleware
+  // Compiler options
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   
+  // Enable React optimization features
+  reactStrictMode: true,
+  
+  // Rewrites for API routes
   async rewrites() {
     return [
       {
@@ -15,7 +26,7 @@ const nextConfig = {
     ];
   },
   
-  
+  // Image optimization config
   images: {
     remotePatterns: [
       {
@@ -37,6 +48,21 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year
   },
   
+  // Root level options
+  serverExternalPackages: [], 
+  outputFileTracingRoot: process.cwd(),
+  
+  // Updated experimental options
+  experimental: {
+    // Replace critters with Next.js built-in CSS optimization
+    optimizeCss: true,
+    optimizePackageImports: ['react-icons', 'framer-motion'],
+    
+    // Add these optimizations
+    ppr: true, // Progressive Rendering for faster page loads
+    taint: true, // Better security for server components
+    webpackBuildWorker: true, // Speed up builds
+  }
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

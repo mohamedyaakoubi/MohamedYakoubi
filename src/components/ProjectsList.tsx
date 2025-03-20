@@ -1,35 +1,49 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { motion } from "framer-motion"
-import { FaGithub, FaExternalLinkAlt, FaStar, FaCodeBranch } from "react-icons/fa"
+import dynamic from "next/dynamic"
 import type { Repository } from "../../utils/github"
-import { ProjectCard } from "./ProjectCard"
-import { featuredProjects } from "@/data/project"
 import type { ProjectCategory } from "@/types/project"
-import Image from 'next/image'
 import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
+import { featuredProjects } from "@/data/project"
 
-interface ProjectLinkProps {
-  href: string
-  icon: React.ComponentType<{ className?: string }>
-  label: string
-}
+// Dynamically import the ProjectCard component
+const ProjectCard = dynamic(() => import('@/components/ProjectCard').then(mod => ({ default: mod.ProjectCard })), {
+  loading: () => (
+    <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden animate-pulse">
+      <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
+      <div className="p-6">
+        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+      </div>
+    </div>
+  )
+})
 
-const ProjectLink = ({ href, icon: Icon, label }: ProjectLinkProps) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center text-sm text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <Icon className="mr-1" />
-    {label}
-  </motion.a>
-)
+// Dynamically import the GithubReposList component
+const GithubReposList = dynamic(() => import('@/components/GithubRepoList'), {
+  loading: () => (
+    <div className="space-y-8">
+      <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">
+        GitHub Repositories
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-4 animate-pulse">
+            <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4"></div>
+            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+  ssr: false
+})
 
 interface ProjectsListProps {
   initialRepos: Repository[]
@@ -43,24 +57,9 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
   const [category, setCategory] = useState<ProjectCategory | "all">("all")
   const [searchTerm, setSearchTerm] = useState("")
 
-  const getTranslatedLanguage = (language: string | null, t: (key: string) => string) => {
-    if (!language) return null;
-    const translationKey = `projects.repository.languages.${language}`;
-    const translation = t(translationKey);
-    return translation === translationKey ? language : translation;
-  };
-
-  const filteredRepos = repos.filter((repo) => {
-    if (filter === "all") return true;
-    return repo.language?.toLowerCase() === filter.toLowerCase();
-  });
-
   const languages = Array.from(
     new Set(repos.map((repo) => repo.language).filter(Boolean))
-  ).map(lang => ({
-    original: lang,
-    translated: getTranslatedLanguage(lang, t)
-  }));
+  );
 
   const filteredProjects = featuredProjects.filter((project) => {
     if (category === "all") return true;
@@ -153,92 +152,42 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
           variants={containerVariants}
         >
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.name} project={project} index={index} />
+            <Suspense key={project.name} fallback={
+              <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden animate-pulse">
+                <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
+                <div className="p-6">
+                  <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                </div>
+              </div>
+            }>
+              <ProjectCard key={project.name} project={project} index={index} />
+            </Suspense>
           ))}
         </motion.div>
       </motion.section>
 
-      {/* GitHub Repositories Section */}
-      <motion.section variants={itemVariants}>
-        <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">
-          {t('projects.sections.github')}
-        </h2>
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-        >
-          {filteredRepos.map((repo, index) => (
-            <motion.div
-              key={repo.id}
-              variants={itemVariants}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden 
-                        shadow-md hover:shadow-xl transition-all duration-500 
-                        transform hover:-translate-y-1"
-            >
-           {repo.homepage && (
-  <div className="group relative h-48 w-full overflow-hidden bg-gray-100 dark:bg-gray-700">
-    <Image
-      src={`/projects/${repo.name}.PNG`}
-      alt={repo.name}
-      fill
-      className="object-cover object-top transition-all duration-500 group-hover:scale-110"
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      priority={index < 3}
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-  </div>
-)}
-              <div className="p-6">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-                    {repo.name}
-                  </h3>
-                  {repo.private && (
-                    <span className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-full">
-                      {t('projects.repository.status.private')}
-                    </span>
-                  )}
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-3">
-                  {repo.description || t('projects.repository.noDescription')}
-                </p>
-                <div className="flex items-center space-x-4 rtl:space-x-reverse mt-4">
-                  {repo.language && (
-                    <span className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
-                      <span className={`w-3 h-3 rounded-full mr-2 bg-${repo.language.toLowerCase()}`} />
-                      {getTranslatedLanguage(repo.language, t)}
-                    </span>
-                  )}
-                  <span className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <FaStar className="mx-1 text-yellow-500" />
-                    {repo.stargazers_count}
-                  </span>
-                  {repo.forks_count > 0 && (
-                    <span className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                      <FaCodeBranch className="mx-1" />
-                      {repo.forks_count}
-                    </span>
-                  )}
-                </div>
-                <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'} mt-4`}>
-                  <ProjectLink
-                    href={repo.html_url}
-                    icon={FaGithub}
-                    label={t('projects.repository.links.viewSource')}
-                  />
-                  {repo.homepage && (
-                    <ProjectLink
-                      href={repo.homepage}
-                      icon={FaExternalLinkAlt}
-                      label={t('projects.repository.links.liveDemo')}
-                    />
-                  )}
-                </div>
+      {/* GitHub Repositories Section - Dynamically loaded */}
+      <Suspense fallback={
+        <div className="space-y-8">
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">
+            GitHub Repositories
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-4 animate-pulse">
+                <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4"></div>
+                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
+            ))}
+          </div>
+        </div>
+      }>
+        <GithubReposList repos={repos} filter={filter} />
+      </Suspense>
     </motion.div>
   )
 }

@@ -103,3 +103,6 @@ function ProjectLink({ href, icon: Icon, label }: ProjectLinkProps) {
     </motion.a>
   )
 }
+
+// Add this default export that re-exports the named export
+export default { ProjectCard };

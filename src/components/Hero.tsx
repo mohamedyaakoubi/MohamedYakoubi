@@ -1,22 +1,41 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { motion } from "framer-motion"
-import { FaGithub, FaLinkedin, FaFileDownload } from "react-icons/fa"
 import { useTheme } from "next-themes"
 import { useTypewriter } from "@/hooks/useTypewriter"
-import { SiUpwork } from "react-icons/si"
-import type { Language } from "@/types/language"
 import { useLanguage } from "@/context/language-context"
 import { useTranslation } from "@/hooks/useTranslation"
 import Image from "next/image"
-import { Suspense } from "react"
+import dynamic from 'next/dynamic'
+
+// Types for Navigator.connection
+interface NetworkInformation {
+  saveData: boolean
+  // Add other properties if needed
+}
+
+// Dynamically import SocialButtons to reduce initial JS bundle
+const SocialButtons = dynamic(
+  () => import('@/components/ui/SocialButtons'),
+  {
+    loading: () => (
+      <div className="flex flex-wrap justify-center gap-4 mb-12 h-14 animate-pulse">
+        <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+        <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+        <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+      </div>
+    ),
+    ssr: false
+  }
+)
 
 type AnimatedContentProps = {
   typedText: string;
   language: string;
   t: (key: string) => string;
 }
+
 // Separate animated content into a client component
 const AnimatedContent = ({ typedText, language, t }: AnimatedContentProps) => {
   return (
@@ -35,98 +54,55 @@ const AnimatedContent = ({ typedText, language, t }: AnimatedContentProps) => {
           <span className="animate-blink">|</span>
         </h2>
         
-        {/* Social buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {/* GitHub button */}
-          <motion.a
-            href={t('social.links.github')}
-            target="_blank"
-            rel="noopener noreferrer me"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/20 transition-colors flex items-center gap-2 dark:text-white text-gray-900"
-          >
-            <FaGithub className="w-5 h-5" />
-            <span>{t('hero.cta.github')}</span>
-          </motion.a>
-
-          {/* LinkedIn button */}
-          <motion.a
-            href="https://www.linkedin.com/in/yaakoubi-mohamed/"
-            target="_blank"
-            rel="noopener noreferrer me"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#0A66C2] px-6 py-3 rounded-full hover:bg-[#004182] transition-colors flex items-center gap-2 text-white"
-          >
-            <FaLinkedin className="w-5 h-5" />
-            <span>{t('social.linkedin')}</span>
-          </motion.a>
-
-          {/* Other buttons */}
-          <motion.a
-            href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
-            target="_blank"
-            rel="noopener noreferrer me"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#6fda44] px-6 py-3 rounded-full hover:bg-[#5cb536] transition-colors flex items-center gap-2 text-white"
-          >
-            <SiUpwork className="w-5 h-5" />
-            <span>{t('hero.cta.upwork')}</span>
-          </motion.a>
-
-          <motion.a
-  href="/Mohamed_Yaakoubi.pdf"
-  target="_blank"
-  rel="noopener noreferrer me"
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 text-white"
-  data-testid="cv-download"
-  aria-label="Download Mohamed Yaakoubi's CV"
-  title="Download my professional resume (PDF)"
-  type="application/pdf"
->
-  <FaFileDownload className="w-5 h-5" />
-  <span>{t('hero.cta.downloadCV')}</span>
-</motion.a>
-        </div>
+        {/* Replace the social buttons with the imported component */}
+        <Suspense fallback={
+          <div className="flex flex-wrap justify-center gap-4 mb-12 h-14 animate-pulse">
+            <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+            <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+          </div>
+        }>
+          <SocialButtons t={t} language={language} />
+        </Suspense>
       </motion.div>
     </motion.div>
   );
 };
 
 export function Hero() {
-  const { theme, setTheme } = useTheme()
+  const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const { language, setLanguage } = useLanguage()
+  const { language } = useLanguage()
   const { t } = useTranslation(language)
   const phrases = t('hero.roles')
   const typedText = useTypewriter(phrases)
 
-  
   // Eagerly load critical content
   useEffect(() => {
     setMounted(true)
     
-    // Preload the background images - fix TypeScript errors
-    const lightImage = new window.Image();
-    lightImage.src = '/hero-light.webp';
+    // Preload the background images with low priority
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      (window as Window).requestIdleCallback(() => {
+        const darkImage = new window.Image();
+        darkImage.src = '/hero-dark.webp';
+        // Use a standard property instead of a non-standard attribute
+        darkImage.loading = 'lazy';
+      });
+    }
     
-    const darkImage = new window.Image();
-    darkImage.src = '/hero-dark.webp';
-    
-    // Preload your CV file
+    // Prefetch CV with low priority during idle time
+    // Type-safe check for navigator.connection
+    if (typeof navigator !== 'undefined' && 
+      'connection' in navigator && 
+      (!navigator.connection?.saveData)) {
     const link = document.createElement('link');
     link.rel = 'prefetch';
+    link.as = 'document';
     link.href = '/Mohamed_Yaakoubi.pdf';
+    // Standard attributes only
     document.head.appendChild(link);
-  }, [])
-
-  const handleLanguageChange = (lang: Language) => {
-    setLanguage(lang)
   }
+  }, [])
 
   const handleScroll = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
@@ -154,16 +130,15 @@ export function Hero() {
             }}
           >
             <div className="absolute inset-0 overflow-hidden">
-              <Image 
-                src="/hero-light.webp"
-                alt="hero-light-background"
-                fill
-                priority={true}
-                sizes="100vw"
-                quality={80}
-                className="object-cover fixed-bg"
-                fetchPriority="high"
-              />
+            <Image 
+  src="/hero-light.webp"
+  alt="hero-light-background"
+  fill
+  priority
+  sizes="100vw"
+  quality={80}
+  className="object-cover fixed-bg"
+/>
             </div>
             <div className="absolute inset-0 bg-white/15" />
           </div>
@@ -194,30 +169,29 @@ export function Hero() {
           )}
         </div>
 
-       {/* Content - Optimize for LCP */}
-<div className="relative z-20 text-center px-6">
-  <div className="max-w-4xl mx-auto">
-    {/* Static content rendered immediately for fast LCP */}
-         {/* Add this noscript tag for crawlers */}
-         <div id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
-  <h2 className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
-    {t('hero.greeting')}
-  </h2>
-      
-  {/* Name - rendered immediately without animations */}
-  <h3 
-    className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
-    style={{
-      fontWeight: 700,
-    }}
-  >
-    {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
-  </h3>
-      
-  <h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
-    {t('hero.tagline')}
-  </h2>
-</div>
+        {/* Content - Optimize for LCP */}
+        <div className="relative z-20 text-center px-6">
+          <div className="max-w-4xl mx-auto">
+            {/* Static content rendered immediately for fast LCP */}
+            <div id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
+              <h2 className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
+                {t('hero.greeting')}
+              </h2>
+                  
+              {/* Name - rendered immediately without animations */}
+              <h3 
+                className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
+                style={{
+                  fontWeight: 700,
+                }}
+              >
+                {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
+              </h3>
+                  
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
+                {t('hero.tagline')}
+              </h2>
+            </div>
 
             {/* Animated elements render after critical content loads */}
             {mounted && (
@@ -255,7 +229,7 @@ export function Hero() {
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
-                handleScroll(e as any);
+                handleScroll(e as unknown as React.MouseEvent<HTMLDivElement>);
               }
             }}
           >
