@@ -119,8 +119,8 @@ export function Hero() {
     <>
       {/* Home Section */}
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center">
-     {/* Background Elements with Next.js Image */}
-     <div className="hero-background">
+        {/* Background Elements with Next.js Image */}
+        <div className="hero-background">
           {/* Light theme background - high priority */}
           <div
             className="absolute inset-0"
@@ -130,17 +130,15 @@ export function Hero() {
             }}
           >
             <div className="absolute inset-0 overflow-hidden">
-              <Image 
-                src="/hero-light.webp"
-                alt="hero-light-background"
-                fill
-                priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-                quality={75}
-                className="object-cover fixed-bg"
-                placeholder="blur"
-                blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='1'/%3E%3C/filter%3E%3Crect width='8' height='5' fill='%23f8f8f8' filter='url(%23b)'/%3E%3C/svg%3E"
-              />
+            <Image 
+  src="/hero-light.webp"
+  alt="hero-light-background"
+  fill
+  priority
+  sizes="100vw"
+  quality={80}
+  className="object-cover fixed-bg"
+/>
             </div>
             <div className="absolute inset-0 bg-white/15" />
           </div>
@@ -160,12 +158,10 @@ export function Hero() {
                   alt="hero-dark-background"
                   fill
                   priority={false}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-                  quality={65}
+                  sizes="100vw"
+                  quality={75}
                   loading="lazy"
                   className="object-cover fixed-bg"
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='1'/%3E%3C/filter%3E%3Crect width='8' height='5' fill='%23171717' filter='url(%23b)'/%3E%3C/svg%3E"
                 />
               </div>
               <div className="absolute inset-0 bg-black/15" />
