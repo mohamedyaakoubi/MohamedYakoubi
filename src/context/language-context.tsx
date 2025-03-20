@@ -23,7 +23,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('language', language)
       document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
       document.documentElement.lang = language
-      console.log('Language changed to:', language)
     }
   }, [language])
 

@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { languages, type Language } from '@/types/language'
 import { Globe } from 'lucide-react'
+import { useMenu } from '@/context/useMenu'
 
 interface LanguageSelectorProps {
   currentLang: Language
@@ -12,17 +13,34 @@ interface LanguageSelectorProps {
 
 export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const { isMenuOpen } = useMenu()
   const currentLanguage = languages.find(lang => lang.code === currentLang)
   const Flag = currentLanguage?.FlagComponent
   
   // Get current language name for the aria-label
   const currentLangName = currentLanguage?.name || 'Language'
+  
+  // Close language dropdown when mobile menu opens
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsOpen(false)
+    }
+  }, [isMenuOpen])
+
+  const handleToggleDropdown = () => {
+    setIsOpen(prev => !prev)
+  }
+
+  const handleLanguageSelect = (lang: Language) => {
+    onChange(lang)
+    setIsOpen(false)
+  }
 
   return (
-    <div className="relative">
+    <div className={`relative ${isMenuOpen ? 'hidden md:block' : 'block'}`}>
       <motion.div className="relative">
         <motion.button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={handleToggleDropdown}
           className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm 
                      px-4 py-2 rounded-full hover:bg-white/20 transition-colors
                      border border-gray-200 dark:border-gray-700"
@@ -43,36 +61,28 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 
-                         rounded-lg shadow-lg overflow-hidden min-w-[150px]"
+                         rounded-lg shadow-lg overflow-hidden min-w-[150px] z-50"
               role="listbox"
               aria-label="Select language"
             >
-              {languages.map((lang) => {
-                const LangFlag = lang.FlagComponent;
-                return (
-                  <motion.button
+              <ul className="py-1">
+                {languages.map(lang => (
+                  <motion.li 
                     key={lang.code}
-                    onClick={() => {
-                      onChange(lang.code)
-                      setIsOpen(false)
-                    }}
-                    className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 
-                               dark:hover:bg-gray-700 transition-colors ${
-                      currentLang === lang.code
-                        ? 'bg-blue-50 dark:bg-gray-700'
-                        : ''
-                    }`}
-                    whileHover={{ x: 5 }}
+                    whileHover={{ backgroundColor: 'rgba(0,0,0,0.05)' }}
+                    className="px-4 py-2 cursor-pointer flex items-center gap-2"
+                    onClick={() => handleLanguageSelect(lang.code)}
                     role="option"
                     aria-selected={currentLang === lang.code}
                   >
-                    <LangFlag className="w-5 h-5 mr-3" />
-                    <span className="text-gray-800 dark:text-white">
+                    {lang.FlagComponent && <lang.FlagComponent className="w-5 h-5" />}
+                    <span className={`${currentLang === lang.code ? 'font-semibold' : ''} 
+                                    dark:text-white text-gray-800`}>
                       {lang.name}
                     </span>
-                  </motion.button>
-                );
-              })}
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           )}
         </AnimatePresence>

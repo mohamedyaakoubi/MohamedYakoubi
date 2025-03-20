@@ -2,6 +2,7 @@
 
 import { useEffect, useState, Suspense } from 'react'
 import { useLanguage } from '@/context/language-context'
+import { MenuProvider } from '@/context/useMenu'
 import { Navigation } from "./Navigation"
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageSelector } from "./LanguageSelector"
@@ -18,6 +19,7 @@ const Chat = dynamic(() => import('./Chat'), {
 const Analytics = dynamic(() => import('./Analytics'), {
   ssr: false
 })
+
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { language, setLanguage } = useLanguage()
     const [mounted, setMounted] = useState(false)
@@ -44,24 +46,26 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     }
   
     return (
-      <div className={language === 'ar' ? 'rtl' : 'ltr'}>
-        <Navigation />
-        <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
-          <LanguageSelector currentLang={language} onChange={setLanguage} />
-          <ThemeToggle />
+      <MenuProvider>
+        <div className={language === 'ar' ? 'rtl' : 'ltr'}>
+          <Navigation />
+          <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
+            <LanguageSelector currentLang={language} onChange={setLanguage} />
+            <ThemeToggle />
+          </div>
+          <PageTransition>{children}</PageTransition>
+          
+          {/* Lazy-loaded non-critical UI elements */}
+          <Suspense fallback={null}>
+            <Chat />
+          </Suspense>
+          <Suspense fallback={null}>
+            <ScrollToTopButton />
+          </Suspense>
+          
+          {/* Analytics */}
+          <Analytics />
         </div>
-        <PageTransition>{children}</PageTransition>
-        
-        {/* Lazy-loaded non-critical UI elements */}
-        <Suspense fallback={null}>
-          <Chat />
-        </Suspense>
-        <Suspense fallback={null}>
-          <ScrollToTopButton />
-        </Suspense>
-        
-        {/* Analytics */}
-        <Analytics />
-      </div>
+      </MenuProvider>
     )
 }
