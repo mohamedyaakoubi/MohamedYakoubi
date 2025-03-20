@@ -14,9 +14,12 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
   const [isOpen, setIsOpen] = useState(false)
   const currentLanguage = languages.find(lang => lang.code === currentLang)
   const Flag = currentLanguage?.FlagComponent
+  
+  // Get current language name for the aria-label
+  const currentLangName = currentLanguage?.name || 'Language'
 
   return (
-    <div className="relative"> {/* Remove fixed positioning */}
+    <div className="relative">
       <motion.div className="relative">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
@@ -25,6 +28,9 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
                      border border-gray-200 dark:border-gray-700"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          aria-label={`Select language, current language: ${currentLangName}`}
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
         >
           <Globe className="w-4 h-4 text-gray-700 dark:text-white" />
           {Flag && <Flag className="w-5 h-5 ml-2" />}
@@ -38,6 +44,8 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
               exit={{ opacity: 0, y: 10 }}
               className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 
                          rounded-lg shadow-lg overflow-hidden min-w-[150px]"
+              role="listbox"
+              aria-label="Select language"
             >
               {languages.map((lang) => {
                 const LangFlag = lang.FlagComponent;
@@ -55,6 +63,8 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
                         : ''
                     }`}
                     whileHover={{ x: 5 }}
+                    role="option"
+                    aria-selected={currentLang === lang.code}
                   >
                     <LangFlag className="w-5 h-5 mr-3" />
                     <span className="text-gray-800 dark:text-white">

@@ -52,15 +52,12 @@ const nextConfig = {
   serverExternalPackages: [], 
   outputFileTracingRoot: process.cwd(),
   
-  // Updated experimental options
+  // Updated experimental options - removed canary-only features
   experimental: {
     // Replace critters with Next.js built-in CSS optimization
     optimizeCss: true,
     optimizePackageImports: ['react-icons', 'framer-motion'],
-    
-    // Add these optimizations
-    ppr: true, // Progressive Rendering for faster page loads
-    taint: true, // Better security for server components
+    // Removed: ppr, taint (these are canary features)
     webpackBuildWorker: true, // Speed up builds
   }
 };

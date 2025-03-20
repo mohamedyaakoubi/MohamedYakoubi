@@ -101,68 +101,73 @@ export default function Chat() {
   
 
   // Update the streaming implementation in the handleSubmit function
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!input.trim() || isLoading) return;
-
-  const userMessage = { role: 'user' as const, content: input };
-  setMessages(prev => [...prev, userMessage]);
-  setInput('');
-  setIsLoading(true);
-
-  try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        messages: [...messages, userMessage],
-        language: language
-      }),
-    });
-
-    if (!response.ok) throw new Error('Failed to fetch response');
-
-    const reader = response.body?.getReader();
-    if (!reader) throw new Error('No reader available');
-
-    // Add placeholder for bot message
-    setMessages(prev => [...prev, { 
-      role: 'assistant', 
-      content: '' 
-    }]);
-
-    // Process chunks as they arrive
-    let fullText = '';
-    const decoder = new TextDecoder();
-    
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      
-      const text = decoder.decode(value, { stream: true });
-      fullText += text;
-      
-      // Update the last message with the accumulated text
-      setMessages(prev => {
-        const newMessages = [...prev];
-        newMessages[newMessages.length - 1] = { 
-          role: 'assistant', 
-          content: fullText 
-        };
-        return newMessages;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+  
+    const userMessage = { role: 'user' as const, content: input };
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+  
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          messages: [...messages, userMessage],
+          language: language
+        }),
       });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.warn('Chat API error:', response.status, errorText);
+        throw new Error(`API error: ${response.status}`);
+      }
+  
+      const reader = response.body?.getReader();
+      if (!reader) throw new Error('No reader available');
+  
+      // Add placeholder for bot message
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: '' 
+      }]);
+  
+      // Process chunks as they arrive
+      let fullText = '';
+      const decoder = new TextDecoder();
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const text = decoder.decode(value, { stream: true });
+        fullText += text;
+        
+        // Update the last message with the accumulated text
+        setMessages(prev => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1] = { 
+            role: 'assistant', 
+            content: fullText 
+          };
+          return newMessages;
+        });
+      }
+    } catch (error) {
+      // Use console.warn instead of console.error to make it less alarming
+      console.warn('Chat error:', error);
+      setError(error instanceof Error ? error : new Error('An unknown error occurred'));
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: t('chat.error') || 'Sorry, I encountered an error. Please try again.' 
+      }]);
+    } finally {
+      setIsLoading(false);
     }
-  } catch (error) {
-    console.error('Chat error:', error);
-    setError(error instanceof Error ? error : new Error('An unknown error occurred'));
-    setMessages(prev => [...prev, { 
-      role: 'assistant', 
-      content: t('chat.error') || 'Sorry, I encountered an error. Please try again.' 
-    }]);
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
   
 
   return (

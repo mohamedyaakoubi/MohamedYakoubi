@@ -61,6 +61,19 @@ function detectLanguage(text: string): Language {
     if (frenchRegex.test(text)) return 'fr';
     return 'en';
 }
+// Add GET handler to prevent 405 errors
+export async function GET() {
+    return new Response(JSON.stringify({ 
+      error: 'This endpoint requires a POST request with proper message format'
+    }), {
+      status: 405,
+      headers: { 
+        'Content-Type': 'application/json',
+        'Allow': 'POST'
+      },
+    });
+  }
+  
 export async function POST(request: Request) {
     try {
         const { messages: incomingMessages, language = 'en' } = await request.json();

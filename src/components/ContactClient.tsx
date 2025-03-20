@@ -147,27 +147,28 @@ export default function Contact() {
   
   {/* Freelances.tn */}
   <motion.a
-    href="https://www.freelances.tn/freelance/mohamed-yaakoubi"
-    target="_blank"
-    rel="noopener noreferrer me"
-    className="text-blue-600 hover:text-blue-700"
-    aria-label={t('social.freelances') || "Freelances.tn"}
-    whileHover={{ 
-      scale: 1.15,
-      transition: { duration: 0.2 }
-    }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <div className="w-6 h-6 relative">
-      <Image 
-        src="/freelances.webp" 
-        alt="Freelances.tn" 
-        width={24} 
-        height={24}
-        className="w-6 h-6 object-contain"
-      />
-    </div>
-  </motion.a>
+  href="https://www.freelances.tn/freelance/mohamed-yaakoubi"
+  target="_blank"
+  rel="noopener noreferrer me"
+  className="text-blue-600 hover:text-blue-700"
+  aria-label={t('social.freelances') || "Freelances.tn"}
+  whileHover={{ 
+    scale: 1.15,
+    transition: { duration: 0.2 }
+  }}
+  whileTap={{ scale: 0.95 }}
+>
+  <div className="w-6 h-6 relative">
+    <Image 
+      src="/freelances.webp" 
+      alt="Freelances.tn" 
+      width={24} 
+      height={24}
+      className="w-6 h-6 object-contain"
+      loading="lazy" 
+    />
+  </div>
+</motion.a>
   
   {/* Fiverr */}
   <motion.a
@@ -203,28 +204,28 @@ export default function Contact() {
   
   {/* Proz.com */}
   <motion.a
-    href="https://www.proz.com/profile/3972649"
-    target="_blank"
-    rel="noopener noreferrer me"
-    className="text-[#0068C5] hover:text-[#004F97]"
-    aria-label={t('social.proz') || "Proz.com"}
-    whileHover={{ 
-      scale: 1.15,
-      transition: { duration: 0.2 }
-    }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <div className="w-10 h-10 relative flex items-center justify-center -mt-2 -ml-3">
-      <Image 
-        src="/companies/proz_logo.webp" 
-        alt="Proz.com" 
-        width={40} 
-        height={40}
-        className="w-10 h-10 object-contain"
-        priority={false}
-      />
-    </div>
-  </motion.a>
+  href="https://www.proz.com/profile/3972649"
+  target="_blank"
+  rel="noopener noreferrer me"
+  className="text-[#0068C5] hover:text-[#004F97]"
+  aria-label={t('social.proz') || "Proz.com"}
+  whileHover={{ 
+    scale: 1.15,
+    transition: { duration: 0.2 }
+  }}
+  whileTap={{ scale: 0.95 }}
+>
+  <div className="w-10 h-10 relative flex items-center justify-center -mt-2 -ml-3">
+    <Image 
+      src="/companies/proz_logo.webp" 
+      alt="Proz.com" 
+      width={40} 
+      height={40}
+      className="w-10 h-10 object-contain"
+      loading="lazy"
+    />
+  </div>
+</motion.a>
 </div>
           </motion.div>
 
@@ -304,21 +305,22 @@ export default function Contact() {
               {t('contact.coffee.description')}
             </p>
             <motion.a
-              href="https://www.buymeacoffee.com/medykb"
-              target="_blank"
-              rel="noopener noreferrer me"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <Image
-                src="/api/coffee-button"
-                alt={t('contact.coffee.buttonAlt')}
-                width={217}
-                height={48}
-                className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </motion.a>
+  href="https://www.buymeacoffee.com/medykb"
+  target="_blank"
+  rel="noopener noreferrer me"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="inline-block"
+>
+  <Image
+    src="/api/coffee-button"
+    alt={t('contact.coffee.buttonAlt')}
+    width={217}
+    height={48}
+    className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+    loading="lazy"
+  />
+</motion.a>
           </div>
         </motion.div>
         </div>

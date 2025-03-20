@@ -70,11 +70,13 @@ function SocialButtons({ t, language }: SocialButtonsProps) {
         label={t('social.linkedin')}
       />
 
+      {/* Fix contrast issue by changing text color to black */}
       <SocialButton 
         href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
-        className="bg-[#6fda44] px-6 py-3 rounded-full hover:bg-[#5cb536] transition-colors flex items-center gap-2 text-white"
+        className="bg-[#6fda44] px-6 py-3 rounded-full hover:bg-[#5cb536] transition-colors flex items-center gap-2 text-black font-medium"
         icon={SiUpwork}
         label={t('hero.cta.upwork')}
+        title="Hire me on Upwork"
       />
 
       <SocialButton 
