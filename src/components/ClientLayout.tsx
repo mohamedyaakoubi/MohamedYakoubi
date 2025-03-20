@@ -9,63 +9,78 @@ import { LanguageSelector } from "./LanguageSelector"
 import { PageTransition } from "./PageTransition"
 import dynamic from 'next/dynamic'
 
-// Dynamically import non-critical components
-const ScrollToTopButton = dynamic(() => import('./ui/ScrollToTopButton'), { ssr: false })
-const Chat = dynamic(() => import('./Chat'), { 
-  loading: () => null,
-  ssr: false
+// Dynamically import non-critical components with lower priority
+const ScrollToTopButton = dynamic(() => import('./ui/ScrollToTopButton'), { 
+  ssr: false,
+  loading: () => null
 })
-// Import analytics component
+
+const Chat = dynamic(() => import('./Chat'), { 
+  ssr: false,
+  loading: () => null
+})
+
 const Analytics = dynamic(() => import('./Analytics'), {
-  ssr: false
+  ssr: false,
+  loading: () => null
 })
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
-    const { language, setLanguage } = useLanguage()
-    const [mounted, setMounted] = useState(false)
-  
-    useEffect(() => {
+  const { language, setLanguage } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  // Use deferred mounting for non-critical UI
+  useEffect(() => {
+    // Use requestIdleCallback or setTimeout to defer non-critical work
+    const timer = setTimeout(() => {
       setMounted(true)
-      
-      // Register service worker
-      if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.location.hostname !== 'localhost') {
-        window.addEventListener('load', () => {
+    }, 100)
+    
+    // Register service worker only after initial render
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.location.hostname !== 'localhost') {
+      window.addEventListener('load', () => {
+        // Defer service worker registration
+        setTimeout(() => {
           navigator.serviceWorker.register('/service-worker.js')
-            .then(registration => {
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            })
             .catch(error => {
               console.log('ServiceWorker registration failed: ', error);
             });
-        });
-      }
-    }, [])
-  
-    if (!mounted) {
-      return null
+        }, 3000); // Delay service worker registration
+      });
     }
-  
-    return (
-      <MenuProvider>
-        <div className={language === 'ar' ? 'rtl' : 'ltr'}>
-          <Navigation />
-          <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
-            <LanguageSelector currentLang={language} onChange={setLanguage} />
-            <ThemeToggle />
-          </div>
-          <PageTransition>{children}</PageTransition>
-          
-          {/* Lazy-loaded non-critical UI elements */}
-          <Suspense fallback={null}>
-            <Chat />
-          </Suspense>
-          <Suspense fallback={null}>
-            <ScrollToTopButton />
-          </Suspense>
-          
-          {/* Analytics */}
-          <Analytics />
-        </div>
-      </MenuProvider>
-    )
+    
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Render a minimal layout first for faster LCP
+  return (
+    <MenuProvider>
+      <div className={language === 'ar' ? 'rtl' : 'ltr'}>
+        <Navigation />
+        {/* Render main content immediately */}
+        <PageTransition>{children}</PageTransition>
+        
+        {/* Defer rendering of non-critical UI elements */}
+        {mounted && (
+          <>
+            <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
+              <LanguageSelector currentLang={language} onChange={setLanguage} />
+              <ThemeToggle />
+            </div>
+            
+            {/* Lazy-loaded non-critical UI elements */}
+            <Suspense fallback={null}>
+              <ScrollToTopButton />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Chat />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Analytics />
+            </Suspense>
+          </>
+        )}
+      </div>
+    </MenuProvider>
+  )
 }
