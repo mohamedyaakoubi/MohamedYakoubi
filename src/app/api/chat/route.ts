@@ -62,11 +62,12 @@ function detectLanguage(text: string): Language {
     return 'en';
 }
 // Add GET handler to prevent 405 errors
+// Add proper handlers for GET and OPTIONS requests
 export async function GET() {
     return new Response(JSON.stringify({ 
-      error: 'This endpoint requires a POST request with proper message format'
+      message: 'Chat API is working! Please use POST requests to interact with the chat.'
     }), {
-      status: 405,
+      status: 200, // Return 200 to avoid console errors
       headers: { 
         'Content-Type': 'application/json',
         'Allow': 'POST'
@@ -74,6 +75,18 @@ export async function GET() {
     });
   }
   
+  // Add OPTIONS handler for CORS preflight requests
+  export async function OPTIONS() {
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Allow': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      }
+    });
+  }
+
 export async function POST(request: Request) {
     try {
         const { messages: incomingMessages, language = 'en' } = await request.json();

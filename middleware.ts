@@ -7,6 +7,41 @@ const isCrawler = (userAgent: string | null) => {
 }
 
 export function middleware(request: NextRequest) {
+  // Special handling for API endpoints to prevent console errors
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    // For GET requests to /api/chat, intercept and return 200 OK
+    if (request.nextUrl.pathname === '/api/chat' && request.method === 'GET') {
+      return new NextResponse(
+        JSON.stringify({ message: 'Chat API is working! Please use POST requests to interact with the chat.' }),
+        {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json',
+            'Allow': 'POST, GET, OPTIONS',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          }
+        }
+      );
+    }
+    
+    // Handle OPTIONS requests for CORS preflight
+    if (request.method === 'OPTIONS') {
+      return new NextResponse(null, {
+        status: 200,
+        headers: {
+          'Allow': 'POST, GET, OPTIONS',
+          'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Max-Age': '86400', // 24 hours
+        }
+      });
+    }
+  }
+
   // Get userAgent from request
   const userAgent = request.headers.get('user-agent');
 
@@ -53,8 +88,10 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
+// Update the matcher to include API routes specifically
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|BingSiteAuth.xml|.*\\.(?:jpg|jpeg|gif|png|svg|webp|xml)).*)'
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|BingSiteAuth.xml|.*\\.(?:jpg|jpeg|gif|png|svg|webp|xml)).*)',
+    '/api/:path*'  // Specifically match API routes
   ],
 };

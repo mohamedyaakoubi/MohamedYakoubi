@@ -15,13 +15,17 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <Link href="/" className="text-white text-xl font-bold">My Portfolio</Link>
           
+          {/* Fix the mobile menu button accessibility */}
           <button 
-            className="md:hidden text-white" 
+            className="md:hidden text-white flex items-center justify-center" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle navigation menu"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            type="button"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <span className="sr-only">{isMenuOpen ? "Close Menu" : "Open Menu"}</span>
+            {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
 
@@ -39,9 +43,9 @@ export default function Header() {
           ))}
         </ul>
         
-        {/* Mobile menu */}
+        {/* Mobile menu with ID for aria-controls */}
         {isMenuOpen && (
-          <ul className="md:hidden flex flex-col space-y-4 mt-4">
+          <ul id="mobile-menu" className="md:hidden flex flex-col space-y-4 mt-4">
             {["About", "Experience", "Education", "Skills", "Projects", "Contact"].map((item) => (
               <li key={item}>
                 <Link 
