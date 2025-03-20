@@ -100,46 +100,72 @@ export default function Chat() {
   };
   
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  // Replace the error handling in the component
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!input.trim() || isLoading) return;
+
+  const userMessage = { role: 'user' as const, content: input };
+  setMessages(prev => [...prev, userMessage]);
+  setInput('');
+  setIsLoading(true);
+
+  try {
+    // First, check API availability without showing errors
+    const checkAvailable = await fetch('/api/chat', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      // Prevent console errors from appearing
+      mode: 'no-cors',
+    }).catch(() => null); // Catch and ignore network errors
+
+    // If API check fails, proceed with POST anyway - we'll handle the error
+    
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        messages: [...messages, userMessage],
+        language: language
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => 'Unknown error');
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    // Rest of your streaming code
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error('No reader available');
   
-    const userMessage = { role: 'user' as const, content: input };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
+      // Add placeholder for bot message
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: '' 
+      }]);
   
-    try {
-      // First, check API availability without showing errors
-      const checkAvailable = await fetch('/api/chat', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        // Prevent console errors from appearing
-        mode: 'no-cors',
-      }).catch(() => null); // Catch and ignore network errors
-  
-      // If API check fails, proceed with POST anyway - we'll handle the error
+      // Process chunks as they arrive
+      let fullText = '';
+      const decoder = new TextDecoder();
       
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          messages: [...messages, userMessage],
-          language: language
-        }),
-      });
-  
-      if (!response.ok) {
-        const errorText = await response.text().catch(() => 'Unknown error');
-        throw new Error(`API error: ${response.status}`);
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const text = decoder.decode(value, { stream: true });
+        fullText += text;
+        
+        // Update the last message with the accumulated text
+        setMessages(prev => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1] = { 
+            role: 'assistant', 
+            content: fullText 
+          };
+          return newMessages;
+        });
       }
-  
-      // Rest of your streaming code
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error('No reader available');
-      
-      // Continue with existing stream processing...
-      
     } catch (error) {
       // Suppress console error but show user-friendly message
       console.warn('Chat API error - handled gracefully');

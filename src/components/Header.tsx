@@ -15,17 +15,27 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <Link href="/" className="text-white text-xl font-bold">My Portfolio</Link>
           
-          {/* Fix the mobile menu button accessibility */}
+          {/* Fix the mobile menu button accessibility - COMPLETE REWRITE */}
           <button 
-            className="md:hidden text-white flex items-center justify-center" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
+            className="md:hidden flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             type="button"
+            aria-controls="mobile-menu"
+            aria-expanded={isMenuOpen}
           >
-            <span className="sr-only">{isMenuOpen ? "Close Menu" : "Open Menu"}</span>
-            {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+            <span className="sr-only">{isMenuOpen ? "Close main menu" : "Open main menu"}</span>
+            
+            {/* Icon when menu is closed */}
+            <Menu 
+              className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+              aria-hidden="true"
+            />
+            
+            {/* Icon when menu is open */}
+            <X 
+              className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+              aria-hidden="true"
+            />
           </button>
         </div>
 
@@ -44,13 +54,16 @@ export default function Header() {
         </ul>
         
         {/* Mobile menu with ID for aria-controls */}
-        {isMenuOpen && (
-          <ul id="mobile-menu" className="md:hidden flex flex-col space-y-4 mt-4">
+        <div
+          id="mobile-menu"
+          className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}
+        >
+          <ul className="flex flex-col space-y-4 mt-4 pt-2 pb-3">
             {["About", "Experience", "Education", "Skills", "Projects", "Contact"].map((item) => (
               <li key={item}>
                 <Link 
                   href={`#${item.toLowerCase()}`} 
-                  className="text-gray-300 hover:text-white transition duration-300 block"
+                  className="text-gray-300 hover:text-white transition duration-300 block px-3 py-2 rounded-md text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
@@ -58,7 +71,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-        )}
+        </div>
       </nav>
     </header>
   )
