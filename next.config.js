@@ -22,6 +22,10 @@ const nextConfig = {
       {
         source: '/api/coffee-button',
         destination: '/api/coffee-button'
+      },
+      {
+        source: '/api/chat',
+        destination: '/api/chat'
       }
     ];
   },
@@ -52,12 +56,13 @@ const nextConfig = {
   serverExternalPackages: [], 
   outputFileTracingRoot: process.cwd(),
   
-  // Updated experimental options - removed canary-only features
+  // Updated experimental options
   experimental: {
-    // Replace critters with Next.js built-in CSS optimization
+    // Either keep optimizeCss true and add critters package
     optimizeCss: true,
+    // Or set it to false if you don't want to install critters
+    // optimizeCss: false,
     optimizePackageImports: ['react-icons', 'framer-motion'],
-    // Removed: ppr, taint (these are canary features)
     webpackBuildWorker: true, // Speed up builds
   }
 };
