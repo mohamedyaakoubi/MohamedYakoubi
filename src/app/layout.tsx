@@ -39,6 +39,11 @@ export const viewport: Viewport = {
   ],
 }
 
+export const metadata: Metadata = {
+  title: "Mohamed Yaakoubi | Emerging AI and Technology Specialist",
+  description: "Driven, adaptable AI specialist with expertise in translations, localization, and technology solutions. Experience at DeepL, RWS (Meta AI), Uber, and Volga Partners.",
+}
+
 export default function RootLayout({
   children,
 }: {
