@@ -879,3 +879,8 @@ header nav {
 }
 /* Add at the end of the file */
 
+.seo-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* This optimizes LCP by showing text immediately while fonts load */
+  font-display: swap;
+}
