@@ -154,7 +154,8 @@ export default {
         "Career Development": "Développement de carrière",
         "Tech & IT Services": "Services Tech & IT",
         "Education & Training": "Éducation & Formation",
-        "Business & Research": "Affaires & Recherche"
+        "Business & Research": "Affaires & Recherche",
+        
       },
       sections: {
         features: "Caractéristiques",
@@ -167,7 +168,9 @@ export default {
         "Technical Support & IT Consulting": "Support technique & Conseil IT",
         "Educational Consulting": "Conseil en éducation",
         "Project Management & Research Assistance": "Gestion de projet & Assistance recherche",
-        "Career Development Coaching": "Coaching développement de carrière"
+        "Career Development Coaching": "Coaching développement de carrière",
+        "Web Development & Digital Presence": "Développement Web & Présence Digitale",
+
       },
       descriptions: {
         "Translation & Localization": "Services de traduction et localisation précis et culturellement adaptés pour l'arabe et l'anglais",
@@ -176,7 +179,9 @@ export default {
         "Technical Support & IT Consulting": "Support technique, assistance et conseil pour divers besoins numériques",
         "Educational Consulting": "Orientation dans les parcours académiques, bourses et développement professionnel",
         "Project Management & Research Assistance": "Gestion efficace de projets et recherche complète pour la prise de décision",
-        "Career Development Coaching": "Coaching personnalisé pour la croissance et le succès professionnel"
+        "Career Development Coaching": "Coaching personnalisé pour la croissance et le succès professionnel",
+        "Web Development & Digital Presence": "Services professionnels de développement web pour établir et améliorer votre présence digitale.",
+
       },
       features: {
         "Translation & Localization": {
@@ -227,7 +232,14 @@ export default {
           "Job search strategies": "Stratégies de recherche d'emploi",
           "Professional networking guidance": "Guide de réseautage professionnel",
           "Long-term career planning": "Planification de carrière à long terme"
-        }
+        },
+        "Web Development & Digital Presence": {
+          "Responsive website development": "Développement de sites web adaptatifs",
+          "Portfolio and showcase websites": "Sites web de portfolio et de présentation",
+          "AI-enhanced website features": "Fonctionnalités de site web améliorées par l'IA",
+          "Content creation and management": "Création et gestion de contenu",
+          "Multilingual support": "Support multilingue"
+        },
       },
       process: {
         "Translation & Localization": {
@@ -272,13 +284,24 @@ export default {
             "Skill and career assessment": "Évaluation des compétences et de carrière",
             "Customized development plan": "Plan de développement personnalisé",
             "Ongoing mentorship and support": "Mentorat et soutien continus"
-          }
+          },
+          "Web Development & Digital Presence": {
+            "Requirements analysis and planning": "Analyse des besoins et planification",
+            "Design and development": "Conception et développement",
+            "Content creation and integration": "Création et intégration de contenu",
+            "Testing and quality assurance": "Tests et assurance qualité",
+            "Launch and maintenance": "Lancement et maintenance"
+          },
         },
       cta: {
         title: "Besoin d'aide pour votre projet ?",
         description: "Discutons de comment je peux vous aider à atteindre vos objectifs",
         button: "Me contacter"
-      }},
+      },
+      tariff: {
+        button: "Voir Tarif"
+      }
+    },
       projects: {
         title: "Projets",
         error: "Erreur de chargement des projets",

@@ -106,7 +106,9 @@ export default {
           "Technical Support & IT Consulting": "الدعم الفني والاستشارات التقنية",
           "Educational Consulting": "الاستشارات التعليمية",
           "Project Management & Research Assistance": "إدارة المشاريع والمساعدة البحثية",
-          "Career Development Coaching": "تدريب التطوير المهني"
+          "Career Development Coaching": "تدريب التطوير المهني",
+          "Web Development & Digital Presence": "تطوير الويب والتواجد الرقمي",
+
         },
         descriptions: {
           "Translation & Localization": "خدمات ترجمة وتوطين دقيقة ومراعية للثقافة للغتين العربية والإنجليزية",
@@ -115,7 +117,9 @@ export default {
           "Technical Support & IT Consulting": "تقديم الدعم الفني والمساعدة التقنية والاستشارات لمختلف الاحتياجات الرقمية",
           "Educational Consulting": "توجيه في المسارات الأكاديمية والمنح الدراسية وتطوير المهارات المهنية",
           "Project Management & Research Assistance": "إدارة المشاريع بكفاءة وإجراء البحوث الشاملة لدعم اتخاذ القرار",
-          "Career Development Coaching": "تدريب شخصي للنمو والنجاح المهني"
+          "Career Development Coaching": "تدريب شخصي للنمو والنجاح المهني",
+          "Web Development & Digital Presence": "خدمات احترافية لتطوير الويب لإنشاء وتعزيز تواجدك الرقمي.",
+
         },
         features: {
           "Translation & Localization": {
@@ -166,7 +170,14 @@ export default {
             "Job search strategies": "استراتيجيات البحث عن عمل",
             "Professional networking guidance": "إرشادات التواصل المهني",
             "Long-term career planning": "تخطيط المسار المهني طويل المدى"
-          }
+          },
+          "Web Development & Digital Presence": {
+            "Responsive website development": "تطوير مواقع ويب متجاوبة",
+            "Portfolio and showcase websites": "مواقع لعرض الأعمال والمشاريع",
+            "AI-enhanced website features": "ميزات موقع معززة بالذكاء الاصطناعي",
+            "Content creation and management": "إنشاء وإدارة المحتوى",
+            "Multilingual support": "دعم متعدد اللغات"
+          },
         },
         process: {
           "Translation & Localization": {
@@ -211,12 +222,22 @@ export default {
             "Skill and career assessment": "تقييم المهارات والمسار المهني",
             "Customized development plan": "خطة تطوير مخصصة",
             "Ongoing mentorship and support": "توجيه ودعم مستمر"
-          }
+          },
+          "Web Development & Digital Presence": {
+            "Requirements analysis and planning": "تحليل المتطلبات والتخطيط",
+            "Design and development": "التصميم والتطوير",
+            "Content creation and integration": "إنشاء المحتوى ودمجه",
+            "Testing and quality assurance": "الاختبار وضمان الجودة",
+            "Launch and maintenance": "الإطلاق والصيانة"
+          },
         },
         cta: {
           title: "هل تحتاج إلى مساعدة في مشروعك؟",
           description: "دعنا نناقش كيف يمكنني مساعدتك في تحقيق أهدافك",
           button: "تواصل معي"
+        },
+        tariff: {
+          button: "أنظر التعريفة",
         }
       },
       projects: {

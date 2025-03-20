@@ -178,15 +178,15 @@ export default function Experience() {
 
   // Update the return section of your Experience component
  // Update the return section of your Experience component
-return (
+ return (
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 bg-gray-100 dark:bg-gray-900">
-    <motion.h1 
+    <motion.h2 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
     >
       {t('experience.title')}
-    </motion.h1>
+    </motion.h2>
 
     <div className="timeline-container">
       {/* Timeline line */}

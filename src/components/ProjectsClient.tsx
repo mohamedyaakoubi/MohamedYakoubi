@@ -71,9 +71,9 @@ useEffect(() => {
   return (
     <div className="min-h-screen py-32 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-12 text-center">
+        <h2 className="text-4xl font-bold mb-12 text-center">
           {t('projects.title')}
-        </h1>
+        </h2>
         <ProjectsList initialRepos={repos} />
       </div>
     </div>

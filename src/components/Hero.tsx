@@ -199,28 +199,25 @@ export function Hero() {
   <div className="max-w-4xl mx-auto">
     {/* Static content rendered immediately for fast LCP */}
          {/* Add this noscript tag for crawlers */}
-         <noscript>
-             <div>Mohamed Yaakoubi | Emerging AI and Technology Specialist</div>
-           </noscript>
-    <div id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
-      <span className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
-        {t('hero.greeting')}
-      </span>
+         <div id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
+  <h2 className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
+    {t('hero.greeting')}
+  </h2>
       
-      {/* Name - rendered immediately without animations */}
-      <span 
-        className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
-        style={{
-          fontWeight: 700,
-        }}
-      >
-        {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
-      </span>
+  {/* Name - rendered immediately without animations */}
+  <h3 
+    className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
+    style={{
+      fontWeight: 700,
+    }}
+  >
+    {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
+  </h3>
       
-      <span className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
-        {t('hero.tagline')}
-      </span>
-    </div>
+  <h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
+    {t('hero.tagline')}
+  </h2>
+</div>
 
             {/* Animated elements render after critical content loads */}
             {mounted && (

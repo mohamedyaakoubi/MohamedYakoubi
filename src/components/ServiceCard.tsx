@@ -16,28 +16,29 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="service-card group bg-white dark:bg-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
+      className="service-card group bg-white dark:bg-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <div className="p-6">
-{/* Header with RTL support */}
-<div className="flex items-center mb-4 w-full">
+      {/* Content area */}
+      <div className="p-6 flex-grow flex flex-col">
+        {/* Header with RTL support */}
+        <div className="flex items-center mb-4 w-full">
   {!isRTL ? (
-    // LTR Layout - Keep as is
+    // LTR Layout
     <div className="flex items-center gap-3 w-full">
       <div className="p-3 bg-blue-500/10 rounded-lg">
         <service.icon className="w-6 h-6 text-blue-500" />
       </div>
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
         {t(`services.names.${service.name}`)}
-      </h2>
+      </h3>
     </div>
   ) : (
     // RTL Layout - Fixed for Arabic
     <div className="flex items-center gap-3 w-full">
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-white text-right w-full">
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white text-right w-full">
         {t(`services.names.${service.name}`)}
-      </h2>
+      </h3>
       <div className="p-3 bg-blue-500/10 rounded-lg flex-shrink-0">
         <service.icon className="w-6 h-6 text-blue-500" />
       </div>
@@ -45,8 +46,8 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
   )}
 </div>
 
-        {/* Description */}
-        <p className={`text-gray-600 dark:text-gray-300 mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+          {/* Description */}
+          <p className={`text-gray-600 dark:text-gray-300 mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
           {t(`services.descriptions.${service.name}`)}
         </p>
 
@@ -89,25 +90,57 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
             </ol>
           </div>
         )}
-       
-{/* Get Started Button */}
-<div className={`mt-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-  <Link
-    href="/contact"
-    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-  >
-    <span>{t('services.cta.button')}</span>
-    {isRTL ? (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rotate-180" viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-      </svg>
-    ) : (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-      </svg>
-    )}
-  </Link>
-</div>
+       {/* Spacer to push buttons to bottom */}
+       <div className="flex-grow"></div>
+        
+        {/* Buttons with justify-between for extreme positioning */}
+        <div className="mt-6 flex justify-between w-full items-center">
+          {/* Contact Button - At extreme left/right based on language */}
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            <span>{t('services.cta.button')}</span>
+            {isRTL ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            )}
+          </Link>
+          
+          {/* Spacer or Tariff Button at extreme right/left */}
+          {service.tariffLink ? (
+            <a
+              href={service.tariffLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-colors tariff-button"
+              aria-label={t('services.tariff.button')}
+            >
+              {isRTL ? (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>{t('services.tariff.button')}</span>
+                </>
+              ) : (
+                <>
+                  <span>{t('services.tariff.button')}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </>
+              )}
+            </a>
+          ) : (
+            <div></div> /* Empty div as spacer when no tariff link */
+          )}
+        </div>
       </div>
     </motion.div>
   )

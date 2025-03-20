@@ -17,4 +17,5 @@ export interface Service {
   category: ServiceCategory;
   features: string[];
   process?: string[];
+  tariffLink?: string; // Optional link to tariff or pricing
 }

@@ -38,13 +38,13 @@ export default function Contact() {
     <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 py-32">
         <div className="max-w-4xl mx-auto">
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
           >
             {t('contact.title')}
-          </motion.h1>
+          </motion.h2>
 
 
         <div className="grid md:grid-cols-2 gap-12">

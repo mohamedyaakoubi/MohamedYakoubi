@@ -2,7 +2,8 @@ import { Service } from "@/types/services"
 import { 
   FaLanguage, FaEdit, FaFileAlt, FaSearch, 
   FaHeadset, FaLaptop, FaGraduationCap, 
-  FaTasks, FaChartLine 
+  FaTasks, FaChartLine, 
+  FaGlobe
 } from "react-icons/fa"
 
 export const services: Service[] = [
@@ -139,6 +140,27 @@ export const services: Service[] = [
       "Customized development plan",
       "Ongoing mentorship and support"
     ]
-  }
+  },
+  {
+    name: "Web Development & Digital Presence",
+    icon: FaGlobe,
+    category: "Tech & IT Services",
+    description: "Professional web development services to establish and enhance your digital presence.",
+    features: [
+      "Responsive website development",
+      "Portfolio and showcase websites",
+      "AI-enhanced website features",
+      "Content creation and management",
+      "Multilingual support"
+    ],
+    process: [
+      "Requirements analysis and planning",
+      "Design and development",
+      "Content creation and integration",
+      "Testing and quality assurance",
+      "Launch and maintenance"
+    ],
+    tariffLink: "https://tariff-mu.vercel.app/"
+  },
   
 ];

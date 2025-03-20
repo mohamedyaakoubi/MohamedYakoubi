@@ -97,7 +97,9 @@ export default {
         "Technical Support & IT Consulting": "Technical Support & IT Consulting",
         "Educational Consulting": "Educational Consulting",
         "Project Management & Research Assistance": "Project Management & Research Assistance",
-        "Career Development Coaching": "Career Development Coaching"
+        "Career Development Coaching": "Career Development Coaching",
+        "Web Development & Digital Presence": "Web Development & Digital Presence",
+
       },
       descriptions: {
         "Translation & Localization": "Precise and culturally-aware translation and localization services for Arabic and English",
@@ -106,7 +108,10 @@ export default {
         "Technical Support & IT Consulting": "Technical support, assistance, and consulting for various digital needs",
         "Educational Consulting": "Guidance in academic pathways, scholarships, and professional skill development",
         "Project Management & Research Assistance": "Efficient project management and comprehensive research to support decision-making",
-        "Career Development Coaching": "Personalized coaching for career growth and success"
+        "Career Development Coaching": "Personalized coaching for career growth and success",
+        "Web Development & Digital Presence": "Professional web development services to establish and enhance your digital presence.",
+
+        
       },
       features: {
         "Translation & Localization": {
@@ -157,7 +162,14 @@ export default {
           "Job search strategies": "Job search strategies",
           "Professional networking guidance": "Professional networking guidance",
           "Long-term career planning": "Long-term career planning"
-        }
+        },
+        "Web Development & Digital Presence": {
+          "Responsive website development": "Responsive website development",
+          "Portfolio and showcase websites": "Portfolio and showcase websites",
+          "AI-enhanced website features": "AI-enhanced website features",
+          "Content creation and management": "Content creation and management",
+          "Multilingual support": "Multilingual support"
+        },
       },
       process: {
         "Translation & Localization": {
@@ -202,12 +214,22 @@ export default {
           "Skill and career assessment": "Skill and career assessment",
           "Customized development plan": "Customized development plan",
           "Ongoing mentorship and support": "Ongoing mentorship and support"
-        }
+        },
+        "Web Development & Digital Presence": {
+          "Requirements analysis and planning": "Requirements analysis and planning",
+          "Design and development": "Design and development",
+          "Content creation and integration": "Content creation and integration",
+          "Testing and quality assurance": "Testing and quality assurance",
+          "Launch and maintenance": "Launch and maintenance"
+        },
       },
       cta: {
         title: "Need help with your project?",
         description: "Let's discuss how I can help you achieve your goals",
         button: "Contact Me"
+      },
+      tariff: {
+        button: "View Tariff"
       }
     },
 
