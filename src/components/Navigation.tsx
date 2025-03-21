@@ -151,17 +151,19 @@ export function Navigation() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleNavigation(e, link)}
-                      className={`block py-2 ${
-                        pathname === link.href 
-                          ? "text-blue-500" 
-                          : "text-gray-300 hover:text-white"
-                      }`}
-                    >
-                      {link.label}
-                    </a>
+                 <a
+  href={link.href}
+  onClick={(e) => handleNavigation(e, link)}
+  className={`block py-2 ${
+    pathname === link.href 
+      ? "text-blue-500" 
+      : "text-gray-300 hover:text-white"
+  } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded`}
+  aria-current={pathname === link.href ? "page" : undefined}
+  role="menuitem"
+>
+  {link.label}
+</a>
                   </motion.li>
                 ))}
               </ul>

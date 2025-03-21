@@ -141,14 +141,16 @@ function ExperienceContent({ experience }: ExperienceContentProps) {
         <p className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
           <Building2 className={language === 'ar' ? 'ml-2' : 'mr-2'} />
           {experience.companyUrl ? (
-            <a
-              href={experience.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-500 transition-colors underline decoration-dotted"
-            >
-              {t(`experience.companies.${experience.company}`)}
-            </a>
+       <a
+       href={experience.companyUrl}
+       target="_blank"
+       rel="noopener noreferrer"
+       className="hover:text-blue-500 transition-colors underline decoration-dotted"
+       aria-label={`${t(`experience.companies.${experience.company}`)} ${t('common.website')}`}
+       title={`${t('common.visitWebsite')}: ${t(`experience.companies.${experience.company}`)}`}
+     >
+       {t(`experience.companies.${experience.company}`)}
+     </a>
           ) : (
             t(`experience.companies.${experience.company}`)
           )}

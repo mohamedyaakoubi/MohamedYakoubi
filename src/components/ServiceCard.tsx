@@ -114,13 +114,14 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
           
           {/* Spacer or Tariff Button at extreme right/left */}
           {service.tariffLink ? (
-            <a
-              href={service.tariffLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-colors tariff-button"
-              aria-label={t('services.tariff.button')}
-            >
+        <a
+        href={service.tariffLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-colors tariff-button"
+        aria-label={`${t('services.tariff.button')} - ${t(`services.names.${service.name}`)}`}
+        title={`${t('services.tariff.viewTariff')} - ${t(`services.names.${service.name}`)}`}
+      >
               {isRTL ? (
                 <>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
