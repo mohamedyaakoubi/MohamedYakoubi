@@ -1,4 +1,10 @@
-// This MUST be in a directory named 'sitemap' with a file named 'page.tsx'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Site Map | Mohamed Yaakoubi',
+  description: 'Complete navigation map of Mohamed Yaakoubi\'s portfolio website, providing easy access to all sections and pages.',
+}
+
 export default function HTMLSitemap() {
     return (
       <div className="container mx-auto p-8">
@@ -12,4 +18,4 @@ export default function HTMLSitemap() {
         </ul>
       </div>
     )
-  }
+}
