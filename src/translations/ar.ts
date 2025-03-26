@@ -95,6 +95,7 @@ export default {
           "Education & Training": "التعليم والتدريب",
           "Business & Research": "الأعمال والبحوث"
         },
+        
         sections: {
             features: "المميزات",
             workProcess: "مراحل العمل"
