@@ -139,7 +139,7 @@ export default function GithubReposList({ repos, filter }: GithubReposListProps)
                   <ProjectLink
                     href={repo.homepage}
                     icon={FaExternalLinkAlt}
-                    label={t('projects.repository.links.viewDemo')}
+                    label={t('projects.repository.links.liveDemo')}
                   />
                 )}
               </div>

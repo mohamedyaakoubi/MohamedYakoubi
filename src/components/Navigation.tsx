@@ -40,7 +40,7 @@ const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
     onClick={onClick}
     className={`
       relative px-4 py-2 
-      ${isActive ? 'text-blue-500' : 'text-gray-300 hover:text-white'}
+      ${isActive ? 'text-blue-300' : 'text-gray-300 hover:text-white'}
     `}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -49,7 +49,7 @@ const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
     {isActive && (
       <motion.div
         layoutId="underline"
-        className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500"
+        className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-300"
       />
     )}
   </motion.a>
@@ -151,14 +151,14 @@ export function Navigation() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                 <a
+    <a
   href={link.href}
   onClick={(e) => handleNavigation(e, link)}
   className={`block py-2 ${
     pathname === link.href 
-      ? "text-blue-500" 
+      ? "text-blue-300" 
       : "text-gray-300 hover:text-white"
-  } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded`}
+  } focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 rounded`}
   aria-current={pathname === link.href ? "page" : undefined}
   role="menuitem"
 >

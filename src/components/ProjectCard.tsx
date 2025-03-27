@@ -94,7 +94,7 @@ function ProjectLink({ href, icon: Icon, label }: ProjectLinkProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center text-sm text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+      className="flex items-center text-sm text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
