@@ -1,4 +1,4 @@
-import type { Viewport } from 'next'
+import type { Viewport, Metadata } from 'next'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 
@@ -28,7 +28,14 @@ const ProjectsClient = dynamic(() => import('@/components/ProjectsClient'), {
   loading: () => <ProjectsLoading />
 })
 
-// Define viewport separately - this is now in a server component
+export const metadata: Metadata = {
+  title: 'Projects | Mohamed Yaakoubi',
+  description: 'Explore Mohamed Yaakoubi\'s portfolio of projects in AI, web development, and localization. View featured projects and GitHub repositories.',
+  alternates: {
+    canonical: 'https://mohamed-yakoubi.vercel.app/projects'
+  }
+}
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -42,8 +49,22 @@ export const viewport: Viewport = {
 
 export default function ProjectsPage() {
   return (
-    <Suspense fallback={<ProjectsLoading />}>
-      <ProjectsClient />
-    </Suspense>
+    <>
+      {/* Add static pre-rendered content for search engines */}
+      <div className="sr-only">
+        <h1>Projects - Mohamed Yaakoubi</h1>
+        <p>Explore a collection of projects developed by Mohamed Yaakoubi, including web applications, AI solutions, and localization tools.</p>
+        <ul>
+          <li>Web Development Projects</li>
+          <li>AI & Machine Learning Projects</li>
+          <li>Translation & Localization Tools</li>
+          <li>GitHub Repositories</li>
+        </ul>
+      </div>
+
+      <Suspense fallback={<ProjectsLoading />}>
+        <ProjectsClient />
+      </Suspense>
+    </>
   )
 }

@@ -33,7 +33,7 @@ interface NavigationLink {
   priority: number;
 }
 
-// Components
+
 const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
   <motion.a
     href={href}
@@ -44,6 +44,7 @@ const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
     `}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
+    aria-current={isActive ? "page" : undefined}
   >
     {label}
     {isActive && (

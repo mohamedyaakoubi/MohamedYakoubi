@@ -1,7 +1,14 @@
-import type { Viewport } from 'next'
+import type { Viewport, Metadata } from 'next'
 import ContactClient from '@/components/ContactClient'
 
-// Define viewport separately - this is now in a server component
+export const metadata: Metadata = {
+  title: 'Contact | Mohamed Yaakoubi',
+  description: 'Get in touch with Mohamed Yaakoubi for AI solutions, web development, or language services. Contact form and professional social profiles.',
+  alternates: {
+    canonical: 'https://mohamed-yakoubi.vercel.app/contact'
+  }
+}
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -13,7 +20,22 @@ export const viewport: Viewport = {
   ],
 }
 
-// Server component
 export default function ContactPage() {
-  return <ContactClient />
+  return (
+    <>
+      {/* Add static pre-rendered content for search engines */}
+      <div className="sr-only">
+        <h1>Contact Mohamed Yaakoubi</h1>
+        <p>Get in touch with Mohamed Yaakoubi for inquiries about AI solutions, web development, translation, and localization services.</p>
+        <ul>
+          <li>Professional Email Contact</li>
+          <li>Contact Form</li>
+          <li>Social Media Profiles</li>
+          <li>Professional Networks</li>
+        </ul>
+      </div>
+      
+      <ContactClient />
+    </>
+  )
 }
