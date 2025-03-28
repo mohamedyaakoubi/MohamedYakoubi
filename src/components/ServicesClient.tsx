@@ -25,9 +25,9 @@ export default function Services() {
     <div className="min-h-screen py-32 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <motion.div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {t('services.title')}
-          </h1>
+          </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t('services.description')}
           </p>
