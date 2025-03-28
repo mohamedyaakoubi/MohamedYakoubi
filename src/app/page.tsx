@@ -1,5 +1,6 @@
 import type { Viewport, Metadata } from 'next'
 import HomeClient from '@/components/HomeClient'
+import { StaticHome } from '@/components/StaticHome'
 
 // Keep these export constants
 export const dynamic = 'force-static';
@@ -27,22 +28,9 @@ export const viewport: Viewport = {
 export default function HomePage() {
   return (
     <>
-      <div style={{
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        width: '1px',
-        height: '1px',
-        padding: '10px',
-        margin: '0',
-        overflow: 'hidden',
-        clip: 'rect(0, 0, 0, 0)',
-        whiteSpace: 'nowrap',
-        borderWidth: '0',
-      }}>
-        Mohamed Yaakoubi | Emerging AI and Technology Specialist
-      </div>
-      
+      {/* Remove duplicate StaticSEO component */}
+      {/* Include ONLY ONE h1 via StaticHome */}
+      <StaticHome />
       <HomeClient />
     </>
   )

@@ -50,7 +50,7 @@ export function CompanyLogos() {
   return (
     <section className="py-12 bg-gray-100 dark:bg-gray-900 overflow-hidden" ref={containerRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h3
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
           variants={{
@@ -63,7 +63,7 @@ export function CompanyLogos() {
           className="text-2xl font-bold mb-10 text-gray-800 dark:text-white"
         >
           {t('companies.workedwith')}
-        </motion.h3>
+        </motion.h2>
         
         {/* Logos container with continuous horizontal scroll */}
         <div className="relative">
