@@ -36,19 +36,19 @@ export default function Services() {
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                selectedCategory === category
-                  ? "bg-blue-500 text-white"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100"
-              }`}
-            >
-              {category === "all" 
-                ? t('services.categories.all') 
-                : t(`services.categories.${category}`)}
-            </button>
+           <button
+           key={category}
+           onClick={() => setSelectedCategory(category)}
+           className={`px-4 py-2 rounded-full text-sm transition-colors ${
+             selectedCategory === category
+               ? "bg-blue-700 text-white" // Changed from blue-500 to blue-700 for better contrast
+               : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100"
+           }`}
+         >
+           {category === "all" 
+             ? t('services.categories.all') 
+             : t(`services.categories.${category}`)}
+         </button>
           ))}
         </div>
 
@@ -61,11 +61,11 @@ export default function Services() {
 
         {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl p-8 text-white text-center"
-        >
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 0.2 }}
+  className="bg-gradient-to-r from-blue-700 to-purple-700 rounded-xl p-8 text-white text-center" // Changed from blue-500/purple-500
+>
           <h2 className="text-3xl font-bold mb-4">
             {t('services.cta.title')}
           </h2>
@@ -73,14 +73,14 @@ export default function Services() {
             {t('services.cta.description')}
           </p>
           <Link
-            href="/contact"
-            className="inline-flex items-center px-6 py-3 bg-white text-blue-500 rounded-lg
-                     hover:bg-blue-50 transition-colors duration-300 font-medium"
-          >
-            <FaEnvelope className={`${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
-            {t('services.cta.button')}
-          </Link>
-        </motion.div>
+    href="/contact"
+    className="inline-flex items-center px-6 py-3 bg-white text-blue-700 rounded-lg
+              hover:bg-blue-50 transition-colors duration-300 font-medium" // Updated text color
+  >
+    <FaEnvelope className={`${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
+    {t('services.cta.button')}
+  </Link>
+</motion.div>
       </div>
     </div>
   )

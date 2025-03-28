@@ -97,10 +97,10 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         <div className="mt-6 flex justify-between w-full items-center">
           {/* Contact Button - At extreme left/right based on language */}
           <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            <span>{t('services.cta.button')}</span>
+  href="/contact"
+  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors" // Changed from blue-500
+>
+  <span>{t('services.cta.button')}</span>
             {isRTL ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rotate-180" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -114,14 +114,14 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
           
           {/* Spacer or Tariff Button at extreme right/left */}
           {service.tariffLink ? (
-        <a
-        href={service.tariffLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-colors tariff-button"
-        aria-label={`${t('services.tariff.button')} - ${t(`services.names.${service.name}`)}`}
-        title={`${t('services.tariff.viewTariff')} - ${t(`services.names.${service.name}`)}`}
-      >
+  <a
+  href={service.tariffLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-700 to-purple-800 text-white rounded-lg hover:opacity-90 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-colors tariff-button" // Changed from blue-500/purple-500
+  aria-label={`${t('services.tariff.button')} - ${t(`services.names.${service.name}`)}`}
+  title={`${t('services.tariff.viewTariff')} - ${t(`services.names.${service.name}`)}`}
+>
               {isRTL ? (
                 <>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
