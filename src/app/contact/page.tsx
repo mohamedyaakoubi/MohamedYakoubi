@@ -24,7 +24,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Add static pre-rendered content for search engines */}
-      <div className="sr-only">
+      <div className="sr-only" aria-hidden="false">
         <h1>Contact Mohamed Yaakoubi</h1>
         <p>Get in touch with Mohamed Yaakoubi for inquiries about AI solutions, web development, translation, and localization services.</p>
         <ul>

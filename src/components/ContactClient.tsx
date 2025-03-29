@@ -279,14 +279,15 @@ export default function Contact() {
             </div>
             
             <motion.button
-              type="submit"
-              disabled={state.submitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
-            </motion.button>
+  type="submit"
+  disabled={state.submitting}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  className="w-full py-3 px-4 bg-blue-700 text-white rounded-lg font-medium hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+  aria-label={state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
+>
+  {state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
+</motion.button>
           </motion.form>
         </div>
 
