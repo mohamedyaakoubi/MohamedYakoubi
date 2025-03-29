@@ -72,24 +72,26 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
 
         {/* Process */}
         {service.process && (
-          <div className="mb-6">
-            <h3 className={`font-semibold text-gray-800 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
-              {t('services.sections.workProcess')}
-            </h3>
-            <ol className={`service-list ${isRTL ? 'rtl-list' : ''}`}>
-              {service.process?.map((step, i) => (
-                <li key={step} className={`service-item ${isRTL ? 'rtl-item' : ''}`}>
-                  <div className={`number-wrapper ${isRTL ? 'order-last' : 'order-first'}`}>
-                    <span className="service-number">{`${i + 1}.`}</span>
-                  </div>
-                  <div className="service-text">
-                    {t(`services.process.${service.name}.${step}`)}
-                  </div>
-                </li>
-              ))}
-            </ol>
+  <div className="mb-6">
+    <h3 className={`font-semibold text-gray-800 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+      {t('services.sections.workProcess')}
+    </h3>
+    <ol className={`service-list ${isRTL ? 'rtl-list' : ''}`}>
+      {service.process?.map((step, i) => (
+        <li key={step} className={`service-item ${isRTL ? 'rtl-item' : ''}`}>
+          <div className={`number-wrapper ${isRTL ? 'order-last' : 'order-first'}`}>
+            <span className="service-number font-semibold">
+              {`${i + 1}.`}
+            </span>
           </div>
-        )}
+          <div className="service-text">
+            {t(`services.process.${service.name}.${step}`)}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+)}
        {/* Spacer to push buttons to bottom */}
        <div className="flex-grow"></div>
         

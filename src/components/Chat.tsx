@@ -275,9 +275,9 @@ const handleSubmit = async (e: React.FormEvent) => {
           <div className="flex flex-col h-[400px]">
          {/* Header */}
 <div className="p-2.5 border-b border-gray-200 dark:border-gray-800"> {/* Reduced from p-4 to p-2.5 */}
-  <h3 className="font-medium text-sm bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+  <h2 className="font-medium text-sm bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
     {t('chat.title')}
-  </h3>
+  </h2>
 </div>
           
       

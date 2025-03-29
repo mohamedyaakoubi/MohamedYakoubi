@@ -24,7 +24,7 @@ export default function ExperiencePage() {
   return (
     <>
       {/* Add static pre-rendered content for search engines */}
-      <div className="sr-only">
+      <div className="sr-only" aria-hidden="false">
         <h1>Professional Experience - Mohamed Yaakoubi</h1>
         <p>Explore Mohamed Yaakoubi's professional experience in AI solutions, translation, and localization at companies like DeepL, RWS (Meta AI), Uber, and Volga Partners.</p>
         <ul>

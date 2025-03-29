@@ -24,7 +24,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Add static pre-rendered content for search engines */}
-      <div className="sr-only">
+      <div className="sr-only" aria-hidden="false">
         <h1>Professional Services - Mohamed Yaakoubi</h1>
         <p>Discover professional services in AI solutions, web development, translation, and localization by Mohamed Yaakoubi, an emerging AI and technology specialist.</p>
         <ul>

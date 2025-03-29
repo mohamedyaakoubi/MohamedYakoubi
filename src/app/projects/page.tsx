@@ -51,7 +51,7 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Add static pre-rendered content for search engines */}
-      <div className="sr-only">
+      <div className="sr-only" aria-hidden="false">
         <h1>Projects - Mohamed Yaakoubi</h1>
         <p>Explore a collection of projects developed by Mohamed Yaakoubi, including web applications, AI solutions, and localization tools.</p>
         <ul>
