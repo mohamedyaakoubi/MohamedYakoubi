@@ -68,9 +68,9 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    formats: ['image/webp'],
+    // CHANGE THIS LINE - only these two formats are supported
+    formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000, // 1 year
-    // Add these options for better error handling
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     unoptimized: process.env.NODE_ENV === 'development', // Only optimize in production
@@ -82,10 +82,7 @@ const nextConfig = {
   
   // Updated experimental options
   experimental: {
-    // Either keep optimizeCss true and add critters package
     optimizeCss: true,
-    // Or set it to false if you don't want to install critters
-    // optimizeCss: false,
     optimizePackageImports: ['react-icons', 'framer-motion'],
     webpackBuildWorker: true, // Speed up builds
   }
