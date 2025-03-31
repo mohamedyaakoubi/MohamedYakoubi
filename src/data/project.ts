@@ -9,7 +9,7 @@ export const featuredProjects: Project[] = [
     technologies: ["React", "Firebase", "Azure AI", "Prompt Engineering"],
     demoUrl: "https://notyet-demo.vercel.app",
     githubUrl: "https://github.com/mohamedyaakoubi/notyet",
-    image: "/NotYet.PNG",
+    image: "/NotYet.webp",
     features: [
       "AI-powered career and education recommendations",
       "Personalized guidance based on user input",
@@ -26,7 +26,7 @@ export const featuredProjects: Project[] = [
     technologies: ["React", "Firebase"],
     demoUrl: "https://docu-med.vercel.app/",
     githubUrl: "https://github.com/mohamedyaakoubi/documed", 
-    image: "/DocuMed.PNG",
+    image: "/DocuMed.webp",
     features: [
       "Secure cloud-based storage for medical records",
       "User-friendly patient management system",
@@ -43,7 +43,7 @@ export const featuredProjects: Project[] = [
     technologies: ["Next.js", "Azure Cognitive Search", "GPT-4", "API Query Processing"],
     demoUrl: "https://potential-kegz.vercel.app/",
     githubUrl: "https://github.com/mohamedyaakoubi/potential",
-    image: "/Potential.PNG",
+    image: "/Potential.webp",
     features: [
       "Natural language dataset search powered by GPT-4",
       "Real-time API indexing and retrieval",

@@ -87,7 +87,7 @@ export default function GithubReposList({ repos, filter }: GithubReposListProps)
             {repo.homepage && (
               <div className="group relative h-48 w-full overflow-hidden bg-gray-100 dark:bg-gray-700">
                 <Image
-                  src={`/projects/${repo.name}.PNG`}
+                  src={`/projects/${repo.name}.webp`}
                   alt={repo.name}
                   fill
                   className="object-cover object-top transition-all duration-500 group-hover:scale-110"
