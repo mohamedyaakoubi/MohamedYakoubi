@@ -8,6 +8,7 @@ import { ThemeToggle } from "./theme-toggle"
 import { LanguageSelector } from "./LanguageSelector"
 import { PageTransition } from "./PageTransition"
 import dynamic from 'next/dynamic'
+import { Footer } from "./Footer"
 
 // Dynamically import non-critical components with lower priority
 const ScrollToTopButton = dynamic(() => import('./ui/ScrollToTopButton'), { 
@@ -59,7 +60,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <Navigation />
         {/* Render main content immediately */}
         <PageTransition>{children}</PageTransition>
-        
+        <Footer />
         {/* Defer rendering of non-critical UI elements */}
         {mounted && (
           <>

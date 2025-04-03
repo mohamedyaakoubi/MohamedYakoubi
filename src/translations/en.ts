@@ -534,5 +534,15 @@ projects: {
   },
   companies: {
     workedwith: "Companies I've Worked With"
-  }
+  },
+  footer: {
+    sitemap: "Site Map",
+    completeSitemap: "Complete Site Map",
+    contact: "Contact",
+    email: "Email",
+    phone: "Phone",
+    location: "Sfax, Tunisia",
+    connect: "Connect",
+    copyright: "Mohamed Yaakoubi. All rights reserved.",
+  },
 }

@@ -59,7 +59,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="1200"/>
         <meta property="og:image:alt" content="Mohamed Yaakoubi - Emerging AI and Technology Specialist"/>
         <meta property="og:description" content="Driven, adaptable AI specialist with expertise in translations, localization, and technology solutions. Experience at DeepL, RWS (Meta AI), Uber, and Volga Partners."/>
-        <meta property="og:site_name" content="Mohamed Yaakoubi Portfolio"/>
+        <meta property="og:site_name" content="Mohamed Yaakoubi"/>
         <meta property="og:locale" content="en_US"/>
         <meta property="og:locale:alternate" content="fr_FR"/>
         <meta property="og:locale:alternate" content="ar_AR"/>

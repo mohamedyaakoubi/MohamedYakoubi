@@ -540,5 +540,15 @@ export default {
       },
       companies: {
         workedwith: "Entreprises avec lesquelles j'ai collaboré"
-      }
+      },
+      footer: {
+        sitemap: "Plan du Site",
+        completeSitemap: "Plan du Site Complet",
+        contact: "Contact",
+        email: "E-mail",
+        phone: "Téléphone",
+        location: "Sfax, Tunisie",
+        connect: "Réseau",
+        copyright: "Mohamed Yaakoubi. Tous droits réservés.",
+      },
     }

@@ -552,5 +552,15 @@ skills: {
   },
   companies: {
     workedwith: "الشركات التي عملت معها",
-  }
+  },
+  footer: {
+    sitemap: "خريطة الموقع",
+    completeSitemap: "خريطة الموقع الكاملة",
+    contact: "اتصل بنا",
+    email: "البريد الإلكتروني",
+    phone: "الهاتف",
+    location: "صفاقس، تونس",
+    connect: "تواصل",
+    copyright: "محمد يعقوبي. جميع الحقوق محفوظة.",
+  },
 }

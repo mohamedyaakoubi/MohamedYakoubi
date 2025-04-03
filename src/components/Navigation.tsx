@@ -93,19 +93,20 @@ export function Navigation() {
   const sortedLinks = [...navigationLinks].sort((a, b) => a.priority - b.priority)
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
-      <nav className="container mx-auto px-6 py-4">
+      <nav className="container mx-auto px-6 py-4" aria-label="Main navigation">
         <div className="flex items-center justify-between">
-          <motion.a href="/#home" className="text-xl font-bold text-white">
+          <motion.a href="/" className="text-xl font-bold text-white">
             {t('navigation.logo')}
           </motion.a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8">
+          <ul className="hidden md:flex space-x-8" role="menubar">
             {sortedLinks.map((link) => (
               <motion.li
                 key={link.href}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
+                role="none"
               >
                 <NavLink
                   href={link.href}
