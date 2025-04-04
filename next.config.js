@@ -26,6 +26,10 @@ const nextConfig = {
       {
         source: '/api/chat',
         destination: '/api/chat'
+      },
+      {
+        source: '/.well-known/discord',
+        destination: '/.well-known/discord'
       }
     ];
   },
