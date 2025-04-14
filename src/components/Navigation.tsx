@@ -33,7 +33,7 @@ interface NavigationLink {
   priority: number;
 }
 
-
+// Updated NavLink component to support proper ARIA roles
 const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
   <motion.a
     href={href}
@@ -44,6 +44,7 @@ const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => (
     `}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
+    role="menuitem"
     aria-current={isActive ? "page" : undefined}
   >
     {label}
@@ -91,6 +92,7 @@ export function Navigation() {
 
   const navigationLinks = createNavigationLinks(t)
   const sortedLinks = [...navigationLinks].sort((a, b) => a.priority - b.priority)
+  
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
       <nav className="container mx-auto px-6 py-4" aria-label="Main navigation">
@@ -99,27 +101,33 @@ export function Navigation() {
             {t('navigation.logo')}
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8" role="menubar">
-            {sortedLinks.map((link) => (
-              <motion.li
-                key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                role="none"
-              >
-                <NavLink
-                  href={link.href}
-                  label={link.label}
-                  isActive={pathname === link.href}
-                  onClick={(e) => handleNavigation(e, link)}
-                />
-              </motion.li>
-            ))}
-          </ul>
+          {/* Desktop Navigation - Updated with proper ARIA roles */}
+          <div className="hidden md:block">
+            <ul 
+              className="flex space-x-8" 
+              role="menubar" 
+              aria-label="Main menu"
+            >
+              {sortedLinks.map((link) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  role="none"
+                >
+                  <NavLink
+                    href={link.href}
+                    label={link.label}
+                    isActive={pathname === link.href}
+                    onClick={(e) => handleNavigation(e, link)}
+                  />
+                </motion.li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Mobile Menu Button */}
-            <motion.button
+          {/* Mobile Menu Button */}
+          <motion.button
             className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.05 }}
@@ -132,8 +140,8 @@ export function Navigation() {
           </motion.button>
         </div>
 
-         {/* Mobile Navigation */}
-         <AnimatePresence>
+        {/* Mobile Navigation */}
+        <AnimatePresence>
           {isMenuOpen && (
             <motion.div
               id="mobile-navigation"
@@ -141,10 +149,10 @@ export function Navigation() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden"
-              role="navigation"
+              role="menu"
               aria-label="Mobile navigation"
             >
-              <ul className="pt-4 pb-2">
+              <ul role="menu" className="pt-4 pb-2">
                 {sortedLinks.map((link, index) => (
                   <motion.li
                     key={link.href}
@@ -152,20 +160,21 @@ export function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ delay: index * 0.1 }}
+                    role="none"
                   >
-    <a
-  href={link.href}
-  onClick={(e) => handleNavigation(e, link)}
-  className={`block py-2 ${
-    pathname === link.href 
-      ? "text-blue-300" 
-      : "text-gray-300 hover:text-white"
-  } focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 rounded`}
-  aria-current={pathname === link.href ? "page" : undefined}
-  role="menuitem"
->
-  {link.label}
-</a>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavigation(e, link)}
+                      className={`block py-2 ${
+                        pathname === link.href 
+                          ? "text-blue-300" 
+                          : "text-gray-300 hover:text-white"
+                      } focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 rounded`}
+                      aria-current={pathname === link.href ? "page" : undefined}
+                      role="menuitem"
+                    >
+                      {link.label}
+                    </a>
                   </motion.li>
                 ))}
               </ul>
