@@ -17,7 +17,8 @@ const companies = [
   { name: "Uber", logo: "/companies/uber_logo.svg" },
   { name: "Unbabel", logo: "/companies/Unbabel_logo.webp" },
   { name: "Volga", logo: "/companies/volga_logo.png" },
-  { name: "Ubiai", logo: "/companies/ubi.png" }
+  { name: "Ubiai", logo: "/companies/ubi.png" },
+  { name: "Wirestock", logo: "/companies/wirestock.avif" }
 ]
 
 // Duplicate the array to create a seamless loop effect
