@@ -67,6 +67,7 @@ export default function RootLayout({
         <meta property="linkedin:title" content="Emerging AI and Technology Specialist | Machine Translation Post-Editor at DeepL | Linguistic AI Evaluator | Localization Coordinator"/>
         <meta property="linkedin:description" content="Driven, adaptable AI specialist with expertise in translations, localization, and technology solutions. Experience at DeepL, RWS (Meta AI), Uber, and Volga Partners."/>
         <meta property="og:see_also" content="https://github.com/mohamedyaakoubi"/>
+        <meta name="google-site-verification" content="7RkYGVcLiInN-GqBR9z9vjQKFjwWo54z1BsU0vemYi4" />
         <meta name="github:profile" content="mohamedyaakoubi"/>
         <meta name="github:card" content="summary"/>
         <meta name="twitter:card" content="summary_large_image"/>
