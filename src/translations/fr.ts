@@ -450,6 +450,8 @@ export default {
         title: "Expérience",
         current: "Présent",
         positions: {
+              "Video Metadata Writer": "Rédacteur de Métadonnées Vidéo",
+    "Technical Content Writer & Web Operations Assistant": "Rédacteur Technique & Assistant d'Opérations Web",
           "Linguistic Editor": "Éditeur linguistique",
           "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "Évaluateur IA linguistique - QA Arabe Maghrébin | Meta AI",
           "Localization Vendor Coordinator": "Coordinateur fournisseur de localisation",
@@ -461,6 +463,8 @@ export default {
           "Freelance Editor (Arabic to English & English to Arabic)": "Éditeur freelance (Arabe vers Anglais & Anglais vers Arabe)"
         },
         companies: {
+              "Wirestock": "Wirestock",
+    "UbiAi": "UbiAi",
           "DeepL": "DeepL",
           "RWS": "RWS",
           "Uber": "Uber",
@@ -476,6 +480,8 @@ export default {
           "Sfax (Remote)": "Sfax (Télétravail)"
         },
         periods: {
+              "Apr 2025 - Present": "Avr 2025 - Présent",
+    "Mar 2025 - Present": "Mars 2025 - Présent",
           "Feb 2025 - Present": "Fév 2025 - Présent",
           "Nov 2024 - Present": "Nov 2024 - Présent",
           "Jul 2024 - Present": "Juil 2024 - Présent",
@@ -485,6 +491,17 @@ export default {
           "Mar 2020 - Present": "Mars 2020 - Présent"
         },
         descriptions: {
+              // Wirestock
+    "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "Rédaction de métadonnées détaillées et structurées pour vidéos éditées, incluant l'articulation des objectifs, descriptions, justifications des coupes et choix audio",
+    "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow": "Segmentation de séquences vidéo brutes avec descriptions riches en justifications pour chaque segment afin de soutenir une narration claire et un flux narratif cohérent",
+    "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication": "Évaluation du contenu vidéo et des métadonnées pour leur cohérence, qualité et alignement avec la communication visuelle prévue",
+    "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "Collaboration avec l'équipe à distance via une communication constante et le respect des directives de contenu et des flux de travail structurés",
+    
+    // UbiAi
+    "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform": "Création de contenu de blog technique et de tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress",
+    "Performed website audits and diagnostics to improve UX, SEO, and platform performance": "Réalisation d'audits et diagnostics de sites web pour améliorer l'expérience utilisateur, le référencement et les performances de la plateforme",
+    "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts": "Collaboration avec le client pour planifier la stratégie de contenu, y compris les tutoriels vidéo potentiels et les efforts d'engagement communautaire",
+    "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery": "Rôle de liaison et coordinateur de tâches pour le support média externe et marketing afin d'assurer la livraison du projet",
           // DeepL
           "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "Évaluer et affiner les traductions arabe-anglais générées par l'IA pour la précision et la fluidité",
           "Identify translation errors, provide corrections, and explain linguistic issues": "Identifier les erreurs de traduction, fournir des corrections et expliquer les problèmes linguistiques",

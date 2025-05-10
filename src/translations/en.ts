@@ -381,6 +381,8 @@ projects: {
     title: "Experience",
     current: "Present",
     positions: {
+      "Video Metadata Writer": "Video Metadata Writer",
+      "Technical Content Writer & Web Operations Assistant": "Technical Content Writer & Web Operations Assistant",
       "Linguistic Editor": "Linguistic Editor",
       "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI",
       "Localization Vendor Coordinator": "Localization Vendor Coordinator",
@@ -392,6 +394,8 @@ projects: {
       "Freelance Editor (Arabic to English & English to Arabic)": "Freelance Editor (Arabic to English & English to Arabic)"
     },
     companies: {
+      "Wirestock": "Wirestock",
+      "UbiAi": "UbiAi",
       "DeepL": "DeepL",
       "RWS": "RWS",
       "Uber": "Uber",
@@ -407,6 +411,8 @@ projects: {
       "Sfax (Remote)": "Sfax (Remote)"
     },
     periods: {
+      "Apr 2025 - Present": "Apr 2025 - Present",
+      "Mar 2025 - Present": "Mar 2025 - Present",
       "Feb 2025 - Present": "Feb 2025 - Present",
       "Nov 2024 - Present": "Nov 2024 - Present",
       "Jul 2024 - Present": "Jul 2024 - Present",
@@ -416,6 +422,17 @@ projects: {
       "Mar 2020 - Present": "Mar 2020 - Present"
     },
     descriptions: {
+              // Wirestock
+        "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",
+        "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow": "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow",
+        "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication": "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication",
+        "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows",
+        
+        // UbiAi
+        "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform": "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform",
+        "Performed website audits and diagnostics to improve UX, SEO, and platform performance": "Performed website audits and diagnostics to improve UX, SEO, and platform performance",
+        "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts": "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts",
+        "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery": "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery",
         // DeepL
         "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency",
         "Identify translation errors, provide corrections, and explain linguistic issues": "Identify translation errors, provide corrections, and explain linguistic issues",

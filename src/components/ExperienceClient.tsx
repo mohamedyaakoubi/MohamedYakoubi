@@ -8,6 +8,32 @@ import { useTranslation } from '@/hooks/useTranslation'
 
 
 const experiences: Experience[] = [
+    {
+    title: "Video Metadata Writer",
+    company: "Wirestock",
+    companyUrl: "https://wirestock.io",
+    location: "Sfax (Remote)",
+    period: "Apr 2025 - Present",
+    description: [
+      "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",
+      "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow",
+      "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication",
+      "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows"
+    ],
+  },
+  {
+    title: "Technical Content Writer & Web Operations Assistant",
+    company: "UbiAi",
+    companyUrl: "https://ubiai.tools",
+    location: "Sfax (Remote)",
+    period: "Mar 2025 - Present",
+    description: [
+      "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform",
+      "Performed website audits and diagnostics to improve UX, SEO, and platform performance",
+      "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts",
+      "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery"
+    ],
+  },
   {
     title: "Linguistic Editor",
     company: "DeepL",

@@ -391,6 +391,8 @@ export default {
     title: "الخبرات",
     current: "حالياً",
     positions: {
+          "Video Metadata Writer": "كاتب بيانات وصفية للفيديو",
+    "Technical Content Writer & Web Operations Assistant": "كاتب محتوى تقني ومساعد عمليات الويب",
       "Linguistic Editor": "محرر لغوي",
       "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "مقيم الذكاء الاصطناعي اللغوي - ضمان جودة العربية المغاربية | ميتا للذكاء الاصطناعي",
       "Localization Vendor Coordinator": "منسق خدمات التوطين",
@@ -402,6 +404,8 @@ export default {
       "Freelance Editor (Arabic to English & English to Arabic)": "محرر مستقل (العربية إلى الإنجليزية والإنجليزية إلى العربية)"
     },
     companies: {
+          "Wirestock": "Wirestock",
+    "UbiAi": "UbiAI",
       "DeepL": "DeepL",
       "RWS": "RWS",
       "Uber": "Uber",
@@ -417,6 +421,8 @@ export default {
       "Sfax (Remote)": "صفاقس (عن بُعد)"
     },
     periods: {
+          "Apr 2025 - Present": "أبريل ٢٠٢٥ - حالياً",
+    "Mar 2025 - Present": "مارس ٢٠٢٥ - حالياً",
       "Feb 2025 - Present": "فبراير ٢٠٢٥ - حالياً",
       "Nov 2024 - Present": "نوفمبر ٢٠٢٤ - حالياً",
       "Jul 2024 - Present": "يوليو ٢٠٢٤ - حالياً",
@@ -426,6 +432,17 @@ export default {
       "Mar 2020 - Present": "مارس ٢٠٢٠ - حالياً"
     },
     descriptions: {
+          // Wirestock
+    "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "كتابة بيانات وصفية مفصلة ومنظمة للفيديوهات المحررة، بما في ذلك توضيح الأهداف النهائية، وأوصاف الفيديو، ومبررات القص، واختيارات الصوت",
+    "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow": "تقسيم لقطات الفيديو الخام وكتابة أوصاف غنية بالمبررات لكل مقطع لدعم السرد الواضح وتدفق القصة",
+    "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication": "تقييم محتوى الفيديو والبيانات الوصفية للتماسك والجودة والتوافق مع التواصل المرئي المقصود",
+    "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "التعاون مع الفريق عن بُعد من خلال التواصل المستمر والالتزام بإرشادات المحتوى وسير العمل المنظم",
+    
+    // UbiAi
+    "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform": "إنشاء محتوى مدونة تقني ودروس تعليمية حول ضبط نماذج اللغة الكبيرة، ومعالجة اللغة الطبيعية، ومواضيع الذكاء الاصطناعي لمنصة تعتمد على ووردبريس",
+    "Performed website audits and diagnostics to improve UX, SEO, and platform performance": "إجراء تدقيق وتشخيص للمواقع الإلكترونية لتحسين تجربة المستخدم، وتحسين محركات البحث، وأداء المنصة",
+    "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts": "التعاون مع العميل لتخطيط استراتيجية المحتوى، بما في ذلك دروس الفيديو المحتملة وجهود المشاركة المجتمعية",
+    "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery": "العمل كحلقة وصل ومنسق مهام للدعم الإعلامي والتسويقي الخارجي لضمان تسليم المشروع",
       // DeepL
       "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "تقييم وتحسين الترجمات المُنشأة بواسطة الذكاء الاصطناعي بين العربية والإنجليزية للدقة والطلاقة",
       "Identify translation errors, provide corrections, and explain linguistic issues": "تحديد أخطاء الترجمة، وتقديم التصحيحات، وشرح المسائل اللغوية",
