@@ -81,7 +81,6 @@ export default function RootLayout({
         <meta property="og:see_also" content="https://mohamedyaakoubi.link/"/>
         <meta name="gravatar:profile" content="mohamedyaakoubi"/>
         <meta name="msvalidate.01" content="567F2213DA2A1DE09D5C5ADF16CDE77B"/>
-        <link rel="canonical" href="https://mohamed-yakoubi.vercel.app" />
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
         <link rel="sitemap" type="text/html" href="https://mohamed-yakoubi.vercel.app/sitemap" title="HTML Sitemap"/>
