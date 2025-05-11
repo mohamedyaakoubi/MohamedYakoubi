@@ -8,10 +8,11 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  
+    // Improve crawler access to your JS
+  poweredByHeader: false,
   // Enable React optimization features
   reactStrictMode: true,
-  
+    // Improve crawler access to your JS - hybrid rendering
   // Rewrites for API routes
   async rewrites() {
     return [
@@ -89,7 +90,8 @@ const nextConfig = {
     optimizeCss: true,
     optimizePackageImports: ['react-icons', 'framer-motion'],
     webpackBuildWorker: true, // Speed up builds
-  }
+    optimizeServerReact: true,
+    }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

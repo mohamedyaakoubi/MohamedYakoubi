@@ -54,12 +54,15 @@ export default function ProjectsPage() {
       <div className="sr-only" aria-hidden="false">
         <h1>Projects - Mohamed Yaakoubi</h1>
         <p>Explore a collection of projects developed by Mohamed Yaakoubi, including web applications, AI solutions, and localization tools.</p>
+        <h2>Featured Projects</h2>
         <ul>
-          <li>Web Development Projects</li>
-          <li>AI & Machine Learning Projects</li>
-          <li>Translation & Localization Tools</li>
-          <li>GitHub Repositories</li>
+          <li>AI Translation Assistant - A neural machine translation tool</li>
+          <li>Portfolio Website - Next.js and React-based personal website</li>
+          <li>Language Learning Platform - Interactive tool for language education</li>
+          {/* Add more projects for search engines */}
         </ul>
+        <h2>GitHub Repositories</h2>
+        <p>View all open-source projects and contributions on GitHub.</p>
       </div>
 
       <Suspense fallback={<ProjectsLoading />}>

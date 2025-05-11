@@ -81,6 +81,7 @@ export default function RootLayout({
         <meta property="og:see_also" content="https://mohamedyaakoubi.link/"/>
         <meta name="gravatar:profile" content="mohamedyaakoubi"/>
         <meta name="msvalidate.01" content="567F2213DA2A1DE09D5C5ADF16CDE77B"/>
+        <link rel="canonical" href="https://mohamed-yakoubi.vercel.app" />
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
         <link rel="sitemap" type="text/html" href="https://mohamed-yakoubi.vercel.app/sitemap" title="HTML Sitemap"/>
@@ -184,67 +185,97 @@ export default function RootLayout({
             "addressCountry": "Tunisia"
           }
         })}}/>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
-          "@context": "https://schema.org/",
-          "@type": "DigitalDocument",
-          "name": "Mohamed Yaakoubi's CV",
-          "description": "Professional resume of Mohamed Yaakoubi, Emerging AI and Technology Specialist",
-          "encodingFormat": "application/pdf",
-          "about": {
-            "@type": "Person",
-            "name": "Mohamed Yaakoubi"
-          },
-          "url": "https://mohamed-yakoubi.vercel.app/Mohamed_Yaakoubi.pdf",
-          "dateModified": "2025-02-12",
-          "educationalCredentialAwarded": "Licentiate Degree in Computer Science",
-          "teaches": [
-            "Machine Learning",
-            "Web Development",
-            "Translation"
-          ],
-          "skills": [
-  "Development & Scripting: HTML/CSS, Javascript",
-  "Programming Languages: C, Python, Typescript",
-  "Database: Firebase, SQL",
-  "Version Control: Git, Github",
-  "Tools: Visual Studio Code, CodeBlocks, Pyscripter",
-  "AI & Machine Learning",
-  "CAT: Smartcat, Amara",
-  "Cloud Computing: Azure"
-],
-"workExperience": [
-  {
-    "@type": "WorkPosition",
-    "name": "Linguistic Editor",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "DeepL"
+<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
+  "@context": "https://schema.org/",
+  "@type": "Resume",
+  "name": "Mohamed Yaakoubi's Professional Resume",
+  "url": "https://mohamed-yakoubi.vercel.app",
+  "description": "Professional resume of Mohamed Yaakoubi, Emerging AI and Technology Specialist with experience in AI/ML, localization, and web development",
+  "about": {
+    "@type": "Person",
+    "name": "Mohamed Yaakoubi",
+    "description": "Driven, adaptable AI specialist thriving on tackling complex challenges and acquiring new skills quickly",
+    "jobTitle": "Emerging AI and Technology Specialist",
+    "email": "amirrak8@gmail.com",
+    "telephone": "+216 54711524",
+    "image": "https://mohamed-yakoubi.vercel.app/profile.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sfax",
+      "addressCountry": "Tunisia"
     },
-    "startDate": "2025-02",
-    "jobDescription": "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency."
+    "url": "https://mohamed-yakoubi.vercel.app",
+    "sameAs": [
+      "https://github.com/mohamedyaakoubi",
+      "https://www.linkedin.com/in/yaakoubi-mohamed/"
+    ]
   },
-  {
-    "@type": "WorkPosition",
-    "name": "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "RWS"
+  "workExperience": [
+    {
+      "@type": "WorkPosition",
+      "name": "Video Metadata Writer",
+      "worksFor": { "@type": "Organization", "name": "Wirestock" },
+      "startDate": "2025-04",
+      "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Sfax", "addressCountry": "Tunisia" } },
+      "description": "Write detailed and structured metadata for edited videos, segment descriptions, and content evaluation."
     },
-    "startDate": "2024-11",
-    "jobDescription": "Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4."
-  },
-  {
-    "@type": "WorkPosition",
-    "name": "Localization Vendor Coordinator",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Uber (via Volga Partners)"
+    {
+      "@type": "WorkPosition",
+      "name": "Technical Content Writer",
+      "worksFor": { "@type": "Organization", "name": "UbiAi" },
+      "startDate": "2025-03",
+      "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Sfax", "addressCountry": "Tunisia" } },
+      "description": "Create technical blog content on LLM fine-tuning and NLP topics, perform website audits for UX and SEO."
     },
-    "startDate": "2024-07",
-    "jobDescription": "Evaluate Arabic and English AI-generated content for linguistic and cultural accuracy."
-  }
-]
-        })}}/>
+    {
+      "@type": "WorkPosition",
+      "name": "Linguistic Editor",
+      "worksFor": { "@type": "Organization", "name": "DeepL" },
+      "startDate": "2025-02",
+      "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Sfax", "addressCountry": "Tunisia" } },
+      "description": "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency."
+    },
+    {
+      "@type": "WorkPosition",
+      "name": "Linguistic AI Evaluator - Arabic Maghrebi QA",
+      "worksFor": { "@type": "Organization", "name": "RWS (Meta AI)" },
+      "startDate": "2024-11",
+      "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Sfax", "addressCountry": "Tunisia" } },
+      "description": "Evaluate multilingual prompts and AI responses for LLMs like Llama 4."
+    }
+  ],
+  "educationalCredentialAwarded": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Licentiate Degree in Computer Science",
+      "educationalLevel": "Bachelor",
+      "credentialCategory": "degree",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Faculty of sciences in Sfax" },
+      "startDate": "2024",
+      "endDate": "2027"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Integrated Preparatory Cycle in Computer Science",
+      "educationalLevel": "Some College",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Faculty of sciences in Sfax" },
+      "startDate": "2021",
+      "endDate": "2024"
+    }
+  ],
+  "skills": [
+    "Development & Scripting: HTML/CSS, Javascript",
+    "Programming Languages: C, Python, Typescript",
+    "Database: Firebase, SQL",
+    "Version Control: Git, Github",
+    "Tools: Visual Studio Code, CodeBlocks, Pyscripter",
+    "AI & Machine Learning",
+    "CAT: Smartcat, Amara",
+    "Cloud Computing: Azure"
+  ],
+  "knowsLanguage": ["Arabic", "English", "French", "German"]
+})}}/>
       </head>
       <body className={`${inter.variable} ${ibmPlexSansArabic.variable} ${inter.className} overflow-x-hidden max-w-full`}>
        
