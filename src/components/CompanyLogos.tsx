@@ -2,23 +2,24 @@
 
 import { useRef, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useAnimationControls, useInView } from "framer-motion"
 import { useLanguage } from "@/context/language-context"
 import { useTranslation } from "@/hooks/useTranslation"
 
-// Company logo data with names and image paths
+// Company logo data with names, image paths, and URLs
 const companies = [
-  { name: "DeepL", logo: "/companies/DeepL_logo.svg" },
-  { name: "Meta AI", logo: "/companies/Meta_AI_logo.png" },
-  { name: "Premise", logo: "/companies/premise_logo.png" },
-  { name: "RWS", logo: "/companies/RWS_logo.png" },
-  { name: "Toloka", logo: "/companies/Toloka_logo.png" },
-  { name: "Translated", logo: "/companies/translated_logo.png" },
-  { name: "Uber", logo: "/companies/uber_logo.svg" },
-  { name: "Unbabel", logo: "/companies/Unbabel_logo.webp" },
-  { name: "Volga", logo: "/companies/volga_logo.png" },
-  { name: "Ubiai", logo: "/companies/ubi.png" },
-  { name: "Wirestock", logo: "/companies/wirestock.avif" }
+  { name: "DeepL", logo: "/companies/DeepL_logo.svg", url: "https://www.deepl.com/" },
+  { name: "Meta AI", logo: "/companies/Meta_AI_logo.png", url: "https://ai.meta.com/" },
+  { name: "Premise", logo: "/companies/premise_logo.png", url: "https://premise.com/" },
+  { name: "RWS", logo: "/companies/RWS_logo.png", url: "https://www.rws.com/" },
+  { name: "Toloka", logo: "/companies/Toloka_logo.png", url: "https://toloka.ai/" },
+  { name: "Translated", logo: "/companies/translated_logo.png", url: "https://translated.com/welcome" },
+  { name: "Uber", logo: "/companies/uber_logo.svg", url: "https://www.uber.com/" },
+  { name: "Unbabel", logo: "/companies/Unbabel_logo.webp", url: "https://unbabel.com/" },
+  { name: "Volga", logo: "/companies/volga_logo.png", url: "https://volgapartners.com/" },
+  { name: "Ubiai", logo: "/companies/ubi.png", url: "https://ubiai.tools/" },
+  { name: "Wirestock", logo: "/companies/wirestock.avif", url: "https://wirestock.io/" }
 ]
 
 // Duplicate the array to create a seamless loop effect
@@ -107,9 +108,13 @@ export function CompanyLogos() {
                 }
                 
                 return (
-                  <div 
-                    key={`${company.name}-${index}`} 
-                    className={`flex-shrink-0 relative grayscale hover:grayscale-0 transition-all duration-300 ${sizeClasses}`}
+                  <Link
+                    key={`${company.name}-${index}`}
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex-shrink-0 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer ${sizeClasses}`}
+                    aria-label={`Visit ${company.name} website`}
                   >
                     <Image
                       src={company.logo}
@@ -118,15 +123,15 @@ export function CompanyLogos() {
                       className="object-contain"
                       sizes={imageSizes}
                     />
-                  </div>
+                  </Link>
                 );
               })}
             </motion.div>
           </div>
           
           {/* Gradient overlays for smooth transition */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-100 to-transparent dark:from-gray-900 dark:to-transparent"></div>
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-100 to-transparent dark:from-gray-900 dark:to-transparent"></div>
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-100 to-transparent dark:from-gray-900 dark:to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-100 to-transparent dark:from-gray-900 dark:to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>
