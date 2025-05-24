@@ -15,8 +15,9 @@ const nextConfig = {
     // Improve crawler access to your JS - hybrid rendering
   // Rewrites for API routes
   async rewrites() {
-    return [
-      {
+    return {
+      beforeFiles: [],
+      afterFiles: [ {
         source: '/api/github/:path*',
         destination: '/api/github/:path*'
       },
@@ -32,7 +33,15 @@ const nextConfig = {
         source: '/.well-known/discord',
         destination: '/.well-known/discord'
       }
-    ];
+    ],
+         fallback: [
+        // These rewrites will happen after both pages and public files are checked
+        {
+          source: '/:path*',
+          destination: '/not-found'
+        }
+      ]
+    }
   },
   
   // Image optimization config
