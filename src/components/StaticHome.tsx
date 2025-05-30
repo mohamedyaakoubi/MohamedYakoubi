@@ -45,6 +45,22 @@ export function StaticHome() {
           </li>
         </ul>
       </section>
+
+      <section aria-labelledby="companies-heading">
+        <h2 id="companies-heading">Companies & Organizations</h2>
+        <h3>Other Companies I Worked With</h3>
+        <p>Additional professional collaborations include:</p>
+        <ul>
+          <li>Premise - Crowdsourced data collection and surveys</li>
+          <li>Toloka - AI training data annotation and labeling</li>
+          <li>Translated - Language technology solutions</li>
+          <li>Andovar - Localization and translation services</li>
+          <li>Kudra AI - Document processing and data extraction</li>
+          <li>Pi Network - KYC validation services</li>
+          <li>TED Translators - Subtitle editing and translation</li>
+          <li>Various freelance platforms (Fiverr, Upwork, Freelances.tn, Proz.com)</li>
+        </ul>
+      </section>
       
       <section aria-labelledby="education-heading">
         <h2 id="education-heading">Education</h2>
