@@ -28,20 +28,21 @@ export default function ExperiencePage() {
             <h3>Video Metadata Writer | Wirestock</h3>
             <p>April 2025 - Present | Sfax (Remote) | Full-Time</p>
             <ul>
-              <li>Write detailed metadata for edited videos, including final goal articulation and video descriptions</li>
-              <li>Segment raw video footage with descriptions for clear storytelling</li>
-              <li>Evaluate video content for coherence and quality</li>
-              <li>Collaborate with remote team through consistent communication</li>
+              <li>Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices</li>
+              <li>Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow</li>
+              <li>Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication</li>
+              <li>Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows</li>
             </ul>
           </article>
           
           <article>
-            <h3>Technical Content Writer | UbiAi</h3>
+            <h3>Technical Content Writer & Web Operations Assistant | UbiAi</h3>
             <p>March 2025 - Present | Sfax (Remote)</p>
             <ul>
-              <li>Create technical blog content on LLM fine-tuning and NLP topics</li>
-              <li>Perform website audits to improve UX and SEO</li>
-              <li>Plan content strategy including video tutorials</li>
+              <li>Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform</li>
+              <li>Performed website audits and diagnostics to improve UX, SEO, and platform performance</li>
+              <li>Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts</li>
+              <li>Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery</li>
             </ul>
           </article>
           
@@ -49,19 +50,20 @@ export default function ExperiencePage() {
             <h3>Linguistic Editor | DeepL</h3>
             <p>February 2025 - Present | Sfax (Remote)</p>
             <ul>
-              <li>Evaluate AI-generated Arabic-English translations</li>
-              <li>Identify translation errors and provide corrections</li>
-              <li>Enhance AI translation models through quality feedback</li>
+              <li>Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency</li>
+              <li>Identify translation errors, provide corrections, and explain linguistic issues</li>
+              <li>Work on diverse language tasks, including quality assessment and transcreation</li>
+              <li>Collaborate with DeepL's Language Data team to enhance AI translation models</li>
             </ul>
           </article>
           
           <article>
-            <h3>Linguistic AI Evaluator | RWS (Meta AI)</h3>
+            <h3>Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI (RWS)</h3>
             <p>November 2024 - Present | Sfax (Remote)</p>
             <ul>
-              <li>Evaluate multilingual prompts for advanced LLMs like Llama 4</li>
-              <li>Rank outputs based on quality metrics</li>
-              <li>Improve linguistic and contextual accuracy</li>
+              <li>Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4</li>
+              <li>Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools</li>
+              <li>Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms</li>
             </ul>
           </article>
           
@@ -69,9 +71,75 @@ export default function ExperiencePage() {
             <h3>Localization Vendor Coordinator | Uber (via Volga Partners)</h3>
             <p>July 2024 - Present | Sfax (Remote)</p>
             <ul>
-              <li>Evaluate Arabic and English AI-generated content</li>
-              <li>Coordinate localization efforts for optimal user experience</li>
-              <li>Contribute to AI model improvements through data labeling</li>
+              <li>Evaluate Arabic and English AI-generated content for linguistic and cultural accuracy</li>
+              <li>Provide precise English to Arabic translations, maintaining nuance and relevance</li>
+              <li>Coordinate localization efforts to optimize user experience in both languages</li>
+              <li>Contribute to AI model improvements through data labeling and collaboration with teams</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Language Data and Quality Reviewer | Volga Partners</h3>
+            <p>July 2024 - Present | Sfax (Remote)</p>
+            <ul>
+              <li>Provide language data and quality review services on a project basis</li>
+              <li>Collaborate directly with clients of Volga Partners to meet their specific needs</li>
+              <li>Ensure high-quality deliverables tailored to each unique project</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>KYC Validator | Pi Network</h3>
+            <p>July 2024 - Present | Sfax (Remote)</p>
+            <ul>
+              <li>Reviewing submitted identification documents for authenticity</li>
+              <li>Cross-referencing information against official records</li>
+              <li>Maintaining a high standard of accuracy and confidentiality</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Freelance AI Data Annotator | Toloka</h3>
+            <p>February 2024 - August 2024 | Sfax (Remote)</p>
+            <ul>
+              <li>Conducted data labeling, image annotation, and text transcription for AI training</li>
+              <li>Ensured high-quality annotations to improve machine learning models</li>
+              <li>Worked on diverse projects across multiple industries</li>
+              <li>Collaborated with a global workforce to meet task requirements efficiently</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Crowdsourced Data Contributor | Premise</h3>
+            <p>February 2024 - September 2024 | Sfax (Remote)</p>
+            <ul>
+              <li>Conducted surveys via Premise mobile app on various topics</li>
+              <li>Provided accurate data adhering to Premise's guidelines</li>
+              <li>Contributed to real-time insights for governments and businesses</li>
+              <li>Collaborated with global network of contributors</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Subtitle Editor | TED Translators</h3>
+            <p>April 2024 - Present | Sfax (Remote)</p>
+            <ul>
+              <li>Translate and subtitle TED Talks into native language, ensuring global accessibility</li>
+              <li>Ensure quality and accuracy while preserving the speaker's original message</li>
+              <li>Collaborate with other translators through the Amara CAT tool</li>
+              <li>Engage in continuous learning by exploring diverse topics</li>
+              <li>Contribute to global idea exchange and empower non-English speakers</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Freelance Editor (Arabic to English & English to Arabic) | Unbabel</h3>
+            <p>March 2020 - Present | Sfax (Remote)</p>
+            <ul>
+              <li>Review and edit Arabic-English translations for accuracy, clarity, and style</li>
+              <li>Ensure linguistic integrity and cultural appropriateness in AI-assisted translations</li>
+              <li>Provide feedback to improve translation quality and consistency</li>
+              <li>Conduct quality checks to maintain high translation standards</li>
             </ul>
           </article>
         </section>
