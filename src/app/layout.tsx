@@ -121,7 +121,7 @@ export default function RootLayout({
           }
             
         `}}/>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
+                <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
           "@context": "https://schema.org/",
           "@type": "Person",
           "name": "Mohamed Yaakoubi",
@@ -135,7 +135,8 @@ export default function RootLayout({
             "https://www.fiverr.com/s/wkZqrpg",
             "https://www.instagram.com/mohamed__yaakoubi/",
             "https://www.proz.com/profile/3972649",
-            "https://www.freelances.tn/freelance/mohamed-yaakoubi"
+            "https://www.freelances.tn/freelance/mohamed-yaakoubi",
+            "https://www.f6s.com/mohamed-yaakoubi"
           ],
           "jobTitle": "Language Data and Quality Reviewer",
           "worksFor": [

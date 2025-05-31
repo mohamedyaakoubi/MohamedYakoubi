@@ -109,6 +109,7 @@ export default {
       freelances: "Freelances.tn",
       fiverr: "Fiverr",
       proz: "Proz.com",
+      f6s: "F6S",
       links: {
         github: "https://github.com/mohamedyaakoubi",
         linkedin: "https://www.linkedin.com/in/yaakoubi-mohamed/",
@@ -117,6 +118,7 @@ export default {
         freelances: "https://www.freelances.tn/freelance/mohamed-yaakoubi",
         fiverr: "https://www.fiverr.com/s/wkZqrpg",
         proz: "https://www.proz.com/profile/3972649",
+        f6s: "https://www.f6s.com/mohamed-yaakoubi",
       },
       labels: {
         github: "Profil GitHub",

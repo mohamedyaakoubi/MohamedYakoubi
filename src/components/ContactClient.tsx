@@ -185,7 +185,30 @@ export default function Contact() {
   >
     <SiFiverr className="w-6 h-6" />
   </motion.a>
-  
+   {/* F6S */}
+  <motion.a
+    href="https://www.f6s.com/mohamed-yaakoubi"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#2563eb] hover:text-[#1d4ed8]"
+    aria-label={t('social.f6s') || "F6S"}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="w-6 h-6 relative">
+      <Image 
+        src="/companies/f6s_logo.png" 
+        alt="F6S" 
+        width={24} 
+        height={24}
+        className="w-6 h-6 object-contain"
+        loading="lazy" 
+      />
+    </div>
+  </motion.a>
   {/* Instagram */}
   <motion.a
     href="https://www.instagram.com/mohamed__yaakoubi/"
