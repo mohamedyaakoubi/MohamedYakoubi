@@ -188,6 +188,7 @@ export default function RootLayout({
 <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
   "@context": "https://schema.org/",
   "@type": "Resume",
+    "alternateName": ["Yaakoubi Mohamed", "Mohamed Yakoubi", "محمد يعقوبي"],
   "name": "Mohamed Yaakoubi's Professional Resume",
   "url": "https://mohamed-yakoubi.vercel.app",
   "description": "Professional resume of Mohamed Yaakoubi, Emerging AI and Technology Specialist with experience in AI/ML, localization, and web development",
