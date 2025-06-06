@@ -137,7 +137,16 @@ export const createSystemDestruction = (
     const processNextDeletion = () => {
       if (sequenceIndex >= deletionSequence.length) {
         setTimeout(() => {
-          window.open('https://youtu.be/dQw4w9WgXcQ', '_blank')
+          // Create a temporary anchor element to open in new tab
+          const link = document.createElement('a')
+          link.href = 'https://youtu.be/dQw4w9WgXcQ'
+          link.target = '_blank'
+          link.rel = 'noopener noreferrer'
+          
+          // Temporarily add to DOM for browser compatibility
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
         }, 3000)
         return
       }
