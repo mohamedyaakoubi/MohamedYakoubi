@@ -4,7 +4,6 @@ import { Hero } from "@/components/Hero"
 import { About } from "@/components/About"
 import { CompanyLogos } from "@/components/CompanyLogos"
 import { Skills } from "@/components/Skills" 
-import { useSearchParams } from 'next/navigation'
 
 interface HomeClientProps {
   locale: string
@@ -12,8 +11,6 @@ interface HomeClientProps {
 }
 
 export default function HomeClient({ locale, translations }: HomeClientProps) {
-  const searchParams = useSearchParams()
-  
   useEffect(() => {
     const hash = window.location.hash
     if (hash) {

@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mohamed-yakoubi.vercel.app'
   const lastModified = new Date().toISOString()
