@@ -26,7 +26,7 @@ const Analytics = dynamic(() => import('./Analytics'), {
   loading: () => null
 })
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export function ClientLayout({ children }: { children: React.ReactNode }) {
   const { language, setLanguage } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
@@ -85,3 +85,4 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     </MenuProvider>
   )
 }
+

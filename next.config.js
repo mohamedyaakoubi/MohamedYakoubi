@@ -4,48 +4,27 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable static export for SSG
+  output: 'export',
+  trailingSlash: true,
+  
+  // Remove i18n config as it's not compatible with static export
+  // We'll handle internationalization manually through our routing structure
+  
   // Compiler options
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-    // Improve crawler access to your JS
+  
+  // Improve crawler access to your JS
   poweredByHeader: false,
+  
   // Enable React optimization features
   reactStrictMode: true,
-    // Improve crawler access to your JS - hybrid rendering
-  // Rewrites for API routes
-  async rewrites() {
-    return {
-      beforeFiles: [],
-      afterFiles: [ {
-        source: '/api/github/:path*',
-        destination: '/api/github/:path*'
-      },
-      {
-        source: '/api/coffee-button',
-        destination: '/api/coffee-button'
-      },
-      {
-        source: '/api/chat',
-        destination: '/api/chat'
-      },
-      {
-        source: '/.well-known/discord',
-        destination: '/.well-known/discord'
-      }
-    ],
-         fallback: [
-        // These rewrites will happen after both pages and public files are checked
-        {
-          source: '/:path*',
-          destination: '/not-found'
-        }
-      ]
-    }
-  },
   
-  // Image optimization config
+  // Image optimization config - Updated for static export
   images: {
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',
@@ -82,12 +61,10 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // CHANGE THIS LINE - only these two formats are supported
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000, // 1 year
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    unoptimized: process.env.NODE_ENV === 'development', // Only optimize in production
   },
   
   // Root level options
@@ -100,7 +77,8 @@ const nextConfig = {
     optimizePackageImports: ['react-icons', 'framer-motion'],
     webpackBuildWorker: true, // Speed up builds
     optimizeServerReact: true,
-    }
+  }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
+

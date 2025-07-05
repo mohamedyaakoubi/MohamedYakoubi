@@ -5,17 +5,18 @@ import { ServiceCard } from "@/components/ServiceCard"
 import { useState } from "react"
 import { FaEnvelope } from "react-icons/fa"
 import Link from "next/link"
-import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 
+interface ServicesClientProps {
+  locale: string
+  translations: any
+}
 
-
-
-export default function Services() {
-  const { language } = useLanguage()
-  const { t } = useTranslation(language)
+export default function ServicesClient({ locale, translations }: ServicesClientProps) {
+  const { t } = useTranslation(locale as any)
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
   const categories = ["all", ...new Set(services.map(service => service.category))]
+  const isRTL = locale === 'ar'
 
   const filteredServices = selectedCategory === "all" 
     ? services 
@@ -26,10 +27,10 @@ export default function Services() {
       <div className="container mx-auto px-6">
         <motion.div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {t('services.title')}
+            {translations.services?.title || 'Services'}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            {t('services.description')}
+            {translations.services?.description || 'Professional services tailored to meet your needs'}
           </p>
         </motion.div>
 
@@ -41,13 +42,13 @@ export default function Services() {
            onClick={() => setSelectedCategory(category)}
            className={`px-4 py-2 rounded-full text-sm transition-colors ${
              selectedCategory === category
-               ? "bg-blue-700 text-white" // Changed from blue-500 to blue-700 for better contrast
+               ? "bg-blue-700 text-white"
                : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100"
            }`}
          >
            {category === "all" 
-             ? t('services.categories.all') 
-             : t(`services.categories.${category}`)}
+             ? translations.services?.categories?.all || 'All'
+             : translations.services?.categories?.[category] || category}
          </button>
           ))}
         </div>
@@ -55,33 +56,38 @@ export default function Services() {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {filteredServices.map((service, index) => (
-            <ServiceCard key={service.name} service={service} index={index} />
+            <ServiceCard 
+              key={service.name} 
+              service={service} 
+              index={index} 
+            />
           ))}
         </div>
 
         {/* CTA Section */}
         <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.2 }}
-  className="bg-gradient-to-r from-blue-700 to-purple-700 rounded-xl p-8 text-white text-center" // Changed from blue-500/purple-500
->
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-gradient-to-r from-blue-700 to-purple-700 rounded-xl p-8 text-white text-center"
+        >
           <h2 className="text-3xl font-bold mb-4">
-            {t('services.cta.title')}
+            {translations.services?.cta?.title || 'Ready to get started?'}
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            {t('services.cta.description')}
+            {translations.services?.cta?.description || 'Let\'s discuss how I can help you achieve your goals'}
           </p>
           <Link
-    href="/contact"
-    className="inline-flex items-center px-6 py-3 bg-white text-blue-700 rounded-lg
-              hover:bg-blue-50 transition-colors duration-300 font-medium" // Updated text color
-  >
-    <FaEnvelope className={`${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
-    {t('services.cta.button')}
-  </Link>
-</motion.div>
+            href={`/${locale === 'en' ? '' : locale + '/'}contact`}
+            className="inline-flex items-center px-6 py-3 bg-white text-blue-700 rounded-lg
+                      hover:bg-blue-50 transition-colors duration-300 font-medium"
+          >
+            <FaEnvelope className={`${isRTL ? 'ml-2' : 'mr-2'}`} />
+            {translations.services?.cta?.button || 'Get in Touch'}
+          </Link>
+        </motion.div>
       </div>
     </div>
   )
 }
+

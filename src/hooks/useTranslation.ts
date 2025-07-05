@@ -37,4 +37,10 @@ export function useTranslation(lang: Language) {
     )
   
     return { t }
-  }
+}
+
+// Static version for SSG - returns the full translations object
+export function getStaticTranslations(lang: Language) {
+  return translations[lang] || translations.en
+}
+

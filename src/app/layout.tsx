@@ -3,7 +3,7 @@ import { Inter, IBM_Plex_Sans_Arabic } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from '@/context/language-context'
 import { ThemeProvider } from "@/components/theme-provider"
-import ClientLayout from "@/components/ClientLayout"
+import { ClientLayout } from "@/components/ClientLayout"
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import "./production-fixes.css" 
 import { StaticHome } from '@/components/StaticHome' 

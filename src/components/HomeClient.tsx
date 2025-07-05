@@ -4,12 +4,14 @@ import { Hero } from "@/components/Hero"
 import { About } from "@/components/About"
 import { CompanyLogos } from "@/components/CompanyLogos"
 import { Skills } from "@/components/Skills" 
-import { useLanguage } from '@/context/language-context'
 import { useSearchParams } from 'next/navigation'
 
+interface HomeClientProps {
+  locale: string
+  translations: any
+}
 
-export default function Home() {
-  const { language } = useLanguage()
+export default function HomeClient({ locale, translations }: HomeClientProps) {
   const searchParams = useSearchParams()
   
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Home() {
   }, [])
   
   return (
-    <main className={language === 'ar' ? 'rtl' : 'ltr'}>
+    <main className={locale === 'ar' ? 'rtl' : 'ltr'}>
       <section id="home" className="min-h-screen">
         <Hero />
       </section>
@@ -43,3 +45,4 @@ export default function Home() {
     </main>
   )
 }
+
