@@ -1,11 +1,34 @@
 User-agent: *
 Allow: /
-Disallow: /api/
 
-# Preferred URLs - direct crawlers to localized versions
-Sitemap: https://www.mohamedyaakoubi.live/sitemap.xml
-
-# Redirect non-localized pages
+# Allow localized content only
 Allow: /en/
 Allow: /fr/
 Allow: /ar/
+Allow: /en/experience
+Allow: /en/projects
+Allow: /en/services
+Allow: /en/contact
+Allow: /fr/experience
+Allow: /fr/projects
+Allow: /fr/services
+Allow: /fr/contact
+Allow: /ar/experience
+Allow: /ar/projects
+Allow: /ar/services
+Allow: /ar/contact
+
+# Disallow root redirect page from indexing
+Disallow: /$
+
+# Block admin and private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Sitemaps
+Sitemap: https://www.mohamedyaakoubi.live/sitemap.xml
+
+# Crawl delay for better server performance
+Crawl-delay: 1

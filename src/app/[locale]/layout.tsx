@@ -63,17 +63,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }],
     creator: 'Mohamed Yaakoubi',
     publisher: 'Mohamed Yaakoubi',
-    alternates: {
-      canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/' 
-        : `https://www.mohamedyaakoubi.live/${locale}`,
-      languages: {
-        'en': 'https://www.mohamedyaakoubi.live/',
-        'fr': 'https://www.mohamedyaakoubi.live/fr',
-        'ar': 'https://www.mohamedyaakoubi.live/ar',
-        'x-default': 'https://www.mohamedyaakoubi.live/',
-      }
-    },
+alternates: {
+  canonical: `https://www.mohamedyaakoubi.live/${locale}`, // Always use localized URLs
+  languages: {
+    'en': 'https://www.mohamedyaakoubi.live/en',
+    'fr': 'https://www.mohamedyaakoubi.live/fr', 
+    'ar': 'https://www.mohamedyaakoubi.live/ar',
+    'x-default': 'https://www.mohamedyaakoubi.live/en', // Default to English
+  }
+},
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,

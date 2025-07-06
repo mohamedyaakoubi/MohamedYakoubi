@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const sitemapEntries: MetadataRoute.Sitemap = []
   
-  // Add localized URLs with proper structure
+  // DON'T add root URL - only add localized versions
   locales.forEach(locale => {
     pages.forEach(page => {
       const url = `${baseUrl}/${locale}${page}`
