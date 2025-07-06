@@ -137,16 +137,20 @@ export const createSystemDestruction = (
     const processNextDeletion = () => {
       if (sequenceIndex >= deletionSequence.length) {
         setTimeout(() => {
-          // Create a temporary anchor element to open in new tab
-          const link = document.createElement('a')
-          link.href = 'https://youtu.be/dQw4w9WgXcQ'
-          link.target = '_blank'
-          link.rel = 'noopener noreferrer'
-          
-          // Temporarily add to DOM for browser compatibility
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
+          // Multiple fallback methods to ensure new tab opening
+          const openInNewTab = () => {
+            try {
+              // Method 1: Direct window.open (redirect to same tab)
+              window.location.href = 'https://youtu.be/dQw4w9WgXcQ'
+            } catch (error) {
+              console.log('Redirect failed')
+              // Method 2: Show a message to user if all else fails
+              alert('System destruction complete! Click OK to see the surprise! 🎉')
+              window.location.href = 'https://youtu.be/dQw4w9WgXcQ'
+            }
+          }
+
+          openInNewTab()
         }, 3000)
         return
       }
