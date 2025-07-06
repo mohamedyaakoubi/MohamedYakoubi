@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Fixed canonical URL - consistent pattern
       canonical: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/contact'
-        : `https://mohamed-yakoubi.vercel.app/${locale}/contact`
+        ? 'https://www.mohamedyaakoubi.live/en/contact'
+        : `https://www.mohamedyaakoubi.live/${locale}/contact`
     }
   }
 }

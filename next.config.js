@@ -7,6 +7,19 @@ const nextConfig = {
   // Add explicit permanent redirects
   async redirects() {
     return [
+      // Redirect non-www to www domain
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'mohamedyaakoubi.live',
+          },
+        ],
+        destination: 'https://www.mohamedyaakoubi.live/:path*',
+        permanent: true,
+      },
+      // Root path redirects to /en (after www redirect is applied)
       {
         source: '/',
         destination: '/en',
@@ -76,6 +89,15 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'img.buymeacoffee.com',
+      },
+      // Add both www and non-www domains for images
+      {
+        protocol: 'https',
+        hostname: 'www.mohamedyaakoubi.live',
+      },
+      {
+        protocol: 'https',
+        hostname: 'mohamedyaakoubi.live',
       },
     ],
     dangerouslyAllowSVG: true,

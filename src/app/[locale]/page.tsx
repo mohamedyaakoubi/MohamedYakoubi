@@ -21,11 +21,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Fixed canonical URL - should point to /en instead of root for English
       canonical: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/en'
-        : `https://mohamed-yakoubi.vercel.app/${locale}`
+        ? 'https://www.mohamedyaakoubi.live/en'
+        : `https://www.mohamedyaakoubi.live/${locale}`
     }
   }
 }
+
 
 interface HomePageProps {
   params: Promise<{ locale: string }>

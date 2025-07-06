@@ -37,8 +37,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Fixed canonical URL - consistent pattern
       canonical: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/experience'
-        : `https://mohamed-yakoubi.vercel.app/${locale}/experience`
+        ? 'https://www.mohamedyaakoubi.live/en/experience'
+        : `https://www.mohamedyaakoubi.live/${locale}/experience`
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,

@@ -59,33 +59,33 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ].join(', '),
     authors: [{ 
       name: 'Mohamed Yaakoubi',
-      url: 'https://mohamed-yakoubi.vercel.app' 
+      url: 'https://www.mohamedyaakoubi.live' 
     }],
     creator: 'Mohamed Yaakoubi',
     publisher: 'Mohamed Yaakoubi',
     alternates: {
       canonical: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/' 
-        : `https://mohamed-yakoubi.vercel.app/${locale}`,
+        ? 'https://www.mohamedyaakoubi.live/' 
+        : `https://www.mohamedyaakoubi.live/${locale}`,
       languages: {
-        'en': 'https://mohamed-yakoubi.vercel.app/',
-        'fr': 'https://mohamed-yakoubi.vercel.app/fr',
-        'ar': 'https://mohamed-yakoubi.vercel.app/ar',
-        'x-default': 'https://mohamed-yakoubi.vercel.app/',
+        'en': 'https://www.mohamedyaakoubi.live/',
+        'fr': 'https://www.mohamedyaakoubi.live/fr',
+        'ar': 'https://www.mohamedyaakoubi.live/ar',
+        'x-default': 'https://www.mohamedyaakoubi.live/',
       }
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       url: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/' 
-        : `https://mohamed-yakoubi.vercel.app/${locale}`,
+        ? 'https://www.mohamedyaakoubi.live/' 
+        : `https://www.mohamedyaakoubi.live/${locale}`,
       siteName: 'Mohamed Yaakoubi',
       locale: locale,
       type: 'website',
       images: [
         {
-          url: 'https://mohamed-yakoubi.vercel.app/profile.jpg',
+          url: 'https://www.mohamedyaakoubi.live/profile.jpg',
           width: 1200,
           height: 1200,
           alt: 'Mohamed Yaakoubi - Emerging AI and Technology Specialist',
@@ -99,7 +99,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       site: '@Mohamed0Yakoubi',
       creator: '@Mohamed0Yakoubi',
-      images: ['https://mohamed-yakoubi.vercel.app/profile.jpg'],
+      images: ['https://www.mohamedyaakoubi.live/profile.jpg'],
     },
     robots: {
       index: true,
@@ -158,10 +158,10 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         {/* Enhanced hreflang meta tags */}
-        <link rel="alternate" hrefLang="en" href="https://mohamed-yakoubi.vercel.app/" title="Mohamed Yaakoubi - English" />
-        <link rel="alternate" hrefLang="fr" href="https://mohamed-yakoubi.vercel.app/fr" title="Mohamed Yaakoubi - Français" />
-        <link rel="alternate" hrefLang="ar" href="https://mohamed-yakoubi.vercel.app/ar" title="محمد يعقوبي - العربية" />
-        <link rel="alternate" hrefLang="x-default" href="https://mohamed-yakoubi.vercel.app/" title="Mohamed Yaakoubi - Default" />
+        <link rel="alternate" hrefLang="en" href="https://www.mohamedyaakoubi.live/" title="Mohamed Yaakoubi - English" />
+        <link rel="alternate" hrefLang="fr" href="https://www.mohamedyaakoubi.live/fr" title="Mohamed Yaakoubi - Français" />
+        <link rel="alternate" hrefLang="ar" href="https://www.mohamedyaakoubi.live/ar" title="محمد يعقوبي - العربية" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.live/" title="Mohamed Yaakoubi - Default" />
         
         {/* Preconnect and Preload Links */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -169,7 +169,7 @@ export default async function LocaleLayout({
         <link rel="preload" href="/hero-light.webp" as="image" fetchPriority="high" type="image/webp" />
         <link rel="preload" href="/profile.jpg" as="image" fetchPriority="high" type="image/jpeg" />
         <link rel="preload" href="/sounds/light.mp3" as="audio" type="audio/mpeg" />
-        <link rel="sitemap" type="application/xml" href="https://mohamed-yakoubi.vercel.app/sitemap.xml" title="XML Sitemap"/>
+        <link rel="sitemap" type="application/xml" href="https://www.mohamedyaakoubi.live/sitemap.xml" title="XML Sitemap"/>
         
         {/* Language-specific author and name meta tags */}
         <meta name="author" content="Mohamed Yaakoubi" />
@@ -223,8 +223,8 @@ export default async function LocaleLayout({
                 "Mohammed Yaakoubi",
                 "Mohammed Yakoubi"
               ],
-              "url": "https://mohamed-yakoubi.vercel.app",
-              "image": "https://mohamed-yakoubi.vercel.app/profile.jpg",
+              "url": "https://www.mohamedyaakoubi.live",
+              "image": "https://www.mohamedyaakoubi.live/profile.jpg",
               "description": "Emerging AI and Technology Specialist with expertise in machine translation, AI evaluation, and web development",
               "jobTitle": [
                 "Video Metadata Writer",
@@ -316,7 +316,7 @@ export default async function LocaleLayout({
                 "Yakoubi Mohamed"
               ],
               "name": "Mohamed Yaakoubi's Professional Resume",
-              "url": "https://mohamed-yakoubi.vercel.app",
+              "url": "https://www.mohamedyaakoubi.live",
               "description": "Professional resume of Mohamed Yaakoubi, Emerging AI and Technology Specialist with experience in AI/ML, localization, and web development",
               "about": {
                 "@type": "Person",
@@ -325,13 +325,13 @@ export default async function LocaleLayout({
                 "jobTitle": "Emerging AI and Technology Specialist",
                 "email": "amirrak8@gmail.com",
                 "telephone": "+216 54711524",
-                "image": "https://mohamed-yakoubi.vercel.app/profile.jpg",
+                "image": "https://www.mohamedyaakoubi.live/profile.jpg",
                 "address": {
                   "@type": "PostalAddress",
                   "addressLocality": "Sfax",
                   "addressCountry": "Tunisia"
                 },
-                "url": "https://mohamed-yakoubi.vercel.app",
+                "url": "https://www.mohamedyaakoubi.live",
                 "sameAs": [
                   "https://github.com/mohamedyaakoubi",
                   "https://www.linkedin.com/in/yaakoubi-mohamed/"

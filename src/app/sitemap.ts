@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://mohamed-yakoubi.vercel.app'
+  const baseUrl = 'https://www.mohamedyaakoubi.live'
   const lastModified = new Date('2025-01-06')
   
   const locales = ['en', 'fr', 'ar']

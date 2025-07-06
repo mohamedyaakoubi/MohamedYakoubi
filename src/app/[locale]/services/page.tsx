@@ -35,16 +35,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Add canonical URL - consistent with your URL structure
       canonical: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/en/services'
-        : `https://mohamed-yakoubi.vercel.app/${locale}/services`
+        ? 'https://www.mohamedyaakoubi.live/en/services'
+        : `https://www.mohamedyaakoubi.live/${locale}/services`
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       type: 'website',
       url: locale === 'en' 
-        ? 'https://mohamed-yakoubi.vercel.app/en/services'
-        : `https://mohamed-yakoubi.vercel.app/${locale}/services`,
+        ? 'https://www.mohamedyaakoubi.live/en/services'
+        : `https://www.mohamedyaakoubi.live/${locale}/services`,
     },
     twitter: {
       card: 'summary_large_image',

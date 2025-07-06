@@ -3,7 +3,7 @@ Allow: /
 Disallow: /api/
 
 # Preferred URLs - direct crawlers to localized versions
-Sitemap: https://mohamed-yakoubi.vercel.app/sitemap.xml
+Sitemap: https://www.mohamedyaakoubi.live/sitemap.xml
 
 # Redirect non-localized pages
 Allow: /en/
