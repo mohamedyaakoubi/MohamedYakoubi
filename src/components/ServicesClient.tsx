@@ -5,7 +5,6 @@ import { ServiceCard } from "@/components/ServiceCard"
 import { useState } from "react"
 import { FaEnvelope } from "react-icons/fa"
 import Link from "next/link"
-import { useTranslation } from '@/hooks/useTranslation'
 
 interface ServicesClientProps {
   locale: string
@@ -13,7 +12,6 @@ interface ServicesClientProps {
 }
 
 export default function ServicesClient({ locale, translations }: ServicesClientProps) {
-  const { t } = useTranslation(locale as any)
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
   const categories = ["all", ...new Set(services.map(service => service.category))]
   const isRTL = locale === 'ar'
@@ -60,6 +58,8 @@ export default function ServicesClient({ locale, translations }: ServicesClientP
               key={service.name} 
               service={service} 
               index={index} 
+              locale={locale}
+              translations={translations}
             />
           ))}
         </div>
@@ -78,7 +78,7 @@ export default function ServicesClient({ locale, translations }: ServicesClientP
             {translations.services?.cta?.description || 'Let\'s discuss how I can help you achieve your goals'}
           </p>
           <Link
-            href={`/${locale === 'en' ? '' : locale + '/'}contact`}
+            href={`/${locale}/contact`}
             className="inline-flex items-center px-6 py-3 bg-white text-blue-700 rounded-lg
                       hover:bg-blue-50 transition-colors duration-300 font-medium"
           >
@@ -90,4 +90,3 @@ export default function ServicesClient({ locale, translations }: ServicesClientP
     </div>
   )
 }
-

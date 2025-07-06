@@ -54,10 +54,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
+// Add the missing interface
+interface ServicesPageProps {
+  params: Promise<{ locale: string }>
+}
 
-
-export default async function ServicesPage(props: { params: Promise<{ locale: string }> }) {
-  const params = await props.params;
+export default async function ServicesPage(props: ServicesPageProps) {
+  // Fix: Properly await params
+  const params = await props.params
   const { locale } = params
   const translations = getTranslations(locale)
 

@@ -1,46 +1,21 @@
 import type { Metadata } from 'next'
-import { getTranslations } from '@/lib/translations'
 import AnimatedNotFound from '@/components/AnimateNotFound'
 
-export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'fr' },
-    { locale: 'ar' },
-  ]
+// Remove generateStaticParams - not needed for not-found pages
+// export async function generateStaticParams() { ... }
+
+// Simplified metadata without locale dependency
+export const metadata: Metadata = {
+  title: 'Page Not Found | Mohamed Yaakoubi',
+  robots: 'noindex, nofollow'
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params
-  
-  const titles = {
-    en: 'Page Not Found | Mohamed Yaakoubi',
-    fr: 'Page Non Trouvée | Mohamed Yaakoubi',
-    ar: 'الصفحة غير موجودة | محمد يعقوبي'
-  }
-
-  return {
-    title: titles[locale as keyof typeof titles] || titles.en,
-    robots: 'noindex, nofollow',
-    alternates: {
-      canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/not-found'
-        : `https://www.mohamedyaakoubi.live/${locale}/not-found`
-    }
-  }
-}
-
-interface NotFoundPageProps {
-  params: Promise<{ locale: string }>
-}
-
-export default async function NotFoundPage({ params }: NotFoundPageProps) {
-  const { locale } = await params
-  const translations = getTranslations(locale)
-  
+// Remove the params prop entirely - not-found.tsx doesn't receive it
+export default function NotFoundPage() {
+  // No locale needed here - the AnimatedNotFound component will handle locale detection
   return (
     <>
-      {/* SEO content for search engines */}
+      {/* Static SEO content - language neutral */}
       <div className="sr-only" aria-hidden="false">
         <h1>404 - Page Not Found | Mohamed Yaakoubi</h1>
         <p>The page you are looking for could not be found. You may have followed an invalid link or the page may have been moved.</p>
@@ -49,11 +24,11 @@ export default async function NotFoundPage({ params }: NotFoundPageProps) {
           <h2 id="helpful-links">Helpful Links</h2>
           <nav>
             <ul>
-              <li><a href={`/${locale}`}>Home Page</a></li>
-              <li><a href={`/${locale}/experience`}>Professional Experience</a></li>
-              <li><a href={`/${locale}/projects`}>Projects Portfolio</a></li>
-              <li><a href={`/${locale}/services`}>Professional Services</a></li>
-              <li><a href={`/${locale}/contact`}>Contact Information</a></li>
+              <li><a href="/en">Home Page</a></li>
+              <li><a href="/en/experience">Professional Experience</a></li>
+              <li><a href="/en/projects">Projects Portfolio</a></li>
+              <li><a href="/en/services">Professional Services</a></li>
+              <li><a href="/en/contact">Contact Information</a></li>
             </ul>
           </nav>
         </section>

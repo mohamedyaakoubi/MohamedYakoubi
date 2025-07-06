@@ -12,7 +12,6 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const translations = getTranslations(locale)
   
   const titles = {
     en: 'Contact | Mohamed Yaakoubi',
@@ -25,11 +24,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     fr: 'Contactez Mohamed Yaakoubi pour des solutions IA, développement web ou services linguistiques. Formulaire de contact et profils sociaux professionnels.',
     ar: 'تواصل مع محمد يعقوبي للحصول على حلول الذكاء الاصطناعي أو تطوير الويب أو الخدمات اللغوية. نموذج الاتصال والملفات الشخصية المهنية.'
   }
+  
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
-      // Fixed canonical URL - consistent pattern
       canonical: locale === 'en' 
         ? 'https://www.mohamedyaakoubi.live/en/contact'
         : `https://www.mohamedyaakoubi.live/${locale}/contact`
@@ -41,8 +40,10 @@ interface ContactPageProps {
   params: Promise<{ locale: string }>
 }
 
-export default async function ContactPage({ params }: ContactPageProps) {
-  const { locale } = await params
+export default async function ContactPage(props: ContactPageProps) {
+  // Fix: Properly await params and add error handling
+  const params = await props.params
+  const { locale } = params
   const translations = getTranslations(locale)
   
   return (

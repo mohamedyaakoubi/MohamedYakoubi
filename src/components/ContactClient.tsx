@@ -1,6 +1,4 @@
 "use client"
-import { useLanguage } from '@/context/language-context'
-import { useTranslation } from '@/hooks/useTranslation'
 import { motion } from "framer-motion"
 import { 
   FaEnvelope, 
@@ -21,9 +19,7 @@ interface ContactClientProps {
 
 export default function ContactClient({ locale, translations }: ContactClientProps) {
   const [state, handleSubmit] = useForm("mnnjbdyb")
-  const { language } = useLanguage()
-  const { t } = useTranslation(language)
-
+  
   // Use the passed locale for RTL detection
   const isRTL = locale === 'ar'
 
@@ -33,7 +29,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
         <div className="container mx-auto px-4 sm:px-6 py-32">
           <div className="max-w-4xl mx-auto">
             <motion.div className="text-4xl font-bold mb-12 text-center">
-              {t('contact.form.success')}
+              {translations?.contact?.form?.success || 'Thank you for your message!'}
             </motion.div>
           </div>
         </div>
@@ -50,7 +46,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
           >
-            {t('contact.title')}
+            {translations?.contact?.title || 'Contact Me'}
           </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -67,7 +63,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     </div>
     <div>
       <h3 className="font-semibold text-gray-800 dark:text-white">
-        {t('contact.info.email')}
+        {translations?.contact?.info?.email || 'Email'}
       </h3>
       <a href="mailto:amirrak8@gmail.com" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">
         amirrak8@gmail.com
@@ -81,7 +77,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     </div>
     <div>
       <h3 className="font-semibold text-gray-800 dark:text-white">
-        {t('contact.info.phone')}
+        {translations?.contact?.info?.phone || 'Phone'}
       </h3>
       <a href="tel:+21654711524" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">
         +216 54711524
@@ -95,10 +91,10 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     </div>
     <div>
       <h3 className="font-semibold text-gray-800 dark:text-white">
-        {t('contact.info.location')}
+        {translations?.contact?.info?.location || 'Location'}
       </h3>
       <p className="text-gray-600 dark:text-gray-300">
-        {t('contact.info.locationValue')}
+        {translations?.contact?.info?.locationValue || 'Sfax, Tunisia'}
       </p>
     </div>
   </div>
@@ -109,7 +105,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     target="_blank"
     rel="noopener noreferrer me"
     className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
-    aria-label={t('social.github')}
+    aria-label={translations?.social?.github || 'GitHub'}
     whileHover={{ 
       scale: 1.15,
       transition: { duration: 0.2 }
@@ -125,7 +121,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     target="_blank"
     rel="noopener noreferrer me"
     className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
-    aria-label={t('social.linkedin')}
+    aria-label={translations?.social?.linkedin || 'LinkedIn'}
     whileHover={{ 
       scale: 1.15,
       transition: { duration: 0.2 }
@@ -141,7 +137,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#6fda44] hover:text-[#5cb536]"
-    aria-label={t('social.upwork')}
+    aria-label={translations?.social?.upwork || 'Upwork'}
     whileHover={{ 
       scale: 1.15,
       transition: { duration: 0.2 }
@@ -157,7 +153,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
   target="_blank"
   rel="noopener noreferrer me"
   className="text-blue-600 hover:text-blue-700"
-  aria-label={t('social.freelances') || "Freelances.tn"}
+  aria-label={translations?.social?.freelances || "Freelances.tn"}
   whileHover={{ 
     scale: 1.15,
     transition: { duration: 0.2 }
@@ -182,7 +178,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#1dbf73] hover:text-[#19a463]"
-    aria-label={t('social.fiverr') || "Fiverr"}
+    aria-label={translations?.social?.fiverr || "Fiverr"}
     whileHover={{ 
       scale: 1.15,
       transition: { duration: 0.2 }
@@ -197,7 +193,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#2563eb] hover:text-[#1d4ed8]"
-    aria-label={t('social.f6s') || "F6S"}
+    aria-label={translations?.social?.f6s || "F6S"}
     whileHover={{ 
       scale: 1.15,
       transition: { duration: 0.2 }
@@ -221,7 +217,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     target="_blank"
     rel="noopener noreferrer me"
     className="text-[#E4405F] hover:text-[#d62e4c]"
-    aria-label={t('social.instagram')}
+    aria-label={translations?.social?.instagram || 'Instagram'}
     whileHover={{ 
       scale: 1.15,
       transition: { duration: 0.2 }
@@ -237,7 +233,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
   target="_blank"
   rel="noopener noreferrer me"
   className="text-[#0068C5] hover:text-[#004F97]"
-  aria-label={t('social.proz') || "Proz.com"}
+  aria-label={translations?.social?.proz || "Proz.com"}
   whileHover={{ 
     scale: 1.15,
     transition: { duration: 0.2 }
@@ -268,7 +264,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
           >
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('contact.form.name')}
+                {translations?.contact?.form?.name || 'Name'}
               </label>
               <input
                 type="text"
@@ -277,11 +273,11 @@ export default function ContactClient({ locale, translations }: ContactClientPro
                 className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                 required
               />
-              <ValidationError prefix={t('contact.form.name')} field="name" errors={state.errors} />
+              <ValidationError prefix={translations?.contact?.form?.name || 'Name'} field="name" errors={state.errors} />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('contact.form.email')}
+                {translations?.contact?.form?.email || 'Email'}
               </label>
               <input
                 type="email"
@@ -290,12 +286,12 @@ export default function ContactClient({ locale, translations }: ContactClientPro
                 className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                 required
               />
-              <ValidationError prefix={t('contact.form.email')} field="email" errors={state.errors} />
+              <ValidationError prefix={translations?.contact?.form?.email || 'Email'} field="email" errors={state.errors} />
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('contact.form.message')}
+                {translations?.contact?.form?.message || 'Message'}
               </label>
               <textarea
                 id="message"
@@ -304,7 +300,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
                 className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                 required
               />
-              <ValidationError prefix={t('contact.form.message')} field="message" errors={state.errors} />
+              <ValidationError prefix={translations?.contact?.form?.message || 'Message'} field="message" errors={state.errors} />
             </div>
             
             <motion.button
@@ -313,9 +309,9 @@ export default function ContactClient({ locale, translations }: ContactClientPro
   whileHover={{ scale: 1.02 }}
   whileTap={{ scale: 0.98 }}
   className="w-full py-3 px-4 bg-blue-700 text-white rounded-lg font-medium hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
-  aria-label={state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
+  aria-label={state.submitting ? (translations?.contact?.form?.sending || 'Sending...') : (translations?.contact?.form?.submit || 'Send Message')}
 >
-  {state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
+  {state.submitting ? (translations?.contact?.form?.sending || 'Sending...') : (translations?.contact?.form?.submit || 'Send Message')}
 </motion.button>
           </motion.form>
         </div>
@@ -329,10 +325,10 @@ export default function ContactClient({ locale, translations }: ContactClientPro
         >
           <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
             <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
-              {t('contact.coffee.title')}
+              {translations?.contact?.coffee?.title || 'Support My Work'}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              {t('contact.coffee.description')}
+              {translations?.contact?.coffee?.description || 'If you appreciate the work and would like to support continued development'}
             </p>
             <motion.a
   href="https://www.buymeacoffee.com/medykb"
@@ -344,7 +340,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
 >
   <Image
     src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=medykb&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
-    alt={t('contact.coffee.buttonAlt')}
+    alt={translations?.contact?.coffee?.buttonAlt || 'Buy me a coffee'}
     width={217}
     height={48}
     className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"

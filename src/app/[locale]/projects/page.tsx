@@ -66,8 +66,10 @@ interface ProjectsPageProps {
   params: Promise<{ locale: string }>
 }
 
-export default async function ProjectsPage({ params }: ProjectsPageProps) {
-  const { locale } = await params
+export default async function ProjectsPage(props: ProjectsPageProps) {
+  // Fix: Properly await params
+  const params = await props.params
+  const { locale } = params
   const translations = getTranslations(locale)
 
   // Pre-fetch GitHub repos for SSG

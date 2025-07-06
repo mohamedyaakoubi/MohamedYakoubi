@@ -32,8 +32,10 @@ interface HomePageProps {
   params: Promise<{ locale: string }>
 }
 
-export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params
+export default async function HomePage(props: HomePageProps) {
+  // Fix: Properly await params
+  const params = await props.params
+  const { locale } = params
   const translations = getTranslations(locale)
   
   return (
