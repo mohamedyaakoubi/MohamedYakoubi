@@ -156,10 +156,10 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         {/* Enhanced hreflang meta tags */}
-        <link rel="alternate" hrefLang="en" href="https://www.mohamedyaakoubi.live/" title="Mohamed Yaakoubi - English" />
+        <link rel="alternate" hrefLang="en" href="https://www.mohamedyaakoubi.live/en" title="Mohamed Yaakoubi - English" />
         <link rel="alternate" hrefLang="fr" href="https://www.mohamedyaakoubi.live/fr" title="Mohamed Yaakoubi - Français" />
         <link rel="alternate" hrefLang="ar" href="https://www.mohamedyaakoubi.live/ar" title="محمد يعقوبي - العربية" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.live/" title="Mohamed Yaakoubi - Default" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.live/en" title="Mohamed Yaakoubi - Default" />
         
         {/* Preconnect and Preload Links */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
