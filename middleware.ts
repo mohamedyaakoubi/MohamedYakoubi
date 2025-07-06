@@ -17,7 +17,7 @@ const validRoutes = [
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Skip middleware for static files and API routes
+  // Skip middleware for static files, API routes, and specific paths
   if (
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/api/') ||
@@ -29,14 +29,10 @@ export function middleware(request: NextRequest) {
     pathname === '/404' ||
     pathname === '/404.html' ||
     pathname === '/sitemap.xml' ||
-    pathname === '/robots.txt'
+    pathname === '/robots.txt' ||
+    pathname === '/' // Let the root page handle the redirect
   ) {
     return NextResponse.next()
-  }
-
-  // Handle root path - permanent redirect to default locale (FIXED)
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url), 301)
   }
 
   // Check if pathname already has a supported locale
@@ -49,8 +45,8 @@ export function middleware(request: NextRequest) {
     if (validRoutes.includes(routePath)) {
       return NextResponse.next()
     } else {
-      // Invalid route for valid locale - permanent redirect to locale's home
-      return NextResponse.redirect(new URL(`/${maybeLocale}`, request.url), 301)
+      // Invalid route for valid locale - permanent redirect to locale's not-found
+      return NextResponse.redirect(new URL(`/${maybeLocale}/not-found`, request.url), 301)
     }
   } else {
     // Path without locale prefix - permanent redirect with default locale
@@ -58,8 +54,8 @@ export function middleware(request: NextRequest) {
     if (validRoutes.includes(fullPath)) {
       return NextResponse.redirect(new URL(`/${defaultLocale}/${fullPath}`, request.url), 301)
     } else {
-      // Invalid route - permanent redirect to home
-      return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url), 301)
+      // Invalid route - permanent redirect to not-found
+      return NextResponse.redirect(new URL(`/${defaultLocale}/not-found`, request.url), 301)
     }
   }
 }

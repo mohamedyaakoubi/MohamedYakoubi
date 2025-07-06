@@ -3,11 +3,15 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import { FaHome, FaCode, FaLightbulb } from 'react-icons/fa'
 import type { TerminalLine } from '@/types/terminal'
 import { Terminal } from './Terminal'
 
 export default function AnimatedNotFound() {
+  const params = useParams()
+  const locale = params?.locale as string || 'en'
+  
   const [terminalLines, setTerminalLines] = useState<TerminalLine[]>([
     { type: 'output', content: 'Welcome to Mohamed\'s Portfolio Terminal v2.0.1' },
     { type: 'output', content: 'ERROR 404: Page not found in current directory' },
@@ -102,16 +106,16 @@ export default function AnimatedNotFound() {
           />
         </motion.div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons - Updated with locale-aware links */}
         {!shouldHideFooter && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
           >
             <Link 
-              href="/en/"
+              href={`/${locale}`}
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <FaHome className="mr-2" />
@@ -119,7 +123,7 @@ export default function AnimatedNotFound() {
             </Link>
             
             <Link 
-              href="/en/projects/"
+              href={`/${locale}/projects`}
               className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
             >
               <FaCode className="mr-2" />
@@ -127,7 +131,7 @@ export default function AnimatedNotFound() {
             </Link>
             
             <Link 
-              href="/en/contact/"
+              href={`/${locale}/contact`}
               className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-400 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
             >
               <FaLightbulb className="mr-2" />
