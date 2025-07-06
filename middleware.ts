@@ -4,7 +4,6 @@ import type { NextRequest } from 'next/server'
 const supportedLocales = ['en', 'fr', 'ar']
 const defaultLocale = 'en'
 
-// Define valid routes for each locale
 const validRoutes = [
   '',
   'experience',
@@ -28,14 +27,16 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/_error') ||
     pathname.startsWith('/_not-found') ||
     pathname === '/404' ||
-    pathname === '/404.html'
+    pathname === '/404.html' ||
+    pathname === '/sitemap.xml' ||
+    pathname === '/robots.txt'
   ) {
     return NextResponse.next()
   }
 
-  // Handle root path - redirect to default locale
+  // Handle root path - redirect to default locale (no trailing slash)
   if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}/`, request.url))
+    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url))
   }
 
   // Check if pathname already has a supported locale
@@ -48,8 +49,8 @@ export function middleware(request: NextRequest) {
     if (validRoutes.includes(routePath)) {
       return NextResponse.next()
     } else {
-      // Invalid route for valid locale - redirect to locale's not-found
-      return NextResponse.redirect(new URL(`/${maybeLocale}/not-found/`, request.url))
+      // Invalid route for valid locale - redirect to locale's home
+      return NextResponse.redirect(new URL(`/${maybeLocale}`, request.url))
     }
   } else {
     // Path without locale prefix - check if it's a valid route and redirect with default locale
@@ -57,8 +58,8 @@ export function middleware(request: NextRequest) {
     if (validRoutes.includes(fullPath)) {
       return NextResponse.redirect(new URL(`/${defaultLocale}/${fullPath}`, request.url))
     } else {
-      // Invalid route - redirect to 404
-      return NextResponse.redirect(new URL(`/${defaultLocale}/not-found/`, request.url))
+      // Invalid route - redirect to home
+      return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url))
     }
   }
 }

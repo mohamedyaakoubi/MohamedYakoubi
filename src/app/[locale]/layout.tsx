@@ -33,9 +33,8 @@ export async function generateStaticParams() {
   ]
 }
 
-// Fixed: params is not a Promise, it's a resolved object
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const { locale } = params
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
   
   const titles = {
     en: 'Mohamed Yaakoubi | Emerging AI and Technology Specialist',
@@ -58,23 +57,21 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       'Mohamed Yaakoubi', 'Yaakoubi Mohamed', 'محمد يعقوبي', 'Mohamed Yakoubi',
       'freelance developer', 'AI data annotation', 'localization'
     ].join(', '),
-    // Fixed: Keep canonical name consistent for SEO
     authors: [{ 
-      name: 'Mohamed Yaakoubi', // Always use canonical name
+      name: 'Mohamed Yaakoubi',
       url: 'https://mohamed-yakoubi.vercel.app' 
     }],
-    creator: 'Mohamed Yaakoubi', // Canonical name
-    publisher: 'Mohamed Yaakoubi', // Canonical name
+    creator: 'Mohamed Yaakoubi',
+    publisher: 'Mohamed Yaakoubi',
     alternates: {
-      // Fixed: English should be root path, not /en
       canonical: locale === 'en' 
         ? 'https://mohamed-yakoubi.vercel.app/' 
         : `https://mohamed-yakoubi.vercel.app/${locale}`,
       languages: {
-        'en': 'https://mohamed-yakoubi.vercel.app/', // Root for English
+        'en': 'https://mohamed-yakoubi.vercel.app/',
         'fr': 'https://mohamed-yakoubi.vercel.app/fr',
         'ar': 'https://mohamed-yakoubi.vercel.app/ar',
-        'x-default': 'https://mohamed-yakoubi.vercel.app/', // Root as default
+        'x-default': 'https://mohamed-yakoubi.vercel.app/',
       }
     },
     openGraph: {
@@ -83,7 +80,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       url: locale === 'en' 
         ? 'https://mohamed-yakoubi.vercel.app/' 
         : `https://mohamed-yakoubi.vercel.app/${locale}`,
-      siteName: 'Mohamed Yaakoubi', // Canonical name
+      siteName: 'Mohamed Yaakoubi',
       locale: locale,
       type: 'website',
       images: [
@@ -123,7 +120,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     },
     other: {
       'og:locale:alternate': ['en_US', 'fr_FR', 'ar_AR'],
-      'linkedin:author': 'Mohamed Yaakoubi', // Canonical name
+      'linkedin:author': 'Mohamed Yaakoubi',
       'linkedin:title': 'Emerging AI and Technology Specialist | Video Metadata Writer at Wirestock | Technical Content Writer at UbiAi | Linguistic Editor at DeepL',
       'linkedin:description': 'Driven, adaptable AI specialist with expertise in translations, localization, and technology solutions. Experience at Wirestock, UbiAi, DeepL, RWS (Meta AI), and Uber.',
       'github:profile': 'mohamedyaakoubi',
@@ -133,7 +130,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   }
 }
 
-// Fixed: Properly implement viewport
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -150,22 +146,16 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode
-  params: Promise<{ locale: string }> // Keep Promise for async component
+  params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
   const direction = locale === 'ar' ? 'rtl' : 'ltr'
   
-  // Locale-specific name variations for display only
-  const nameByLocale = {
-    en: 'Mohamed Yaakoubi',
-    fr: 'Yaakoubi Mohamed', // Different display format for French
-    ar: 'محمد يعقوبي'
-  }
-  
-  const currentDisplayName = nameByLocale[locale as keyof typeof nameByLocale] || nameByLocale.en
+  // Fix: Ensure consistent font class application
+  const fontClasses = `${inter.variable} ${ibmPlexSansArabic.variable}`
   
   return (
-    <html lang={locale} dir={direction}>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         {/* Enhanced hreflang meta tags */}
         <link rel="alternate" hrefLang="en" href="https://mohamed-yakoubi.vercel.app/" title="Mohamed Yaakoubi - English" />
@@ -224,7 +214,7 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Person",
-              "name": "Mohamed Yaakoubi", // Always canonical name
+              "name": "Mohamed Yaakoubi",
               "alternateName": [
                 "Yaakoubi Mohamed", 
                 "محمد يعقوبي",
@@ -325,12 +315,12 @@ export default async function LocaleLayout({
                 "Mohamed Yakoubi",
                 "Yakoubi Mohamed"
               ],
-              "name": "Mohamed Yaakoubi's Professional Resume", // Canonical name
+              "name": "Mohamed Yaakoubi's Professional Resume",
               "url": "https://mohamed-yakoubi.vercel.app",
               "description": "Professional resume of Mohamed Yaakoubi, Emerging AI and Technology Specialist with experience in AI/ML, localization, and web development",
               "about": {
                 "@type": "Person",
-                "name": "Mohamed Yaakoubi", // Canonical name
+                "name": "Mohamed Yaakoubi",
                 "description": "Driven, adaptable AI specialist thriving on tackling complex challenges and acquiring new skills quickly",
                 "jobTitle": "Emerging AI and Technology Specialist",
                 "email": "amirrak8@gmail.com",
@@ -417,7 +407,8 @@ export default async function LocaleLayout({
         />
       </head>
 
-      <body className={`${inter.variable} ${ibmPlexSansArabic.variable}`}>
+      {/* Fix: Use consistent font classes and add suppressHydrationWarning */}
+      <body className={fontClasses} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
