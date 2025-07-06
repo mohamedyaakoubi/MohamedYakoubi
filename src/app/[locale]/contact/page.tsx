@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   
   const titles = {
     en: 'Contact | Mohamed Yaakoubi',
-    fr: 'Contact | Yaakoubi Mohamed',
+    fr: 'Contact | Mohamed Yaakoubi',
     ar: 'تواصل معي | محمد يعقوبي'
   }
   
