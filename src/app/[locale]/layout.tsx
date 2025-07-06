@@ -161,7 +161,7 @@ export default async function LocaleLayout({
         <link rel="alternate" hrefLang="en" href="https://mohamed-yakoubi.vercel.app/" title="Mohamed Yaakoubi - English" />
         <link rel="alternate" hrefLang="fr" href="https://mohamed-yakoubi.vercel.app/fr" title="Mohamed Yaakoubi - Français" />
         <link rel="alternate" hrefLang="ar" href="https://mohamed-yakoubi.vercel.app/ar" title="محمد يعقوبي - العربية" />
-        <link rel="alternate" hrefLang="x-default" href="https://mohamed-yakoubi.vercel.app/" title="Mohamed Yaakoubi - Default" />
+        <link rel="alternate" hrefLang="x-default" href="https://mohamed-yakoubi.vercel.app/en" title="Mohamed Yaakoubi - Default" />
         
         {/* Preconnect and Preload Links */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
