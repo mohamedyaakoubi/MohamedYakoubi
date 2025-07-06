@@ -1,7 +1,7 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
 export default function ContactRedirect() {
-  redirect('/en/contact')
+  permanentRedirect('/en/contact')
 }
 
 export const dynamic = 'force-static'

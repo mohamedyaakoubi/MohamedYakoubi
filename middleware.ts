@@ -34,9 +34,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Handle root path - redirect to default locale (no trailing slash)
+  // Handle root path - permanent redirect to default locale
   if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url))
+    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url), 301)
   }
 
   // Check if pathname already has a supported locale
@@ -49,17 +49,17 @@ export function middleware(request: NextRequest) {
     if (validRoutes.includes(routePath)) {
       return NextResponse.next()
     } else {
-      // Invalid route for valid locale - redirect to locale's home
-      return NextResponse.redirect(new URL(`/${maybeLocale}`, request.url))
+      // Invalid route for valid locale - permanent redirect to locale's home
+      return NextResponse.redirect(new URL(`/${maybeLocale}`, request.url), 301)
     }
   } else {
-    // Path without locale prefix - check if it's a valid route and redirect with default locale
+    // Path without locale prefix - permanent redirect with default locale
     const fullPath = segments.join('/')
     if (validRoutes.includes(fullPath)) {
-      return NextResponse.redirect(new URL(`/${defaultLocale}/${fullPath}`, request.url))
+      return NextResponse.redirect(new URL(`/${defaultLocale}/${fullPath}`, request.url), 301)
     } else {
-      // Invalid route - redirect to home
-      return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url))
+      // Invalid route - permanent redirect to home
+      return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url), 301)
     }
   }
 }

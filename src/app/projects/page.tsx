@@ -1,7 +1,7 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
 export default function ProjectsRedirect() {
-  redirect('/en/projects')
+  permanentRedirect('/en/projects')
 }
 
 export const dynamic = 'force-static'

@@ -4,24 +4,46 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove static export to enable API routes
-  // output: 'export', // REMOVED
-  // trailingSlash: true, // REMOVED (not needed without static export)
+  // Add explicit permanent redirects
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: '/experience',
+        destination: '/en/experience',
+        permanent: true,
+      },
+      {
+        source: '/projects',
+        destination: '/en/projects',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/en/services',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/en/contact',
+        permanent: true,
+      }
+    ]
+  },
   
-  // Compiler options
+  // Your existing config...
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Improve crawler access to your JS
   poweredByHeader: false,
-  
-  // Enable React optimization features
   reactStrictMode: true,
   
-  // Image optimization config (restored to normal since we're not doing static export)
   images: {
-    // unoptimized: true, // REMOVED - can use optimized images now
     remotePatterns: [
       {
         protocol: 'https',
@@ -63,11 +85,9 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
-  // Root level options
   serverExternalPackages: [], 
   outputFileTracingRoot: process.cwd(),
   
-  // Updated experimental options
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['react-icons', 'framer-motion'],

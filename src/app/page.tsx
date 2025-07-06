@@ -1,9 +1,9 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
 export default function RootPage() {
-  redirect('/en')
+  // Use permanentRedirect for 301 status instead of redirect (307)
+  permanentRedirect('/en')
 }
 
-// Force this page to be generated at build time
 export const dynamic = 'force-static'
 export const revalidate = false

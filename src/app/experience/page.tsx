@@ -1,7 +1,7 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
 export default function ExperienceRedirect() {
-  redirect('/en/experience')
+  permanentRedirect('/en/experience')
 }
 
 export const dynamic = 'force-static'
