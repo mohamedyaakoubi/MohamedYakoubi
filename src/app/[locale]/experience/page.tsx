@@ -35,7 +35,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'freelance AI specialist', 'remote work experience'
     ].join(', '),
     alternates: {
-      canonical: `https://mohamed-yakoubi.vercel.app/${locale === 'en' ? '' : locale + '/'}experience`
+      // Fixed canonical URL - consistent pattern
+      canonical: locale === 'en' 
+        ? 'https://mohamed-yakoubi.vercel.app/experience'
+        : `https://mohamed-yakoubi.vercel.app/${locale}/experience`
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,

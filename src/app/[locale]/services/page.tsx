@@ -7,6 +7,53 @@ export async function generateStaticParams() {
   return locales.map(locale => ({ locale }));
 }
 
+// Add this generateMetadata function with canonical URL
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  
+  const titles = {
+    en: 'Professional Services | Mohamed Yaakoubi - AI & Web Development',
+    fr: 'Services Professionnels | Mohamed Yaakoubi - IA & Développement Web',
+    ar: 'الخدمات المهنية | محمد يعقوبي - الذكاء الاصطناعي وتطوير الويب'
+  }
+  
+  const descriptions = {
+    en: 'Professional services by Mohamed Yaakoubi: AI data annotation, translation & localization, web development, career coaching, technical support, and IT consulting.',
+    fr: 'Services professionnels par Mohamed Yaakoubi : annotation de données IA, traduction et localisation, développement web, coaching de carrière, support technique et conseil IT.',
+    ar: 'الخدمات المهنية من محمد يعقوبي: تعليق البيانات بالذكاء الاصطناعي، الترجمة والتوطين، تطوير الويب، تدريب المهن، الدعم التقني، والاستشارات التقنية.'
+  }
+
+  return {
+    title: titles[locale as keyof typeof titles] || titles.en,
+    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    keywords: [
+      'AI services', 'data annotation', 'translation services', 'web development',
+      'career coaching', 'technical support', 'IT consulting', 'localization',
+      'Mohamed Yaakoubi services', 'freelance AI specialist', 'Arabic English translation',
+      'resume writing', 'portfolio development', 'multilingual support'
+    ].join(', '),
+    alternates: {
+      // Add canonical URL - consistent with your URL structure
+      canonical: locale === 'en' 
+        ? 'https://mohamed-yakoubi.vercel.app/en/services'
+        : `https://mohamed-yakoubi.vercel.app/${locale}/services`
+    },
+    openGraph: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      type: 'website',
+      url: locale === 'en' 
+        ? 'https://mohamed-yakoubi.vercel.app/en/services'
+        : `https://mohamed-yakoubi.vercel.app/${locale}/services`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    }
+  }
+}
+
 
 
 export default async function ServicesPage(props: { params: Promise<{ locale: string }> }) {

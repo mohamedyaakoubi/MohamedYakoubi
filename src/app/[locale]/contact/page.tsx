@@ -25,12 +25,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     fr: 'Contactez Mohamed Yaakoubi pour des solutions IA, développement web ou services linguistiques. Formulaire de contact et profils sociaux professionnels.',
     ar: 'تواصل مع محمد يعقوبي للحصول على حلول الذكاء الاصطناعي أو تطوير الويب أو الخدمات اللغوية. نموذج الاتصال والملفات الشخصية المهنية.'
   }
-
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
-      canonical: `https://mohamed-yakoubi.vercel.app/${locale === 'en' ? '' : locale + '/'}contact`
+      // Fixed canonical URL - consistent pattern
+      canonical: locale === 'en' 
+        ? 'https://mohamed-yakoubi.vercel.app/contact'
+        : `https://mohamed-yakoubi.vercel.app/${locale}/contact`
     }
   }
 }

@@ -55,7 +55,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
-      canonical: `https://mohamed-yakoubi.vercel.app/${locale === 'en' ? '' : locale + '/'}projects`
+      // Add canonical URL
+      canonical: locale === 'en' 
+        ? 'https://mohamed-yakoubi.vercel.app/projects'
+        : `https://mohamed-yakoubi.vercel.app/${locale}/projects`
     }
   }
 }
