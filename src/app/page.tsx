@@ -4,5 +4,6 @@ export default function RootPage() {
   redirect('/en')
 }
 
-// Add this to ensure static generation
+// Force this page to be generated at build time
 export const dynamic = 'force-static'
+export const revalidate = false
