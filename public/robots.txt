@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 
-# Allow specific content pages
 Allow: /en/
 Allow: /fr/
 Allow: /ar/
@@ -18,17 +17,11 @@ Allow: /ar/projects
 Allow: /ar/services
 Allow: /ar/contact
 
-# Don't explicitly disallow root - let it redirect
-# Remove this line: Disallow: /$
-
-# Block admin and private paths
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 Disallow: /.well-known/
 
-# Sitemaps - submit this to Bing
 Sitemap: https://www.mohamedyaakoubi.live/sitemap.xml
 
-# Crawl delay for better server performance
 Crawl-delay: 1
