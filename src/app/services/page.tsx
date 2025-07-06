@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
-export default function ServicesPage() {
-  // Redirect to English version by default
+export default function ServicesRedirect() {
   redirect('/en/services')
 }
 
+export const dynamic = 'force-static'

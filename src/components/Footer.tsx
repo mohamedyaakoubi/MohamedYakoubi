@@ -10,6 +10,14 @@ export function Footer() {
   
   const currentYear = new Date().getFullYear()
   
+  // Generate locale-aware URLs
+  const getLocalizedUrl = (path: string) => {
+    if (language === 'en') {
+      return path === '/' ? '/' : path
+    }
+    return path === '/' ? `/${language}` : `/${language}${path}`
+  }
+  
   return (
     <footer className="bg-gray-900 text-white py-12 relative z-40">
       <div className="container mx-auto px-6">
@@ -18,12 +26,46 @@ export function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">{t('footer.sitemap')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-blue-400 transition-colors">{t('navigation.links.home')}</Link></li>
-              <li><Link href="/projects" className="hover:text-blue-400 transition-colors">{t('navigation.links.projects')}</Link></li>
-              <li><Link href="/services" className="hover:text-blue-400 transition-colors">{t('navigation.links.services')}</Link></li>
-              <li><Link href="/experience" className="hover:text-blue-400 transition-colors">{t('navigation.links.experience')}</Link></li>
-              <li><Link href="/contact" className="hover:text-blue-400 transition-colors">{t('navigation.links.contact')}</Link></li>
-              <li><Link href="/sitemap" className="hover:text-blue-400 transition-colors">{t('footer.completeSitemap')}</Link></li>
+              <li>
+                <Link 
+                  href={getLocalizedUrl('/')} 
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  {t('navigation.links.home')}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedUrl('/projects')} 
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  {t('navigation.links.projects')}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedUrl('/services')} 
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  {t('navigation.links.services')}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedUrl('/experience')} 
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  {t('navigation.links.experience')}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedUrl('/contact')} 
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  {t('navigation.links.contact')}
+                </Link>
+              </li>
             </ul>
           </div>
           
@@ -38,10 +80,24 @@ export function Footer() {
           {/* Social Links */}
           <div>
             <h3 className="text-xl font-semibold mb-4">{t('footer.connect')}</h3>
-            <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'}`}>
-  <a href="https://github.com/mohamedyaakoubi" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">GitHub</a>
-  <a href="https://www.linkedin.com/in/yaakoubi-mohamed/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">LinkedIn</a>
-</div>
+            <div className={`flex ${language === 'ar' ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+              <a 
+                href="https://github.com/mohamedyaakoubi" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-blue-400 transition-colors"
+              >
+                GitHub
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/yaakoubi-mohamed/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-blue-400 transition-colors"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
         

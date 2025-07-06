@@ -71,14 +71,29 @@ const AnimatedContent = ({ typedText, language, t }: AnimatedContentProps) => {
 export function Hero() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [displayTheme, setDisplayTheme] = useState("light") // Add state for smooth transitions
   const { language } = useLanguage()
   const { t } = useTranslation(language)
   const phrases = t('hero.roles')
   const typedText = useTypewriter(phrases)
 
+  // Handle theme transitions smoothly
+  useEffect(() => {
+    if (mounted && theme) {
+      // Add delay for smooth transition
+      const timer = setTimeout(() => {
+        setDisplayTheme(theme)
+      }, 50) // Small delay to ensure smooth transition
+      
+      return () => clearTimeout(timer)
+    }
+  }, [theme, mounted])
+
   // Eagerly load critical content
   useEffect(() => {
-    setMounted(true)
+    const timer = setTimeout(() => {
+      setMounted(true)
+    }, 100) // Deferred mounting like in ClientLayout
     
     // Preload the background images with low priority
     if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
@@ -102,6 +117,8 @@ export function Hero() {
     // Standard attributes only
     document.head.appendChild(link);
   }
+  
+  return () => clearTimeout(timer)
   }, [])
 
   const handleScroll = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -112,8 +129,8 @@ export function Hero() {
     }
   }
 
-  // Show light theme content during initial render
-  const currentTheme = mounted ? theme : "light"
+  // Use displayTheme for smooth transitions
+  const currentTheme = mounted ? displayTheme : "light"
 
   return (
     <>
@@ -178,19 +195,23 @@ export function Hero() {
                 {t('hero.greeting')}
               </h2>
                   
-              {/* Name - rendered immediately without animations */}
-              <h3 
-                className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
-                style={{
-                  fontWeight: 700,
-                }}
-              >
-                {language === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}
-              </h3>
-                  
-              <h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
-                {t('hero.tagline')}
-              </h2>
+      {/* Name - rendered immediately without animations */}
+<h3 
+  className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
+  style={{
+    fontWeight: 700,
+  }}
+>
+  {language === 'ar'
+    ? 'محمد يعقوبي'
+    : language === 'fr'
+    ? 'Yaakoubi Mohamed'
+    : 'Mohamed Yaakoubi'}
+</h3>
+
+<h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
+  {t('hero.tagline')}
+</h2>
             </div>
 
             {/* Animated elements render after critical content loads */}

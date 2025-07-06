@@ -1,4 +1,5 @@
 "use client"
+import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 import { motion } from "framer-motion"
 import { 
@@ -20,7 +21,10 @@ interface ContactClientProps {
 
 export default function ContactClient({ locale, translations }: ContactClientProps) {
   const [state, handleSubmit] = useForm("mnnjbdyb")
-  const { t } = useTranslation(locale as any)
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
+
+  // Use the passed locale for RTL detection
   const isRTL = locale === 'ar'
 
   if (state.succeeded) {
@@ -29,7 +33,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
         <div className="container mx-auto px-4 sm:px-6 py-32">
           <div className="max-w-4xl mx-auto">
             <motion.div className="text-4xl font-bold mb-12 text-center">
-              {translations.contact?.form?.success || 'Thank you for your message!'}
+              {t('contact.form.success')}
             </motion.div>
           </div>
         </div>
@@ -46,207 +50,311 @@ export default function ContactClient({ locale, translations }: ContactClientPro
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
           >
-            {translations.contact?.title || 'Contact'}
+            {t('contact.title')}
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                {translations.contact?.form?.title || 'Send a Message'}
-              </h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {translations.contact?.form?.name || 'Name'}
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  />
-                  <ValidationError prefix="Name" field="name" errors={state.errors} />
-                </div>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Info */}
+<motion.div
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ delay: 0.2 }}
+  className="space-y-6"
+>
+  <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+    <div className="bg-blue-500/20 p-3 rounded-full">
+      <FaEnvelope className="text-blue-500 w-6 h-6" />
+    </div>
+    <div>
+      <h3 className="font-semibold text-gray-800 dark:text-white">
+        {t('contact.info.email')}
+      </h3>
+      <a href="mailto:amirrak8@gmail.com" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">
+        amirrak8@gmail.com
+      </a>
+    </div>
+  </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {translations.contact?.form?.email || 'Email'}
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  />
-                  <ValidationError prefix="Email" field="email" errors={state.errors} />
-                </div>
+  <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+    <div className="bg-blue-500/20 p-3 rounded-full">
+      <FaPhone className="text-blue-500 w-6 h-6" />
+    </div>
+    <div>
+      <h3 className="font-semibold text-gray-800 dark:text-white">
+        {t('contact.info.phone')}
+      </h3>
+      <a href="tel:+21654711524" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">
+        +216 54711524
+      </a>
+    </div>
+  </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {translations.contact?.form?.message || 'Message'}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
-                  />
-                  <ValidationError prefix="Message" field="message" errors={state.errors} />
-                </div>
+  <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+    <div className="bg-blue-500/20 p-3 rounded-full">
+      <FaMapMarkerAlt className="text-blue-500 w-6 h-6" />
+    </div>
+    <div>
+      <h3 className="font-semibold text-gray-800 dark:text-white">
+        {t('contact.info.location')}
+      </h3>
+      <p className="text-gray-600 dark:text-gray-300">
+        {t('contact.info.locationValue')}
+      </p>
+    </div>
+  </div>
+  <div className={`flex ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-6'} pt-6`}>
+  {/* GitHub */}
+  <motion.a
+    href="https://github.com/mohamedyaakoubi"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
+    aria-label={t('social.github')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <FaGithub className="w-6 h-6" />
+  </motion.a>
+  
+  {/* LinkedIn */}
+  <motion.a
+    href="https://www.linkedin.com/in/yaakoubi-mohamed/"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-gray-600 dark:text-gray-300 hover:text-blue-500"
+    aria-label={t('social.linkedin')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <FaLinkedin className="w-6 h-6" />
+  </motion.a>
+  
+  {/* Upwork */}
+  <motion.a
+    href="https://www.upwork.com/freelancers/~0118c281163fef05cb?mp_source=share"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#6fda44] hover:text-[#5cb536]"
+    aria-label={t('social.upwork')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <SiUpwork className="w-6 h-6" />
+  </motion.a>
+  
+  {/* Freelances.tn */}
+  <motion.a
+  href="https://www.freelances.tn/freelance/mohamed-yaakoubi"
+  target="_blank"
+  rel="noopener noreferrer me"
+  className="text-blue-600 hover:text-blue-700"
+  aria-label={t('social.freelances') || "Freelances.tn"}
+  whileHover={{ 
+    scale: 1.15,
+    transition: { duration: 0.2 }
+  }}
+  whileTap={{ scale: 0.95 }}
+>
+  <div className="w-6 h-6 relative">
+    <Image 
+      src="/freelances.webp" 
+      alt="Freelances.tn" 
+      width={24} 
+      height={24}
+      className="w-6 h-6 object-contain"
+      loading="lazy" 
+    />
+  </div>
+</motion.a>
+  
+  {/* Fiverr */}
+  <motion.a
+    href="https://www.fiverr.com/s/wkZqrpg"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#1dbf73] hover:text-[#19a463]"
+    aria-label={t('social.fiverr') || "Fiverr"}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <SiFiverr className="w-6 h-6" />
+  </motion.a>
+   {/* F6S */}
+  <motion.a
+    href="https://www.f6s.com/mohamed-yaakoubi"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#2563eb] hover:text-[#1d4ed8]"
+    aria-label={t('social.f6s') || "F6S"}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="w-6 h-6 relative">
+      <Image 
+        src="/companies/f6s_logo.png" 
+        alt="F6S" 
+        width={24} 
+        height={24}
+        className="w-6 h-6 object-contain"
+        loading="lazy" 
+      />
+    </div>
+  </motion.a>
+  {/* Instagram */}
+  <motion.a
+    href="https://www.instagram.com/mohamed__yaakoubi/"
+    target="_blank"
+    rel="noopener noreferrer me"
+    className="text-[#E4405F] hover:text-[#d62e4c]"
+    aria-label={t('social.instagram')}
+    whileHover={{ 
+      scale: 1.15,
+      transition: { duration: 0.2 }
+    }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <FaInstagram className="w-6 h-6" />
+  </motion.a>
+  
+  {/* Proz.com */}
+  <motion.a
+  href="https://www.proz.com/profile/3972649"
+  target="_blank"
+  rel="noopener noreferrer me"
+  className="text-[#0068C5] hover:text-[#004F97]"
+  aria-label={t('social.proz') || "Proz.com"}
+  whileHover={{ 
+    scale: 1.15,
+    transition: { duration: 0.2 }
+  }}
+  whileTap={{ scale: 0.95 }}
+>
+  <div className="w-10 h-10 relative flex items-center justify-center -mt-2 -ml-3">
+    <Image 
+      src="/companies/proz_logo.webp" 
+      alt="Proz.com" 
+      width={40} 
+      height={40}
+      className="w-10 h-10 object-contain"
+      loading="lazy"
+    />
+  </div>
+</motion.a>
+</div>
+          </motion.div>
 
-                <button
-                  type="submit"
-                  disabled={state.submitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {state.submitting 
-                    ? (translations.contact?.form?.sending || 'Sending...') 
-                    : (translations.contact?.form?.submit || 'Send Message')
-                  }
-                </button>
-              </form>
-            </motion.div>
+          {/* Contact Form */}
+          <motion.form
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            onSubmit={handleSubmit}
+            className="space-y-6"
+          >
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                {t('contact.form.name')}
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
+                required
+              />
+              <ValidationError prefix={t('contact.form.name')} field="name" errors={state.errors} />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                {t('contact.form.email')}
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
+                required
+              />
+              <ValidationError prefix={t('contact.form.email')} field="email" errors={state.errors} />
+            </div>
 
-            {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-8"
-            >
-              {/* Contact Details */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                  Contact Information
-                </h3>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <FaEnvelope className={`text-blue-600 w-5 h-5 ${isRTL ? 'ml-4' : 'mr-4'}`} />
-                    <div>
-                      <p className="font-medium text-gray-800 dark:text-white">
-                        {translations.contact?.info?.email || 'Email'}
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-300">amirrak8@gmail.com</p>
-                    </div>
-                  </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                {t('contact.form.message')}
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
+                required
+              />
+              <ValidationError prefix={t('contact.form.message')} field="message" errors={state.errors} />
+            </div>
+            
+            <motion.button
+  type="submit"
+  disabled={state.submitting}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  className="w-full py-3 px-4 bg-blue-700 text-white rounded-lg font-medium hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+  aria-label={state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
+>
+  {state.submitting ? t('contact.form.sending') : t('contact.form.submit')}
+</motion.button>
+          </motion.form>
+        </div>
 
-                  <div className="flex items-center">
-                    <FaPhone className={`text-blue-600 w-5 h-5 ${isRTL ? 'ml-4' : 'mr-4'}`} />
-                    <div>
-                      <p className="font-medium text-gray-800 dark:text-white">
-                        {translations.contact?.info?.phone || 'Phone'}
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-300">+216 54711524</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <FaMapMarkerAlt className={`text-blue-600 w-5 h-5 ${isRTL ? 'ml-4' : 'mr-4'}`} />
-                    <div>
-                      <p className="font-medium text-gray-800 dark:text-white">
-                        {translations.contact?.info?.location || 'Location'}
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-300">
-                        {translations.contact?.info?.locationValue || 'Sfax, Tunisia'}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                  Connect With Me
-                </h3>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <a
-                    href="https://github.com/mohamedyaakoubi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    <FaGithub className={`w-5 h-5 ${isRTL ? 'ml-3' : 'mr-3'}`} />
-                    <span className="font-medium">GitHub</span>
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/yaakoubi-mohamed/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    <FaLinkedin className={`w-5 h-5 text-blue-600 ${isRTL ? 'ml-3' : 'mr-3'}`} />
-                    <span className="font-medium">LinkedIn</span>
-                  </a>
-
-                  <a
-                    href="https://www.upwork.com/freelancers/~0118c281163fef05cb"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    <SiUpwork className={`w-5 h-5 text-green-600 ${isRTL ? 'ml-3' : 'mr-3'}`} />
-                    <span className="font-medium">Upwork</span>
-                  </a>
-
-                  <a
-                    href="https://www.fiverr.com/s/wkZqrpg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    <SiFiverr className={`w-5 h-5 text-green-500 ${isRTL ? 'ml-3' : 'mr-3'}`} />
-                    <span className="font-medium">Fiverr</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Buy Me a Coffee */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl p-6 text-white text-center"
-              >
-                <h3 className="text-xl font-bold mb-2">
-                  {translations.contact?.coffee?.title || '☕ Buy Me a Coffee'}
-                </h3>
-                <p className="mb-4 opacity-90">
-                  {translations.contact?.coffee?.description || 'If you found my work helpful, you can buy me a coffee!'}
-                </p>
-                <a
-                  href="https://www.buymeacoffee.com/medykb"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <Image
-                    src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=medykb&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
-                    alt={translations.contact?.coffee?.buttonAlt || "Buy Me A Coffee"}
-                    width={217}
-                    height={60}
-                    className="rounded-lg"
-                  />
-                </a>
-              </motion.div>
-            </motion.div>
+     {/* Buy Me a Coffee Section */}
+     <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="max-w-lg mx-auto mt-16"
+        >
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
+            <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
+              {t('contact.coffee.title')}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              {t('contact.coffee.description')}
+            </p>
+            <motion.a
+  href="https://www.buymeacoffee.com/medykb"
+  target="_blank"
+  rel="noopener noreferrer me"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="inline-block"
+>
+  <Image
+    src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=medykb&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+    alt={t('contact.coffee.buttonAlt')}
+    width={217}
+    height={48}
+    className="h-12 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+    loading="lazy"
+  />
+</motion.a>
           </div>
+        </motion.div>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

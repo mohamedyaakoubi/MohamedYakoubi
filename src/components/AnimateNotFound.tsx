@@ -43,7 +43,7 @@ export default function AnimatedNotFound() {
       {/* Hide theme toggle */}
       {shouldHideThemeToggle && (
         <style jsx global>{`
-          .fixed.top-20.right-6 { display: none !important; }
+          .fixed.top-20.left-6 { display: none !important; }
         `}</style>
       )}
       
@@ -111,7 +111,7 @@ export default function AnimatedNotFound() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Link 
-              href="/"
+              href="/en/"
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <FaHome className="mr-2" />
@@ -119,7 +119,7 @@ export default function AnimatedNotFound() {
             </Link>
             
             <Link 
-              href="/projects"
+              href="/en/projects/"
               className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
             >
               <FaCode className="mr-2" />
@@ -127,7 +127,7 @@ export default function AnimatedNotFound() {
             </Link>
             
             <Link 
-              href="/contact"
+              href="/en/contact/"
               className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-400 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
             >
               <FaLightbulb className="mr-2" />

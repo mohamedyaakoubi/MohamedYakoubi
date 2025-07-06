@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   
   const titles = {
     en: 'Contact | Mohamed Yaakoubi',
-    fr: 'Contact | Mohamed Yaakoubi',
+    fr: 'Contact | Yaakoubi Mohamed',
     ar: 'تواصل معي | محمد يعقوبي'
   }
   
@@ -45,7 +45,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
   
   return (
     <>
-      {/* Add comprehensive static pre-rendered content for search engines */}
+      {/* SEO-optimized static content */}
       <div className="sr-only" aria-hidden="false">
         <h1>{translations.contact?.title || 'Contact'} Mohamed Yaakoubi</h1>
         <p>Get in touch with Mohamed Yaakoubi for inquiries about AI solutions, web development, translation, and localization services.</p>
@@ -114,45 +114,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
           </article>
         </section>
 
-        <section aria-labelledby="contact-methods">
-          <h2 id="contact-methods">How to Get in Touch</h2>
-          
-          <article>
-            <h3>Contact Form</h3>
-            <p>Use the contact form on this page for detailed inquiries and project discussions.</p>
-            <ul>
-              <li>Project consultation requests</li>
-              <li>Service inquiries</li>
-              <li>Collaboration proposals</li>
-              <li>Technical support questions</li>
-              <li>General business inquiries</li>
-            </ul>
-          </article>
-
-          <article>
-            <h3>Direct Email</h3>
-            <p>Send direct emails to amirrak8@gmail.com for:</p>
-            <ul>
-              <li>Urgent project requests</li>
-              <li>Business partnerships</li>
-              <li>Job opportunities</li>
-              <li>Technical consultations</li>
-              <li>Media inquiries</li>
-            </ul>
-          </article>
-
-          <article>
-            <h3>Phone Consultation</h3>
-            <p>Call +216 54711524 for:</p>
-            <ul>
-              <li>Immediate technical support</li>
-              <li>Project clarifications</li>
-              <li>Consultation scheduling</li>
-              <li>Urgent business matters</li>
-            </ul>
-          </article>
-        </section>
-
         <section aria-labelledby="services-inquiry">
           <h2 id="services-inquiry">Services Available for Inquiry</h2>
           <ul>
@@ -190,4 +151,3 @@ export default async function ContactPage({ params }: ContactPageProps) {
     </>
   )
 }
-

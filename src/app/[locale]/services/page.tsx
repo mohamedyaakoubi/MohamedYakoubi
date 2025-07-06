@@ -1,48 +1,19 @@
 import type { Metadata } from 'next'
 import ServicesClient from '@/components/ServicesClient'
-import { getTranslations } from '@/lib/translations'
+import { getTranslations, getSupportedLocales } from '@/lib/translations'
 
 export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'fr' },
-    { locale: 'ar' },
-  ]
+  const locales = getSupportedLocales();
+  return locales.map(locale => ({ locale }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params
+
+
+export default async function ServicesPage(props: { params: Promise<{ locale: string }> }) {
+  const params = await props.params;
+  const { locale } = params
   const translations = getTranslations(locale)
-  
-  const titles = {
-    en: 'Services | Mohamed Yaakoubi',
-    fr: 'Services | Mohamed Yaakoubi',
-    ar: 'الخدمات | محمد يعقوبي'
-  }
-  
-  const descriptions = {
-    en: 'Professional services offered by Mohamed Yaakoubi including AI solutions, web development, and translation services.',
-    fr: 'Services professionnels offerts par Mohamed Yaakoubi incluant les solutions IA, le développement web et les services de traduction.',
-    ar: 'الخدمات المهنية التي يقدمها محمد يعقوبي بما في ذلك حلول الذكاء الاصطناعي وتطوير الويب وخدمات الترجمة.'
-  }
 
-  return {
-    title: titles[locale as keyof typeof titles] || titles.en,
-    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
-    alternates: {
-      canonical: `https://mohamed-yakoubi.vercel.app/${locale === 'en' ? '' : locale + '/'}services`
-    }
-  }
-}
-
-interface ServicesPageProps {
-  params: Promise<{ locale: string }>
-}
-
-export default async function ServicesPage({ params }: ServicesPageProps) {
-  const { locale } = await params
-  const translations = getTranslations(locale)
-  
   return (
     <>
       {/* Add comprehensive static pre-rendered content for search engines */}
@@ -184,4 +155,3 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
     </>
   )
 }
-

@@ -21,7 +21,7 @@ export default {
       toggleClose: "Close chat"
     },
     navigation: {
-      logo: "M Y",
+      logo: "MY",
       links: {
         home: "Home",
         projects: "Projects",

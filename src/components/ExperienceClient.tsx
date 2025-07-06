@@ -2,15 +2,11 @@
 import { motion } from "framer-motion"
 import { Building2, Calendar, MapPin } from "lucide-react"
 import type { Experience } from "@/types/experience"
+import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 
-interface ExperienceClientProps {
-  locale: string
-  translations: any
-}
-
 const experiences: Experience[] = [
-    {
+  {
     title: "Video Metadata Writer",
     company: "Wirestock",
     companyUrl: "https://wirestock.io",
@@ -77,7 +73,7 @@ const experiences: Experience[] = [
   {
     title: "Language Data and Quality Reviewer",
     company: "Volga Partners",
-    companyUrl: "https://volgapartners.com",
+    companyUrl: "https://www.volgapartners.com",
     location: "Sfax (Remote)",
     period: "Jul 2024 - Present",
     description: [
@@ -153,105 +149,103 @@ const experiences: Experience[] = [
   },
 ]
 
-export default function ExperienceClient({ locale, translations }: ExperienceClientProps) {
-  const { t } = useTranslation(locale as any)
-  const isRTL = locale === 'ar'
+interface ExperienceContentProps {
+  experience: Experience;
+}
 
-  const getTranslatedExperience = (exp: Experience) => {
-    return {
-      ...exp,
-      title: translations.experience?.positions?.[exp.title] || exp.title,
-      company: translations.experience?.companies?.[exp.company] || exp.company,
-      location: translations.experience?.locations?.[exp.location] || exp.location,
-      period: translations.experience?.periods?.[exp.period] || exp.period,
-      description: exp.description.map(desc => 
-        translations.experience?.descriptions?.[desc] || desc
-      )
-    }
-  }
+function ExperienceContent({ experience }: ExperienceContentProps) {
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
 
   return (
-    <div className="min-h-screen py-32 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {translations.experience?.title || 'Experience'}
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Professional journey in AI, translation, and technology
-          </p>
-        </motion.div>
+    <div>
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+        {t(`experience.positions.${experience.title}`)}
+      </h3>
+      <div className="mt-2 text-gray-600 dark:text-gray-300">
+        <p className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+          <Building2 className={language === 'ar' ? 'ml-2' : 'mr-2'} />
+          {experience.companyUrl ? (
+            <a
+              href={experience.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-500 transition-colors underline decoration-dotted"
+              aria-label={`${t(`experience.companies.${experience.company}`)} ${t('common.website')}`}
+              title={`${t('common.visitWebsite')}: ${t(`experience.companies.${experience.company}`)}`}
+            >
+              {t(`experience.companies.${experience.company}`)}
+            </a>
+          ) : (
+            t(`experience.companies.${experience.company}`)
+          )}
+        </p>
+        <p className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+          <MapPin className={language === 'ar' ? 'ml-2' : 'mr-2'} />
+          {t(`experience.locations.${experience.location}`)}
+        </p>
+        <p className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+          <Calendar className={language === 'ar' ? 'ml-2' : 'mr-2'} />
+          {t(`experience.periods.${experience.period}`)}
+        </p>
+      </div>
+      <ul className={`mt-4 list-disc ${language === 'ar' ? 'mr-4' : 'ml-4'} text-gray-600 dark:text-gray-300`}>
+        {experience.description.map((item, index) => (
+          <li key={index}>{t(`experience.descriptions.${item}`)}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-        <div className="max-w-4xl mx-auto">
-          {experiences.map((experience, index) => {
-            const translatedExp = getTranslatedExperience(experience)
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="mb-12 relative"
+export default function ExperienceClient() {
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
+
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 bg-gray-100 dark:bg-gray-900">
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
+      >
+        {t('experience.title')}
+      </motion.h2>
+
+      <div className="timeline-container">
+        {/* Timeline line */}
+        <div className="timeline-line" />
+
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ 
+              duration: 0.5, 
+              delay: index * 0.1,
+              ease: "easeOut"
+            }}
+            className="timeline-item"
+          >
+            {/* Timeline dot */}
+            <div className="timeline-dot">
+              <div className="timeline-dot-inner" />
+            </div>
+            
+            {/* Experience card */}
+            <div className="experience-card-container">
+              <motion.div 
+                className="experience-card"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
               >
-                {/* Timeline line */}
-                {index < experiences.length - 1 && (
-                  <div className={`absolute ${isRTL ? 'right-4' : 'left-4'} top-16 w-0.5 h-full bg-blue-200 dark:bg-blue-800`} />
-                )}
-                
-                {/* Timeline dot */}
-                <div className={`absolute ${isRTL ? 'right-2' : 'left-2'} top-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-white dark:border-gray-900`} />
-                
-                <div className={`${isRTL ? 'mr-12' : 'ml-12'} bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300`}>
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                        {translatedExp.title}
-                      </h3>
-                      <div className="flex items-center text-blue-600 dark:text-blue-400 mb-2">
-                        <Building2 className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                        <a 
-                          href={experience.companyUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="hover:underline font-medium"
-                        >
-                          {translatedExp.company}
-                        </a>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-col md:items-end text-sm text-gray-600 dark:text-gray-400">
-                      <div className="flex items-center mb-1">
-                        <Calendar className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                        <span>{translatedExp.period}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                        <span>{translatedExp.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <ul className="space-y-2">
-                    {translatedExp.description.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start text-gray-700 dark:text-gray-300">
-                        <span className={`inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ExperienceContent experience={exp} />
               </motion.div>
-            )
-          })}
-        </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   )
 }
-

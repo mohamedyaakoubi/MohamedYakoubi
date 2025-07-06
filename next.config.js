@@ -4,12 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static export for SSG
-  output: 'export',
-  trailingSlash: true,
-  
-  // Remove i18n config as it's not compatible with static export
-  // We'll handle internationalization manually through our routing structure
+  // Remove static export to enable API routes
+  // output: 'export', // REMOVED
+  // trailingSlash: true, // REMOVED (not needed without static export)
   
   // Compiler options
   compiler: {
@@ -22,9 +19,9 @@ const nextConfig = {
   // Enable React optimization features
   reactStrictMode: true,
   
-  // Image optimization config - Updated for static export
+  // Image optimization config (restored to normal since we're not doing static export)
   images: {
-    unoptimized: true, // Required for static export
+    // unoptimized: true, // REMOVED - can use optimized images now
     remotePatterns: [
       {
         protocol: 'https',
@@ -62,7 +59,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000, // 1 year
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
@@ -75,10 +71,9 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['react-icons', 'framer-motion'],
-    webpackBuildWorker: true, // Speed up builds
+    webpackBuildWorker: true,
     optimizeServerReact: true,
   }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
-

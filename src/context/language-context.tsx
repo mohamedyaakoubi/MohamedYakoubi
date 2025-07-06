@@ -17,19 +17,18 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, initialLanguage = 'en' }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>(() => {
-    // For SSG, use the initial language from props first
+    // Always use initialLanguage for SSG consistency
     if (initialLanguage && ['en', 'fr', 'ar'].includes(initialLanguage)) {
       return initialLanguage as Language
-    }
-    
-    // Fallback to localStorage only on client side
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('language') as Language) || 'en'
     }
     return 'en'
   })
 
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
+    setMounted(true)
+    
     // Set initial language from props if provided
     if (initialLanguage && ['en', 'fr', 'ar'].includes(initialLanguage)) {
       setLanguage(initialLanguage as Language)
@@ -37,14 +36,15 @@ export function LanguageProvider({ children, initialLanguage = 'en' }: LanguageP
   }, [initialLanguage])
 
   useEffect(() => {
-    if (language) {
+    if (mounted && language) {
+      // Only update DOM after component is mounted to avoid hydration mismatch
       if (typeof window !== 'undefined') {
         localStorage.setItem('language', language)
       }
       document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
       document.documentElement.lang = language
     }
-  }, [language])
+  }, [language, mounted])
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang)
@@ -52,16 +52,25 @@ export function LanguageProvider({ children, initialLanguage = 'en' }: LanguageP
     // For SSG, we need to navigate to the correct locale URL
     if (typeof window !== 'undefined') {
       const currentPath = window.location.pathname
-      const currentLocale = currentPath.split('/')[1]
+      const pathSegments = currentPath.split('/').filter(Boolean)
       
       // Remove current locale from path if it exists
-      let newPath = currentPath
-      if (['en', 'fr', 'ar'].includes(currentLocale)) {
-        newPath = currentPath.substring(currentLocale.length + 1) || '/'
+      let newPath = ''
+      if (['en', 'fr', 'ar'].includes(pathSegments[0])) {
+        // Remove the locale and keep the rest of the path
+        newPath = '/' + pathSegments.slice(1).join('/')
+      } else {
+        // No locale in current path, use as is
+        newPath = currentPath
       }
       
-      // Add new locale to path (except for English which is default)
-      const targetPath = lang === 'en' ? newPath : `/${lang}${newPath}`
+      // Ensure we have a clean path
+      if (newPath === '/' || newPath === '') {
+        newPath = '/'
+      }
+      
+      // Always add the locale prefix (including for English)
+      const targetPath = `/${lang}${newPath === '/' ? '' : newPath}`
       
       // Navigate to new URL
       window.location.href = targetPath
@@ -82,4 +91,3 @@ export function useLanguage() {
   }
   return context
 }
-

@@ -16,6 +16,7 @@ const ScrollToTopButton = dynamic(() => import('./ui/ScrollToTopButton'), {
   loading: () => null
 })
 
+// Import your existing Chat component as client-side only
 const Chat = dynamic(() => import('./Chat'), { 
   ssr: false,
   loading: () => null
@@ -30,12 +31,8 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   const { language, setLanguage } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
-  // Use deferred mounting for non-critical UI
   useEffect(() => {
-    // Use requestIdleCallback or setTimeout to defer non-critical work
-    const timer = setTimeout(() => {
-      setMounted(true)
-    }, 100)
+    setMounted(true)
     
     // Register service worker only after initial render
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.location.hostname !== 'localhost') {
@@ -49,30 +46,33 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         }, 3000); // Delay service worker registration
       });
     }
-    
-    return () => clearTimeout(timer)
   }, [])
 
-  // Render a minimal layout first for faster LCP
+  // Always render the same structure to avoid hydration mismatch
   return (
     <MenuProvider>
       <div className={language === 'ar' ? 'rtl' : 'ltr'}>
         <Navigation />
-        {/* Render main content immediately */}
         <PageTransition>{children}</PageTransition>
         <Footer />
-        {/* Defer rendering of non-critical UI elements */}
-        {mounted && (
-          <>
-            <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
-              <LanguageSelector currentLang={language} onChange={setLanguage} />
+        
+        {/* Always render the container but conditionally show content */}
+        <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
+          <div style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.3s' }}>
+            <LanguageSelector currentLang={language} onChange={setLanguage} />
+            <div className="mt-4">
               <ThemeToggle />
             </div>
-            
-            {/* Lazy-loaded non-critical UI elements */}
+          </div>
+        </div>
+        
+        {/* Lazy-loaded non-critical UI elements */}
+        {mounted && (
+          <>
             <Suspense fallback={null}>
               <ScrollToTopButton />
             </Suspense>
+            {/* Your existing Chat component will work here */}
             <Suspense fallback={null}>
               <Chat />
             </Suspense>
@@ -85,4 +85,3 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     </MenuProvider>
   )
 }
-

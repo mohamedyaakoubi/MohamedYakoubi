@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
-export default function ContactPage() {
-  // Redirect to English version by default
+export default function ContactRedirect() {
   redirect('/en/contact')
 }
 
+export const dynamic = 'force-static'

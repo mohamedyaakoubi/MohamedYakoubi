@@ -134,9 +134,9 @@ export default {
       getStarted: "Commencer"
     },
     meta: {
-      title: "Mohamed Yaakoubi | Portfolio",
+      title: "Yaakoubi Mohamed | Portfolio",
       description: "Spécialiste émergent en IA avec un parcours diversifié, offrant une expertise en apprentissage automatique, développement web et services de localisation.",
-      imageAlt: "Mohamed Yaakoubi"
+      imageAlt: "Yaakoubi Mohamed"
     },
     about: {
       title: "À propos",
@@ -568,6 +568,6 @@ export default {
         phone: "Téléphone",
         location: "Sfax, Tunisie",
         connect: "Réseau",
-        copyright: "Mohamed Yaakoubi. Tous droits réservés.",
+        copyright: "Yaakoubi Mohamed. Tous droits réservés.",
       },
     }

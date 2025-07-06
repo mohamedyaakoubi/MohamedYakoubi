@@ -21,7 +21,8 @@ const companies = [
   { name: "Ubiai", logo: "/companies/ubi.png", url: "https://ubiai.tools/" },
   { name: "Wirestock", logo: "/companies/wirestock.avif", url: "https://wirestock.io/" },
   { name: "Andovar", logo: "/companies/Andovar_logo.webp", url: "https://andovar.com/" },
-  { name: "Kudra", logo: "/companies/Kudra_logo.png", url: "https://kudra.ai/" }
+  { name: "Kudra", logo: "/companies/Kudra_logo.png", url: "https://kudra.ai/" },
+  { name: "International Skills Labor Company", logo: "/companies/logo_skills.png", url: "https://internationalskills.fi/" }
 
 ]
 

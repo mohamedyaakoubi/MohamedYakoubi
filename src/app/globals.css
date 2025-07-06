@@ -75,6 +75,8 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
+      --font-inter: Inter, system-ui, sans-serif;
+  --font-ibm-plex: 'IBM Plex Sans Arabic', Arial, sans-serif;
   }
 
   .dark {
@@ -930,4 +932,49 @@ header nav {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* This optimizes LCP by showing text immediately while fonts load */
   font-display: swap;
+}
+html[lang="ar"] body {
+  font-family: var(--font-ibm-plex);
+}
+html[lang="en"] body,
+html[lang="fr"] body {
+  font-family: var(--font-inter);
+}
+/* RTL Support */
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+/* Critical styles for hero headline */
+#hero-headline {
+  font-display: swap;
+  content-visibility: auto;
+  contain-intrinsic-size: auto;
+}
+
+/* Ensure gradient works without JS */
+.gradient-name {
+  background-image: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  /* Optimize font rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure the hero content is visible immediately */
+section#home .relative.z-20.text-center.px-6 {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force hardware acceleration for critical elements */
+#hero-headline, .gradient-name {
+  transform: translateZ(0);
 }

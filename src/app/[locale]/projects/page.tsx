@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-import { getTranslations } from '@/lib/translations'
+import { getTranslations, getSupportedLocales } from '@/lib/translations'
 import { getGithubRepos } from '@/utils/github'
 import type { Repository } from '@/utils/github'
 
@@ -32,27 +32,23 @@ const ProjectsClient = dynamic(() => import('@/components/ProjectsClient'), {
 })
 
 export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'fr' },
-    { locale: 'ar' },
-  ]
+  const locales = getSupportedLocales();
+  return locales.map(locale => ({ locale }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const translations = getTranslations(locale)
   
   const titles = {
     en: 'Projects | Mohamed Yaakoubi',
-    fr: 'Projets | Mohamed Yaakoubi',
+    fr: 'Projets | Yaakoubi Mohamed',
     ar: 'المشاريع | محمد يعقوبي'
   }
   
   const descriptions = {
-    en: 'Explore Mohamed Yaakoubi\'s portfolio of projects in AI, web development, and localization. View featured projects and GitHub repositories.',
-    fr: 'Explorez le portfolio de projets de Mohamed Yaakoubi en IA, développement web et localisation. Voir les projets vedettes et les dépôts GitHub.',
-    ar: 'استكشف محفظة مشاريع محمد يعقوبي في الذكاء الاصطناعي وتطوير الويب والتوطين. عرض المشاريع المميزة ومستودعات GitHub.'
+    en: 'Explore innovative projects by Mohamed Yaakoubi including AI career guidance platforms, medical documentation systems, and AI-powered search engines.',
+    fr: 'Explorez les projets innovants de Yaakoubi Mohamed incluant des plateformes de guidance de carrière IA, des systèmes de documentation médicale et des moteurs de recherche IA.',
+    ar: 'استكشف المشاريع المبتكرة لمحمد يعقوبي بما في ذلك منصات توجيه المهنة بالذكاء الاصطناعي وأنظمة التوثيق الطبي ومحركات البحث المدعومة بالذكاء الاصطناعي.'
   }
 
   return {
@@ -71,7 +67,7 @@ interface ProjectsPageProps {
 export default async function ProjectsPage({ params }: ProjectsPageProps) {
   const { locale } = await params
   const translations = getTranslations(locale)
-  
+
   // Pre-fetch GitHub repos for SSG
   let repos: Repository[] = []
   try {
@@ -180,4 +176,3 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
     </>
   )
 }
-

@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation'
 
 export default function RootPage() {
-  // Redirect to English version by default
-  redirect('/en')
+  redirect('/en/')
 }
 
+// Add this to ensure static generation
+export const dynamic = 'force-static'
