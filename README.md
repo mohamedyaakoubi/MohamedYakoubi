@@ -165,7 +165,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Mohamed Yaakoubi - [amirrak8@gmail.com](mailto:amirrak8@gmail.com)
 
-Project Link: [https://github.com/mohamedyaakoubi/my](https://github.com/mohamedyaakoubi/my)
+Project Link: [https://github.com/mohamedyakoubi/](https://github.com/mohamedyakoubi/)
 
 ## 🙏 Acknowledgements
 
