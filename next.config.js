@@ -4,10 +4,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Add explicit permanent redirects
+  // Remove the root redirect - let middleware handle it
   async redirects() {
     return [
-      // Redirect non-www to www domain
+      // Keep non-www to www domain redirect
       {
         source: '/:path*',
         has: [
@@ -19,12 +19,8 @@ const nextConfig = {
         destination: 'https://www.mohamedyaakoubi.live/:path*',
         permanent: true,
       },
-      // Root path redirects to /en (after www redirect is applied)
-      {
-        source: '/',
-        destination: '/en',
-        permanent: true, // 301 redirect for SEO
-      },
+      // Remove the root '/' redirect - middleware will handle this
+      // Keep other path redirects
       {
         source: '/experience',
         destination: '/en/experience',
@@ -90,7 +86,6 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'img.buymeacoffee.com',
       },
-      // Add both www and non-www domains for images
       {
         protocol: 'https',
         hostname: 'www.mohamedyaakoubi.live',

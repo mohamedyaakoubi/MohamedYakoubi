@@ -36,7 +36,7 @@ export function middleware(request: NextRequest) {
 
   // Handle root path - permanent redirect to default locale
   if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url), 301)
+  return NextResponse.redirect(`https://www.mohamedyaakoubi.live/${defaultLocale}`, 301)
   }
 
   // Check if pathname already has a supported locale
