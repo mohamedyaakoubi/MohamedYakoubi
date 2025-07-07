@@ -440,10 +440,10 @@ export default {
     "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "التعاون مع الفريق عن بُعد من خلال التواصل المستمر والالتزام بإرشادات المحتوى وسير العمل المنظم",
     
     // UbiAi
-  "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. [Author page](https://ubiai.tools/author/mohamedyaakoubi/)": "إنشاء محتوى مدونة تقني ودروس تعليمية حول ضبط نماذج اللغة الكبيرة، ومعالجة اللغة الطبيعية، ومواضيع الذكاء الاصطناعي لمنصة تعتمد على ووردبريس. [صفحة المؤلف](https://ubiai.tools/author/mohamedyaakoubi/)",
-  "Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (https://ubiai-audit.notion.site/)(non-confidential)": "إجراء تدقيق وتشخيص للمواقع الإلكترونية لتحسين تجربة المستخدم، وتحسين محركات البحث، وأداء المنصة. [عرض نموذج تقرير التدقيق] (https://ubiai-audit.notion.site/)(غير سري)",
-  "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.": "التعاون مع العميل لتخطيط استراتيجية المحتوى، بما في ذلك دروس الفيديو المحتملة وجهود المشاركة المجتمعية.",
-  "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.": "العمل كحلقة وصل ومنسق مهام للدعم الإعلامي والتسويقي الخارجي لضمان تسليم المشروع.",
+  "ubiai_desc_1": "إنشاء محتوى مدونة تقني ودروس تعليمية حول ضبط نماذج اللغة الكبيرة، ومعالجة اللغة الطبيعية، ومواضيع الذكاء الاصطناعي لمنصة تعتمد على ووردبريس.",
+        "ubiai_desc_2": "إجراء تدقيق وتشخيص للمواقع الإلكترونية لتحسين تجربة المستخدم، وتحسين محركات البحث، وأداء المنصة.",
+        "ubiai_desc_3": "التعاون مع العميل لتخطيط استراتيجية المحتوى، بما في ذلك دروس الفيديو المحتملة وجهود المشاركة المجتمعية.",
+        "ubiai_desc_4": "العمل كحلقة وصل ومنسق مهام للدعم الإعلامي والتسويقي الخارجي لضمان تسليم المشروع.",
       // DeepL
       "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "تقييم وتحسين الترجمات المُنشأة بواسطة الذكاء الاصطناعي بين العربية والإنجليزية للدقة والطلاقة",
       "Identify translation errors, provide corrections, and explain linguistic issues": "تحديد أخطاء الترجمة، وتقديم التصحيحات، وشرح المسائل اللغوية",
@@ -497,7 +497,10 @@ export default {
       "Conduct quality checks to maintain high translation standards": "إجراء فحوصات الجودة للحفاظ على معايير الترجمة العالية"
     }
 },
-
+common: {
+  website: "الموقع الإلكتروني",
+  visitWebsite: "زيارة الموقع"
+},
 skills: {
     title: "المهارات والخبرات",
     categories: {

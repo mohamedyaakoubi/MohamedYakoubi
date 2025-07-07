@@ -26,10 +26,10 @@ const experiences: Experience[] = [
   location: "Sfax (Remote)",
   period: "Mar 2025 - Present",
   description: [
-    "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. [Author page](https://ubiai.tools/author/mohamedyaakoubi/)",
-    "Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (https://ubiai-audit.notion.site/)(non-confidential)",
-    "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
-    "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery."
+      "ubiai_desc_1",
+      "ubiai_desc_2",
+      "ubiai_desc_3",
+      "ubiai_desc_4",
   ],
 },
   {
@@ -189,11 +189,31 @@ function ExperienceContent({ experience }: ExperienceContentProps) {
           {t(`experience.periods.${experience.period}`)}
         </p>
       </div>
-      <ul className={`mt-4 list-disc ${language === 'ar' ? 'mr-4' : 'ml-4'} text-gray-600 dark:text-gray-300`}>
-        {experience.description.map((item, index) => (
-          <li key={index}>{t(`experience.descriptions.${item}`)}</li>
-        ))}
-      </ul>
+<ul className={`mt-4 list-disc ${language === 'ar' ? 'mr-4' : 'ml-4'} text-gray-600 dark:text-gray-300`}>
+  {experience.description.map((item, index) => {
+    // First get the base translation without any links
+    let translatedItem = t(`experience.descriptions.${item}`);
+    
+    // Handle UbiAi specific items with links - only if translation was successful
+    if (experience.company === "UbiAi" && translatedItem !== `experience.descriptions.${item}`) {
+      if (index === 0) {
+        translatedItem += ` <a href="https://ubiai.tools/author/mohamedyaakoubi/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 underline">Author page</a>`;
+      }
+      if (index === 1) {
+        translatedItem += ` <a href="https://ubiai-audit.notion.site/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 underline">View sample audit report</a> <span class="text-gray-500">(non-confidential)</span>`;
+      }
+    }
+    
+    return (
+      <li 
+        key={index} 
+        dangerouslySetInnerHTML={{ 
+          __html: translatedItem 
+        }} 
+      />
+    )
+  })}
+</ul>
     </div>
   );
 }

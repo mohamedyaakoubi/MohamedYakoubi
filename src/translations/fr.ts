@@ -500,10 +500,10 @@ export default {
     "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "Collaboration avec l'équipe à distance via une communication constante et le respect des directives de contenu et des flux de travail structurés",
     
     // UbiAi
-  "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. [Author page](https://ubiai.tools/author/mohamedyaakoubi/)": "Création de contenu de blog technique et de tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress. [Page auteur](https://ubiai.tools/author/mohamedyaakoubi/)",
-  "Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (https://ubiai-audit.notion.site/)(non-confidential)": "Réalisation d'audits et diagnostics de sites web pour améliorer l'expérience utilisateur, le référencement et les performances de la plateforme. [Voir exemple de rapport d'audit] (https://ubiai-audit.notion.site/)(non-confidentiel)",
-  "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.": "Collaboration avec le client pour planifier la stratégie de contenu, y compris les tutoriels vidéo potentiels et les efforts d'engagement communautaire.",
-  "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.": "Rôle de liaison et coordinateur de tâches pour le support média externe et marketing afin d'assurer la livraison du projet.",
+  "ubiai_desc_1": "Création de contenu de blog technique et de tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress.",
+        "ubiai_desc_2": "Réalisation d'audits et diagnostics de sites web pour améliorer l'expérience utilisateur, le référencement et les performances de la plateforme.",
+        "ubiai_desc_3": "Collaboration avec le client pour planifier la stratégie de contenu, y compris les tutoriels vidéo potentiels et les efforts d'engagement communautaire.",
+        "ubiai_desc_4": "Rôle de liaison et coordinateur de tâches pour le support média externe et marketing afin d'assurer la livraison du projet.",
           // DeepL
           "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "Évaluer et affiner les traductions arabe-anglais générées par l'IA pour la précision et la fluidité",
           "Identify translation errors, provide corrections, and explain linguistic issues": "Identifier les erreurs de traduction, fournir des corrections et expliquer les problèmes linguistiques",
@@ -560,6 +560,10 @@ export default {
       companies: {
         workedwith: "Entreprises avec lesquelles j'ai collaboré"
       },
+      common: {
+  website: "site web",
+  visitWebsite: "Visiter le site web"
+},
       footer: {
         sitemap: "Plan du Site",
         completeSitemap: "Plan du Site Complet",

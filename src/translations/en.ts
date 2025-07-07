@@ -431,10 +431,10 @@ projects: {
         "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows",
         
         // UbiAi
-  "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. [Author page](https://ubiai.tools/author/mohamedyaakoubi/)": "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. [Author page](https://ubiai.tools/author/mohamedyaakoubi/)",
-  "Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (https://ubiai-audit.notion.site/)(non-confidential)": "Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (https://ubiai-audit.notion.site/)(non-confidential)",
-  "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.": "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
-  "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.": "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.",
+  "ubiai_desc_1": "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform.",
+        "ubiai_desc_2": "Performed website audits and diagnostics to improve UX, SEO, and platform performance.",
+        "ubiai_desc_3": "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
+        "ubiai_desc_4": "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.",
         // DeepL
         "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency",
         "Identify translation errors, provide corrections, and explain linguistic issues": "Identify translation errors, provide corrections, and explain linguistic issues",
@@ -488,7 +488,10 @@ projects: {
         "Conduct quality checks to maintain high translation standards": "Conduct quality checks to maintain high translation standards"
       }
   },
-  
+  common: {
+  website: "website",
+  visitWebsite: "Visit website"
+},
   skills: {
     title: "Skills & Expertise",
     categories: {
