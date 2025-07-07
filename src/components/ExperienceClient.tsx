@@ -19,19 +19,19 @@ const experiences: Experience[] = [
       "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows"
     ],
   },
-  {
-    title: "Technical Content Writer & Web Operations Assistant",
-    company: "UbiAi",
-    companyUrl: "https://ubiai.tools",
-    location: "Sfax (Remote)",
-    period: "Mar 2025 - Present",
-    description: [
-      "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform",
-      "Performed website audits and diagnostics to improve UX, SEO, and platform performance",
-      "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts",
-      "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery"
-    ],
-  },
+{
+  title: "Technical Content Writer & Web Operations Assistant",
+  company: "UbiAi",
+  companyUrl: "https://ubiai.tools",
+  location: "Sfax (Remote)",
+  period: "Mar 2025 - Present",
+  description: [
+    "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. [Author page](https://ubiai.tools/author/mohamedyaakoubi/)",
+    "Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (https://ubiai-audit.notion.site/)(non-confidential)",
+    "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
+    "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery."
+  ],
+},
   {
     title: "Linguistic Editor",
     company: "DeepL",
