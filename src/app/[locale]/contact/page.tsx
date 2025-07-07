@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ContactClient from '@/components/ContactClient'
 import { getTranslations } from '@/lib/translations'
+import Script from 'next/script'
 
 export async function generateStaticParams() {
   return [
@@ -41,13 +42,40 @@ interface ContactPageProps {
 }
 
 export default async function ContactPage(props: ContactPageProps) {
-  // Fix: Properly await params and add error handling
   const params = await props.params
   const { locale } = params
   const translations = getTranslations(locale)
   
+  // Add breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": translations.navigation?.links?.home || "Home", // Fix: Use links.home
+        "item": `https://www.mohamedyaakoubi.live/${locale}`
+      },
+      {
+        "@type": "ListItem", 
+        "position": 2,
+        "name": translations.contact?.title || "Contact",
+        "item": `https://www.mohamedyaakoubi.live/${locale}/contact`
+      }
+    ]
+  }
+  
   return (
     <>
+          {/* Add breadcrumb schema */}
+      <Script
+        id="contact-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema)
+        }}
+      />
       {/* SEO-optimized static content */}
       <div className="sr-only" aria-hidden="false">
         <h1>{translations.contact?.title || 'Contact'} Mohamed Yaakoubi</h1>

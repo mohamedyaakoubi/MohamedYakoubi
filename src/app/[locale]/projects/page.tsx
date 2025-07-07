@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { getTranslations, getSupportedLocales } from '@/lib/translations'
 import { getGithubRepos } from '@/utils/github'
 import type { Repository } from '@/utils/github'
+import Script from 'next/script'
 
 // Create a loading component that matches your design
 const ProjectsLoading = () => (
@@ -79,9 +80,33 @@ export default async function ProjectsPage(props: ProjectsPageProps) {
   } catch (error) {
     console.error("Failed to fetch GitHub repos during build:", error)
   }
-
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": translations.navigation?.links.home || "Home",
+      "item": `https://www.mohamedyaakoubi.live/${locale}`
+    },
+    {
+      "@type": "ListItem", 
+      "position": 2,
+      "name": translations.navigation?.links.projects || "Projects",
+      "item": `https://www.mohamedyaakoubi.live/${locale}/projects`
+    }
+  ]
+}
   return (
     <>
+        <Script
+      id="projects-breadcrumb"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(breadcrumbSchema)
+      }}
+    />
       {/* Add comprehensive static pre-rendered content for search engines */}
       <div className="sr-only" aria-hidden="false">
         <h1>{translations.projects?.title || 'Projects'} - Mohamed Yaakoubi</h1>

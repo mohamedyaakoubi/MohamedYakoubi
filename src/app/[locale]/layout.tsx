@@ -124,6 +124,23 @@ alternates: {
       'github:profile': 'mohamedyaakoubi',
       'github:card': 'summary',
       'gravatar:profile': 'mohamedyaakoubi',
+      // Platform usernames for better discoverability
+      'profile:username': 'mohamedyaakoubi',
+      'github:username': 'mohamedyaakoubi', 
+      'linkedin:username': 'yaakoubi-mohamed',
+      'twitter:username': 'Mohamed0Yakoubi',
+      'upwork:profile': '~0118c281163fef05cb',
+      'fiverr:username': 'mohamedyaakoubi',
+      'f6s:username': 'mohamed-yaakoubi',
+      
+      // Professional associations
+      'author:wordpress': 'https://ubiai.tools/author/mohamedyaakoubi/',
+      'workplace:ubiai': 'Technical Content Writer',
+      'workplace:wirestock': 'Video Metadata Writer',
+      'workplace:deepl': 'Linguistic Editor',
+      
+      // Personal brand keywords
+      'brand:keywords': 'Mohamed Yaakoubi, محمد يعقوبي, AI specialist, machine translation, web development',
     }
   }
 }
@@ -175,6 +192,7 @@ export default async function LocaleLayout({
         <meta name="person:alternate-name" content="Mohamed Yaakoubi" />
         <meta name="person:alternate-name" content="Yaakoubi Mohamed" />
         <meta name="person:alternate-name" content="محمد يعقوبي" />
+        <meta name="person:alternate-name" content="محمد اليعقوبي" />
         <meta name="person:alternate-name" content="Mohamed Yakoubi" />
         <meta name="person:alternate-name" content="Yakoubi Mohamed" />
         <meta name="person:alternate-name" content="Mohammed Yaakoubi" />
@@ -284,16 +302,26 @@ export default async function LocaleLayout({
                 "addressLocality": "Sfax",
                 "addressCountry": "Tunisia"
               },
-              "sameAs": [
-                "https://github.com/mohamedyaakoubi",
-                "https://www.linkedin.com/in/yaakoubi-mohamed/",
-                "https://www.upwork.com/freelancers/~0118c281163fef05cb",
-                "https://www.fiverr.com/s/wkZqrpg",
-                "https://www.instagram.com/mohamed__yaakoubi/",
-                "https://www.proz.com/profile/3972649",
-                "https://www.freelances.tn/freelance/mohamed-yaakoubi",
-                "https://www.f6s.com/mohamed-yaakoubi"
-              ]
+         "sameAs": [
+    "https://github.com/mohamedyaakoubi",
+    "https://www.linkedin.com/in/yaakoubi-mohamed/",
+    "https://twitter.com/Mohamed0Yakoubi",
+    "https://www.upwork.com/freelancers/~0118c281163fef05cb",
+    "https://www.fiverr.com/mohamedyaakoubi",
+    "https://www.f6s.com/mohamed-yaakoubi",
+    "https://www.proz.com/profile/3972649",
+    "https://www.freelances.tn/freelance/mohamed-yaakoubi",
+    "https://ubiai.tools/author/mohamedyaakoubi/"
+  ],
+  // Work examples
+    "workExample": [
+    {
+      "@type": "CreativeWork",
+      "name": "Technical Content at UbiAi",
+      "url": "https://ubiai.tools/author/mohamedyaakoubi/",
+      "description": "AI and NLP technical content creation"
+    }
+  ]
             })
           }}
         />

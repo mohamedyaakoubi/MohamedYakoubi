@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ExperienceClient from '@/components/ExperienceClient'
 import { getTranslations } from '@/lib/translations'
+import Script from 'next/script'
 
 export async function generateStaticParams() {
   return [
@@ -58,8 +59,33 @@ export default async function ExperiencePage(props: ExperiencePageProps) {
   const { locale } = params
   const translations = getTranslations(locale)
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": translations.navigation?.links.home || "Home",
+      "item": `https://www.mohamedyaakoubi.live/${locale}`
+    },
+    {
+      "@type": "ListItem", 
+      "position": 2,
+      "name": translations.navigation?.links.experience || "Experience",
+      "item": `https://www.mohamedyaakoubi.live/${locale}/experience`
+    }
+  ]
+}
   return (
     <>
+        <Script
+      id="experience-breadcrumb"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(breadcrumbSchema)
+      }}
+    />
       {/* Enhanced static content for SEO */}
       <div className="sr-only" aria-hidden="false">
         <h1>Professional Experience - Mohamed Yaakoubi</h1>
