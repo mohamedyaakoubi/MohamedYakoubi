@@ -423,6 +423,11 @@ projects: {
       "Apr 2024 - Present": "Apr 2024 - Present",
       "Mar 2020 - Present": "Mar 2020 - Present"
     },
+    links: {
+      authorPage: "Author page",
+      sampleAudit: "View sample audit report",
+      nonConfidential: "(non-confidential)"
+    },
     descriptions: {
               // Wirestock
         "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",

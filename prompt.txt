@@ -1,13 +1,3 @@
-am trying to solve this translation issue not working for ubiai job description but works for everything else can you help me out
-it shows:
-Technical Content Writer & Web Operations Assistant
-UbiAi
-
-Sfax (Remote)
-
-Mar 2025 - Present
-
-experience.descriptions.Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform.
-experience.descriptions.Performed website audits and diagnostics to improve UX, SEO, and platform performance. [View sample audit report] (ubiai-audit.notion.site/)(non-confidential)
-experience.descriptions.Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.
-experience.descriptions.Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.
+it worked we need just to translated these now:
+View sample audit report (non-confidential) and this Author page
+because in all langauges they appear in english

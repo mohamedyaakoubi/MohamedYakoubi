@@ -492,6 +492,11 @@ export default {
           "Apr 2024 - Present": "Avr 2024 - Présent",
           "Mar 2020 - Present": "Mars 2020 - Présent"
         },
+        links: {
+          authorPage: "Page d'auteur",
+          sampleAudit: "Voir un exemple de rapport d'audit",
+          nonConfidential: "(non confidentiel)"
+        },
         descriptions: {
               // Wirestock
     "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "Rédaction de métadonnées détaillées et structurées pour vidéos éditées, incluant l'articulation des objectifs, descriptions, justifications des coupes et choix audio",

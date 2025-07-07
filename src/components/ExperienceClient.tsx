@@ -197,10 +197,10 @@ function ExperienceContent({ experience }: ExperienceContentProps) {
     // Handle UbiAi specific items with links - only if translation was successful
     if (experience.company === "UbiAi" && translatedItem !== `experience.descriptions.${item}`) {
       if (index === 0) {
-        translatedItem += ` <a href="https://ubiai.tools/author/mohamedyaakoubi/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 underline">Author page</a>`;
+        translatedItem += ` <a href="https://ubiai.tools/author/mohamedyaakoubi/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 underline">${t('experience.links.authorPage')}</a>`;
       }
       if (index === 1) {
-        translatedItem += ` <a href="https://ubiai-audit.notion.site/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 underline">View sample audit report</a> <span class="text-gray-500">(non-confidential)</span>`;
+        translatedItem += ` <a href="https://ubiai-audit.notion.site/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 underline">${t('experience.links.sampleAudit')}</a> <span class="text-gray-500">${t('experience.links.nonConfidential')}</span>`;
       }
     }
     
