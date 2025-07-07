@@ -106,17 +106,17 @@ const breadcrumbSchema = {
             </ul>
           </article>
           
-          <article>
-            <h3>Technical Content Writer & Web Operations Assistant | UbiAi</h3>
-            <time dateTime="2025-03">March 2025 - Present</time>
-            <p>Creating technical content on AI topics and improving platform performance.</p>
-            <ul>
-              <li>Create blog content on LLM fine-tuning and NLP for WordPress platform</li>
-              <li>Perform website audits to improve UX, SEO, and performance</li>
-              <li>Plan content strategy including video tutorials and community engagement</li>
-              <li>Coordinate external media and marketing support</li>
-            </ul>
-          </article>
+<article>
+  <h3>Technical Content Writer & Web Operations Assistant | UbiAi</h3>
+  <time dateTime="2025-03">March 2025 - Present</time>
+  <p>Creating technical content on AI topics and improving platform performance.</p>
+  <ul>
+    <li>Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. <a href="https://ubiai.tools/author/mohamedyaakoubi/" target="_blank" rel="noopener noreferrer">Author page</a></li>
+    <li>Performed website audits and diagnostics to improve UX, SEO, and platform performance. <a href="https://ubiai-audit.notion.site/" target="_blank" rel="noopener noreferrer">View sample audit report</a> (non-confidential)</li>
+    <li>Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts</li>
+    <li>Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery</li>
+  </ul>
+</article>
           
           <article>
             <h3>Linguistic Editor | DeepL</h3>
