@@ -222,7 +222,8 @@ export default async function LocaleLayout({
         <meta name="twitter:label1" content="GitHub"/>
         <meta name="twitter:data1" content="@mohamedyaakoubi"/>
         <meta name="gravatar:profile" content="mohamedyaakoubi"/>
-
+        {/* Search Engine Verification Tags */}
+        <meta name="yandex-verification" content="654ad09ced111969" />
         {/* Enhanced Structured Data - Person Schema */}
         <Script
           id="person-schema"
