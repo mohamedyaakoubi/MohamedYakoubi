@@ -115,6 +115,7 @@ alternates: {
       other: {
         'msvalidate.01': '567F2213DA2A1DE09D5C5ADF16CDE77B',
         'yandex-verification': '86d3754b6e757e9e',
+        'seznam-wmt': 'FGc8Y2lVQaYWgB32AOVXa87EUd4xiOAW',
       },
     },
     other: {
@@ -198,6 +199,7 @@ export default async function LocaleLayout({
         <meta name="person:alternate-name" content="Yakoubi Mohamed" />
         <meta name="person:alternate-name" content="Mohammed Yaakoubi" />
         <meta name="person:alternate-name" content="Mohammed Yakoubi" />
+      
 
         {/* Cultural naming conventions */}
         <meta name="person:given-name" content={locale === 'ar' ? 'محمد' : 'Mohamed'} />
@@ -224,6 +226,8 @@ export default async function LocaleLayout({
         <meta name="gravatar:profile" content="mohamedyaakoubi"/>
         {/* Search Engine Verification Tags */}
         <meta name="yandex-verification" content="86d3754b6e757e9e" />
+        {/* CZEch Search Engine Verification Tags */}
+        <meta name="seznam-wmt" content="FGc8Y2lVQaYWgB32AOVXa87EUd4xiOAW" />
         {/* Enhanced Structured Data - Person Schema */}
         <Script
           id="person-schema"
