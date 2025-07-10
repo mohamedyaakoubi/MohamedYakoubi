@@ -114,7 +114,7 @@ alternates: {
       google: '7RkYGVcLiInN-GqBR9z9vjQKFjwWo54z1BsU0vemYi4',
       other: {
         'msvalidate.01': '567F2213DA2A1DE09D5C5ADF16CDE77B',
-        'yandex-verification': '654ad09ced111969',
+        'yandex-verification': '86d3754b6e757e9e',
       },
     },
     other: {
@@ -223,7 +223,7 @@ export default async function LocaleLayout({
         <meta name="twitter:data1" content="@mohamedyaakoubi"/>
         <meta name="gravatar:profile" content="mohamedyaakoubi"/>
         {/* Search Engine Verification Tags */}
-        <meta name="yandex-verification" content="654ad09ced111969" />
+        <meta name="yandex-verification" content="86d3754b6e757e9e" />
         {/* Enhanced Structured Data - Person Schema */}
         <Script
           id="person-schema"
