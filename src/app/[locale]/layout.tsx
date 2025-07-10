@@ -114,6 +114,7 @@ alternates: {
       google: '7RkYGVcLiInN-GqBR9z9vjQKFjwWo54z1BsU0vemYi4',
       other: {
         'msvalidate.01': '567F2213DA2A1DE09D5C5ADF16CDE77B',
+        'yandex-verification': '654ad09ced111969',
       },
     },
     other: {
