@@ -219,6 +219,7 @@ export default async function LocaleLayout({
         <meta property="linkedin:description" content="Driven, adaptable AI specialist with expertise in translations, localization, and technology solutions. Experience at Wirestock, UbiAi, DeepL, RWS (Meta AI), and Uber."/>
         <meta property="og:see_also" content="https://github.com/mohamedyaakoubi"/>
         <meta property="og:see_also" content="https://mohamedyaakoubi.link/"/>
+        <meta property="og:see_also" content="https://tariff-mu.vercel.app/"/>
         <meta name="github:profile" content="mohamedyaakoubi"/>
         <meta name="github:card" content="summary"/>
         <meta name="twitter:label1" content="GitHub"/>
@@ -317,7 +318,8 @@ export default async function LocaleLayout({
     "https://www.f6s.com/mohamed-yaakoubi",
     "https://www.proz.com/profile/3972649",
     "https://www.freelances.tn/freelance/mohamed-yaakoubi",
-    "https://ubiai.tools/author/mohamedyaakoubi/"
+    "https://ubiai.tools/author/mohamedyaakoubi/",
+    "https://tariff-mu.vercel.app/"
   ],
   // Work examples
     "workExample": [
@@ -326,6 +328,12 @@ export default async function LocaleLayout({
       "name": "Technical Content at UbiAi",
       "url": "https://ubiai.tools/author/mohamedyaakoubi/",
       "description": "AI and NLP technical content creation"
+    },
+        {
+      "@type": "CreativeWork",
+      "name": "Professional Services Pricing",
+      "url": "https://tariff-mu.vercel.app/",
+      "description": "Comprehensive pricing guide for professional services"
     }
   ]
             })
