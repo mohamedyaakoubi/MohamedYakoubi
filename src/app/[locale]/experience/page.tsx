@@ -108,7 +108,7 @@ const breadcrumbSchema = {
           
 <article>
   <h3>Technical Content Writer & Web Operations Assistant | UbiAi</h3>
-  <time dateTime="2025-03">March 2025 - Present</time>
+  <time dateTime="2025-03">March 2025 - June 2025</time>
   <p>Creating technical content on AI topics and improving platform performance.</p>
   <ul>
     <li>Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform. <a href="https://ubiai.tools/author/mohamedyaakoubi/" target="_blank" rel="noopener noreferrer">Author page</a></li>

@@ -414,7 +414,7 @@ projects: {
     },
     periods: {
       "Apr 2025 - Present": "Apr 2025 - Present",
-      "Mar 2025 - Present": "Mar 2025 - Present",
+      "Mar 2025 - Jun 2025": "Mar 2025 - Jun 2025",
       "Feb 2025 - Present": "Feb 2025 - Present",
       "Nov 2024 - Present": "Nov 2024 - Present",
       "Jul 2024 - Present": "Jul 2024 - Present",

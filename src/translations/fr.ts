@@ -483,7 +483,7 @@ export default {
         },
         periods: {
               "Apr 2025 - Present": "Avr 2025 - Présent",
-    "Mar 2025 - Present": "Mars 2025 - Présent",
+    "Mar 2025 - Jun 2025": "Mars 2025 - Juin 2025",
           "Feb 2025 - Present": "Fév 2025 - Présent",
           "Nov 2024 - Present": "Nov 2024 - Présent",
           "Jul 2024 - Present": "Juil 2024 - Présent",
