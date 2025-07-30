@@ -578,5 +578,6 @@ export default {
         location: "Sfax, Tunisie",
         connect: "Réseau",
         copyright: "Yaakoubi Mohamed. Tous droits réservés.",
+        aiQuote: "\"Sans l'IA, je n'aurais jamais eu de travail\" - Yaakoubi Mohamed",
       },
     }

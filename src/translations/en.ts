@@ -571,5 +571,6 @@ projects: {
     location: "Sfax, Tunisia",
     connect: "Connect",
     copyright: "Mohamed Yaakoubi. All rights reserved.",
+    aiQuote: "\"If it wasn't for AI, I'd never get a job\" - Mohamed Yaakoubi",
   },
 }

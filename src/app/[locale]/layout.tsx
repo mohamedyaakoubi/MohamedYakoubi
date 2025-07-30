@@ -6,6 +6,7 @@ import { ClientLayout } from '@/components/ClientLayout'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
+import { Footer } from '@/components/Footer'
 
 // Enhanced font configurations
 const inter = Inter({ 
@@ -456,7 +457,7 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <LanguageProvider initialLanguage={locale}>
-            <ClientLayout>
+            <ClientLayout footer={<Footer locale={locale} />}>
               {children}
             </ClientLayout>
           </LanguageProvider>

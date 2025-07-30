@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, Suspense } from 'react'
+import { useEffect, useState, Suspense, ReactNode } from 'react'
 import { useLanguage } from '@/context/language-context'
 import { MenuProvider } from '@/context/useMenu'
 import { Navigation } from "./Navigation"
@@ -8,7 +8,6 @@ import { ThemeToggle } from "./theme-toggle"
 import { LanguageSelector } from "./LanguageSelector"
 import { PageTransition } from "./PageTransition"
 import dynamic from 'next/dynamic'
-import { Footer } from "./Footer"
 
 // Dynamically import non-critical components with lower priority
 const ScrollToTopButton = dynamic(() => import('./ui/ScrollToTopButton'), { 
@@ -27,7 +26,12 @@ const Analytics = dynamic(() => import('./Analytics'), {
   loading: () => null
 })
 
-export function ClientLayout({ children }: { children: React.ReactNode }) {
+interface ClientLayoutProps {
+  children: ReactNode;
+  footer: ReactNode;
+}
+
+export function ClientLayout({ children, footer }: ClientLayoutProps) {
   const { language, setLanguage } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
@@ -54,7 +58,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
       <div className={language === 'ar' ? 'rtl' : 'ltr'}>
         <Navigation />
         <PageTransition>{children}</PageTransition>
-        <Footer />
+        {footer}
         
         {/* Always render the container but conditionally show content */}
         <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
