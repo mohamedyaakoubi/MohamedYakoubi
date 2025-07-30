@@ -24,7 +24,7 @@ const experiences: Experience[] = [
   company: "UbiAi",
   companyUrl: "https://ubiai.tools",
   location: "Sfax (Remote)",
-  period: "Mar 2025 - Present",
+  period: "Mar 2025 - Jun 2025",
   description: [
       "ubiai_desc_1",
       "ubiai_desc_2",
