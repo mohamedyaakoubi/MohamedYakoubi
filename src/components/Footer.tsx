@@ -107,13 +107,13 @@ export function Footer({ locale }: FooterProps) {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
           <p>© {currentYear} {t.copyright}</p>
         </div>
       </div>
       <div className="absolute bottom-12" style={{ left: '7rem' }}>
         {/* TODO: For a true signature look, consider adding a font like 'Dancing Script' via Google Fonts. */}
-        <p className="font-serif italic text-sm text-gray-500">
+        <p className="font-serif italic text-sm text-gray-300">
           {t.aiQuote}
         </p>
       </div>
