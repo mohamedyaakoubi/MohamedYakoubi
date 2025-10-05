@@ -1,11 +1,12 @@
 "use client"
 
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useAnimationControls, useInView } from "framer-motion"
 import { useLanguage } from "@/context/language-context"
 import { useTranslation } from "@/hooks/useTranslation"
+import { FileText } from "lucide-react"
 
 // Company logo data with names, image paths, and URLs
 const companies = [
@@ -16,13 +17,19 @@ const companies = [
   { name: "Toloka", logo: "/companies/Toloka_logo.png", url: "https://toloka.ai/" },
   { name: "Translated", logo: "/companies/translated_logo.png", url: "https://translated.com/welcome" },
   { name: "Uber", logo: "/companies/uber_logo.svg", url: "https://www.uber.com/" },
-  { name: "Unbabel", logo: "/companies/Unbabel_logo.webp", url: "https://unbabel.com/" },
+  { 
+    name: "Unbabel", 
+    logo: "/companies/Unbabel_logo.webp", 
+    url: "https://unbabel.com/",
+    referenceLetter: "/companies/docuemnts/Unbabel Reference letter_Mohamed Yakoubi.pdf"
+  },
   { name: "Volga", logo: "/companies/volga_logo.png", url: "https://volgapartners.com/" },
   { name: "Ubiai", logo: "/companies/ubi.png", url: "https://ubiai.tools/" },
   { name: "Wirestock", logo: "/companies/wirestock.avif", url: "https://wirestock.io/" },
   { name: "Andovar", logo: "/companies/Andovar_logo.webp", url: "https://andovar.com/" },
   { name: "Kudra", logo: "/companies/Kudra_logo.png", url: "https://kudra.ai/" },
-  { name: "International Skills Labor Company", logo: "/companies/logo_skills.png", url: "https://internationalskills.fi/" }
+  { name: "International Skills Labor Company", logo: "/companies/logo_skills.png", url: "https://internationalskills.fi/" },
+  { name: "Prosessor AI", logo: "/companies/prosessor_ai_logo.png", url: "https://prosessor-ai.com/" }
 
 ]
 
@@ -35,6 +42,7 @@ export function CompanyLogos() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: false, margin: "-100px" })
   const controls = useAnimationControls()
+  const [hoveredCompany, setHoveredCompany] = useState<string | null>(null)
   
   // Function to determine logo size category
   const getLogoSizeClass = (companyName: string) => {
@@ -74,9 +82,9 @@ export function CompanyLogos() {
         
         {/* Logos container with continuous horizontal scroll */}
         <div className="relative">
-          <div className="flex overflow-hidden">
+          <div className="flex overflow-hidden overflow-y-visible">
             <motion.div
-              className="flex gap-12 items-center py-4"
+              className="flex gap-12 items-center py-4 pb-20"
               animate={{
                 x: [0, language === 'ar' ? '50%' : '-50%']
               }}
@@ -111,23 +119,79 @@ export function CompanyLogos() {
                     imageSizes = "(max-width: 640px) 128px, 160px";
                 }
                 
+                const hasReferenceLetter = 'referenceLetter' in company;
+                const isHovered = hoveredCompany === `${company.name}-${index}`;
+                
                 return (
-                  <Link
+                  <div
                     key={`${company.name}-${index}`}
-                    href={company.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex-shrink-0 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer ${sizeClasses}`}
-                    aria-label={`Visit ${company.name} website`}
+                    className="flex-shrink-0 relative"
+                    onMouseEnter={() => {
+                      setHoveredCompany(`${company.name}-${index}`)
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredCompany(null)
+                    }}
                   >
-                    <Image
-                      src={company.logo}
-                      alt={`${company.name} logo`}
-                      fill
-                      className="object-contain"
-                      sizes={imageSizes}
-                    />
-                  </Link>
+                    {/* Reference Letter Badge - Outside the link */}
+                    {hasReferenceLetter && (
+                      <div className="absolute -top-2 -right-2 z-10 pointer-events-none">
+                        <div className="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-600 flex items-center justify-center shadow-lg animate-pulse">
+                          <FileText className="w-3 h-3 text-white" />
+                        </div>
+                      </div>
+                    )}
+                    
+                    <Link
+                      href={company.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`block relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer ${sizeClasses}`}
+                      aria-label={`Visit ${company.name} website`}
+                    >
+                      <Image
+                        src={company.logo}
+                        alt={`${company.name} logo`}
+                        fill
+                        className="object-contain"
+                        sizes={imageSizes}
+                      />
+                    </Link>
+                    
+                    {/* Invisible hover bridge to keep tooltip open */}
+                    {hasReferenceLetter && isHovered && (
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-full h-6 z-20" />
+                    )}
+                    
+                    {/* Tooltip and Reference Letter Button */}
+                    {hasReferenceLetter && isHovered && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 z-20"
+                        onMouseEnter={() => {
+                          setHoveredCompany(`${company.name}-${index}`)
+                        }}
+                      >
+                        <div className="relative">
+                          {/* Arrow pointing up */}
+                          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 dark:bg-gray-700 rotate-45 pointer-events-none"></div>
+                          <a
+                            href={company.referenceLetter!}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block whitespace-nowrap bg-gray-800 dark:bg-gray-700 text-white px-4 py-2 rounded-lg shadow-xl text-sm font-medium hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors relative"
+                          >
+                            <div className="flex items-center gap-2">
+                              <FileText className="w-4 h-4" />
+                              <span>{t('companies.viewReference') || 'View Reference Letter'}</span>
+                            </div>
+                          </a>
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
                 );
               })}
             </motion.div>

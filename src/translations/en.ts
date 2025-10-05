@@ -560,7 +560,8 @@ projects: {
     }
   },
   companies: {
-    workedwith: "Companies I've Worked With"
+    workedwith: "Companies I've Worked With",
+    viewReference: "View Reference Letter"
   },
   footer: {
     sitemap: "Site Map",

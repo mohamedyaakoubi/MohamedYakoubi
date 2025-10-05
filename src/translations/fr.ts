@@ -563,7 +563,8 @@ export default {
         }
       },
       companies: {
-        workedwith: "Entreprises avec lesquelles j'ai collaboré"
+        workedwith: "Entreprises avec lesquelles j'ai collaboré",
+        viewReference: "Voir la lettre de recommandation"
       },
       common: {
   website: "site web",

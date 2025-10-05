@@ -578,6 +578,7 @@ skills: {
   },
   companies: {
     workedwith: "الشركات التي عملت معها",
+    viewReference: "عرض خطاب التوصية"
   },
   footer: {
     sitemap: "خريطة الموقع",
