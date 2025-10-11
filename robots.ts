@@ -19,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/']
       }
     ],
-    sitemap: 'https://mohamed-yakoubi.vercel.app/sitemap.xml',
-    host: 'https://mohamed-yakoubi.vercel.app',
+    sitemap: 'https://www.mohamedyaakoubi.live/sitemap.xml',
+    host: 'https://www.mohamedyaakoubi.live',
   }
 }

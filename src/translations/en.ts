@@ -293,17 +293,20 @@ projects: {
     names: {
       "NotYet": "NotYet",
       "DocuMed": "DocuMed",
-      "Potential": "Potential"
+      "Potential": "Potential",
+      "InternationalSkills": "InternationalSkills.fi Recruiting System"
     },
     descriptions: {
       "NotYet": "AI-powered web application to help Tunisian students and job seekers develop their career path",
       "DocuMed": "Web-based medical documentation and management platform for healthcare professionals",
-      "Potential": "AI-powered search engine for Abu Dhabi Open Data Platform with real-time API query processing"
+      "Potential": "AI-powered search engine for Abu Dhabi Open Data Platform with real-time API query processing",
+      "InternationalSkills": "Comprehensive recruiting system for InternationalSkills.fi connecting job seekers with employers"
     },
     longDescriptions: {
       "NotYet": "NotYet is an AI-powered platform designed to help Tunisian students and job seekers through career guidance, educational pathways, and skill-building resources. Built using React, Firebase, and Azure AI, it integrates AI-powered search and recommendation systems to enhance user experiences",
       "DocuMed": "DocuMed simplifies medical record management by providing a digital platform for organizing patient records, prescriptions, and appointments. Developed as part of MentorNations bootcamp using React and Firebase",
-      "Potential": "Potential enhances the Abu Dhabi Open Data Platform by integrating GPT-4 with Azure Cognitive Search, allowing users to retrieve relevant datasets using natural language queries. It dynamically indexes API-accessible data and optimizes queries using LLM-powered suggestions"
+      "Potential": "Potential enhances the Abu Dhabi Open Data Platform by integrating GPT-4 with Azure Cognitive Search, allowing users to retrieve relevant datasets using natural language queries. It dynamically indexes API-accessible data and optimizes queries using LLM-powered suggestions",
+      "InternationalSkills": "The International Skills Candidate Portal is a web application that streamlines the job application process for everyone. For Job Seekers: create an account, fill out applications, upload documents (CV, certificates), and track application status with real-time updates and interview notifications. For Recruiters/Admins: access a powerful admin dashboard to view all candidates, filter and sort applicants, schedule interviews with automatic Google Meet links, score candidates using AI-powered evaluation, and update application statuses. The portal is secure, web-based, and features email verification, calendar integration, and AI-powered scoring to save time and make hiring easier."
     },
     technologies: {
       "NotYet": [
@@ -321,6 +324,14 @@ projects: {
         "Azure Cognitive Search",
         "GPT-4",
         "API Query Processing"
+      ],
+      "InternationalSkills": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Firebase",
+        "Google Calendar API",
+        "AI Scoring"
       ]
     },
     features: {
@@ -341,6 +352,16 @@ projects: {
         "Real-time API indexing and retrieval",
         "Automatic query optimization for better results",
         "Seamless integration with Abu Dhabi Open Data API"
+      ],
+      "InternationalSkills": [
+        "User authentication with email verification",
+        "Complete candidate profile management with document uploads",
+        "Real-time application tracking and status updates",
+        "Admin dashboard with advanced filtering and sorting",
+        "Automated interview scheduling with Google Meet integration",
+        "AI-powered candidate scoring and evaluation",
+        "Email notifications for status updates and interviews",
+        "Secure document storage and management"
       ]
     },
     status: {
@@ -383,7 +404,7 @@ projects: {
     title: "Experience",
     current: "Present",
     positions: {
-      "Video Metadata Writer": "Video Metadata Writer",
+      "Media Content & Metadata Specialist": "Media Content & Metadata Specialist",
       "Technical Content Writer & Web Operations Assistant": "Technical Content Writer & Web Operations Assistant",
       "Linguistic Editor": "Linguistic Editor",
       "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI",
@@ -415,6 +436,7 @@ projects: {
     periods: {
       "Apr 2025 - Present": "Apr 2025 - Present",
       "Mar 2025 - Jun 2025": "Mar 2025 - Jun 2025",
+      "Feb 2025": "Feb 2025",
       "Feb 2025 - Present": "Feb 2025 - Present",
       "Nov 2024 - Present": "Nov 2024 - Present",
       "Jul 2024 - Present": "Jul 2024 - Present",
@@ -429,69 +451,86 @@ projects: {
       nonConfidential: "(non-confidential)"
     },
     descriptions: {
-              // Wirestock
-        "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",
-        "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow": "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow",
-        "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication": "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication",
-        "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows",
-        
-        // UbiAi
-  "ubiai_desc_1": "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform.",
-        "ubiai_desc_2": "Performed website audits and diagnostics to improve UX, SEO, and platform performance.",
-        "ubiai_desc_3": "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
-        "ubiai_desc_4": "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.",
-        // DeepL
-        "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency",
-        "Identify translation errors, provide corrections, and explain linguistic issues": "Identify translation errors, provide corrections, and explain linguistic issues",
-        "Work on diverse language tasks, including quality assessment and transcreation": "Work on diverse language tasks, including quality assessment and transcreation",
-        "Collaborate with DeepL's Language Data team to enhance AI translation models": "Collaborate with DeepL's Language Data team to enhance AI translation models",
-    
-        // RWS
-        "Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4": "Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4",
-        "Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools": "Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools",
-        "Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms": "Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms",
-    
-        // Uber
-        "Evaluate Arabic and English AI-generated content for linguistic and cultural accuracy": "Evaluate Arabic and English AI-generated content for linguistic and cultural accuracy",
-        "Provide precise English to Arabic translations, maintaining nuance and relevance": "Provide precise English to Arabic translations, maintaining nuance and relevance",
-        "Coordinate localization efforts to optimize user experience in both languages": "Coordinate localization efforts to optimize user experience in both languages",
-        "Contribute to AI model improvements through data labeling and collaboration with teams": "Contribute to AI model improvements through data labeling and collaboration with teams",
-    
-        // Volga Partners
-        "Provide language data and quality review services on a project basis": "Provide language data and quality review services on a project basis",
-        "Collaborate directly with clients of Volga Partners to meet their specific needs": "Collaborate directly with clients of Volga Partners to meet their specific needs",
-        "Ensure high-quality deliverables tailored to each unique project": "Ensure high-quality deliverables tailored to each unique project",
-    
-        // Pi Network
-        "Reviewing submitted identification documents for authenticity": "Reviewing submitted identification documents for authenticity",
-        "Cross-referencing information against official records": "Cross-referencing information against official records",
-        "Maintaining a high standard of accuracy and confidentiality": "Maintaining a high standard of accuracy and confidentiality",
-    
-        // Toloka
-        "Conducted data labeling, image annotation, and text transcription for AI training": "Conducted data labeling, image annotation, and text transcription for AI training",
-        "Ensured high-quality annotations to improve machine learning models": "Ensured high-quality annotations to improve machine learning models",
-        "Worked on diverse projects across multiple industries": "Worked on diverse projects across multiple industries",
-        "Collaborated with a global workforce to meet task requirements efficiently": "Collaborated with a global workforce to meet task requirements efficiently",
-    
-        // Premise
-        "Conducted surveys via Premise mobile app on various topics": "Conducted surveys via Premise mobile app on various topics",
-        "Provided accurate data adhering to Premise's guidelines": "Provided accurate data adhering to Premise's guidelines",
-        "Contributed to real-time insights for governments and businesses": "Contributed to real-time insights for governments and businesses",
-        "Collaborated with global network of contributors": "Collaborated with global network of contributors",
-    
-        // TED Translators
-        "Translate and subtitle TED Talks into native language, ensuring global accessibility": "Translate and subtitle TED Talks into native language, ensuring global accessibility",
-        "Ensure quality and accuracy while preserving the speaker's original message": "Ensure quality and accuracy while preserving the speaker's original message",
-        "Collaborate with other translators through the Amara CAT tool": "Collaborate with other translators through the Amara CAT tool",
-        "Engage in continuous learning by exploring diverse topics": "Engage in continuous learning by exploring diverse topics",
-        "Contribute to global idea exchange and empower non-English speakers": "Contribute to global idea exchange and empower non-English speakers",
-    
-        // Unbabel
-        "Review and edit Arabic-English translations for accuracy, clarity, and style": "Review and edit Arabic-English translations for accuracy, clarity, and style",
-        "Ensure linguistic integrity and cultural appropriateness in AI-assisted translations": "Ensure linguistic integrity and cultural appropriateness in AI-assisted translations",
-        "Provide feedback to improve translation quality and consistency": "Provide feedback to improve translation quality and consistency",
-        "Conduct quality checks to maintain high translation standards": "Conduct quality checks to maintain high translation standards"
-      }
+      // Wirestock - 11 descriptions
+      "wirestock_desc_1": "Write detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",
+      "wirestock_desc_2": "Segment raw video footage and author rationale-rich descriptions for each segment to support clear storytelling and narrative flow",
+      "wirestock_desc_3": "Evaluate video content and metadata for coherence, quality, and alignment with intended visual communication",
+      "wirestock_desc_4": "Write detailed, descriptive captions and generate extensive, SEO-style keyword sets for media to enhance searchability and content discovery",
+      "wirestock_desc_5": "Assess the production quality of video and photo assets based on established criteria, including composition, lighting, focus, and adherence to brand aesthetics",
+      "wirestock_desc_6": "Perform content moderation by approving relevant media and rejecting unrelated or non-compliant content to maintain dataset quality and focus",
+      "wirestock_desc_7": "Evaluate and revise content to maintain quality, consistency, and alignment with platform standards",
+      "wirestock_desc_8": "Review contributor submissions, refining titles, captions, and keyword sets to ensure accuracy and relevance",
+      "wirestock_desc_9": "Moderate media by approving compliant content and filtering out unsuitable material",
+      "wirestock_desc_10": "Rank and evaluate AI-generated images by writing detailed rationales to identify the highest-quality outputs",
+      "wirestock_desc_11": "Collaborate with a distributed remote team, following structured workflows and communication practices",
+      
+      // UbiAi - 4 descriptions
+      "ubiai_desc_1": "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform.",
+      "ubiai_desc_2": "Performed website audits and diagnostics to improve UX, SEO, and platform performance.",
+      "ubiai_desc_3": "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
+      "ubiai_desc_4": "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.",
+      
+      // DeepL - 5 descriptions
+      "deepl_desc_1": "Conduct detailed linguistic evaluations to identify and correct translation errors in AI-generated Arabic-English content",
+      "deepl_desc_2": "Assess and refine Arabic translations for clarity, accuracy, and natural fluency based on DeepL's quality standards",
+      "deepl_desc_3": "Provide detailed explanations of translation issues and propose improved versions to enhance AI-driven language models",
+      "deepl_desc_4": "Work on diverse language-centric projects, including categorization, labeling, transcreation, and quality assessments",
+      "deepl_desc_5": "Collaborate with DeepL's Language Data team to ensure high-quality translations and AI model improvements",
+  
+      // RWS - 3 descriptions
+      "rws_desc_1": "Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4",
+      "rws_desc_2": "Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools",
+      "rws_desc_3": "Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms",
+  
+      // Uber - 6 descriptions
+      "uber_desc_1": "Specialize in evaluating Arabic and English AI-generated content, ensuring linguistic and cultural accuracy",
+      "uber_desc_2": "Provide precise translations from English to Arabic, maintaining both linguistic nuance and cultural relevance",
+      "uber_desc_3": "Deliver accurate Arabic transcriptions for various projects",
+      "uber_desc_4": "Coordinate localization efforts to optimize the Arabic and English user experience",
+      "uber_desc_5": "Contribute to AI model improvement through accurate data labeling and annotation for machine learning",
+      "uber_desc_6": "Collaborate with Data Science and Product teams to analyze datasets, ensuring data quality and extracting actionable insights for business improvements",
+  
+      // Volga Partners - 4 descriptions
+      "volga_desc_1": "Conduct comprehensive quality and safety evaluations for Generative AI and Large Language Models",
+      "volga_desc_2": "Apply complex policy guidelines to rate AI-generated responses for accuracy, truthfulness, and adherence to user intent",
+      "volga_desc_3": "Perform critical safety analysis to identify, classify, and mitigate risks from harmful content like hate speech and dangerous information",
+      "volga_desc_4": "Provide structured feedback and data annotations that directly contribute to the training and improvement of advanced AI systems",
+  
+      // Pi Network - 3 descriptions
+      "pi_desc_1": "Review submitted identification documents for authenticity",
+      "pi_desc_2": "Cross-reference information against official records",
+      "pi_desc_3": "Maintain a high standard of accuracy and confidentiality",
+  
+      // Toloka - 6 descriptions
+      "toloka_desc_1": "Conduct data labeling, image annotation, and text transcription for AI training",
+      "toloka_desc_2": "Provide accurate and high-quality annotations and labels to support machine learning algorithms and AI training",
+      "toloka_desc_3": "Consistently meet task requirements and quality standards set by clients and Toloka",
+      "toloka_desc_4": "Collaborate with a diverse community of contributors worldwide to complete tasks efficiently",
+      "toloka_desc_5": "Acquire valuable skills in data annotation, image recognition, and natural language processing",
+      "toloka_desc_6": "Contribute to real-world projects across various industries, including technology, healthcare, and finance",
+  
+      // Premise - 4 descriptions
+      "premise_desc_1": "Engage in crowdsourced data collection on diverse topics using the Premise mobile app",
+      "premise_desc_2": "Provide accurate and timely information to support decision-making for governments, businesses, and organizations",
+      "premise_desc_3": "Collaborate with a global network of contributors to gather real-time insights",
+      "premise_desc_4": "Contribute to various projects including market research, infrastructure monitoring, and economic analysis",
+  
+      // TED Translators - 5 descriptions
+      "ted_desc_1": "Translate and subtitle TED Talks using Amara software to ensure global accessibility",
+      "ted_desc_2": "Ensure quality and accuracy while maintaining high translation standards and preserving the speaker's original message",
+      "ted_desc_3": "Collaborate with other translators through the Amara CAT tool, valuing feedback for improvement",
+      "ted_desc_4": "Engage in continuous learning by exploring diverse topics to enhance translation skills",
+      "ted_desc_5": "Contribute to global idea exchange by empowering non-English speakers and facilitating the exchange of ideas worldwide",
+  
+      // Unbabel - 7 descriptions
+      "unbabel_desc_1": "Translate and post-edit 1.6M+ words across 8,000+ Arabic↔English tasks",
+      "unbabel_desc_2": "Review and edit translations for accuracy, clarity, and style in both Arabic to English and English to Arabic",
+      "unbabel_desc_3": "Ensure translations maintain quality standards and linguistic integrity",
+      "unbabel_desc_4": "Ensure linguistic integrity and cultural appropriateness in AI-assisted translations",
+      "unbabel_desc_5": "Provide feedback to improve translator work and translation quality consistency",
+      "unbabel_desc_6": "Conduct quality checks for cultural appropriateness and accuracy to maintain high translation standards",
+      "unbabel_desc_7": "Collaborate with teams to deliver high-quality translations on time"
+    }
   },
   common: {
   website: "website",

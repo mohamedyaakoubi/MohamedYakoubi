@@ -41,9 +41,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   
   const titles = {
-    en: 'Projects | Mohamed Yaakoubi',
-    fr: 'Projets | Yaakoubi Mohamed',
-    ar: 'المشاريع | محمد يعقوبي'
+    en: 'AI Projects & Open Source Portfolio | Mohamed Yaakoubi | Healthcare AI, Career Guidance Platforms, Data Search Engines',
+    fr: 'Projets IA & Portfolio Open Source | Mohamed Yaakoubi | IA Santé, Plateformes Orientation Carrière, Moteurs Recherche Données',
+    ar: 'مشاريع الذكاء الاصطناعي والمصادر المفتوحة | محمد يعقوبي | الذكاء الاصطناعي للرعاية الصحية، منصات التوجيه المهني، محركات البحث'
   }
   
   const descriptions = {

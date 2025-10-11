@@ -7,16 +7,23 @@ import { useTranslation } from '@/hooks/useTranslation'
 
 const experiences: Experience[] = [
   {
-    title: "Video Metadata Writer",
+    title: "Media Content & Metadata Specialist",
     company: "Wirestock",
     companyUrl: "https://wirestock.io",
     location: "Sfax (Remote)",
     period: "Apr 2025 - Present",
     description: [
-      "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",
-      "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow",
-      "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication",
-      "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows"
+      "wirestock_desc_1",
+      "wirestock_desc_2",
+      "wirestock_desc_3",
+      "wirestock_desc_4",
+      "wirestock_desc_5",
+      "wirestock_desc_6",
+      "wirestock_desc_7",
+      "wirestock_desc_8",
+      "wirestock_desc_9",
+      "wirestock_desc_10",
+      "wirestock_desc_11"
     ],
   },
 {
@@ -37,12 +44,13 @@ const experiences: Experience[] = [
     company: "DeepL",
     companyUrl: "https://www.deepl.com",
     location: "Sfax (Remote)",
-    period: "Feb 2025 - Present",
+    period: "Feb 2025",
     description: [
-      "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency",
-      "Identify translation errors, provide corrections, and explain linguistic issues",
-      "Work on diverse language tasks, including quality assessment and transcreation",
-      "Collaborate with DeepL's Language Data team to enhance AI translation models",
+      "deepl_desc_1",
+      "deepl_desc_2",
+      "deepl_desc_3",
+      "deepl_desc_4",
+      "deepl_desc_5"
     ],
   },
   {
@@ -52,9 +60,9 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Nov 2024 - Present",
     description: [
-      "Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4",
-      "Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools",
-      "Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms",
+      "rws_desc_1",
+      "rws_desc_2",
+      "rws_desc_3"
     ],
   },
   {
@@ -64,10 +72,12 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Jul 2024 - Present",
     description: [
-      "Evaluate Arabic and English AI-generated content for linguistic and cultural accuracy",
-      "Provide precise English to Arabic translations, maintaining nuance and relevance",
-      "Coordinate localization efforts to optimize user experience in both languages",
-      "Contribute to AI model improvements through data labeling and collaboration with teams",
+      "uber_desc_1",
+      "uber_desc_2",
+      "uber_desc_3",
+      "uber_desc_4",
+      "uber_desc_5",
+      "uber_desc_6"
     ],
   },
   {
@@ -77,9 +87,10 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Jul 2024 - Present",
     description: [
-      "Provide language data and quality review services on a project basis",
-      "Collaborate directly with clients of Volga Partners to meet their specific needs",
-      "Ensure high-quality deliverables tailored to each unique project",
+      "volga_desc_1",
+      "volga_desc_2",
+      "volga_desc_3",
+      "volga_desc_4"
     ],
   },
   {
@@ -101,10 +112,12 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Feb 2024 - Aug 2024",
     description: [
-      "Conducted data labeling, image annotation, and text transcription for AI training",
-      "Ensured high-quality annotations to improve machine learning models",
-      "Worked on diverse projects across multiple industries",
-      "Collaborated with a global workforce to meet task requirements efficiently",
+      "toloka_desc_1",
+      "toloka_desc_2",
+      "toloka_desc_3",
+      "toloka_desc_4",
+      "toloka_desc_5",
+      "toloka_desc_6"
     ],
   },
   {
@@ -114,10 +127,10 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Feb 2024 - Sep 2024",
     description: [
-      "Conducted surveys via Premise mobile app on various topics",
-      "Provided accurate data adhering to Premise's guidelines",
-      "Contributed to real-time insights for governments and businesses",
-      "Collaborated with global network of contributors",
+      "premise_desc_1",
+      "premise_desc_2",
+      "premise_desc_3",
+      "premise_desc_4"
     ],
   },
   {
@@ -127,11 +140,23 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Apr 2024 - Present",
     description: [
-      "Translate and subtitle TED Talks into native language, ensuring global accessibility",
-      "Ensure quality and accuracy while preserving the speaker's original message",
-      "Collaborate with other translators through the Amara CAT tool",
-      "Engage in continuous learning by exploring diverse topics",
-      "Contribute to global idea exchange and empower non-English speakers",
+      "ted_desc_1",
+      "ted_desc_2",
+      "ted_desc_3",
+      "ted_desc_4",
+      "ted_desc_5"
+    ],
+  },
+  {
+    title: "KYC Validator",
+    company: "Pi Network",
+    companyUrl: "https://minepi.com",
+    location: "Sfax (Remote)",
+    period: "Jul 2024 - Present",
+    description: [
+      "pi_desc_1",
+      "pi_desc_2",
+      "pi_desc_3"
     ],
   },
   {
@@ -141,10 +166,13 @@ const experiences: Experience[] = [
     location: "Sfax (Remote)",
     period: "Mar 2020 - Present",
     description: [
-      "Review and edit Arabic-English translations for accuracy, clarity, and style",
-      "Ensure linguistic integrity and cultural appropriateness in AI-assisted translations",
-      "Provide feedback to improve translation quality and consistency",
-      "Conduct quality checks to maintain high translation standards",
+      "unbabel_desc_1",
+      "unbabel_desc_2",
+      "unbabel_desc_3",
+      "unbabel_desc_4",
+      "unbabel_desc_5",
+      "unbabel_desc_6",
+      "unbabel_desc_7"
     ],
   },
 ]

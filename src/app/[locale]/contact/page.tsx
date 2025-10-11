@@ -15,9 +15,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   
   const titles = {
-    en: 'Contact | Mohamed Yaakoubi',
-    fr: 'Contact | Mohamed Yaakoubi',
-    ar: 'تواصل معي | محمد يعقوبي'
+    en: 'Contact Mohamed Yaakoubi | Hire AI Language Specialist | Translation, Localization, LLM Evaluation Services | Sfax, Tunisia',
+    fr: 'Contacter Mohamed Yaakoubi | Embaucher Spécialiste IA Linguistique | Services Traduction, Localisation, Évaluation LLM | Sfax, Tunisie',
+    ar: 'تواصل مع محمد يعقوبي | توظيف متخصص لغة الذكاء الاصطناعي | خدمات الترجمة والتوطين وتقييم نماذج اللغة | صفاقس، تونس'
   }
   
   const descriptions = {

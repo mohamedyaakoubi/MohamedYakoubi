@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   
   const titles = {
-    en: 'Professional Services | Mohamed Yaakoubi - AI & Web Development',
-    fr: 'Services Professionnels | Mohamed Yaakoubi - IA & Développement Web',
-    ar: 'الخدمات المهنية | محمد يعقوبي - الذكاء الاصطناعي وتطوير الويب'
+    en: 'Professional Services | Mohamed Yaakoubi | AI Data Annotation, Translation & Localization, Web Development, Resume Writing, Technical Support',
+    fr: 'Services Professionnels | Mohamed Yaakoubi | Annotation Données IA, Traduction & Localisation, Développement Web, Rédaction CV, Support Technique',
+    ar: 'الخدمات المهنية | محمد يعقوبي | تعليق بيانات الذكاء الاصطناعي، الترجمة والتوطين، تطوير الويب، كتابة السيرة الذاتية، الدعم التقني'
   }
   
   const descriptions = {

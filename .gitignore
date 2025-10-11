@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.SEO_FIXES_REPORT.md
+.prompt.txt

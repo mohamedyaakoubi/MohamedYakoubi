@@ -120,7 +120,7 @@ function getMockRepos(username: string): Repository[] {
       full_name: `${username}/MohamedYakoubi`,
       description: "Personal portfolio website built with Next.js",
       html_url: `https://github.com/${username}/MohamedYakoubi`,
-      homepage: "https://mohamed-yakoubi.vercel.app",
+      homepage: "https://www.mohamedyaakoubi.live",
       language: "TypeScript",
       stargazers_count: 5,
       watchers_count: 5,

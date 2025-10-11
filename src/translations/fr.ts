@@ -362,17 +362,20 @@ export default {
         names: {
           "NotYet": "NotYet",
           "DocuMed": "DocuMed",
-          "Potential": "Potential"
+          "Potential": "Potential",
+          "InternationalSkills": "Système de Recrutement InternationalSkills.fi"
         },
         descriptions: {
           "NotYet": "Application web alimentée par l'IA pour aider les étudiants et chercheurs d'emploi tunisiens à développer leur parcours professionnel",
           "DocuMed": "Plateforme web de documentation et de gestion médicale pour les professionnels de santé",
-          "Potential": "Moteur de recherche alimenté par l'IA pour la plateforme Open Data d'Abu Dhabi avec traitement en temps réel des requêtes API"
+          "Potential": "Moteur de recherche alimenté par l'IA pour la plateforme Open Data d'Abu Dhabi avec traitement en temps réel des requêtes API",
+          "InternationalSkills": "Système de recrutement complet pour InternationalSkills.fi reliant les chercheurs d'emploi aux employeurs"
         },
         longDescriptions: {
           "NotYet": "NotYet est une plateforme alimentée par l'IA conçue pour aider les étudiants et chercheurs d'emploi tunisiens à travers l'orientation professionnelle, les parcours éducatifs et les ressources de développement des compétences.",
           "DocuMed": "DocuMed simplifie la gestion des dossiers médicaux en fournissant une plateforme numérique pour organiser les dossiers patients, les prescriptions et les rendez-vous.",
-          "Potential": "Potential améliore la plateforme Open Data d'Abu Dhabi en intégrant GPT-4 avec Azure Cognitive Search, permettant aux utilisateurs de récupérer des ensembles de données pertinents en utilisant des requêtes en langage naturel."
+          "Potential": "Potential améliore la plateforme Open Data d'Abu Dhabi en intégrant GPT-4 avec Azure Cognitive Search, permettant aux utilisateurs de récupérer des ensembles de données pertinents en utilisant des requêtes en langage naturel.",
+          "InternationalSkills": "Le portail candidat International Skills est une application web qui simplifie le processus de candidature pour tous. Pour les chercheurs d'emploi : créez un compte, remplissez des candidatures, téléchargez des documents (CV, certificats) et suivez le statut de vos candidatures avec des mises à jour en temps réel et des notifications d'entretien. Pour les recruteurs/administrateurs : accédez à un tableau de bord puissant pour voir tous les candidats, filtrer et trier les candidats, planifier des entretiens avec liens Google Meet automatiques, noter les candidats avec évaluation IA, et mettre à jour les statuts de candidature. Le portail est sécurisé, basé sur le web, et propose vérification email, intégration calendrier et notation IA pour gagner du temps et faciliter le recrutement."
         },
         technologies: {
           "NotYet": [
@@ -390,6 +393,14 @@ export default {
             "Azure Cognitive Search",
             "GPT-4",
             "API Query Processing"
+          ],
+          "InternationalSkills": [
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Firebase",
+            "API Google Calendar",
+            "Notation IA"
           ]
         },
         features: {
@@ -410,6 +421,16 @@ export default {
             "Indexation et récupération API en temps réel",
             "Optimisation automatique des requêtes",
             "Intégration transparente avec l'API Open Data d'Abu Dhabi"
+          ],
+          "InternationalSkills": [
+            "Authentification utilisateur avec vérification email",
+            "Gestion complète du profil candidat avec téléchargement de documents",
+            "Suivi de candidature en temps réel et mises à jour de statut",
+            "Tableau de bord admin avec filtrage et tri avancés",
+            "Planification automatique d'entretiens avec intégration Google Meet",
+            "Notation et évaluation des candidats par IA",
+            "Notifications email pour mises à jour de statut et entretiens",
+            "Stockage et gestion sécurisés des documents"
           ]
         },
         status: {
@@ -452,8 +473,9 @@ export default {
         title: "Expérience",
         current: "Présent",
         positions: {
-              "Video Metadata Writer": "Rédacteur de Métadonnées Vidéo",
-    "Technical Content Writer & Web Operations Assistant": "Rédacteur Technique & Assistant d'Opérations Web",
+          "Media Content & Metadata Specialist": "Spécialiste en Contenu Média et Métadonnées",
+          "Video Metadata Writer": "Rédacteur de Métadonnées Vidéo",
+          "Technical Content Writer & Web Operations Assistant": "Rédacteur Technique & Assistant d'Opérations Web",
           "Linguistic Editor": "Éditeur linguistique",
           "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "Évaluateur IA linguistique - QA Arabe Maghrébin | Meta AI",
           "Localization Vendor Coordinator": "Coordinateur fournisseur de localisation",
@@ -482,9 +504,10 @@ export default {
           "Sfax (Remote)": "Sfax (Télétravail)"
         },
         periods: {
-              "Apr 2025 - Present": "Avr 2025 - Présent",
-    "Mar 2025 - Jun 2025": "Mars 2025 - Juin 2025",
+          "Apr 2025 - Present": "Avr 2025 - Présent",
+          "Mar 2025 - Jun 2025": "Mars 2025 - Juin 2025",
           "Feb 2025 - Present": "Fév 2025 - Présent",
+          "Feb 2025": "Fév 2025",
           "Nov 2024 - Present": "Nov 2024 - Présent",
           "Jul 2024 - Present": "Juil 2024 - Présent",
           "Feb 2024 - Aug 2024": "Fév 2024 - Août 2024",
@@ -498,68 +521,85 @@ export default {
           nonConfidential: "(non confidentiel)"
         },
         descriptions: {
-              // Wirestock
-    "Wrote detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices": "Rédaction de métadonnées détaillées et structurées pour vidéos éditées, incluant l'articulation des objectifs, descriptions, justifications des coupes et choix audio",
-    "Segmented raw video footage and authored rationale-rich descriptions for each segment to support clear storytelling and narrative flow": "Segmentation de séquences vidéo brutes avec descriptions riches en justifications pour chaque segment afin de soutenir une narration claire et un flux narratif cohérent",
-    "Evaluated video content and metadata for coherence, quality, and alignment with intended visual communication": "Évaluation du contenu vidéo et des métadonnées pour leur cohérence, qualité et alignement avec la communication visuelle prévue",
-    "Collaborated with the remote team through consistent communication and adherence to content guidelines and structured workflows": "Collaboration avec l'équipe à distance via une communication constante et le respect des directives de contenu et des flux de travail structurés",
-    
-    // UbiAi
-  "ubiai_desc_1": "Création de contenu de blog technique et de tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress.",
-        "ubiai_desc_2": "Réalisation d'audits et diagnostics de sites web pour améliorer l'expérience utilisateur, le référencement et les performances de la plateforme.",
-        "ubiai_desc_3": "Collaboration avec le client pour planifier la stratégie de contenu, y compris les tutoriels vidéo potentiels et les efforts d'engagement communautaire.",
-        "ubiai_desc_4": "Rôle de liaison et coordinateur de tâches pour le support média externe et marketing afin d'assurer la livraison du projet.",
-          // DeepL
-          "Evaluate and refine AI-generated Arabic-English translations for accuracy and fluency": "Évaluer et affiner les traductions arabe-anglais générées par l'IA pour la précision et la fluidité",
-          "Identify translation errors, provide corrections, and explain linguistic issues": "Identifier les erreurs de traduction, fournir des corrections et expliquer les problèmes linguistiques",
-          "Work on diverse language tasks, including quality assessment and transcreation": "Travailler sur diverses tâches linguistiques, incluant l'évaluation de la qualité et la transcréation",
-          "Collaborate with DeepL's Language Data team to enhance AI translation models": "Collaborer avec l'équipe Language Data de DeepL pour améliorer les modèles de traduction IA",
-      
-          // RWS
-          "Evaluate multilingual prompts and AI-generated responses in Arabic to refine advanced Large Language Models, including projects like Llama 4": "Évaluer les prompts multilingues et les réponses générées par l'IA en arabe pour affiner les modèles de langage avancés, incluant des projets comme Llama 4",
-          "Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools": "Classer les sorties selon des critères de qualité tels que la cohérence, la fluidité et la pertinence culturelle pour améliorer les outils de conversation basés sur l'IA",
-          "Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms": "Fournir des retours détaillés pour améliorer la précision linguistique et contextuelle, assurant l'alignement avec diverses normes culturelles et linguistiques",
-      
-          // Uber
-          "Evaluate Arabic and English AI-generated content for linguistic and cultural accuracy": "Évaluer le contenu généré par l'IA en arabe et en anglais pour la précision linguistique et culturelle",
-          "Provide precise English to Arabic translations, maintaining nuance and relevance": "Fournir des traductions précises de l'anglais vers l'arabe, en maintenant les nuances et la pertinence",
-          "Coordinate localization efforts to optimize user experience in both languages": "Coordonner les efforts de localisation pour optimiser l'expérience utilisateur dans les deux langues",
-          "Contribute to AI model improvements through data labeling and collaboration with teams": "Contribuer à l'amélioration des modèles d'IA à travers l'étiquetage de données et la collaboration avec les équipes",
-      
-          // Volga Partners
-          "Provide language data and quality review services on a project basis": "Fournir des services de révision de données linguistiques et de qualité sur une base projet",
-          "Collaborate directly with clients of Volga Partners to meet their specific needs": "Collaborer directement avec les clients de Volga Partners pour répondre à leurs besoins spécifiques",
-          "Ensure high-quality deliverables tailored to each unique project": "Assurer des livrables de haute qualité adaptés à chaque projet unique",
-      
-          // Pi Network
-          "Reviewing submitted identification documents for authenticity": "Examiner l'authenticité des documents d'identification soumis",
-          "Cross-referencing information against official records": "Vérifier les informations par rapport aux documents officiels",
-          "Maintaining a high standard of accuracy and confidentiality": "Maintenir un haut niveau de précision et de confidentialité",
-      
-          // Toloka
-          "Conducted data labeling, image annotation, and text transcription for AI training": "Réalisation d'étiquetage de données, d'annotation d'images et de transcription de texte pour l'entraînement d'IA",
-          "Ensured high-quality annotations to improve machine learning models": "Assurance d'annotations de haute qualité pour améliorer les modèles d'apprentissage automatique",
-          "Worked on diverse projects across multiple industries": "Travail sur divers projets dans plusieurs secteurs",
-          "Collaborated with a global workforce to meet task requirements efficiently": "Collaboration avec une équipe mondiale pour répondre efficacement aux exigences des tâches",
-      
-          // Premise
-          "Conducted surveys via Premise mobile app on various topics": "Réalisation d'enquêtes via l'application mobile Premise sur divers sujets",
-          "Provided accurate data adhering to Premise's guidelines": "Fourniture de données précises conformes aux directives de Premise",
-          "Contributed to real-time insights for governments and businesses": "Contribution aux analyses en temps réel pour les gouvernements et entreprises",
-          "Collaborated with global network of contributors": "Collaboration avec un réseau mondial de contributeurs",
-      
-          // TED Translators
-          "Translate and subtitle TED Talks into native language, ensuring global accessibility": "Traduction et sous-titrage de TED Talks en langue maternelle, assurant une accessibilité mondiale",
-          "Ensure quality and accuracy while preserving the speaker's original message": "Assurance de la qualité et de la précision tout en préservant le message original de l'orateur",
-          "Collaborate with other translators through the Amara CAT tool": "Collaboration avec d'autres traducteurs via l'outil CAT Amara",
-          "Engage in continuous learning by exploring diverse topics": "Engagement dans l'apprentissage continu en explorant des sujets variés",
-          "Contribute to global idea exchange and empower non-English speakers": "Contribution à l'échange global d'idées et autonomisation des non-anglophones",
-      
-          // Unbabel
-          "Review and edit Arabic-English translations for accuracy, clarity, and style": "Révision et édition des traductions arabe-anglais pour la précision, la clarté et le style",
-          "Ensure linguistic integrity and cultural appropriateness in AI-assisted translations": "Assurance de l'intégrité linguistique et de l'adéquation culturelle dans les traductions assistées par IA",
-          "Provide feedback to improve translation quality and consistency": "Fourniture de retours pour améliorer la qualité et la cohérence des traductions",
-          "Conduct quality checks to maintain high translation standards": "Réalisation de contrôles qualité pour maintenir des standards de traduction élevés"
+          // Wirestock - 11 descriptions
+          "wirestock_desc_1": "Rédaction de métadonnées détaillées et structurées pour vidéos éditées, incluant l'articulation des objectifs finaux, descriptions vidéo, justifications des coupes et choix audio",
+          "wirestock_desc_2": "Segmentation de séquences vidéo brutes avec descriptions riches en justifications pour chaque segment afin de soutenir une narration claire et un flux narratif",
+          "wirestock_desc_3": "Évaluation du contenu vidéo et des métadonnées pour leur cohérence, qualité et alignement avec la communication visuelle prévue",
+          "wirestock_desc_4": "Rédaction de légendes détaillées et descriptives et génération de jeux de mots-clés SEO étendus pour améliorer la recherchabilité et la découverte de contenu",
+          "wirestock_desc_5": "Évaluation de la qualité de production des ressources vidéo et photo selon des critères établis, incluant composition, éclairage, mise au point et adhésion à l'esthétique de marque",
+          "wirestock_desc_6": "Modération de contenu en approuvant les médias pertinents et rejetant le contenu non conforme pour maintenir la qualité des ensembles de données",
+          "wirestock_desc_7": "Évaluation et révision du contenu pour maintenir la qualité, la cohérence et l'alignement avec les standards de la plateforme",
+          "wirestock_desc_8": "Révision des soumissions des contributeurs, affinement des titres, légendes et jeux de mots-clés pour assurer précision et pertinence",
+          "wirestock_desc_9": "Modération de médias en approuvant le contenu conforme et filtrant le matériel inapproprié",
+          "wirestock_desc_10": "Classement et évaluation d'images générées par IA en rédigeant des justifications détaillées pour identifier les sorties de meilleure qualité",
+          "wirestock_desc_11": "Collaboration avec équipe distante via communication constante et respect des directives de contenu et flux de travail structurés",
+          
+          // UbiAi - 4 descriptions
+          "ubiai_desc_1": "Création de contenu de blog technique et tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress",
+          "ubiai_desc_2": "Réalisation d'audits et diagnostics de sites web pour améliorer l'UX, le référencement et les performances de la plateforme",
+          "ubiai_desc_3": "Collaboration avec le client pour planifier la stratégie de contenu, y compris tutoriels vidéo potentiels et efforts d'engagement communautaire",
+          "ubiai_desc_4": "Rôle de liaison et coordinateur de tâches pour le support média externe et marketing afin d'assurer la livraison du projet",
+          
+          // DeepL - 5 descriptions
+          "deepl_desc_1": "Évaluation et affinement des traductions arabe-anglais générées par IA pour la précision et la fluidité",
+          "deepl_desc_2": "Identification des erreurs de traduction, fourniture de corrections et explication des problèmes linguistiques",
+          "deepl_desc_3": "Travail sur diverses tâches linguistiques, incluant évaluation de qualité et transcréation",
+          "deepl_desc_4": "Évaluation des traductions arabes selon les standards de qualité DeepL pour clarté, précision et fluidité naturelle",
+          "deepl_desc_5": "Collaboration avec l'équipe Language Data de DeepL pour améliorer les modèles de traduction IA",
+          
+          // RWS - 3 descriptions
+          "rws_desc_1": "Évaluation des prompts multilingues et réponses générées par IA en arabe pour affiner les modèles de langage avancés, incluant des projets comme Llama 4",
+          "rws_desc_2": "Classement des sorties selon des critères de qualité tels que cohérence, fluidité et pertinence culturelle pour améliorer les outils conversationnels IA",
+          "rws_desc_3": "Fourniture de retours détaillés pour améliorer la précision linguistique et contextuelle, assurant l'alignement avec diverses normes culturelles et linguistiques",
+          
+          // Uber - 6 descriptions
+          "uber_desc_1": "Évaluation du contenu généré par IA en arabe et anglais pour la précision linguistique et culturelle",
+          "uber_desc_2": "Fourniture de traductions précises anglais-arabe, maintenant nuances et pertinence",
+          "uber_desc_3": "Livraison de transcriptions arabes précises pour divers projets",
+          "uber_desc_4": "Coordination des efforts de localisation pour optimiser l'expérience utilisateur en arabe et anglais",
+          "uber_desc_5": "Contribution à l'amélioration des modèles IA via étiquetage de données précis et annotation pour l'apprentissage automatique",
+          "uber_desc_6": "Collaboration avec équipes Data Science et Produit pour analyser les ensembles de données, assurant qualité des données et extraction d'insights actionnables pour améliorations métier",
+          
+          // Volga Partners - 4 descriptions
+          "volga_desc_1": "Réalisation d'évaluations complètes de qualité et sécurité pour l'IA Générative et les Modèles de Langage",
+          "volga_desc_2": "Application de directives politiques complexes pour évaluer les réponses IA en termes de précision, véracité et adhésion à l'intention utilisateur",
+          "volga_desc_3": "Réalisation d'analyses de sécurité critiques pour identifier, classifier et atténuer les risques de contenu nuisible comme discours de haine et informations dangereuses",
+          "volga_desc_4": "Fourniture de retours structurés et annotations de données contribuant directement à l'entraînement et l'amélioration de systèmes IA avancés",
+          
+          // Toloka - 6 descriptions
+          "toloka_desc_1": "Participation à diverses tâches de crowdsourcing sur la plateforme Toloka, incluant étiquetage de données, annotation d'images et transcription de texte",
+          "toloka_desc_2": "Fourniture d'annotations et étiquettes précises de haute qualité pour soutenir les algorithmes d'apprentissage automatique et l'entraînement IA",
+          "toloka_desc_3": "Respect constant des exigences de tâche et standards de qualité fixés par clients et Toloka",
+          "toloka_desc_4": "Collaboration avec une communauté diverse de contributeurs mondiaux pour compléter les tâches efficacement",
+          "toloka_desc_5": "Acquisition de compétences précieuses en annotation de données, reconnaissance d'images et traitement du langage naturel",
+          "toloka_desc_6": "Contribution à des projets réels dans diverses industries, incluant technologie, santé et finance",
+          
+          // Premise - 4 descriptions
+          "premise_desc_1": "Participation à la collecte de données crowdsourcées sur sujets divers via l'application mobile Premise",
+          "premise_desc_2": "Fourniture d'informations précises et opportunes pour soutenir la prise de décision des gouvernements, entreprises et organisations",
+          "premise_desc_3": "Collaboration avec un réseau mondial de contributeurs pour rassembler des insights en temps réel",
+          "premise_desc_4": "Contribution à divers projets incluant études de marché, surveillance d'infrastructures et analyses économiques",
+          
+          // TED - 5 descriptions
+          "ted_desc_1": "Traduction et sous-titrage de TED Talks en langue maternelle, assurant une accessibilité mondiale",
+          "ted_desc_2": "Assurance de la qualité et précision tout en préservant le message original de l'orateur",
+          "ted_desc_3": "Collaboration avec d'autres traducteurs via l'outil CAT Amara, valorisant les retours pour amélioration",
+          "ted_desc_4": "Engagement dans l'apprentissage continu en explorant des sujets variés",
+          "ted_desc_5": "Contribution à l'échange global d'idées et autonomisation des non-anglophones",
+          
+          // Pi Network - 3 descriptions
+          "pi_desc_1": "Révision des documents d'identification soumis pour authenticité",
+          "pi_desc_2": "Vérification croisée des informations contre les registres officiels",
+          "pi_desc_3": "Maintien d'un haut niveau de précision et confidentialité",
+          
+          // Unbabel - 7 descriptions
+          "unbabel_desc_1": "Traduction et post-édition de 1,6M+ mots sur 8 000+ tâches arabe↔anglais",
+          "unbabel_desc_2": "Révision et édition des traductions pour précision, clarté et style en arabe-anglais et anglais-arabe",
+          "unbabel_desc_3": "Assurance de l'intégrité linguistique et de l'adéquation culturelle dans les traductions assistées par IA",
+          "unbabel_desc_4": "Fourniture de retours pour améliorer la qualité et cohérence des traductions",
+          "unbabel_desc_5": "Réalisation de contrôles qualité pour maintenir des standards de traduction élevés",
+          "unbabel_desc_6": "Assurance que les traductions maintiennent les standards de qualité et l'intégrité linguistique",
+          "unbabel_desc_7": "Collaboration avec équipes pour livrer des traductions de haute qualité dans les délais"
         }
       },
       companies: {

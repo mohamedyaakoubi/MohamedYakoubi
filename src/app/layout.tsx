@@ -6,8 +6,8 @@ import './production-fixes.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Mohamed Yaakoubi | Portfolio',
-  description: 'Portfolio of Mohamed Yaakoubi - AI and Technology Specialist',
+title: 'Mohamed Yaakoubi | AI & Language Technology Specialist Portfolio',
+description: 'Explore the portfolio of Mohamed Yaakoubi, an AI and Language Technology Specialist showcasing projects in AI, evaluation, and localization.'
 }
 
 export default function RootLayout({
