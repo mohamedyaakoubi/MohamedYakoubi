@@ -474,6 +474,7 @@ export default {
         current: "Présent",
         positions: {
           "Media Content & Metadata Specialist": "Spécialiste en Contenu Média et Métadonnées",
+          "Transcriber – Arabic (Maghrebi)": "Transcripteur – Arabe (Maghrébin)",
           "Video Metadata Writer": "Rédacteur de Métadonnées Vidéo",
           "Technical Content Writer & Web Operations Assistant": "Rédacteur Technique & Assistant d'Opérations Web",
           "Linguistic Editor": "Éditeur linguistique",
@@ -481,14 +482,16 @@ export default {
           "Localization Vendor Coordinator": "Coordinateur fournisseur de localisation",
           "Language Data and Quality Reviewer": "Réviseur de données et qualité linguistique",
           "KYC Validator": "Validateur KYC",
+          "KYC Validator (Know your customer)": "Validateur KYC (Connaissance du client)",
           "Freelance AI Data Annotator": "Annotateur de données IA freelance",
           "Crowdsourced Data Contributor": "Contributeur de données participatives",
           "Subtitle Editor": "Éditeur de sous-titres",
           "Freelance Editor (Arabic to English & English to Arabic)": "Éditeur freelance (Arabe vers Anglais & Anglais vers Arabe)"
         },
         companies: {
-              "Wirestock": "Wirestock",
-    "UbiAi": "UbiAi",
+          "Wirestock": "Wirestock",
+          "ProsessorAI Data & Language Services": "Prosessor.AI Data & Language Services",
+          "UbiAi": "UbiAi",
           "DeepL": "DeepL",
           "RWS": "RWS",
           "Uber": "Uber",
@@ -505,6 +508,7 @@ export default {
         },
         periods: {
           "Apr 2025 - Present": "Avr 2025 - Présent",
+          "Sep 2025 - Present": "Sept 2025 - Présent",
           "Mar 2025 - Jun 2025": "Mars 2025 - Juin 2025",
           "Feb 2025 - Present": "Fév 2025 - Présent",
           "Feb 2025": "Fév 2025",
@@ -533,6 +537,13 @@ export default {
           "wirestock_desc_9": "Modération de médias en approuvant le contenu conforme et filtrant le matériel inapproprié",
           "wirestock_desc_10": "Classement et évaluation d'images générées par IA en rédigeant des justifications détaillées pour identifier les sorties de meilleure qualité",
           "wirestock_desc_11": "Collaboration avec équipe distante via communication constante et respect des directives de contenu et flux de travail structurés",
+          
+          // Prosessor.AI - 5 descriptions
+          "prosessor_desc_1": "Transcription et annotation de contenu audio arabe (maghrébin) selon les directives de la plateforme LOFT 2.0",
+          "prosessor_desc_2": "Application d'étiquetage détaillé pour l'identification des locuteurs, la rédaction des données personnelles et les événements sonores (musique, rires, bruits de fond)",
+          "prosessor_desc_3": "Respect des conventions de formatage et d'annotation spécifiques au projet pour assurer la cohérence des données et l'exactitude linguistique",
+          "prosessor_desc_4": "Utilisation de la feuille de suivi Prosessor pour gérer les affectations, mettre à jour l'état des tâches et coordonner les retours avec les réviseurs",
+          "prosessor_desc_5": "Collaboration avec une équipe internationale de transcription via Discord, assurant la clarté du flux de travail et l'alignement de la qualité",
           
           // UbiAi - 4 descriptions
           "ubiai_desc_1": "Création de contenu de blog technique et tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress",
@@ -580,17 +591,20 @@ export default {
           "premise_desc_3": "Collaboration avec un réseau mondial de contributeurs pour rassembler des insights en temps réel",
           "premise_desc_4": "Contribution à divers projets incluant études de marché, surveillance d'infrastructures et analyses économiques",
           
-          // TED - 5 descriptions
-          "ted_desc_1": "Traduction et sous-titrage de TED Talks en langue maternelle, assurant une accessibilité mondiale",
-          "ted_desc_2": "Assurance de la qualité et précision tout en préservant le message original de l'orateur",
-          "ted_desc_3": "Collaboration avec d'autres traducteurs via l'outil CAT Amara, valorisant les retours pour amélioration",
-          "ted_desc_4": "Engagement dans l'apprentissage continu en explorant des sujets variés",
-          "ted_desc_5": "Contribution à l'échange global d'idées et autonomisation des non-anglophones",
+          // TED - 7 descriptions
+          "ted_desc_1": "Traduction et sous-titrage de TED Talks dans ma langue maternelle, assurant une accessibilité mondiale",
+          "ted_desc_2": "Prioriser la qualité et la précision tout en préservant le message de l'orateur",
+          "ted_desc_3": "Collaborer avec d'autres traducteurs, en valorisant les retours pour l'amélioration",
+          "ted_desc_4": "S'engager dans un apprentissage continu sur des sujets divers",
+          "ted_desc_5": "Contribuer à l'échange mondial d'idées et autonomiser les non-anglophones",
+          "ted_desc_6": "Participer aux discussions et événements de la communauté",
+          "ted_desc_7": "Recevoir une reconnaissance pour mes contributions et mon engagement",
           
-          // Pi Network - 3 descriptions
+          // Pi Network - 4 descriptions
           "pi_desc_1": "Révision des documents d'identification soumis pour authenticité",
           "pi_desc_2": "Vérification croisée des informations contre les registres officiels",
           "pi_desc_3": "Maintien d'un haut niveau de précision et confidentialité",
+          "pi_desc_4": "Contribuer à la sécurité et à la fiabilité du réseau Pi tout en acquérant une expérience précieuse en matière de conformité réglementaire et de processus de vérification d'identité",
           
           // Unbabel - 7 descriptions
           "unbabel_desc_1": "Traduction et post-édition de 1,6M+ mots sur 8 000+ tâches arabe↔anglais",

@@ -26,6 +26,20 @@ const experiences: Experience[] = [
       "wirestock_desc_11"
     ],
   },
+  {
+    title: "Transcriber – Arabic (Maghrebi)",
+    company: "ProsessorAI Data & Language Services",
+    companyUrl: "https://www.prosessor-ai.com/",
+    location: "Sfax (Remote)",
+    period: "Sep 2025 - Present",
+    description: [
+      "prosessor_desc_1",
+      "prosessor_desc_2",
+      "prosessor_desc_3",
+      "prosessor_desc_4",
+      "prosessor_desc_5"
+    ],
+  },
 {
   title: "Technical Content Writer & Web Operations Assistant",
   company: "UbiAi",
@@ -94,18 +108,6 @@ const experiences: Experience[] = [
     ],
   },
   {
-    title: "KYC Validator",
-    company: "Pi Network",
-    companyUrl: "https://minepi.com",
-    location: "Sfax (Remote)",
-    period: "Jul 2024 - Present",
-    description: [
-      "Reviewing submitted identification documents for authenticity",
-      "Cross-referencing information against official records",
-      "Maintaining a high standard of accuracy and confidentiality",
-    ],
-  },
-  {
     title: "Freelance AI Data Annotator",
     company: "Toloka",
     companyUrl: "https://toloka.ai",
@@ -144,11 +146,13 @@ const experiences: Experience[] = [
       "ted_desc_2",
       "ted_desc_3",
       "ted_desc_4",
-      "ted_desc_5"
+      "ted_desc_5",
+      "ted_desc_6",
+      "ted_desc_7"
     ],
   },
   {
-    title: "KYC Validator",
+    title: "KYC Validator (Know your customer)",
     company: "Pi Network",
     companyUrl: "https://minepi.com",
     location: "Sfax (Remote)",
@@ -156,7 +160,8 @@ const experiences: Experience[] = [
     description: [
       "pi_desc_1",
       "pi_desc_2",
-      "pi_desc_3"
+      "pi_desc_3",
+      "pi_desc_4"
     ],
   },
   {

@@ -405,12 +405,14 @@ projects: {
     current: "Present",
     positions: {
       "Media Content & Metadata Specialist": "Media Content & Metadata Specialist",
+      "Transcriber – Arabic (Maghrebi)": "Transcriber – Arabic (Maghrebi)",
       "Technical Content Writer & Web Operations Assistant": "Technical Content Writer & Web Operations Assistant",
       "Linguistic Editor": "Linguistic Editor",
       "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI",
       "Localization Vendor Coordinator": "Localization Vendor Coordinator",
       "Language Data and Quality Reviewer": "Language Data and Quality Reviewer",
       "KYC Validator": "KYC Validator",
+      "KYC Validator (Know your customer)": "KYC Validator (Know your customer)",
       "Freelance AI Data Annotator": "Freelance AI Data Annotator",
       "Crowdsourced Data Contributor": "Crowdsourced Data Contributor",
       "Subtitle Editor": "Subtitle Editor",
@@ -418,6 +420,7 @@ projects: {
     },
     companies: {
       "Wirestock": "Wirestock",
+      "ProsessorAI Data & Language Services": "Prosessor.AI Data & Language Services",
       "UbiAi": "UbiAi",
       "DeepL": "DeepL",
       "RWS": "RWS",
@@ -435,6 +438,7 @@ projects: {
     },
     periods: {
       "Apr 2025 - Present": "Apr 2025 - Present",
+      "Sep 2025 - Present": "Sep 2025 - Present",
       "Mar 2025 - Jun 2025": "Mar 2025 - Jun 2025",
       "Feb 2025": "Feb 2025",
       "Feb 2025 - Present": "Feb 2025 - Present",
@@ -464,8 +468,15 @@ projects: {
       "wirestock_desc_10": "Rank and evaluate AI-generated images by writing detailed rationales to identify the highest-quality outputs",
       "wirestock_desc_11": "Collaborate with a distributed remote team, following structured workflows and communication practices",
       
+      // Prosessor.AI - 5 descriptions
+      "prosessor_desc_1": "Transcribe and annotate Arabic (Maghrebi) audio content following LOFT 2.0 platform guidelines",
+      "prosessor_desc_2": "Apply detailed labeling for speaker identification, PII redaction, and sound events (e.g., music, laughter, background noise)",
+      "prosessor_desc_3": "Follow project-specific formatting and annotation conventions to ensure dataset consistency and linguistic accuracy",
+      "prosessor_desc_4": "Use the Prosessor Track Sheet to manage assignments, update task status, and coordinate feedback with reviewers",
+      "prosessor_desc_5": "Collaborate with an international transcription team through Discord, ensuring workflow clarity and quality alignment",
+      
       // UbiAi - 4 descriptions
-      "ubiai_desc_1": "Created technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform.",
+      "ubiai_desc_1": "Create technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform",
       "ubiai_desc_2": "Performed website audits and diagnostics to improve UX, SEO, and platform performance.",
       "ubiai_desc_3": "Collaborated with client to plan content strategy, including potential video tutorials and community engagement efforts.",
       "ubiai_desc_4": "Acted as a liaison and task coordinator for external media and marketing support to ensure project delivery.",
@@ -496,10 +507,11 @@ projects: {
       "volga_desc_3": "Perform critical safety analysis to identify, classify, and mitigate risks from harmful content like hate speech and dangerous information",
       "volga_desc_4": "Provide structured feedback and data annotations that directly contribute to the training and improvement of advanced AI systems",
   
-      // Pi Network - 3 descriptions
+      // Pi Network - 4 descriptions
       "pi_desc_1": "Review submitted identification documents for authenticity",
       "pi_desc_2": "Cross-reference information against official records",
       "pi_desc_3": "Maintain a high standard of accuracy and confidentiality",
+      "pi_desc_4": "Contribute to the security and reliability of the Pi Network while gaining valuable experience in regulatory compliance and identity verification processes",
   
       // Toloka - 6 descriptions
       "toloka_desc_1": "Conduct data labeling, image annotation, and text transcription for AI training",
@@ -515,12 +527,14 @@ projects: {
       "premise_desc_3": "Collaborate with a global network of contributors to gather real-time insights",
       "premise_desc_4": "Contribute to various projects including market research, infrastructure monitoring, and economic analysis",
   
-      // TED Translators - 5 descriptions
-      "ted_desc_1": "Translate and subtitle TED Talks using Amara software to ensure global accessibility",
-      "ted_desc_2": "Ensure quality and accuracy while maintaining high translation standards and preserving the speaker's original message",
-      "ted_desc_3": "Collaborate with other translators through the Amara CAT tool, valuing feedback for improvement",
-      "ted_desc_4": "Engage in continuous learning by exploring diverse topics to enhance translation skills",
-      "ted_desc_5": "Contribute to global idea exchange by empowering non-English speakers and facilitating the exchange of ideas worldwide",
+      // TED Translators - 7 descriptions
+      "ted_desc_1": "Translate and subtitle TED Talks into my native language, ensuring global accessibility",
+      "ted_desc_2": "Prioritize quality and accuracy while preserving the speaker's message",
+      "ted_desc_3": "Collaborate with other translators, valuing feedback for improvement",
+      "ted_desc_4": "Engage in continuous learning across diverse topics",
+      "ted_desc_5": "Contribute to the global exchange of ideas and empower non-English speakers",
+      "ted_desc_6": "Participate in community discussions and events",
+      "ted_desc_7": "Receive recognition for my contributions and commitment",
   
       // Unbabel - 7 descriptions
       "unbabel_desc_1": "Translate and post-edit 1.6M+ words across 8,000+ Arabic↔English tasks",
