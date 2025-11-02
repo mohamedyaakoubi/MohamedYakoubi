@@ -322,6 +322,8 @@ const handleSubmit = async (e: React.FormEvent) => {
 >
   <div className="flex gap-1"> {/* Reduced gap further */}
   <input
+  id="chat-input"
+  name="message"
   type="text"
   value={input}
   onChange={handleInputChange}
@@ -331,6 +333,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     transition-all duration-200 text-[10px] placeholder:text-[10px]
     w-full min-w-0 truncate"
   disabled={isLoading}
+  aria-label="Chat message input"
 />
     <button
       type="submit"

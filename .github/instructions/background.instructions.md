@@ -412,13 +412,10 @@ Skills: Collaborating · Communication · Fact-checking · Freelancing · Intern
 nternationalSkills.fi Recruiting System
 De 24 mai 2025 À 31 déc. 2035
 The International Skills Candidate Portal is a web application that makes the job application process easier for everyone. For Job Seekers: You can create an account, fill out your application, upload your CV or other documents, and track the status of your applications. You can also see upcoming interviews and get updates directly through the portal. For Recruiters/Admins: The portal provides an admin dashboard where recruiters can see all candidates, filter and sort them, schedule interviews (with automatic Google Meet links), score candidates using AI, and update their application status. The portal works online through a web browser, is secure, and uses smart features like email verification, calendar integration, and AI-powered scoring to save time and make hiring easier. In short: it’s a one-stop platform to manage job applications—from applying to hiring—without the paperwork and confusion.
-
 Next.js
-#Next.js
 Artificial Intelligence (AI)
-#Artificial Intelligence (AI)
 Human Resources (HR)
-#Human Resources (HR)
+
 ### services:
 Translation • Editing • Resume Writing • Resume Review • Virtual Assistance • Technical Support • Educational Consulting • Project Management • Career Development Coaching • Online Research
 
