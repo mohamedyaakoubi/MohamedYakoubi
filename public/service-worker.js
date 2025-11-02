@@ -1,5 +1,6 @@
 // Service Worker for caching static assets
-const CACHE_NAME = 'mohamed-portfolio-cache-v1';
+// IMPORTANT: Increment version number on each deployment to force cache refresh
+const CACHE_NAME = 'mohamed-portfolio-cache-v2';
 
 const urlsToCache = [
   '/',
