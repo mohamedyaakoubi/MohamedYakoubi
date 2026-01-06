@@ -4,12 +4,10 @@ import { NextRequest, NextResponse } from 'next/server';
 const INDEXNOW_KEY = 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6';
 const SITE_HOST = 'www.mohamedyaakoubi.live';
 
-// Search engines that support IndexNow
-const SEARCH_ENGINES = [
-  'api.indexnow.org',      // IndexNow API (shares with all participating engines)
-  'www.bing.com',          // Bing
-  'yandex.com',            // Yandex
-];
+// Primary IndexNow endpoint - all IndexNow-enabled search engines share URLs automatically
+// So we only need to submit to ONE endpoint (Yandex works reliably)
+// Other engines (Bing, Seznam, Naver, Amazon, Yep) will receive URLs automatically
+const PRIMARY_ENDPOINT = 'yandex.com';
 
 // All pages on your site
 const ALL_URLS = [
@@ -93,20 +91,17 @@ export async function POST(request: NextRequest) {
       urlList: urlsToSubmit,
     };
 
-    // Submit to all search engines
-    const results = await Promise.all(
-      SEARCH_ENGINES.map(engine => submitToSearchEngine(engine, payload))
-    );
-
-    const allSuccessful = results.every(r => r.success);
+    // Submit to single endpoint - IndexNow shares URLs across all participating search engines
+    const result = await submitToSearchEngine(PRIMARY_ENDPOINT, payload);
     
     return NextResponse.json({
-      success: allSuccessful,
-      message: allSuccessful 
-        ? 'URLs submitted successfully to all search engines' 
-        : 'Some submissions failed',
-      urlsSubmitted: urlsToSubmit.length,
-      results,
+      success: result.success,
+      message: result.success 
+        ? 'URLs submitted successfully - shared with all IndexNow search engines (Bing, Yandex, Seznam, Naver, Amazon, Yep)' 
+        : `Submission failed with status ${result.status}. Try again later if rate limited (429).`,
+      urlsSubmitted: urlsToSubmit,
+      endpoint: PRIMARY_ENDPOINT,
+      status: result.status,
     });
   } catch (error) {
     console.error('IndexNow submission error:', error);
@@ -147,19 +142,16 @@ export async function GET(request: NextRequest) {
     urlList: urlsToSubmit,
   };
 
-  // Submit to all search engines
-  const results = await Promise.all(
-    SEARCH_ENGINES.map(engine => submitToSearchEngine(engine, payload))
-  );
-
-  const allSuccessful = results.every(r => r.success);
+  // Submit to single endpoint - IndexNow shares URLs across all participating search engines
+  const result = await submitToSearchEngine(PRIMARY_ENDPOINT, payload);
 
   return NextResponse.json({
-    success: allSuccessful,
-    message: allSuccessful 
-      ? 'URLs submitted successfully' 
-      : 'Some submissions failed',
+    success: result.success,
+    message: result.success 
+      ? 'URLs submitted successfully - shared with all IndexNow search engines (Bing, Yandex, Seznam, Naver, Amazon, Yep)' 
+      : `Submission failed with status ${result.status}. Try again later if rate limited (429).`,
     urlsSubmitted: urlsToSubmit,
-    results,
+    endpoint: PRIMARY_ENDPOINT,
+    status: result.status,
   });
 }

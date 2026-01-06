@@ -36,15 +36,15 @@ async function submitToIndexNow(urls = null, submitAll = false) {
     
     if (result.success) {
       console.log('✅ Success!\n');
-      console.log(`URLs submitted: ${result.urlsSubmitted?.length || result.urlsSubmitted}`);
-      console.log('\nResults by search engine:');
-      result.results?.forEach(r => {
-        const status = r.success ? '✓' : '✗';
-        console.log(`  ${status} ${r.engine}: ${r.status}`);
-      });
+      console.log(`Endpoint: ${result.endpoint}`);
+      console.log(`Status: ${result.status}`);
+      console.log(`URLs submitted: ${result.urlsSubmitted?.length || 0}`);
+      console.log('\n💡 Note: IndexNow shares URLs across ALL participating search engines automatically!');
+      console.log('   (Bing, Yandex, Seznam, Naver, Amazon, Yep)\n');
     } else {
-      console.log('⚠️  Partial success or failure\n');
+      console.log('⚠️  Submission failed\n');
       console.log('Results:', JSON.stringify(result, null, 2));
+      console.log('\n💡 Tip: If you got status 429 (rate limited), wait a few minutes and try again.');
     }
     
     return result;
