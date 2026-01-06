@@ -29,8 +29,8 @@ const companies = [
   { name: "Andovar", logo: "/companies/Andovar_logo.webp", url: "https://andovar.com/" },
   { name: "Kudra", logo: "/companies/Kudra_logo.png", url: "https://kudra.ai/" },
   { name: "International Skills Labor Company", logo: "/companies/logo_skills.png", url: "https://internationalskills.fi/" },
-  { name: "Prosessor AI", logo: "/companies/prosessor_ai_logo.png", url: "https://prosessor-ai.com/" }
-
+  { name: "Prosessor AI", logo: "/companies/prosessor_ai_logo.png", url: "https://prosessor-ai.com/" },
+  { name: "Lionbridge", logo: "/companies/Lionbridge-Technologies-Logo.png", url: "https://www.lionbridge.com/" }
 ]
 
 // Duplicate the array to create a seamless loop effect

@@ -404,8 +404,10 @@ projects: {
     title: "Experience",
     current: "Present",
     positions: {
+      "AI Data Annotator & Search Relevance Evaluator": "AI Data Annotator & Search Relevance Evaluator",
       "Media Content & Metadata Specialist": "Media Content & Metadata Specialist",
       "Transcriber – Arabic (Maghrebi)": "Transcriber – Arabic (Maghrebi)",
+      "Linguistic Editor & Translator": "Linguistic Editor & Translator",
       "Technical Content Writer & Web Operations Assistant": "Technical Content Writer & Web Operations Assistant",
       "Linguistic Editor": "Linguistic Editor",
       "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI": "Linguistic AI Evaluator - Arabic Maghrebi QA | Meta AI",
@@ -419,8 +421,10 @@ projects: {
       "Freelance Editor (Arabic to English & English to Arabic)": "Freelance Editor (Arabic to English & English to Arabic)"
     },
     companies: {
+      "Lionbridge": "Lionbridge",
       "Wirestock": "Wirestock",
       "ProsessorAI Data & Language Services": "Prosessor.AI Data & Language Services",
+      "Andovar": "Andovar",
       "UbiAi": "UbiAi",
       "DeepL": "DeepL",
       "RWS": "RWS",
@@ -437,8 +441,10 @@ projects: {
       "Sfax (Remote)": "Sfax (Remote)"
     },
     periods: {
+      "Dec 2025 - Present": "Dec 2025 - Present",
       "Apr 2025 - Present": "Apr 2025 - Present",
       "Sep 2025 - Present": "Sep 2025 - Present",
+      "May 2025 - Jul 2025": "May 2025 - Jul 2025",
       "Mar 2025 - Jun 2025": "Mar 2025 - Jun 2025",
       "Feb 2025": "Feb 2025",
       "Feb 2025 - Present": "Feb 2025 - Present",
@@ -455,6 +461,17 @@ projects: {
       nonConfidential: "(non-confidential)"
     },
     descriptions: {
+      // Lionbridge - 9 descriptions
+      "lionbridge_desc_1": "Contributing to the improvement of machine learning models and search algorithms through multimodal data evaluation and creation",
+      "lionbridge_desc_2": "Analyzed and annotated search queries to refine search algorithms, ensuring strict adherence to Marketplace Relevance Project (MRP) guidelines",
+      "lionbridge_desc_3": "Evaluated user intent by assessing Product Types (PT) and Attributes to ensure accurate product matching (Exact, Substitute, Irrelevant)",
+      "lionbridge_desc_4": "Verified product availability and stock status across global marketplaces to maintain dataset integrity",
+      "lionbridge_desc_5": "Contributed to Automatic Speech Recognition (ASR) datasets by recording high-fidelity voice commands in Modern Standard Arabic (MSA)",
+      "lionbridge_desc_6": "Adhered to strict acoustic environments and pronunciation guidelines to train voice assistant models on specific keywords and wake-words",
+      "lionbridge_desc_7": "Generated high-quality image datasets for computer vision training, including full-scene composition and isolated object photography",
+      "lionbridge_desc_8": "Managed detailed metadata and strict file naming conventions to ensure accurate data classification for generative AI and compositing tasks",
+      "lionbridge_desc_9": "Wrote precise editing instructions and captions to describe object-to-background relationships for model training",
+
       // Wirestock - 11 descriptions
       "wirestock_desc_1": "Write detailed and structured metadata for edited videos, including final goal articulation, video descriptions, cut rationales, and audio choices",
       "wirestock_desc_2": "Segment raw video footage and author rationale-rich descriptions for each segment to support clear storytelling and narrative flow",
@@ -475,6 +492,12 @@ projects: {
       "prosessor_desc_4": "Use the Prosessor Track Sheet to manage assignments, update task status, and coordinate feedback with reviewers",
       "prosessor_desc_5": "Collaborate with an international transcription team through Discord, ensuring workflow clarity and quality alignment",
       
+      // Andovar - 4 descriptions
+      "andovar_desc_1": "Audio Forensic Translation: Transcribed and translated sensitive audio evidence (Tunisian Arabic into English) for legal and domestic proceedings. Maintained strict verbatim accuracy, preserving emotional tone and colloquial nuances to ensure evidentiary integrity",
+      "andovar_desc_2": "Socio-Political Localization: Edited and localized high-stakes content related to democracy, corruption, and governance (English into Tunisian Arabic). Successfully adapted source material from Modern Standard Arabic (MSA) into a \"Formal Tunisian\" register to ensure institutional relevance while maintaining local authenticity",
+      "andovar_desc_3": "Dialect Consultation: Provided expert consultation on dialectal distinctions between Maghrebi varieties to support client data classification and linguistic accuracy",
+      "andovar_desc_4": "Quality Assurance: Collaborated with international project managers to refine formatting and segmentation, ensuring deliverables met strict client specifications and time-sensitive deadlines",
+      
       // UbiAi - 4 descriptions
       "ubiai_desc_1": "Create technical blog content and tutorials on LLM fine-tuning, NLP, and AI topics for a WordPress-based platform",
       "ubiai_desc_2": "Performed website audits and diagnostics to improve UX, SEO, and platform performance.",
@@ -493,13 +516,18 @@ projects: {
       "rws_desc_2": "Rank outputs based on quality metrics such as coherence, fluency, and cultural relevance to enhance AI-driven conversational tools",
       "rws_desc_3": "Provide detailed feedback to improve linguistic and contextual accuracy, ensuring alignment with diverse cultural and linguistic norms",
   
-      // Uber - 6 descriptions
-      "uber_desc_1": "Specialize in evaluating Arabic and English AI-generated content, ensuring linguistic and cultural accuracy",
-      "uber_desc_2": "Provide precise translations from English to Arabic, maintaining both linguistic nuance and cultural relevance",
-      "uber_desc_3": "Deliver accurate Arabic transcriptions for various projects",
-      "uber_desc_4": "Coordinate localization efforts to optimize the Arabic and English user experience",
-      "uber_desc_5": "Contribute to AI model improvement through accurate data labeling and annotation for machine learning",
-      "uber_desc_6": "Collaborate with Data Science and Product teams to analyze datasets, ensuring data quality and extracting actionable insights for business improvements",
+      // Uber - 11 descriptions
+      "uber_desc_1": "Conducted real-time, scenario-based simulations with AI voicebots to evaluate conversational quality, specifically assessing turn-taking dynamics, latency, interruption handling, and error recovery",
+      "uber_desc_2": "Rated the naturalness and clarity of AI speech synthesis, providing structured feedback on pronunciation, pacing, and emotional tone to ensure voice interactions meet human-quality standards",
+      "uber_desc_3": "Evaluated and post-edited AI-generated Arabic and English content, ensuring natural fluency, contextual relevance, and cultural precision (e.g., idiomatic accuracy, tone consistency, and cultural nuance)",
+      "uber_desc_4": "Delivered and reviewed Arabic transcriptions and managed annotation and labeling tasks supporting AI model training and improvement (e.g., ASR datasets, NER tagging, and intent classification)",
+      "uber_desc_5": "Conducted audio recording sessions in Arabic and French using standardized scripts to enrich multilingual speech datasets for voice recognition and NLP development (e.g., pronunciation diversity, phonetic coverage)",
+      "uber_desc_6": "Performed auditing and evaluation of recorded audios from speakers with diverse Arabic phonetic backgrounds, assessing adherence to Modern Standard Arabic (MSA) pronunciation, grammatical accuracy, authenticity (human vs. AI), and overall data quality",
+      "uber_desc_7": "Contributed to research initiatives involving multimodal dataset creation and quality assurance for large language model (LLM) evaluation (e.g., text, audio, and video synchronization)",
+      "uber_desc_8": "Designed and reviewed audio-visual question–answer tasks to assess model reasoning, contextual understanding, and multimodal comprehension (e.g., audio-visual grounding, temporal reasoning, and scene inference)",
+      "uber_desc_9": "Documented model behavior patterns and identified areas of misinterpretation or deviation to strengthen model performance and reliability (e.g., failed reasoning cases, false correlations, or missed cues)",
+      "uber_desc_10": "Supported AI research projects evaluating the quality and accuracy of image-to-video model outputs, ensuring generated content aligns with written prompts and meets defined quality standards (e.g., motion coherence, prompt alignment, and realism assessment)",
+      "uber_desc_11": "Assisted in improving multimodal AI systems by providing structured feedback on generated media outputs and user interaction results (e.g., video response evaluation, cross-modal error logging, and benchmark refinement)",
   
       // Volga Partners - 4 descriptions
       "volga_desc_1": "Conduct comprehensive quality and safety evaluations for Generative AI and Large Language Models",

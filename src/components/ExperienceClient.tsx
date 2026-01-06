@@ -7,6 +7,24 @@ import { useTranslation } from '@/hooks/useTranslation'
 
 const experiences: Experience[] = [
   {
+    title: "AI Data Annotator & Search Relevance Evaluator",
+    company: "Lionbridge",
+    companyUrl: "https://www.lionbridge.com",
+    location: "Sfax (Remote)",
+    period: "Dec 2025 - Present",
+    description: [
+      "lionbridge_desc_1",
+      "lionbridge_desc_2",
+      "lionbridge_desc_3",
+      "lionbridge_desc_4",
+      "lionbridge_desc_5",
+      "lionbridge_desc_6",
+      "lionbridge_desc_7",
+      "lionbridge_desc_8",
+      "lionbridge_desc_9"
+    ],
+  },
+  {
     title: "Media Content & Metadata Specialist",
     company: "Wirestock",
     companyUrl: "https://wirestock.io",
@@ -40,19 +58,32 @@ const experiences: Experience[] = [
       "prosessor_desc_5"
     ],
   },
-{
-  title: "Technical Content Writer & Web Operations Assistant",
-  company: "UbiAi",
-  companyUrl: "https://ubiai.tools",
-  location: "Sfax (Remote)",
-  period: "Mar 2025 - Jun 2025",
-  description: [
+  {
+    title: "Linguistic Editor & Translator",
+    company: "Andovar",
+    companyUrl: "https://andovar.com",
+    location: "Sfax (Remote)",
+    period: "May 2025 - Jul 2025",
+    description: [
+      "andovar_desc_1",
+      "andovar_desc_2",
+      "andovar_desc_3",
+      "andovar_desc_4"
+    ],
+  },
+  {
+    title: "Technical Content Writer & Web Operations Assistant",
+    company: "UbiAi",
+    companyUrl: "https://ubiai.tools",
+    location: "Sfax (Remote)",
+    period: "Mar 2025 - Jun 2025",
+    description: [
       "ubiai_desc_1",
       "ubiai_desc_2",
       "ubiai_desc_3",
       "ubiai_desc_4",
-  ],
-},
+    ],
+  },
   {
     title: "Linguistic Editor",
     company: "DeepL",
@@ -91,7 +122,12 @@ const experiences: Experience[] = [
       "uber_desc_3",
       "uber_desc_4",
       "uber_desc_5",
-      "uber_desc_6"
+      "uber_desc_6",
+      "uber_desc_7",
+      "uber_desc_8",
+      "uber_desc_9",
+      "uber_desc_10",
+      "uber_desc_11"
     ],
   },
   {

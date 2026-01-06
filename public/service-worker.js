@@ -1,6 +1,9 @@
 // Service Worker for caching static assets
 // IMPORTANT: Increment version number on each deployment to force cache refresh
-const CACHE_NAME = 'mohamed-portfolio-cache-v2';
+const CACHE_NAME = 'mohamed-portfolio-cache-v3';
+
+// Check if we're in development mode
+const isDev = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
 
 const urlsToCache = [
   '/',
@@ -14,6 +17,11 @@ const urlsToCache = [
 
 // Install event - cache critical assets
 self.addEventListener('install', (event) => {
+  // Skip caching in development
+  if (isDev) {
+    self.skipWaiting();
+    return;
+  }
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(urlsToCache);
@@ -38,6 +46,11 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - serve from cache if available, otherwise fetch from network
 self.addEventListener('fetch', (event) => {
+  // In development, always fetch from network (no caching)
+  if (isDev) {
+    return;
+  }
+
   // Skip non-GET requests and API calls
   if (
     event.request.method !== 'GET' ||

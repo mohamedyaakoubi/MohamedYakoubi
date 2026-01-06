@@ -473,8 +473,10 @@ export default {
         title: "Expérience",
         current: "Présent",
         positions: {
+          "AI Data Annotator & Search Relevance Evaluator": "Annotateur de données IA & Évaluateur de pertinence de recherche",
           "Media Content & Metadata Specialist": "Spécialiste en Contenu Média et Métadonnées",
           "Transcriber – Arabic (Maghrebi)": "Transcripteur – Arabe (Maghrébin)",
+          "Linguistic Editor & Translator": "Éditeur linguistique & Traducteur",
           "Video Metadata Writer": "Rédacteur de Métadonnées Vidéo",
           "Technical Content Writer & Web Operations Assistant": "Rédacteur Technique & Assistant d'Opérations Web",
           "Linguistic Editor": "Éditeur linguistique",
@@ -489,8 +491,10 @@ export default {
           "Freelance Editor (Arabic to English & English to Arabic)": "Éditeur freelance (Arabe vers Anglais & Anglais vers Arabe)"
         },
         companies: {
+          "Lionbridge": "Lionbridge",
           "Wirestock": "Wirestock",
           "ProsessorAI Data & Language Services": "Prosessor.AI Data & Language Services",
+          "Andovar": "Andovar",
           "UbiAi": "UbiAi",
           "DeepL": "DeepL",
           "RWS": "RWS",
@@ -507,8 +511,10 @@ export default {
           "Sfax (Remote)": "Sfax (Télétravail)"
         },
         periods: {
+          "Dec 2025 - Present": "Déc 2025 - Présent",
           "Apr 2025 - Present": "Avr 2025 - Présent",
           "Sep 2025 - Present": "Sept 2025 - Présent",
+          "May 2025 - Jul 2025": "Mai 2025 - Juil 2025",
           "Mar 2025 - Jun 2025": "Mars 2025 - Juin 2025",
           "Feb 2025 - Present": "Fév 2025 - Présent",
           "Feb 2025": "Fév 2025",
@@ -525,6 +531,17 @@ export default {
           nonConfidential: "(non confidentiel)"
         },
         descriptions: {
+          // Lionbridge - 9 descriptions
+          "lionbridge_desc_1": "Contribution à l'amélioration des modèles d'apprentissage automatique et des algorithmes de recherche par l'évaluation et la création de données multimodales",
+          "lionbridge_desc_2": "Analyse et annotation des requêtes de recherche pour affiner les algorithmes, en respectant strictement les directives du Marketplace Relevance Project (MRP)",
+          "lionbridge_desc_3": "Évaluation de l'intention utilisateur en analysant les Types de Produits (PT) et les Attributs pour assurer une correspondance précise des produits (Exact, Substitut, Non pertinent)",
+          "lionbridge_desc_4": "Vérification de la disponibilité des produits et de l'état des stocks sur les marchés mondiaux pour maintenir l'intégrité des ensembles de données",
+          "lionbridge_desc_5": "Contribution aux ensembles de données de Reconnaissance Automatique de la Parole (ASR) en enregistrant des commandes vocales haute fidélité en arabe standard moderne (MSA)",
+          "lionbridge_desc_6": "Respect d'environnements acoustiques stricts et de directives de prononciation pour entraîner les modèles d'assistants vocaux sur des mots-clés spécifiques",
+          "lionbridge_desc_7": "Génération d'ensembles de données d'images de haute qualité pour l'entraînement en vision par ordinateur, incluant composition de scènes complètes et photographie d'objets isolés",
+          "lionbridge_desc_8": "Gestion de métadonnées détaillées et de conventions de nommage strictes pour assurer une classification précise des données pour l'IA générative et les tâches de composition",
+          "lionbridge_desc_9": "Rédaction d'instructions d'édition précises et de légendes décrivant les relations objet-arrière-plan pour l'entraînement des modèles",
+
           // Wirestock - 11 descriptions
           "wirestock_desc_1": "Rédaction de métadonnées détaillées et structurées pour vidéos éditées, incluant l'articulation des objectifs finaux, descriptions vidéo, justifications des coupes et choix audio",
           "wirestock_desc_2": "Segmentation de séquences vidéo brutes avec descriptions riches en justifications pour chaque segment afin de soutenir une narration claire et un flux narratif",
@@ -545,6 +562,12 @@ export default {
           "prosessor_desc_4": "Utilisation de la feuille de suivi Prosessor pour gérer les affectations, mettre à jour l'état des tâches et coordonner les retours avec les réviseurs",
           "prosessor_desc_5": "Collaboration avec une équipe internationale de transcription via Discord, assurant la clarté du flux de travail et l'alignement de la qualité",
           
+          // Andovar - 4 descriptions
+          "andovar_desc_1": "Traduction forensique audio : Transcription et traduction de preuves audio sensibles (arabe tunisien vers anglais) pour procédures juridiques et domestiques. Maintien d'une exactitude verbatim stricte, préservant le ton émotionnel et les nuances familières pour garantir l'intégrité des preuves",
+          "andovar_desc_2": "Localisation socio-politique : Édition et localisation de contenus à enjeux élevés liés à la démocratie, la corruption et la gouvernance (anglais vers arabe tunisien). Adaptation réussie du matériel source de l'arabe standard moderne (MSA) vers un registre \"Tunisien formel\" pour assurer la pertinence institutionnelle tout en maintenant l'authenticité locale",
+          "andovar_desc_3": "Consultation dialectale : Fourniture de consultations expertes sur les distinctions dialectales entre les variétés maghrébines pour soutenir la classification des données client et l'exactitude linguistique",
+          "andovar_desc_4": "Assurance qualité : Collaboration avec les chefs de projet internationaux pour affiner le formatage et la segmentation, assurant que les livrables respectent les spécifications client strictes et les délais sensibles",
+          
           // UbiAi - 4 descriptions
           "ubiai_desc_1": "Création de contenu de blog technique et tutoriels sur l'ajustement des LLM, le NLP et les sujets d'IA pour une plateforme WordPress",
           "ubiai_desc_2": "Réalisation d'audits et diagnostics de sites web pour améliorer l'UX, le référencement et les performances de la plateforme",
@@ -563,13 +586,18 @@ export default {
           "rws_desc_2": "Classement des sorties selon des critères de qualité tels que cohérence, fluidité et pertinence culturelle pour améliorer les outils conversationnels IA",
           "rws_desc_3": "Fourniture de retours détaillés pour améliorer la précision linguistique et contextuelle, assurant l'alignement avec diverses normes culturelles et linguistiques",
           
-          // Uber - 6 descriptions
-          "uber_desc_1": "Évaluation du contenu généré par IA en arabe et anglais pour la précision linguistique et culturelle",
-          "uber_desc_2": "Fourniture de traductions précises anglais-arabe, maintenant nuances et pertinence",
-          "uber_desc_3": "Livraison de transcriptions arabes précises pour divers projets",
-          "uber_desc_4": "Coordination des efforts de localisation pour optimiser l'expérience utilisateur en arabe et anglais",
-          "uber_desc_5": "Contribution à l'amélioration des modèles IA via étiquetage de données précis et annotation pour l'apprentissage automatique",
-          "uber_desc_6": "Collaboration avec équipes Data Science et Produit pour analyser les ensembles de données, assurant qualité des données et extraction d'insights actionnables pour améliorations métier",
+          // Uber - 11 descriptions
+          "uber_desc_1": "Réalisation de simulations en temps réel basées sur des scénarios avec des voicebots IA pour évaluer la qualité conversationnelle, en évaluant spécifiquement la dynamique des tours de parole, la latence, la gestion des interruptions et la récupération d'erreurs",
+          "uber_desc_2": "Évaluation du naturel et de la clarté de la synthèse vocale IA, fournissant des retours structurés sur la prononciation, le rythme et le ton émotionnel pour assurer que les interactions vocales répondent aux standards de qualité humaine",
+          "uber_desc_3": "Évaluation et post-édition du contenu généré par IA en arabe et anglais, assurant la fluidité naturelle, la pertinence contextuelle et la précision culturelle (exactitude idiomatique, cohérence de ton et nuances culturelles)",
+          "uber_desc_4": "Livraison et révision de transcriptions arabes et gestion des tâches d'annotation et d'étiquetage soutenant l'entraînement et l'amélioration des modèles IA (ensembles de données ASR, étiquetage NER et classification d'intention)",
+          "uber_desc_5": "Réalisation de sessions d'enregistrement audio en arabe et français utilisant des scripts standardisés pour enrichir les ensembles de données vocales multilingues pour la reconnaissance vocale et le développement NLP (diversité de prononciation, couverture phonétique)",
+          "uber_desc_6": "Audit et évaluation des audios enregistrés par des locuteurs avec divers backgrounds phonétiques arabes, évaluant l'adhésion à la prononciation en arabe standard moderne (MSA), l'exactitude grammaticale, l'authenticité (humain vs IA) et la qualité globale des données",
+          "uber_desc_7": "Contribution aux initiatives de recherche impliquant la création d'ensembles de données multimodales et l'assurance qualité pour l'évaluation des grands modèles de langage (LLM) (synchronisation texte, audio et vidéo)",
+          "uber_desc_8": "Conception et révision de tâches questions-réponses audio-visuelles pour évaluer le raisonnement du modèle, la compréhension contextuelle et la compréhension multimodale (ancrage audio-visuel, raisonnement temporel et inférence de scène)",
+          "uber_desc_9": "Documentation des schémas de comportement du modèle et identification des zones de mauvaise interprétation ou de déviation pour renforcer la performance et la fiabilité du modèle (cas de raisonnement échoués, fausses corrélations ou indices manqués)",
+          "uber_desc_10": "Soutien aux projets de recherche IA évaluant la qualité et la précision des sorties de modèles image-vers-vidéo, assurant que le contenu généré s'aligne avec les prompts écrits et répond aux standards de qualité définis (cohérence du mouvement, alignement du prompt et évaluation du réalisme)",
+          "uber_desc_11": "Assistance à l'amélioration des systèmes IA multimodaux en fournissant des retours structurés sur les sorties média générées et les résultats d'interaction utilisateur (évaluation des réponses vidéo, journalisation des erreurs cross-modales et raffinement des benchmarks)",
           
           // Volga Partners - 4 descriptions
           "volga_desc_1": "Réalisation d'évaluations complètes de qualité et sécurité pour l'IA Générative et les Modèles de Langage",
