@@ -486,7 +486,7 @@ projects: {
       "wirestock_desc_11": "Collaborate with a distributed remote team, following structured workflows and communication practices",
       
       // Prosessor.AI - 5 descriptions
-      "prosessor_desc_1": "Transcribe and annotate Arabic (Maghrebi) audio content following LOFT 2.0 platform guidelines",
+      "prosessor_desc_1": "Transcribe and annotate Arabic (Maghrebi) audio content following proprietary client tool guidelines.",
       "prosessor_desc_2": "Apply detailed labeling for speaker identification, PII redaction, and sound events (e.g., music, laughter, background noise)",
       "prosessor_desc_3": "Follow project-specific formatting and annotation conventions to ensure dataset consistency and linguistic accuracy",
       "prosessor_desc_4": "Use the Prosessor Track Sheet to manage assignments, update task status, and coordinate feedback with reviewers",

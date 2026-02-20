@@ -556,7 +556,7 @@ export default {
           "wirestock_desc_11": "Collaboration avec équipe distante via communication constante et respect des directives de contenu et flux de travail structurés",
           
           // Prosessor.AI - 5 descriptions
-          "prosessor_desc_1": "Transcription et annotation de contenu audio arabe (maghrébin) selon les directives de la plateforme LOFT 2.0",
+          "prosessor_desc_1": "Transcription et annotation de contenu audio arabe (maghrébin) selon les directives des outils clients propriétaires.",
           "prosessor_desc_2": "Application d'étiquetage détaillé pour l'identification des locuteurs, la rédaction des données personnelles et les événements sonores (musique, rires, bruits de fond)",
           "prosessor_desc_3": "Respect des conventions de formatage et d'annotation spécifiques au projet pour assurer la cohérence des données et l'exactitude linguistique",
           "prosessor_desc_4": "Utilisation de la feuille de suivi Prosessor pour gérer les affectations, mettre à jour l'état des tâches et coordonner les retours avec les réviseurs",
