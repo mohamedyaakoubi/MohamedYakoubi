@@ -56,6 +56,24 @@ export const featuredProjects: Project[] = [
     status: "completed"
   },
   {
+    name: "Transcript QA - Diff Engine",
+    category: "Tools",
+    description: "Google Sheets add-on that compares transcript versions and generates QA diff reports for localization workflows.",
+    longDescription: "Transcript QA — Diff Engine is a schema-agnostic Google Sheets add-on built for transcript quality assurance. It auto-detects column roles (speaker, timestamps, transcript, sound events), lets reviewers commit snapshots of the original transcript, then computes a row-level diff against the reworked version — categorizing every row as Unchanged, Modified, Split, Merged, Added, or Deleted. It produces a color-coded Diff Viewer sheet and a summary QA Report with per-category counts and optional reviewer/transcriptionist metadata.",
+    technologies: ["Google Apps Script", "Google Sheets API", "CardService", "HtmlService"],
+    githubUrl: "https://github.com/mohamedyaakoubi/transcript-qa-diff-engine",
+    image: "/transcript-qa-diff-engine-logo.png",
+    features: [
+      "Auto-detect column roles via flexible header pattern matching",
+      "Snapshot-based comparison workflow (original → reworked)",
+      "Six diff categories: Unchanged, Modified, Split, Merged, Added, Deleted",
+      "Color-coded Diff Viewer sheet with row-level highlighting",
+      "Summary QA Report with category counts and metadata",
+      "Configurable similarity threshold and settings sidebar"
+    ],
+    status: "completed"
+  },
+  {
     name: "Potential",
     category: "AI/ML",
     description: "AI-powered search engine for the Abu Dhabi Open Data Platform with real-time API query processing.",

@@ -109,6 +109,11 @@ export function Footer({ locale }: FooterProps) {
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
           <p>© {currentYear} {t.copyright}</p>
+          <div className="mt-3 flex justify-center gap-4 text-sm text-gray-400">
+            <Link href="/privacy-policy/transcript-qa" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+            <span>·</span>
+            <Link href="/terms-of-service/transcript-qa" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
       <div className="absolute bottom-12" style={{ left: '7rem' }}>
