@@ -116,6 +116,10 @@ export function StaticHome({ locale, translations }: StaticHomeProps) {
         <h2 id="projects-heading">{translations.projects?.title || 'Projects'}</h2>
         <ul>
           <li>
+            <h3>Transcript QA - Diff Engine (Google Sheets Add-on)</h3>
+            <p>Schema-agnostic Google Sheets add-on that compares transcript versions and generates QA diff reports for localization workflows. Auto-detects column roles, computes row-level diffs (Unchanged, Modified, Split, Merged, Added, Deleted), and produces color-coded Diff Viewer sheets with summary QA Reports.</p>
+          </li>
+          <li>
             <h3>{translations.projects?.names?.Potential || 'Potential'} (AI Hackathon | Abu Dhabi Spark Data)</h3>
             <p>{translations.projects?.descriptions?.Potential || 'AI-powered search engine for the Abu Dhabi Open Data Platform using Next.js and NLP.'}</p>
           </li>
