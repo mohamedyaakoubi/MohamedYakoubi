@@ -133,14 +133,14 @@ export default function TranscriptQAPrivacyPolicy() {
                 amirrak8@gmail.com
               </a>
               <br />
-              GitHub:{' '}
+              LinkedIn:{' '}
               <a
-                href="https://github.com/mohamedyaakoubi/volgapartners-scripts/issues"
+                href="https://www.linkedin.com/in/yaakoubi-mohamed/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                github.com/mohamedyaakoubi/volgapartners-scripts
+                linkedin.com/in/yaakoubi-mohamed
               </a>
             </p>
           </div>
