@@ -87,12 +87,9 @@ export default function SheetDiffPricingPage() {
                 <span>Priority email support</span>
               </li>
             </ul>
-            <a
-              href="mailto:amirrak8@gmail.com?subject=SheetDiff%20Pro%20%E2%80%94%20Early%20Access"
-              className="bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg text-sm font-semibold block transition-colors"
-            >
-              Get Early Access
-            </a>
+            <div className="bg-blue-600 text-white text-center py-3 rounded-lg text-sm font-semibold cursor-default">
+              Available after Marketplace launch
+            </div>
           </div>
 
           {/* Lifetime */}
@@ -123,12 +120,9 @@ export default function SheetDiffPricingPage() {
                 <span>Priority email support</span>
               </li>
             </ul>
-            <a
-              href="mailto:amirrak8@gmail.com?subject=SheetDiff%20Pro%20Lifetime%20%E2%80%94%20Early%20Access"
-              className="border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950 text-center py-3 rounded-lg text-sm font-semibold block transition-colors"
-            >
-              Get Early Access
-            </a>
+            <div className="border border-gray-300 dark:border-gray-700 text-center py-3 rounded-lg text-sm font-medium text-gray-500 dark:text-gray-400 cursor-default">
+              Available after Marketplace launch
+            </div>
           </div>
         </div>
 

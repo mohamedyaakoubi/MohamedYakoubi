@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Terms of Service — SheetDiff | Mohamed Yaakoubi',
@@ -267,9 +268,18 @@ export default function SheetDiffTermsOfService() {
           </div>
         </section>
 
-        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500 dark:text-gray-400">
-          <a href="https://www.mohamedyaakoubi.live/en" className="hover:underline">
-            &larr; Back to mohamedyaakoubi.live
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap gap-4">
+          <Link href="/sheetdiff" className="hover:underline">
+            &larr; SheetDiff
+          </Link>
+          <Link href="/sheetdiff/pricing" className="hover:underline">
+            Pricing
+          </Link>
+          <Link href="/privacy-policy/sheetdiff" className="hover:underline">
+            Privacy Policy
+          </Link>
+          <a href="mailto:amirrak8@gmail.com" className="hover:underline">
+            Support
           </a>
         </div>
       </div>
