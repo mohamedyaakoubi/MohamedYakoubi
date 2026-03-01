@@ -56,7 +56,7 @@ export default function TranscriptQATermsOfService() {
               of all data in your spreadsheets. For complete details on data handling, please
               refer to our{' '}
               <a
-                href="/privacy-policy/transcript-qa"
+                href="/privacy-policy/sheetdiff"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
                 Privacy Policy

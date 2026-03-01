@@ -71,13 +71,13 @@ export default function TranscriptQADiffEnginePage() {
 
         <div className="flex flex-wrap gap-4 text-sm">
           <Link
-            href="/privacy-policy/transcript-qa"
+            href="/privacy-policy/sheetdiff"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             Privacy Policy
           </Link>
           <Link
-            href="/terms-of-service/transcript-qa"
+            href="/terms-of-service/sheetdiff"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             Terms of Service

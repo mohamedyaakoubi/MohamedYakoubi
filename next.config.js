@@ -40,6 +40,22 @@ const nextConfig = {
         source: '/contact',
         destination: '/en/contact',
         permanent: true,
+      },
+      // Old SheetDiff route redirects
+      {
+        source: '/transcript-qa-diff-engine',
+        destination: '/sheetdiff',
+        permanent: true,
+      },
+      {
+        source: '/privacy-policy/transcript-qa',
+        destination: '/privacy-policy/sheetdiff',
+        permanent: true,
+      },
+      {
+        source: '/terms-of-service/transcript-qa',
+        destination: '/terms-of-service/sheetdiff',
+        permanent: true,
       }
     ]
   },

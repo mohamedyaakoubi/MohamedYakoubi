@@ -111,9 +111,9 @@ export function Footer({ locale }: FooterProps) {
           <p>© {currentYear} {t.copyright}</p>
           <div className="mt-3 flex justify-center gap-4 text-sm text-gray-400">
             <span>SheetDiff:</span>
-            <Link href="/privacy-policy/transcript-qa" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+            <Link href="/privacy-policy/sheetdiff" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
             <span>·</span>
-            <Link href="/terms-of-service/transcript-qa" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
+            <Link href="/terms-of-service/sheetdiff" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
