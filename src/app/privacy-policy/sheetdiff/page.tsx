@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   robots: 'noindex, nofollow',
 }
 
-export default function TranscriptQAPrivacyPolicy() {
+export default function SheetDiffPrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
@@ -24,8 +24,8 @@ export default function TranscriptQAPrivacyPolicy() {
             <p>
               SheetDiff (&ldquo;the Add-on&rdquo;) is a Google Sheets add-on
               developed by Mohamed Yaakoubi that compares spreadsheet versions and generates
-              quality assurance reports. This Privacy Policy explains how the Add-on handles
-              your data.
+              quality assurance reports. This Privacy Policy explains how the Add-on collects,
+              uses, and protects your data.
             </p>
           </div>
 
@@ -36,12 +36,17 @@ export default function TranscriptQAPrivacyPolicy() {
               <li>
                 <strong>spreadsheets.currentonly</strong> — Read and write access to the
                 currently open Google Sheets spreadsheet only. This is required to read
-                transcript data, create snapshot sheets, generate the Diff Viewer, and
+                data, create snapshot sheets, generate the Diff Viewer, and
                 produce the QA Report.
               </li>
               <li>
                 <strong>script.container.ui</strong> — Permission to display the Settings
                 sidebar, dialogs, and custom menus within Google Sheets.
+              </li>
+              <li>
+                <strong>script.external_request</strong> — Permission to make network
+                requests to our license verification server. This scope is used solely
+                for license validation and usage tracking (see Section 5).
               </li>
             </ul>
           </div>
@@ -51,15 +56,17 @@ export default function TranscriptQAPrivacyPolicy() {
             <ul className="list-disc pl-6 space-y-1">
               <li>The Add-on does <strong>not</strong> access any other files in your Google Drive.</li>
               <li>The Add-on does <strong>not</strong> access your Gmail, Calendar, Contacts, or any other Google service.</li>
-              <li>The Add-on does <strong>not</strong> access your personal information, Google account profile, or authentication credentials.</li>
+              <li>The Add-on does <strong>not</strong> read, store, or transmit the content of your spreadsheets to any external server.</li>
+              <li>The Add-on does <strong>not</strong> access your Google account password or authentication credentials.</li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">4. Data Storage</h2>
+            <h2 className="text-xl font-semibold mb-3">4. Spreadsheet Data Storage</h2>
             <p>
-              All data processed by the Add-on remains within your Google Sheets spreadsheet.
-              User settings (column mapping, similarity threshold, report metadata) are stored
+              All spreadsheet data processed by the Add-on remains within your Google Sheets
+              document. Comparison results, snapshots, diff reports, and user settings
+              (column mapping, similarity threshold, report metadata) are stored
               in the spreadsheet&apos;s <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">DocumentProperties</code> using
               Google Apps Script&apos;s built-in Properties Service. This data is tied to the
               specific spreadsheet and is not accessible from other documents.
@@ -67,81 +74,118 @@ export default function TranscriptQAPrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">5. No External Servers</h2>
+            <h2 className="text-xl font-semibold mb-3">5. License Server &amp; Data We Collect</h2>
             <p>
-              The Add-on runs entirely within Google&apos;s Apps Script infrastructure. It does
-              not transmit any data to external servers, third-party services, APIs, or
-              databases. No network requests are made outside of Google&apos;s own services.
+              To manage licensing, trial periods, and usage limits, the Add-on communicates
+              with a license verification server hosted on Google Firebase
+              (Cloud Functions + Firestore) in the <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">us-central1</code> region. The following
+              data is transmitted to and stored on this server:
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>
+                <strong>Google account email address</strong> — Retrieved
+                via <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">Session.getEffectiveUser().getEmail()</code>.
+                Used as a unique identifier for license records and usage tracking.
+              </li>
+              <li>
+                <strong>Spreadsheet ID</strong> — The unique identifier of the currently
+                open spreadsheet. Used together with your email to enforce per-spreadsheet
+                usage limits and prevent abuse.
+              </li>
+              <li>
+                <strong>License status</strong> — Whether you are on a trial, free tier,
+                or paid plan. Stored alongside your email to determine access level.
+              </li>
+              <li>
+                <strong>Usage count</strong> — The number of comparisons performed per
+                calendar month. No spreadsheet content is transmitted — only a counter
+                is incremented.
+              </li>
+            </ul>
+            <p className="mt-3">
+              <strong>No spreadsheet content, cell values, row data, or file contents are
+              ever transmitted to or stored on the license server.</strong> Only the metadata
+              listed above is collected.
             </p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">6. No Data Collection or Tracking</h2>
+            <h2 className="text-xl font-semibold mb-3">6. Payment Processing</h2>
             <p>
-              The Add-on does not collect, store, or share any personal data, usage analytics,
-              telemetry, or tracking information. There are no cookies, no analytics scripts,
-              and no third-party integrations.
+              Paid subscriptions are processed by <strong>Paddle.com</strong> (Paddle Payments Ltd.),
+              which acts as the Merchant of Record. When you purchase a SheetDiff Pro license:
             </p>
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>Payment information (credit card, billing address) is collected and
+                processed entirely by Paddle. The Add-on developer never sees or stores
+                your payment details.</li>
+              <li>Paddle sends a webhook notification to our license server confirming
+                your purchase, which includes your email address and subscription status.</li>
+              <li>Paddle&apos;s own privacy policy applies to payment data:
+                {' '}<a href="https://www.paddle.com/legal/privacy" target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:underline">
+                  paddle.com/legal/privacy
+                </a>.
+              </li>
+            </ul>
           </div>
 
           <div>
             <h2 className="text-xl font-semibold mb-3">7. Data Security &amp; Protection</h2>
-            <p>
-              The Add-on relies entirely on Google&apos;s infrastructure for data security.
-              Specifically:
-            </p>
-            <ul className="list-disc pl-6 mt-2 space-y-1">
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 All spreadsheet data is protected by <strong>Google&apos;s encryption</strong> — in
                 transit (TLS/HTTPS) and at rest (AES-256) — as part of Google Workspace&apos;s
                 built-in security.
               </li>
               <li>
-                The Add-on uses the <strong>principle of least privilege</strong>: it requests
-                only two OAuth scopes — <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">spreadsheets.currentonly</code> (access
-                limited to the currently open spreadsheet) and <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">script.container.ui</code> (sidebar
-                and dialog display only).
+                Communication between the Add-on and the license server uses
+                <strong> HTTPS/TLS encryption</strong> exclusively.
+              </li>
+              <li>
+                The license server (Firebase) is protected by Google Cloud&apos;s
+                infrastructure security, including encryption at rest and in transit.
+              </li>
+              <li>
+                Paddle webhook signatures are cryptographically verified to prevent
+                unauthorized license activations.
               </li>
               <li>
                 The Add-on does <strong>not</strong> store, cache, or persist any authentication
                 tokens, credentials, or user passwords.
               </li>
               <li>
-                No data is transmitted outside of Google&apos;s own encrypted infrastructure.
-                There are no external API calls, webhooks, or outbound network requests.
-              </li>
-              <li>
                 User preferences (column mapping, thresholds) are stored
                 in <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">DocumentProperties</code>, which is
                 scoped to the individual spreadsheet and protected by Google&apos;s access
-                controls — only users with edit access to the spreadsheet can read or modify
-                these properties.
+                controls.
               </li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">8. No Advertising</h2>
+            <h2 className="text-xl font-semibold mb-3">8. No Advertising or Tracking</h2>
             <p>
-              The Add-on does not display advertisements, promotional content, or sponsored
-              material of any kind.
+              The Add-on does not display advertisements, use cookies, include analytics
+              scripts, or employ any form of user tracking or behavioral profiling.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl font-semibold mb-3">9. No Sale or Transfer of Data</h2>
             <p>
-              The Add-on does <strong>not</strong> sell, trade, rent, or transfer your Google
-              user data to any third party for any reason, including but not limited to
-              advertising, data brokering, credit assessment, or any purpose unrelated to
-              providing the Add-on&apos;s core functionality.
+              The Add-on does <strong>not</strong> sell, trade, rent, or transfer your data
+              (including your email address) to any third party for advertising, data
+              brokering, credit assessment, or any purpose unrelated to providing the
+              Add-on&apos;s core functionality and license management.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl font-semibold mb-3">10. No AI/ML Model Training</h2>
             <p>
-              Your Google user data is <strong>never</strong> used for training artificial
+              Your data is <strong>never</strong> used for training artificial
               intelligence or machine learning models. The Add-on&apos;s comparison algorithms
               are rule-based (text similarity, bigram matching) and do not involve any form
               of model training, fine-tuning, or data aggregation.
@@ -150,29 +194,26 @@ export default function TranscriptQAPrivacyPolicy() {
 
           <div>
             <h2 className="text-xl font-semibold mb-3">11. Data Retention &amp; Deletion</h2>
-            <p>
-              The Add-on does not maintain any independent data store. All data resides
-              within your Google Sheets spreadsheet and is retained only as long as the
-              spreadsheet exists in your Google Drive. Specifically:
-            </p>
-            <ul className="list-disc pl-6 mt-2 space-y-1">
+            <ul className="list-disc pl-6 space-y-1">
               <li>
-                <strong>Snapshot sheets</strong> are stored as additional tabs within your
-                spreadsheet. You can delete them at any time using the &ldquo;Delete All
-                Snapshots&rdquo; menu item.
+                <strong>Spreadsheet data</strong> (snapshots, diff reports, settings) resides
+                entirely within your Google Sheets document and is deleted when you delete
+                the spreadsheet or uninstall the Add-on.
               </li>
               <li>
-                <strong>User preferences</strong> (column mapping, thresholds, metadata)
-                are stored in the spreadsheet&apos;s DocumentProperties. You can clear them
-                using the &ldquo;Reset&rdquo; button in the Settings sidebar.
+                <strong>License records</strong> (email, plan status, usage count) are stored
+                on the Firebase license server for as long as your account is active. If you
+                cancel your subscription or request deletion, your license record will be
+                removed within 30 days.
               </li>
               <li>
-                <strong>Uninstalling the Add-on</strong> or deleting the spreadsheet removes
-                all associated data entirely. No residual data is retained anywhere.
+                <strong>Trial data</strong> (trial start date) is stored both locally
+                in <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">UserProperties</code> (cleared on
+                uninstall) and on the license server (deleted on request).
               </li>
               <li>
-                You may request deletion of any data at any time by contacting the developer
-                at the email address listed below.
+                You may request deletion of all your data at any time by contacting
+                the developer at the email address listed below.
               </li>
             </ul>
           </div>
@@ -190,13 +231,16 @@ export default function TranscriptQAPrivacyPolicy() {
             <p>
               This Privacy Policy may be updated from time to time. Any changes will be
               reflected on this page with an updated &ldquo;Last updated&rdquo; date.
+              Continued use of the Add-on after changes constitutes acceptance of the
+              revised policy.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl font-semibold mb-3">14. Contact</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact:
+              If you have any questions about this Privacy Policy or wish to request
+              deletion of your data, please contact:
             </p>
             <p className="mt-2">
               <strong>Mohamed Yaakoubi</strong><br />
