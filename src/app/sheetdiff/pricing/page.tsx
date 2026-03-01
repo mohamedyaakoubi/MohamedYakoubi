@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Pricing — SheetDiff | Compare, Diff & QA for Sheets',
-  description: 'SheetDiff pricing plans: 7-day free trial, free tier with 50 rows and 3 comparisons/month, or unlimited access with SheetDiff Pro starting at $4.99/month.',
+  description: 'SheetDiff pricing plans: 7-day free trial, free tier with 50 rows and 10 comparisons/month, or unlimited access with SheetDiff Pro starting at $4.99/month.',
 }
 
 export default function SheetDiffPricingPage() {
@@ -39,7 +39,7 @@ export default function SheetDiffPricingPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">&#10003;</span>
-                <span>3 comparisons per month</span>
+                <span>10 comparisons per month</span>
               </li>
             </ul>
             <div className="border border-gray-300 dark:border-gray-700 text-center py-3 rounded-lg text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -142,7 +142,7 @@ export default function SheetDiffPricingPage() {
               <h3 className="font-semibold mb-2">What happens when the trial ends?</h3>
               <p className="text-gray-600 dark:text-gray-400">
                 You automatically move to the Free tier: 50 rows per comparison and
-                3 comparisons per month. All features remain available — only the row count
+                10 comparisons per month. All features remain available — only the row count
                 and comparison frequency are limited.
               </p>
             </div>
