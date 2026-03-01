@@ -41,14 +41,6 @@ export default function SheetDiffPricingPage() {
                 <span className="text-green-500 mt-0.5">&#10003;</span>
                 <span>3 comparisons per month</span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-500 mt-0.5">&#10003;</span>
-                <span>Color-coded Diff Viewer</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-500 mt-0.5">&#10003;</span>
-                <span>QA Report with metrics</span>
-              </li>
             </ul>
             <div className="border border-gray-300 dark:border-gray-700 text-center py-3 rounded-lg text-sm font-medium text-gray-500 dark:text-gray-400">
               Included after trial
@@ -95,9 +87,12 @@ export default function SheetDiffPricingPage() {
                 <span>Priority email support</span>
               </li>
             </ul>
-            <div className="bg-blue-600 text-white text-center py-3 rounded-lg text-sm font-semibold cursor-default">
-              Available after Marketplace launch
-            </div>
+            <a
+              href="mailto:amirrak8@gmail.com?subject=SheetDiff%20Pro%20%E2%80%94%20Early%20Access"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg text-sm font-semibold block transition-colors"
+            >
+              Get Early Access
+            </a>
           </div>
 
           {/* Lifetime */}
@@ -117,7 +112,7 @@ export default function SheetDiffPricingPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">&#10003;</span>
-                <span>All future updates included</span>
+                <span>Locks in today&apos;s price — no renewals ever</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">&#10003;</span>
@@ -128,9 +123,12 @@ export default function SheetDiffPricingPage() {
                 <span>Priority email support</span>
               </li>
             </ul>
-            <div className="border border-gray-300 dark:border-gray-700 text-center py-3 rounded-lg text-sm font-medium text-gray-500 dark:text-gray-400">
-              Available after Marketplace launch
-            </div>
+            <a
+              href="mailto:amirrak8@gmail.com?subject=SheetDiff%20Pro%20Lifetime%20%E2%80%94%20Early%20Access"
+              className="border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950 text-center py-3 rounded-lg text-sm font-semibold block transition-colors"
+            >
+              Get Early Access
+            </a>
           </div>
         </div>
 
