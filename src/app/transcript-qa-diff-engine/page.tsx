@@ -2,24 +2,24 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Transcript QA - Diff Engine | Google Sheets Add-on by Mohamed Yaakoubi',
-  description: 'Transcript QA - Diff Engine is a schema-agnostic Google Sheets add-on that compares transcript versions and generates QA diff reports for localization workflows.',
+  title: 'SheetDiff — Compare, Diff & QA for Sheets | Google Sheets Add-on by Mohamed Yaakoubi',
+  description: 'SheetDiff is a schema-agnostic Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics.',
 }
 
 export default function TranscriptQADiffEnginePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold mb-4">Transcript QA - Diff Engine</h1>
+        <h1 className="text-4xl font-bold mb-4">SheetDiff — Compare, Diff &amp; QA for Sheets</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
           A Google Sheets Add-on by Mohamed Yaakoubi
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed mb-12">
           <p>
-            Transcript QA - Diff Engine is a schema-agnostic Google Sheets add-on built
-            for transcript quality assurance in localization workflows. It compares two
-            versions of a transcript — the original and the reworked — and produces a
+            SheetDiff is a schema-agnostic Google Sheets add-on built
+            for spreadsheet comparison and quality assurance. It compares two
+            versions of any structured data — the original and the reworked — and produces a
             detailed, row-level diff report.
           </p>
 
@@ -83,17 +83,7 @@ export default function TranscriptQADiffEnginePage() {
             Terms of Service
           </Link>
           <a
-            href="https://github.com/mohamedyaakoubi/transcript-qa-diff-engine"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            GitHub Repository
-          </a>
-          <a
-            href="https://github.com/mohamedyaakoubi/transcript-qa-diff-engine/issues"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:amirrak8@gmail.com"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             Support

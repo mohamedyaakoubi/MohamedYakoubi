@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Transcript QA Diff Engine | Mohamed Yaakoubi',
-  description: 'Privacy Policy for the Transcript QA — Diff Engine Google Sheets add-on by Mohamed Yaakoubi.',
+  title: 'Privacy Policy — SheetDiff | Mohamed Yaakoubi',
+  description: 'Privacy Policy for the SheetDiff Google Sheets add-on by Mohamed Yaakoubi.',
   robots: 'noindex, nofollow',
 }
 
@@ -12,7 +12,7 @@ export default function TranscriptQAPrivacyPolicy() {
       <div className="max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
-          Transcript QA — Diff Engine &middot; Google Sheets Add-on
+          SheetDiff &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
           Last updated: March 1, 2026
@@ -22,8 +22,8 @@ export default function TranscriptQAPrivacyPolicy() {
           <div>
             <h2 className="text-xl font-semibold mb-3">1. Overview</h2>
             <p>
-              Transcript QA — Diff Engine (&ldquo;the Add-on&rdquo;) is a Google Sheets add-on
-              developed by Mohamed Yaakoubi that compares transcript versions and generates
+              SheetDiff (&ldquo;the Add-on&rdquo;) is a Google Sheets add-on
+              developed by Mohamed Yaakoubi that compares spreadsheet versions and generates
               quality assurance reports. This Privacy Policy explains how the Add-on handles
               your data.
             </p>

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — Transcript QA Diff Engine | Mohamed Yaakoubi',
-  description: 'Terms of Service for the Transcript QA — Diff Engine Google Sheets add-on by Mohamed Yaakoubi.',
+  title: 'Terms of Service — SheetDiff | Mohamed Yaakoubi',
+  description: 'Terms of Service for the SheetDiff Google Sheets add-on by Mohamed Yaakoubi.',
   robots: 'noindex, nofollow',
 }
 
@@ -12,7 +12,7 @@ export default function TranscriptQATermsOfService() {
       <div className="max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
-          Transcript QA — Diff Engine &middot; Google Sheets Add-on
+          SheetDiff &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
           Last updated: February 26, 2026
@@ -22,7 +22,7 @@ export default function TranscriptQATermsOfService() {
           <div>
             <h2 className="text-xl font-semibold mb-3">1. Acceptance of Terms</h2>
             <p>
-              By installing or using the Transcript QA — Diff Engine add-on
+              By installing or using the SheetDiff add-on
               (&ldquo;the Add-on&rdquo;), you agree to these Terms of Service. If you do not
               agree, please do not install or use the Add-on.
             </p>
@@ -41,7 +41,7 @@ export default function TranscriptQATermsOfService() {
           <div>
             <h2 className="text-xl font-semibold mb-3">3. License</h2>
             <p>
-              The Add-on is provided free of charge. You are granted a non-exclusive,
+              The Add-on is available with a 7-day trial. You are granted a non-exclusive,
               non-transferable, revocable license to use the Add-on for personal or
               commercial purposes within Google Sheets. You may not reverse-engineer,
               decompile, or create derivative works from the Add-on.
