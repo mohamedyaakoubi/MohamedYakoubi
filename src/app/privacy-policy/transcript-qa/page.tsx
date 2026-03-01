@@ -15,7 +15,7 @@ export default function TranscriptQAPrivacyPolicy() {
           Transcript QA — Diff Engine &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
-          Last updated: February 26, 2026
+          Last updated: March 1, 2026
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed">
@@ -85,7 +85,43 @@ export default function TranscriptQAPrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">7. No Advertising</h2>
+            <h2 className="text-xl font-semibold mb-3">7. Data Security &amp; Protection</h2>
+            <p>
+              The Add-on relies entirely on Google&apos;s infrastructure for data security.
+              Specifically:
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>
+                All spreadsheet data is protected by <strong>Google&apos;s encryption</strong> — in
+                transit (TLS/HTTPS) and at rest (AES-256) — as part of Google Workspace&apos;s
+                built-in security.
+              </li>
+              <li>
+                The Add-on uses the <strong>principle of least privilege</strong>: it requests
+                only two OAuth scopes — <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">spreadsheets.currentonly</code> (access
+                limited to the currently open spreadsheet) and <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">script.container.ui</code> (sidebar
+                and dialog display only).
+              </li>
+              <li>
+                The Add-on does <strong>not</strong> store, cache, or persist any authentication
+                tokens, credentials, or user passwords.
+              </li>
+              <li>
+                No data is transmitted outside of Google&apos;s own encrypted infrastructure.
+                There are no external API calls, webhooks, or outbound network requests.
+              </li>
+              <li>
+                User preferences (column mapping, thresholds) are stored
+                in <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm">DocumentProperties</code>, which is
+                scoped to the individual spreadsheet and protected by Google&apos;s access
+                controls — only users with edit access to the spreadsheet can read or modify
+                these properties.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold mb-3">8. No Advertising</h2>
             <p>
               The Add-on does not display advertisements, promotional content, or sponsored
               material of any kind.
@@ -93,17 +129,56 @@ export default function TranscriptQAPrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">8. Data Deletion</h2>
+            <h2 className="text-xl font-semibold mb-3">9. No Sale or Transfer of Data</h2>
             <p>
-              Since no data is stored outside your spreadsheet, uninstalling the Add-on or
-              deleting the spreadsheet removes all associated data. You can also use the
-              &ldquo;Reset&rdquo; button in the Settings sidebar to clear saved preferences, or
-              the &ldquo;Delete All Snapshots&rdquo; menu item to remove snapshot sheets.
+              The Add-on does <strong>not</strong> sell, trade, rent, or transfer your Google
+              user data to any third party for any reason, including but not limited to
+              advertising, data brokering, credit assessment, or any purpose unrelated to
+              providing the Add-on&apos;s core functionality.
             </p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">9. Children&apos;s Privacy</h2>
+            <h2 className="text-xl font-semibold mb-3">10. No AI/ML Model Training</h2>
+            <p>
+              Your Google user data is <strong>never</strong> used for training artificial
+              intelligence or machine learning models. The Add-on&apos;s comparison algorithms
+              are rule-based (text similarity, bigram matching) and do not involve any form
+              of model training, fine-tuning, or data aggregation.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold mb-3">11. Data Retention &amp; Deletion</h2>
+            <p>
+              The Add-on does not maintain any independent data store. All data resides
+              within your Google Sheets spreadsheet and is retained only as long as the
+              spreadsheet exists in your Google Drive. Specifically:
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>
+                <strong>Snapshot sheets</strong> are stored as additional tabs within your
+                spreadsheet. You can delete them at any time using the &ldquo;Delete All
+                Snapshots&rdquo; menu item.
+              </li>
+              <li>
+                <strong>User preferences</strong> (column mapping, thresholds, metadata)
+                are stored in the spreadsheet&apos;s DocumentProperties. You can clear them
+                using the &ldquo;Reset&rdquo; button in the Settings sidebar.
+              </li>
+              <li>
+                <strong>Uninstalling the Add-on</strong> or deleting the spreadsheet removes
+                all associated data entirely. No residual data is retained anywhere.
+              </li>
+              <li>
+                You may request deletion of any data at any time by contacting the developer
+                at the email address listed below.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold mb-3">12. Children&apos;s Privacy</h2>
             <p>
               The Add-on is not directed at children under 13 and does not knowingly collect
               any information from children.
@@ -111,7 +186,7 @@ export default function TranscriptQAPrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">10. Changes to This Policy</h2>
+            <h2 className="text-xl font-semibold mb-3">13. Changes to This Policy</h2>
             <p>
               This Privacy Policy may be updated from time to time. Any changes will be
               reflected on this page with an updated &ldquo;Last updated&rdquo; date.
@@ -119,7 +194,7 @@ export default function TranscriptQAPrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-3">11. Contact</h2>
+            <h2 className="text-xl font-semibold mb-3">14. Contact</h2>
             <p>
               If you have any questions about this Privacy Policy, please contact:
             </p>
