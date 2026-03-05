@@ -91,7 +91,7 @@ export default function SheetDiffPage() {
                   <tr className="border-b border-gray-100 dark:border-gray-800">
                     <td className="py-2 pr-4 font-medium">Free Tier</td>
                     <td className="py-2 pr-4">50</td>
-                    <td className="py-2 pr-4">3</td>
+                    <td className="py-2 pr-4">10</td>
                     <td className="py-2">Free</td>
                   </tr>
                   <tr className="border-b border-gray-100 dark:border-gray-800">
