@@ -16,7 +16,7 @@ export default function SheetDiffPrivacyPolicy() {
           SheetDiff &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
-          Last updated: March 1, 2026
+          Last updated: March 9, 2026
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed">
@@ -35,10 +35,17 @@ export default function SheetDiffPrivacyPolicy() {
             <p>The Add-on requests the following Google OAuth scopes:</p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
-                <strong>spreadsheets.currentonly</strong> — Read and write access to the
-                currently open Google Sheets spreadsheet only. This is required to read
-                data, create snapshot sheets, generate the Diff Viewer, and
-                produce the QA Report.
+                <strong>userinfo.email</strong> — Read your Google account email
+                address. Used solely to identify you for license validation and
+                usage tracking (see Section 5).
+              </li>
+              <li>
+                <strong>spreadsheets</strong> — Read and write access to Google Sheets
+                spreadsheets. This is required to read data in your active spreadsheet,
+                create snapshot sheets, generate the Diff Viewer, produce the QA Report,
+                and — when you use the Cross-Sheet Import feature — open another
+                spreadsheet you provide by URL to copy a sheet into your current
+                spreadsheet for comparison.
               </li>
               <li>
                 <strong>script.container.ui</strong> — Permission to display the Settings
@@ -55,7 +62,11 @@ export default function SheetDiffPrivacyPolicy() {
           <div>
             <h2 className="text-xl font-semibold mb-3">3. Data the Add-on Does NOT Access</h2>
             <ul className="list-disc pl-6 space-y-1">
-              <li>The Add-on does <strong>not</strong> access any other files in your Google Drive.</li>
+              <li>
+                The Add-on does <strong>not</strong> browse, list, or scan your Google
+                Drive. The Cross-Sheet Import feature only opens a specific spreadsheet
+                whose URL you explicitly provide, and only copies the sheet you select.
+              </li>
               <li>The Add-on does <strong>not</strong> access your Gmail, Calendar, Contacts, or any other Google service.</li>
               <li>The Add-on does <strong>not</strong> read, store, or transmit the content of your spreadsheets to any external server.</li>
               <li>The Add-on does <strong>not</strong> access your Google account password or authentication credentials.</li>

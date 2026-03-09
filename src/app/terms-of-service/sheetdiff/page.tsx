@@ -16,7 +16,7 @@ export default function SheetDiffTermsOfService() {
           SheetDiff &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
-          Last updated: March 1, 2026
+          Last updated: March 9, 2026
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed">
@@ -36,6 +36,8 @@ export default function SheetDiffTermsOfService() {
               spreadsheet (an original snapshot and a reworked version) to detect changes such
               as modifications, splits, merges, additions, and deletions. It calculates
               accuracy metrics (WER, CER, SER) and generates a quality assurance report.
+              The Add-on also supports importing a sheet from another spreadsheet you
+              provide by URL for cross-spreadsheet comparison.
             </p>
           </div>
 
@@ -158,10 +160,13 @@ export default function SheetDiffTermsOfService() {
           <div>
             <h2 className="text-xl font-semibold mb-3">7. Your Data</h2>
             <p>
-              The Add-on processes spreadsheet data entirely within Google Sheets. To manage
-              licensing, the Add-on transmits your Google account email address and the
-              current spreadsheet ID to a license verification server. No spreadsheet content
-              is ever transmitted. For complete details, please refer to our{' '}
+              The Add-on processes spreadsheet data entirely within Google Sheets. When
+              you use the Cross-Sheet Import feature, the Add-on opens a spreadsheet
+              you provide by URL and copies the selected sheet into your current
+              spreadsheet — no data leaves Google&apos;s servers during this process.
+              To manage licensing, the Add-on transmits your Google account email address
+              and the current spreadsheet ID to a license verification server.
+              No spreadsheet content is ever transmitted. For complete details, please refer to our{' '}
               <a
                 href="/privacy-policy/sheetdiff"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
