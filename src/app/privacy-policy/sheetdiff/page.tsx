@@ -40,12 +40,19 @@ export default function SheetDiffPrivacyPolicy() {
                 usage tracking (see Section 5).
               </li>
               <li>
-                <strong>spreadsheets</strong> — Read and write access to Google Sheets
-                spreadsheets. This is required to read data in your active spreadsheet,
-                create snapshot sheets, generate the Diff Viewer, produce the QA Report,
-                and — when you use the Cross-Sheet Import feature — open another
-                spreadsheet you provide by URL to copy a sheet into your current
-                spreadsheet for comparison.
+                <strong>spreadsheets.currentonly</strong> — Read and write access to the
+                Google Sheets spreadsheet the Add-on is installed in. This is required
+                to read data in your active spreadsheet, create snapshot sheets,
+                generate the Diff Viewer, and produce the QA Report.
+              </li>
+              <li>
+                <strong>drive.file</strong> — Access to individual Google Drive files
+                that you explicitly select through the built-in Google Picker dialog.
+                This is used solely for the Cross-Sheet Import feature: when you click
+                &quot;Pick from Google Drive&quot; and choose a spreadsheet, this scope
+                grants read access to that specific file only, allowing the Add-on to
+                copy a sheet into your current spreadsheet for comparison. The Add-on
+                cannot access any other files in your Drive.
               </li>
               <li>
                 <strong>script.container.ui</strong> — Permission to display the Settings
@@ -64,8 +71,9 @@ export default function SheetDiffPrivacyPolicy() {
             <ul className="list-disc pl-6 space-y-1">
               <li>
                 The Add-on does <strong>not</strong> browse, list, or scan your Google
-                Drive. The Cross-Sheet Import feature only opens a specific spreadsheet
-                whose URL you explicitly provide, and only copies the sheet you select.
+                Drive. The Cross-Sheet Import feature uses Google&apos;s built-in file
+                picker, and the Add-on can only access the specific file you select.
+                No other Drive files are accessible to the Add-on.
               </li>
               <li>The Add-on does <strong>not</strong> access your Gmail, Calendar, Contacts, or any other Google service.</li>
               <li>The Add-on does <strong>not</strong> read, store, or transmit the content of your spreadsheets to any external server.</li>
