@@ -16,7 +16,7 @@ export default function SheetDiffPrivacyPolicy() {
           SheetDiff &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
-          Last updated: March 9, 2026
+          Last updated: March 11, 2026
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed">
