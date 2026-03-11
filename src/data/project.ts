@@ -56,10 +56,10 @@ export const featuredProjects: Project[] = [
     status: "completed"
   },
   {
-    name: "SheetDiff",
+    name: "SheetDiff™",
     category: "Tools",
     description: "Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics.",
-    longDescription: "SheetDiff is a schema-agnostic Google Sheets add-on built for spreadsheet comparison and quality assurance. It auto-detects column roles (speaker, timestamps, transcript, sound events), lets reviewers commit snapshots, then computes a row-level diff against the reworked version — categorizing every row as Unchanged, Modified, Split, Merged, Added, or Deleted. It produces a color-coded Diff Viewer sheet and a summary QA Report with per-category counts, WER/CER/SER quality metrics, and optional reviewer/transcriptionist metadata.",
+    longDescription: "SheetDiff™ is a schema-agnostic Google Sheets add-on built for spreadsheet comparison and quality assurance. It auto-detects column roles (speaker, timestamps, transcript, sound events), lets reviewers commit snapshots, then computes a row-level diff against the reworked version — categorizing every row as Unchanged, Modified, Split, Merged, Added, or Deleted. It produces a color-coded Diff Viewer sheet and a summary QA Report with per-category counts, WER/CER/SER quality metrics, and optional reviewer/transcriptionist metadata.",
     technologies: ["Google Apps Script", "Google Sheets API", "CardService", "HtmlService"],
     image: "/sheetdiff-logo.png",
     features: [

@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Pricing — SheetDiff | Compare, Diff & QA for Sheets',
-  description: 'SheetDiff pricing plans: 7-day free trial, free tier with 50 rows and 10 comparisons/month, or unlimited access with SheetDiff Pro starting at $4.99/month.',
+  title: 'Pricing — SheetDiff™ | Compare, Diff & QA for Sheets',
+  description: 'SheetDiff™ pricing plans: 7-day free trial, free tier with 50 rows and 10 comparisons/month, or unlimited access with SheetDiff™ Pro starting at $4.99/month.',
 }
 
 export default function SheetDiffPricingPage() {
@@ -11,10 +11,10 @@ export default function SheetDiffPricingPage() {
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <div className="max-w-5xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">SheetDiff Pricing</h1>
+          <h1 className="text-4xl font-bold mb-4">SheetDiff™ Pricing</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Start with a 7-day free trial — full access, no credit card required.
-            After the trial, keep using SheetDiff for free or upgrade to Pro for unlimited access.
+            After the trial, keep using SheetDiff™ for free or upgrade to Pro for unlimited access.
           </p>
         </div>
 
@@ -133,9 +133,9 @@ export default function SheetDiffPricingPage() {
             <div>
               <h3 className="font-semibold mb-2">How does the 7-day trial work?</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                When you first install SheetDiff, you get 7 days of full, unlimited access —
+                When you first install SheetDiff™, you get 7 days of full, unlimited access —
                 no credit card required, no sign-up. After the trial, you can continue using
-                SheetDiff for free (with limits) or upgrade to Pro.
+                SheetDiff™ for free (with limits) or upgrade to Pro.
               </p>
             </div>
             <div>
@@ -165,7 +165,7 @@ export default function SheetDiffPricingPage() {
             <div>
               <h3 className="font-semibold mb-2">What is the refund policy?</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                We offer a 14-day refund policy for all purchases. If SheetDiff doesn&apos;t
+                We offer a 14-day refund policy for all purchases. If SheetDiff™ doesn&apos;t
                 meet your needs, contact us at{' '}
                 <a href="mailto:amirrak8@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">
                   amirrak8@gmail.com
@@ -195,7 +195,7 @@ export default function SheetDiffPricingPage() {
         {/* Footer links */}
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap gap-4">
           <Link href="/sheetdiff" className="hover:underline">
-            &larr; Back to SheetDiff
+            &larr; Back to SheetDiff™
           </Link>
           <Link href="/privacy-policy/sheetdiff" className="hover:underline">
             Privacy Policy

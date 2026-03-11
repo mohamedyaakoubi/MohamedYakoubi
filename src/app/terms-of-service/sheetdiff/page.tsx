@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — SheetDiff | Mohamed Yaakoubi',
-  description: 'Terms of Service for the SheetDiff Google Sheets add-on by Mohamed Yaakoubi.',
+  title: 'Terms of Service — SheetDiff™ | Mohamed Yaakoubi',
+  description: 'Terms of Service for the SheetDiff™ Google Sheets add-on by Mohamed Yaakoubi.',
   robots: 'noindex, nofollow',
 }
 
@@ -13,7 +13,7 @@ export default function SheetDiffTermsOfService() {
       <div className="max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
-          SheetDiff &middot; Google Sheets Add-on
+          SheetDiff™ &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
           Last updated: March 11, 2026
@@ -23,7 +23,7 @@ export default function SheetDiffTermsOfService() {
           <div>
             <h2 className="text-xl font-semibold mb-3">1. Acceptance of Terms</h2>
             <p>
-              By installing or using the SheetDiff add-on
+              By installing or using the SheetDiff™ add-on
               (&ldquo;the Add-on&rdquo;), you agree to these Terms of Service. If you do not
               agree, please do not install or use the Add-on.
             </p>
@@ -53,7 +53,7 @@ export default function SheetDiffTermsOfService() {
                     <th className="text-left py-2 pr-4 font-semibold">Feature</th>
                     <th className="text-left py-2 pr-4 font-semibold">Trial (7 days)</th>
                     <th className="text-left py-2 pr-4 font-semibold">Free Tier</th>
-                    <th className="text-left py-2 font-semibold">SheetDiff Pro</th>
+                    <th className="text-left py-2 font-semibold">SheetDiff™ Pro</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
@@ -88,7 +88,7 @@ export default function SheetDiffTermsOfService() {
             <p className="mt-3">
               The trial period begins when you first use the Add-on and lasts 7 calendar
               days. After the trial expires, you are automatically moved to the Free Tier
-              unless you upgrade to SheetDiff Pro. Pricing is in US dollars and may be
+              unless you upgrade to SheetDiff™ Pro. Pricing is in US dollars and may be
               updated with notice.
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function SheetDiffTermsOfService() {
           <div>
             <h2 className="text-xl font-semibold mb-3">6. Refund Policy</h2>
             <p>
-              We want you to be satisfied with SheetDiff. The following refund policy applies:
+              We want you to be satisfied with SheetDiff™. The following refund policy applies:
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
@@ -277,7 +277,7 @@ export default function SheetDiffTermsOfService() {
 
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap gap-4">
           <Link href="/sheetdiff" className="hover:underline">
-            &larr; SheetDiff
+            &larr; SheetDiff™
           </Link>
           <Link href="/sheetdiff/pricing" className="hover:underline">
             Pricing

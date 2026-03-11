@@ -116,7 +116,7 @@ export function StaticHome({ locale, translations }: StaticHomeProps) {
         <h2 id="projects-heading">{translations.projects?.title || 'Projects'}</h2>
         <ul>
           <li>
-            <h3>SheetDiff (Google Sheets Add-on)</h3>
+            <h3>SheetDiff™ (Google Sheets Add-on)</h3>
             <p>Schema-agnostic Google Sheets add-on that compares spreadsheet versions and generates QA diff reports. Auto-detects column roles, computes row-level diffs (Unchanged, Modified, Split, Merged, Added, Deleted), and produces color-coded Diff Viewer sheets with summary QA Reports.</p>
           </li>
           <li>

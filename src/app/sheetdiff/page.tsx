@@ -2,22 +2,22 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'SheetDiff — Compare, Diff & QA for Sheets | Google Sheets Add-on by Mohamed Yaakoubi',
-  description: 'SheetDiff is a schema-agnostic Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics. 7-day free trial.',
+  title: 'SheetDiff™ — Compare, Diff & QA for Sheets | Google Sheets Add-on by Mohamed Yaakoubi',
+  description: 'SheetDiff™ is a schema-agnostic Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics. 7-day free trial.',
 }
 
 export default function SheetDiffPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold mb-4">SheetDiff — Compare, Diff &amp; QA for Sheets</h1>
+        <h1 className="text-4xl font-bold mb-4">SheetDiff™ — Compare, Diff &amp; QA for Sheets</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
           A Google Sheets Add-on by Mohamed Yaakoubi
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed mb-12">
           <p>
-            SheetDiff is a schema-agnostic Google Sheets add-on built
+            SheetDiff™ is a schema-agnostic Google Sheets add-on built
             for spreadsheet comparison and quality assurance. It compares two
             versions of any structured data — the original and the reworked — and produces a
             detailed, row-level diff report.

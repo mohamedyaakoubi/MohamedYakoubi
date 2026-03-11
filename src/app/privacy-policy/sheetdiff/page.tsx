@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — SheetDiff | Mohamed Yaakoubi',
-  description: 'Privacy Policy for the SheetDiff Google Sheets add-on by Mohamed Yaakoubi.',
+  title: 'Privacy Policy — SheetDiff™ | Mohamed Yaakoubi',
+  description: 'Privacy Policy for the SheetDiff™ Google Sheets add-on by Mohamed Yaakoubi.',
   robots: 'noindex, nofollow',
 }
 
@@ -13,7 +13,7 @@ export default function SheetDiffPrivacyPolicy() {
       <div className="max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
-          SheetDiff &middot; Google Sheets Add-on
+          SheetDiff™ &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
           Last updated: March 11, 2026
@@ -23,7 +23,7 @@ export default function SheetDiffPrivacyPolicy() {
           <div>
             <h2 className="text-xl font-semibold mb-3">1. Overview</h2>
             <p>
-              SheetDiff (&ldquo;the Add-on&rdquo;) is a Google Sheets add-on
+              SheetDiff™ (&ldquo;the Add-on&rdquo;) is a Google Sheets add-on
               developed by Mohamed Yaakoubi that compares spreadsheet versions and generates
               quality assurance reports. This Privacy Policy explains how the Add-on collects,
               uses, and protects your data.
@@ -133,7 +133,7 @@ export default function SheetDiffPrivacyPolicy() {
             <h2 className="text-xl font-semibold mb-3">6. Payment Processing</h2>
             <p>
               Paid subscriptions are processed by <strong>Paddle.com</strong> (Paddle Payments Ltd.),
-              which acts as the Merchant of Record. When you purchase a SheetDiff Pro license:
+              which acts as the Merchant of Record. When you purchase a SheetDiff™ Pro license:
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>Payment information (credit card, billing address) is collected and
@@ -287,7 +287,7 @@ export default function SheetDiffPrivacyPolicy() {
 
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap gap-4">
           <Link href="/sheetdiff" className="hover:underline">
-            &larr; SheetDiff
+            &larr; SheetDiff™
           </Link>
           <Link href="/sheetdiff/pricing" className="hover:underline">
             Pricing
