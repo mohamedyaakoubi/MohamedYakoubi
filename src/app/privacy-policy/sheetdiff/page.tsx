@@ -108,11 +108,6 @@ export default function SheetDiffPrivacyPolicy() {
                 Used as a unique identifier for license records and usage tracking.
               </li>
               <li>
-                <strong>Spreadsheet ID</strong> — The unique identifier of the currently
-                open spreadsheet. Used together with your email to enforce per-spreadsheet
-                usage limits and prevent abuse.
-              </li>
-              <li>
                 <strong>License status</strong> — Whether you are on a trial, free tier,
                 or paid plan. Stored alongside your email to determine access level.
               </li>
@@ -120,6 +115,13 @@ export default function SheetDiffPrivacyPolicy() {
                 <strong>Usage count</strong> — The number of comparisons performed per
                 calendar month. No spreadsheet content is transmitted — only a counter
                 is incremented.
+              </li>
+              <li>
+                <strong>Payment metadata (via Dodo Payments webhook)</strong> — When you
+                purchase a subscription or lifetime license, Dodo Payments sends a webhook
+                to our license server containing: your billing email address, Dodo customer
+                ID, subscription ID, subscription status, and billing dates. No payment card
+                details or billing address are included in these webhooks.
               </li>
             </ul>
             <p className="mt-3">

@@ -66,7 +66,7 @@ export default function SheetDiffTermsOfService() {
                   <tr className="border-b border-gray-100 dark:border-gray-800">
                     <td className="py-2 pr-4">Comparisons per month</td>
                     <td className="py-2 pr-4">Unlimited</td>
-                    <td className="py-2 pr-4">3</td>
+                    <td className="py-2 pr-4">10</td>
                     <td className="py-2">Unlimited</td>
                   </tr>
                   <tr className="border-b border-gray-100 dark:border-gray-800">
@@ -174,8 +174,8 @@ export default function SheetDiffTermsOfService() {
               sheet into your current spreadsheet — no data leaves Google&apos;s servers
               during this process.
               To manage licensing, the Add-on transmits your Google account email address
-              and the current spreadsheet ID to a license verification server.
-              No spreadsheet content is ever transmitted. For complete details, please refer to our{' '}
+              to a license verification server.
+              No spreadsheet content or spreadsheet identifiers are ever transmitted. For complete details, please refer to our{' '}
               <a
                 href="/privacy-policy/sheetdiff"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
