@@ -124,6 +124,13 @@ export default function SheetDiffTermsOfService() {
                 portal. Cancellation takes effect at the end of the current billing cycle —
                 you retain access until then.
               </li>
+              <li>
+                If you purchase a Lifetime license while holding an active monthly or annual
+                subscription, your existing subscription will be <strong>cancelled immediately</strong>.
+                No prorated refund is issued for any unused time remaining on the cancelled
+                subscription. By completing the Lifetime purchase, you acknowledge and accept
+                this automatic cancellation.
+              </li>
             </ul>
           </div>
 
