@@ -16,7 +16,7 @@ export default function SheetDiffTermsOfService() {
           SheetDiff™ &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
-          Last updated: March 11, 2026
+          Last updated: March 14, 2026
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed">
@@ -107,7 +107,7 @@ export default function SheetDiffTermsOfService() {
             <h2 className="text-xl font-semibold mb-3">5. Payment &amp; Subscriptions</h2>
             <ul className="list-disc pl-6 space-y-1">
               <li>
-                All payments are processed by <strong>Paddle.com</strong> (Paddle Payments Ltd.),
+                All payments are processed by <strong>Dodo Payments</strong> (Dodo Payments Inc.),
                 which acts as the Merchant of Record and handles billing, tax collection, and
                 compliance on behalf of the developer.
               </li>
@@ -120,7 +120,7 @@ export default function SheetDiffTermsOfService() {
                 current version and all future updates of the Add-on.
               </li>
               <li>
-                You may cancel your subscription at any time through Paddle&apos;s customer
+                You may cancel your subscription at any time through the Dodo Payments customer
                 portal. Cancellation takes effect at the end of the current billing cycle —
                 you retain access until then.
               </li>
@@ -151,7 +151,7 @@ export default function SheetDiffTermsOfService() {
                 described.
               </li>
               <li>
-                Refunds are processed through Paddle and typically appear within 5–10
+                Refunds are processed through Dodo Payments and typically appear within 5–10
                 business days. After the 14-day window, refunds are granted at the
                 developer&apos;s discretion.
               </li>
@@ -234,7 +234,7 @@ export default function SheetDiffTermsOfService() {
             <h2 className="text-xl font-semibold mb-3">13. Termination</h2>
             <p>
               You may stop using the Add-on at any time by uninstalling it from Google
-              Sheets and cancelling any active subscription through Paddle. The developer may
+              Sheets and cancelling any active subscription through Dodo Payments. The developer may
               terminate or restrict access to the Add-on if these Terms are violated.
             </p>
           </div>

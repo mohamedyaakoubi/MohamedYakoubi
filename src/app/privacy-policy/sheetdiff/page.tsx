@@ -16,7 +16,7 @@ export default function SheetDiffPrivacyPolicy() {
           SheetDiff™ &middot; Google Sheets Add-on
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-12">
-          Last updated: March 11, 2026
+          Last updated: March 14, 2026
         </p>
 
         <section className="space-y-6 text-[15px] leading-relaxed">
@@ -132,20 +132,20 @@ export default function SheetDiffPrivacyPolicy() {
           <div>
             <h2 className="text-xl font-semibold mb-3">6. Payment Processing</h2>
             <p>
-              Paid subscriptions are processed by <strong>Paddle.com</strong> (Paddle Payments Ltd.),
+              Paid subscriptions are processed by <strong>Dodo Payments</strong> (Dodo Payments Inc.),
               which acts as the Merchant of Record. When you purchase a SheetDiff™ Pro license:
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>Payment information (credit card, billing address) is collected and
-                processed entirely by Paddle. The Add-on developer never sees or stores
+                processed entirely by Dodo Payments. The Add-on developer never sees or stores
                 your payment details.</li>
-              <li>Paddle sends a webhook notification to our license server confirming
+              <li>Dodo Payments sends a webhook notification to our license server confirming
                 your purchase, which includes your email address and subscription status.</li>
-              <li>Paddle&apos;s own privacy policy applies to payment data:
-                {' '}<a href="https://www.paddle.com/legal/privacy" target="_blank"
+              <li>Dodo Payments&apos; own privacy policy applies to payment data:
+                {' '}<a href="https://www.dodopayments.com/legal/privacy-policy" target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 dark:text-blue-400 hover:underline">
-                  paddle.com/legal/privacy
+                  dodopayments.com/legal/privacy-policy
                 </a>.
               </li>
             </ul>
@@ -168,7 +168,7 @@ export default function SheetDiffPrivacyPolicy() {
                 infrastructure security, including encryption at rest and in transit.
               </li>
               <li>
-                Paddle webhook signatures are cryptographically verified to prevent
+                Dodo Payments webhook signatures are cryptographically verified to prevent
                 unauthorized license activations.
               </li>
               <li>

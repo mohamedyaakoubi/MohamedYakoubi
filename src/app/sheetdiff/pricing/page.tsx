@@ -149,8 +149,8 @@ export default function SheetDiffPricingPage() {
             <div>
               <h3 className="font-semibold mb-2">What payment methods do you accept?</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Payments are processed by Paddle, supporting credit/debit cards, PayPal,
-                and local payment methods depending on your region. Paddle handles
+                Payments are processed by Dodo Payments, supporting credit/debit cards, PayPal,
+                and local payment methods depending on your region. Dodo Payments handles
                 all tax/VAT compliance automatically.
               </p>
             </div>
@@ -158,7 +158,7 @@ export default function SheetDiffPricingPage() {
               <h3 className="font-semibold mb-2">Can I cancel anytime?</h3>
               <p className="text-gray-600 dark:text-gray-400">
                 Yes. Monthly and annual subscriptions can be cancelled at any time through
-                Paddle&apos;s customer portal. You keep access until the end of your current
+                Dodo Payments&apos; customer portal. You keep access until the end of your current
                 billing period.
               </p>
             </div>

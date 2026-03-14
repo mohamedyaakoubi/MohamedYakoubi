@@ -129,7 +129,7 @@ export default function SheetDiffPage() {
               Your spreadsheet data stays in Google Sheets — it is never transmitted to
               external servers. The only data sent to our license server is your Google account
               email and the spreadsheet ID, solely for license verification and usage tracking.
-              Payments are handled by Paddle (Merchant of Record). No cell content, row data,
+              Payments are handled by Dodo Payments (Merchant of Record). No cell content, row data,
               or file contents ever leave Google&apos;s infrastructure.
             </p>
           </div>
