@@ -181,7 +181,7 @@ export default function SheetDiffPricingPage() {
               <h3 className="font-semibold mb-2">Is my data safe?</h3>
               <p className="text-gray-600 dark:text-gray-400">
                 Yes. Your spreadsheet data never leaves Google Sheets. The only data sent to
-                our server is your email and spreadsheet ID for license verification. See
+                our server is your email for license verification. See
                 our{' '}
                 <Link href="/privacy-policy/sheetdiff" className="text-blue-600 dark:text-blue-400 hover:underline">
                   Privacy Policy
