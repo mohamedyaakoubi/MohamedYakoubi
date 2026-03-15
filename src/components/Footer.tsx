@@ -110,10 +110,10 @@ export function Footer({ locale }: FooterProps) {
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
           <p>© {currentYear} {t.copyright}</p>
           <div className="mt-3 flex justify-center gap-4 text-sm text-gray-400">
-            <span>SheetDiff™:</span>
-            <Link href="/privacy-policy/sheetdiff" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+            <Link href="/sheetdiff" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-semibold transition-colors">SheetDiff™:</Link>
+            <Link href="/privacy-policy/sheetdiff" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
             <span>·</span>
-            <Link href="/terms-of-service/sheetdiff" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
+            <Link href="/terms-of-service/sheetdiff" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
