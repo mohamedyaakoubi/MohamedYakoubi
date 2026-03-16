@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   FileSpreadsheet,
   CircleCheckBig,
@@ -49,6 +50,18 @@ export default function SheetDiffClient() {
             variants={staggerContainer}
             className="space-y-6"
           >
+            <motion.div variants={fadeIn} className="flex justify-center mb-4">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 drop-shadow-2xl">
+                <Image
+                  src="/sheetdiff-logo.png"
+                  alt="SheetDiff Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
+
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium">
               <Sparkles className="w-4 h-4" />
               <span>Google Sheets Add-on by Mohamed Yaakoubi</span>
@@ -97,34 +110,61 @@ export default function SheetDiffClient() {
           variants={staggerContainer}
           className="grid md:grid-cols-3 gap-6"
         >
-          <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group">
-            <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
+          <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform shrink-0">
               <Rows className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Structural Diff</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <h3 className="text-xl font-semibold mb-3 shrink-0">Structural Diff</h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 flex-grow">
               Row-level comparison with advanced algorithms to detect splits and merges across your data rows.
             </p>
+            <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/bww1ngIgS-g"
+                title="SheetDiff - Structural Diff mode"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </motion.div>
 
-          <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group">
-            <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
+          <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+            <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform shrink-0">
               <FileSpreadsheet className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Cell-by-Cell</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <h3 className="text-xl font-semibold mb-3 shrink-0">Cell-by-Cell</h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 flex-grow">
               Column-aligned granular comparison for pinpointing exact character or formatting changes.
             </p>
+            <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/yb6ZIyAy92g"
+                title="SheetDiff - Cell-by-Cell Comparaison"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </motion.div>
 
-          <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group">
-            <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mb-6 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+          <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+            <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mb-6 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform shrink-0">
               <Search className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Duplicate Finder</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <h3 className="text-xl font-semibold mb-3 shrink-0">Duplicate Finder</h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 flex-grow">
               Scan massive datasets instantly to detect and highlight duplicate rows within a single sheet.
             </p>
+            <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/nqXUEJywNss"
+                title="SheetDiff Duplicate Finder"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </motion.div>
         </motion.div>
 
