@@ -187,7 +187,7 @@ export default function SheetDiffPricingClient() {
               ))}
             </ul>
             
-            <a href="https://workspace.google.com/marketplace" target="_blank" rel="noopener noreferrer" className="py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl text-center font-bold shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+            <a href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120" target="_blank" rel="noopener noreferrer" className="py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl text-center font-bold shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
               Install the Add-on
             </a>
           </motion.div>
@@ -217,7 +217,7 @@ export default function SheetDiffPricingClient() {
               ))}
             </ul>
             
-            <a href="https://workspace.google.com/marketplace" target="_blank" rel="noopener noreferrer" className="py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl text-center text-sm font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <a href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120" target="_blank" rel="noopener noreferrer" className="py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl text-center text-sm font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               Install the Add-on
             </a>
           </motion.div>

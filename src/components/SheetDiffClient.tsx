@@ -81,7 +81,7 @@ export default function SheetDiffClient() {
             
             <motion.div variants={fadeIn} className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <a
-                href="https://workspace.google.com/marketplace"
+                href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3.5 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
