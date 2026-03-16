@@ -159,7 +159,7 @@ export default function SheetDiffClient() {
             <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/nqXUEJywNss"
+                src="https://www.youtube.com/embed/DEYJDKrKUvY"
                 title="SheetDiff Duplicate Finder"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
