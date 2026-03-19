@@ -37,7 +37,7 @@ export default function SheetDiffPrivacyClient() {
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
               <span>SheetDiff™ &middot; Google Sheets Add-on</span>
               <span className="hidden sm:inline">&bull;</span>
-              <span>Last updated: March 14, 2026</span>
+              <span>Last updated: March 19, 2026</span>
             </motion.div>
           </motion.div>
         </div>
@@ -65,7 +65,7 @@ export default function SheetDiffPrivacyClient() {
               <li><strong>spreadsheets.currentonly</strong> — Read and write access to the Google Sheets spreadsheet the Add-on is installed in. This is required to read data in your active spreadsheet, create snapshot sheets, generate the Diff Viewer, and produce the QA Report.</li>
               <li><strong>drive.file</strong> — Access to individual Google Drive files that you explicitly select through the built-in Google Picker dialog. This is used solely for the Cross-Sheet Import feature: when you click "Pick from Google Drive" and choose a spreadsheet, this scope grants read access to that specific file only, allowing the Add-on to copy a sheet into your current spreadsheet for comparison. The Add-on cannot access any other files in your Drive.</li>
               <li><strong>script.container.ui</strong> — Permission to display the Settings sidebar, dialogs, and custom menus within Google Sheets.</li>
-              <li><strong>script.external_request</strong> — Permission to make network requests to our license verification server. This scope is used solely for license validation and usage tracking (see Section 5).</li>
+              <li><strong>script.external_request</strong> — Permission to make network requests to our license verification server and to Google Analytics for anonymous usage analytics (see Sections 5 and 8).</li>
             </ul>
 
             <h2>3. Data the Add-on Does NOT Access</h2>
@@ -115,8 +115,27 @@ export default function SheetDiffPrivacyClient() {
               <li>User preferences (column mapping, thresholds) are stored in DocumentProperties, which is scoped to the individual spreadsheet and protected by Google&apos;s access controls.</li>
             </ul>
 
-            <h2>8. No Advertising or Tracking</h2>
-            <p>The Add-on does not display advertisements, use cookies, include analytics scripts, or employ any form of user tracking or behavioral profiling.</p>
+            <h2>8. Analytics</h2>
+            <p>
+              The Add-on collects anonymous usage analytics via Google Analytics 4 (GA4) to help us understand how features are used, identify issues, and improve the product. Analytics data is collected in two ways:
+            </p>
+            <ul>
+              <li><strong>Server-side events</strong> — When you run a comparison, commit a snapshot, or export a report, the Add-on sends an anonymous event to Google Analytics via the Measurement Protocol. Your email address is hashed (SHA-256) before being used as a client identifier — Google Analytics never receives your actual email.</li>
+              <li><strong>Client-side events</strong> — Dialogs and sidebars (Settings, Comparison Picker, License dialog) include the Google Analytics gtag.js snippet that records page views and interaction events (e.g., which mode you selected, whether you opened the subscription dialog).</li>
+            </ul>
+            <p>Analytics data collected includes:</p>
+            <ul>
+              <li>Which features and comparison modes are used</li>
+              <li>Dialog open/close events</li>
+              <li>Aggregate interaction patterns (e.g., &ldquo;structural mode chosen&rdquo;, &ldquo;chunked execution started&rdquo;)</li>
+            </ul>
+            <p>Analytics data does <strong>not</strong> include:</p>
+            <ul>
+              <li>Your email address or any personally identifiable information</li>
+              <li>Spreadsheet content, cell values, file names, or any user data</li>
+              <li>IP addresses (Google Analytics is configured without IP collection)</li>
+            </ul>
+            <p>The Add-on does not display advertisements, use cookies for ad targeting, or employ behavioral profiling.</p>
 
             <h2>9. No Sale or Transfer of Data</h2>
             <p>The Add-on does not sell, trade, rent, or transfer your data (including your email address) to any third party for advertising, data brokering, credit assessment, or any purpose unrelated to providing the Add-on&apos;s core functionality and license management.</p>

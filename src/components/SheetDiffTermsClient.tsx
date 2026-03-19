@@ -37,7 +37,7 @@ export default function SheetDiffTermsClient() {
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
               <span>SheetDiff™ &middot; Google Sheets Add-on</span>
               <span className="hidden sm:inline">&bull;</span>
-              <span>Last updated: March 14, 2026</span>
+              <span>Last updated: March 19, 2026</span>
             </motion.div>
           </motion.div>
         </div>
@@ -134,7 +134,7 @@ export default function SheetDiffTermsClient() {
 
             <h2>7. Your Data</h2>
             <p>
-              The Add-on processes spreadsheet data entirely within Google Sheets. When you use the Cross-Sheet Import feature, you select a spreadsheet through Google&apos;s built-in Picker dialog, and the Add-on copies the selected sheet into your current spreadsheet — no data leaves Google&apos;s servers during this process. To manage licensing, the Add-on transmits your Google account email address to a license verification server. No spreadsheet content or spreadsheet identifiers are ever transmitted. For complete details, please refer to our <Link href="/privacy-policy/sheetdiff">Privacy Policy</Link>.
+              The Add-on processes spreadsheet data entirely within Google Sheets. When you use the Cross-Sheet Import feature, you select a spreadsheet through Google&apos;s built-in Picker dialog, and the Add-on copies the selected sheet into your current spreadsheet — no data leaves Google&apos;s servers during this process. To manage licensing, the Add-on transmits your Google account email address to a license verification server. No spreadsheet content or spreadsheet identifiers are ever transmitted. The Add-on also collects anonymous usage analytics via Google Analytics 4 to improve the product — no personally identifiable information or spreadsheet content is included in analytics data. For complete details, please refer to our <Link href="/privacy-policy/sheetdiff">Privacy Policy</Link>.
             </p>
 
             <h2>8. Accuracy and Reliability</h2>

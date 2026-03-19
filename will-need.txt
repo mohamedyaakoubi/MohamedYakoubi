@@ -1,0 +1,79 @@
+Simply.TV logo
+Simply.TV
+Share
+Show more options
+Metadata Ingest Intern - English (Paid internship) (Madrid)
+Madrid, Community of Madrid, Spain · 1 month ago · 28 applicants
+No response insights available yet
+
+
+ Hybrid
+Matches your job preferences, workplace type is Hybrid.
+
+ Full-time
+Matches your job preferences, job type is Full-time.
+Applied 2 seconds ago
+See applicationApplied 2 seconds ago for Metadata Ingest Intern - English (Paid internship) (Madrid)
+Take the next step in your job search
+
+Practice an interview
+About the job
+About Simply.TV
+
+At Simply.TV, we're redefining how the world experiences TV metadata. As a leading provider of advanced, AI-driven metadata solutions, we empower broadcasters, streaming platforms, and telecom operators to deliver smarter, more engaging content discovery experiences. From next-gen EPG (Electronic Program Guide) data to rich content enrichment, we enable our partners to stay ahead in a rapidly evolving media landscape.
+
+Headquartered in Copenhagen, but supported by 450+ employees worldwide, our data fuels user interfaces used by millions of viewers every day — and we're just getting started. Whether you're passionate about media technology, data engineering, or product innovation, Simply.TV is the place to shape the future of TV — and have fun doing it.
+
+Join us, and let's make content discovery simple, powerful, and inspiring!
+
+The Role
+
+As part of the Ingest team, you will play a key role in ensuring our TV, movie, and series data flows smoothly, accurately, and efficiently from multiple sources into our systems. This internship is ideal for detail-oriented, problem-solving individuals who enjoy working with data pipelines, scheduling systems, and supporting both internal and external stakeholders. This is a paid internship.
+
+Responsibilities
+
+Operational Support
+ Monitor workflows and data pipelines to ensure smooth operations. 
+ Investigate and resolve internal data complaints and operational issues. 
+ Check schedules for failures and report issues. 
+ Collaborate with the development team to resolve operational or scheduling problems. 
+ Optimize operational processes to improve efficiency. 
+Data & Metadata Support
+ Implement and update hardcoding rules for parsers. 
+ Fix issues with existing parsers and optimize them for new content sources. 
+ Configure, validate, and maintain data feeds. 
+ Apply structured testing before releasing changes. 
+Stakeholder Support
+ Respond to internal and external support cases within SLA times. 
+ Ensure internal stakeholders receive timely support and issue resolution
+
+Why join?
+
+🚀 Work at the forefront of media tech - Play a critical role in how millions discover TV & streaming content
+🧠 Gain hands-on experience - Learn about data parsing, scheduling, and operational support processes
+🌍 Join a global team - Collaborate with colleagues worldwide while contributing meaningfully to the business
+🎯 Make a real impact - Your work ensures accurate, high-quality data for top broadcasters & platforms
+📈 Grow and learn - Fast-paced, supportive environment with opportunities to expand your skills and responsibilities
+
+Requirements
+
+You'll thrive in this role if you:
+
+Are currently studying or have recently graduated in a relevant field (Data, IT, Computer Science, Business, or related). 
+ Are data-driven with experience using data tools and working with datasets. 
+ Have an affinity for metadata and understanding of content workflows. 
+ Enjoy operationally heavy roles and want to grow your career in operations
+ Think in workflows and system dependencies, not just isolated tasks. 
+ Can configure, validate, and maintain data feeds. 
+ Apply structured testing before releasing changes. 
+ Seek continuous improvement in processes, tooling, and operational efficiency. 
+ Are comfortable working with systems, data pipelines, and troubleshooting operational issues. 
+ Have excellent written and spoken English. 
+ Are detail-oriented, structured, and highly organized. 
+ Are collaborative, eager to learn, and thrive in a fast-paced environment
+
+Please note - we can only accept CVs in English!
+
+Benefits
+
+Collaboration based on a contractor set-up is 3.46 EUR per hour on a full-time allocation basis (40 hours per week), max 600 EUR per month.
