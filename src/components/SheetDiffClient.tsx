@@ -64,7 +64,7 @@ export default function SheetDiffClient() {
 
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium">
               <Sparkles className="w-4 h-4" />
-              <span>Google Sheets Add-on by Mohamed Yaakoubi</span>
+              <span>Google Sheets™ Add-on by Mohamed Yaakoubi</span>
             </motion.div>
             
             <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -75,7 +75,7 @@ export default function SheetDiffClient() {
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              SheetDiff™ is a schema-agnostic Google Sheets add-on built for spreadsheet comparison and quality assurance.
+              SheetDiff™ is a schema-agnostic Google Sheets™ add-on built for spreadsheet comparison and quality assurance.
               It compares two versions of any structured data — the original and the reworked — and produces a detailed, row-level diff report.
             </motion.p>
             
@@ -183,7 +183,7 @@ export default function SheetDiffClient() {
             
             <div className="space-y-6">
               {[
-                { title: 'Open any spreadsheet in Google Sheets' },
+                { title: 'Open any spreadsheet in Google Sheets™' },
                 { title: 'The add-on auto-detects column roles (speaker, timestamps, transcript, sound events)' },
                 { title: 'Commit a snapshot of the original data' },
                 { title: 'Make edits or import the reworked version' },
@@ -310,7 +310,7 @@ export default function SheetDiffClient() {
               Privacy & Security
             </div>
             <p className="leading-relaxed mb-4">
-              Your spreadsheet data stays in Google Sheets — it is never transmitted to external servers. The only data sent to our license server is your Google account email, solely for license verification and usage tracking. Payments are handled by Dodo Payments (Merchant of Record). No cell content, row data, or file contents ever leave Google&apos;s infrastructure.
+              Your spreadsheet data stays in Google Sheets™ — it is never transmitted to external servers. The only data sent to our license server is your Google account email, solely for license verification and usage tracking. Payments are handled by Dodo Payments (Merchant of Record). No cell content, row data, or file contents ever leave Google&apos;s infrastructure.
             </p>
             <div className="flex gap-4">
               <Link href="/privacy-policy/sheetdiff" className="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</Link>
@@ -334,6 +334,9 @@ export default function SheetDiffClient() {
           </div>
         </div>
       </section>
+
+      {/* Trademark Notice */}
+      <p className="text-center text-xs text-gray-400 dark:text-gray-600 py-4">Google Sheets™ and Google Drive™ are trademarks of Google LLC.</p>
     </div>
   )
 }

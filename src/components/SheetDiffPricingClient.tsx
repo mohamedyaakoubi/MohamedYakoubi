@@ -44,7 +44,7 @@ export default function SheetDiffPricingClient() {
     },
     {
       q: "Is my data safe?",
-      a: "Yes. Your spreadsheet data never leaves Google Sheets. The only data sent to our server is your email for license verification. See our Privacy Policy for complete details."
+      a: "Yes. Your spreadsheet data never leaves Google Sheets™. The only data sent to our server is your email for license verification. See our Privacy Policy for complete details."
     }
   ]
 
@@ -263,6 +263,9 @@ export default function SheetDiffPricingClient() {
           </div>
         </div>
       </section>
+
+      {/* Trademark Notice */}
+      <p className="text-center text-xs text-gray-400 dark:text-gray-600 py-4">Google Sheets™ and Google Drive™ are trademarks of Google LLC.</p>
 
     </div>
   )

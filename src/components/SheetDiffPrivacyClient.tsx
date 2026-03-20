@@ -35,7 +35,7 @@ export default function SheetDiffPrivacyClient() {
               Privacy Policy
             </motion.h1>
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <span>SheetDiff™ &middot; Google Sheets Add-on</span>
+              <span>SheetDiff™ &middot; Google Sheets™ Add-on</span>
               <span className="hidden sm:inline">&bull;</span>
               <span>Last updated: March 19, 2026</span>
             </motion.div>
@@ -55,22 +55,22 @@ export default function SheetDiffPrivacyClient() {
             
             <h2>1. Overview</h2>
             <p>
-              SheetDiff™ (&ldquo;the Add-on&rdquo;) is a Google Sheets add-on developed by Mohamed Yaakoubi that compares spreadsheet versions and generates quality assurance reports. This Privacy Policy explains how the Add-on collects, uses, and protects your data.
+              SheetDiff™ (&ldquo;the Add-on&rdquo;) is a Google Sheets™ add-on developed by Mohamed Yaakoubi that compares spreadsheet versions and generates quality assurance reports. This Privacy Policy explains how the Add-on collects, uses, and protects your data.
             </p>
 
             <h2>2. Data the Add-on Accesses</h2>
             <p>The Add-on requests the following Google OAuth scopes:</p>
             <ul>
               <li><strong>userinfo.email</strong> — Read your Google account email address. Used solely to identify you for license validation and usage tracking (see Section 5).</li>
-              <li><strong>spreadsheets.currentonly</strong> — Read and write access to the Google Sheets spreadsheet the Add-on is installed in. This is required to read data in your active spreadsheet, create snapshot sheets, generate the Diff Viewer, and produce the QA Report.</li>
-              <li><strong>drive.file</strong> — Access to individual Google Drive files that you explicitly select through the built-in Google Picker dialog. This is used solely for the Cross-Sheet Import feature: when you click "Pick from Google Drive" and choose a spreadsheet, this scope grants read access to that specific file only, allowing the Add-on to copy a sheet into your current spreadsheet for comparison. The Add-on cannot access any other files in your Drive.</li>
-              <li><strong>script.container.ui</strong> — Permission to display the Settings sidebar, dialogs, and custom menus within Google Sheets.</li>
+              <li><strong>spreadsheets.currentonly</strong> — Read and write access to the Google Sheets™ spreadsheet the Add-on is installed in. This is required to read data in your active spreadsheet, create snapshot sheets, generate the Diff Viewer, and produce the QA Report.</li>
+              <li><strong>drive.file</strong> — Access to individual Google Drive™ files that you explicitly select through the built-in Google Picker dialog. This is used solely for the Cross-Sheet Import feature: when you click "Pick from Google Drive™" and choose a spreadsheet, this scope grants read access to that specific file only, allowing the Add-on to copy a sheet into your current spreadsheet for comparison. The Add-on cannot access any other files in your Drive.</li>
+              <li><strong>script.container.ui</strong> — Permission to display the Settings sidebar, dialogs, and custom menus within Google Sheets™.</li>
               <li><strong>script.external_request</strong> — Permission to make network requests to our license verification server and to Google Analytics for anonymous usage analytics (see Sections 5 and 8).</li>
             </ul>
 
             <h2>3. Data the Add-on Does NOT Access</h2>
             <ul>
-              <li>The Add-on does <strong>not</strong> browse, list, or scan your Google Drive. The Cross-Sheet Import feature uses Google&apos;s built-in file picker, and the Add-on can only access the specific file you select. No other Drive files are accessible to the Add-on.</li>
+              <li>The Add-on does <strong>not</strong> browse, list, or scan your Google Drive™. The Cross-Sheet Import feature uses Google&apos;s built-in file picker, and the Add-on can only access the specific file you select. No other Drive files are accessible to the Add-on.</li>
               <li>The Add-on does <strong>not</strong> access your Gmail, Calendar, Contacts, or any other Google service.</li>
               <li>The Add-on does <strong>not</strong> read, store, or transmit the content of your spreadsheets to any external server.</li>
               <li>The Add-on does <strong>not</strong> access your Google account password or authentication credentials.</li>
@@ -78,7 +78,7 @@ export default function SheetDiffPrivacyClient() {
 
             <h2>4. Spreadsheet Data Storage</h2>
             <p>
-               All spreadsheet data processed by the Add-on remains within your Google Sheets document. Comparison results, snapshots, diff reports, and user settings (column mapping, similarity threshold, report metadata) are stored in the spreadsheet&apos;s DocumentProperties using Google Apps Script&apos;s built-in Properties Service. This data is tied to the specific spreadsheet and is not accessible from other documents.
+               All spreadsheet data processed by the Add-on remains within your Google Sheets™ document. Comparison results, snapshots, diff reports, and user settings (column mapping, similarity threshold, report metadata) are stored in the spreadsheet&apos;s DocumentProperties using Google Apps Script&apos;s built-in Properties Service. This data is tied to the specific spreadsheet and is not accessible from other documents.
             </p>
 
             <h2>5. License Server &amp; Data We Collect</h2>
@@ -145,7 +145,7 @@ export default function SheetDiffPrivacyClient() {
 
             <h2>11. Data Retention &amp; Deletion</h2>
             <ul>
-              <li><strong>Spreadsheet data</strong> (snapshots, diff reports, settings) resides entirely within your Google Sheets document and is deleted when you delete the spreadsheet or uninstall the Add-on.</li>
+              <li><strong>Spreadsheet data</strong> (snapshots, diff reports, settings) resides entirely within your Google Sheets™ document and is deleted when you delete the spreadsheet or uninstall the Add-on.</li>
               <li><strong>License records</strong> (email, plan status, usage count) are stored on the Firebase license server for as long as your account is active. If you cancel your subscription or request deletion, your license record will be removed within 30 days.</li>
               <li>Trial data (trial start date) is stored both locally in UserProperties (cleared on uninstall) and on the license server (deleted on request).</li>
               <li>You may request deletion of all your data at any time by contacting the developer at the email address listed below.</li>
@@ -183,6 +183,9 @@ export default function SheetDiffPrivacyClient() {
           </div>
         </div>
       </section>
+
+      {/* Trademark Notice */}
+      <p className="text-center text-xs text-gray-400 dark:text-gray-600 py-4">Google Sheets™ and Google Drive™ are trademarks of Google LLC.</p>
 
     </div>
   )

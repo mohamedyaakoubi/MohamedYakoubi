@@ -35,7 +35,7 @@ export default function SheetDiffTermsClient() {
               Terms of Service
             </motion.h1>
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <span>SheetDiff™ &middot; Google Sheets Add-on</span>
+              <span>SheetDiff™ &middot; Google Sheets™ Add-on</span>
               <span className="hidden sm:inline">&bull;</span>
               <span>Last updated: March 19, 2026</span>
             </motion.div>
@@ -60,7 +60,7 @@ export default function SheetDiffTermsClient() {
 
             <h2>2. Description of the Add-on</h2>
             <p>
-              The Add-on is a Google Sheets tool that compares two versions of a spreadsheet (an original snapshot and a reworked version) to detect changes such as modifications, splits, merges, additions, and deletions. It calculates accuracy metrics (WER, CER, SER) and generates a quality assurance report. The Add-on also supports importing a sheet from another spreadsheet you select through the built-in Google Picker dialog for cross-spreadsheet comparison.
+              The Add-on is a Google Sheets™ tool that compares two versions of a spreadsheet (an original snapshot and a reworked version) to detect changes such as modifications, splits, merges, additions, and deletions. It calculates accuracy metrics (WER, CER, SER) and generates a quality assurance report. The Add-on also supports importing a sheet from another spreadsheet you select through the built-in Google Picker dialog for cross-spreadsheet comparison.
             </p>
 
             <h2>3. Plans &amp; Pricing</h2>
@@ -111,7 +111,7 @@ export default function SheetDiffTermsClient() {
 
             <h2>4. License</h2>
             <p>
-              You are granted a non-exclusive, non-transferable, revocable license to use the Add-on for personal or commercial purposes within Google Sheets, subject to the usage limits of your current plan. You may not reverse-engineer, decompile, redistribute, or create derivative works from the Add-on.
+              You are granted a non-exclusive, non-transferable, revocable license to use the Add-on for personal or commercial purposes within Google Sheets™, subject to the usage limits of your current plan. You may not reverse-engineer, decompile, redistribute, or create derivative works from the Add-on.
             </p>
 
             <h2>5. Payment &amp; Subscriptions</h2>
@@ -134,7 +134,7 @@ export default function SheetDiffTermsClient() {
 
             <h2>7. Your Data</h2>
             <p>
-              The Add-on processes spreadsheet data entirely within Google Sheets. When you use the Cross-Sheet Import feature, you select a spreadsheet through Google&apos;s built-in Picker dialog, and the Add-on copies the selected sheet into your current spreadsheet — no data leaves Google&apos;s servers during this process. To manage licensing, the Add-on transmits your Google account email address to a license verification server. No spreadsheet content or spreadsheet identifiers are ever transmitted. The Add-on also collects anonymous usage analytics via Google Analytics 4 to improve the product — no personally identifiable information or spreadsheet content is included in analytics data. For complete details, please refer to our <Link href="/privacy-policy/sheetdiff">Privacy Policy</Link>.
+              The Add-on processes spreadsheet data entirely within Google Sheets™. When you use the Cross-Sheet Import feature, you select a spreadsheet through Google&apos;s built-in Picker dialog, and the Add-on copies the selected sheet into your current spreadsheet — no data leaves Google&apos;s servers during this process. To manage licensing, the Add-on transmits your Google account email address to a license verification server. No spreadsheet content or spreadsheet identifiers are ever transmitted. The Add-on also collects anonymous usage analytics via Google Analytics 4 to improve the product — no personally identifiable information or spreadsheet content is included in analytics data. For complete details, please refer to our <Link href="/privacy-policy/sheetdiff">Privacy Policy</Link>.
             </p>
 
             <h2>8. Accuracy and Reliability</h2>
@@ -164,7 +164,7 @@ export default function SheetDiffTermsClient() {
 
             <h2>13. Termination</h2>
             <p>
-              You may stop using the Add-on at any time by uninstalling it from Google Sheets and cancelling any active subscription through Dodo Payments. The developer may terminate or restrict access to the Add-on if these Terms are violated.
+              You may stop using the Add-on at any time by uninstalling it from Google Sheets™ and cancelling any active subscription through Dodo Payments. The developer may terminate or restrict access to the Add-on if these Terms are violated.
             </p>
 
             <h2>14. Governing Law</h2>
@@ -198,6 +198,9 @@ export default function SheetDiffTermsClient() {
           </div>
         </div>
       </section>
+
+      {/* Trademark Notice */}
+      <p className="text-center text-xs text-gray-400 dark:text-gray-600 py-4">Google Sheets™ and Google Drive™ are trademarks of Google LLC.</p>
 
     </div>
   )
