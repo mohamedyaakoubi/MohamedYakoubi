@@ -1,10 +1,15 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 export const alt = 'SheetDiff™ - Compare, Diff & QA for Google Sheets™'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default async function Image() {
+  const logoData = await readFile(join(process.cwd(), 'public', 'sheetdiff-logo.png'))
+  const logoSrc = `data:image/png;base64,${logoData.toString('base64')}`
+
   return new ImageResponse(
     (
       <div
@@ -21,22 +26,12 @@ export default async function Image() {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '20px',
-                fontWeight: 700,
-              }}
-            >
-              MY
-            </div>
+            <img
+              src={logoSrc}
+              width={64}
+              height={64}
+              style={{ borderRadius: '12px' }}
+            />
             <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: '22px', fontWeight: 600 }}>
               by Mohamed Yaakoubi
             </span>
@@ -56,25 +51,32 @@ export default async function Image() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ width: '80px', height: '4px', background: '#34d399', borderRadius: '2px' }} />
-          <h1
-            style={{
-              color: 'white',
-              fontSize: '72px',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              margin: 0,
-            }}
-          >
-            SheetDiff™
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '28px', margin: 0, maxWidth: '800px' }}>
-            Compare, Diff & QA for Spreadsheets
-          </p>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '22px', margin: 0, maxWidth: '800px' }}>
-            Schema-agnostic version comparison with color-coded QA diff reports
-          </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+          <img
+            src={logoSrc}
+            width={200}
+            height={200}
+            style={{ borderRadius: '24px' }}
+          />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h1
+              style={{
+                color: 'white',
+                fontSize: '72px',
+                fontWeight: 800,
+                lineHeight: 1.1,
+                margin: 0,
+              }}
+            >
+              SheetDiff™
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '28px', margin: 0, maxWidth: '600px' }}>
+              Compare, Diff & QA for Spreadsheets
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '22px', margin: 0, maxWidth: '600px' }}>
+              Schema-agnostic version comparison with color-coded QA diff reports
+            </p>
+          </div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>

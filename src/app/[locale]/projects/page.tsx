@@ -61,6 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      url: `https://www.mohamedyaakoubi.com/${locale}/projects`,
       type: 'website',
     },
   }
