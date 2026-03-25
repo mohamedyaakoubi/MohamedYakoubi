@@ -48,3 +48,6 @@ next-env.d.ts
 *.md
 !README.md
 !.github/**/*.md
+
+# blog drafts
+blog-post.html
