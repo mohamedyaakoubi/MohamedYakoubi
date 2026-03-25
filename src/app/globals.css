@@ -1049,7 +1049,7 @@ section#home .relative.z-20.text-center.px-6 {
   background: var(--bp-bg);
   color: var(--bp-text);
   font-family: 'Syne', sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -1101,7 +1101,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .blog-hero-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--blog-accent, #ff4444);
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -1120,7 +1120,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .blog-hero-title {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(38px, 6vw, 72px);
+  font-size: clamp(40px, 6vw, 76px);
   line-height: 1.1;
   margin-bottom: 32px;
   font-weight: 400;
@@ -1142,7 +1142,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .blog-hero-sub {
   font-family: 'Syne', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   color: var(--bp-text-muted);
   max-width: 560px;
   line-height: 1.7;
@@ -1153,7 +1153,7 @@ section#home .relative.z-20.text-center.px-6 {
   display: flex;
   gap: 32px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--bp-text-muted);
   flex-wrap: wrap;
 }
@@ -1174,7 +1174,7 @@ section#home .relative.z-20.text-center.px-6 {
   bottom: 40px;
   left: 40px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--bp-text-muted);
   display: flex;
   align-items: center;
@@ -1199,7 +1199,7 @@ section#home .relative.z-20.text-center.px-6 {
 .blog-article p {
   margin-bottom: 20px;
   color: var(--bp-text-secondary);
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.85;
 }
 
@@ -1215,7 +1215,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .blog-article code {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8em;
+  font-size: 0.85em;
   background: var(--bp-inline-code-bg);
   padding: 2px 7px;
   border-radius: 3px;
@@ -1232,7 +1232,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .chapter-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--blog-accent, #ff4444);
   letter-spacing: 2px;
   white-space: nowrap;
@@ -1246,7 +1246,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .chapter-title {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: clamp(30px, 4vw, 42px);
   font-weight: 400;
   margin-bottom: 24px;
   line-height: 1.2;
@@ -1255,7 +1255,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .section-subtitle {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(22px, 3vw, 30px);
+  font-size: clamp(26px, 3vw, 34px);
   font-weight: 400;
   margin: 48px 0 24px;
   color: var(--bp-text);
@@ -1293,7 +1293,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .finding-title {
   font-family: 'Syne', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--bp-text);
 }
@@ -1305,7 +1305,7 @@ section#home .relative.z-20.text-center.px-6 {
 
 .finding-body p {
   margin-bottom: 16px;
-  font-size: 16px;
+  font-size: 19px;
 }
 
 .finding-body p:last-child {
@@ -1315,7 +1315,7 @@ section#home .relative.z-20.text-center.px-6 {
 /* ── Badges ── */
 .badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 2px;
   padding: 4px 10px;
   border-radius: 2px;
@@ -1363,7 +1363,7 @@ section#home .relative.z-20.text-center.px-6 {
   background: var(--bp-code-header-bg);
   border-bottom: 1px solid var(--bp-code-border);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--bp-code-header-text);
   display: flex;
   align-items: center;
@@ -1384,7 +1384,7 @@ section#home .relative.z-20.text-center.px-6 {
   padding: 20px;
   overflow-x: auto;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--bp-code-text);
   margin: 0;
@@ -1433,7 +1433,7 @@ code.hl-console {
   padding: 32px;
   margin: 32px 0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 2;
   color: #8b949e;
   overflow-x: auto;
@@ -1486,7 +1486,7 @@ code.hl-console {
 
 .diagram-header-node {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1514,7 +1514,7 @@ code.hl-console {
 
 .diagram-node {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1548,7 +1548,7 @@ code.hl-console {
 
 .diagram-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--bp-diagram-label-text);
   white-space: nowrap;
 }
@@ -1593,7 +1593,7 @@ code.hl-console {
 }
 
 .diagram-note {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--bp-diagram-note-text);
   font-style: italic;
   white-space: nowrap;
@@ -1608,12 +1608,12 @@ code.hl-console {
 .blog-article table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .blog-article th {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1px;
   color: var(--bp-text-muted);
   text-transform: uppercase;
@@ -1649,7 +1649,7 @@ ul.styled li {
   padding: 8px 0 8px 24px;
   position: relative;
   color: var(--bp-text-secondary);
-  font-size: 16px;
+  font-size: 17px;
   border-bottom: 1px solid var(--bp-surface-raised);
 }
 
@@ -1685,7 +1685,7 @@ ul.styled li:last-child {
 }
 
 .blog-preface p {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--bp-text-dim);
   margin-bottom: 16px;
 }
@@ -1704,7 +1704,7 @@ ul.styled li:last-child {
 /* ── Pull Quote ── */
 .pull-quote {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(22px, 3.5vw, 32px);
+  font-size: clamp(24px, 3.5vw, 34px);
   font-style: italic;
   color: var(--bp-text);
   padding: 40px 0;
@@ -1727,7 +1727,7 @@ ul.styled li:last-child {
 
 .callout p {
   margin: 0;
-  font-size: 16px;
+  font-size: 17px;
   color: var(--bp-text-dim);
 }
 
@@ -1743,7 +1743,7 @@ ul.styled li:last-child {
 
 .blog-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   padding: 6px 12px;
   border: 1px solid var(--bp-border);
   border-radius: 2px;
@@ -1772,7 +1772,7 @@ ul.styled li:last-child {
   align-items: center;
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--bp-text-muted);
   background: none;
   border: 1px solid var(--bp-border);
@@ -1792,7 +1792,7 @@ ul.styled li:last-child {
   align-items: center;
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--bp-text-muted);
   text-decoration: none;
   transition: color 0.2s;
