@@ -431,7 +431,9 @@ Contributions are welcome! If you have a suggestion that would make this better,
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+The **source code** of this project is distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
+
+**Blog content, personal data, and media assets are NOT covered by the MIT License.** All written content under `src/data/blog/`, personal/biographical data, and original images are © 2024-2026 Mohamed Yaakoubi. All rights reserved. These may not be reproduced or distributed without explicit permission.
 
 ## 📬 Contact
 
