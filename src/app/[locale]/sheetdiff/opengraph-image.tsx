@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'SheetDiff™ - Compare, Diff & QA for Google Sheets™'
+export const alt = 'SheetDiff™ - Compare, QA for Google Sheets™'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -74,7 +74,7 @@ export default async function Image() {
               SheetDiff™
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '28px', margin: 0, maxWidth: '600px' }}>
-              Compare, Diff & QA for Spreadsheets
+              Compare, QA for Spreadsheets
             </p>
             <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '22px', margin: 0, maxWidth: '600px' }}>
               Schema-agnostic version comparison with color-coded QA diff reports

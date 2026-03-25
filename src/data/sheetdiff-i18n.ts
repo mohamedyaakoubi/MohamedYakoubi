@@ -91,7 +91,7 @@ const en: SheetDiffI18n = {
   main: {
     badge: 'Google Sheets™ Add-on by Mohamed Yaakoubi',
     heroTitle: 'SheetDiff™',
-    heroHighlight: 'Compare, Diff & QA',
+    heroHighlight: 'Compare, QA',
     heroDesc: 'SheetDiff™ is a schema-agnostic Google Sheets™ add-on built for spreadsheet comparison and quality assurance. It compares two versions of any structured data — the original and the reworked — and produces a detailed, row-level diff report.',
     installBtn: 'Install Add-on',
     viewPricing: 'View Pricing',
@@ -259,7 +259,7 @@ const fr: SheetDiffI18n = {
   main: {
     badge: 'Module Google Sheets™ par Mohamed Yaakoubi',
     heroTitle: 'SheetDiff™',
-    heroHighlight: 'Comparer, Différencier & QA',
+    heroHighlight: 'Comparer, QA',
     heroDesc: 'SheetDiff™ est un module Google Sheets™ indépendant du schéma, conçu pour la comparaison de feuilles de calcul et l\u2019assurance qualité. Il compare deux versions de données structurées — l\u2019original et la version révisée — et produit un rapport de différences détaillé, ligne par ligne.',
     installBtn: 'Installer le module',
     viewPricing: 'Voir les tarifs',

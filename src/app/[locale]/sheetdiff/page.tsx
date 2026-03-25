@@ -9,8 +9,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   return {
-    title: 'SheetDiff™ — Compare, Diff & QA for Sheets | Google Sheets™ Add-on by Mohamed Yaakoubi',
-    description: 'SheetDiff™ is a schema-agnostic Google Sheets™ add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics. 7-day free trial.',
+    title: 'SheetDiff\u2122 \u2014 Compare, QA for Sheets | Google Sheets\u2122 Add-on by Mohamed Yaakoubi',
+    description: 'SheetDiff\u2122 is a schema-agnostic Google Sheets\u2122 add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics. 7-day free trial.',
     alternates: {
       canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff`,
       languages: {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: 'SheetDiff™ — Compare, Diff & QA for Sheets | Google Sheets™ Add-on by Mohamed Yaakoubi',
+      title: 'SheetDiff\u2122 \u2014 Compare, QA for Sheets | Google Sheets\u2122 Add-on by Mohamed Yaakoubi',
       description: 'SheetDiff™ is a schema-agnostic Google Sheets™ add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics. 7-day free trial.',
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff`,
       type: 'website',
