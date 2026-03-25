@@ -4,6 +4,10 @@ export const alt = 'Blog - Mohamed Yaakoubi'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'fr' }, { locale: 'ar' }]
+}
+
 export default async function Image() {
   return new ImageResponse(
     (
