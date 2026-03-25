@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // IndexNow configuration
-const INDEXNOW_KEY = 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6';
+const INDEXNOW_KEY = '77da1e9fc3fe46049b0fa484eb89f26e';
 const SITE_HOST = 'www.mohamedyaakoubi.com';
 
 // Primary IndexNow endpoint - all IndexNow-enabled search engines share URLs automatically
@@ -50,6 +50,7 @@ const ALL_URLS = [
 interface IndexNowPayload {
   host: string;
   key: string;
+  keyLocation: string;
   urlList: string[];
 }
 
@@ -106,6 +107,7 @@ export async function POST(request: NextRequest) {
     const payload: IndexNowPayload = {
       host: SITE_HOST,
       key: INDEXNOW_KEY,
+      keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
       urlList: urlsToSubmit,
     };
 
