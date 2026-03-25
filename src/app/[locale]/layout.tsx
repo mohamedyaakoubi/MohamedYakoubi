@@ -142,7 +142,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     verification: {
-      google: '7RkYGVcLiInN-GqBR9z9vjQKFjwWo54z1BsU0vemYi4',
+      google: 'lsgC7s3-ZPP7PrwkW1TntzfjbmfGCHCl8sTS4EvVqIY',
       other: {
         'msvalidate.01': '567F2213DA2A1DE09D5C5ADF16CDE77B',
         'yandex-verification': '86d3754b6e757e9e',
