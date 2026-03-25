@@ -159,6 +159,7 @@ export async function GET(request: NextRequest) {
   const payload: IndexNowPayload = {
     host: SITE_HOST,
     key: INDEXNOW_KEY,
+    keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
     urlList: urlsToSubmit,
   };
 
