@@ -43,3 +43,8 @@ next-env.d.ts
 .SEO_FIXES_REPORT.md
 .prompt.txt
 .CACHE_STRATEGY.md
+
+# markdown files (keep README and GitHub instructions)
+*.md
+!README.md
+!.github/**/*.md
