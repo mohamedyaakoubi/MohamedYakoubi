@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: 'Privacy Policy — SheetDiff™ | Mohamed Yaakoubi',
     description: 'Privacy Policy for the SheetDiff™ Google Sheets™ add-on by Mohamed Yaakoubi.',
-    robots: 'noindex, nofollow',
+
     alternates: {
       canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/privacy-policy`,
     },

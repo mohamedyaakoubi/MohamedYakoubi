@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
 
     // Add SheetDiff sub-pages
-    const sheetdiffPages = ['/sheetdiff/pricing']
+    const sheetdiffPages = ['/sheetdiff/pricing', '/sheetdiff/terms-of-service', '/sheetdiff/privacy-policy']
     sheetdiffPages.forEach(page => {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${page}`,

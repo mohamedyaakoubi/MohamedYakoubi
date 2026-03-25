@@ -21,7 +21,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: translations.meta.description,
     alternates: {
       canonical: `https://www.mohamedyaakoubi.com/${locale}`
-    }
+    },
+    openGraph: {
+      images: [
+        {
+          url: 'https://www.mohamedyaakoubi.com/profile.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Mohamed Yaakoubi - AI Language Technology Specialist',
+          type: 'image/jpeg',
+        }
+      ],
+    },
   }
 }
 

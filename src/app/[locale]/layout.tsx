@@ -109,16 +109,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
       locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'profile',
-      images: [
-        {
-          url: 'https://www.mohamedyaakoubi.com/profile.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Mohamed Yaakoubi - AI Language Technology Specialist specializing in Machine Translation, LLM Evaluation, and Localization',
-          type: 'image/jpeg',
-          // OG Image Best Practices 2025: 1200x630px, <1MB, JPEG/PNG/WebP, <20% text overlay
-        }
-      ],
     },
     twitter: {
       card: 'summary_large_image',
