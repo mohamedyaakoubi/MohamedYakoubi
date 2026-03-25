@@ -7,7 +7,8 @@ import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 import { blogCategories } from '@/data/blog'
 import { BlogPost } from '@/types/blog'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { analytics } from '@/lib/analytics'
 
 interface BlogClientProps {
   locale: string
@@ -25,6 +26,10 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
     : posts.filter(post => post.category === activeCategory)
 
   const isRTL = language === 'ar'
+
+  useEffect(() => {
+    analytics.blogListView(posts.length)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <main className={`min-h-screen py-24 md:py-32 bg-[#fafafa] dark:bg-[#0a0a0a] ${isRTL ? 'rtl' : 'ltr'}`}>

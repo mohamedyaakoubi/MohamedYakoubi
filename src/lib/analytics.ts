@@ -35,6 +35,21 @@ export const analytics = {
     trackEvent({ action: 'click', category: 'social', label: platform }),
 
   // Blog
+  blogView: (slug: string, title: string, category: string, readingTime: number) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'blog_view', {
+        event_category: 'blog',
+        blog_slug: slug,
+        blog_title: title,
+        blog_category: category,
+        reading_time: readingTime,
+      })
+    }
+  },
+
+  blogListView: (postCount: number) =>
+    trackEvent({ action: 'blog_list_view', category: 'blog', value: postCount }),
+
   blogShare: (slug: string, method: 'native' | 'clipboard') =>
     trackEvent({ action: 'share', category: 'blog', label: `${slug}_${method}` }),
 

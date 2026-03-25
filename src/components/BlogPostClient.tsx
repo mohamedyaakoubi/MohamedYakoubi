@@ -28,6 +28,7 @@ export default function BlogPostClient({ post, locale, translations }: BlogPostC
   useEffect(() => {
     previousTheme.current = currentTheme
     setTheme('dark')
+    analytics.blogView(post.slug, post.title, post.category, post.readingTime)
     return () => {
       if (previousTheme.current && previousTheme.current !== 'dark') {
         setTheme(previousTheme.current)
