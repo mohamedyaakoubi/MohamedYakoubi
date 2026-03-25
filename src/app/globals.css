@@ -989,7 +989,7 @@ section#home .relative.z-20.text-center.px-6 {
   --bp-bg: #fafafa;
   --bp-text: #1a1a1a;
   --bp-text-secondary: #4a4a4a;
-  --bp-text-muted: #888;
+  --bp-text-muted: #666;
   --bp-text-dim: #999;
   --bp-border: #e0e0e0;
   --bp-border-dim: #eee;
@@ -1012,14 +1012,14 @@ section#home .relative.z-20.text-center.px-6 {
   --bp-diagram-header-border: rgba(0,0,0,0.08);
   --bp-diagram-header-text: rgba(60,70,80,0.8);
   --bp-diagram-label-text: rgba(30,40,50,0.9);
-  --bp-diagram-note-text: rgba(60,70,80,0.6);
+  --bp-diagram-note-text: rgba(60,70,80,0.85);
 }
 
 .dark .blog-post {
   --bp-bg: #0a0a0a;
   --bp-text: #e8e8e8;
   --bp-text-secondary: #c8c8c8;
-  --bp-text-muted: #666;
+  --bp-text-muted: #999;
   --bp-text-dim: #aaa;
   --bp-border: #222;
   --bp-border-dim: #1a1a1a;
@@ -1042,7 +1042,7 @@ section#home .relative.z-20.text-center.px-6 {
   --bp-diagram-header-border: rgba(255,255,255,0.06);
   --bp-diagram-header-text: rgba(148,163,184,0.8);
   --bp-diagram-label-text: rgba(226,232,240,0.9);
-  --bp-diagram-note-text: rgba(148,163,184,0.6);
+  --bp-diagram-note-text: rgba(148,163,184,0.85);
 }
 
 .blog-post {

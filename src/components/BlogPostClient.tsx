@@ -365,6 +365,10 @@ function renderContent(content: string): string {
     return `<ul class="styled">${match}</ul>`
   })
 
+  // Ensure <ul> blocks are separated from surrounding text for proper paragraph handling
+  html = html.replace(/([^\n])\n?(<ul class="styled">)/g, '$1\n\n$2')
+  html = html.replace(/(<\/ul>)\n?([^\n])/g, '$1\n\n$2')
+
   // Paragraphs
   html = html.split('\n\n').map(block => {
     const trimmed = block.trim()
