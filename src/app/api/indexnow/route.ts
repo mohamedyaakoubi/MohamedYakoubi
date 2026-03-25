@@ -11,7 +11,6 @@ const PRIMARY_ENDPOINT = 'yandex.com';
 
 // All pages on your site
 const ALL_URLS = [
-  '/',
   '/en',
   '/fr',
   '/ar',
