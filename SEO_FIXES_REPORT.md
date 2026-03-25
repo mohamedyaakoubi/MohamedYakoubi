@@ -1,7 +1,7 @@
 # 🎯 SEO Comprehensive Fixes Report
 **Date:** October 11, 2025  
 **Portfolio:** Mohamed Yaakoubi - AI Language Technology Specialist  
-**Domain:** https://www.mohamedyaakoubi.live
+**Domain:** https://www.mohamedyaakoubi.com
 
 ---
 
@@ -11,15 +11,15 @@
 
 #### 1. ✅ **Fixed Domain Inconsistency in robots.ts**
 - **File:** `robots.ts`
-- **Change:** Updated from `https://mohamed-yakoubi.vercel.app` to `https://www.mohamedyaakoubi.live`
+- **Change:** Updated from `https://mohamed-yakoubi.vercel.app` to `https://www.mohamedyaakoubi.com`
 - **Impact:** Ensures search engines crawl and index the correct domain
 - **Lines:** 22-23
 
 #### 2. ✅ **Fixed Canonical URL Pattern in Root Layout**
 - **File:** `src/app/[locale]/layout.tsx`
 - **Change:** Updated canonical from conditional (root for EN) to consistent `/${locale}` pattern
-- **Before:** `locale === 'en' ? 'https://www.mohamedyaakoubi.live' : '...'`
-- **After:** `https://www.mohamedyaakoubi.live/${locale}`
+- **Before:** `locale === 'en' ? 'https://www.mohamedyaakoubi.com' : '...'`
+- **After:** `https://www.mohamedyaakoubi.com/${locale}`
 - **Impact:** Consistent canonical URLs across all languages, preventing duplicate content issues
 - **Line:** ~84
 
@@ -204,8 +204,8 @@ Following 2025 SEO best practices: **Keywords > Length**
 
 After deployment, verify these:
 
-- [ ] Check robots.txt at: `https://www.mohamedyaakoubi.live/robots.txt`
-- [ ] Check sitemap at: `https://www.mohamedyaakoubi.live/sitemap.xml`
+- [ ] Check robots.txt at: `https://www.mohamedyaakoubi.com/robots.txt`
+- [ ] Check sitemap at: `https://www.mohamedyaakoubi.com/sitemap.xml`
 - [ ] Test OG tags with Facebook Debugger: https://developers.facebook.com/tools/debug/
 - [ ] Test Twitter Card: https://cards-dev.twitter.com/validator
 - [ ] Validate Schema: https://validator.schema.org/

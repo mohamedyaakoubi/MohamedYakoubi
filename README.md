@@ -9,7 +9,7 @@ This is not just a portfolio. It's a feature-rich, AI-integrated, and fully inte
 
 ## 🚀 Live Demo
 
-Check out the live version of the portfolio: **[https://www.mohamedyaakoubi.live/](https://www.mohamedyaakoubi.live/)**
+Check out the live version of the portfolio: **[https://www.mohamedyaakoubi.com/](https://www.mohamedyaakoubi.com/)**
 
 ## ✨ Features
 

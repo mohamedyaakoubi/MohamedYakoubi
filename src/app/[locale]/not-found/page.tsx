@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     robots: 'noindex, nofollow',
     alternates: {
       canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/not-found'
-        : `https://www.mohamedyaakoubi.live/${locale}/not-found`
+        ? 'https://www.mohamedyaakoubi.com/en/not-found'
+        : `https://www.mohamedyaakoubi.com/${locale}/not-found`
     }
   }
 }

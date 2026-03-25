@@ -14,8 +14,10 @@ const createNavigationLinks = (t: (key: string) => string, lang: string) => [
   { href: `/${lang}/projects`, label: t('navigation.links.projects'), isSection: false, priority: 2 },
   { href: `/${lang}/experience`, label: t('navigation.links.experience'), isSection: false, priority: 3 },
   { href: `/${lang}/services`, label: t('navigation.links.services'), isSection: false, priority: 4 },
-  { href: `/${lang}/#about`, label: t('navigation.links.about'), isSection: true, priority: 5 },
-  { href: `/${lang}/contact`, label: t('navigation.links.contact'), isSection: false, priority: 6 },
+  { href: `/${lang}/sheetdiff`, label: 'SheetDiff™', isSection: false, priority: 5 },
+  { href: `/${lang}/blog`, label: t('blog.title'), isSection: false, priority: 6 },
+  { href: `/${lang}/#about`, label: t('navigation.links.about'), isSection: true, priority: 7 },
+  { href: `/${lang}/contact`, label: t('navigation.links.contact'), isSection: false, priority: 8 },
 ]
 
 // Types

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import HomeClient from '@/components/HomeClient'
 import { StaticHome } from '@/components/StaticHome'
 import { getTranslations } from '@/lib/translations'
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Fixed canonical URL - should point to /en instead of root for English
       canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en'
-        : `https://www.mohamedyaakoubi.live/${locale}`
+        ? 'https://www.mohamedyaakoubi.com/en'
+        : `https://www.mohamedyaakoubi.com/${locale}`
     }
   }
 }
@@ -33,9 +34,14 @@ interface HomePageProps {
 }
 
 export default async function HomePage(props: HomePageProps) {
-  // Fix: Properly await params
   const params = await props.params
   const { locale } = params
+
+  // If locale is not valid (e.g. /randomstring), show 404
+  if (!['en', 'fr', 'ar'].includes(locale)) {
+    notFound()
+  }
+
   const translations = getTranslations(locale)
   
   return (

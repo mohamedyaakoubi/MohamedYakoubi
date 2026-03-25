@@ -10,7 +10,7 @@
  *   curl "https://mohamedyaakoubi.vercel.app/api/indexnow?url=/en/experience"
  */
 
-const SITE_URL = process.env.SITE_URL || 'https://www.mohamedyaakoubi.live';
+const SITE_URL = process.env.SITE_URL || 'https://www.mohamedyaakoubi.com';
 
 async function submitToIndexNow(urls = null, submitAll = false) {
   const endpoint = `${SITE_URL}/api/indexnow`;

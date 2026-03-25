@@ -66,6 +66,14 @@ export function Footer({ locale }: FooterProps) {
               </li>
               <li>
                 <Link 
+                  href={getLocalizedUrl('/blog')} 
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href={getLocalizedUrl('/contact')} 
                   className="hover:text-blue-400 transition-colors"
                 >
@@ -110,10 +118,10 @@ export function Footer({ locale }: FooterProps) {
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
           <p>© {currentYear} {t.copyright}</p>
           <div className="mt-3 flex justify-center gap-4 text-sm text-gray-400">
-            <a href="/sheetdiff" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-semibold transition-colors">SheetDiff™:</a>
-            <a href="/privacy-policy/sheetdiff" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
+            <a href={`/${locale}/sheetdiff`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-semibold transition-colors">SheetDiff™:</a>
+            <a href={`/${locale}/sheetdiff/privacy-policy`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">{locale === 'fr' ? 'Politique de confidentialité' : locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}</a>
             <span>·</span>
-            <a href="/terms-of-service/sheetdiff" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Terms of Service</a>
+            <a href={`/${locale}/sheetdiff/terms-of-service`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">{locale === 'fr' ? 'Conditions d\u2019utilisation' : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}</a>
           </div>
         </div>
       </div>

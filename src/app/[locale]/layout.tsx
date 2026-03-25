@@ -87,30 +87,30 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ].join(', '),
     authors: [{ 
       name: 'Mohamed Yaakoubi',
-      url: 'https://www.mohamedyaakoubi.live' 
+      url: 'https://www.mohamedyaakoubi.com' 
     }],
     creator: 'Mohamed Yaakoubi',
     publisher: 'Mohamed Yaakoubi',
     applicationName: 'Mohamed Yaakoubi Portfolio',
     alternates: {
-      canonical: `https://www.mohamedyaakoubi.live/${locale}`,
+      canonical: `https://www.mohamedyaakoubi.com/${locale}`,
       languages: {
-        'en': 'https://www.mohamedyaakoubi.live/en',
-        'fr': 'https://www.mohamedyaakoubi.live/fr', 
-        'ar': 'https://www.mohamedyaakoubi.live/ar',
-        'x-default': 'https://www.mohamedyaakoubi.live/en',
+        'en': 'https://www.mohamedyaakoubi.com/en',
+        'fr': 'https://www.mohamedyaakoubi.com/fr', 
+        'ar': 'https://www.mohamedyaakoubi.com/ar',
+        'x-default': 'https://www.mohamedyaakoubi.com/en',
       }
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
-      url: `https://www.mohamedyaakoubi.live/${locale}`,
+      url: `https://www.mohamedyaakoubi.com/${locale}`,
       siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
       locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'profile',
       images: [
         {
-          url: 'https://www.mohamedyaakoubi.live/profile.jpg',
+          url: 'https://www.mohamedyaakoubi.com/profile.jpg',
           width: 1200,
           height: 630,
           alt: 'Mohamed Yaakoubi - AI Language Technology Specialist specializing in Machine Translation, LLM Evaluation, and Localization',
@@ -125,7 +125,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       site: '@Mohamed0Yakoubi',
       creator: '@Mohamed0Yakoubi',
-      images: ['https://www.mohamedyaakoubi.live/profile.jpg'],
+      images: ['https://www.mohamedyaakoubi.com/profile.jpg'],
     },
     robots: {
       index: true,
@@ -171,7 +171,10 @@ export default async function LocaleLayout({
   children: React.ReactNode
   params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params
+  const { locale: rawLocale } = await params
+  // Normalize invalid locales to 'en' so the layout renders correctly
+  // (the page/catch-all will call notFound() for invalid locales)
+  const locale = ['en', 'fr', 'ar'].includes(rawLocale) ? rawLocale : 'en'
   const direction = locale === 'ar' ? 'rtl' : 'ltr'
   const fontClasses = `${inter.variable} ${ibmPlexSansArabic.variable}`
   
@@ -182,10 +185,10 @@ export default async function LocaleLayout({
           Hreflang tags for homepage - child pages inherit these but override via their own metadata.alternates 
           This ensures proper language targeting for international SEO (Google, Bing, Yandex)
         */}
-        <link rel="alternate" hrefLang="en" href="https://www.mohamedyaakoubi.live/en" />
-        <link rel="alternate" hrefLang="fr" href="https://www.mohamedyaakoubi.live/fr" />
-        <link rel="alternate" hrefLang="ar" href="https://www.mohamedyaakoubi.live/ar" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.live/en" />
+        <link rel="alternate" hrefLang="en" href="https://www.mohamedyaakoubi.com/en" />
+        <link rel="alternate" hrefLang="fr" href="https://www.mohamedyaakoubi.com/fr" />
+        <link rel="alternate" hrefLang="ar" href="https://www.mohamedyaakoubi.com/ar" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.com/en" />
         
         {/* Performance optimizations */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -195,7 +198,7 @@ export default async function LocaleLayout({
         <link rel="preload" href="/profile.jpg" as="image" fetchPriority="high" type="image/jpeg" />
         
         {/* Sitemap */}
-        <link rel="sitemap" type="application/xml" href="https://www.mohamedyaakoubi.live/sitemap.xml" />
+        <link rel="sitemap" type="application/xml" href="https://www.mohamedyaakoubi.com/sitemap.xml" />
 
         {/* Enhanced Person Schema with accurate current roles */}
         <Script
@@ -210,10 +213,10 @@ export default async function LocaleLayout({
               "givenName": "Mohamed",
               "familyName": "Yaakoubi",
               "alternateName": ["Yaakoubi Mohamed", "محمد يعقوبي", "Mohamed Yakoubi"],
-              "url": "https://www.mohamedyaakoubi.live",
+              "url": "https://www.mohamedyaakoubi.com",
               "image": {
                 "@type": "ImageObject",
-                "url": "https://www.mohamedyaakoubi.live/profile.jpg",
+                "url": "https://www.mohamedyaakoubi.com/profile.jpg",
                 "width": 1200,
                 "height": 630
               },
@@ -539,7 +542,7 @@ export default async function LocaleLayout({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": `https://www.mohamedyaakoubi.live/${locale}`
+                  "item": `https://www.mohamedyaakoubi.com/${locale}`
                 }
               ]
             })
@@ -557,14 +560,14 @@ export default async function LocaleLayout({
               "@type": "WebSite",
               "name": "Mohamed Yaakoubi Portfolio",
               "alternateName": "Mohamed Yaakoubi - AI Language Technology Specialist",
-              "url": "https://www.mohamedyaakoubi.live",
+              "url": "https://www.mohamedyaakoubi.com",
               "description": "Professional portfolio of Mohamed Yaakoubi, AI Language Technology Specialist specializing in machine translation, LLM evaluation, and localization",
               "inLanguage": ["en", "fr", "ar"],
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://www.mohamedyaakoubi.live/search?q={search_term_string}"
+                  "urlTemplate": "https://www.mohamedyaakoubi.com/search?q={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
               }

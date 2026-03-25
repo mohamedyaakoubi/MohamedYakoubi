@@ -363,19 +363,22 @@ export default {
           "NotYet": "NotYet",
           "DocuMed": "DocuMed",
           "Potential": "Potential",
-          "InternationalSkills": "Système de Recrutement InternationalSkills.fi"
+          "InternationalSkills": "Système de Recrutement InternationalSkills.fi",
+          "SheetDiff™": "SheetDiff™"
         },
         descriptions: {
           "NotYet": "Application web alimentée par l'IA pour aider les étudiants et chercheurs d'emploi tunisiens à développer leur parcours professionnel",
           "DocuMed": "Plateforme web de documentation et de gestion médicale pour les professionnels de santé",
           "Potential": "Moteur de recherche alimenté par l'IA pour la plateforme Open Data d'Abu Dhabi avec traitement en temps réel des requêtes API",
-          "InternationalSkills": "Système de recrutement complet pour InternationalSkills.fi reliant les chercheurs d'emploi aux employeurs"
+          "InternationalSkills": "Système de recrutement complet pour InternationalSkills.fi reliant les chercheurs d'emploi aux employeurs",
+          "SheetDiff™": "Extension Google Sheets qui compare les versions de feuilles de calcul et génère des rapports de différences QA avec un rendu coloré et des métriques de qualité."
         },
         longDescriptions: {
           "NotYet": "NotYet est une plateforme alimentée par l'IA conçue pour aider les étudiants et chercheurs d'emploi tunisiens à travers l'orientation professionnelle, les parcours éducatifs et les ressources de développement des compétences.",
           "DocuMed": "DocuMed simplifie la gestion des dossiers médicaux en fournissant une plateforme numérique pour organiser les dossiers patients, les prescriptions et les rendez-vous.",
           "Potential": "Potential améliore la plateforme Open Data d'Abu Dhabi en intégrant GPT-4 avec Azure Cognitive Search, permettant aux utilisateurs de récupérer des ensembles de données pertinents en utilisant des requêtes en langage naturel.",
-          "InternationalSkills": "Le portail candidat International Skills est une application web qui simplifie le processus de candidature pour tous. Pour les chercheurs d'emploi : créez un compte, remplissez des candidatures, téléchargez des documents (CV, certificats) et suivez le statut de vos candidatures avec des mises à jour en temps réel et des notifications d'entretien. Pour les recruteurs/administrateurs : accédez à un tableau de bord puissant pour voir tous les candidats, filtrer et trier les candidats, planifier des entretiens avec liens Google Meet automatiques, noter les candidats avec évaluation IA, et mettre à jour les statuts de candidature. Le portail est sécurisé, basé sur le web, et propose vérification email, intégration calendrier et notation IA pour gagner du temps et faciliter le recrutement."
+          "InternationalSkills": "Le portail candidat International Skills est une application web qui simplifie le processus de candidature pour tous. Pour les chercheurs d'emploi : créez un compte, remplissez des candidatures, téléchargez des documents (CV, certificats) et suivez le statut de vos candidatures avec des mises à jour en temps réel et des notifications d'entretien. Pour les recruteurs/administrateurs : accédez à un tableau de bord puissant pour voir tous les candidats, filtrer et trier les candidats, planifier des entretiens avec liens Google Meet automatiques, noter les candidats avec évaluation IA, et mettre à jour les statuts de candidature. Le portail est sécurisé, basé sur le web, et propose vérification email, intégration calendrier et notation IA pour gagner du temps et faciliter le recrutement.",
+          "SheetDiff™": "SheetDiff™ est une extension Google Sheets agnostique de schéma, conçue pour la comparaison de feuilles de calcul et l'assurance qualité. Elle détecte automatiquement les rôles des colonnes (locuteur, horodatages, transcription, événements sonores), permet aux réviseurs de sauvegarder des instantanés, puis calcule un diff ligne par ligne par rapport à la version retravaillée — catégorisant chaque ligne comme Inchangée, Modifiée, Divisée, Fusionnée, Ajoutée ou Supprimée. Elle produit une feuille Diff Viewer colorée et un rapport QA récapitulatif avec des comptages par catégorie, des métriques de qualité WER/CER/SER, et des métadonnées optionnelles de réviseur/transcripteur."
         },
         technologies: {
           "NotYet": [
@@ -401,6 +404,12 @@ export default {
             "Firebase",
             "API Google Calendar",
             "Notation IA"
+          ],
+          "SheetDiff™": [
+            "Google Apps Script",
+            "Google Sheets API",
+            "CardService",
+            "HtmlService"
           ]
         },
         features: {
@@ -431,6 +440,14 @@ export default {
             "Notation et évaluation des candidats par IA",
             "Notifications email pour mises à jour de statut et entretiens",
             "Stockage et gestion sécurisés des documents"
+          ],
+          "SheetDiff™": [
+            "Détection automatique des rôles de colonnes via correspondance flexible d'en-têtes",
+            "Flux de comparaison basé sur les instantanés (original → retravaillé)",
+            "Six catégories de diff : Inchangé, Modifié, Divisé, Fusionné, Ajouté, Supprimé",
+            "Feuille Diff Viewer colorée avec mise en évidence ligne par ligne",
+            "Rapport QA récapitulatif avec comptages par catégorie et métadonnées",
+            "Seuil de similarité configurable et barre latérale de paramètres"
           ]
         },
         status: {
@@ -652,6 +669,22 @@ export default {
   website: "site web",
   visitWebsite: "Visiter le site web"
 },
+      blog: {
+        title: "Blog",
+        subtitle: "Réflexions sur l'IA, la sécurité et la technologie linguistique",
+        recentPosts: "Articles Récents",
+        readMore: "Lire la suite",
+        readArticle: "Lire l'article",
+        backToBlog: "Retour au Blog",
+        allCategories: "Tous",
+        minRead: "min de lecture",
+        publishedOn: "Publié le",
+        categories: {
+          "AI & Cybersecurity": "IA & Cybersécurité",
+        },
+        noPosts: "Aucun article trouvé dans cette catégorie.",
+        viewAllPosts: "Voir Tous les Articles",
+      },
       footer: {
         sitemap: "Plan du Site",
         completeSitemap: "Plan du Site Complet",

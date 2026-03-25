@@ -4,6 +4,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowLeft, Scale } from 'lucide-react'
+import { useLanguage } from '@/context/language-context'
+import { getSheetDiffI18n } from '@/data/sheetdiff-i18n'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -19,8 +21,11 @@ const staggerContainer = {
 }
 
 export default function SheetDiffTermsClient() {
+  const { language } = useLanguage()
+  const tos = getSheetDiffI18n(language).terms
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       
       {/* Header */}
       <section className="relative pt-24 pb-12 overflow-hidden border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -32,12 +37,12 @@ export default function SheetDiffTermsClient() {
               <Scale className="w-6 h-6" />
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-4xl font-bold tracking-tight">
-              Terms of Service
+              {tos.title}
             </motion.h1>
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <span>SheetDiff™ &middot; Google Sheets™ Add-on</span>
+              <span>{tos.productLine}</span>
               <span className="hidden sm:inline">&bull;</span>
-              <span>Last updated: March 19, 2026</span>
+              <span>{tos.lastUpdated}</span>
             </motion.div>
           </motion.div>
         </div>
@@ -52,7 +57,8 @@ export default function SheetDiffTermsClient() {
           className="space-y-12 text-[15px] leading-relaxed"
         >
           <motion.div variants={fadeIn} className="[&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:mt-6 [&_h3]:mb-3 [&_p]:text-gray-700 [&_p]:dark:text-gray-300 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:mb-6 [&_ul]:text-gray-700 [&_ul]:dark:text-gray-300 [&_strong]:font-semibold [&_strong]:text-gray-900 [&_strong]:dark:text-gray-100 [&_a]:text-blue-600 [&_a]:dark:text-blue-400 [&_a]:hover:underline [&_code]:bg-gray-100 [&_code]:dark:bg-gray-800 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[13px] [&_code]:font-mono">
-            
+          {language === 'en' ? (
+            <>
             <h2>1. Acceptance of Terms</h2>
             <p>
               By installing or using the SheetDiff™ add-on (&ldquo;the Add-on&rdquo;), you agree to these Terms of Service. If you do not agree, please do not install or use the Add-on.
@@ -134,7 +140,7 @@ export default function SheetDiffTermsClient() {
 
             <h2>7. Your Data</h2>
             <p>
-              The Add-on processes spreadsheet data entirely within Google Sheets™. When you use the Cross-Sheet Import feature, you select a spreadsheet through Google&apos;s built-in Picker dialog, and the Add-on copies the selected sheet into your current spreadsheet — no data leaves Google&apos;s servers during this process. To manage licensing, the Add-on transmits your Google account email address to a license verification server. No spreadsheet content or spreadsheet identifiers are ever transmitted. The Add-on also collects anonymous usage analytics via Google Analytics 4 to improve the product — no personally identifiable information or spreadsheet content is included in analytics data. For complete details, please refer to our <Link href="/privacy-policy/sheetdiff">Privacy Policy</Link>.
+              The Add-on processes spreadsheet data entirely within Google Sheets™. When you use the Cross-Sheet Import feature, you select a spreadsheet through Google&apos;s built-in Picker dialog, and the Add-on copies the selected sheet into your current spreadsheet — no data leaves Google&apos;s servers during this process. To manage licensing, the Add-on transmits your Google account email address to a license verification server. No spreadsheet content or spreadsheet identifiers are ever transmitted. The Add-on also collects anonymous usage analytics via Google Analytics 4 to improve the product — no personally identifiable information or spreadsheet content is included in analytics data. For complete details, please refer to our <Link href={`/${language}/sheetdiff/privacy-policy`}>Privacy Policy</Link>.
             </p>
 
             <h2>8. Accuracy and Reliability</h2>
@@ -179,6 +185,41 @@ export default function SheetDiffTermsClient() {
               Email: <a href="mailto:amirrak8@gmail.com">amirrak8@gmail.com</a><br />
               LinkedIn: <a href="https://www.linkedin.com/in/yaakoubi-mohamed/" target="_blank" rel="noopener noreferrer">linkedin.com/in/yaakoubi-mohamed</a>
             </p>
+            </>
+          ) : (
+            <>
+            {tos.sections.map((section, i) => (
+              <div key={i}>
+                {section.heading && <h2>{section.heading}</h2>}
+                <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                {i === 2 && (
+                  <div className="my-6 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm not-prose">
+                    <table className="w-full text-sm" dir="ltr">
+                      <thead className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+                        <tr>
+                          <th className="py-3 px-4 font-semibold text-gray-900 dark:text-white text-left">{tos.pricingTable.feature}</th>
+                          <th className="py-3 px-4 font-semibold text-gray-900 dark:text-white text-left">{tos.pricingTable.trial}</th>
+                          <th className="py-3 px-4 font-semibold text-gray-900 dark:text-white text-left">{tos.pricingTable.free}</th>
+                          <th className="py-3 px-4 font-semibold text-blue-600 dark:text-blue-400 text-left">{tos.pricingTable.pro}</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-800 bg-white dark:bg-gray-950">
+                        {tos.pricingTable.rows.map((row, j) => (
+                          <tr key={j} className={`hover:bg-gray-50 dark:hover:bg-gray-900/50 ${j === tos.pricingTable.rows.length - 1 ? 'bg-gray-50 dark:bg-gray-900/50' : ''}`}>
+                            <td className="py-3 px-4 font-medium">{row.feature}</td>
+                            <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{row.trial}</td>
+                            <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{row.free}</td>
+                            <td className={`py-3 px-4 ${j === tos.pricingTable.rows.length - 1 ? 'text-gray-900 dark:text-white font-bold' : 'text-gray-900 dark:text-white font-medium'}`}>{row.pro}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            ))}
+            </>
+          )}
 
           </motion.div>
         </motion.div>
@@ -187,14 +228,14 @@ export default function SheetDiffTermsClient() {
       {/* Footer */}
       <section className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
         <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <Link href="/sheetdiff" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:underline">
-            <ArrowLeft className="w-4 h-4" /> Back to SheetDiff™
+          <Link href={`/${language}/sheetdiff`} className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:underline">
+            <ArrowLeft className="w-4 h-4" /> {tos.backTo}
           </Link>
           
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
-            <Link href="/sheetdiff/pricing" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Pricing</Link>
-            <Link href="/privacy-policy/sheetdiff" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
-            <a href="mailto:amirrak8@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Support</a>
+            <Link href={`/${language}/sheetdiff/pricing`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{getSheetDiffI18n(language).pricing.title}</Link>
+            <Link href={`/${language}/sheetdiff/privacy-policy`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{getSheetDiffI18n(language).main.privacyLink}</Link>
+            <a href="mailto:amirrak8@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{getSheetDiffI18n(language).pricing.support}</a>
           </div>
         </div>
       </section>

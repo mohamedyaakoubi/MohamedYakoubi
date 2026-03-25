@@ -58,8 +58,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Add canonical URL
       canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/projects'
-        : `https://www.mohamedyaakoubi.live/${locale}/projects`
+        ? 'https://www.mohamedyaakoubi.com/en/projects'
+        : `https://www.mohamedyaakoubi.com/${locale}/projects`
     }
   }
 }
@@ -88,13 +88,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": translations.navigation?.links.home || "Home",
-      "item": `https://www.mohamedyaakoubi.live/${locale}`
+      "item": `https://www.mohamedyaakoubi.com/${locale}`
     },
     {
       "@type": "ListItem", 
       "position": 2,
       "name": translations.navigation?.links.projects || "Projects",
-      "item": `https://www.mohamedyaakoubi.live/${locale}/projects`
+      "item": `https://www.mohamedyaakoubi.com/${locale}/projects`
     }
   ]
 }

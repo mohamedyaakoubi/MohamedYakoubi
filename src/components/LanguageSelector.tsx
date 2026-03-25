@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { languages, type Language } from '@/types/language'
 import { Globe } from 'lucide-react'
 import { useMenu } from '@/context/useMenu'
+import { analytics } from '@/lib/analytics'
 
 interface LanguageSelectorProps {
   currentLang: Language
@@ -35,6 +36,7 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
   }
 
   const handleLanguageSelect = (lang: Language) => {
+    analytics.languageChange(lang)
     onChange(lang)
     setIsOpen(false)
   }

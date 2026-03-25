@@ -4,15 +4,22 @@ import type { NextRequest } from 'next/server'
 const supportedLocales = ['en', 'fr', 'ar']
 const defaultLocale = 'en'
 
-const validRoutes = [
+// Known valid routes (without locale prefix)
+const validRoutes = new Set([
   '',
   'experience',
-  'projects', 
+  'projects',
   'contact',
   'services',
+  'blog',
   'sitemap',
-  'not-found'
-]
+  'sheetdiff',
+  'sheetdiff/pricing',
+  'sheetdiff/privacy-policy',
+  'sheetdiff/terms-of-service',
+  'privacy-policy',
+  'terms-of-service'
+])
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -35,28 +42,26 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Check if pathname already has a supported locale
   const segments = pathname.split('/').filter(Boolean)
   const maybeLocale = segments[0]
-  const routePath = segments.slice(1).join('/')
 
   if (supportedLocales.includes(maybeLocale)) {
-    // Valid locale, check if route exists
-    if (validRoutes.includes(routePath)) {
-      return NextResponse.next()
-    } else {
-      // Invalid route for valid locale - permanent redirect to locale's not-found
-      return NextResponse.redirect(new URL(`/${maybeLocale}/not-found`, request.url), 301)
-    }
+    // Valid locale prefix - let Next.js routing handle it
+    // Unknown routes will be caught by the [...slug] catch-all which triggers not-found.tsx
+    return NextResponse.next()
   } else {
-    // Path without locale prefix - permanent redirect with default locale
+    // No locale prefix - need to add default locale
     const fullPath = segments.join('/')
-    if (validRoutes.includes(fullPath)) {
-      return NextResponse.redirect(new URL(`/${defaultLocale}/${fullPath}`, request.url), 301)
-    } else {
-      // Invalid route - permanent redirect to not-found
-      return NextResponse.redirect(new URL(`/${defaultLocale}/not-found`, request.url), 301)
+    const targetUrl = new URL(`/${defaultLocale}/${fullPath}`, request.url)
+
+    // For known valid routes, redirect so the URL updates (SEO canonical)
+    if (validRoutes.has(fullPath) || fullPath.startsWith('blog/')) {
+      return NextResponse.redirect(targetUrl, 301)
     }
+
+    // For unknown routes, REWRITE (not redirect) so the catch-all [...slug] handles it
+    // and shows 404 inside the full locale layout (with header, footer, theme)
+    return NextResponse.rewrite(targetUrl)
   }
 }
 

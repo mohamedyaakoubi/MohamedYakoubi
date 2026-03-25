@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Hero } from "@/components/Hero"
 import { About } from "@/components/About"
 import { CompanyLogos } from "@/components/CompanyLogos"
+import { RecentBlogPosts } from "@/components/RecentBlogPosts"
 import { Skills } from "@/components/Skills" 
 
 interface HomeClientProps {
@@ -36,6 +37,9 @@ export default function HomeClient({ locale, translations }: HomeClientProps) {
       
       {/* Companies section between About and Skills */}
       <CompanyLogos />
+      
+      {/* Recent Blog Posts */}
+      <RecentBlogPosts />
       
       {/* Skills section */}
       <Skills />

@@ -39,8 +39,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Fixed canonical URL - consistent pattern
       canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/experience'
-        : `https://www.mohamedyaakoubi.live/${locale}/experience`
+        ? 'https://www.mohamedyaakoubi.com/en/experience'
+        : `https://www.mohamedyaakoubi.com/${locale}/experience`
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
@@ -68,13 +68,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": translations.navigation?.links.home || "Home",
-      "item": `https://www.mohamedyaakoubi.live/${locale}`
+      "item": `https://www.mohamedyaakoubi.com/${locale}`
     },
     {
       "@type": "ListItem", 
       "position": 2,
       "name": translations.navigation?.links.experience || "Experience",
-      "item": `https://www.mohamedyaakoubi.live/${locale}/experience`
+      "item": `https://www.mohamedyaakoubi.com/${locale}/experience`
     }
   ]
 }

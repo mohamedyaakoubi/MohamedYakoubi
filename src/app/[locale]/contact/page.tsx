@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
       canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/contact'
-        : `https://www.mohamedyaakoubi.live/${locale}/contact`
+        ? 'https://www.mohamedyaakoubi.com/en/contact'
+        : `https://www.mohamedyaakoubi.com/${locale}/contact`
     }
   }
 }
@@ -55,13 +55,13 @@ export default async function ContactPage(props: ContactPageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": translations.navigation?.links?.home || "Home", // Fix: Use links.home
-        "item": `https://www.mohamedyaakoubi.live/${locale}`
+        "item": `https://www.mohamedyaakoubi.com/${locale}`
       },
       {
         "@type": "ListItem", 
         "position": 2,
         "name": translations.contact?.title || "Contact",
-        "item": `https://www.mohamedyaakoubi.live/${locale}/contact`
+        "item": `https://www.mohamedyaakoubi.com/${locale}/contact`
       }
     ]
   }

@@ -22,6 +22,6 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /.well-known/
 
-Sitemap: https://www.mohamedyaakoubi.live/sitemap.xml
+Sitemap: https://www.mohamedyaakoubi.com/sitemap.xml
 
 Crawl-delay: 1

@@ -19,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/']
       }
     ],
-    sitemap: 'https://www.mohamedyaakoubi.live/sitemap.xml',
-    host: 'https://www.mohamedyaakoubi.live',
+    sitemap: 'https://www.mohamedyaakoubi.com/sitemap.xml',
+    host: 'https://www.mohamedyaakoubi.com',
   }
 }

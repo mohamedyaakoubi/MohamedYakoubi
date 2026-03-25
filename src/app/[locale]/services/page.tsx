@@ -36,16 +36,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       // Add canonical URL - consistent with your URL structure
       canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/services'
-        : `https://www.mohamedyaakoubi.live/${locale}/services`
+        ? 'https://www.mohamedyaakoubi.com/en/services'
+        : `https://www.mohamedyaakoubi.com/${locale}/services`
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       type: 'website',
       url: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.live/en/services'
-        : `https://www.mohamedyaakoubi.live/${locale}/services`,
+        ? 'https://www.mohamedyaakoubi.com/en/services'
+        : `https://www.mohamedyaakoubi.com/${locale}/services`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,13 +74,13 @@ export default async function ServicesPage(props: ServicesPageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": translations.navigation?.links.home || "Home",
-        "item": `https://www.mohamedyaakoubi.live/${locale}`
+        "item": `https://www.mohamedyaakoubi.com/${locale}`
       },
       {
         "@type": "ListItem", 
         "position": 2,
         "name": translations.navigation?.links.services || "Services",
-        "item": `https://www.mohamedyaakoubi.live/${locale}/services`
+        "item": `https://www.mohamedyaakoubi.com/${locale}/services`
       }
     ]
   }

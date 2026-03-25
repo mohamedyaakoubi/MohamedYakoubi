@@ -5,6 +5,7 @@ import Image from "next/image"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
+import { analytics } from '@/lib/analytics'
 import type { Project } from "@/types/project"
 
 interface ProjectCardProps {
@@ -97,6 +98,12 @@ function ProjectLink({ href, icon: Icon, label }: ProjectLinkProps) {
       className="flex items-center text-sm text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      onClick={() => {
+        const isGithub = href.includes('github.com')
+        const name = href.split('/').pop() || href
+        if (isGithub) analytics.projectGithubClick(name)
+        else analytics.projectDemoClick(name)
+      }}
     >
       <Icon className="mr-1" />
       {label}

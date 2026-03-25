@@ -13,10 +13,33 @@ const nextConfig = {
         has: [
           {
             type: 'host',
+            value: 'mohamedyaakoubi.com',
+          },
+        ],
+        destination: 'https://www.mohamedyaakoubi.com/:path*',
+        permanent: true,
+      },
+      // Old .live domain → new .com domain (301 permanent)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.mohamedyaakoubi.live',
+          },
+        ],
+        destination: 'https://www.mohamedyaakoubi.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
             value: 'mohamedyaakoubi.live',
           },
         ],
-        destination: 'https://www.mohamedyaakoubi.live/:path*',
+        destination: 'https://www.mohamedyaakoubi.com/:path*',
         permanent: true,
       },
       // Remove the root '/' redirect - middleware will handle this
@@ -41,20 +64,41 @@ const nextConfig = {
         destination: '/en/contact',
         permanent: true,
       },
-      // Old SheetDiff route redirects
+      // Old SheetDiff route redirects (legacy name → old location → new location)
       {
         source: '/transcript-qa-diff-engine',
-        destination: '/sheetdiff',
+        destination: '/en/sheetdiff',
         permanent: true,
       },
       {
         source: '/privacy-policy/transcript-qa',
-        destination: '/privacy-policy/sheetdiff',
+        destination: '/en/sheetdiff/privacy-policy',
         permanent: true,
       },
       {
         source: '/terms-of-service/transcript-qa',
-        destination: '/terms-of-service/sheetdiff',
+        destination: '/en/sheetdiff/terms-of-service',
+        permanent: true,
+      },
+      // SheetDiff old routes → new routes (301)
+      {
+        source: '/sheetdiff',
+        destination: '/en/sheetdiff',
+        permanent: true,
+      },
+      {
+        source: '/sheetdiff/pricing',
+        destination: '/en/sheetdiff/pricing',
+        permanent: true,
+      },
+      {
+        source: '/privacy-policy/sheetdiff',
+        destination: '/en/sheetdiff/privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/terms-of-service/sheetdiff',
+        destination: '/en/sheetdiff/terms-of-service',
         permanent: true,
       }
     ]
@@ -104,11 +148,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.mohamedyaakoubi.live',
+        hostname: 'www.mohamedyaakoubi.com',
       },
       {
         protocol: 'https',
-        hostname: 'mohamedyaakoubi.live',
+        hostname: 'mohamedyaakoubi.com',
       },
     ],
     dangerouslyAllowSVG: true,

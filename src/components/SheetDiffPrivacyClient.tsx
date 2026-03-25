@@ -4,6 +4,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowLeft, Shield } from 'lucide-react'
+import { useLanguage } from '@/context/language-context'
+import { getSheetDiffI18n } from '@/data/sheetdiff-i18n'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -19,8 +21,11 @@ const staggerContainer = {
 }
 
 export default function SheetDiffPrivacyClient() {
+  const { language } = useLanguage()
+  const pvt = getSheetDiffI18n(language).privacy
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       
       {/* Header */}
       <section className="relative pt-24 pb-12 overflow-hidden border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -32,12 +37,12 @@ export default function SheetDiffPrivacyClient() {
               <Shield className="w-6 h-6" />
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-4xl font-bold tracking-tight">
-              Privacy Policy
+              {pvt.title}
             </motion.h1>
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <span>SheetDiff™ &middot; Google Sheets™ Add-on</span>
+              <span>{pvt.productLine}</span>
               <span className="hidden sm:inline">&bull;</span>
-              <span>Last updated: March 19, 2026</span>
+              <span>{pvt.lastUpdated}</span>
             </motion.div>
           </motion.div>
         </div>
@@ -52,7 +57,8 @@ export default function SheetDiffPrivacyClient() {
           className="space-y-12 text-[15px] leading-relaxed"
         >
           <motion.div variants={fadeIn} className="[&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:mt-6 [&_h3]:mb-3 [&_p]:text-gray-700 [&_p]:dark:text-gray-300 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:mb-6 [&_ul]:text-gray-700 [&_ul]:dark:text-gray-300 [&_strong]:font-semibold [&_strong]:text-gray-900 [&_strong]:dark:text-gray-100 [&_a]:text-blue-600 [&_a]:dark:text-blue-400 [&_a]:hover:underline [&_code]:bg-gray-100 [&_code]:dark:bg-gray-800 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[13px] [&_code]:font-mono">
-            
+          {language === 'en' ? (
+            <>
             <h2>1. Overview</h2>
             <p>
               SheetDiff™ (&ldquo;the Add-on&rdquo;) is a Google Sheets™ add-on developed by Mohamed Yaakoubi that compares spreadsheet versions and generates quality assurance reports. This Privacy Policy explains how the Add-on collects, uses, and protects your data.
@@ -164,6 +170,15 @@ export default function SheetDiffPrivacyClient() {
               Email: <a href="mailto:amirrak8@gmail.com">amirrak8@gmail.com</a><br />
               LinkedIn: <a href="https://www.linkedin.com/in/yaakoubi-mohamed/" target="_blank" rel="noopener noreferrer">linkedin.com/in/yaakoubi-mohamed</a>
             </p>
+            </>
+          ) : (
+            pvt.sections.map((section, i) => (
+              <div key={i}>
+                {section.heading && <h2>{section.heading}</h2>}
+                <div dangerouslySetInnerHTML={{ __html: section.content }} />
+              </div>
+            ))
+          )}
 
           </motion.div>
         </motion.div>
@@ -172,14 +187,14 @@ export default function SheetDiffPrivacyClient() {
       {/* Footer */}
       <section className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
         <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <Link href="/sheetdiff" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:underline">
-            <ArrowLeft className="w-4 h-4" /> Back to SheetDiff™
+          <Link href={`/${language}/sheetdiff`} className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:underline">
+            <ArrowLeft className="w-4 h-4" /> {pvt.backTo}
           </Link>
           
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
-            <Link href="/sheetdiff/pricing" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Pricing</Link>
-            <Link href="/terms-of-service/sheetdiff" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
-            <a href="mailto:amirrak8@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Support</a>
+            <Link href={`/${language}/sheetdiff/pricing`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{getSheetDiffI18n(language).pricing.title}</Link>
+            <Link href={`/${language}/sheetdiff/terms-of-service`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{getSheetDiffI18n(language).main.termsLink}</Link>
+            <a href="mailto:amirrak8@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{getSheetDiffI18n(language).pricing.support}</a>
           </div>
         </div>
       </section>

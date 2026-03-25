@@ -294,19 +294,22 @@ projects: {
       "NotYet": "NotYet",
       "DocuMed": "DocuMed",
       "Potential": "Potential",
-      "InternationalSkills": "InternationalSkills.fi Recruiting System"
+      "InternationalSkills": "InternationalSkills.fi Recruiting System",
+      "SheetDiff™": "SheetDiff™"
     },
     descriptions: {
       "NotYet": "AI-powered web application to help Tunisian students and job seekers develop their career path",
       "DocuMed": "Web-based medical documentation and management platform for healthcare professionals",
       "Potential": "AI-powered search engine for Abu Dhabi Open Data Platform with real-time API query processing",
-      "InternationalSkills": "Comprehensive recruiting system for InternationalSkills.fi connecting job seekers with employers"
+      "InternationalSkills": "Comprehensive recruiting system for InternationalSkills.fi connecting job seekers with employers",
+      "SheetDiff™": "Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics."
     },
     longDescriptions: {
       "NotYet": "NotYet is an AI-powered platform designed to help Tunisian students and job seekers through career guidance, educational pathways, and skill-building resources. Built using React, Firebase, and Azure AI, it integrates AI-powered search and recommendation systems to enhance user experiences",
       "DocuMed": "DocuMed simplifies medical record management by providing a digital platform for organizing patient records, prescriptions, and appointments. Developed as part of MentorNations bootcamp using React and Firebase",
       "Potential": "Potential enhances the Abu Dhabi Open Data Platform by integrating GPT-4 with Azure Cognitive Search, allowing users to retrieve relevant datasets using natural language queries. It dynamically indexes API-accessible data and optimizes queries using LLM-powered suggestions",
-      "InternationalSkills": "The International Skills Candidate Portal is a web application that streamlines the job application process for everyone. For Job Seekers: create an account, fill out applications, upload documents (CV, certificates), and track application status with real-time updates and interview notifications. For Recruiters/Admins: access a powerful admin dashboard to view all candidates, filter and sort applicants, schedule interviews with automatic Google Meet links, score candidates using AI-powered evaluation, and update application statuses. The portal is secure, web-based, and features email verification, calendar integration, and AI-powered scoring to save time and make hiring easier."
+      "InternationalSkills": "The International Skills Candidate Portal is a web application that streamlines the job application process for everyone. For Job Seekers: create an account, fill out applications, upload documents (CV, certificates), and track application status with real-time updates and interview notifications. For Recruiters/Admins: access a powerful admin dashboard to view all candidates, filter and sort applicants, schedule interviews with automatic Google Meet links, score candidates using AI-powered evaluation, and update application statuses. The portal is secure, web-based, and features email verification, calendar integration, and AI-powered scoring to save time and make hiring easier.",
+      "SheetDiff™": "SheetDiff™ is a schema-agnostic Google Sheets add-on built for spreadsheet comparison and quality assurance. It auto-detects column roles (speaker, timestamps, transcript, sound events), lets reviewers commit snapshots, then computes a row-level diff against the reworked version — categorizing every row as Unchanged, Modified, Split, Merged, Added, or Deleted. It produces a color-coded Diff Viewer sheet and a summary QA Report with per-category counts, WER/CER/SER quality metrics, and optional reviewer/transcriptionist metadata."
     },
     technologies: {
       "NotYet": [
@@ -332,6 +335,12 @@ projects: {
         "Firebase",
         "Google Calendar API",
         "AI Scoring"
+      ],
+      "SheetDiff™": [
+        "Google Apps Script",
+        "Google Sheets API",
+        "CardService",
+        "HtmlService"
       ]
     },
     features: {
@@ -362,6 +371,14 @@ projects: {
         "AI-powered candidate scoring and evaluation",
         "Email notifications for status updates and interviews",
         "Secure document storage and management"
+      ],
+      "SheetDiff™": [
+        "Auto-detect column roles via flexible header pattern matching",
+        "Snapshot-based comparison workflow (original → reworked)",
+        "Six diff categories: Unchanged, Modified, Split, Merged, Added, Deleted",
+        "Color-coded Diff Viewer sheet with row-level highlighting",
+        "Summary QA Report with category counts and metadata",
+        "Configurable similarity threshold and settings sidebar"
       ]
     },
     status: {
@@ -639,6 +656,22 @@ projects: {
       "Professional": "Professional",
       "Conversational": "Conversational"
     }
+  },
+  blog: {
+    title: "Blog",
+    subtitle: "Thoughts on AI, security, and language technology",
+    recentPosts: "Recent Blog Posts",
+    readMore: "Read More",
+    readArticle: "Read Article",
+    backToBlog: "Back to Blog",
+    allCategories: "All",
+    minRead: "min read",
+    publishedOn: "Published on",
+    categories: {
+      "AI & Cybersecurity": "AI & Cybersecurity",
+    },
+    noPosts: "No posts found in this category.",
+    viewAllPosts: "View All Posts",
   },
   companies: {
     workedwith: "Companies I've Worked With",

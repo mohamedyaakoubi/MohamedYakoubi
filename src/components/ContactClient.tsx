@@ -1,4 +1,5 @@
 "use client"
+import { useEffect } from "react"
 import { motion } from "framer-motion"
 import { 
   FaEnvelope, 
@@ -11,6 +12,7 @@ import {
 import { SiFiverr, SiUpwork } from "react-icons/si"
 import { useForm, ValidationError } from '@formspree/react'
 import Image from 'next/image'
+import { analytics } from '@/lib/analytics'
 
 interface ContactClientProps {
   locale: string
@@ -22,6 +24,12 @@ export default function ContactClient({ locale, translations }: ContactClientPro
   
   // Use the passed locale for RTL detection
   const isRTL = locale === 'ar'
+
+  useEffect(() => {
+    if (state.succeeded) {
+      analytics.contactFormSubmit()
+    }
+  }, [state.succeeded])
 
   if (state.succeeded) {
     return (

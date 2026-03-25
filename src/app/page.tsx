@@ -12,6 +12,6 @@ export const metadata = {
   description: 'Redirecting to the English version of Mohamed Yaakoubi\'s portfolio',
   robots: 'noindex, nofollow, noarchive, nosnippet', // Be more explicit
   alternates: {
-    canonical: 'https://www.mohamedyaakoubi.live/en' // Point to actual content
+    canonical: 'https://www.mohamedyaakoubi.com/en' // Point to actual content
   }
 }

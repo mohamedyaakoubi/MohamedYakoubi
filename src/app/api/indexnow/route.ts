@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // IndexNow configuration
 const INDEXNOW_KEY = 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6';
-const SITE_HOST = 'www.mohamedyaakoubi.live';
+const SITE_HOST = 'www.mohamedyaakoubi.com';
 
 // Primary IndexNow endpoint - all IndexNow-enabled search engines share URLs automatically
 // So we only need to submit to ONE endpoint (Yandex works reliably)
