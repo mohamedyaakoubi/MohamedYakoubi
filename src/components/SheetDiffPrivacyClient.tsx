@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { ArrowLeft, Shield } from 'lucide-react'
 import { useLanguage } from '@/context/language-context'
 import { getSheetDiffI18n } from '@/data/sheetdiff-i18n'
+import { analytics } from '@/lib/analytics'
+import { useEffect } from 'react'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -23,6 +25,10 @@ const staggerContainer = {
 export default function SheetDiffPrivacyClient() {
   const { language } = useLanguage()
   const pvt = getSheetDiffI18n(language).privacy
+
+  useEffect(() => {
+    analytics.sheetdiffPageView('privacy')
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30" dir={language === 'ar' ? 'rtl' : 'ltr'}>

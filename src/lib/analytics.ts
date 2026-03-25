@@ -61,11 +61,32 @@ export const analytics = {
     trackEvent({ action: 'click', category: 'project', label: `github_${name}` }),
 
   // SheetDiff
-  sheetdiffInstallClick: () =>
-    trackEvent({ action: 'click', category: 'sheetdiff', label: 'install_marketplace' }),
+  sheetdiffPageView: (page: 'main' | 'pricing' | 'privacy' | 'terms') => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'sheetdiff_page_view', {
+        event_category: 'sheetdiff',
+        sheetdiff_page: page,
+      })
+    }
+  },
 
-  sheetdiffPricingClick: () =>
-    trackEvent({ action: 'click', category: 'sheetdiff', label: 'view_pricing' }),
+  sheetdiffInstallClick: (source: string = 'hero') =>
+    trackEvent({ action: 'click', category: 'sheetdiff', label: `install_marketplace_${source}` }),
+
+  sheetdiffPricingClick: (source: string = 'hero') =>
+    trackEvent({ action: 'click', category: 'sheetdiff', label: `view_pricing_${source}` }),
+
+  sheetdiffPrivacyClick: () =>
+    trackEvent({ action: 'click', category: 'sheetdiff', label: 'view_privacy_policy' }),
+
+  sheetdiffTermsClick: () =>
+    trackEvent({ action: 'click', category: 'sheetdiff', label: 'view_terms_of_service' }),
+
+  sheetdiffContactClick: (method: string) =>
+    trackEvent({ action: 'click', category: 'sheetdiff', label: `contact_${method}` }),
+
+  sheetdiffBillingToggle: (plan: 'monthly' | 'annual') =>
+    trackEvent({ action: 'toggle', category: 'sheetdiff', label: `billing_${plan}` }),
 
   // Services
   serviceCTAClick: (service: string) =>

@@ -23,6 +23,7 @@ import {
   Rows,
   Sparkles
 } from 'lucide-react'
+import { useEffect } from 'react'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -40,6 +41,10 @@ const staggerContainer = {
 export default function SheetDiffClient() {
   const { language } = useLanguage()
   const t = getSheetDiffI18n(language).main
+
+  useEffect(() => {
+    analytics.sheetdiffPageView('main')
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -90,13 +95,14 @@ export default function SheetDiffClient() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3.5 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                onClick={() => analytics.sheetdiffInstallClick()}
+                onClick={() => analytics.sheetdiffInstallClick('hero')}
               >
                 {t.installBtn} <ArrowRight className="w-4 h-4" />
               </a>
               <Link
                 href={`/${language}/sheetdiff/pricing`}
                 className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 text-gray-900 dark:text-white px-8 py-3.5 rounded-xl font-medium transition-all hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => analytics.sheetdiffPricingClick('hero')}
               >
                 {t.viewPricing}
               </Link>
@@ -285,7 +291,7 @@ export default function SheetDiffClient() {
               </div>
             </div>
 
-            <Link href={`/${language}/sheetdiff/pricing`} className="block w-full py-3 bg-white text-blue-700 text-center font-bold rounded-xl hover:bg-gray-50 transition-colors">
+            <Link href={`/${language}/sheetdiff/pricing`} onClick={() => analytics.sheetdiffPricingClick('pricing_card')} className="block w-full py-3 bg-white text-blue-700 text-center font-bold rounded-xl hover:bg-gray-50 transition-colors">
               {t.comparePlans}
             </Link>
           </motion.div>
@@ -304,20 +310,20 @@ export default function SheetDiffClient() {
               {t.privacyText}
             </p>
             <div className="flex gap-4">
-              <Link href={`/${language}/sheetdiff/privacy-policy`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.privacyLink}</Link>
-              <Link href={`/${language}/sheetdiff/terms-of-service`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.termsLink}</Link>
+              <Link href={`/${language}/sheetdiff/privacy-policy`} onClick={() => analytics.sheetdiffPrivacyClick()} className="text-blue-600 dark:text-blue-400 hover:underline">{t.privacyLink}</Link>
+              <Link href={`/${language}/sheetdiff/terms-of-service`} onClick={() => analytics.sheetdiffTermsClick()} className="text-blue-600 dark:text-blue-400 hover:underline">{t.termsLink}</Link>
             </div>
           </div>
           <div className="md:text-right">
             <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-base">{t.getInTouch}</h4>
             <div className="flex flex-col md:items-end space-y-2">
-              <a href="mailto:amirrak8@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
+              <a href="mailto:amirrak8@gmail.com" onClick={() => analytics.sheetdiffContactClick('email')} className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
                 <Mail className="w-4 h-4" /> amirrak8@gmail.com
               </a>
               <a href="https://mohamedyaakoubi.com/en" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
                 <Globe2 className="w-4 h-4" /> mohamedyaakoubi.com
               </a>
-              <a href="https://www.linkedin.com/in/yaakoubi-mohamed/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
+              <a href="https://www.linkedin.com/in/yaakoubi-mohamed/" target="_blank" rel="noopener noreferrer" onClick={() => analytics.sheetdiffContactClick('linkedin')} className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd"/></svg>
                 {t.linkedinProfile}
               </a>

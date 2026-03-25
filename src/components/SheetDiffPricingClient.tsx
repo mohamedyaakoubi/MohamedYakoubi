@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { Check, CircleHelp, ArrowLeft, ArrowRight, Zap, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '@/context/language-context'
 import { getSheetDiffI18n } from '@/data/sheetdiff-i18n'
+import { analytics } from '@/lib/analytics'
+import { useEffect } from 'react'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -24,6 +26,10 @@ export default function SheetDiffPricingClient() {
   const [isAnnual, setIsAnnual] = useState(true)
   const { language } = useLanguage()
   const p = getSheetDiffI18n(language).pricing
+
+  useEffect(() => {
+    analytics.sheetdiffPageView('pricing')
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-blue-500/30" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -53,13 +59,13 @@ export default function SheetDiffPricingClient() {
       >
         <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-1.5 rounded-2xl inline-flex items-center gap-2 shadow-sm relative">
           <button 
-            onClick={() => setIsAnnual(false)}
+            onClick={() => { setIsAnnual(false); analytics.sheetdiffBillingToggle('monthly') }}
             className={`relative px-6 py-2.5 rounded-xl text-sm font-medium transition-colors z-10 ${!isAnnual ? 'text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}`}
           >
             {p.monthlyBilling}
           </button>
           <button 
-            onClick={() => setIsAnnual(true)}
+            onClick={() => { setIsAnnual(true); analytics.sheetdiffBillingToggle('annual') }}
             className={`relative px-6 py-2.5 rounded-xl text-sm font-medium transition-colors z-10 ${isAnnual ? 'text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}`}
           >
             {p.annualBilling}
@@ -153,7 +159,7 @@ export default function SheetDiffPricingClient() {
               ))}
             </ul>
             
-            <a href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120" target="_blank" rel="noopener noreferrer" className="py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl text-center font-bold shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+            <a href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120" target="_blank" rel="noopener noreferrer" onClick={() => analytics.sheetdiffInstallClick('pricing_pro')} className="py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl text-center font-bold shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
               {p.installAddon}
             </a>
           </motion.div>
@@ -178,7 +184,7 @@ export default function SheetDiffPricingClient() {
               ))}
             </ul>
             
-            <a href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120" target="_blank" rel="noopener noreferrer" className="py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl text-center text-sm font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <a href="https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120" target="_blank" rel="noopener noreferrer" onClick={() => analytics.sheetdiffInstallClick('pricing_lifetime')} className="py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl text-center text-sm font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               {p.installAddon}
             </a>
           </motion.div>
