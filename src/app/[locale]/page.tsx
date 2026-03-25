@@ -20,10 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: translations.meta.title,
     description: translations.meta.description,
     alternates: {
-      // Fixed canonical URL - should point to /en instead of root for English
-      canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.com/en'
-        : `https://www.mohamedyaakoubi.com/${locale}`
+      canonical: `https://www.mohamedyaakoubi.com/${locale}`
     }
   }
 }

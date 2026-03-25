@@ -5,7 +5,7 @@ export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.mohamedyaakoubi.com'
-  const lastModified = new Date('2025-10-11')
+  const lastModified = new Date()
   
   const locales = ['en', 'fr', 'ar']
   const pages = ['', '/experience', '/projects', '/services', '/contact', '/blog', '/sheetdiff']
@@ -31,6 +31,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified,
         changeFrequency,
         priority,
+      })
+    })
+
+    // Add SheetDiff sub-pages
+    const sheetdiffPages = ['/sheetdiff/pricing']
+    sheetdiffPages.forEach(page => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${page}`,
+        lastModified,
+        changeFrequency: 'yearly',
+        priority: 0.5,
       })
     })
 

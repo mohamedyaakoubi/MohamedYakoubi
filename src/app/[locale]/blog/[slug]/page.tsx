@@ -31,9 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: post.description,
     authors: [{ name: post.author.name, url: post.author.url }],
     alternates: {
-      canonical: locale === 'en'
-        ? `https://www.mohamedyaakoubi.com/en/blog/${slug}`
-        : `https://www.mohamedyaakoubi.com/${locale}/blog/${slug}`,
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/blog/${slug}`,
       languages: {
         'en': `https://www.mohamedyaakoubi.com/en/blog/${slug}`,
         'fr': `https://www.mohamedyaakoubi.com/fr/blog/${slug}`,
@@ -52,22 +50,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [
-        {
-          url: post.image || 'https://www.mohamedyaakoubi.com/profile.jpg',
-          width: 1200,
-          height: 630,
-          alt: post.imageAlt || post.title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      site: '@Mohamed0Yakoubi',
-      creator: '@Mohamed0Yakoubi',
-      images: [post.image || 'https://www.mohamedyaakoubi.com/profile.jpg'],
     },
   }
 }

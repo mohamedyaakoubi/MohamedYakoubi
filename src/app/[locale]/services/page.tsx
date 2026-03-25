@@ -34,10 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'resume writing', 'portfolio development', 'multilingual support'
     ].join(', '),
     alternates: {
-      // Add canonical URL - consistent with your URL structure
-      canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.com/en/services'
-        : `https://www.mohamedyaakoubi.com/${locale}/services`
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/services`
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,

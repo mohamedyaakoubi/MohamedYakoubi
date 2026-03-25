@@ -28,9 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
-      canonical: locale === 'en'
-        ? 'https://www.mohamedyaakoubi.com/en/blog'
-        : `https://www.mohamedyaakoubi.com/${locale}/blog`,
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/blog`,
       languages: {
         'en': 'https://www.mohamedyaakoubi.com/en/blog',
         'fr': 'https://www.mohamedyaakoubi.com/fr/blog',
@@ -45,22 +43,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
       locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
-      images: [
-        {
-          url: 'https://www.mohamedyaakoubi.com/profile.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Mohamed Yaakoubi Blog - AI & Cybersecurity Insights',
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
-      site: '@Mohamed0Yakoubi',
-      creator: '@Mohamed0Yakoubi',
-      images: ['https://www.mohamedyaakoubi.com/profile.jpg'],
     },
   }
 }

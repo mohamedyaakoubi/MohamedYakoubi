@@ -6,8 +6,9 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Mohamed Yaakoubi',
     short_name: 'MY',
-    description: 'Emerging AI Specialist & Web Developer',
-    start_url: '/',
+    description: 'AI Language Technology Specialist | Machine Translation Post-Editor | LLM Evaluator',
+    start_url: '/en',
+    scope: '/',
     display: 'standalone',
     background_color: '#fff',
     theme_color: '#fff',

@@ -30,9 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
-      canonical: locale === 'en' 
-        ? 'https://www.mohamedyaakoubi.com/en/contact'
-        : `https://www.mohamedyaakoubi.com/${locale}/contact`
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/contact`
     }
   }
 }

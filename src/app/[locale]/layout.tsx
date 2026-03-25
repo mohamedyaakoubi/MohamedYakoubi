@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 
   return {
+    metadataBase: new URL('https://www.mohamedyaakoubi.com'),
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     keywords: [
@@ -125,7 +126,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       site: '@Mohamed0Yakoubi',
       creator: '@Mohamed0Yakoubi',
-      images: ['https://www.mohamedyaakoubi.com/profile.jpg'],
     },
     robots: {
       index: true,

@@ -6,10 +6,16 @@ export async function generateStaticParams() {
   return getSupportedLocales().map(locale => ({ locale }))
 }
 
-export const metadata: Metadata = {
-  title: 'Terms of Service — SheetDiff™ | Mohamed Yaakoubi',
-  description: 'Terms of Service for the SheetDiff™ Google Sheets™ add-on by Mohamed Yaakoubi.',
-  robots: 'noindex, nofollow',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  return {
+    title: 'Terms of Service — SheetDiff™ | Mohamed Yaakoubi',
+    description: 'Terms of Service for the SheetDiff™ Google Sheets™ add-on by Mohamed Yaakoubi.',
+    robots: 'noindex, nofollow',
+    alternates: {
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/terms-of-service`,
+    },
+  }
 }
 
 export default function SheetDiffTermsOfService() {
