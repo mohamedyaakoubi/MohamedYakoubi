@@ -1,0 +1,17 @@
+date,clones,unique_clones,views,unique_views,clone_view_ratio,top_referrer
+2026-03-13,1,1,0,0,inf,github.com
+2026-03-14,106,24,0,0,inf,github.com
+2026-03-15,32,11,0,0,inf,github.com
+2026-03-16,62,18,0,0,inf,github.com
+2026-03-17,0,0,0,0,0,github.com
+2026-03-18,2,2,0,0,inf,github.com
+2026-03-19,9,6,0,0,inf,github.com
+2026-03-20,21,6,0,0,inf,github.com
+2026-03-21,0,0,9,1,0.0,github.com
+2026-03-22,1,1,0,0,inf,github.com
+2026-03-23,0,0,0,0,0,github.com
+2026-03-24,1,1,1,1,1.0,github.com
+2026-03-25,336,79,20,1,16.8,github.com
+2026-03-26,0,0,0,0,0,github.com
+TOTAL,571,149,30,3,19.0,-
+AVG/DAY,40.8,-,2.1,-,-,(14 days)

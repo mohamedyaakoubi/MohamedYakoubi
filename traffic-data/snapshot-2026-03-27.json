@@ -1,0 +1,224 @@
+{
+  "fetched_at": "2026-03-27T20:01:14Z",
+  "clones": {
+  "count": 571,
+  "uniques": 134,
+  "clones": [
+    {
+      "timestamp": "2026-03-13T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-14T00:00:00Z",
+      "count": 106,
+      "uniques": 24
+    },
+    {
+      "timestamp": "2026-03-15T00:00:00Z",
+      "count": 32,
+      "uniques": 11
+    },
+    {
+      "timestamp": "2026-03-16T00:00:00Z",
+      "count": 62,
+      "uniques": 18
+    },
+    {
+      "timestamp": "2026-03-17T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-18T00:00:00Z",
+      "count": 2,
+      "uniques": 2
+    },
+    {
+      "timestamp": "2026-03-19T00:00:00Z",
+      "count": 9,
+      "uniques": 6
+    },
+    {
+      "timestamp": "2026-03-20T00:00:00Z",
+      "count": 21,
+      "uniques": 6
+    },
+    {
+      "timestamp": "2026-03-21T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-22T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-23T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-24T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-25T00:00:00Z",
+      "count": 336,
+      "uniques": 79
+    },
+    {
+      "timestamp": "2026-03-26T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    }
+  ]
+},
+  "views": {
+  "count": 30,
+  "uniques": 2,
+  "views": [
+    {
+      "timestamp": "2026-03-13T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-14T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-15T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-16T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-17T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-18T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-19T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-20T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-21T00:00:00Z",
+      "count": 9,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-22T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-23T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-24T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-25T00:00:00Z",
+      "count": 20,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-26T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    }
+  ]
+},
+  "referrers": [
+  {
+    "referrer": "github.com",
+    "count": 29,
+    "uniques": 1
+  }
+],
+  "popular_paths": [
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi",
+    "title": "mohamedyaakoubi/MohamedYakoubi: A repo about l3abdulellah",
+    "count": 18,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/LICENSE",
+    "title": "mohamedyaakoubi/MohamedYakoubi: A repo about l3abdulellah",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/next.config.js",
+    "title": "mohamedyaakoubi/MohamedYakoubi: A repo about l3abdulellah",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/src/app/sheetdiff/page.tsx",
+    "title": "MohamedYakoubi/src/app/sheetdiff at master · mohamedyaakoubi/MohamedYakoubi",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/will-need.txt",
+    "title": "mohamedyaakoubi/MohamedYakoubi: A repo about l3abdulellah",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/commits",
+    "title": "Commits · mohamedyaakoubi/MohamedYakoubi · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/graphs/traffic",
+    "title": "Traffic · mohamedyaakoubi/MohamedYakoubi",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/pulse",
+    "title": "Pulse · mohamedyaakoubi/MohamedYakoubi",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/tree/master/public",
+    "title": "mohamedyaakoubi/MohamedYakoubi: A repo about l3abdulellah",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/tree/master/public/projects",
+    "title": "MohamedYakoubi/public at master · mohamedyaakoubi/MohamedYakoubi",
+    "count": 1,
+    "uniques": 1
+  }
+]
+}
