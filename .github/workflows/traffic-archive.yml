@@ -1,0 +1,146 @@
+name: Archive GitHub Traffic Data
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC — GitHub traffic API retains only 14 days
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  archive-traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch and archive traffic data
+        env:
+          GITHUB_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+          REPO_OWNER: mohamedyaakoubi
+          REPO_NAME: MohamedYakoubi
+        run: |
+          set -e
+          
+          DATE=$(date -u +"%Y-%m-%d")
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          ARCHIVE_DIR="traffic-data"
+          mkdir -p "$ARCHIVE_DIR"
+          
+          echo "📊 Fetching traffic data for $REPO_OWNER/$REPO_NAME on $DATE..."
+          
+          # Fetch clones (14-day window)
+          CLONES=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/traffic/clones")
+          
+          # Fetch views (14-day window)
+          VIEWS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/traffic/views")
+          
+          # Fetch referrers (top 10)
+          REFERRERS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/traffic/popular/referrers")
+          
+          # Fetch popular paths (top 10)
+          PATHS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/traffic/popular/paths")
+          
+          # Save raw daily snapshot
+          cat > "$ARCHIVE_DIR/snapshot-$DATE.json" << EOF
+          {
+            "fetched_at": "$TIMESTAMP",
+            "clones": $CLONES,
+            "views": $VIEWS,
+            "referrers": $REFERRERS,
+            "popular_paths": $PATHS
+          }
+          EOF
+          
+          # Pretty-print summary to log
+          echo ""
+          echo "=== CLONE SUMMARY ==="
+          echo "$CLONES" | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          print(f\"Total clones (14d): {data.get('count', 'N/A')}\")
+          print(f\"Unique cloners (14d): {data.get('uniques', 'N/A')}\")
+          for entry in data.get('clones', []):
+              print(f\"  {entry['timestamp'][:10]}: {entry['count']} clones, {entry['uniques']} unique\")
+          "
+          
+          echo ""
+          echo "=== VIEW SUMMARY ==="
+          echo "$VIEWS" | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          print(f\"Total views (14d): {data.get('count', 'N/A')}\")
+          print(f\"Unique viewers (14d): {data.get('uniques', 'N/A')}\")
+          for entry in data.get('views', []):
+              print(f\"  {entry['timestamp'][:10]}: {entry['count']} views, {entry['uniques']} unique\")
+          "
+          
+          echo ""
+          echo "=== REFERRERS ==="
+          echo "$REFERRERS" | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          for ref in data:
+              print(f\"  {ref['referrer']}: {ref['count']} total, {ref['uniques']} unique\")
+          "
+          
+          echo ""
+          echo "=== CLONE-TO-VIEW RATIO ==="
+          python3 -c "
+          import json
+          clones = json.loads('''$CLONES''')
+          views = json.loads('''$VIEWS''')
+          c = clones.get('count', 0)
+          v = views.get('count', 1)  # avoid div by zero
+          cu = clones.get('uniques', 0)
+          vu = views.get('uniques', 1)
+          ratio = c / v if v > 0 else 'inf'
+          uratio = cu / vu if vu > 0 else 'inf'
+          print(f'Clone/View ratio: {ratio:.1f}x (total), {uratio:.1f}x (unique)')
+          if isinstance(ratio, float) and ratio > 5:
+              print('⚠️  ALERT: Clone-to-view ratio is abnormally high — likely bot activity')
+          if cu > 50:
+              print(f'⚠️  ALERT: {cu} unique cloners in 14 days is unusually high for a personal portfolio')
+          "
+          
+          # Append to cumulative CSV for easy analysis
+          CLONES_TOTAL=$(echo "$CLONES" | python3 -c "import json,sys; print(json.load(sys.stdin).get('count',0))")
+          CLONES_UNIQUE=$(echo "$CLONES" | python3 -c "import json,sys; print(json.load(sys.stdin).get('uniques',0))")
+          VIEWS_TOTAL=$(echo "$VIEWS" | python3 -c "import json,sys; print(json.load(sys.stdin).get('count',0))")
+          VIEWS_UNIQUE=$(echo "$VIEWS" | python3 -c "import json,sys; print(json.load(sys.stdin).get('uniques',0))")
+          TOP_REFERRER=$(echo "$REFERRERS" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d[0]['referrer'] if d else 'none')")
+          
+          # Create CSV header if file doesn't exist
+          if [ ! -f "$ARCHIVE_DIR/traffic-log.csv" ]; then
+            echo "date,clones_14d,unique_clones_14d,views_14d,unique_views_14d,clone_view_ratio,top_referrer" > "$ARCHIVE_DIR/traffic-log.csv"
+          fi
+          
+          # Calculate ratio
+          if [ "$VIEWS_TOTAL" -gt 0 ]; then
+            RATIO=$(python3 -c "print(round($CLONES_TOTAL / $VIEWS_TOTAL, 1))")
+          else
+            RATIO="inf"
+          fi
+          
+          echo "$DATE,$CLONES_TOTAL,$CLONES_UNIQUE,$VIEWS_TOTAL,$VIEWS_UNIQUE,$RATIO,$TOP_REFERRER" >> "$ARCHIVE_DIR/traffic-log.csv"
+          
+          echo ""
+          echo "✅ Traffic data archived to $ARCHIVE_DIR/snapshot-$DATE.json"
+
+      - name: Commit and push archived data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add traffic-data/
+          git diff --cached --quiet || git commit -m "📊 Traffic archive: $(date -u +%Y-%m-%d)"
+          git push
