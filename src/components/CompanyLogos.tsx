@@ -25,7 +25,12 @@ const companies = [
   },
   { name: "Volga", logo: "/companies/volga_logo.png", url: "https://volgapartners.com/" },
   { name: "Ubiai", logo: "/companies/ubi.png", url: "https://ubiai.tools/" },
-  { name: "Wirestock", logo: "/companies/wirestock.avif", url: "https://wirestock.io/" },
+  { 
+    name: "Wirestock", 
+    logo: "/companies/wirestock.avif", 
+    url: "https://wirestock.io/",
+    referenceLetter: "/companies/docuemnts/Wirestock_Reference_Letter_Mohamed_Yaakoubi.pdf"
+  },
   { name: "Andovar", logo: "/companies/Andovar_logo.webp", url: "https://andovar.com/" },
   { name: "Kudra", logo: "/companies/Kudra_logo.png", url: "https://kudra.ai/" },
   { name: "International Skills Labor Company", logo: "/companies/logo_skills.png", url: "https://internationalskills.fi/" },
