@@ -163,6 +163,42 @@ jobs:
               print(f'Added {len(new_rows)} new day(s) to CSV')
           else:
               print('No new days to add to CSV')
+          
+          # Re-read full CSV and write summary row at the end
+          lines = []
+          with open(csv_file) as f:
+              lines = [l.strip() for l in f if l.strip()]
+          
+          # Remove old summary rows
+          data_lines = [l for l in lines if not l.startswith('TOTAL,') and not l.startswith('AVG/DAY,')]
+          
+          # Parse data rows (skip header)
+          total_c = total_cu = total_v = total_vu = 0
+          num_days = 0
+          for line in data_lines[1:]:
+              parts = line.split(',')
+              if len(parts) >= 5:
+                  c = int(parts[1]) if parts[1].isdigit() else 0
+                  cu = int(parts[2]) if parts[2].isdigit() else 0
+                  v = int(parts[3]) if parts[3].isdigit() else 0
+                  vu = int(parts[4]) if parts[4].isdigit() else 0
+                  total_c += c
+                  total_cu += cu
+                  total_v += v
+                  total_vu += vu
+                  num_days += 1
+          
+          overall_ratio = round(total_c / total_v, 1) if total_v > 0 else ('inf' if total_c > 0 else '0')
+          avg_c = round(total_c / num_days, 1) if num_days > 0 else 0
+          avg_v = round(total_v / num_days, 1) if num_days > 0 else 0
+          
+          with open(csv_file, 'w') as f:
+              for line in data_lines:
+                  f.write(line + '\n')
+              f.write(f'TOTAL,{total_c},{total_cu},{total_v},{total_vu},{overall_ratio},-\n')
+              f.write(f'AVG/DAY,{avg_c},-,{avg_v},-,-,({num_days} days)\n')
+          
+          print(f'Summary: {total_c} clones / {total_v} views over {num_days} days (ratio: {overall_ratio}x)')
           "
           
           echo ""
