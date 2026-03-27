@@ -113,26 +113,41 @@ jobs:
               print(f'⚠️  ALERT: {cu} unique cloners in 14 days is unusually high for a personal portfolio')
           "
           
-          # Append to cumulative CSV for easy analysis
-          CLONES_TOTAL=$(echo "$CLONES" | python3 -c "import json,sys; print(json.load(sys.stdin).get('count',0))")
-          CLONES_UNIQUE=$(echo "$CLONES" | python3 -c "import json,sys; print(json.load(sys.stdin).get('uniques',0))")
-          VIEWS_TOTAL=$(echo "$VIEWS" | python3 -c "import json,sys; print(json.load(sys.stdin).get('count',0))")
-          VIEWS_UNIQUE=$(echo "$VIEWS" | python3 -c "import json,sys; print(json.load(sys.stdin).get('uniques',0))")
-          TOP_REFERRER=$(echo "$REFERRERS" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d[0]['referrer'] if d else 'none')")
+          # Append to cumulative CSV — extract YESTERDAY's single-day data (not 14-day rolling total)
+          YESTERDAY=$(date -u -d "yesterday" +"%Y-%m-%d")
+          python3 -c "
+          import json, sys
+          clones = json.loads('''$CLONES''')
+          views = json.loads('''$VIEWS''')
+          referrers = json.loads('''$REFERRERS''')
+          yesterday = '$YESTERDAY'
+          
+          day_clones = 0
+          day_clones_uniq = 0
+          for e in clones.get('clones', []):
+              if e['timestamp'][:10] == yesterday:
+                  day_clones = e['count']
+                  day_clones_uniq = e['uniques']
+          
+          day_views = 0
+          day_views_uniq = 0
+          for e in views.get('views', []):
+              if e['timestamp'][:10] == yesterday:
+                  day_views = e['count']
+                  day_views_uniq = e['uniques']
+          
+          top_ref = referrers[0]['referrer'] if referrers else 'none'
+          ratio = round(day_clones / day_views, 1) if day_views > 0 else ('inf' if day_clones > 0 else '0')
+          
+          print(f'{yesterday},{day_clones},{day_clones_uniq},{day_views},{day_views_uniq},{ratio},{top_ref}')
+          " > /tmp/csv_row.txt
           
           # Create CSV header if file doesn't exist
           if [ ! -f "$ARCHIVE_DIR/traffic-log.csv" ]; then
-            echo "date,clones_14d,unique_clones_14d,views_14d,unique_views_14d,clone_view_ratio,top_referrer" > "$ARCHIVE_DIR/traffic-log.csv"
+            echo "date,clones,unique_clones,views,unique_views,clone_view_ratio,top_referrer" > "$ARCHIVE_DIR/traffic-log.csv"
           fi
           
-          # Calculate ratio
-          if [ "$VIEWS_TOTAL" -gt 0 ]; then
-            RATIO=$(python3 -c "print(round($CLONES_TOTAL / $VIEWS_TOTAL, 1))")
-          else
-            RATIO="inf"
-          fi
-          
-          echo "$DATE,$CLONES_TOTAL,$CLONES_UNIQUE,$VIEWS_TOTAL,$VIEWS_UNIQUE,$RATIO,$TOP_REFERRER" >> "$ARCHIVE_DIR/traffic-log.csv"
+          cat /tmp/csv_row.txt >> "$ARCHIVE_DIR/traffic-log.csv"
           
           echo ""
           echo "✅ Traffic data archived to $ARCHIVE_DIR/snapshot-$DATE.json"
