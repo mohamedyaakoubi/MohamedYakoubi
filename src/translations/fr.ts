@@ -681,6 +681,7 @@ export default {
         publishedOn: "Publié le",
         categories: {
           "AI & Cybersecurity": "IA & Cybersécurité",
+          "AI & Data Engineering": "IA & Ingénierie des Données",
         },
         noPosts: "Aucun article trouvé dans cette catégorie.",
         viewAllPosts: "Voir Tous les Articles",

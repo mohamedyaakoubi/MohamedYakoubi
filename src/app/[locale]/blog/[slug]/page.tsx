@@ -50,6 +50,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
       tags: post.tags,
+      images: [
+        {
+          url: `https://www.mohamedyaakoubi.com/${locale}/blog/${slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -112,9 +120,13 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
       url: post.author.url,
     },
     publisher: {
-      '@type': 'Person',
+      '@type': 'Organization',
       name: 'Mohamed Yaakoubi',
       url: 'https://www.mohamedyaakoubi.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.mohamedyaakoubi.com/profile.jpg',
+      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',

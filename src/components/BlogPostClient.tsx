@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 import type { BlogPost } from '@/types/blog'
-import { useCallback, useState, useEffect, useRef } from 'react'
+import { useCallback, useState, useEffect, useRef, useMemo } from 'react'
 import { useTheme } from 'next-themes'
 import { analytics } from '@/lib/analytics'
 
@@ -50,6 +50,8 @@ export default function BlogPostClient({ post, locale, translations }: BlogPostC
       setTimeout(() => setShareLabel(null), 2000)
     }
   }, [language, post.slug, post.title, post.description])
+
+  const articleHtml = useMemo(() => renderMarkdown(post.content), [post.content])
 
   const themeVars = {
     '--blog-accent': theme.accent,
@@ -96,13 +98,17 @@ export default function BlogPostClient({ post, locale, translations }: BlogPostC
       </motion.div>
 
       {/* ── Article ── */}
-      <motion.article
-        className="blog-article"
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }}
-      />
+      >
+        <article
+          className="blog-article"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: articleHtml }}
+        />
+      </motion.div>
 
       {/* ── Footer ── */}
       <footer className="blog-footer">
@@ -264,6 +270,64 @@ function renderContent(content: string): string {
     return `<div class="callout"><p>${rendered}</p></div>`
   })
 
+  // Typed callouts (:::callout-warn Label\n text\n:::) / callout-pass / callout-note
+  html = html.replace(/:::callout-(warn|pass|note)\s+(.+?)\n([\s\S]*?):::/g, (_match, type: string, label: string, body: string) => {
+    const rendered = body.trim()
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\n/g, '<br>')
+    return `<div class="bp-callout bp-callout-${type}"><span class="bp-callout-label">${label.trim()}</span><p>${rendered}</p></div>`
+  })
+
+  // Stats grid (:::stats\n value|label\n :::)
+  html = html.replace(/:::stats\n([\s\S]*?):::/g, (_match, statsContent: string) => {
+    const items = statsContent.trim().split('\n').map((line: string) => {
+      const [num, label] = line.split('|').map((s: string) => s.trim())
+      return `<div class="bp-stat"><span class="bp-stat-n">${num}</span><span class="bp-stat-l">${label}</span></div>`
+    }).join('')
+    return `<div class="bp-stats">${items}</div>`
+  })
+
+  // Query blocks (:::query Title\n French\n EN: English\n :::)
+  html = html.replace(/:::query\s+(.+?)\n([\s\S]*?):::/g, (_match, title: string, body: string) => {
+    const lines = body.trim().split('\n')
+    let frLine = ''
+    let enLine = ''
+    for (const line of lines) {
+      if (line.trim().startsWith('EN:')) {
+        enLine = line.trim()
+      } else if (line.trim()) {
+        frLine = line.trim()
+      }
+    }
+    return `<div class="bp-query"><div class="bp-query-lang">${title.trim()}</div>${frLine ? `<div class="bp-query-fr">${renderInline(frLine)}</div>` : ''}${enLine ? `<div class="bp-query-en">${renderInline(enLine)}</div>` : ''}</div>`
+  })
+
+  // Blockquotes with optional EN translation (:::bq ... :::)
+  html = html.replace(/:::bq\n([\s\S]*?):::/g, (_match, bqContent: string) => {
+    const parts = bqContent.trim().split('\n')
+    let mainLines: string[] = []
+    let enLines: string[] = []
+    let inEn = false
+    for (const line of parts) {
+      if (line.trim().startsWith('EN:') || line.trim().startsWith(':::en')) {
+        inEn = true
+        if (line.trim().startsWith('EN:')) {
+          enLines.push(line.trim())
+        }
+        continue
+      }
+      if (inEn) {
+        enLines.push(line)
+      } else {
+        mainLines.push(line)
+      }
+    }
+    const mainHtml = mainLines.map(l => renderInline(l.trim())).filter(Boolean).join('<br>')
+    const enHtml = enLines.map(l => renderInline(l.trim())).filter(Boolean).join('<br>')
+    return `<blockquote><p>${mainHtml}</p>${enHtml ? `<p class="bp-bq-en">${enHtml}</p>` : ''}</blockquote>`
+  })
+
   // Finding cards inside content (### Title [Severity]) — EN/FR/AR
   const severityMapInline: Record<string, string> = {
     'Critical': 'critical', 'High': 'high', 'Medium': 'medium', 'Low': 'low',
@@ -305,7 +369,7 @@ function renderContent(content: string): string {
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      .replace(/\n\n/g, '\n \n')
+      .replace(/\n(?=\n)/g, '\n ')
       .trimEnd()
     return `<div class="code-block">
       <div class="code-header">${lang || 'code'}</div>
@@ -329,13 +393,29 @@ function renderContent(content: string): string {
           }
           if (tableSevMap[val]) val = `<span class="badge ${tableSevMap[val]}">${val}</span>`
           else if (/Confirmed|Exploited|Confirmé|confirmé|Exploité|مؤكّد|استُغل/i.test(val)) val = `<span class="status-confirmed">${val}</span>`
-          return `<td>${val}</td>`
+          // Detect pass/fail indicators for table cells
+          let tdClass = ''
+          if (/^(\*\*)?✓|^\*\*Yes\*\*|^\*\*✓/.test(val)) tdClass = ' class="td-good"'
+          else if (/^(\*\*)?✗|^\*\*No\*\*|^\*\*✗/.test(val)) tdClass = ' class="td-bad"'
+          else if (/^\+\d+\.?\d*/.test(val)) tdClass = ' class="td-delta"'
+          // Apply inline rendering for bold, italic, code, links
+          val = val
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/(github\.com\/[\w.@:/?#[\]!$&'()*+,;=-]+[\w/])/g, '<a href="https://$1" target="_blank" rel="noopener noreferrer" class="blog-link">$1</a>')
+          return `<td${tdClass}>${val}</td>`
         }).join('')
         return `<tr>${tds}</tr>`
       }).join('')
       return `<div class="table-wrap"><table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`
     }
   )
+
+  // ### Sub-headings inside content
+  html = html.replace(/^### (.+)$/gm, (_, title: string) => {
+    return `\n\n<h3 class="section-subtitle">${title.trim()}</h3>\n\n`
+  })
 
   // Inline code
   html = html.replace(/`([^`]+)`/g, (_, code: string) => {
@@ -345,11 +425,22 @@ function renderContent(content: string): string {
     return `<code>${code}</code>`
   })
 
+  // Linkify github.com URLs (inside <code> tags and bare)
+  html = html.replace(/<code>(github\.com\/[^<]+)<\/code>/g, (_, url: string) => {
+    return `<a href="https://${url}" target="_blank" rel="noopener noreferrer" class="blog-link"><code>${url}</code></a>`
+  })
+  html = html.replace(/(?<!["'=\/])(?<![<\w])(github\.com\/[\w.@:/?#[\]!$&'()*+,;=-]+[\w/])/g, (_, url: string) => {
+    return `<a href="https://${url}" target="_blank" rel="noopener noreferrer" class="blog-link">${url}</a>`
+  })
+
   // Bold
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
 
   // Italic
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>')
+
+  // Markdown links [text](url)
+  html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="blog-link">$1</a>')
 
   // Consolidate numbered list items separated by blank lines
   html = html.replace(/(\d+\.\s+[^\n]+)\n\n(?=\d+\.\s+)/g, '$1\n')
@@ -397,6 +488,7 @@ function renderInline(text: string): string {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="blog-link">$1</a>')
 }
 
 function highlightSyntax(code: string): string {

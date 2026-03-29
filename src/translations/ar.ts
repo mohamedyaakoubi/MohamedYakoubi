@@ -687,6 +687,7 @@ skills: {
     publishedOn: "نُشر في",
     categories: {
       "AI & Cybersecurity": "الذكاء الاصطناعي والأمن السيبراني",
+      "AI & Data Engineering": "الذكاء الاصطناعي وهندسة البيانات",
     },
     noPosts: "لم يتم العثور على مقالات في هذه الفئة.",
     viewAllPosts: "عرض جميع المقالات",

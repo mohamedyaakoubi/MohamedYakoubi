@@ -669,6 +669,7 @@ projects: {
     publishedOn: "Published on",
     categories: {
       "AI & Cybersecurity": "AI & Cybersecurity",
+      "AI & Data Engineering": "AI & Data Engineering",
     },
     noPosts: "No posts found in this category.",
     viewAllPosts: "View All Posts",

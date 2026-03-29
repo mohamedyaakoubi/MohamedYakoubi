@@ -1,4 +1,4 @@
-export type BlogCategory = "AI & Cybersecurity";
+export type BlogCategory = "AI & Cybersecurity" | "AI & Data Engineering";
 
 export interface BlogTheme {
   // Core CSS colors
