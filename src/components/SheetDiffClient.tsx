@@ -21,7 +21,11 @@ import {
   ArrowRight,
   TrendingUp,
   Rows,
-  Sparkles
+  Sparkles,
+  Mic,
+  Database,
+  Bot,
+  GitBranch
 } from 'lucide-react'
 import { useEffect } from 'react'
 
@@ -113,7 +117,7 @@ export default function SheetDiffClient() {
 
       {/* Main Content Areas */}
       <section className="max-w-6xl mx-auto px-6 py-16 space-y-24">
-        
+
         {/* Three Modes */}
         <motion.div
           initial="hidden"
@@ -179,6 +183,48 @@ export default function SheetDiffClient() {
               ></iframe>
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Use Cases Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="space-y-10"
+        >
+          <h2 className="text-3xl font-bold text-center">{t.useCasesTitle}</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {t.useCases.map((uc, i) => {
+              const icons = [
+                <Mic key={0} className="w-6 h-6" />,
+                <Globe2 key={1} className="w-6 h-6" />,
+                <Database key={2} className="w-6 h-6" />,
+                <Bot key={3} className="w-6 h-6" />,
+                <GitBranch key={4} className="w-6 h-6" />,
+              ]
+              const colorClasses = [
+                'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
+                'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400',
+                'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400',
+                'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400',
+                'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400',
+              ]
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeIn}
+                  className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${colorClasses[i]}`}>
+                    {icons[i]}
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{uc.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{uc.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
         </motion.div>
 
         {/* How It Works & Diff Categories Grid */}

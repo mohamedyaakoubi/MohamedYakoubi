@@ -37,6 +37,8 @@ type SheetDiffI18n = {
     getInTouch: string
     linkedinProfile: string
     trademark: string
+    useCasesTitle: string
+    useCases: { title: string; desc: string }[]
   }
   pricing: {
     title: string
@@ -146,6 +148,29 @@ const en: SheetDiffI18n = {
     getInTouch: 'Get in Touch',
     linkedinProfile: 'LinkedIn Profile',
     trademark: 'Google Sheets™ and Google Drive™ are trademarks of Google LLC.',
+    useCasesTitle: 'Who Uses SheetDiff™?',
+    useCases: [
+      {
+        title: 'Subtitle & Transcription QA',
+        desc: 'Compare original and edited subtitle or transcript files row by row. Measure accuracy with Word Error Rate (WER), Character Error Rate (CER), and Sentence Error Rate (SER).',
+      },
+      {
+        title: 'Localization & Translation Review',
+        desc: 'Track changes across translated spreadsheets with multi-script normalization — supporting Arabic, Cyrillic, CJK, Thai, Devanagari, and more.',
+      },
+      {
+        title: 'Data Quality Assurance',
+        desc: 'Validate dataset integrity between two versions. Every modification, addition, deletion, split, and merge is automatically categorized and color-coded.',
+      },
+      {
+        title: 'AI Output Evaluation',
+        desc: 'Compare AI-generated or machine-translated content against a human reference with WER/CER metrics — ideal for evaluating LLM and MT model accuracy.',
+      },
+      {
+        title: 'Spreadsheet Version Control',
+        desc: 'Commit a snapshot, make edits, then run the diff — a lightweight version comparison workflow entirely within Google Sheets™.',
+      },
+    ],
   },
   pricing: {
     title: 'SheetDiff™ Pricing',
@@ -315,6 +340,29 @@ const fr: SheetDiffI18n = {
     getInTouch: 'Nous contacter',
     linkedinProfile: 'Profil LinkedIn',
     trademark: 'Google Sheets™ et Google Drive™ sont des marques de Google LLC.',
+    useCasesTitle: 'Qui utilise SheetDiff™ ?',
+    useCases: [
+      {
+        title: 'QA sous-titres & transcription',
+        desc: 'Comparez les fichiers de sous-titres ou transcriptions originaux et édités ligne par ligne. Mesurez la précision avec WER, CER et SER.',
+      },
+      {
+        title: 'Révision de localisation & traduction',
+        desc: 'Suivez les modifications dans les feuilles de calcul traduites avec normalisation multi-scripts — arabe, cyrillique, CJK, thaï, devanagari et plus.',
+      },
+      {
+        title: 'Assurance qualité des données',
+        desc: 'Validez l’intégrité des données entre deux versions. Chaque modification, ajout, suppression, division et fusion est automatiquement catégorisé.',
+      },
+      {
+        title: 'Évaluation des sorties IA',
+        desc: 'Comparez du contenu généré par IA ou post-édité avec une référence humaine via WER/CER — idéal pour évaluer la précision des modèles IA et de traduction automatique.',
+      },
+      {
+        title: 'Contrôle de version des feuilles',
+        desc: 'Enregistrez un instantané, effectuez des modifications, puis comparez — un workflow de contrôle de version léger entièrement dans Google Sheets™.',
+      },
+    ],
   },
   pricing: {
     title: 'Tarifs SheetDiff™',
@@ -484,6 +532,29 @@ const ar: SheetDiffI18n = {
     getInTouch: 'تواصل معنا',
     linkedinProfile: 'حساب LinkedIn',
     trademark: 'Google Sheets™ و Google Drive™ هما علامتان تجاريتان لشركة Google LLC.',
+    useCasesTitle: 'من يستخدم SheetDiff™؟',
+    useCases: [
+      {
+        title: 'ضمان جودة الترجمة الصوتية والترجمة',
+        desc: 'قارن ملفات الترجمة أو النصوص الأصلية والمحررة صفاً بصف. قِس الدقة بمقاييس WER وCER وSER.',
+      },
+      {
+        title: 'مراجعة التوطين والترجمة',
+        desc: 'تتبع التغييرات في جداول البيانات المترجمة بتطبيع متعدد النصوص — العربية والسيريلية واليابانية/الصينية والتايلاندية والديفاناغاري والمزيد.',
+      },
+      {
+        title: 'ضمان جودة البيانات',
+        desc: 'تحقق من سلامة البيانات بين نسختين. كل تعديل وإضافة وحذف وتقسيم ودمج يُصنَّف ويُلوَّن تلقائياً.',
+      },
+      {
+        title: 'تقييم مخرجات الذكاء الاصطناعي',
+        desc: 'قارن المحتوى الذي تولده نماذج الذكاء الاصطناعي أو الترجمة الآلية مع المرجع البشري بمقاييس WER/CER — مثالي لتقييم دقة نماذج اللغة والترجمة.',
+      },
+      {
+        title: 'التحكم في إصدارات جداول البيانات',
+        desc: 'احفظ لقطة، أجرِ التعديلات، ثم قارن — سير عمل مقارنة إصدارات خفيف الوزن بالكامل داخل Google Sheets™.',
+      },
+    ],
   },
   pricing: {
     title: 'أسعار SheetDiff™',
