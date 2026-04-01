@@ -47,6 +47,9 @@ const ALL_URLS = [
   '/en/sheetdiff/privacy-policy',
   '/fr/sheetdiff/privacy-policy',
   '/ar/sheetdiff/privacy-policy',
+  '/en/projects/potential',
+  '/fr/projects/potential',
+  '/ar/projects/potential',
 ];
 
 interface IndexNowPayload {
