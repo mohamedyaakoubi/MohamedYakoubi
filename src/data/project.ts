@@ -81,6 +81,7 @@ export const featuredProjects: Project[] = [
     demoUrl: "https://potential-kegz.vercel.app/",
     githubUrl: "https://github.com/mohamedyaakoubi/potential",
     image: "/Potential.webp",
+    detailPage: "/projects/potential",
     features: [
       "Natural language dataset search powered by GPT-4",
       "Real-time API indexing and retrieval",

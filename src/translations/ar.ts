@@ -265,7 +265,8 @@ export default {
             links: {
               viewSource: "عرض المصدر",
               liveDemo: "عرض حي",
-              homepage: "الموقع"
+              homepage: "الموقع",
+              readMore: "اقرأ المزيد"
             },
             status: {
               private: "خاص",

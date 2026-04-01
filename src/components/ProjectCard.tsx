@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import Link from "next/link"
+import { FaGithub, FaExternalLinkAlt, FaBookOpen } from "react-icons/fa"
 import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 import { analytics } from '@/lib/analytics'
@@ -62,7 +63,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
           {t(`projects.descriptions.${project.name}`)}
         </p>
-        <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'}`}>
+        <div className={`flex flex-wrap gap-3 ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'}`}>
+          {project.detailPage && (
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href={`/${language}${project.detailPage}`}
+                className="flex items-center text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
+              >
+                <FaBookOpen className="mr-1" />
+                {t('projects.repository.links.readMore')}
+              </Link>
+            </motion.div>
+          )}
           {project.githubUrl && (
             <ProjectLink
               href={project.githubUrl}

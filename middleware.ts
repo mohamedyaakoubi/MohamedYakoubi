@@ -17,6 +17,7 @@ const validRoutes = new Set([
   'sheetdiff/pricing',
   'sheetdiff/privacy-policy',
   'sheetdiff/terms-of-service',
+  'projects/potential',
   'privacy-policy',
   'terms-of-service'
 ])

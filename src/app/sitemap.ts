@@ -45,6 +45,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })
     })
 
+    // Add project detail sub-pages
+    sitemapEntries.push({
+      url: `${baseUrl}/${locale}/projects/potential`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
+
     // Add individual blog posts
     blogPosts.forEach(post => {
       sitemapEntries.push({

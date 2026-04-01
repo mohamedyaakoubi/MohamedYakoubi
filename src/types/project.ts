@@ -11,4 +11,5 @@ export interface Project {
   category: ProjectCategory;
   features: string[];
   status: "completed" | "in-progress" | "planned";
+  detailPage?: string;
 }

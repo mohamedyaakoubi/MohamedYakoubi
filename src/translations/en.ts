@@ -258,7 +258,8 @@ projects: {
       links: {
         viewSource: "View Source",
         liveDemo: "Live Demo",
-        homepage: "Homepage"
+        homepage: "Homepage",
+        readMore: "Read More"
       },
       status: {
         private: "Private",

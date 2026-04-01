@@ -327,7 +327,8 @@ export default {
           links: {
             viewSource: "Voir le code source",
             liveDemo: "Démo en direct",
-            homepage: "Page d'accueil"
+            homepage: "Page d'accueil",
+            readMore: "En savoir plus"
           },
           status: {
             private: "Privé",
