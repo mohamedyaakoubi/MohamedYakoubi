@@ -9,9 +9,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Image() {
-  const imgRes = await fetch('https://www.mohamedyaakoubi.com/Potential.webp')
+  const imgRes = await fetch('https://www.mohamedyaakoubi.com/Potential.PNG')
   const imgBuffer = await imgRes.arrayBuffer()
-  const imgSrc = `data:image/webp;base64,${Buffer.from(imgBuffer).toString('base64')}`
+  const imgSrc = `data:image/png;base64,${Buffer.from(imgBuffer).toString('base64')}`
 
   return new ImageResponse(
     (
@@ -27,7 +27,6 @@ export default async function Image() {
           fontFamily: 'sans-serif',
         }}
       >
-        {/* Top bar */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
           <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 600 }}>
             by Mohamed Yaakoubi
@@ -43,21 +42,17 @@ export default async function Image() {
               fontWeight: 600,
             }}
           >
-            🏆 Abu Dhabi Spark AI Hackathon · Top 10
+            Abu Dhabi Spark AI Hackathon - Top 10
           </div>
         </div>
 
-        {/* Main content */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
-          {/* Screenshot */}
           <img
             src={imgSrc}
             width={340}
             height={220}
-            style={{ borderRadius: '16px', objectFit: 'cover', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+            style={{ borderRadius: '16px' }}
           />
-
-          {/* Text */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', flex: 1 }}>
             <h1
               style={{
@@ -74,26 +69,46 @@ export default async function Image() {
               AI-Powered Search Engine for Abu Dhabi Open Data
             </p>
             <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
-              {(['Next.js', 'GPT-4', 'Azure AI Search'] as const).map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    padding: '6px 14px',
-                    background: 'rgba(255,255,255,0.15)',
-                    borderRadius: '8px',
-                    color: 'rgba(255,255,255,0.9)',
-                    fontSize: '18px',
-                    fontWeight: 500,
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
+              <span
+                style={{
+                  padding: '6px 14px',
+                  background: 'rgba(255,255,255,0.15)',
+                  borderRadius: '8px',
+                  color: 'rgba(255,255,255,0.9)',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                }}
+              >
+                Next.js
+              </span>
+              <span
+                style={{
+                  padding: '6px 14px',
+                  background: 'rgba(255,255,255,0.15)',
+                  borderRadius: '8px',
+                  color: 'rgba(255,255,255,0.9)',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                }}
+              >
+                GPT-4
+              </span>
+              <span
+                style={{
+                  padding: '6px 14px',
+                  background: 'rgba(255,255,255,0.15)',
+                  borderRadius: '8px',
+                  color: 'rgba(255,255,255,0.9)',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                }}
+              >
+                Azure AI Search
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
           <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '20px' }}>
             www.mohamedyaakoubi.com/projects/potential
@@ -107,7 +122,7 @@ export default async function Image() {
               fontSize: '18px',
             }}
           >
-            Natural Language · Open Data · RAG
+            Natural Language - Open Data - RAG
           </span>
         </div>
       </div>
