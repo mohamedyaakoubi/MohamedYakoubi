@@ -244,6 +244,7 @@ export default {
       },
       projects: {
         title: "المشاريع",
+        pageTitle: "مشاريع الذكاء الاصطناعي وتطوير الويب — ملف الأعمال",
         error: "حدث خطأ في تحميل المشاريع",
         search: {
           placeholder: "ابحث عن المشاريع...",

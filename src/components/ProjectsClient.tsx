@@ -85,9 +85,9 @@ export default function ProjectsClient({ locale, translations, initialRepos = []
   return (
     <div className="min-h-screen py-32 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          {translations.projects?.title || 'Projects'}
-        </h2>
+        <h1 className="text-4xl font-bold mb-12 text-center">
+          {translations.projects?.pageTitle || translations.projects?.title || 'AI & Web Development Projects'}
+        </h1>
         <Suspense fallback={
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {[...Array(6)].map((_, i) => (

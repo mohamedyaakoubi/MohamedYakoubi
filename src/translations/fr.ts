@@ -306,6 +306,7 @@ export default {
     },
       projects: {
         title: "Projets",
+        pageTitle: "Projets IA et Développement Web — Portfolio",
         error: "Erreur de chargement des projets",
         search: {
           placeholder: "Rechercher des projets...",

@@ -237,6 +237,7 @@ export default {
 
 projects: {
     title: "Projects",
+    pageTitle: "AI & Web Development Projects — Portfolio",
     error: "Error loading projects",
     search: {
       placeholder: "Search projects...",
