@@ -33,7 +33,7 @@ type PotentialI18n = {
 const en: PotentialI18n = {
   badge: 'Abu Dhabi Spark AI Hackathon',
   hackathonBadge: 'Top 10 Finalist · 48-hour build',
-  heroTitle: 'Potential',
+  heroTitle: 'Potential — AI Search Engine for Abu Dhabi Open Data',
   heroDesc:
     'A conversational search layer built on top of the Abu Dhabi Open Data Platform. Ask in plain language, get matched datasets, inspect the data — no domain vocabulary required.',
   demoBtn: 'Live Demo',
@@ -111,7 +111,7 @@ const en: PotentialI18n = {
 const fr: PotentialI18n = {
   badge: "Hackathon Abu Dhabi Spark AI",
   hackathonBadge: "Top 10 finaliste \u00b7 Projet 48 h",
-  heroTitle: "Potential",
+  heroTitle: "Potential — Moteur de Recherche IA pour l'Open Data d'Abu Dhabi",
   heroDesc:
     "Une couche de recherche conversationnelle construite sur la plateforme Open Data d\u2019Abu Dhabi. Posez vos questions en langage courant, obtenez les jeux de donn\u00e9es correspondants et explorez-les \u2014 sans vocabulaire technique requis.",
   demoBtn: "D\u00e9mo en direct",
@@ -189,7 +189,7 @@ const fr: PotentialI18n = {
 const ar: PotentialI18n = {
   badge: 'هاكاثون أبوظبي سبارك للذكاء الاصطناعي',
   hackathonBadge: 'ضمن أفضل 10 · مشروع 48 ساعة',
-  heroTitle: 'Potential',
+  heroTitle: 'Potential — محرك بحث ذكي لمنصة بيانات أبوظبي المفتوحة',
   heroDesc:
     'طبقة بحث تحادثية مبنية فوق منصة بيانات أبوظبي المفتوحة. اطرح أسئلتك بلغتك الطبيعية، احصل على مجموعات البيانات المناسبة، واستكشفها — دون الحاجة إلى معرفة مصطلحات تقنية.',
   demoBtn: 'العرض التجريبي',
