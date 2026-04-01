@@ -660,6 +660,7 @@ projects: {
   },
   blog: {
     title: "Blog",
+    pageTitle: "Articles on AI, Security & Language Technology",
     subtitle: "Thoughts on AI, security, and language technology",
     recentPosts: "Recent Blog Posts",
     readMore: "Read More",

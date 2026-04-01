@@ -111,29 +111,6 @@ export default async function BlogPage(props: BlogPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
       />
 
-      {/* Static SEO content */}
-      <div className="sr-only" aria-hidden="false">
-        <h1>Blog - Mohamed Yaakoubi</h1>
-        <p>Articles and insights on AI security, penetration testing, responsible disclosure, AI-assisted development, and cybersecurity best practices by Mohamed Yaakoubi.</p>
-        <h2>Categories</h2>
-        <ul>
-          {blogCategories.map(cat => (
-            <li key={cat.id}>{cat.label}</li>
-          ))}
-        </ul>
-        <h2>Articles</h2>
-        {localizedPosts.map(post => (
-          <article key={post.slug}>
-            <h3>{post.title}</h3>
-            <p>{post.description}</p>
-            <p>Category: {post.category}</p>
-            <p>Published: {post.publishedAt}</p>
-            <p>Author: {post.author.name}</p>
-            <p>Tags: {post.tags.join(', ')}</p>
-          </article>
-        ))}
-      </div>
-
       <BlogClient locale={locale} translations={translations} posts={localizedPosts} />
     </>
   )

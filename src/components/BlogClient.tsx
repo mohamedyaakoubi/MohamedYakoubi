@@ -42,7 +42,7 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "'Instrument Serif', serif" }}>
-            {t('blog.title')}
+            {t('blog.pageTitle')}
           </h1>
           <p className="text-lg text-gray-500 dark:text-[#666] max-w-2xl mx-auto" style={{ fontFamily: "'Syne', sans-serif" }}>
             {t('blog.subtitle')}

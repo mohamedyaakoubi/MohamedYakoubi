@@ -672,6 +672,7 @@ export default {
 },
       blog: {
         title: "Blog",
+        pageTitle: "Articles sur l'IA, la Sécurité et la Technologie du Langage",
         subtitle: "Réflexions sur l'IA, la sécurité et la technologie linguistique",
         recentPosts: "Articles Récents",
         readMore: "Lire la suite",
