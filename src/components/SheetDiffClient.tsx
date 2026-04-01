@@ -122,6 +122,7 @@ export default function SheetDiffClient() {
           variants={staggerContainer}
           className="grid md:grid-cols-3 gap-6"
         >
+          <h2 className="sr-only">{t.modesTitle}</h2>
           <motion.div variants={fadeIn} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
             <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform shrink-0">
               <Rows className="w-6 h-6" />
@@ -200,7 +201,7 @@ export default function SheetDiffClient() {
                     {i + 1}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-lg">{stepTitle}</h4>
+                    <h3 className="font-semibold text-gray-900 dark:text-white text-lg">{stepTitle}</h3>
                   </div>
                 </motion.div>
               ))}
@@ -302,10 +303,10 @@ export default function SheetDiffClient() {
       <section className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-16">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 text-sm text-gray-600 dark:text-gray-400">
           <div>
-            <div className="flex items-center gap-2 font-semibold text-gray-900 dark:text-white mb-4 text-base">
+            <h3 className="flex items-center gap-2 font-semibold text-gray-900 dark:text-white mb-4 text-base">
               <ShieldCheck className="text-green-500" />
               {t.privacyTitle}
-            </div>
+            </h3>
             <p className="leading-relaxed mb-4">
               {t.privacyText}
             </p>
@@ -315,7 +316,7 @@ export default function SheetDiffClient() {
             </div>
           </div>
           <div className="md:text-right">
-            <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-base">{t.getInTouch}</h4>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-base">{t.getInTouch}</h3>
             <div className="flex flex-col md:items-end space-y-2">
               <a href="mailto:amirrak8@gmail.com" onClick={() => analytics.sheetdiffContactClick('email')} className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
                 <Mail className="w-4 h-4" /> amirrak8@gmail.com

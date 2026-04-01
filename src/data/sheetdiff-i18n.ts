@@ -9,6 +9,7 @@ type SheetDiffI18n = {
     heroDesc: string
     installBtn: string
     viewPricing: string
+    modesTitle: string
     structuralTitle: string
     structuralDesc: string
     cellTitle: string
@@ -95,6 +96,7 @@ const en: SheetDiffI18n = {
     heroDesc: 'SheetDiff™ is a schema-agnostic Google Sheets™ add-on built for spreadsheet comparison and quality assurance. It compares two versions of any structured data — the original and the reworked — and produces a detailed, row-level diff report.',
     installBtn: 'Install Add-on',
     viewPricing: 'View Pricing',
+    modesTitle: 'Comparison Modes',
     structuralTitle: 'Structural Diff',
     structuralDesc: 'Row-level comparison with advanced algorithms to detect splits and merges across your data rows.',
     cellTitle: 'Cell-by-Cell',
@@ -263,6 +265,7 @@ const fr: SheetDiffI18n = {
     heroDesc: 'SheetDiff™ est un module Google Sheets™ indépendant du schéma, conçu pour la comparaison de feuilles de calcul et l\u2019assurance qualité. Il compare deux versions de données structurées — l\u2019original et la version révisée — et produit un rapport de différences détaillé, ligne par ligne.',
     installBtn: 'Installer le module',
     viewPricing: 'Voir les tarifs',
+    modesTitle: 'Modes de comparaison',
     structuralTitle: 'Diff structurel',
     structuralDesc: 'Comparaison ligne par ligne avec des algorithmes avancés pour détecter les divisions et fusions dans vos données.',
     cellTitle: 'Cellule par cellule',
@@ -431,6 +434,7 @@ const ar: SheetDiffI18n = {
     heroDesc: 'SheetDiff™ هي إضافة Google Sheets™ مستقلة عن البنية، مصممة لمقارنة جداول البيانات وضمان الجودة. تقارن نسختين من أي بيانات منظمة — النسخة الأصلية والنسخة المعدّلة — وتنتج تقرير فروقات مفصّلاً على مستوى الصفوف.',
     installBtn: 'تثبيت الإضافة',
     viewPricing: 'عرض الأسعار',
+    modesTitle: 'أوضاع المقارنة',
     structuralTitle: 'الفرق الهيكلي',
     structuralDesc: 'مقارنة على مستوى الصفوف بخوارزميات متقدمة لاكتشاف التقسيمات والدمج عبر بياناتك.',
     cellTitle: 'خلية بخلية',
