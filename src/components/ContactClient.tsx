@@ -65,6 +65,7 @@ export default function ContactClient({ locale, translations }: ContactClientPro
   transition={{ delay: 0.2 }}
   className="space-y-6"
 >
+  <h2 className="sr-only">{translations?.contact?.contactInfo || 'Contact Information'}</h2>
   <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
     <div className="bg-blue-500/20 p-3 rounded-full">
       <FaEnvelope className="text-blue-500 w-6 h-6" />

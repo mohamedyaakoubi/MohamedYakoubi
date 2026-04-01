@@ -148,6 +148,8 @@ export default {
     scrollToAbout: "En savoir plus",
     services: {
       title: "Services",
+      pageTitle: "Services Professionnels — Traduction, Annotation IA & Développement Web",
+      sectionTitle: "Services Disponibles",
       description: "Services professionnels adaptés à vos besoins",
       categories: {
         all: "Tous",
@@ -329,7 +331,8 @@ export default {
             viewSource: "Voir le code source",
             liveDemo: "Démo en direct",
             homepage: "Page d'accueil",
-            readMore: "En savoir plus"
+            readMore: "En savoir plus",
+            installAddon: "Installer l'extension"
           },
           status: {
             private: "Privé",
@@ -475,6 +478,7 @@ export default {
           sending: "Envoi en cours...",
           success: "Votre message a été envoyé avec succès !"
         },
+        contactInfo: "Coordonnées",
         info: {
           email: "Email",
           phone: "Téléphone",
@@ -490,6 +494,7 @@ export default {
       
       experience: {
         title: "Expérience",
+        pageTitle: "Expérience Professionnelle — IA, Localisation & Technologie du Langage",
         current: "Présent",
         positions: {
           "AI Data Annotator & Search Relevance Evaluator": "Annotateur de données IA & Évaluateur de pertinence de recherche",

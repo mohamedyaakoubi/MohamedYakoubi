@@ -12,4 +12,5 @@ export interface Project {
   features: string[];
   status: "completed" | "in-progress" | "planned";
   detailPage?: string;
+  marketplaceUrl?: string;
 }

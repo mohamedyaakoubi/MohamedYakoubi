@@ -2,6 +2,63 @@ import { Project } from "@/types/project"
 
 export const featuredProjects: Project[] = [
   {
+    name: "Potential",
+    category: "AI/ML",
+    description: "AI-powered search engine for the Abu Dhabi Open Data Platform with real-time API query processing.",
+    longDescription: "Potential enhances the Abu Dhabi Open Data Platform by integrating GPT-4 with Azure Cognitive Search, enabling users to retrieve relevant datasets using natural language queries. It dynamically indexes API-accessed data and refines queries using LLM-powered suggestions.",
+    technologies: ["Next.js", "Azure Cognitive Search", "GPT-4", "API Query Processing"],
+    demoUrl: "https://potential-kegz.vercel.app/",
+    githubUrl: "https://github.com/mohamedyaakoubi/potential",
+    image: "/Potential.webp",
+    detailPage: "/projects/potential",
+    features: [
+      "Natural language dataset search powered by GPT-4",
+      "Real-time API indexing and retrieval",
+      "Automated query refinement for better results",
+      "Seamless integration with Abu Dhabi Open Data API"
+    ],
+    status: "completed"
+  },
+  {
+    name: "SheetDiff™",
+    category: "Tools",
+    description: "Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics.",
+    longDescription: "SheetDiff™ is a schema-agnostic Google Sheets add-on built for spreadsheet comparison and quality assurance. It auto-detects column roles (speaker, timestamps, transcript, sound events), lets reviewers commit snapshots, then computes a row-level diff against the reworked version — categorizing every row as Unchanged, Modified, Split, Merged, Added, or Deleted. It produces a color-coded Diff Viewer sheet and a summary QA Report with per-category counts, WER/CER/SER quality metrics, and optional reviewer/transcriptionist metadata.",
+    technologies: ["Google Apps Script", "Google Sheets API", "CardService", "HtmlService"],
+    image: "/sheetdiff-logo.png",
+    detailPage: "/sheetdiff",
+    marketplaceUrl: "https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_qa/51917286120",
+    features: [
+      "Auto-detect column roles via flexible header pattern matching",
+      "Snapshot-based comparison workflow (original → reworked)",
+      "Six diff categories: Unchanged, Modified, Split, Merged, Added, Deleted",
+      "Color-coded Diff Viewer sheet with row-level highlighting",
+      "Summary QA Report with category counts and metadata",
+      "Configurable similarity threshold and settings sidebar"
+    ],
+    status: "completed"
+  },
+  {
+    name: "InternationalSkills",
+    category: "Web Development",
+    description: "Comprehensive recruiting system for InternationalSkills.fi connecting job seekers with employers.",
+    longDescription: "The International Skills Candidate Portal is a web application that streamlines the job application process for everyone. For Job Seekers: create an account, fill out applications, upload documents (CV, certificates), and track application status with real-time updates and interview notifications. For Recruiters/Admins: access a powerful admin dashboard to view all candidates, filter and sort applicants, schedule interviews with automatic Google Meet links, score candidates using AI-powered evaluation, and update application statuses. The portal is secure, web-based, and features email verification, calendar integration, and AI-powered scoring to save time and make hiring easier.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Google Calendar API", "AI Scoring"],
+    demoUrl: "https://candidate-git-latest-mohamedyaakoubis-projects.vercel.app/",
+    image: "/projects/international-skills-labor-company.webp",
+    features: [
+      "User authentication with email verification",
+      "Complete candidate profile management with document uploads",
+      "Real-time application tracking and status updates",
+      "Admin dashboard with advanced filtering and sorting",
+      "Automated interview scheduling with Google Meet integration",
+      "AI-powered candidate scoring and evaluation",
+      "Email notifications for status updates and interviews",
+      "Secure document storage and management"
+    ],
+    status: "completed"
+  },
+  {
     name: "NotYet",
     category: "AI/ML",
     description: "AI-powered web application assisting Tunisian students and job seekers in career development.",
@@ -32,61 +89,6 @@ export const featuredProjects: Project[] = [
       "User-friendly patient management system",
       "Real-time appointment scheduling and tracking",
       "Collaborative tools for healthcare professionals"
-    ],
-    status: "completed"
-  },
-  {
-    name: "InternationalSkills",
-    category: "Web Development",
-    description: "Comprehensive recruiting system for InternationalSkills.fi connecting job seekers with employers.",
-    longDescription: "The International Skills Candidate Portal is a web application that streamlines the job application process for everyone. For Job Seekers: create an account, fill out applications, upload documents (CV, certificates), and track application status with real-time updates and interview notifications. For Recruiters/Admins: access a powerful admin dashboard to view all candidates, filter and sort applicants, schedule interviews with automatic Google Meet links, score candidates using AI-powered evaluation, and update application statuses. The portal is secure, web-based, and features email verification, calendar integration, and AI-powered scoring to save time and make hiring easier.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Google Calendar API", "AI Scoring"],
-    demoUrl: "https://candidate-git-latest-mohamedyaakoubis-projects.vercel.app/",
-    image: "/projects/international-skills-labor-company.webp",
-    features: [
-      "User authentication with email verification",
-      "Complete candidate profile management with document uploads",
-      "Real-time application tracking and status updates",
-      "Admin dashboard with advanced filtering and sorting",
-      "Automated interview scheduling with Google Meet integration",
-      "AI-powered candidate scoring and evaluation",
-      "Email notifications for status updates and interviews",
-      "Secure document storage and management"
-    ],
-    status: "completed"
-  },
-  {
-    name: "SheetDiff™",
-    category: "Tools",
-    description: "Google Sheets add-on that compares spreadsheet versions and generates QA diff reports with color-coded output and quality metrics.",
-    longDescription: "SheetDiff™ is a schema-agnostic Google Sheets add-on built for spreadsheet comparison and quality assurance. It auto-detects column roles (speaker, timestamps, transcript, sound events), lets reviewers commit snapshots, then computes a row-level diff against the reworked version — categorizing every row as Unchanged, Modified, Split, Merged, Added, or Deleted. It produces a color-coded Diff Viewer sheet and a summary QA Report with per-category counts, WER/CER/SER quality metrics, and optional reviewer/transcriptionist metadata.",
-    technologies: ["Google Apps Script", "Google Sheets API", "CardService", "HtmlService"],
-    image: "/sheetdiff-logo.png",
-    features: [
-      "Auto-detect column roles via flexible header pattern matching",
-      "Snapshot-based comparison workflow (original → reworked)",
-      "Six diff categories: Unchanged, Modified, Split, Merged, Added, Deleted",
-      "Color-coded Diff Viewer sheet with row-level highlighting",
-      "Summary QA Report with category counts and metadata",
-      "Configurable similarity threshold and settings sidebar"
-    ],
-    status: "completed"
-  },
-  {
-    name: "Potential",
-    category: "AI/ML",
-    description: "AI-powered search engine for the Abu Dhabi Open Data Platform with real-time API query processing.",
-    longDescription: "Potential enhances the Abu Dhabi Open Data Platform by integrating GPT-4 with Azure Cognitive Search, enabling users to retrieve relevant datasets using natural language queries. It dynamically indexes API-accessed data and refines queries using LLM-powered suggestions.",
-    technologies: ["Next.js", "Azure Cognitive Search", "GPT-4", "API Query Processing"],
-    demoUrl: "https://potential-kegz.vercel.app/",
-    githubUrl: "https://github.com/mohamedyaakoubi/potential",
-    image: "/Potential.webp",
-    detailPage: "/projects/potential",
-    features: [
-      "Natural language dataset search powered by GPT-4",
-      "Real-time API indexing and retrieval",
-      "Automated query refinement for better results",
-      "Seamless integration with Abu Dhabi Open Data API"
     ],
     status: "completed"
   },

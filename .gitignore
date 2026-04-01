@@ -51,5 +51,7 @@ next-env.d.ts
 
 # blog drafts
 blog-post.html
+blog_post_fr.html
+blog_post (1).html
 will-need.txt
 prompt.txt

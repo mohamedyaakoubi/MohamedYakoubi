@@ -49,10 +49,10 @@ const AnimatedContent = ({ typedText, language, t }: AnimatedContentProps) => {
         animate={{ opacity: 1, y: 0 }} 
         transition={{ delay: 0.7 }}
       >
-        <h2 className="text-xl md:text-2xl dark:text-gray-300 text-gray-700 mb-8 h-8">
+        <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-700 mb-8 h-8">
           {typedText}
           <span className="animate-blink">|</span>
-        </h2>
+        </p>
         
         {/* Replace the social buttons with the imported component */}
         <Suspense fallback={
@@ -191,12 +191,12 @@ export function Hero() {
           <div className="max-w-4xl mx-auto">
             {/* Static content rendered immediately for fast LCP */}
             <div id="hero-headline" className="mb-4 text-center" data-testid="main-heading">
-              <h2 className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
+              <p className="block text-2xl md:text-3xl font-medium mb-2 text-gray-700 dark:text-gray-300">
                 {t('hero.greeting')}
-              </h2>
+              </p>
                   
       {/* Name - rendered immediately without animations */}
-<h3 
+<h1
   className="gradient-name block text-4xl md:text-6xl font-bold mb-4"
   style={{
     fontWeight: 700,
@@ -207,11 +207,11 @@ export function Hero() {
     : language === 'fr'
     ? 'Yaakoubi Mohamed'
     : 'Mohamed Yaakoubi'}
-</h3>
+</h1>
 
-<h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
+<p className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">
   {t('hero.tagline')}
-</h2>
+</p>
             </div>
 
             {/* Animated elements render after critical content loads */}

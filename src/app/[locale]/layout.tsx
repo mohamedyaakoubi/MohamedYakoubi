@@ -569,8 +569,7 @@ export default async function LocaleLayout({
       <body className={fontClasses} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <LanguageProvider initialLanguage={locale}>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { FaGithub, FaExternalLinkAlt, FaBookOpen } from "react-icons/fa"
+import { FaGithub, FaExternalLinkAlt, FaBookOpen, FaDownload } from "react-icons/fa"
 import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
 import { analytics } from '@/lib/analytics'
@@ -87,6 +87,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.demoUrl}
               icon={FaExternalLinkAlt}
               label={t('projects.repository.links.liveDemo')}
+            />
+          )}
+          {project.marketplaceUrl && (
+            <ProjectLink
+              href={project.marketplaceUrl}
+              icon={FaDownload}
+              label={t('projects.repository.links.installAddon')}
             />
           )}
         </div>

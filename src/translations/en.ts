@@ -78,6 +78,8 @@ export default {
     scrollToAbout: "Scroll to About section",
     services: {
       title: "Services",
+      pageTitle: "Professional Services — Translation, AI Annotation & Web Development",
+      sectionTitle: "Available Services",
       description: "Professional services tailored to meet your needs",
       categories: {
         all: "All",
@@ -260,7 +262,8 @@ projects: {
         viewSource: "View Source",
         liveDemo: "Live Demo",
         homepage: "Homepage",
-        readMore: "Read More"
+        readMore: "Read More",
+        installAddon: "Install Add-on"
       },
       status: {
         private: "Private",
@@ -406,6 +409,7 @@ projects: {
       sending: "Sending...",
       success: "Your message has been sent successfully!"
     },
+    contactInfo: "Contact Information",
     info: {
       email: "Email",
       phone: "Phone",
@@ -421,6 +425,7 @@ projects: {
   
   experience: {
     title: "Experience",
+    pageTitle: "Professional Experience — AI, Localization & Language Technology",
     current: "Present",
     positions: {
       "AI Data Annotator & Search Relevance Evaluator": "AI Data Annotator & Search Relevance Evaluator",

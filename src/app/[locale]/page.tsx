@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import HomeClient from '@/components/HomeClient'
-import { StaticHome } from '@/components/StaticHome'
 import { getTranslations } from '@/lib/translations'
 
 export async function generateStaticParams() {
@@ -54,7 +53,6 @@ export default async function HomePage(props: HomePageProps) {
   
   return (
     <>
-      <StaticHome locale={locale} translations={translations} />
       <HomeClient locale={locale} translations={translations} />
     </>
   )

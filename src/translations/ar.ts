@@ -86,6 +86,8 @@ export default {
      
       services: {
         title: "الخدمات",
+        pageTitle: "الخدمات المهنية — الترجمة وتعليق البيانات وتطوير الويب",
+        sectionTitle: "الخدمات المتاحة",
         description: "خدمات احترافية مخصصة لتلبية احتياجاتك",
         categories: {
           all: "الكل",
@@ -267,7 +269,8 @@ export default {
               viewSource: "عرض المصدر",
               liveDemo: "عرض حي",
               homepage: "الموقع",
-              readMore: "اقرأ المزيد"
+              readMore: "اقرأ المزيد",
+              installAddon: "تثبيت الإضافة"
             },
             status: {
               private: "خاص",
@@ -414,6 +417,7 @@ export default {
       sending: "جاري الإرسال...",
       success: "تم إرسال رسالتك بنجاح!"
     },
+    contactInfo: "معلومات الاتصال",
     info: {
       email: "البريد الإلكتروني",
       phone: "الهاتف",
@@ -430,6 +434,7 @@ export default {
 
   experience: {
     title: "الخبرات",
+    pageTitle: "الخبرة المهنية — الذكاء الاصطناعي والتوطين وتكنولوجيا اللغة",
     current: "حالياً",
     positions: {
       "AI Data Annotator & Search Relevance Evaluator": "معلم بيانات الذكاء الاصطناعي ومقيم صلة البحث",

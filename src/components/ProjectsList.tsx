@@ -68,6 +68,9 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
     return project.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  const featuredNameSet = new Set(featuredProjects.map(p => p.name.toLowerCase()))
+  const deduplicatedRepos = repos.filter(repo => !featuredNameSet.has(repo.name.toLowerCase()))
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -190,7 +193,7 @@ export default function ProjectsList({ initialRepos }: ProjectsListProps) {
           </div>
         </div>
       }>
-        <GithubReposList repos={repos} filter={filter} />
+        <GithubReposList repos={deduplicatedRepos} filter={filter} />
       </Suspense>
     </motion.div>
   )
