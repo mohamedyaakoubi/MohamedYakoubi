@@ -73,8 +73,8 @@ export default async function Image() {
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '26px', margin: 0, lineHeight: 1.4 }}>
               AI-Powered Search Engine for Abu Dhabi Open Data
             </p>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '4px' }}>
-              {['Next.js', 'GPT-4', 'Azure AI Search'].map((tag) => (
+            <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
+              {(['Next.js', 'GPT-4', 'Azure AI Search'] as const).map((tag) => (
                 <span
                   key={tag}
                   style={{
