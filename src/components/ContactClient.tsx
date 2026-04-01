@@ -49,13 +49,13 @@ export default function ContactClient({ locale, translations }: ContactClientPro
     <div className="w-full bg-gray-100 dark:bg-gray-900 min-h-screen overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 py-32">
         <div className="max-w-4xl mx-auto">
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white"
           >
             {translations?.contact?.title || 'Contact Me'}
-          </motion.h2>
+          </motion.h1>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
