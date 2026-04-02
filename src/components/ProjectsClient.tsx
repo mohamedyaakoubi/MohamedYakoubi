@@ -14,8 +14,7 @@ const ProjectsList = dynamic(() => import("@/components/ProjectsList"), {
         <LoadingCard key={i} />
       ))}
     </div>
-  ),
-  ssr: false
+  )
 })
 
 interface ProjectsClientProps {
