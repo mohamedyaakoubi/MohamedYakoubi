@@ -25,6 +25,8 @@ This portfolio is packed with features designed to provide an engaging and infor
 *   🤖 **AI-Powered Chatbot:**
     *   An intelligent chatbot powered by **Mistral AI** that uses your CV/resume content as its knowledge base.
     *   Uses LangChain to process and split CV documents for context-aware responses.
+    *   ChromaDB integration for vector-based semantic search over CV data.
+    *   Hugging Face Inference SDK for additional AI capabilities.
     *   Users can ask questions about your skills, experience, and projects in natural language.
     *   Maintains conversation context for better interactions.
 

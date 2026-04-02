@@ -1,21 +1,10 @@
 "use client"
-import { Suspense, useEffect, useState } from "react"
-import dynamic from "next/dynamic"
+import { useEffect, useState } from "react"
 import { LoadingCard } from "@/components/LoadingCard"
 import { getGithubReposClient } from "@/utils/github"
 import { useTranslation } from '@/hooks/useTranslation'
 import type { Repository } from "@/utils/github"
-
-// Dynamically import the heavy ProjectsList component
-const ProjectsList = dynamic(() => import("@/components/ProjectsList"), {
-  loading: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-      {[...Array(6)].map((_, i) => (
-        <LoadingCard key={i} />
-      ))}
-    </div>
-  )
-})
+import ProjectsList from "@/components/ProjectsList"
 
 interface ProjectsClientProps {
   locale: string
@@ -87,15 +76,7 @@ export default function ProjectsClient({ locale, translations, initialRepos = []
         <h1 className="text-4xl font-bold mb-12 text-center">
           {translations.projects?.pageTitle || translations.projects?.title || 'AI & Web Development Projects'}
         </h1>
-        <Suspense fallback={
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {[...Array(6)].map((_, i) => (
-              <LoadingCard key={i} />
-            ))}
-          </div>
-        }>
-          <ProjectsList initialRepos={repos} />
-        </Suspense>
+        <ProjectsList initialRepos={repos} />
       </div>
     </div>
   )
