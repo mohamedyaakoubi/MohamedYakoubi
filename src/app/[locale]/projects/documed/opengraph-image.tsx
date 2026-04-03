@@ -9,9 +9,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Image() {
-  const imgRes = await fetch('https://www.mohamedyaakoubi.com/DocuMed.webp')
+  const imgRes = await fetch('https://www.mohamedyaakoubi.com/DocuMed.PNG')
   const imgBuffer = await imgRes.arrayBuffer()
-  const imgSrc = `data:image/webp;base64,${Buffer.from(imgBuffer).toString('base64')}`
+  const imgSrc = `data:image/png;base64,${Buffer.from(imgBuffer).toString('base64')}`
 
   return new ImageResponse(
     (
