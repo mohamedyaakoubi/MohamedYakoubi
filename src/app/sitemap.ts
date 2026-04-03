@@ -52,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     })
+    sitemapEntries.push({
+      url: `${baseUrl}/${locale}/projects/documed`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
 
     // Add individual blog posts
     blogPosts.forEach(post => {

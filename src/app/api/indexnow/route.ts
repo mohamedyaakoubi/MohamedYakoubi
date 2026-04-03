@@ -50,6 +50,9 @@ const ALL_URLS = [
   '/en/projects/potential',
   '/fr/projects/potential',
   '/ar/projects/potential',
+  '/en/projects/documed',
+  '/fr/projects/documed',
+  '/ar/projects/documed',
 ];
 
 interface IndexNowPayload {

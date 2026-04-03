@@ -423,6 +423,7 @@ export default async function LocaleLayout({
                 {
                   "@type": "WebApplication",
                   "name": "DocuMed - Healthcare Management System",
+                  "url": "https://www.mohamedyaakoubi.com/en/projects/documed",
                   "applicationCategory": "MedicalApplication",
                   "description": "Medical web application for streamlining healthcare resource access and patient management, built with React and Firebase",
                   "operatingSystem": "Web Browser",
