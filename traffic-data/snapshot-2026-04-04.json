@@ -1,0 +1,224 @@
+{
+  "fetched_at": "2026-04-04T06:56:58Z",
+  "clones": {
+  "count": 812,
+  "uniques": 218,
+  "clones": [
+    {
+      "timestamp": "2026-03-20T00:00:00Z",
+      "count": 21,
+      "uniques": 6
+    },
+    {
+      "timestamp": "2026-03-21T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-22T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-23T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-24T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-25T00:00:00Z",
+      "count": 336,
+      "uniques": 79
+    },
+    {
+      "timestamp": "2026-03-26T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-27T00:00:00Z",
+      "count": 85,
+      "uniques": 39
+    },
+    {
+      "timestamp": "2026-03-28T00:00:00Z",
+      "count": 23,
+      "uniques": 14
+    },
+    {
+      "timestamp": "2026-03-29T00:00:00Z",
+      "count": 28,
+      "uniques": 13
+    },
+    {
+      "timestamp": "2026-03-30T00:00:00Z",
+      "count": 31,
+      "uniques": 6
+    },
+    {
+      "timestamp": "2026-03-31T00:00:00Z",
+      "count": 5,
+      "uniques": 5
+    },
+    {
+      "timestamp": "2026-04-01T00:00:00Z",
+      "count": 187,
+      "uniques": 62
+    },
+    {
+      "timestamp": "2026-04-02T00:00:00Z",
+      "count": 94,
+      "uniques": 23
+    }
+  ]
+},
+  "views": {
+  "count": 161,
+  "uniques": 2,
+  "views": [
+    {
+      "timestamp": "2026-03-20T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-21T00:00:00Z",
+      "count": 9,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-22T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-23T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-24T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-25T00:00:00Z",
+      "count": 20,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-26T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-03-27T00:00:00Z",
+      "count": 64,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-28T00:00:00Z",
+      "count": 9,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-29T00:00:00Z",
+      "count": 9,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-30T00:00:00Z",
+      "count": 13,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-31T00:00:00Z",
+      "count": 18,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-01T00:00:00Z",
+      "count": 11,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-02T00:00:00Z",
+      "count": 7,
+      "uniques": 1
+    }
+  ]
+},
+  "referrers": [
+  {
+    "referrer": "github.com",
+    "count": 74,
+    "uniques": 1
+  }
+],
+  "popular_paths": [
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi",
+    "title": "Overview",
+    "count": 71,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/graphs/traffic",
+    "title": "/graphs/traffic",
+    "count": 12,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/traffic-data/traffic-log.csv",
+    "title": "/blob/master/traffic-data/traffic-log.csv",
+    "count": 11,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/actions",
+    "title": "/actions",
+    "count": 10,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/tree/master/traffic-data",
+    "title": "/tree/master/traffic-data",
+    "count": 10,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/pulse",
+    "title": "/pulse",
+    "count": 9,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/actions/workflows/traffic-archive.yml",
+    "title": "/actions/workflows/traffic-archive.yml",
+    "count": 5,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/traffic-data/snapshot-2026-03-27.json",
+    "title": "/blob/master/traffic-data/snapshot-2026-03-27.json",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/issues",
+    "title": "/issues",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/actions/metrics/performance",
+    "title": "/actions/metrics/performance",
+    "count": 1,
+    "uniques": 1
+  }
+]
+}
