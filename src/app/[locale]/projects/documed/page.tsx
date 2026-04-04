@@ -131,6 +131,12 @@ export default async function DocuMedProjectPage({
     keywords: 'healthcare management, medical records, appointment scheduling, Firebase, Next.js',
     codeRepository: 'https://github.com/mohamedyaakoubi/documed',
     screenshot: `https://www.mohamedyaakoubi.com/${locale}/projects/documed/opengraph-image`,
+    hasPart: {
+      '@type': 'DigitalDocument',
+      name: 'DocuMed Project Documentation',
+      encodingFormat: 'application/pdf',
+      url: 'https://www.mohamedyaakoubi.com/projects/documed.pdf',
+    },
   }
 
   return (

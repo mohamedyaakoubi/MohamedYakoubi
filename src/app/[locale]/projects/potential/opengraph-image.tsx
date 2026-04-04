@@ -51,6 +51,7 @@ export default async function Image() {
             src={imgSrc}
             width={340}
             height={220}
+            alt="Potential AI search engine interface screenshot"
             style={{ borderRadius: '16px' }}
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', flex: 1 }}>

@@ -6,7 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/context/language-context'
 import { getDocuMedI18n } from '@/data/documed-i18n'
-import { ArrowLeft, ExternalLink, Github, ChevronRight, LogIn, CalendarCheck, ClipboardList, LayoutDashboard, Calendar, FileText, Building2, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, ChevronRight, LogIn, CalendarCheck, ClipboardList, LayoutDashboard, Calendar, FileText, Building2, ShieldCheck, Maximize2, Minimize2 } from 'lucide-react'
+import PdfSlideCarousel from '@/components/PdfSlideCarousel'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 24 },
@@ -119,6 +120,37 @@ export default function DocuMedProjectClient() {
                 />
               </motion.div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── DOCUMENTATION SLIDES ────────────────────────────── */}
+      <section className="bg-white dark:bg-gray-900 py-16 md:py-20">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={stagger}
+            className="space-y-6"
+          >
+            <motion.div variants={fadeIn} className="text-center space-y-2">
+              <h2 className="text-2xl md:text-3xl font-bold">{t.docsTitle}</h2>
+            </motion.div>
+            <motion.div variants={fadeIn}>
+              <PdfSlideCarousel
+                slides={[
+                  { src: '/projects/documed-slides/slide-1.png', alt: 'DocuMed cover — Connecting Doctors and Patients through Digital Records' },
+                  { src: '/projects/documed-slides/slide-2.png', alt: 'DocuMed — Vision and Mission: hospital rules, online appointments, practice visibility' },
+                  { src: '/projects/documed-slides/slide-3.png', alt: 'DocuMed — Transforming Healthcare: patient awareness, digital presence for doctors, streamlining medical records' },
+                  { src: '/projects/documed-slides/slide-4.png', alt: 'DocuMed — Badges and subscription monetization features' },
+                  { src: '/projects/documed-slides/slide-5.png', alt: 'DocuMed — Thank you slide' },
+                ]}
+                pdfUrl="/projects/documed.pdf"
+                title="DocuMed"
+                openLabel={t.pdfOpen}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>

@@ -33,6 +33,7 @@ export default async function Image() {
               src={logoSrc}
               width={64}
               height={64}
+              alt="SheetDiff logo"
               style={{ borderRadius: '12px' }}
             />
             <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: '22px', fontWeight: 600 }}>
@@ -59,6 +60,7 @@ export default async function Image() {
             src={logoSrc}
             width={200}
             height={200}
+            alt="SheetDiff — Google Sheets comparison tool logo"
             style={{ borderRadius: '24px' }}
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

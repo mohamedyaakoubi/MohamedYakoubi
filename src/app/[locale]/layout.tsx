@@ -109,6 +109,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
       locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'profile',
+      images: [
+        {
+          url: 'https://www.mohamedyaakoubi.com/profile.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Mohamed Yaakoubi — AI Language Technology Specialist',
+          type: 'image/jpeg',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -116,6 +125,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       site: '@Mohamed0Yakoubi',
       creator: '@Mohamed0Yakoubi',
+      images: ['https://www.mohamedyaakoubi.com/profile.jpg'],
     },
     robots: {
       index: true,

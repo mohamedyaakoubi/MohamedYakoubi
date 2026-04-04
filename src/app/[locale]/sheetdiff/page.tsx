@@ -50,20 +50,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description,
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff`,
       type: 'website',
-      images: [
-        {
-          url: 'https://www.mohamedyaakoubi.com/sheetdiff-logo.png',
-          width: 512,
-          height: 512,
-          alt: 'SheetDiff\u2122 \u2014 Google Sheets\u2122 Diff & QA Add-on',
-        },
-      ],
+      siteName: 'Mohamed Yaakoubi Portfolio',
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
-      images: ['https://www.mohamedyaakoubi.com/sheetdiff-logo.png'],
     },
   }
 }

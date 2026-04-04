@@ -20,6 +20,8 @@ type DocuMedI18n = {
   securityItems: string[]
   contextTitle: string
   contextText: string
+  docsTitle: string
+  pdfOpen: string
   metaTitle: string
   metaDesc: string
 }
@@ -86,6 +88,8 @@ const en: DocuMedI18n = {
   contextTitle: 'Built during a bootcamp',
   contextText:
     'DocuMed was developed over six weeks as part of the MentorNations fullstack development bootcamp, funded by the Australian Embassy. A team of three built the application end-to-end — from authentication and Firestore schema design to UI polish and deployment. The goal was to ship a practical, production-ready tool that addressed a real friction point: the disconnect between patient records, appointment booking, and clinic administration in small-to-medium healthcare settings.',
+  docsTitle: 'Project Documentation',
+  pdfOpen: 'Open PDF',
   metaTitle: 'DocuMed — Healthcare Management Platform | Mohamed Yaakoubi',
   metaDesc:
     'DocuMed is a full-stack healthcare platform with dual dashboards for doctors and patients, real-time appointment scheduling, and secure medical records — built with Next.js and Firebase.',
@@ -153,6 +157,8 @@ const fr: DocuMedI18n = {
   contextTitle: "Construit pendant un bootcamp",
   contextText:
     "DocuMed a été développé sur six semaines dans le cadre du bootcamp de développement fullstack MentorNations, financé par l'Ambassade d'Australie. Une équipe de trois personnes a construit l'application de bout en bout — de l'authentification et la conception du schéma Firestore jusqu'au polish de l'interface et au déploiement. L'objectif était de livrer un outil pratique et prêt pour la production qui répondait à un vrai point de friction : le manque de connexion entre les dossiers patients, la prise de rendez-vous et l'administration des cliniques dans les structures de santé petites et moyennes.",
+  docsTitle: "Documentation du projet",
+  pdfOpen: "Ouvrir le PDF",
   metaTitle: "DocuMed — Plateforme de Gestion de Santé | Mohamed Yaakoubi",
   metaDesc:
     "DocuMed est une plateforme de santé full-stack avec des tableaux de bord doubles pour médecins et patients, une prise de rendez-vous en temps réel et des dossiers médicaux sécurisés — construite avec Next.js et Firebase.",
@@ -220,6 +226,8 @@ const ar: DocuMedI18n = {
   contextTitle: 'بُني خلال بوتكامب',
   contextText:
     'طُوِّر DocuMed على مدى ستة أسابيع ضمن بوتكامب التطوير المتكامل التابع لـ MentorNations، بتمويل من السفارة الأسترالية. بنى فريق من ثلاثة أشخاص التطبيق بالكامل — من المصادقة وتصميم مخطط Firestore، وصولًا إلى صقل الواجهة والنشر. كان الهدف توصيل أداة عملية وجاهزة للإنتاج تعالج نقطة احتكاك حقيقية: الفصل بين سجلات المرضى وحجز المواعيد وإدارة العيادات في بيئات الرعاية الصحية الصغيرة والمتوسطة.',
+  docsTitle: 'توثيق المشروع',
+  pdfOpen: 'فتح PDF',
   metaTitle: 'DocuMed — منصة إدارة الرعاية الصحية | محمد يعقوبي',
   metaDesc:
     'DocuMed منصة رعاية صحية متكاملة تضم لوحتَي تحكم للأطباء والمرضى، وجدولة مواعيد فورية، وسجلات طبية آمنة — مبنية بـ Next.js و Firebase.',
