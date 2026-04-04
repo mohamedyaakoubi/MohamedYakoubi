@@ -16,9 +16,10 @@ import {
   CalendarCheck,
   TableProperties,
   BarChart3,
-  LogIn,
-  Cpu,
-  Video,
+  UserPlus,
+  FileCheck2,
+  Activity,
+  Users,
   ShieldCheck,
 } from 'lucide-react'
 
@@ -33,7 +34,8 @@ const stagger = {
 }
 
 const featureIcons = [UserCheck, LayoutDashboard, Brain, CalendarCheck, TableProperties, BarChart3]
-const stepIcons = [LogIn, Cpu, Video]
+const candidateIcons = [UserPlus, FileCheck2, Activity]
+const hrIcons = [Users, Brain, CalendarCheck]
 
 export default function InternationalSkillsClient() {
   const { language } = useLanguage()
@@ -178,31 +180,79 @@ export default function InternationalSkillsClient() {
             variants={stagger}
             className="space-y-10"
           >
-            <motion.div variants={fadeIn} className="text-center space-y-2">
-              <h2 className="text-2xl md:text-3xl font-bold">{t.howTitle}</h2>
-              <p className="text-gray-500 dark:text-gray-400">{t.howSubtitle}</p>
+            <motion.h2 variants={fadeIn} className="text-2xl md:text-3xl font-bold text-center">
+              {t.howTitle}
+            </motion.h2>
+
+            {/* Why callout */}
+            <motion.div
+              variants={fadeIn}
+              className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-950/40 ring-1 ring-blue-200 dark:ring-blue-800"
+            >
+              <h3 className="font-semibold text-blue-800 dark:text-blue-300 mb-2 text-base">
+                {t.whyTitle}
+              </h3>
+              <p className="text-sm text-blue-700/90 dark:text-blue-200/80 leading-relaxed">{t.whyDesc}</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {t.steps.map((step, i) => {
-                const Icon = stepIcons[i]
-                return (
-                  <motion.div
-                    key={i}
-                    variants={fadeIn}
-                    className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm ring-1 ring-black/5 dark:ring-white/10"
-                  >
-                    <div className="mb-4 w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                    </div>
-                    <span className="absolute top-4 end-4 text-3xl font-black text-blue-100 dark:text-blue-900/60 select-none">
-                      {i + 1}
-                    </span>
-                    <h3 className="font-semibold text-blue-700 dark:text-blue-400 mb-2">{step.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{step.desc}</p>
-                  </motion.div>
-                )
-              })}
+            {/* Candidate steps */}
+            <div className="space-y-5">
+              <motion.div variants={fadeIn}>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold">
+                  👤 {t.candidateTitle}
+                </span>
+              </motion.div>
+              <div className="grid md:grid-cols-3 gap-5">
+                {t.candidateSteps.map((step, i) => {
+                  const Icon = candidateIcons[i]
+                  return (
+                    <motion.div
+                      key={i}
+                      variants={fadeIn}
+                      className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm ring-1 ring-black/5 dark:ring-white/10"
+                    >
+                      <div className="mb-4 w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                      </div>
+                      <span className="absolute top-4 end-4 text-3xl font-black text-indigo-100 dark:text-indigo-900/60 select-none">
+                        {i + 1}
+                      </span>
+                      <h3 className="font-semibold text-indigo-700 dark:text-indigo-400 mb-2">{step.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{step.desc}</p>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* HR steps */}
+            <div className="space-y-5">
+              <motion.div variants={fadeIn}>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold">
+                  🏢 {t.hrTitle}
+                </span>
+              </motion.div>
+              <div className="grid md:grid-cols-3 gap-5">
+                {t.hrSteps.map((step, i) => {
+                  const Icon = hrIcons[i]
+                  return (
+                    <motion.div
+                      key={i}
+                      variants={fadeIn}
+                      className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm ring-1 ring-black/5 dark:ring-white/10"
+                    >
+                      <div className="mb-4 w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <span className="absolute top-4 end-4 text-3xl font-black text-blue-100 dark:text-blue-900/60 select-none">
+                        {i + 1}
+                      </span>
+                      <h3 className="font-semibold text-blue-700 dark:text-blue-400 mb-2">{step.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{step.desc}</p>
+                    </motion.div>
+                  )
+                })}
+              </div>
             </div>
           </motion.div>
         </div>
