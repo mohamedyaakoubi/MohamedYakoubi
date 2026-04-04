@@ -184,17 +184,6 @@ export default function InternationalSkillsClient() {
               {t.howTitle}
             </motion.h2>
 
-            {/* Why callout */}
-            <motion.div
-              variants={fadeIn}
-              className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-950/40 ring-1 ring-blue-200 dark:ring-blue-800"
-            >
-              <h3 className="font-semibold text-blue-800 dark:text-blue-300 mb-2 text-base">
-                {t.whyTitle}
-              </h3>
-              <p className="text-sm text-blue-700/90 dark:text-blue-200/80 leading-relaxed">{t.whyDesc}</p>
-            </motion.div>
-
             {/* Candidate steps */}
             <div className="space-y-5">
               <motion.div variants={fadeIn}>

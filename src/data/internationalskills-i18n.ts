@@ -11,8 +11,6 @@ type InternationalSkillsI18n = {
   featuresSubtitle: string
   features: { title: string; desc: string }[]
   howTitle: string
-  whyTitle: string
-  whyDesc: string
   candidateTitle: string
   candidateSteps: { title: string; desc: string }[]
   hrTitle: string
@@ -32,11 +30,11 @@ const en: InternationalSkillsI18n = {
   heroBadge: 'AI-Powered · Firebase · Google Meet Integration',
   heroTitle: 'InternationalSkills.fi — Recruiting Management System',
   heroDesc:
-    'A full-stack web application that simplifies the entire hiring process — from candidate registration and document uploads to AI-powered scoring, interview scheduling via Google Meet, and real-time status tracking through a dedicated admin dashboard.',
+    'A full-stack web application that simplifies the entire hiring process — from candidate registration and document uploads to AI-powered scoring, interview scheduling via Google Meet, and real-time status tracking through a dedicated HR dashboard.',
   demoBtn: 'Live Demo',
   backToProjects: '← Back to Projects',
   featuresTitle: 'Core features',
-  featuresSubtitle: 'End-to-end recruitment tooling for candidates and administrators',
+  featuresSubtitle: 'End-to-end recruitment tooling for candidates and HR teams',
   features: [
     {
       title: 'Multi-Step Application Form',
@@ -52,10 +50,10 @@ const en: InternationalSkillsI18n = {
     },
     {
       title: 'Smart Interview Scheduling',
-      desc: 'Admins schedule interviews directly via Google Calendar. Automatic Google Meet links are generated and dispatched to candidates by email with calendar invitations.',
+      desc: 'HR schedules interviews directly via Google Calendar. Automatic Google Meet links are generated and dispatched to candidates by email with calendar invitations.',
     },
     {
-      title: 'Admin Dashboard',
+      title: 'HR Dashboard',
       desc: 'Comprehensive view of all candidates with advanced multi-criteria filtering, sorting, pagination, bulk status updates, and one-click export to CSV, XLSX, or JSON.',
     },
     {
@@ -64,9 +62,6 @@ const en: InternationalSkillsI18n = {
     },
   ],
   howTitle: 'How it works',
-  whyTitle: 'Why this solution was built',
-  whyDesc:
-    'InternationalSkills.fi posts job openings across multiple recruiting platforms — LinkedIn, Indeed, Join, and others. Rather than collecting candidate applications in separate silos on every platform, each listing redirects applicants to this single portal URL. There is no multi-tenant architecture: the portal acts as a central intake point so the company maintains one unified, searchable, and AI-scored candidate database regardless of where someone first saw the job ad.',
   candidateTitle: 'For Candidates',
   candidateSteps: [
     {
@@ -82,11 +77,11 @@ const en: InternationalSkillsI18n = {
       desc: 'Log in anytime to see your live status (Submitted → Interview Scheduled → Approved / Rejected), read your AI score breakdown by dimension, and open the Google Meet link emailed at scheduling.',
     },
   ],
-  hrTitle: 'For HR / Admins',
+  hrTitle: 'For HR',
   hrSteps: [
     {
       title: 'Manage the Pipeline',
-      desc: 'All candidates from every platform land in one admin dashboard. Filter by status, job category, AI score range, or date; sort and paginate across hundreds of profiles; bulk-update statuses in a single action.',
+      desc: 'All candidates from every platform land in one HR dashboard. Filter by status, job category, AI score range, or date; sort and paginate across hundreds of profiles; bulk-update statuses in a single action.',
     },
     {
       title: 'Score with AI',
@@ -116,10 +111,10 @@ const en: InternationalSkillsI18n = {
   ],
   contextTitle: 'About the project',
   contextText:
-    'InternationalSkills.fi is a Finnish-based labor recruitment service connecting skilled international workers with European employers. The company advertises on LinkedIn, Indeed, Join, and other job boards — but instead of managing separate applicant pools on each platform, every listing points candidates to this central portal. The portal collects all applications in one Firebase database, scores them with Gemini 2.5 Pro, and lets the HR team schedule Google Meet interviews without leaving the admin dashboard.',
+    'InternationalSkills.fi is a Finnish-based labor recruitment service connecting skilled international workers with European employers. The company advertises on LinkedIn, Indeed, Join, and other job boards — but instead of managing separate applicant pools on each platform, every listing points candidates to this central portal. The portal collects all applications in one Firebase database, scores them with Gemini 2.5 Pro, and lets the HR team schedule Google Meet interviews without leaving the HR dashboard.',
   metaTitle: 'InternationalSkills.fi — Recruiting Management System | Mohamed Yaakoubi',
   metaDesc:
-    'Full-stack recruiting platform for InternationalSkills.fi: multi-step candidate applications, AI scoring with Gemini 2.5 Pro, automated Google Meet scheduling, and a real-time admin dashboard — built with Next.js and Firebase.',
+    'Full-stack recruiting platform for InternationalSkills.fi: multi-step candidate applications, AI scoring with Gemini 2.5 Pro, automated Google Meet scheduling, and a real-time HR dashboard — built with Next.js and Firebase.',
 }
 
 const fr: InternationalSkillsI18n = {
@@ -127,11 +122,11 @@ const fr: InternationalSkillsI18n = {
   heroBadge: "Propulsé par IA · Firebase · Intégration Google Meet",
   heroTitle: "InternationalSkills.fi — Système de Gestion du Recrutement",
   heroDesc:
-    "Une application web full-stack qui simplifie l'ensemble du processus de recrutement — de l'inscription des candidats et du téléchargement des documents jusqu'à la notation par IA, la planification des entretiens via Google Meet et le suivi en temps réel via un tableau de bord administrateur dédié.",
+    "Une application web full-stack qui simplifie l'ensemble du processus de recrutement — de l'inscription des candidats et du téléchargement des documents jusqu'à la notation par IA, la planification des entretiens via Google Meet et le suivi en temps réel via un tableau de bord RH dédié.",
   demoBtn: "Démo en direct",
   backToProjects: "← Retour aux projets",
   featuresTitle: "Fonctionnalités principales",
-  featuresSubtitle: "Outils de recrutement de bout en bout pour les candidats et les administrateurs",
+  featuresSubtitle: "Outils de recrutement de bout en bout pour les candidats et les équipes RH",
   features: [
     {
       title: "Formulaire de candidature multi-étapes",
@@ -147,10 +142,10 @@ const fr: InternationalSkillsI18n = {
     },
     {
       title: "Planification intelligente des entretiens",
-      desc: "Les administrateurs planifient les entretiens directement via Google Calendar. Des liens Google Meet sont générés automatiquement et envoyés aux candidats par e-mail avec des invitations calendrier.",
+      desc: "Les RH planifient les entretiens directement via Google Calendar. Des liens Google Meet sont générés automatiquement et envoyés aux candidats par e-mail avec des invitations calendrier.",
     },
     {
-      title: "Tableau de bord administrateur",
+      title: "Tableau de bord RH",
       desc: "Vue complète de tous les candidats avec filtrage multi-critères avancé, tri, pagination, mises à jour de statut en masse et export en un clic vers CSV, XLSX ou JSON.",
     },
     {
@@ -159,9 +154,6 @@ const fr: InternationalSkillsI18n = {
     },
   ],
   howTitle: "Comment ça marche",
-  whyTitle: "Pourquoi cette solution a été créée",
-  whyDesc:
-    "InternationalSkills.fi publie ses offres sur plusieurs plateformes de recrutement — LinkedIn, Indeed, Join et d'autres. Plutôt que de gérer des candidatures dispersées sur chaque plateforme, chaque annonce redirige les candidats vers l'URL unique de ce portail. Il n'y a pas d'architecture multi-tenant : le portail joue le rôle d'un point d'entrée centralisé pour que l'entreprise dispose d'une base de données unifiée, consultable et scorée par IA, quelle que soit la plateforme d'origine du candidat.",
   candidateTitle: "Pour les candidats",
   candidateSteps: [
     {
@@ -177,11 +169,11 @@ const fr: InternationalSkillsI18n = {
       desc: "Connectez-vous à tout moment pour voir votre statut en direct (Soumis → Entretien planifié → Approuvé / Refusé), lire le détail de votre score IA par dimension et accéder au lien Google Meet envoyé par e-mail lors de la planification.",
     },
   ],
-  hrTitle: "Pour les RH / Administrateurs",
+  hrTitle: "Pour les RH",
   hrSteps: [
     {
       title: "Gérer le pipeline",
-      desc: "Tous les candidats de toutes les plateformes arrivent dans un seul tableau de bord administrateur. Filtrez par statut, catégorie de poste, plage de score IA ou date ; triez et paginez sur des centaines de profils ; mettez à jour les statuts en masse en une seule action.",
+      desc: "Tous les candidats de toutes les plateformes arrivent dans un seul tableau de bord RH. Filtrez par statut, catégorie de poste, plage de score IA ou date ; triez et paginez sur des centaines de profils ; mettez à jour les statuts en masse en une seule action.",
     },
     {
       title: "Scorer avec l'IA",
@@ -211,10 +203,10 @@ const fr: InternationalSkillsI18n = {
   ],
   contextTitle: "À propos du projet",
   contextText:
-    "InternationalSkills.fi est un service finlandais de recrutement qui met en relation des travailleurs internationaux qualifiés avec des employeurs européens. La société publie ses offres sur LinkedIn, Indeed, Join et d'autres plateformes — mais au lieu de gérer des viviers de candidats séparés sur chacune d'elles, chaque annonce pointe vers ce portail central. Celui-ci centralise toutes les candidatures dans une base Firebase, les score avec Gemini 2.5 Pro et permet aux RH de planifier des entretiens Google Meet sans quitter le tableau de bord administrateur.",
+    "InternationalSkills.fi est un service finlandais de recrutement qui met en relation des travailleurs internationaux qualifiés avec des employeurs européens. La société publie ses offres sur LinkedIn, Indeed, Join et d'autres plateformes — mais au lieu de gérer des viviers de candidats séparés sur chacune d'elles, chaque annonce pointe vers ce portail central. Celui-ci centralise toutes les candidatures dans une base Firebase, les score avec Gemini 2.5 Pro et permet aux RH de planifier des entretiens Google Meet sans quitter le tableau de bord RH.",
   metaTitle: "InternationalSkills.fi — Système de Gestion du Recrutement | Mohamed Yaakoubi",
   metaDesc:
-    "Plateforme de recrutement full-stack pour InternationalSkills.fi : candidatures multi-étapes, notation IA avec Gemini 2.5 Pro, planification automatisée Google Meet et tableau de bord administrateur en temps réel — construite avec Next.js et Firebase.",
+    "Plateforme de recrutement full-stack pour InternationalSkills.fi : candidatures multi-étapes, notation IA avec Gemini 2.5 Pro, planification automatisée Google Meet et tableau de bord RH en temps réel — construite avec Next.js et Firebase.",
 }
 
 const ar: InternationalSkillsI18n = {
@@ -222,11 +214,11 @@ const ar: InternationalSkillsI18n = {
   heroBadge: 'مدعوم بالذكاء الاصطناعي · Firebase · تكامل Google Meet',
   heroTitle: 'InternationalSkills.fi — نظام إدارة التوظيف',
   heroDesc:
-    'تطبيق ويب متكامل يُبسّط عملية التوظيف من أولها إلى آخرها — من تسجيل المرشحين ورفع الوثائق إلى التقييم بالذكاء الاصطناعي وجدولة المقابلات عبر Google Meet وتتبع الحالة فوريًا من خلال لوحة تحكم إدارية متخصصة.',
+    'تطبيق ويب متكامل يُبسّط عملية التوظيف من أولها إلى آخرها — من تسجيل المرشحين ورفع الوثائق إلى التقييم بالذكاء الاصطناعي وجدولة المقابلات عبر Google Meet وتتبع الحالة فوريًا من خلال لوحة تحكم موارد بشرية متخصصة.',
   demoBtn: 'عرض تجريبي',
   backToProjects: '← العودة إلى المشاريع',
   featuresTitle: 'الميزات الأساسية',
-  featuresSubtitle: 'أدوات توظيف متكاملة للمرشحين والمسؤولين',
+  featuresSubtitle: 'أدوات توظيف متكاملة للمرشحين وفرق الموارد البشرية',
   features: [
     {
       title: 'نموذج تقديم متعدد الخطوات',
@@ -242,10 +234,10 @@ const ar: InternationalSkillsI18n = {
     },
     {
       title: 'جدولة ذكية للمقابلات',
-      desc: 'يُجدوِل المسؤولون المقابلات مباشرةً عبر Google Calendar. تُنشأ روابط Google Meet تلقائيًا وتُرسَل إلى المرشحين بالبريد الإلكتروني مع دعوات التقويم.',
+      desc: 'يُجدوِل فريق الموارد البشرية المقابلات مباشرةً عبر Google Calendar. تُنشأ روابط Google Meet تلقائيًا وتُرسَل إلى المرشحين بالبريد الإلكتروني مع دعوات التقويم.',
     },
     {
-      title: 'لوحة تحكم المسؤول',
+      title: 'لوحة تحكم الموارد البشرية',
       desc: 'عرض شامل لجميع المرشحين مع تصفية متقدمة متعددة المعايير والفرز وترقيم الصفحات وتحديثات الحالة الجماعية وتصدير بنقرة واحدة إلى CSV أو XLSX أو JSON.',
     },
     {
@@ -254,9 +246,6 @@ const ar: InternationalSkillsI18n = {
     },
   ],
   howTitle: 'كيف يعمل',
-  whyTitle: 'لماذا بُنيت هذه الحل',
-  whyDesc:
-    'تنشر InternationalSkills.fi وظائفها عبر منصات توظيف متعددة — LinkedIn وIndeed وJoin وغيرها. بدلًا من إدارة طلبات مشتتة على كل منصة، يُعيد كل إعلان توجيه المرشحين إلى رابط هذه البوابة المركزية. لا يوجد نظام متعدد المستأجرين: تعمل البوابة كنقطة استقبال مركزية واحدة تُخزِّن جميع المتقدمين في قاعدة بيانات Firebase موحدة وقابلة للبحث والتقييم بالذكاء الاصطناعي — بصرف النظر عن المنصة التي رأى فيها المرشح الإعلان.',
   candidateTitle: 'للمرشحين',
   candidateSteps: [
     {
@@ -272,11 +261,11 @@ const ar: InternationalSkillsI18n = {
       desc: 'سجّل دخولك في أي وقت لمتابعة حالتك الفورية (مُقدَّم → مُجدوَل مقابلته → مقبول / مرفوض)، واطّلع على تفصيل نتيجتك من الذكاء الاصطناعي لكل محور، وافتح رابط Google Meet الذي يصلك بالبريد عند الجدولة.',
     },
   ],
-  hrTitle: 'لفريق التوظيف / المسؤولين',
+  hrTitle: 'لفريق الموارد البشرية',
   hrSteps: [
     {
       title: 'إدارة مسار المرشحين',
-      desc: 'يصل جميع المرشحين من كل المنصات إلى لوحة تحكم إدارية واحدة. صفِّ وابحث حسب الحالة أو فئة الوظيفة أو نطاق النتيجة أو التاريخ؛ وحدِّث الحالات دفعةً واحدة بإجراء واحد.',
+      desc: 'يصل جميع المرشحين من كل المنصات إلى لوحة تحكم موارد بشرية واحدة. صفِّ وابحث حسب الحالة أو فئة الوظيفة أو نطاق النتيجة أو التاريخ؛ وحدِّث الحالات دفعةً واحدة بإجراء واحد.',
     },
     {
       title: 'التقييم بالذكاء الاصطناعي',
@@ -306,10 +295,10 @@ const ar: InternationalSkillsI18n = {
   ],
   contextTitle: 'عن المشروع',
   contextText:
-    'InternationalSkills.fi خدمة فنلندية لتوظيف العمالة تربط العمال الدوليين المهرة بأصحاب العمل الأوروبيين. تُعلن الشركة عن وظائفها عبر LinkedIn وIndeed وJoin وغيرها من المنصات — لكن بدلًا من إدارة قوائم منفصلة للمتقدمين على كل منصة، يُوجَّه كل مرشح إلى هذه البوابة المركزية. تجمع البوابة جميع الطلبات في قاعدة بيانات Firebase واحدة، وتُقيِّمها بـ Gemini 2.5 Pro، وتتيح لفريق التوظيف جدولة مقابلات Google Meet دون مغادرة لوحة التحكم.',
+    'InternationalSkills.fi خدمة فنلندية لتوظيف العمالة تربط العمال الدوليين المهرة بأصحاب العمل الأوروبيين. تُعلن الشركة عن وظائفها عبر LinkedIn وIndeed وJoin وغيرها من المنصات — لكن بدلًا من إدارة قوائم منفصلة للمتقدمين على كل منصة، يُوجَّه كل مرشح إلى هذه البوابة المركزية. تجمع البوابة جميع الطلبات في قاعدة بيانات Firebase واحدة، وتُقيِّمها بـ Gemini 2.5 Pro، وتتيح لفريق الموارد البشرية جدولة مقابلات Google Meet دون مغادرة لوحة التحكم.',
   metaTitle: 'InternationalSkills.fi — نظام إدارة التوظيف | محمد يعقوبي',
   metaDesc:
-    'منصة توظيف متكاملة لـ InternationalSkills.fi: طلبات متعددة الخطوات، تقييم ذكي بـ Gemini 2.5 Pro، جدولة تلقائية عبر Google Meet، ولوحة تحكم إدارية — مبنية بـ Next.js و Firebase.',
+    'منصة توظيف متكاملة لـ InternationalSkills.fi: طلبات متعددة الخطوات، تقييم ذكي بـ Gemini 2.5 Pro، جدولة تلقائية عبر Google Meet، ولوحة تحكم للموارد البشرية — مبنية بـ Next.js و Firebase.',
 }
 
 export function getInternationalSkillsI18n(locale: string): InternationalSkillsI18n {
