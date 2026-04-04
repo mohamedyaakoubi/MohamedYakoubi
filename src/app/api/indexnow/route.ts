@@ -53,6 +53,9 @@ const ALL_URLS = [
   '/en/projects/documed',
   '/fr/projects/documed',
   '/ar/projects/documed',
+  '/en/projects/internationalskills',
+  '/fr/projects/internationalskills',
+  '/ar/projects/internationalskills',
 ];
 
 interface IndexNowPayload {

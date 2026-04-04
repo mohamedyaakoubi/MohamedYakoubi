@@ -46,6 +46,7 @@ export const featuredProjects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Google Calendar API", "AI Scoring"],
     demoUrl: "https://candidate-git-latest-mohamedyaakoubis-projects.vercel.app/",
     image: "/projects/international-skills-labor-company.webp",
+    detailPage: "/projects/internationalskills",
     features: [
       "User authentication with email verification",
       "Complete candidate profile management with document uploads",
