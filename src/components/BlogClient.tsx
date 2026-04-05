@@ -41,10 +41,10 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "'Instrument Serif', serif" }}>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "var(--font-instrument-serif, 'Instrument Serif'), serif" }}>
             {t('blog.pageTitle')}
           </h1>
-          <p className="text-lg text-gray-500 dark:text-[#666] max-w-2xl mx-auto" style={{ fontFamily: "'Syne', sans-serif" }}>
+          <p className="text-lg text-gray-500 dark:text-[#666] max-w-2xl mx-auto" style={{ fontFamily: "var(--font-syne, 'Syne'), sans-serif" }}>
             {t('blog.subtitle')}
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="group"
                 >
-                  <Link href={`/${language}/blog/${post.slug}`} className="block">
+                  <Link href={`/${language}/blog/${post.slug}`} className="block" aria-label={`${t('blog.readMore')} — ${post.title}`}>
                     <div className={`bg-white dark:bg-[#111] rounded overflow-hidden border border-gray-200 dark:border-[#222] ${theme.cardHoverBorder} transition-all duration-300 h-full flex flex-col`}>
                       {/* Accent strip */}
                       <div className={`h-[2px] bg-gradient-to-r ${theme.cardGradient}`} />
@@ -106,10 +106,10 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
                       {/* Category & Reading Time */}
                       <div className="px-6 pt-5 pb-3 flex items-center justify-between">
                         <span className={`text-xs font-semibold uppercase tracking-wider ${theme.cardCategoryText} ${theme.cardCategoryBg} border ${theme.cardBorder} px-3 py-1 rounded`}
-                              style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', letterSpacing: '2px' }}>
+                              style={{ fontFamily: "var(--font-jetbrains-mono, 'JetBrains Mono'), monospace", fontSize: '10px', letterSpacing: '2px' }}>
                           {t(`blog.categories.${post.category}`) || post.category}
                         </span>
-                        <span className="text-xs text-gray-500 dark:text-[#666]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                        <span className="text-xs text-gray-500 dark:text-[#666]" style={{ fontFamily: "var(--font-jetbrains-mono, 'JetBrains Mono'), monospace" }}>
                           <Clock className="w-3 h-3 inline mr-1" />
                           {post.readingTime} {t('blog.minRead')}
                         </span>
@@ -127,14 +127,16 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
 
                       {/* Footer */}
                       <div className="px-6 pb-5 pt-2 flex items-center justify-between border-t border-gray-100 dark:border-[#1a1a1a] mt-auto">
-                        <div className="text-xs text-gray-500 dark:text-[#666]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                        <div className="text-xs text-gray-500 dark:text-[#666]" style={{ fontFamily: "var(--font-jetbrains-mono, 'JetBrains Mono'), monospace" }}>
                           <Calendar className="w-3 h-3 inline mr-1" />
-                          <time dateTime={post.publishedAt}>
-                            {new Date(post.publishedAt).toLocaleDateString(language === 'ar' ? 'ar-TN' : language === 'fr' ? 'fr-FR' : 'en-US', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric',
-                            })}
+                          <time dateTime={post.publishedAt} suppressHydrationWarning>
+                            {(() => {
+                              const [y, m, d] = post.publishedAt.split('-').map(Number)
+                              return new Date(y, m - 1, d).toLocaleDateString(
+                                language === 'ar' ? 'ar-TN' : language === 'fr' ? 'fr-FR' : 'en-US',
+                                { year: 'numeric', month: 'long', day: 'numeric' }
+                              )
+                            })()}
                           </time>
                         </div>
                         <span className={`inline-flex items-center gap-1 text-sm font-medium ${theme.cardAccentText} group-hover:gap-2 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}>

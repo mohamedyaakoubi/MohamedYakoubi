@@ -42,7 +42,7 @@ export function RecentBlogPosts() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group"
               >
-                <Link href={`/${language}/blog/${post.slug}`} className="block h-full">
+                <Link href={`/${language}/blog/${post.slug}`} className="block h-full" aria-label={`${t('blog.readMore')} — ${post.title}`}>
                   <div className={`bg-white dark:bg-[#111] rounded overflow-hidden border border-gray-100 dark:border-[#222] ${theme.cardHoverBorder} transition-all duration-300 h-full flex flex-col`}>
                     {/* Accent strip */}
                     <div className={`h-[2px] bg-gradient-to-r ${theme.cardGradient}`} />
@@ -69,12 +69,14 @@ export function RecentBlogPosts() {
                     <div className="px-6 pb-5 pt-2 flex items-center justify-between mt-auto border-t border-gray-100 dark:border-[#1a1a1a]">
                       <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-[#666]">
                         <Calendar className="w-3 h-3" />
-                        <time dateTime={post.publishedAt}>
-                          {new Date(post.publishedAt).toLocaleDateString(language === 'ar' ? 'ar-TN' : language === 'fr' ? 'fr-FR' : 'en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric',
-                          })}
+                        <time dateTime={post.publishedAt} suppressHydrationWarning>
+                          {(() => {
+                            const [y, m, d] = post.publishedAt.split('-').map(Number)
+                            return new Date(y, m - 1, d).toLocaleDateString(
+                              language === 'ar' ? 'ar-TN' : language === 'fr' ? 'fr-FR' : 'en-US',
+                              { year: 'numeric', month: 'short', day: 'numeric' }
+                            )
+                          })()}
                         </time>
                       </div>
                       <span className={`inline-flex items-center gap-1 text-sm font-medium ${theme.cardAccentText} group-hover:gap-2 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}>

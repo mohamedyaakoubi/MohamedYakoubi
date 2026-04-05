@@ -83,7 +83,7 @@ export function ServiceCard({ service, index, locale, translations }: ServiceCar
               {service.process?.map((step, i) => (
                 <li key={i} className={`service-item ${isRTL ? 'rtl-item' : ''}`}>
                   <div className={`number-wrapper ${isRTL ? 'order-last' : 'order-first'}`}>
-                    <span className="service-number font-semibold">
+                    <span className="service-number font-semibold dark:text-blue-400">
                       {`${i + 1}.`}
                     </span>
                   </div>

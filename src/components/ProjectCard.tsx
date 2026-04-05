@@ -69,6 +69,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <Link
                 href={`/${language}${project.detailPage}`}
                 className="flex items-center text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
+                aria-label={`${t('projects.repository.links.readMore')} — ${t(`projects.names.${project.name}`)}`}
               >
                 <FaBookOpen className="mr-1" />
                 {t('projects.repository.links.readMore')}

@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/context/language-context'
 import { getPotentialI18n } from '@/data/potential-i18n'
 import { ArrowLeft, ExternalLink, Github, ChevronRight, MessageSquare, Search, Sparkles, BarChart2, User } from 'lucide-react'
+import LazyYouTube from '@/components/LazyYouTube'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 24 },
@@ -138,17 +139,9 @@ export default function PotentialProjectClient() {
 
             <motion.div
               variants={fadeIn}
-              className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 dark:ring-white/10 bg-black"
-              style={{ paddingTop: '56.25%' }}
+              className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 dark:ring-white/10 bg-black"
             >
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/ldz38xUGmHY?rel=0&modestbranding=1"
-                title="Potential — demo walkthrough"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              />
+              <LazyYouTube videoId="ldz38xUGmHY" title="Potential — demo walkthrough" />
             </motion.div>
           </motion.div>
         </div>

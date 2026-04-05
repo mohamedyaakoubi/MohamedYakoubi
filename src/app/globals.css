@@ -595,13 +595,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #1a56db; /* Darker blue for better contrast in light mode */
+  color: #1d4ed8; /* blue-700 — 8:1 on white, passes WCAG AA */
   margin-right: 8px;
-}
-@media (prefers-color-scheme: dark) {
-  .service-number {
-    color: #60a5fa; /* Brighter blue for dark mode */
-  }
 }
 
 /* RTL-specific styles */

@@ -260,25 +260,48 @@ function ExperienceContent({ experience }: ExperienceContentProps) {
       </div>
 <ul className={`mt-4 list-disc ${language === 'ar' ? 'mr-4' : 'ml-4'} text-gray-600 dark:text-gray-300`}>
   {experience.description.map((item, index) => {
-    // First get the base translation without any links
-    let translatedItem = t(`experience.descriptions.${item}`);
-    
-    // Handle UbiAi specific items with links - only if translation was successful
-    if (experience.company === "UbiAi" && translatedItem !== `experience.descriptions.${item}`) {
-      if (index === 0) {
-        translatedItem += ` <a href="https://ubiai.tools/author/mohamedyaakoubi/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">${t('experience.links.authorPage')}</a>`;
-      }
-      if (index === 1) {
-        translatedItem += ` <a href="https://ubiai-audit.notion.site/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">${t('experience.links.sampleAudit')}</a> <span class="text-gray-600">${t('experience.links.nonConfidential')}</span>`;
-      }
+    const translatedItem = t(`experience.descriptions.${item}`);
+    const isValidTranslation = translatedItem !== `experience.descriptions.${item}`;
+
+    if (experience.company === "UbiAi" && isValidTranslation && index === 0) {
+      return (
+        <li key={index}>
+          {translatedItem}{' '}
+          <a
+            href="https://ubiai.tools/author/mohamedyaakoubi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-700 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 underline"
+          >
+            {t('experience.links.authorPage')}
+          </a>
+        </li>
+      )
     }
-    
+
+    if (experience.company === "UbiAi" && isValidTranslation && index === 1) {
+      return (
+        <li key={index}>
+          {translatedItem}{' '}
+          <a
+            href="https://ubiai-audit.notion.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-700 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 underline"
+          >
+            {t('experience.links.sampleAudit')}
+          </a>{' '}
+          <span className="text-gray-700 dark:text-gray-400">
+            {t('experience.links.nonConfidential')}
+          </span>
+        </li>
+      )
+    }
+
     return (
-      <li 
-        key={index} 
-        dangerouslySetInnerHTML={{ 
-          __html: translatedItem 
-        }} 
+      <li
+        key={index}
+        dangerouslySetInnerHTML={{ __html: translatedItem }}
       />
     )
   })}

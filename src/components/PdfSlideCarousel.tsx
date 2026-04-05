@@ -85,18 +85,20 @@ export default function PdfSlideCarousel({ slides, pdfUrl, title, openLabel }: P
       {/* footer bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-gray-900 border-t border-white/10">
         {/* dot indicators */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-0.5">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
               aria-label={`Go to slide ${i + 1}`}
-              className={`rounded-full transition-all duration-200 ${
+              className="group flex items-center justify-center w-6 h-6"
+            >
+              <span className={`rounded-full transition-all duration-200 ${
                 i === current
                   ? 'w-4 h-2 bg-white'
-                  : 'w-2 h-2 bg-white/30 hover:bg-white/60'
-              }`}
-            />
+                  : 'w-2 h-2 bg-white/30 group-hover:bg-white/60'
+              }`} />
+            </button>
           ))}
         </div>
 

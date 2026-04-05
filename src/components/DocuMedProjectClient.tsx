@@ -90,7 +90,7 @@ export default function DocuMedProjectClient() {
                     href="https://docu-med.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-medium transition-colors shadow-sm"
                   >
                     <ExternalLink className="w-4 h-4" />
                     {t.demoBtn}
