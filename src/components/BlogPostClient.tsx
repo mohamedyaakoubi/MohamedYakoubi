@@ -429,7 +429,10 @@ function renderContent(content: string): string {
   html = html.replace(/<code>(github\.com\/[^<]+)<\/code>/g, (_, url: string) => {
     return `<a href="https://${url}" target="_blank" rel="noopener noreferrer" class="blog-link"><code>${url}</code></a>`
   })
-  html = html.replace(/(?<!["'=\/])(?<![<\w])(github\.com\/[\w.@:/?#[\]!$&'()*+,;=-]+[\w/])/g, (_, url: string) => {
+  // Negative lookbehind includes > to prevent re-matching URLs already inside
+  // <code> elements (e.g. <code>github.com/...</code>) that were linked above,
+  // which would produce nested <a> tags and an empty outer anchor.
+  html = html.replace(/(?<![>"'=\/])(?<![<\w])(github\.com\/[\w.@:/?#[\]!$&'()*+,;=-]+[\w/])/g, (_, url: string) => {
     return `<a href="https://${url}" target="_blank" rel="noopener noreferrer" class="blog-link">${url}</a>`
   })
 
@@ -451,10 +454,13 @@ function renderContent(content: string): string {
   // Unordered list items
   html = html.replace(/^- (.+)$/gm, '<li>$1</li>')
 
-  // Wrap consecutive list items
-  html = html.replace(/((?:<li[^>]*>[\s\S]*?<\/li>\s*)+)/g, (match) => {
+  // Wrap consecutive list items — use [ \t]*\n? per item (not \s*) to avoid
+  // consuming blank lines that separate the list from surrounding text, which
+  // would move \n\n inside the <ul> string and cause </ul> to end up wrapped
+  // in <p> after the paragraph split (producing invalid ul > p structure).
+  html = html.replace(/((?:<li[^>]*>[\s\S]*?<\/li>[ \t]*\n?)+)/g, (match) => {
     if (match.includes('<ul') || match.includes('<ol')) return match
-    return `<ul class="styled">${match}</ul>`
+    return `<ul class="styled">${match.trimEnd()}</ul>`
   })
 
   // Ensure <ul> blocks are separated from surrounding text for proper paragraph handling

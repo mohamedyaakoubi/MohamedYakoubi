@@ -28,6 +28,7 @@ import {
   GitBranch
 } from 'lucide-react'
 import { useEffect } from 'react'
+import LazyYouTube from '@/components/LazyYouTube'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -136,13 +137,7 @@ export default function SheetDiffClient() {
               {t.structuralDesc}
             </p>
             <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/bww1ngIgS-g"
-                title="SheetDiff - Structural Diff mode"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <LazyYouTube videoId="bww1ngIgS-g" title="SheetDiff - Structural Diff mode" />
             </div>
           </motion.div>
 
@@ -155,13 +150,7 @@ export default function SheetDiffClient() {
               {t.cellDesc}
             </p>
             <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/yb6ZIyAy92g"
-                title="SheetDiff - Cell-by-Cell Comparaison"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <LazyYouTube videoId="yb6ZIyAy92g" title="SheetDiff - Cell-by-Cell Comparison" />
             </div>
           </motion.div>
 
@@ -174,13 +163,7 @@ export default function SheetDiffClient() {
               {t.dupDesc}
             </p>
             <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/DEYJDKrKUvY"
-                title="SheetDiff Duplicate Finder"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <LazyYouTube videoId="DEYJDKrKUvY" title="SheetDiff Duplicate Finder" />
             </div>
           </motion.div>
         </motion.div>
@@ -380,7 +363,7 @@ export default function SheetDiffClient() {
       </section>
 
       {/* Trademark Notice */}
-      <p className="text-center text-xs text-gray-400 dark:text-gray-600 py-4">{t.trademark}</p>
+      <p className="text-center text-xs text-gray-600 dark:text-gray-400 py-4">{t.trademark}</p>
     </div>
   )
 }

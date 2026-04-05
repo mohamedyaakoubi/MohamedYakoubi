@@ -232,7 +232,7 @@ export default function SheetDiffPricingClient() {
       </section>
 
       {/* Trademark Notice */}
-      <p className="text-center text-xs text-gray-400 dark:text-gray-600 py-4">Google Sheets™ and Google Drive™ are trademarks of Google LLC.</p>
+      <p className="text-center text-xs text-gray-600 dark:text-gray-400 py-4">Google Sheets™ and Google Drive™ are trademarks of Google LLC.</p>
 
     </div>
   )

@@ -191,8 +191,6 @@ export default async function LocaleLayout({
         <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.com/en" />
         
         {/* Performance optimizations */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="preload" href="/hero-light.webp" as="image" fetchPriority="high" type="image/webp" />
         <link rel="preload" href="/profile.jpg" as="image" fetchPriority="high" type="image/jpeg" />

@@ -12,9 +12,9 @@ export function ThemeToggle() {
 
   React.useEffect(() => {
     setMounted(true)
-    // Create and set up audio element
+    // Create and set up audio element — preload deferred until first interaction
     const audio = new Audio('/sounds/light.mp3')
-    audio.preload = 'auto'
+    audio.preload = 'none'
     audioRef.current = audio
   }, [])
 
