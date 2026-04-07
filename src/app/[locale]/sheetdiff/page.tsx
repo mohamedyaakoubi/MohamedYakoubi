@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { getSupportedLocales } from '@/lib/translations'
 import SheetDiffClient from '@/components/SheetDiffClient'
 
@@ -163,12 +162,12 @@ const faqJsonLd = {
 export default function SheetDiffPage() {
   return (
     <>
-      <Script
+      <script
         id="sheetdiff-software-app"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
       />
-      <Script
+      <script
         id="sheetdiff-faq"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

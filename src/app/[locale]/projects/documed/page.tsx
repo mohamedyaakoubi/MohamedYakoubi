@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { getSupportedLocales, getTranslations } from '@/lib/translations'
 import { getDocuMedI18n } from '@/data/documed-i18n'
 import DocuMedProjectClient from '@/components/DocuMedProjectClient'
@@ -141,12 +140,12 @@ export default async function DocuMedProjectPage({
 
   return (
     <>
-      <Script
+      <script
         id="documed-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Script
+      <script
         id="documed-software-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}

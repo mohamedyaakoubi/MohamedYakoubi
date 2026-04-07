@@ -5,7 +5,6 @@ import { LanguageProvider } from '@/context/language-context'
 import { ClientLayout } from '@/components/ClientLayout'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Script from 'next/script'
 import { Footer } from '@/components/Footer'
 
 const inter = Inter({ 
@@ -199,10 +198,9 @@ export default async function LocaleLayout({
         <link rel="sitemap" type="application/xml" href="https://www.mohamedyaakoubi.com/sitemap.xml" />
 
         {/* Enhanced Person Schema with accurate current roles */}
-        <Script
+        <script
           id="person-schema"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -528,10 +526,9 @@ export default async function LocaleLayout({
         />
 
         {/* BreadcrumbList Schema */}
-        <Script
+        <script
           id="breadcrumb-schema"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -549,10 +546,9 @@ export default async function LocaleLayout({
         />
 
         {/* WebSite Schema */}
-        <Script
+        <script
           id="website-schema"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",

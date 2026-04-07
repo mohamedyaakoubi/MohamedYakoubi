@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { getTranslations, getSupportedLocales } from '@/lib/translations'
 import { blogCategories, getLocalizedBlogPosts } from '@/data/blog'
 import BlogClient from '@/components/BlogClient'
-import Script from 'next/script'
 
 export async function generateStaticParams() {
   const locales = getSupportedLocales()
@@ -100,12 +99,12 @@ export default async function BlogPage(props: BlogPageProps) {
 
   return (
     <>
-      <Script
+      <script
         id="blog-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Script
+      <script
         id="blog-list-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}

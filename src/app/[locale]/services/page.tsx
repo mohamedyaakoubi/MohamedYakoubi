@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import ServicesClient from '@/components/ServicesClient'
 import { getTranslations, getSupportedLocales } from '@/lib/translations'
-import Script from 'next/script'
 
 export async function generateStaticParams() {
   const locales = getSupportedLocales();
@@ -138,7 +137,7 @@ export default async function ServicesPage(props: ServicesPageProps) {
   return (
     <>
           {/* Add both schemas */}
-      <Script
+      <script
         id="services-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -146,7 +145,7 @@ export default async function ServicesPage(props: ServicesPageProps) {
         }}
       />
       
-      <Script
+      <script
         id="services-faq"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

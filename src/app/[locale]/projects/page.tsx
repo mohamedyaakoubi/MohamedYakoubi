@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { getTranslations, getSupportedLocales } from '@/lib/translations'
 import { getGithubRepos } from '@/utils/github'
 import type { Repository } from '@/utils/github'
-import Script from 'next/script'
 import ProjectsClient from '@/components/ProjectsClient'
 
 
@@ -77,7 +76,7 @@ const breadcrumbSchema = {
 }
   return (
     <>
-        <Script
+        <script
       id="projects-breadcrumb"
       type="application/ld+json"
       dangerouslySetInnerHTML={{

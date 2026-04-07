@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import ContactClient from '@/components/ContactClient'
 import { getTranslations } from '@/lib/translations'
-import Script from 'next/script'
 
 export async function generateStaticParams() {
   return [
@@ -73,7 +72,7 @@ export default async function ContactPage(props: ContactPageProps) {
   return (
     <>
           {/* Add breadcrumb schema */}
-      <Script
+      <script
         id="contact-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

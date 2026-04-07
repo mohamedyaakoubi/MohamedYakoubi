@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import { getTranslations, getSupportedLocales } from '@/lib/translations'
 import { blogPosts, getLocalizedBlogPost } from '@/data/blog'
 import BlogPostClient from '@/components/BlogPostClient'
-import Script from 'next/script'
 
 export async function generateStaticParams() {
   const locales = getSupportedLocales()
@@ -142,12 +141,12 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
 
   return (
     <>
-      <Script
+      <script
         id="blogpost-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Script
+      <script
         id="blogpost-article-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

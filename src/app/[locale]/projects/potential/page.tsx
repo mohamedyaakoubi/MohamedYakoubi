@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { getSupportedLocales, getTranslations } from '@/lib/translations'
 import { getPotentialI18n } from '@/data/potential-i18n'
 import PotentialProjectClient from '@/components/PotentialProjectClient'
@@ -127,12 +126,12 @@ export default async function PotentialProjectPage({
 
   return (
     <>
-      <Script
+      <script
         id="potential-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Script
+      <script
         id="potential-software-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}

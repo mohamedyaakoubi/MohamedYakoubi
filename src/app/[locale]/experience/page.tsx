@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import ExperienceClient from '@/components/ExperienceClient'
 import { getTranslations } from '@/lib/translations'
-import Script from 'next/script'
 
 export async function generateStaticParams() {
   return [
@@ -78,7 +77,7 @@ const breadcrumbSchema = {
 }
   return (
     <>
-        <Script
+        <script
       id="experience-breadcrumb"
       type="application/ld+json"
       dangerouslySetInnerHTML={{

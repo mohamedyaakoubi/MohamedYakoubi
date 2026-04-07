@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { getSupportedLocales, getTranslations } from '@/lib/translations'
 import { getInternationalSkillsI18n } from '@/data/internationalskills-i18n'
 import InternationalSkillsClient from '@/components/InternationalSkillsClient'
@@ -134,12 +133,12 @@ export default async function InternationalSkillsProjectPage({
 
   return (
     <>
-      <Script
+      <script
         id="internationalskills-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Script
+      <script
         id="internationalskills-software-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}

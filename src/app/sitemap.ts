@@ -15,20 +15,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Per-page last-modified dates — sourced from git history, update when content changes
   const pageLastModified: Record<string, Date> = {
     '':              new Date('2026-04-04'), // hero/home components updated Apr 4
-    '/experience':   new Date('2026-04-05'), // accessibility fixes Apr 5
-    '/projects':     new Date('2026-04-02'), // SSG fix, deduplication, reorder
-    '/services':     new Date('2026-04-05'), // accessibility and contrast fixes
-    '/contact':      new Date('2026-04-02'), // heading hierarchy + SEO fixes
+    '/experience':   new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/projects':     new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/services':     new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/contact':      new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
     '/blog':         latestPostDate,
-    '/sheetdiff':    new Date('2026-04-05'), // accessibility + performance fixes
+    '/sheetdiff':    new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
   }
 
   const sheetdiffSubPageDate = new Date('2026-04-05')
 
   const projectPageDates: Record<string, Date> = {
-    '/projects/potential':            new Date('2026-04-05'), // accessibility fixes
-    '/projects/documed':              new Date('2026-04-04'), // PDF carousel, SEO image fixes
-    '/projects/internationalskills':  new Date('2026-04-05'), // accessibility fixes
+    '/projects/potential':            new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/projects/documed':              new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/projects/internationalskills':  new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
   }
 
   const locales = ['en', 'fr', 'ar']
