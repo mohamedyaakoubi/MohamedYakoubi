@@ -39,6 +39,7 @@ type LiveSimulatorI18n = {
     body: string
     speakerField: string
     transcriptField: string
+    transcriptFieldSimple: string
     startTimeField: string
     endTimeField: string
     none: string
@@ -159,6 +160,7 @@ const en: LiveSimulatorI18n = {
     body: 'If your JSON uses non-standard field names, map them here. Leave blank to use the field name as-is.',
     speakerField: 'Speaker field',
     transcriptField: 'Transcript field',
+    transcriptFieldSimple: 'Transcript / ID field',
     startTimeField: 'Start time field',
     endTimeField: 'End time field',
     none: '— use as-is —',
@@ -334,6 +336,7 @@ const fr: LiveSimulatorI18n = {
     body: 'Si votre JSON utilise des noms de champs non standard, mappez-les ici. Laissez vide pour utiliser le nom tel quel.',
     speakerField: 'Champ locuteur',
     transcriptField: 'Champ transcription',
+    transcriptFieldSimple: 'Transcription / ID',
     startTimeField: 'Champ heure début',
     endTimeField: 'Champ heure fin',
     none: '— utiliser tel quel —',
@@ -477,6 +480,7 @@ const ar: LiveSimulatorI18n = {
     body: 'إذا كان JSON الخاص بك يستخدم أسماء حقول غير قياسية، اربطها هنا. اتركه فارغاً لاستخدام اسم الحقل كما هو.',
     speakerField: 'حقل المتحدث',
     transcriptField: 'حقل النص',
+    transcriptFieldSimple: 'النص / المعرّف',
     startTimeField: 'حقل وقت البدء',
     endTimeField: 'حقل وقت الانتهاء',
     none: '— استخدم كما هو —',

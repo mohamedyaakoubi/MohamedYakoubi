@@ -1160,8 +1160,8 @@ export default function LiveSimulatorClient() {
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {(
                   [
-                    ['transcript', t.mapping.transcriptField, false],
-                    ['speaker',    t.mapping.speakerField,    false],
+                    ['transcript', simpleOn ? t.mapping.transcriptFieldSimple : t.mapping.transcriptField, false],
+                    ['speaker',    t.mapping.speakerField,    true],
                     ['start_time', t.mapping.startTimeField,  true],
                     ['end_time',   t.mapping.endTimeField,    true],
                   ] as [keyof ColMap, string, boolean][]
