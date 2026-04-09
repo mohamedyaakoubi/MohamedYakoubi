@@ -2,10 +2,10 @@
 
 import { useLanguage } from '@/context/language-context'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { useMenu } from '@/context/useMenu'
 
 // Types
@@ -14,7 +14,16 @@ const createNavigationLinks = (t: (key: string) => string, lang: string) => [
   { href: `/${lang}/projects`, label: t('navigation.links.projects'), isSection: false, priority: 2 },
   { href: `/${lang}/experience`, label: t('navigation.links.experience'), isSection: false, priority: 3 },
   { href: `/${lang}/services`, label: t('navigation.links.services'), isSection: false, priority: 4 },
-  { href: `/${lang}/sheetdiff`, label: 'SheetDiff™', isSection: false, priority: 5 },
+  {
+    href: `/${lang}/sheetdiff`,
+    label: 'SheetDiff™',
+    isSection: false,
+    priority: 5,
+    children: [
+      { href: `/${lang}/sheetdiff`, label: 'Google Sheets Add-on' },
+      { href: `/${lang}/sheetdiff/api-docs`, label: 'Structural Diff API' },
+    ],
+  },
   { href: `/${lang}/blog`, label: t('blog.title'), isSection: false, priority: 6 },
   { href: `/${lang}/#about`, label: t('navigation.links.about'), isSection: true, priority: 7 },
   { href: `/${lang}/contact`, label: t('navigation.links.contact'), isSection: false, priority: 8 },
@@ -33,12 +42,11 @@ interface NavigationLink {
   label: string;
   isSection: boolean;
   priority: number;
+  children?: { href: string; label: string }[];
 }
 
 // Updated NavLink component - exact same style as your working version
 const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => {
-  console.log(`NavLink rendering: href=${href}, label=${label}, isActive=${isActive}`) // Debug log
-  
   return (
     <motion.a
       href={href}
@@ -75,15 +83,11 @@ export function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('home')
+  const [sheetdiffOpen, setSheetdiffOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   // RTL support - check if current language is Arabic
   const isRTL = language === 'ar'
-
-  console.log('=== Navigation Debug Info ===')
-  console.log('Current pathname:', pathname)
-  console.log('Current language:', language)
-  console.log('Active section:', activeSection)
-  console.log('============================')
 
   // Track active section for homepage sections
   useEffect(() => {
@@ -115,63 +119,53 @@ export function Navigation() {
     }
   }, [pathname, language])
 
-  const handleNavigation = async (e: React.MouseEvent, link: NavigationLink) => {
-    e.preventDefault()
-    console.log(`Navigation clicked: ${link.href}, isSection: ${link.isSection}`)
-    
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setSheetdiffOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  const handleNavigation = async (e: React.MouseEvent, link: NavigationLink) => {    e.preventDefault()
     if (link.isSection) {
       const homePath = `/${language}`
       if (pathname !== homePath && pathname !== `${homePath}/`) {
-        // Navigate to home page with hash
-        console.log(`Navigating to home with section: ${link.href}`)
         await router.push(link.href)
       } else {
-        // If already on home page, just scroll
         const sectionId = link.href.split('#')[1]
-        console.log(`Scrolling to section: ${sectionId}`)
         const element = document.getElementById(sectionId)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
-          setActiveSection(sectionId) // Update active section immediately
+          setActiveSection(sectionId)
         }
       }
     } else {
-      console.log(`Navigating to page: ${link.href}`)
       await router.push(link.href)
     }
-    
     setIsMenuOpen(false)
   }
 
   const navigationLinks = createNavigationLinks(t, language)
   const sortedLinks = [...navigationLinks].sort((a, b) => a.priority - b.priority)
   
-  // Enhanced active link detection with detailed logging
+  // Enhanced active link detection
   const isLinkActive = (href: string) => {
-    console.log(`\n--- Checking link: ${href} ---`)
-    console.log(`Current pathname: ${pathname}`)
-    
     if (href.includes('#')) {
-      // For section links
       const homePath = `/${language}`
       const isOnHomePage = pathname === homePath || pathname === `${homePath}/`
-      console.log(`Is on home page: ${isOnHomePage}`)
-      
       if (isOnHomePage) {
         const sectionId = href.split('#')[1]
-        const isActive = activeSection === sectionId
-        console.log(`Section ID: ${sectionId}, Active section: ${activeSection}, Is active: ${isActive}`)
-        return isActive
+        return activeSection === sectionId
       }
-      console.log(`Not on home page, section link inactive`)
       return false
     } else {
-      // For regular page links
       const normalizedPathname = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
       const normalizedHref = href.endsWith('/') ? href.slice(0, -1) : href
-      const isActive = normalizedPathname === normalizedHref
-      console.log(`Page link - Normalized pathname: "${normalizedPathname}", Normalized href: "${normalizedHref}", Is active: ${isActive}`)
-      return isActive
+      return normalizedPathname === normalizedHref
     }
   }
   
@@ -193,15 +187,84 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <ul 
-              className={`flex ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}
+              className={`flex items-center ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}
               role="menubar" 
               aria-label="Main menu"
               dir={isRTL ? 'rtl' : 'ltr'}
             >
               {sortedLinks.map((link) => {
                 const isActive = isLinkActive(link.href)
-                console.log(`Final result for ${link.href}: isActive = ${isActive}`)
-                
+
+                // SheetDiff dropdown
+                if (link.children) {
+                  const isDropdownActive = link.children.some(c => isLinkActive(c.href))
+                  return (
+                    <motion.li
+                      key={link.href}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      role="none"
+                      className="relative"
+                    >
+                      <div ref={dropdownRef}>
+                      <motion.button
+                        onClick={() => setSheetdiffOpen(prev => !prev)}
+                        className={`relative flex items-center gap-1 px-4 py-2 ${isDropdownActive ? 'text-blue-300' : 'text-gray-300 hover:text-white'}`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-haspopup="true"
+                        aria-expanded={sheetdiffOpen}
+                      >
+                        {link.label}
+                        <ChevronDown size={14} className={`transition-transform duration-200 ${sheetdiffOpen ? 'rotate-180' : ''}`} />
+                        {isDropdownActive && (
+                          <motion.div
+                            layoutId="activeUnderline"
+                            className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-300"
+                            style={{ transform: 'none', transformOrigin: '50% 50% 0px' }}
+                            initial={false}
+                            animate={{ opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                          />
+                        )}
+                      </motion.button>
+                      <AnimatePresence>
+                        {sheetdiffOpen && (
+                          <motion.ul
+                            initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute top-full left-0 mt-1 w-52 bg-gray-900 border border-gray-700 rounded-lg shadow-xl overflow-hidden z-50"
+                          >
+                            {link.children.map(child => (
+                              <li key={child.href}>
+                                <a
+                                  href={child.href}
+                                  onClick={(e) => {
+                                    e.preventDefault()
+                                    setSheetdiffOpen(false)
+                                    router.push(child.href)
+                                    setIsMenuOpen(false)
+                                  }}
+                                  className={`block px-4 py-3 text-sm transition-colors ${
+                                    isLinkActive(child.href)
+                                      ? 'text-blue-300 bg-blue-500/10'
+                                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                                  }`}
+                                >
+                                  {child.label}
+                                </a>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                      </div>
+                    </motion.li>
+                  )
+                }
+
                 return (
                   <motion.li
                     key={link.href}
@@ -251,7 +314,44 @@ export function Navigation() {
               <ul role="menu" className="pt-4 pb-2">
                 {sortedLinks.map((link, index) => {
                   const isActive = isLinkActive(link.href)
-                  
+
+                  // SheetDiff mobile — show children inline
+                  if (link.children) {
+                    return (
+                      <motion.li
+                        key={link.href}
+                        initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                        transition={{ delay: index * 0.1 }}
+                        role="none"
+                      >
+                        <span className={`block py-2 ${isRTL ? 'text-right pr-4' : 'text-left pl-4'} text-gray-500 text-xs uppercase tracking-wider`}>
+                          {link.label}
+                        </span>
+                        {link.children.map(child => (
+                          <a
+                            key={child.href}
+                            href={child.href}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setIsMenuOpen(false)
+                              router.push(child.href)
+                            }}
+                            className={`block py-2 ${isRTL ? 'text-right pr-8' : 'text-left pl-8'} ${
+                              isLinkActive(child.href)
+                                ? 'text-blue-300'
+                                : 'text-gray-300 hover:text-white'
+                            }`}
+                            role="menuitem"
+                          >
+                            {child.label}
+                          </a>
+                        ))}
+                      </motion.li>
+                    )
+                  }
+
                   return (
                     <motion.li
                       key={link.href}
