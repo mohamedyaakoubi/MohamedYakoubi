@@ -39,9 +39,77 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: 'website',
       siteName: 'Mohamed Yaakoubi Portfolio',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: t.meta.title,
+      description: t.meta.description,
+    },
   }
 }
 
-export default function DemoPage() {
-  return <DemoWalkthroughClient />
+const BASE_URL = 'https://www.mohamedyaakoubi.com'
+
+export default async function DemoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = getDemoWalkthroughI18n(locale)
+
+  const techArticleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: t.meta.title,
+    description: t.meta.description,
+    url: `${BASE_URL}/${locale}/sheetdiff/api-docs/demo`,
+    inLanguage: locale,
+    author: { '@type': 'Person', name: 'Mohamed Yaakoubi', url: BASE_URL },
+    publisher: { '@type': 'Person', name: 'Mohamed Yaakoubi', url: BASE_URL },
+    proficiencyLevel: 'Expert',
+    isPartOf: { '@type': 'TechArticle', name: 'Structural Diff API Docs', url: `${BASE_URL}/${locale}/sheetdiff/api-docs` },
+  }
+
+  const howToJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to use the Structural Diff API for transcript QA',
+    description:
+      'End-to-end walkthrough: adapt column names, send a POST /v1/diff request, and interpret CER/WER/SER scores for annotation QA.',
+    url: `${BASE_URL}/${locale}/sheetdiff/api-docs/demo`,
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'Adapt your column names', text: 'Map your dataset’s column names to the engine schema using the headers array or columnMapping object.' },
+      { '@type': 'HowToStep', position: 2, name: 'Send a POST /v1/diff request', text: 'POST your original and reworked row arrays with your x-api-key header to /v1/diff.' },
+      { '@type': 'HowToStep', position: 3, name: 'Interpret diff statuses', text: 'Read the status field of each result row: UNCHANGED, MODIFIED, ADDED, DELETED, SPLIT, or MERGED.' },
+      { '@type': 'HowToStep', position: 4, name: 'Read CER/WER/SER scores', text: 'Use the scores object to grade transcript quality. SER measures segmentation errors; CER and WER measure text fidelity.' },
+    ],
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: 'SheetDiff™', item: `${BASE_URL}/${locale}/sheetdiff` },
+      { '@type': 'ListItem', position: 3, name: t.breadcrumb.apiDocs, item: `${BASE_URL}/${locale}/sheetdiff/api-docs` },
+      { '@type': 'ListItem', position: 4, name: t.breadcrumb.current, item: `${BASE_URL}/${locale}/sheetdiff/api-docs/demo` },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        id="demo-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(techArticleJsonLd) }}
+      />
+      <script
+        id="demo-howto"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+      <script
+        id="demo-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <DemoWalkthroughClient />
+    </>
+  )
 }

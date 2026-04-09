@@ -40,9 +40,63 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: 'website',
       siteName: 'Mohamed Yaakoubi Portfolio',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: t.meta.title,
+      description: t.meta.description,
+    },
   }
 }
 
-export default function LiveDemoPage() {
-  return <LiveSimulatorClient />
+const BASE_URL = 'https://www.mohamedyaakoubi.com'
+
+export default async function LiveDemoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = getLiveSimulatorI18n(locale)
+
+  const webAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Structural Diff API Live Simulator — SheetDiff™',
+    description: t.meta.description,
+    url: `${BASE_URL}/${locale}/sheetdiff/api-docs/live-demo`,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    author: { '@type': 'Person', name: 'Mohamed Yaakoubi', url: BASE_URL },
+    featureList: [
+      'Paste or upload two JSON transcript arrays',
+      'Configure all diff parameters interactively',
+      'Run a real structural diff against the API',
+      'Inspect row-level results with inline character diffs',
+      'View CER/WER/SER quality scores',
+    ],
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: 'SheetDiff™', item: `${BASE_URL}/${locale}/sheetdiff` },
+      { '@type': 'ListItem', position: 3, name: t.breadcrumb.apiDocs, item: `${BASE_URL}/${locale}/sheetdiff/api-docs` },
+      { '@type': 'ListItem', position: 4, name: t.breadcrumb.current, item: `${BASE_URL}/${locale}/sheetdiff/api-docs/live-demo` },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        id="live-demo-webapp"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
+      />
+      <script
+        id="live-demo-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <LiveSimulatorClient />
+    </>
+  )
 }

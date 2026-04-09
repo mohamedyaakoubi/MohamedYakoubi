@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/sheetdiff':    new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
   }
 
+  const apiDocsDate        = new Date('2026-04-09') // API docs section added Apr 9
   const sheetdiffSubPageDate = new Date('2026-04-05')
 
   const projectPageDates: Record<string, Date> = {
@@ -66,6 +67,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: sheetdiffSubPageDate,
         changeFrequency: 'yearly',
         priority: 0.5,
+      })
+    })
+
+    // Add API docs section
+    sitemapEntries.push({
+      url: `${baseUrl}/${locale}/sheetdiff/api-docs`,
+      lastModified: apiDocsDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
+    const apiDocSubPages = [
+      '/sheetdiff/api-docs/parameters',
+      '/sheetdiff/api-docs/diff-statuses',
+      '/sheetdiff/api-docs/demo',
+      '/sheetdiff/api-docs/live-demo',
+    ]
+    apiDocSubPages.forEach(page => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${page}`,
+        lastModified: apiDocsDate,
+        changeFrequency: 'monthly',
+        priority: 0.7,
       })
     })
 

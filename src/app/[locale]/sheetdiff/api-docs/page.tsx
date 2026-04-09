@@ -52,6 +52,53 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function StructuralApiPage() {
-  return <StructuralApiClient />
+const BASE_URL = 'https://www.mohamedyaakoubi.com'
+
+export default async function StructuralApiPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+
+  const techArticleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: 'Structural Diff API Documentation — SheetDiff™',
+    description:
+      'Complete REST API reference for SheetDiff™ Structural Diff. Detect modified, split, merged, added, and deleted rows in transcript datasets with CER/WER/SER quality scoring.',
+    url: `${BASE_URL}/${locale}/sheetdiff/api-docs`,
+    inLanguage: locale,
+    author: { '@type': 'Person', name: 'Mohamed Yaakoubi', url: BASE_URL },
+    publisher: { '@type': 'Person', name: 'Mohamed Yaakoubi', url: BASE_URL },
+    proficiencyLevel: 'Expert',
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'SheetDiff™ Structural Diff API',
+      applicationCategory: 'DeveloperApplication',
+      url: `${BASE_URL}/en/sheetdiff/api-docs`,
+    },
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: 'SheetDiff™', item: `${BASE_URL}/${locale}/sheetdiff` },
+      { '@type': 'ListItem', position: 3, name: 'API Docs', item: `${BASE_URL}/${locale}/sheetdiff/api-docs` },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        id="api-docs-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(techArticleJsonLd) }}
+      />
+      <script
+        id="api-docs-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <StructuralApiClient />
+    </>
+  )
 }
