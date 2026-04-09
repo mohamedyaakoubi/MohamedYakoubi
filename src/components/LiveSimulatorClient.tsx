@@ -934,7 +934,7 @@ export default function LiveSimulatorClient() {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 min-w-0 px-6 lg:px-10 py-12 max-w-3xl">
+        <main className="flex-1 min-w-0 px-6 lg:px-10 pt-24 pb-12 max-w-3xl">
           <FadeIn>
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
@@ -944,7 +944,7 @@ export default function LiveSimulatorClient() {
               >
                 {t.breadcrumb.apiDocs}
               </Link>
-              <span>/</span>
+              <span>›</span>
               <span className="text-gray-600 dark:text-gray-300">{t.breadcrumb.current}</span>
             </div>
 

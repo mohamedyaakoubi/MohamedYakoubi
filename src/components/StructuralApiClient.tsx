@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useLanguage } from '@/context/language-context'
 import { getStructuralApiI18n } from '@/data/structural-api-i18n'
+import { TabbedCodeBlock } from '@/components/ApiDocPrimitives'
 import {
   ChevronDown,
   ChevronRight,
@@ -295,6 +296,58 @@ export default function StructuralApiClient() {
     ]
   }'`
 
+  const jsDiff = `const response = await fetch('${BASE}/v1/diff', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-api-key': 'YOUR_API_KEY',
+  },
+  body: JSON.stringify({
+    original: [
+      { speaker: 'Alice', start_time: 0, end_time: 1, transcript: 'Hello world' },
+      { speaker: 'Bob',   start_time: 1, end_time: 3, transcript: 'Good morning everyone' },
+    ],
+    reworked: [
+      { speaker: 'Alice', start_time: 0, end_time: 1, transcript: 'Hello there' },
+      { speaker: 'Bob',   start_time: 1, end_time: 2, transcript: 'Good morning' },
+      { speaker: 'Bob',   start_time: 2, end_time: 3, transcript: 'everyone' },
+    ],
+  }),
+})
+
+const data = await response.json()
+console.log(data.data.results)`
+
+  const pythonDiff = `import requests
+
+response = requests.post(
+    '${BASE}/v1/diff',
+    headers={
+        'Content-Type': 'application/json',
+        'x-api-key': 'YOUR_API_KEY',
+    },
+    json={
+        'original': [
+            {'speaker': 'Alice', 'start_time': 0, 'end_time': 1, 'transcript': 'Hello world'},
+            {'speaker': 'Bob',   'start_time': 1, 'end_time': 3, 'transcript': 'Good morning everyone'},
+        ],
+        'reworked': [
+            {'speaker': 'Alice', 'start_time': 0, 'end_time': 1, 'transcript': 'Hello there'},
+            {'speaker': 'Bob',   'start_time': 1, 'end_time': 2, 'transcript': 'Good morning'},
+            {'speaker': 'Bob',   'start_time': 2, 'end_time': 3, 'transcript': 'everyone'},
+        ],
+    },
+)
+
+data = response.json()
+print(data['data']['results'])`
+
+  const diffTabs = [
+    { label: 'curl',       code: curlDiff,    lang: 'bash'   },
+    { label: 'javascript', code: jsDiff,      lang: 'js'     },
+    { label: 'python',     code: pythonDiff,  lang: 'python' },
+  ]
+
   const responseExample = `{
   "status": "success",
   "requestId": "550e8400-e29b-41d4-a716-446655440000",
@@ -422,7 +475,7 @@ export default function StructuralApiClient() {
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-6 mb-4">
             {t.quickStart.step2}
           </p>
-          <CodeBlock code={curlDiff} lang="bash" />
+          <TabbedCodeBlock tabs={diffTabs} />
 
           {/* Base URL */}
           <H2 id="base-url">{t.baseUrl.title}</H2>

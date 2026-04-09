@@ -64,9 +64,9 @@ const en: DiffStatusesI18n = {
     description:
       'Full reference for every diff status: UNCHANGED, MODIFIED, ADDED, DELETED, SPLIT, and MERGED. Includes input/output examples, workflow context, and notes on source row handling.',
   },
-  breadcrumb: { apiDocs: 'API Reference', current: 'Diff Statuses' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'Diff Statuses' },
   nav: {
-    backToApiDocs: '← API Reference',
+    backToApiDocs: '← Structural Diff API',
     onThisPage: 'On this page',
     sectionsBtn: 'Sections',
     sections: [
@@ -81,12 +81,12 @@ const en: DiffStatusesI18n = {
       { id: 'source-rows',      title: 'Source rows (MERGED)' },
       { id: 'counts-table',     title: 'Counting statuses' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Examples',
     guides: [
       { label: 'Config Parameters', slug: 'parameters' },
       { label: 'Diff Statuses',     slug: 'diff-statuses' },
       { label: 'Demo Walkthrough',  slug: 'demo' },
-      { label: 'Live Simulator',    slug: 'live-demo' },
+      { label: 'Playground',         slug: 'playground' },
     ],
   },
   hero: {
@@ -215,7 +215,7 @@ const en: DiffStatusesI18n = {
   },
   footer: {
     info: 'Diff Statuses Guide · Structural Diff API · Built by',
-    back: '← Back to API Reference',
+    back: '← Back to Structural Diff API',
   },
 }
 
@@ -226,9 +226,9 @@ const fr: DiffStatusesI18n = {
     description:
       'Référence complète pour chaque statut de diff : UNCHANGED, MODIFIED, ADDED, DELETED, SPLIT et MERGED. Inclut des exemples d\'entrée/sortie, le contexte de workflow et la gestion des lignes source.',
   },
-  breadcrumb: { apiDocs: 'Référence API', current: 'Statuts de diff' },
+  breadcrumb: { apiDocs: 'API Structural Diff', current: 'Statuts de diff' },
   nav: {
-    backToApiDocs: '← Référence API',
+    backToApiDocs: '← API Structural Diff',
     onThisPage: 'Sur cette page',
     sectionsBtn: 'Sections',
     sections: [
@@ -243,12 +243,12 @@ const fr: DiffStatusesI18n = {
       { id: 'source-rows',     title: 'Lignes source (MERGED)' },
       { id: 'counts-table',    title: 'Comptage des statuts' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Exemples',
     guides: [
       { label: 'Paramètres de configuration', slug: 'parameters' },
       { label: 'Statuts de diff',             slug: 'diff-statuses' },
       { label: 'Démonstration complète',       slug: 'demo' },
-      { label: 'Simulateur en direct',         slug: 'live-demo' },
+      { label: 'Playground',                  slug: 'playground' },
     ],
   },
   hero: {
@@ -346,7 +346,7 @@ const fr: DiffStatusesI18n = {
   },
   footer: {
     info: 'Guide des statuts · API Structural Diff · Développé par',
-    back: '← Retour à la référence API',
+    back: '← Retour à l\'API Structural Diff',
   },
 }
 
@@ -357,9 +357,9 @@ const ar: DiffStatusesI18n = {
     description:
       'مرجع كامل لكل حالة diff: UNCHANGED وMODIFIED وADDED وDELETED وSPLIT وMERGED. مع أمثلة إدخال/إخراج وسياق سير العمل وملاحظات حول الصفوف المصدرية.',
   },
-  breadcrumb: { apiDocs: 'مرجع API', current: 'حالات الـ diff' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'حالات الـ diff' },
   nav: {
-    backToApiDocs: '← مرجع API',
+    backToApiDocs: '← Structural Diff API',
     onThisPage: 'في هذه الصفحة',
     sectionsBtn: 'الأقسام',
     sections: [
@@ -374,12 +374,12 @@ const ar: DiffStatusesI18n = {
       { id: 'source-rows',     title: 'الصفوف المصدرية (MERGED)' },
       { id: 'counts-table',    title: 'عدّ الحالات' },
     ],
-    guidesLabel: 'الأدلة',
+    guidesLabel: 'الأدلة والأمثلة',
     guides: [
       { label: 'معاملات الإعداد',  slug: 'parameters' },
       { label: 'حالات الـ diff',   slug: 'diff-statuses' },
       { label: 'درس تطبيقي كامل', slug: 'demo' },
-      { label: 'محاكي مباشر',    slug: 'live-demo' },
+      { label: 'Playground',     slug: 'playground' },
     ],
   },
   hero: {
@@ -477,7 +477,7 @@ const ar: DiffStatusesI18n = {
   },
   footer: {
     info: 'دليل حالات الـ diff · Structural Diff API · تطوير',
-    back: '← العودة إلى مرجع API',
+    back: '← العودة إلى Structural Diff API',
   },
 }
 

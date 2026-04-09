@@ -58,9 +58,9 @@ const en: DemoWalkthroughI18n = {
     description:
       'End-to-end example using a real podcast transcript. Covers column name adaptation, a full POST /v1/diff request, and interpreting CER/WER/SER scores in the context of annotation QA.',
   },
-  breadcrumb: { apiDocs: 'API Reference', current: 'Demo Walkthrough' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'Demo Walkthrough' },
   nav: {
-    backToApiDocs: '← API Reference',
+    backToApiDocs: '← Structural Diff API',
     onThisPage: 'On this page',
     sectionsBtn: 'Sections',
     sections: [
@@ -71,12 +71,12 @@ const en: DemoWalkthroughI18n = {
       { id: 'the-response',      title: 'Walking through the response' },
       { id: 'reading-scores',    title: 'Reading the scores' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Examples',
     guides: [
       { label: 'Config Parameters', slug: 'parameters' },
       { label: 'Diff Statuses',     slug: 'diff-statuses' },
       { label: 'Demo Walkthrough',  slug: 'demo' },
-      { label: 'Live Simulator',    slug: 'live-demo' },
+      { label: 'Playground',         slug: 'playground' },
     ],
   },
   hero: {
@@ -145,7 +145,7 @@ const en: DemoWalkthroughI18n = {
   },
   footer: {
     info: 'Demo Walkthrough · Structural Diff API · Built by',
-    back: '← Back to API Reference',
+    back: '← Back to Structural Diff API',
   },
 }
 
@@ -156,9 +156,9 @@ const fr: DemoWalkthroughI18n = {
     description:
       'Exemple de bout en bout avec une vraie transcription de podcast. Couvre l\'adaptation des noms de colonnes, une requête POST /v1/diff complète et l\'interprétation des scores CER/WER/SER dans le contexte du QA d\'annotation.',
   },
-  breadcrumb: { apiDocs: 'Référence API', current: 'Démonstration complète' },
+  breadcrumb: { apiDocs: 'API Structural Diff', current: 'Démonstration complète' },
   nav: {
-    backToApiDocs: '← Référence API',
+    backToApiDocs: '← API Structural Diff',
     onThisPage: 'Sur cette page',
     sectionsBtn: 'Sections',
     sections: [
@@ -169,12 +169,12 @@ const fr: DemoWalkthroughI18n = {
       { id: 'the-response',     title: 'Parcourir la réponse' },
       { id: 'reading-scores',   title: 'Lire les scores' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Exemples',
     guides: [
       { label: 'Paramètres de configuration', slug: 'parameters' },
       { label: 'Statuts de diff',             slug: 'diff-statuses' },
       { label: 'Démonstration complète',       slug: 'demo' },
-      { label: 'Simulateur en direct',         slug: 'live-demo' },
+      { label: 'Playground',                  slug: 'playground' },
     ],
   },
   hero: {
@@ -243,7 +243,7 @@ const fr: DemoWalkthroughI18n = {
   },
   footer: {
     info: 'Démonstration complète · API Structural Diff · Développé par',
-    back: '← Retour à la référence API',
+    back: '← Retour à l\'API Structural Diff',
   },
 }
 
@@ -254,9 +254,9 @@ const ar: DemoWalkthroughI18n = {
     description:
       'مثال شامل من البداية إلى النهاية باستخدام نص بودكاست حقيقي. يغطي تكييف أسماء الأعمدة، وطلب POST /v1/diff كاملاً، وتفسير درجات CER/WER/SER في سياق QA التدقيق.',
   },
-  breadcrumb: { apiDocs: 'مرجع API', current: 'درس تطبيقي كامل' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'درس تطبيقي كامل' },
   nav: {
-    backToApiDocs: '← مرجع API',
+    backToApiDocs: '← Structural Diff API',
     onThisPage: 'في هذه الصفحة',
     sectionsBtn: 'الأقسام',
     sections: [
@@ -267,12 +267,12 @@ const ar: DemoWalkthroughI18n = {
       { id: 'the-response',     title: 'استعراض الاستجابة' },
       { id: 'reading-scores',   title: 'قراءة الدرجات' },
     ],
-    guidesLabel: 'الأدلة',
+    guidesLabel: 'الأدلة والأمثلة',
     guides: [
       { label: 'معاملات الإعداد',  slug: 'parameters' },
       { label: 'حالات الـ diff',   slug: 'diff-statuses' },
       { label: 'درس تطبيقي كامل', slug: 'demo' },
-      { label: 'محاكي مباشر',    slug: 'live-demo' },
+      { label: 'Playground',      slug: 'playground' },
     ],
   },
   hero: {
@@ -341,7 +341,7 @@ const ar: DemoWalkthroughI18n = {
   },
   footer: {
     info: 'درس تطبيقي كامل · Structural Diff API · تطوير',
-    back: '← العودة إلى مرجع API',
+    back: '← العودة إلى Structural Diff API',
   },
 }
 

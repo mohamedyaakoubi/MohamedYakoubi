@@ -81,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/sheetdiff/api-docs/parameters',
       '/sheetdiff/api-docs/diff-statuses',
       '/sheetdiff/api-docs/demo',
-      '/sheetdiff/api-docs/live-demo',
+      '/sheetdiff/api-docs/playground',
     ]
     apiDocSubPages.forEach(page => {
       sitemapEntries.push({

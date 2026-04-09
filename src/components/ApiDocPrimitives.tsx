@@ -54,6 +54,39 @@ export function CodeBlock({ code, lang = 'bash' }: { code: string; lang?: string
   )
 }
 
+/* ── Tabbed code block (curl / JavaScript / Python) ─────────── */
+export type CodeTab = { label: string; code: string; lang: string }
+
+export function TabbedCodeBlock({ tabs }: { tabs: CodeTab[] }) {
+  const [active, setActive] = useState(0)
+  const current = tabs[active]
+  return (
+    <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden my-4">
+      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex items-center gap-1">
+          {tabs.map((tab, i) => (
+            <button
+              key={tab.label}
+              onClick={() => setActive(i)}
+              className={`px-3 py-1 rounded text-xs font-mono font-medium transition-colors ${
+                i === active
+                  ? 'bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <CopyButton text={current.code} />
+      </div>
+      <pre className="p-4 overflow-x-auto text-sm bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+        <code>{current.code}</code>
+      </pre>
+    </div>
+  )
+}
+
 /* ── Inline code ─────────────────────────────────────────────── */
 export function IC({ children }: { children: React.ReactNode }) {
   return (

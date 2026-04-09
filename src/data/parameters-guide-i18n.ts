@@ -100,9 +100,9 @@ const en: ParametersGuideI18n = {
     description:
       'Detailed guide to every config option in the Structural Diff API: simpleMode, stripDiacritics, positionalMode, ignoreColNames, and expert similarity thresholds. Includes before/after examples.',
   },
-  breadcrumb: { apiDocs: 'API Reference', current: 'Config Parameters' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'Config Parameters' },
   nav: {
-    backToApiDocs: '← API Reference',
+    backToApiDocs: '← Structural Diff API',
     onThisPage: 'On this page',
     sectionsBtn: 'Sections',
     sections: [
@@ -116,12 +116,12 @@ const en: ParametersGuideI18n = {
       { id: 'structuralTransforms', title: 'structuralTransforms' },
       { id: 'expert-thresholds',    title: 'Expert thresholds' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Examples',
     guides: [
       { label: 'Config Parameters',  slug: 'parameters' },
       { label: 'Diff Statuses',      slug: 'diff-statuses' },
       { label: 'Demo Walkthrough',   slug: 'demo' },
-      { label: 'Live Simulator',     slug: 'live-demo' },
+      { label: 'Playground',          slug: 'playground' },
     ],
   },
   hero: {
@@ -249,7 +249,7 @@ const en: ParametersGuideI18n = {
   },
   footer: {
     info: 'Config Parameters Guide · Structural Diff API · Built by',
-    back: '← Back to API Reference',
+    back: '← Back to Structural Diff API',
   },
 }
 
@@ -260,9 +260,9 @@ const fr: ParametersGuideI18n = {
     description:
       'Guide détaillé de chaque option de configuration de l\'API Structural Diff : simpleMode, stripDiacritics, positionalMode, ignoreColNames et seuils experts. Avec exemples avant/après.',
   },
-  breadcrumb: { apiDocs: 'Référence API', current: 'Paramètres de configuration' },
+  breadcrumb: { apiDocs: 'API Structural Diff', current: 'Paramètres de configuration' },
   nav: {
-    backToApiDocs: '← Référence API',
+    backToApiDocs: '← API Structural Diff',
     onThisPage: 'Sur cette page',
     sectionsBtn: 'Sections',
     sections: [
@@ -276,12 +276,12 @@ const fr: ParametersGuideI18n = {
       { id: 'structuralTransforms', title: 'structuralTransforms' },
       { id: 'expert-thresholds',    title: 'Seuils experts' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Exemples',
     guides: [
       { label: 'Paramètres de configuration', slug: 'parameters' },
       { label: 'Statuts de diff',             slug: 'diff-statuses' },
       { label: 'Démonstration complète',       slug: 'demo' },
-      { label: 'Simulateur en direct',         slug: 'live-demo' },
+      { label: 'Playground',                  slug: 'playground' },
     ],
   },
   hero: {
@@ -409,7 +409,7 @@ const fr: ParametersGuideI18n = {
   },
   footer: {
     info: 'Guide des paramètres · API Structural Diff · Développé par',
-    back: '← Retour à la référence API',
+    back: '← Retour à l\'API Structural Diff',
   },
 }
 
@@ -420,9 +420,9 @@ const ar: ParametersGuideI18n = {
     description:
       'دليل تفصيلي لكل خيار إعداد في Structural Diff API: simpleMode وstripDiacritics وpositionalMode وignoreColNames وعتبات الخبراء. مع أمثلة قبل/بعد.',
   },
-  breadcrumb: { apiDocs: 'مرجع API', current: 'معاملات الإعداد' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'معاملات الإعداد' },
   nav: {
-    backToApiDocs: '← مرجع API',
+    backToApiDocs: '← Structural Diff API',
     onThisPage: 'في هذه الصفحة',
     sectionsBtn: 'الأقسام',
     sections: [
@@ -436,12 +436,12 @@ const ar: ParametersGuideI18n = {
       { id: 'structuralTransforms', title: 'structuralTransforms' },
       { id: 'expert-thresholds',    title: 'عتبات الخبراء' },
     ],
-    guidesLabel: 'الأدلة',
+    guidesLabel: 'الأدلة والأمثلة',
     guides: [
       { label: 'معاملات الإعداد',    slug: 'parameters' },
       { label: 'حالات الـ diff',     slug: 'diff-statuses' },
       { label: 'درس تطبيقي كامل',   slug: 'demo' },
-      { label: 'محاكي مباشر',      slug: 'live-demo' },
+      { label: 'Playground',        slug: 'playground' },
     ],
   },
   hero: {
@@ -569,7 +569,7 @@ const ar: ParametersGuideI18n = {
   },
   footer: {
     info: 'دليل معاملات الإعداد · Structural Diff API · تطوير',
-    back: '← العودة إلى مرجع API',
+    back: '← العودة إلى Structural Diff API',
   },
 }
 

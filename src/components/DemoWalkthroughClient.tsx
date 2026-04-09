@@ -7,6 +7,7 @@ import { useLanguage } from '@/context/language-context'
 import { getDemoWalkthroughI18n } from '@/data/demo-walkthrough-i18n'
 import {
   CodeBlock,
+  TabbedCodeBlock,
   IC,
   H2,
   H3,
@@ -176,6 +177,52 @@ reworked_adapted = [adapt(r) for r in reworked_data]`
     "reworked": <reworkedAdapted array>
   }'`
 
+  const jsDemoRequest = `// After adapting column names with the KEY_MAP adapter above
+const response = await fetch('https://structural-diff-engine.onrender.com/v1/diff', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-api-key': 'YOUR_API_KEY',
+    'x-request-id': 'batch-ep101-layer1-layer2-qa',
+  },
+  body: JSON.stringify({
+    original: originalAdapted,  // 9 rows, adapted column names
+    reworked: reworkedAdapted,  // 9 rows after annotator post-edit
+  }),
+})
+
+const data = await response.json()
+// data.data.results   — one entry per original row
+// data.data.scores    — CER / WER / SER
+// data.data.composite — grade, score, label`
+
+  const pythonDemoRequest = `# After adapting column names with the adapt() function above
+import requests
+
+response = requests.post(
+    'https://structural-diff-engine.onrender.com/v1/diff',
+    headers={
+        'Content-Type': 'application/json',
+        'x-api-key': 'YOUR_API_KEY',
+        'x-request-id': 'batch-ep101-layer1-layer2-qa',
+    },
+    json={
+        'original': original_adapted,  # 9 rows, adapted column names
+        'reworked': reworked_adapted,  # 9 rows after annotator post-edit
+    },
+)
+
+data = response.json()
+# data['data']['results']   — one entry per original row
+# data['data']['scores']    — CER / WER / SER
+# data['data']['composite'] — grade, score, label`
+
+  const requestTabs = [
+    { label: 'curl',       code: curlRequest,       lang: 'bash'   },
+    { label: 'javascript', code: jsDemoRequest,     lang: 'js'     },
+    { label: 'python',     code: pythonDemoRequest, lang: 'python' },
+  ]
+
   const responseExcerpt = `{
   "status": "success",
   "requestId": "batch-ep101-layer1-layer2-qa",
@@ -320,8 +367,7 @@ reworked_adapted = [adapt(r) for r in reworked_data]`
               <H3>Reworked array (9 rows — annotator post-edit)</H3>
               <CodeBlock code={reworkedData} lang="json" />
 
-              <H3>curl</H3>
-              <CodeBlock code={curlRequest} lang="bash" />
+              <TabbedCodeBlock tabs={requestTabs} />
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-2">{t.request.postNote}</p>
             </section>
 

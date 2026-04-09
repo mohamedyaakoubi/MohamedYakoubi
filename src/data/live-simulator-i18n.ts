@@ -106,13 +106,13 @@ type LiveSimulatorI18n = {
 // ──────────────────────── ENGLISH ────────────────────────────────
 const en: LiveSimulatorI18n = {
   meta: {
-    title: 'Live API Simulator — Structural Diff API',
+    title: 'API Playground — Structural Diff API',
     description:
       'Interactively test the Structural Diff API. Paste or upload two JSON transcript arrays, configure all parameters, run a real diff, and inspect results row by row with inline diffs and quality scores.',
   },
-  breadcrumb: { apiDocs: 'API Reference', current: 'Live Simulator' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'Playground' },
   nav: {
-    backToApiDocs: 'API Reference',
+    backToApiDocs: 'Structural Diff API',
     onThisPage: 'On this page',
     sectionsBtn: 'Sections',
     sections: [
@@ -122,16 +122,16 @@ const en: LiveSimulatorI18n = {
       { id: 'config',          title: 'Config Parameters' },
       { id: 'results',         title: 'Results' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Examples',
     guides: [
       { label: 'Config Parameters', slug: 'parameters' },
       { label: 'Diff Statuses',     slug: 'diff-statuses' },
       { label: 'Demo Walkthrough',  slug: 'demo' },
-      { label: 'Live Simulator',    slug: 'live-demo' },
+      { label: 'Playground',          slug: 'playground' },
     ],
   },
   hero: {
-    title: 'Live API Simulator',
+    title: 'API Playground',
     subtitle: 'Run a real diff against the hosted API — no code required.',
     intro:
       'Paste or upload two JSON arrays of transcript rows, configure every parameter, and hit Run. The result is rendered row by row with status pills, inline character diffs, and quality scores — exactly what your internal tool would show after integrating the API.',
@@ -281,13 +281,13 @@ const en: LiveSimulatorI18n = {
 // ──────────────────────── FRENCH ─────────────────────────────────
 const fr: LiveSimulatorI18n = {
   meta: {
-    title: 'Simulateur API en direct — Structural Diff API',
+    title: 'Playground API — Structural Diff API',
     description:
       'Testez interactivement l\'API Structural Diff. Collez ou importez deux tableaux JSON de transcriptions, configurez tous les paramètres, lancez un vrai diff et inspectez les résultats ligne par ligne.',
   },
-  breadcrumb: { apiDocs: 'Référence API', current: 'Simulateur en direct' },
+  breadcrumb: { apiDocs: 'API Structural Diff', current: 'Playground' },
   nav: {
-    backToApiDocs: 'Référence API',
+    backToApiDocs: 'API Structural Diff',
     onThisPage: 'Sur cette page',
     sectionsBtn: 'Sections',
     sections: [
@@ -297,16 +297,16 @@ const fr: LiveSimulatorI18n = {
       { id: 'config',          title: 'Paramètres de config' },
       { id: 'results',         title: 'Résultats' },
     ],
-    guidesLabel: 'Guides',
+    guidesLabel: 'Guides & Exemples',
     guides: [
       { label: 'Paramètres de configuration', slug: 'parameters' },
       { label: 'Statuts de diff',             slug: 'diff-statuses' },
       { label: 'Démonstration complète',       slug: 'demo' },
-      { label: 'Simulateur en direct',         slug: 'live-demo' },
+      { label: 'Playground',                  slug: 'playground' },
     ],
   },
   hero: {
-    title: 'Simulateur API en direct',
+    title: 'Playground API',
     subtitle: 'Exécutez un vrai diff contre l\'API hébergée — sans code.',
     intro:
       'Collez ou importez deux tableaux JSON de lignes de transcription, configurez chaque paramètre et cliquez sur Lancer. Le résultat est rendu ligne par ligne avec des indicateurs de statut, des diffs de caractères en ligne et des scores de qualité.',
@@ -424,13 +424,13 @@ const fr: LiveSimulatorI18n = {
 // ──────────────────────── ARABIC ─────────────────────────────────
 const ar: LiveSimulatorI18n = {
   meta: {
-    title: 'محاكي API المباشر — Structural Diff API',
+    title: 'Playground API — Structural Diff API',
     description:
       'اختبر Structural Diff API بشكل تفاعلي. الصق أو أرفع مصفوفتي JSON لنصوص مكتوبة، وضبط جميع المعاملات، وشغّل diff حقيقياً وافحص النتائج صفاً بصف.',
   },
-  breadcrumb: { apiDocs: 'مرجع API', current: 'محاكي مباشر' },
+  breadcrumb: { apiDocs: 'Structural Diff API', current: 'Playground' },
   nav: {
-    backToApiDocs: 'مرجع API',
+    backToApiDocs: 'Structural Diff API',
     onThisPage: 'في هذه الصفحة',
     sectionsBtn: 'الأقسام',
     sections: [
@@ -440,16 +440,16 @@ const ar: LiveSimulatorI18n = {
       { id: 'config',          title: 'معاملات الإعداد' },
       { id: 'results',         title: 'النتائج' },
     ],
-    guidesLabel: 'الأدلة',
+    guidesLabel: 'الأدلة والأمثلة',
     guides: [
       { label: 'معاملات الإعداد',  slug: 'parameters' },
       { label: 'حالات الـ diff',   slug: 'diff-statuses' },
       { label: 'درس تطبيقي كامل', slug: 'demo' },
-      { label: 'محاكي مباشر',     slug: 'live-demo' },
+      { label: 'Playground',        slug: 'playground' },
     ],
   },
   hero: {
-    title: 'محاكي API المباشر',
+    title: 'Playground API',
     subtitle: 'شغّل diff حقيقياً مع الـ API المستضاف — دون كتابة كود.',
     intro:
       'الصق أو أرفع مصفوفتي JSON لصفوف النص المكتوب، وضبط كل معامل، ثم اضغط تشغيل. تُعرض النتائج صفاً بصف مع حالات ملونة ودiffs للأحرف في السطر ودرجات الجودة — تماماً كما سيُظهر أداتك الداخلية بعد دمج الـ API.',

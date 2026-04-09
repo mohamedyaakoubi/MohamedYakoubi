@@ -136,7 +136,7 @@ const en: StructuralApiI18n = {
       { label: 'Config Parameters', slug: 'parameters' },
       { label: 'Diff Statuses',     slug: 'diff-statuses' },
       { label: 'Demo Walkthrough',  slug: 'demo' },
-      { label: 'Live Simulator',    slug: 'live-demo' },
+      { label: 'Playground',         slug: 'playground' },
     ],
   },
   breadcrumb: {
@@ -145,7 +145,7 @@ const en: StructuralApiI18n = {
   },
   hero: {
     title: 'Structural Diff API',
-    desc: 'A focused HTTP API to detect row-level changes between two transcript versions — splits, merges, modifications, additions, and deletions — with CER/WER/SER quality scoring.',
+    desc: 'A REST API that compares an AI-generated transcript against its annotator post-edit — detecting row-level structural changes (splits, merges, modifications, additions, deletions), with per-column diff detail, CER/WER/SER scoring, and a composite quality grade per batch.',
     features: [
       { label: 'API Key Auth',   sub: 'x-api-key header' },
       { label: 'Rate Limited',   sub: '10/min · 60/15min' },
@@ -329,7 +329,7 @@ const fr: StructuralApiI18n = {
       { label: 'Paramètres de configuration', slug: 'parameters' },
       { label: 'Statuts de diff',             slug: 'diff-statuses' },
       { label: 'Démonstration complète',       slug: 'demo' },
-      { label: 'Simulateur en direct',         slug: 'live-demo' },
+      { label: 'Playground',                  slug: 'playground' },
     ],
   },
   breadcrumb: {
@@ -338,7 +338,7 @@ const fr: StructuralApiI18n = {
   },
   hero: {
     title: 'API Structural Diff',
-    desc: 'Une API HTTP ciblée pour détecter les changements au niveau des lignes entre deux versions de transcription — divisions, fusions, modifications, ajouts et suppressions — avec scores de qualité CER/WER/SER.',
+    desc: 'Une API REST qui compare une transcription générée par IA avec la version post-éditée par l\'annotateur — détectant les changements structurels au niveau des lignes (divisions, fusions, modifications, ajouts, suppressions), avec détail des différences par colonne, scores CER/WER/SER et une note de qualité composite par lot.',
     features: [
       { label: 'Auth par clé API',  sub: 'en-tête x-api-key' },
       { label: 'Débit limité',      sub: '10/min · 60/15min' },
@@ -522,7 +522,7 @@ const ar: StructuralApiI18n = {
       { label: 'معاملات الإعداد',  slug: 'parameters' },
       { label: 'حالات الـ diff',   slug: 'diff-statuses' },
       { label: 'درس تطبيقي كامل', slug: 'demo' },
-      { label: 'محاكي مباشر',      slug: 'live-demo' },
+      { label: 'Playground',       slug: 'playground' },
     ],
   },
   breadcrumb: {
@@ -531,7 +531,7 @@ const ar: StructuralApiI18n = {
   },
   hero: {
     title: 'Structural Diff API',
-    desc: 'واجهة HTTP مركّزة للكشف عن التغييرات على مستوى الصفوف بين نسختين من النص المكتوب — التقسيمات والدمج والتعديلات والإضافات والحذف — مع درجات جودة CER/WER/SER.',
+    desc: 'واجهة REST API تقارن النص المُنشأ بالذكاء الاصطناعي بالنسخة المُحرَّرة من قِبل المُعلِّم — تكشف التغييرات الهيكلية على مستوى الصفوف (تقسيم، دمج، تعديل، إضافة، حذف)، مع تفاصيل الفروق لكل عمود، ودرجات CER/WER/SER، ودرجة جودة مركّبة لكل دُفعة.',
     features: [
       { label: 'مصادقة بمفتاح API', sub: 'رأس x-api-key' },
       { label: 'حدود الاستخدام',    sub: '10/دقيقة · 60/15دقيقة' },

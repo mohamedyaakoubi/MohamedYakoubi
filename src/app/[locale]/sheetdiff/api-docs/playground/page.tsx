@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t.meta.title,
     description: t.meta.description,
     keywords: [
-      'structural diff API simulator',
+      'structural diff API playground',
       'live diff test tool',
       'transcript QA API playground',
       'JSON diff online',
@@ -25,18 +25,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'AI annotation QA pipeline',
     ],
     alternates: {
-      canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs/live-demo`,
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs/playground`,
       languages: {
-        en: 'https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs/live-demo',
-        fr: 'https://www.mohamedyaakoubi.com/fr/sheetdiff/api-docs/live-demo',
-        ar: 'https://www.mohamedyaakoubi.com/ar/sheetdiff/api-docs/live-demo',
-        'x-default': 'https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs/live-demo',
+        en: 'https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs/playground',
+        fr: 'https://www.mohamedyaakoubi.com/fr/sheetdiff/api-docs/playground',
+        ar: 'https://www.mohamedyaakoubi.com/ar/sheetdiff/api-docs/playground',
+        'x-default': 'https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs/playground',
       },
     },
     openGraph: {
       title: t.meta.title,
       description: t.meta.description,
-      url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs/live-demo`,
+      url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs/playground`,
       type: 'website',
       siteName: 'Mohamed Yaakoubi Portfolio',
     },
@@ -57,9 +57,9 @@ export default async function LiveDemoPage({ params }: { params: Promise<{ local
   const webAppJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'Structural Diff API Live Simulator — SheetDiff™',
+    name: 'Structural Diff API Playground — SheetDiff™',
     description: t.meta.description,
-    url: `${BASE_URL}/${locale}/sheetdiff/api-docs/live-demo`,
+    url: `${BASE_URL}/${locale}/sheetdiff/api-docs/playground`,
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -80,7 +80,7 @@ export default async function LiveDemoPage({ params }: { params: Promise<{ local
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/${locale}` },
       { '@type': 'ListItem', position: 2, name: 'SheetDiff™', item: `${BASE_URL}/${locale}/sheetdiff` },
       { '@type': 'ListItem', position: 3, name: t.breadcrumb.apiDocs, item: `${BASE_URL}/${locale}/sheetdiff/api-docs` },
-      { '@type': 'ListItem', position: 4, name: t.breadcrumb.current, item: `${BASE_URL}/${locale}/sheetdiff/api-docs/live-demo` },
+      { '@type': 'ListItem', position: 4, name: t.breadcrumb.current, item: `${BASE_URL}/${locale}/sheetdiff/api-docs/playground` },
     ],
   }
 
