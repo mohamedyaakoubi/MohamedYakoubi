@@ -42,8 +42,18 @@ type LiveSimulatorI18n = {
     transcriptFieldSimple: string
     startTimeField: string
     endTimeField: string
-    none: string
+    nseField: string
+    emotionField: string
+    languageField: string
+    localeField: string
+    accentField: string
+    fileNameField: string
+    typeMismatch: string
     optional: string
+    extraColsTitle: string
+    extraColsBody: string
+    allExtra: string
+    noneExtra: string
   }
   config: {
     title: string
@@ -52,8 +62,11 @@ type LiveSimulatorI18n = {
     enableSplits: { label: string; desc: string }
     enableMerges: { label: string; desc: string }
     enableCER: { label: string; desc: string }
+    enableTranscriptCER: { label: string; desc: string }
     enableWER: { label: string; desc: string }
+    enableTranscriptWER: { label: string; desc: string }
     enableSER: { label: string; desc: string }
+    enableComposite: { label: string; desc: string }
     stripDiacritics: { label: string; desc: string }
     positionalMode: { label: string; desc: string }
     enableInlineDiff: { label: string; desc: string }
@@ -96,11 +109,36 @@ type LiveSimulatorI18n = {
     transcriptDiff: string
     rawJson: string
     scores: string
+    columnChanges: string
+    column: string
+    originalValue: string
+    reworkedValue: string
+    ignored: string
+    spreadsheetNote: string
+    rowStatus: string
+    notes: string
+    legend: string
+    changedCell: string
+    viewList: string
+    viewSheet: string
+    splitChildrenLabel: string
+    mergedParentsLabel: string
   }
   errors: {
     fetchFailed: string
     parseOriginal: string
     parseReworked: string
+  }
+  scorePanel: {
+    title: string
+    composite: string
+    overall: string
+    transcriptOnly: string
+    cer: string
+    wer: string
+    ser: string
+    grade: string
+    disabled: string
   }
 }
 
@@ -157,14 +195,24 @@ const en: LiveSimulatorI18n = {
   },
   mapping: {
     title: 'Column Mapping',
-    body: 'If your JSON uses non-standard field names, map them here. Leave blank to use the field name as-is.',
+    body: 'Each label below is a semantic role — not a required column name. Your column \"author\" can serve as Speaker; \"subtitle_text\" as Transcript. Select the column from your data that fills each role. If your data already uses the role name shown in the first dropdown option, leave the field unset.',
     speakerField: 'Speaker field',
     transcriptField: 'Transcript field',
     transcriptFieldSimple: 'Transcript / ID field',
     startTimeField: 'Start time field',
     endTimeField: 'End time field',
-    none: '— use as-is —',
+    nseField: 'Non-speech events field',
+    emotionField: 'Emotion field',
+    languageField: 'Language field',
+    localeField: 'Locale field',
+    accentField: 'Accent field',
+    fileNameField: 'File name field',
+    typeMismatch: 'Column values may not match the expected type for this role — double-check the mapping.',
     optional: '(optional)',
+    extraColsTitle: 'Additional scored columns',
+    extraColsBody: 'These columns are outside the standard schema. Check the ones you want included in the diff and column changes table.',
+    allExtra: 'All',
+    noneExtra: 'None',
   },
   config: {
     title: 'Config Parameters',
@@ -185,13 +233,25 @@ const en: LiveSimulatorI18n = {
       label: 'enableCER',
       desc: 'Compute Character Error Rate for MODIFIED rows.',
     },
+    enableTranscriptCER: {
+      label: 'enableTranscriptCER',
+      desc: 'Compute CER on the transcript column only. Gives a more focused view of transcription quality.',
+    },
     enableWER: {
       label: 'enableWER',
       desc: 'Compute Word Error Rate for MODIFIED rows.',
     },
+    enableTranscriptWER: {
+      label: 'enableTranscriptWER',
+      desc: 'Compute WER on the transcript column only. Gives a more focused view of transcription quality.',
+    },
     enableSER: {
       label: 'enableSER',
       desc: 'Compute Sentence Error Rate across the full comparison.',
+    },
+    enableComposite: {
+      label: 'enableComposite',
+      desc: 'Compute the composite quality score — a weighted average of the enabled CER, WER, and SER metrics.',
     },
     stripDiacritics: {
       label: 'stripDiacritics',
@@ -268,15 +328,40 @@ const en: LiveSimulatorI18n = {
   results: {
     title: 'Results',
     summary: 'Summary',
-    traceNote: 'Trace entries (↩) are SPLIT/MERGED source references — not counted in totals.',
+    traceNote: 'SPLIT parent rows show their resulting child rows below. MERGED result rows show their absorbed parent rows below.',
+    splitChildrenLabel: 'Resulting child rows',
+    mergedParentsLabel: 'Original parent rows',
     transcriptDiff: 'Transcript diff',
     rawJson: 'Raw JSON',
     scores: 'Quality scores',
+    columnChanges: 'Column changes',
+    column: 'Column',
+    originalValue: 'Original',
+    reworkedValue: 'Reworked',
+    ignored: 'ignored',
+    spreadsheetNote: 'Cells highlighted in amber changed. SPLIT parent rows are replaced by ↳ child rows shown below. MERGED rows show ↑ absorbed parent rows below. DELETED rows are shown with strikethrough.',
+    rowStatus: 'Row_Status',
+    notes: 'Notes',
+    legend: 'Legend',
+    changedCell: 'Changed cell',
+    viewList: 'List view',
+    viewSheet: 'Spreadsheet view',
   },
   errors: {
-    fetchFailed: 'API request failed. Check your key, the service status, and try again.',
+    fetchFailed: 'API request failed. Check your key, service status, and try again.',
     parseOriginal: 'Original JSON is invalid. Must be a JSON array of objects.',
     parseReworked: 'Reworked JSON is invalid. Must be a JSON array of objects.',
+  },
+  scorePanel: {
+    title: 'Quality Scores',
+    composite: 'Composite Score',
+    overall: 'Overall (all columns)',
+    transcriptOnly: 'Transcript only',
+    cer: 'CER',
+    wer: 'WER',
+    ser: 'SER',
+    grade: 'Grade',
+    disabled: '—',
   },
 }
 
@@ -333,14 +418,24 @@ const fr: LiveSimulatorI18n = {
   },
   mapping: {
     title: 'Mappage des colonnes',
-    body: 'Si votre JSON utilise des noms de champs non standard, mappez-les ici. Laissez vide pour utiliser le nom tel quel.',
+    body: 'Chaque libellé ci-dessous est un rôle sémantique — pas un nom de colonne obligatoire. Votre colonne \"auteur\" peut remplir le rôle Speaker ; \"texte_sous-titre\" peut être Transcript. Sélectionnez la colonne correspondante dans vos données. Si vos données utilisent déjà le nom par défaut du rôle (affiché dans le menu), laissez le champ vide.',
     speakerField: 'Champ locuteur',
     transcriptField: 'Champ transcription',
     transcriptFieldSimple: 'Transcription / ID',
     startTimeField: 'Champ heure début',
     endTimeField: 'Champ heure fin',
-    none: '— utiliser tel quel —',
+    nseField: 'Champ \u00e9v\u00e9nements non verbaux',
+    emotionField: 'Champ \u00e9motion',
+    languageField: 'Champ langue',
+    localeField: 'Champ locale',
+    accentField: 'Champ accent',
+    fileNameField: 'Champ nom de fichier',
+    typeMismatch: 'Les valeurs de cette colonne peuvent ne pas correspondre au type attendu pour ce rôle — vérifiez le mappage.',
     optional: '(facultatif)',
+    extraColsTitle: 'Colonnes suppl\u00e9mentaires scor\u00e9es',
+    extraColsBody: 'Ces colonnes se trouvent hors du sch\u00e9ma standard. Cochez celles \u00e0 inclure dans le diff et le tableau des modifications.',
+    allExtra: 'Tout',
+    noneExtra: 'Aucun',
   },
   config: {
     title: 'Paramètres de configuration',
@@ -358,8 +453,11 @@ const fr: LiveSimulatorI18n = {
       desc: 'Détecte quand plusieurs lignes originales ont été fusionnées en une seule ligne retravaillée.',
     },
     enableCER: { label: 'enableCER', desc: 'Calcule le taux d\'erreur par caractère (CER) pour les lignes MODIFIED.' },
+    enableTranscriptCER: { label: 'enableTranscriptCER', desc: 'Calcule le CER sur la colonne de transcription uniquement. Donne une vue plus ciblée de la qualité de transcription.' },
     enableWER: { label: 'enableWER', desc: 'Calcule le taux d\'erreur par mot (WER) pour les lignes MODIFIED.' },
+    enableTranscriptWER: { label: 'enableTranscriptWER', desc: 'Calcule le WER sur la colonne de transcription uniquement. Donne une vue plus ciblée de la qualité de transcription.' },
     enableSER: { label: 'enableSER', desc: 'Calcule le taux d\'erreur par phrase (SER) sur l\'ensemble de la comparaison.' },
+    enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne pondérée des métriques CER, WER et SER activées.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'Normalise les diacritiques arabes avant la comparaison. Évite les comptes MODIFIED gonflés par les harakat.',
@@ -412,15 +510,40 @@ const fr: LiveSimulatorI18n = {
   results: {
     title: 'Résultats',
     summary: 'Résumé',
-    traceNote: 'Les entrées trace (↩) sont des références sources SPLIT/MERGED — non comptées dans les totaux.',
+    traceNote: 'Les lignes parentes SPLIT affichent leurs lignes enfants résultantes en dessous. Les lignes résultantes MERGED affichent leurs lignes parentes absorbées en dessous.',
     transcriptDiff: 'Diff de transcription',
     rawJson: 'JSON brut',
     scores: 'Scores de qualité',
+    columnChanges: 'Modifications par colonne',
+    column: 'Colonne',
+    originalValue: 'Original',
+    reworkedValue: 'Retravaillé',
+    ignored: 'ignoré',
+    spreadsheetNote: 'Cellules amberées = modifiées. Les lignes SPLIT sont remplacées par ↳ lignes enfants en dessous. Les lignes MERGED affichent ↑ les lignes parentes originales. Les lignes DELETED sont barrées.',
+    rowStatus: 'Row_Status',
+    notes: 'Notes',
+    legend: 'Légende',
+    changedCell: 'Cellule modifiée',
+    viewList: 'Vue liste',
+    viewSheet: 'Vue tableur',
+    splitChildrenLabel: 'Lignes enfants résultantes',
+    mergedParentsLabel: 'Lignes parentes originales',
   },
   errors: {
     fetchFailed: 'La requête API a échoué. Vérifiez votre clé, l\'état du service et réessayez.',
     parseOriginal: 'Le JSON Original est invalide. Doit être un tableau JSON d\'objets.',
     parseReworked: 'Le JSON Retravaillé est invalide. Doit être un tableau JSON d\'objets.',
+  },
+  scorePanel: {
+    title: 'Scores de qualité',
+    composite: 'Score composite',
+    overall: 'Global (toutes colonnes)',
+    transcriptOnly: 'Transcription uniquement',
+    cer: 'CER',
+    wer: 'WER',
+    ser: 'SER',
+    grade: 'Note',
+    disabled: '—',
   },
 }
 
@@ -477,14 +600,24 @@ const ar: LiveSimulatorI18n = {
   },
   mapping: {
     title: 'ربط الأعمدة',
-    body: 'إذا كان JSON الخاص بك يستخدم أسماء حقول غير قياسية، اربطها هنا. اتركه فارغاً لاستخدام اسم الحقل كما هو.',
+    body: 'كل تسمية أدناه تمثّل دوراً وظيفياً — وليست اسماً إلزامياً للعمود. عمودك المسمى "المؤلف" يمكن أن يؤدي دور Speaker، و"النص_الفرعي" يمكن أن يكون Transcript. اختر العمود المقابل من بياناتك. إن كانت بياناتك تستخدم اسم الدور الافتراضي الظاهر في أول خيار بالقائمة، فاتركه فارغاً.',
     speakerField: 'حقل المتحدث',
     transcriptField: 'حقل النص',
     transcriptFieldSimple: 'النص / المعرّف',
     startTimeField: 'حقل وقت البدء',
     endTimeField: 'حقل وقت الانتهاء',
-    none: '— استخدم كما هو —',
+    nseField: 'حقل الأحداث غير الكلامية',
+    emotionField: 'حقل المشاعر',
+    languageField: 'حقل اللغة',
+    localeField: 'حقل اللهجة',
+    accentField: 'حقل اللكنة',
+    fileNameField: 'حقل اسم الملف',
+    typeMismatch: 'قد لا تتطابق قيم هذا العمود مع النوع المتوقع لهذا الدور — راجع الربط.',
     optional: '(اختياري)',
+    extraColsTitle: 'أعمدة إضافية مُسجَّلة',
+    extraColsBody: 'هذه الأعمدة خارج المخطط القياسي. حدد ما تريد تضمينه في الـ diff وجدول التغييرات.',
+    allExtra: 'الكل',
+    noneExtra: 'لا شيء',
   },
   config: {
     title: 'معاملات الإعداد',
@@ -502,8 +635,11 @@ const ar: LiveSimulatorI18n = {
       desc: 'اكتشف متى دُمِجت عدة صفوف أصلية في صف مُعاد واحد.',
     },
     enableCER: { label: 'enableCER', desc: 'احسب معدل خطأ الأحرف (CER) للصفوف MODIFIED.' },
+    enableTranscriptCER: { label: 'enableTranscriptCER', desc: 'احسب CER على عمود النص فقط. يعطي رؤية أكثر تركيزاً لجودة النص.' },
     enableWER: { label: 'enableWER', desc: 'احسب معدل خطأ الكلمات (WER) للصفوف MODIFIED.' },
+    enableTranscriptWER: { label: 'enableTranscriptWER', desc: 'احسب WER على عمود النص فقط. يعطي رؤية أكثر تركيزاً لجودة النص.' },
     enableSER: { label: 'enableSER', desc: 'احسب معدل خطأ الجمل (SER) عبر المقارنة الكاملة.' },
+    enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط موزّن من مقاييس CER وWER وSER المُفَعَّلة.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'تطبيع التشكيل العربي قبل المقارنة. يمنع تضخم عدد MODIFIED بسبب تغييرات الحركات.',
@@ -558,19 +694,44 @@ const ar: LiveSimulatorI18n = {
   results: {
     title: 'النتائج',
     summary: 'ملخص',
-    traceNote: 'إدخالات التتبع (↩) مراجع مصدر SPLIT/MERGED — لا تُحسب في الإجماليات.',
+    traceNote: 'صفوف SPLIT تعرض صفوفها الفرعية الناتجة أسفلها. صفوف MERGED تعرض صفوفها الأصلية المدمجة أسفلها.',
     transcriptDiff: 'diff النص',
     rawJson: 'JSON الخام',
     scores: 'درجات الجودة',
+    columnChanges: 'تغييرات الأعمدة',
+    column: 'العمود',
+    originalValue: 'الأصلي',
+    reworkedValue: 'المُعاد',
+    ignored: 'مُتجاهل',
+    spreadsheetNote: 'الخلايا العنبرية = تغيّرت. صفوف SPLIT تظهر صفوفها الفرعية بالأسفل. صفوف MERGED تظهر الصفوف الأصلية المدمجة بالأسفل. صفوف DELETED تظهر بخط شطب.',
+    rowStatus: 'حالة_الصف',
+    notes: 'ملاحظات',
+    legend: 'المفتاح',
+    changedCell: 'خلية مُعدَّلة',
+    viewList: 'عرض القائمة',
+    viewSheet: 'عرض الجدول',
+    splitChildrenLabel: 'الصفوف الفرعية الناتجة',
+    mergedParentsLabel: 'الصفوف الأصلية المدمجة',
   },
   errors: {
     fetchFailed: 'فشل طلب API. تحقق من مفتاحك وحالة الخدمة وأعد المحاولة.',
     parseOriginal: 'JSON الأصلي غير صالح. يجب أن يكون مصفوفة JSON من الكائنات.',
     parseReworked: 'JSON المُعاد غير صالح. يجب أن يكون مصفوفة JSON من الكائنات.',
   },
+  scorePanel: {
+    title: 'درجات الجودة',
+    composite: 'الدرجة المركّبة',
+    overall: 'الكلي (جميع الأعمدة)',
+    transcriptOnly: 'النص فقط',
+    cer: 'CER',
+    wer: 'WER',
+    ser: 'SER',
+    grade: 'التقييم',
+    disabled: '—',
+  },
 }
 
-// ── Export ────────────────────────────────────────────────────────
+// ── Export ────────────────────────────────────────────────
 export function getLiveSimulatorI18n(locale: string): LiveSimulatorI18n {
   if (locale === 'fr') return fr
   if (locale === 'ar') return ar
