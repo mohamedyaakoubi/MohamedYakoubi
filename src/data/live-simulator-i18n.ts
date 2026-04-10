@@ -66,12 +66,14 @@ type LiveSimulatorI18n = {
     enableTranscriptCER: { label: string; desc: string }
     enableWER: { label: string; desc: string }
     enableTranscriptWER: { label: string; desc: string }
+    enableSegER: { label: string; desc: string }
     enableSER: { label: string; desc: string }
+    enableSACR: { label: string; desc: string }
     enableComposite: { label: string; desc: string }
     stripDiacritics: { label: string; desc: string }
     positionalMode: { label: string; desc: string }
     enableInlineDiff: { label: string; desc: string }
-    serHint: string
+    segerHint: string
     ignoreColNames: { label: string; desc: string; placeholder: string }
     expertTitle: string
     expertBody: string
@@ -137,7 +139,9 @@ type LiveSimulatorI18n = {
     transcriptOnly: string
     cer: string
     wer: string
+    seger: string
     ser: string
+    sacr: string
     grade: string
     disabled: string
   }
@@ -247,13 +251,21 @@ const en: LiveSimulatorI18n = {
       label: 'enableTranscriptWER',
       desc: 'Compute WER on the transcript column only. Gives a more focused view of transcription quality.',
     },
+    enableSegER: {
+      label: 'enableSegER',
+      desc: 'Compute Segmentation Error Rate — measures how many boundary-changing events (SPLIT/MERGE/ADDED/DELETED) occurred relative to comparable rows.',
+    },
     enableSER: {
       label: 'enableSER',
-      desc: 'Compute Sentence Error Rate across the full comparison.',
+      desc: 'Compute Sentence Error Rate — fraction of comparable (UNCHANGED + MODIFIED) rows that contain at least one change.',
+    },
+    enableSACR: {
+      label: 'enableSACR',
+      desc: 'Compute Speaker Attribution Change Rate — fraction of MODIFIED rows where the speaker field changed. Only reported when a speaker column is detected.',
     },
     enableComposite: {
       label: 'enableComposite',
-      desc: 'Compute the composite quality score — a weighted average of the enabled CER, WER, and SER metrics.',
+      desc: 'Compute the composite quality score — a weighted average of the enabled CER, WER, SegER, and SER metrics.',
     },
     stripDiacritics: {
       label: 'stripDiacritics',
@@ -267,7 +279,7 @@ const en: LiveSimulatorI18n = {
       label: 'enableInlineDiff',
       desc: 'Include character-level inline diffs for MODIFIED rows.',
     },
-    serHint: '⚠ SER requires Split or Merge detection to be enabled.',
+    segerHint: '⚠ SegER requires Split or Merge detection to be enabled.',
     ignoreColNames: {
       label: 'ignoreColNames',
       desc: 'Columns to exclude from MODIFIED detection (comma-separated). Useful for metadata columns like confidence scores.',
@@ -361,7 +373,9 @@ const en: LiveSimulatorI18n = {
     transcriptOnly: 'Transcript only',
     cer: 'CER',
     wer: 'WER',
+    seger: 'SegER',
     ser: 'SER',
+    sacr: 'SACR',
     grade: 'Grade',
     disabled: '—',
   },
@@ -459,8 +473,10 @@ const fr: LiveSimulatorI18n = {
     enableTranscriptCER: { label: 'enableTranscriptCER', desc: 'Calcule le CER sur la colonne de transcription uniquement. Donne une vue plus ciblée de la qualité de transcription.' },
     enableWER: { label: 'enableWER', desc: 'Calcule le taux d\'erreur par mot (WER) pour les lignes MODIFIED.' },
     enableTranscriptWER: { label: 'enableTranscriptWER', desc: 'Calcule le WER sur la colonne de transcription uniquement. Donne une vue plus ciblée de la qualité de transcription.' },
-    enableSER: { label: 'enableSER', desc: 'Calcule le taux d\'erreur par phrase (SER) sur l\'ensemble de la comparaison.' },
-    enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne pondérée des métriques CER, WER et SER activées.' },
+    enableSegER: { label: 'enableSegER', desc: 'Calcule le taux d\'erreur de segmentation (SegER) — mesure le ratio d\'événements de changement de frontière (SPLIT/MERGE/AJOUT/SUPPRESSION) par rapport aux lignes comparables.' },
+    enableSER: { label: 'enableSER', desc: 'Calcule le taux d\'erreur par phrase (SER) — fraction des lignes comparables (UNCHANGED + MODIFIED) comportant au moins un changement.' },
+    enableSACR: { label: 'enableSACR', desc: 'Calcule le taux de changement d\'attribution locuteur (SACR) — fraction des lignes MODIFIED où le champ locuteur a changé. Affiché uniquement quand une colonne locuteur est détectée.' },
+    enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne pondérée des métriques CER, WER, SegER et SER activées.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'Normalise les diacritiques arabes avant la comparaison. Évite les comptes MODIFIED gonflés par les harakat.',
@@ -473,7 +489,7 @@ const fr: LiveSimulatorI18n = {
       label: 'enableInlineDiff',
       desc: 'Inclure les diffs de caractères en ligne pour les lignes MODIFIED.',
     },
-    serHint: '⚠ SER nécessite que Split ou Merge soit activé.',
+    segerHint: '⚠ SegER nécessite que Split ou Merge soit activé.',
     ignoreColNames: {
       label: 'ignoreColNames',
       desc: 'Colonnes à exclure de la détection MODIFIED (séparées par virgule). Utile pour les colonnes de métadonnées.',
@@ -544,7 +560,9 @@ const fr: LiveSimulatorI18n = {
     transcriptOnly: 'Transcription uniquement',
     cer: 'CER',
     wer: 'WER',
+    seger: 'SegER',
     ser: 'SER',
+    sacr: 'SACR',
     grade: 'Note',
     disabled: '—',
   },
@@ -642,8 +660,10 @@ const ar: LiveSimulatorI18n = {
     enableTranscriptCER: { label: 'enableTranscriptCER', desc: 'احسب CER على عمود النص فقط. يعطي رؤية أكثر تركيزاً لجودة النص.' },
     enableWER: { label: 'enableWER', desc: 'احسب معدل خطأ الكلمات (WER) للصفوف MODIFIED.' },
     enableTranscriptWER: { label: 'enableTranscriptWER', desc: 'احسب WER على عمود النص فقط. يعطي رؤية أكثر تركيزاً لجودة النص.' },
-    enableSER: { label: 'enableSER', desc: 'احسب معدل خطأ الجمل (SER) عبر المقارنة الكاملة.' },
-    enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط موزّن من مقاييس CER وWER وSER المُفَعَّلة.' },
+    enableSegER: { label: 'enableSegER', desc: 'احسب معدل خطأ التقطيع (SegER) — يقيس نسبة أحداث SPLIT/MERGE/إضافة/حذف إلى عدد الصفوف القابلة للمقارنة.' },
+    enableSER: { label: 'enableSER', desc: 'احسب معدل خطأ الجمل (SER) — نسبة الصفوف القابلة للمقارنة (UNCHANGED + MODIFIED) التي تحتوي على تغيير واحد على الأقل.' },
+    enableSACR: { label: 'enableSACR', desc: 'احسب معدل تغيير عزو المتحدث (SACR) — نسبة صفوف MODIFIED حيث تغيّر حقل المتحدث. يُعرض فقط عند اكتشاف عمود المتحدث.' },
+    enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط موزّن من مقاييس CER وWER وSegER وSER المُفَعَّلة.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'تطبيع التشكيل العربي قبل المقارنة. يمنع تضخم عدد MODIFIED بسبب تغييرات الحركات.',
@@ -656,7 +676,7 @@ const ar: LiveSimulatorI18n = {
       label: 'enableInlineDiff',
       desc: 'تضمين diffs الأحرف المضمنة لصفوف MODIFIED.',
     },
-    serHint: '⚠ يتطلب SER تفعيل كشف Split أو Merge.',
+    segerHint: '⚠ يتطلّب SegER تفعيل كشف Split أو Merge.',
     ignoreColNames: {
       label: 'ignoreColNames',
       desc: 'أعمدة لاستبعادها من كشف MODIFIED (مفصولة بفواصل). مفيد لأعمدة بيانات التعريف.',
@@ -729,7 +749,9 @@ const ar: LiveSimulatorI18n = {
     transcriptOnly: 'النص فقط',
     cer: 'CER',
     wer: 'WER',
+    seger: 'SegER',
     ser: 'SER',
+    sacr: 'SACR',
     grade: 'التقييم',
     disabled: '—',
   },

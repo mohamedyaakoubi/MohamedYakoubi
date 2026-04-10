@@ -10,7 +10,9 @@ interface ScorePanelI18n {
   transcriptOnly: string
   cer: string
   wer: string
+  seger: string
   ser: string
+  sacr: string
   grade: string
   disabled: string
 }
@@ -33,10 +35,18 @@ interface Scores {
   transcriptWERPercent: string | null
   transcriptWERGrade:  number | null
   transcriptWERLabel:  string | null
+  SegER:               number | null
+  SegERPercent:        string | null
+  SegERGrade:          number | null
+  SegERLabel:          string | null
   SER:                 number | null
   SERPercent:          string | null
   SERGrade:            number | null
   SERLabel:            string | null
+  SACR:                number | null
+  SACRPercent:         string | null
+  SACRGrade:           number | null
+  SACRLabel:           string | null
 }
 
 interface Composite {
@@ -162,6 +172,18 @@ export function ScorePanel({ scores: rawScores, composite: rawComposite, t }: Pr
                     <MetricCell percent={s.transcriptWERPercent ?? null} grade={s.transcriptWERGrade ?? null} disabled={tp.disabled} />
                   </td>
                 </tr>
+                {/* SegER row */}
+                <tr>
+                  <td className="py-2.5 pr-4">
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono">{tp.seger}</span>
+                  </td>
+                  <td className="py-2.5 pr-4">
+                    <MetricCell percent={s.SegERPercent ?? null} grade={s.SegERGrade ?? null} disabled={tp.disabled} />
+                  </td>
+                  <td className="py-2.5">
+                    <span className="text-gray-400 dark:text-gray-500 tabular-nums">{tp.disabled}</span>
+                  </td>
+                </tr>
                 {/* SER row */}
                 <tr>
                   <td className="py-2.5 pr-4">
@@ -174,6 +196,20 @@ export function ScorePanel({ scores: rawScores, composite: rawComposite, t }: Pr
                     <span className="text-gray-400 dark:text-gray-500 tabular-nums">{tp.disabled}</span>
                   </td>
                 </tr>
+                {/* SACR row — only shown when speaker data produced a result */}
+                {s.SACRPercent != null && (
+                  <tr>
+                    <td className="py-2.5 pr-4">
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono">{tp.sacr}</span>
+                    </td>
+                    <td className="py-2.5 pr-4">
+                      <MetricCell percent={s.SACRPercent ?? null} grade={s.SACRGrade ?? null} disabled={tp.disabled} />
+                    </td>
+                    <td className="py-2.5">
+                      <span className="text-gray-400 dark:text-gray-500 tabular-nums">{tp.disabled}</span>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

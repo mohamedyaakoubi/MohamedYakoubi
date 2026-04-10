@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'transcript QA API playground',
       'JSON diff online',
       'annotation diff tool',
-      'CER WER SER live scoring',
+      'CER WER SegER SER SACR live scoring',
       'transcript comparison API',
       'SheetDiff live demo',
       'AI annotation QA pipeline',
@@ -69,7 +69,7 @@ export default async function LiveDemoPage({ params }: { params: Promise<{ local
       'Configure all diff parameters interactively',
       'Run a real structural diff against the API',
       'Inspect row-level results with inline character diffs',
-      'View CER/WER/SER quality scores',
+      'View CER/WER/SegER/SER/SACR quality scores',
     ],
   }
 

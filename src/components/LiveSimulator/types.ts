@@ -15,7 +15,9 @@ export interface Config {
   enableTranscriptCER: boolean
   enableWER: boolean
   enableTranscriptWER: boolean
+  enableSegER: boolean
   enableSER: boolean
+  enableSACR: boolean
   enableComposite: boolean
   stripDiacritics: boolean
   positionalMode: boolean
@@ -76,7 +78,9 @@ export const DEFAULT_CONFIG: Config = {
   enableTranscriptCER: true,
   enableWER: true,
   enableTranscriptWER: true,
+  enableSegER: true,
   enableSER: true,
+  enableSACR: true,
   enableComposite: true,
   stripDiacritics: false,
   positionalMode: false,

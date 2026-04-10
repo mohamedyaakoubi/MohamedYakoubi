@@ -134,7 +134,7 @@ const en: StructuralApiI18n = {
   meta: {
     title: 'Structural Diff API Docs — SheetDiff™',
     description:
-      'REST API for structural diff comparison of transcript rows. Detects modified, split, merged, added, and deleted rows with CER/WER/SER quality scoring. Built for localization and transcription agencies.',
+      'REST API for structural diff comparison of transcript rows. Detects modified, split, merged, added, and deleted rows with CER/WER/SegER/SER/SACR quality scoring. Built for localization and transcription agencies.',
   },
   nav: {
     groups: [
@@ -161,7 +161,7 @@ const en: StructuralApiI18n = {
   },
   hero: {
     title: 'Structural Diff API',
-    desc: 'A REST API that compares an AI-generated transcript against its annotator post-edit — detecting row-level structural changes (splits, merges, modifications, additions, deletions), with per-column diff detail, CER/WER/SER scoring, and a composite quality grade per batch.',
+    desc: 'A REST API that compares an AI-generated transcript against its annotator post-edit — detecting row-level structural changes (splits, merges, modifications, additions, deletions), with per-column diff detail, CER/WER/SegER/SER/SACR scoring, and a composite quality grade per batch.',
     features: [
       { label: 'API Key Auth',   sub: 'x-api-key header' },
       { label: 'Rate Limited',   sub: '10/min · 60/15min' },
@@ -343,7 +343,7 @@ const fr: StructuralApiI18n = {
   meta: {
     title: 'Documentation API Structural Diff — SheetDiff™',
     description:
-      'API REST pour la comparaison différentielle structurelle de lignes de transcription. Détecte les lignes modifiées, divisées, fusionnées, ajoutées et supprimées avec scores CER/WER/SER. Conçue pour les agences de localisation et de transcription.',
+      'API REST pour la comparaison différentielle structurelle de lignes de transcription. Détecte les lignes modifiées, divisées, fusionnées, ajoutées et supprimées avec scores CER/WER/SegER/SER/SACR. Conçue pour les agences de localisation et de transcription.',
   },
   nav: {
     groups: [
@@ -370,7 +370,7 @@ const fr: StructuralApiI18n = {
   },
   hero: {
     title: 'API Structural Diff',
-    desc: 'Une API REST qui compare une transcription générée par IA avec la version post-éditée par l\'annotateur — détectant les changements structurels au niveau des lignes (divisions, fusions, modifications, ajouts, suppressions), avec détail des différences par colonne, scores CER/WER/SER et une note de qualité composite par lot.',
+    desc: 'Une API REST qui compare une transcription générée par IA avec la version post-éditée par l\'annotateur — détectant les changements structurels au niveau des lignes (divisions, fusions, modifications, ajouts, suppressions), avec détail des différences par colonne, scores CER/WER/SegER/SER/SACR et une note de qualité composite par lot.',
     features: [
       { label: 'Auth par clé API',  sub: 'en-tête x-api-key' },
       { label: 'Débit limité',      sub: '10/min · 60/15min' },
@@ -575,7 +575,7 @@ const ar: StructuralApiI18n = {
   meta: {
     title: 'توثيق Structural Diff API — SheetDiff™',
     description:
-      'واجهة برمجة تطبيقات REST لمقارنة الفروقات الهيكلية في صفوف النصوص المكتوبة. تكشف عن الصفوف المعدّلة والمقسّمة والمدمجة والمضافة والمحذوفة مع درجات CER/WER/SER. مصممة لوكالات الترجمة والتدقيق اللغوي.',
+      'واجهة برمجة تطبيقات REST لمقارنة الفروقات الهيكلية في صفوف النصوص المكتوبة. تكشف عن الصفوف المعدّلة والمقسّمة والمدمجة والمضافة والمحذوفة مع درجات CER/WER/SegER/SER/SACR. مصممة لوكالات الترجمة والتدقيق اللغوي.',
   },
   nav: {
     groups: [
@@ -602,7 +602,7 @@ const ar: StructuralApiI18n = {
   },
   hero: {
     title: 'Structural Diff API',
-    desc: 'واجهة REST API تقارن النص المُنشأ بالذكاء الاصطناعي بالنسخة المُحرَّرة من قِبل المُعلِّم — تكشف التغييرات الهيكلية على مستوى الصفوف (تقسيم، دمج، تعديل، إضافة، حذف)، مع تفاصيل الفروق لكل عمود، ودرجات CER/WER/SER، ودرجة جودة مركّبة لكل دُفعة.',
+    desc: 'واجهة REST API تقارن النص المُنشأ بالذكاء الاصطناعي بالنسخة المُحرَّرة من قِبل المُعلِّم — تكشف التغييرات الهيكلية على مستوى الصفوف (تقسيم، دمج، تعديل، إضافة، حذف)، مع تفاصيل الفروق لكل عمود، ودرجات CER/WER/SegER/SER/SACR، ودرجة جودة مركّبة لكل دُفعة.',
     features: [
       { label: 'مصادقة بمفتاح API', sub: 'رأس x-api-key' },
       { label: 'حدود الاستخدام',    sub: '10/دقيقة · 60/15دقيقة' },

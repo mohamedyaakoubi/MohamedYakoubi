@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'structural diff API demo',
       'transcript QA walkthrough',
       'annotation diff example',
-      'CER WER SER score interpretation',
+      'CER WER SegER SER SACR score interpretation',
       'column name mapping API',
       'podcast transcript diff',
       'AI annotation QA pipeline',
@@ -71,13 +71,13 @@ export default async function DemoPage({ params }: { params: Promise<{ locale: s
     '@type': 'HowTo',
     name: 'How to use the Structural Diff API for transcript QA',
     description:
-      'End-to-end walkthrough: adapt column names, send a POST /v1/diff request, and interpret CER/WER/SER scores for annotation QA.',
+      'End-to-end walkthrough: adapt column names, send a POST /v1/diff request, and interpret CER/WER/SegER/SER/SACR scores for annotation QA.',
     url: `${BASE_URL}/${locale}/sheetdiff/api-docs/demo`,
     step: [
       { '@type': 'HowToStep', position: 1, name: 'Adapt your column names', text: 'Map your dataset’s column names to the engine schema using the headers array or columnMapping object.' },
       { '@type': 'HowToStep', position: 2, name: 'Send a POST /v1/diff request', text: 'POST your original and reworked row arrays with your x-api-key header to /v1/diff.' },
       { '@type': 'HowToStep', position: 3, name: 'Interpret diff statuses', text: 'Read the status field of each result row: UNCHANGED, MODIFIED, ADDED, DELETED, SPLIT, or MERGED.' },
-      { '@type': 'HowToStep', position: 4, name: 'Read CER/WER/SER scores', text: 'Use the scores object to grade transcript quality. SER measures segmentation errors; CER and WER measure text fidelity.' },
+      { '@type': 'HowToStep', position: 4, name: 'Read CER/WER/SegER/SER/SACR scores', text: 'Use the scores object to grade transcript quality. SegER measures segmentation boundary errors; SER measures sentence-level error rate; CER and WER measure text fidelity; SACR tracks speaker attribution changes.' },
     ],
   }
 

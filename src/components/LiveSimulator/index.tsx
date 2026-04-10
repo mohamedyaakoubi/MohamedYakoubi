@@ -145,22 +145,24 @@ export default function LiveSimulatorClient() {
           next.enableSplits = false;  next.enableMerges = false
           next.enableCER    = false;  next.enableTranscriptCER = false
           next.enableWER    = false;  next.enableTranscriptWER = false
-          next.enableSER    = false;  next.enableComposite     = false
+          next.enableSegER  = false;  next.enableSER = false
+          next.enableSACR   = false;  next.enableComposite     = false
         } else {
           next.enableSplits = true;   next.enableMerges = true
           next.enableCER    = true;   next.enableTranscriptCER = true
           next.enableWER    = true;   next.enableTranscriptWER = true
-          next.enableSER    = true;   next.enableComposite     = true
+          next.enableSegER  = true;   next.enableSER = true
+          next.enableSACR   = true;   next.enableComposite     = true
         }
       }
       if (key === 'positionalMode') {
         if (val) {
           next.simpleMode      = false
           next.enableSplits    = false;  next.enableMerges = false
-          next.enableSER       = false
+          next.enableSegER     = false
           next.enableInlineDiff = true
         } else {
-          next.enableSplits = true; next.enableMerges = true; next.enableSER = true
+          next.enableSplits = true; next.enableMerges = true; next.enableSegER = true
         }
       }
       if (
@@ -168,7 +170,7 @@ export default function LiveSimulatorClient() {
         !next.simpleMode && !next.positionalMode &&
         !next.enableSplits && !next.enableMerges
       ) {
-        next.enableSER = false
+        next.enableSegER = false
       }
       return next
     })
@@ -258,8 +260,8 @@ export default function LiveSimulatorClient() {
   const mergesDisabled = simpleOn || positionalOn
   const cerDisabled    = simpleOn
   const werDisabled    = simpleOn
-  const serDisabled    = simpleOn || positionalOn || (!config.enableSplits && !config.enableMerges)
-  const showSerHint    = !simpleOn && !positionalOn && !config.enableSplits && !config.enableMerges
+  const segerDisabled  = simpleOn || positionalOn || (!config.enableSplits && !config.enableMerges)
+  const showSegerHint  = !simpleOn && !positionalOn && !config.enableSplits && !config.enableMerges
 
   // ── Sidebar ───────────────────────────────────────────────────
   const SidebarContent = () => (
@@ -565,8 +567,10 @@ export default function LiveSimulatorClient() {
               <Toggle value={config.enableTranscriptCER} onChange={(v) => updateConfig('enableTranscriptCER', v)} label={t.config.enableTranscriptCER.label} desc={t.config.enableTranscriptCER.desc} disabled={cerDisabled || !config.enableCER} />
               <Toggle value={config.enableWER}          onChange={(v) => updateConfig('enableWER', v)}          label={t.config.enableWER.label}          desc={t.config.enableWER.desc}          disabled={werDisabled} />
               <Toggle value={config.enableTranscriptWER} onChange={(v) => updateConfig('enableTranscriptWER', v)} label={t.config.enableTranscriptWER.label} desc={t.config.enableTranscriptWER.desc} disabled={werDisabled || !config.enableWER} />
-              <Toggle value={config.enableSER}          onChange={(v) => updateConfig('enableSER', v)}          label={t.config.enableSER.label}          desc={t.config.enableSER.desc}          disabled={serDisabled} />
-              {showSerHint && <p className="text-xs text-amber-600 dark:text-amber-500 ml-12">{t.config.serHint}</p>}
+              <Toggle value={config.enableSegER}          onChange={(v) => updateConfig('enableSegER', v)}          label={t.config.enableSegER.label}          desc={t.config.enableSegER.desc}          disabled={segerDisabled} />
+              {showSegerHint && <p className="text-xs text-amber-600 dark:text-amber-500 ml-12">{t.config.segerHint}</p>}
+              <Toggle value={config.enableSER}            onChange={(v) => updateConfig('enableSER', v)}            label={t.config.enableSER.label}            desc={t.config.enableSER.desc} />
+              <Toggle value={config.enableSACR}           onChange={(v) => updateConfig('enableSACR', v)}           label={t.config.enableSACR.label}           desc={t.config.enableSACR.desc} />
               <Toggle value={config.enableComposite}    onChange={(v) => updateConfig('enableComposite', v)}    label={t.config.enableComposite.label}    desc={t.config.enableComposite.desc} />
               <Toggle value={config.stripDiacritics} onChange={(v) => updateConfig('stripDiacritics', v)} label={t.config.stripDiacritics.label} desc={t.config.stripDiacritics.desc} />
               <Toggle value={config.positionalMode}  onChange={(v) => updateConfig('positionalMode', v)}  label={t.config.positionalMode.label}  desc={t.config.positionalMode.desc} />

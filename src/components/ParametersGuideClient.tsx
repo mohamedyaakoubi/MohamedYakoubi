@@ -196,6 +196,14 @@ export default function ParametersGuideClient() {
   }
 }`
 
+  const scoringFlagsExample = `{
+  "config": {
+    "enableCER": false,
+    "enableWER": false,
+    "enableSACR": false
+  }
+}`
+
   return (
     <div
       className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100"
@@ -368,6 +376,40 @@ export default function ParametersGuideClient() {
             />
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-2 mb-2">{t.enableInlineDiff.whenToUse}</p>
             <Callout type="info">{t.enableInlineDiff.note}</Callout>
+
+            {/* ── Scoring flags ─────────────────────────── */}
+            <H2 id="enableScoring">{t.scoringFlags.title}</H2>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{t.scoringFlags.intro}</p>
+
+            <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800 my-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+                    <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-44">Flag</th>
+                    <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-16">Default</th>
+                    <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">What it measures · When to disable</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  {t.scoringFlags.flags.map(f => (
+                    <tr key={f.name} className="bg-white dark:bg-gray-950 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors">
+                      <td className="px-4 py-3 align-top"><IC>{f.name}</IC></td>
+                      <td className="px-4 py-3 align-top">
+                        <span className="text-xs font-mono text-purple-600 dark:text-purple-400">{f.default}</span>
+                      </td>
+                      <td className="px-4 py-3 align-top">
+                        <div className="text-xs text-gray-500 mb-1">{f.what}</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">{f.whenToDisable}</div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <CodeBlock lang="json" code={scoringFlagsExample} />
+            <Callout type="info">{t.scoringFlags.compositeNote}</Callout>
+            <Callout type="info">{t.scoringFlags.sacrAutoNote}</Callout>
 
             {/* ── structuralTransforms ───────────────────── */}
             <H2 id="structuralTransforms">{t.structuralTransforms.title}</H2>

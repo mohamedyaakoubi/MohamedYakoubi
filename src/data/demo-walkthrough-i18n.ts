@@ -44,6 +44,7 @@ type DemoWalkthroughI18n = {
     intro: string
     cerExplained: string
     werExplained: string
+    segerExplained: string
     serExplained: string
     gradeExplained: string
     gradeContext: string
@@ -56,7 +57,7 @@ const en: DemoWalkthroughI18n = {
   meta: {
     title: 'Demo Walkthrough — Structural Diff API',
     description:
-      'End-to-end example using a real podcast transcript. Covers column name adaptation, a full POST /v1/diff request, and interpreting CER/WER/SER scores in the context of annotation QA.',
+      'End-to-end example using a real podcast transcript. Covers column name adaptation, a full POST /v1/diff request, and interpreting CER/WER/SegER/SER/SACR scores in the context of annotation QA.',
   },
   breadcrumb: { apiDocs: 'Structural Diff API', current: 'Demo Walkthrough' },
   nav: {
@@ -136,8 +137,10 @@ const en: DemoWalkthroughI18n = {
       'CER ≈ 0.09 — About 9% of characters across all columns changed. This is low and expected: the annotator made punctuation and numeral corrections, which are short character-level changes in long segments.',
     werExplained:
       'WER ≈ 0.14 — About 14% of words changed. Higher than CER because one word swap ("twelve" → "12") counts as a full-word change, and the split/merge structural changes each touch a segment boundary.',
+    segerExplained:
+      'SegER ≈ 0.22 — About 22% of original rows had boundary-changing structural events (1 split + 1 merge out of 9 rows = 2/9). This is typical for a first annotation pass on AI output where the AI over- or under-segmented in a few places.',
     serExplained:
-      'SER ≈ 0.22 — About 22% of original rows were structurally changed (1 split + 1 merge out of 9 rows = 2/9). This is typical for a first annotation pass on AI output where the AI over- or under-segmented in a few places.',
+      'SER ≈ 0.67 — About 67% of comparable rows (UNCHANGED + MODIFIED) contain at least one edit: 4 MODIFIED out of 6 comparable rows. This measures per-sentence edit frequency, independent of structural events.',
     gradeExplained:
       'Composite grade B / "Good" (score ≈ 3.9) — The weighted formula rewards a low edit rate and penalises structural changes. A B grade tells the coordinator: the annotator made real corrections (not a rubber-stamp), but the overall volume of change is controlled.',
     gradeContext:
@@ -154,7 +157,7 @@ const fr: DemoWalkthroughI18n = {
   meta: {
     title: 'Démonstration complète — API Structural Diff',
     description:
-      'Exemple de bout en bout avec une vraie transcription de podcast. Couvre l\'adaptation des noms de colonnes, une requête POST /v1/diff complète et l\'interprétation des scores CER/WER/SER dans le contexte du QA d\'annotation.',
+      'Exemple de bout en bout avec une vraie transcription de podcast. Couvre l\'adaptation des noms de colonnes, une requête POST /v1/diff complète et l\'interprétation des scores CER/WER/SegER/SER/SACR dans le contexte du QA d\'annotation.',
   },
   breadcrumb: { apiDocs: 'API Structural Diff', current: 'Démonstration complète' },
   nav: {
@@ -234,8 +237,10 @@ const fr: DemoWalkthroughI18n = {
       'CER ≈ 0.09 — Environ 9% des caractères ont changé. C\'est faible et attendu : corrections de ponctuation et de chiffres dans de longs segments.',
     werExplained:
       'WER ≈ 0.14 — Environ 14% des mots ont changé. Plus élevé que CER car un échange ("twelve" → "12") compte comme un changement de mot entier.',
+    segerExplained:
+      'SegER ≈ 0.22 — Environ 22% des lignes originales ont eu des événements structurels (1 split + 1 merge sur 9 = 2/9). Typique pour un premier passage d\'annotation.',
     serExplained:
-      'SER ≈ 0.22 — Environ 22% des lignes originales ont été structurellement modifiées (1 split + 1 merge sur 9 = 2/9). Typique pour un premier passage d\'annotation.',
+      'SER ≈ 0.67 — Environ 67% des lignes comparables (UNCHANGED + MODIFIED) contiennent au moins une modification : 4 MODIFIED sur 6 lignes comparables. Mesure la fréquence d\'édition par ligne, indépendamment des événements structurels.',
     gradeExplained:
       'Note composite B / "Good" (score ≈ 3.9) — La formule pondérée récompense un faible taux d\'édition et pénalise les changements structurels. Une note B indique que l\'annotateur a fait de vraies corrections, mais le volume global est contrôlé.',
     gradeContext:
@@ -252,7 +257,7 @@ const ar: DemoWalkthroughI18n = {
   meta: {
     title: 'درس تطبيقي كامل — Structural Diff API',
     description:
-      'مثال شامل من البداية إلى النهاية باستخدام نص بودكاست حقيقي. يغطي تكييف أسماء الأعمدة، وطلب POST /v1/diff كاملاً، وتفسير درجات CER/WER/SER في سياق QA التدقيق.',
+      'مثال شامل من البداية إلى النهاية باستخدام نص بودكاست حقيقي. يغطي تكييف أسماء الأعمدة، وطلب POST /v1/diff كاملاً، وتفسير درجات CER/WER/SegER/SER/SACR في سياق QA التدقيق.',
   },
   breadcrumb: { apiDocs: 'Structural Diff API', current: 'درس تطبيقي كامل' },
   nav: {
@@ -332,8 +337,10 @@ const ar: DemoWalkthroughI18n = {
       'CER ≈ 0.09 — حوالي 9% من الحروف تغيرت. منخفض ومتوقع: تصحيحات الترقيم والأرقام هي تغييرات قصيرة على مستوى الحروف في مقاطع طويلة.',
     werExplained:
       'WER ≈ 0.14 — حوالي 14% من الكلمات تغيرت. أعلى من CER لأن استبدال كلمة ("twelve" → "12") يُعدّ تغيير كلمة كامل، والتغييرات الهيكلية تمس كل حدود المقطع.',
+    segerExplained:
+      'SegER ≈ 0.22 — حوالي 22% من الصفوف الأصلية تغيرت هيكلياً (1 split + 1 merge من 9 = 2/9). نموذجي لأول مرور تدقيق على مخرج ذكاء اصطناعي.',
     serExplained:
-      'SER ≈ 0.22 — حوالي 22% من الصفوف الأصلية تغيرت هيكلياً (1 split + 1 merge من 9 = 2/9). نموذجي لأول مرور تدقيق على مخرج ذكاء اصطناعي.',
+      'SER ≈ 0.67 — حوالي 67% من الصفوف القابلة للمقارنة (UNCHANGED + MODIFIED) تحتوي على تعديل واحد على الأقل: 4 MODIFIED من 6 صفوف قابلة. يقيس تكرار التحرير باستقلالية عن الأحداث الهيكلية.',
     gradeExplained:
       'الدرجة المركّبة B / "Good" (درجة ≈ 3.9) — المعادلة الموزونة تُكافئ معدل تحرير منخفض وتُعاقب التغييرات الهيكلية. الدرجة B تُخبر المنسق: قام المُدقِّق بتصحيحات حقيقية (لم يوافق فقط)، لكن الحجم الإجمالي مضبوط.',
     gradeContext:

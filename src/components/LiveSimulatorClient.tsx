@@ -1247,13 +1247,13 @@ export default function LiveSimulatorClient() {
               <Toggle
                 value={config.enableSER}
                 onChange={(v) => updateConfig('enableSER', v)}
-                label={t.config.enableSER.label}
-                desc={t.config.enableSER.desc}
+                label={t.config.enableSegER.label}
+                desc={t.config.enableSegER.desc}
                 disabled={serDisabled}
               />
               {showSerHint && (
                 <p className="text-xs text-amber-600 dark:text-amber-500 ml-12">
-                  {t.config.serHint}
+                  {t.config.segerHint}
                 </p>
               )}
               <Toggle

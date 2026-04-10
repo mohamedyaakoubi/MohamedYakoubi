@@ -73,6 +73,13 @@ type ParametersGuideI18n = {
     whenToUse: string
     note: string
   }
+  scoringFlags: {
+    title: string
+    intro: string
+    flags: Array<{ name: string; default: string; what: string; whenToDisable: string }>
+    compositeNote: string
+    sacrAutoNote: string
+  }
   structuralTransforms: {
     title: string
     what: string
@@ -113,6 +120,7 @@ const en: ParametersGuideI18n = {
       { id: 'positionalMode',    title: 'positionalMode' },
       { id: 'ignoreColNames',       title: 'ignoreColNames' },
       { id: 'enableInlineDiff',     title: 'enableInlineDiff' },
+      { id: 'enableScoring',        title: 'Scoring flags' },
       { id: 'structuralTransforms', title: 'structuralTransforms' },
       { id: 'expert-thresholds',    title: 'Expert thresholds' },
     ],
@@ -140,6 +148,8 @@ const en: ParametersGuideI18n = {
       { flag: 'positionalMode',    reason: 'Debugging unexpected alignments, or processing very large uniform datasets' },
       { flag: 'enableSplits: false', reason: 'Project guidelines prohibit splits at this annotation layer' },
       { flag: 'enableInlineDiff: false', reason: 'Large batches where only statuses and scores are needed — suppress transcript diff computation for speed' },
+      { flag: 'enableCER / enableWER', reason: 'Speed optimization for large batches — skip Levenshtein computation when only structural or sentence-level metrics are needed' },
+      { flag: 'enableComposite: false', reason: 'Suppress aggregate grade when your system consumes individual metric values directly' },
       { flag: 'structuralTransforms', reason: 'Rows have ID prefixes, URLs, or phone formats that vary between layers but aren\'t part of the transcript content' },
     ],
   },
@@ -207,9 +217,26 @@ const en: ParametersGuideI18n = {
     response:
       'Each transcriptDiff segment has the shape { type: "EQUAL" | "INSERT" | "DELETE", text: string }. Reconstruct the original by joining all non-INSERT spans; reconstruct the reworked by joining all non-DELETE spans. Note: type values are UPPERCASE.',
     whenToUse:
-      'Disable (enableInlineDiff: false) when processing large batches where you only need CER/WER/SER scores and status counts, not the per-character diff. This reduces both server CPU and network payload. Re-enable for interactive review UIs where editors need to see exactly what changed.',
+      'Disable (enableInlineDiff: false) when processing large batches where you only need CER/WER/SegER/SER scores and status counts, not the per-character diff. This reduces both server CPU and network payload. Re-enable for interactive review UIs where editors need to see exactly what changed.',
     note:
       'The diff uses LCS (Longest Common Subsequence). For very long segments (combined original + reworked length > CHAR_DIFF_LIMIT), it automatically falls back from character-level to word-level tokens — still returned as the same array format.',
+  },
+  scoringFlags: {
+    title: 'Scoring flags',
+    intro:
+      'Six boolean flags control which metrics the engine computes and whether a composite grade is returned. All default to true. Disabling a flag skips its entire computation loop — the field is null in the response, not 0.',
+    flags: [
+      { name: 'enableCER',       default: 'true', what: 'Character Error Rate across all columns (overallCER) and transcript column only (transcriptCER). Computed via Levenshtein on serialized row strings.', whenToDisable: 'When you only need structural or sentence-level metrics. Levenshtein is O(m×n) — skipping CER + WER on large batches (5 000+ long segments) produces a measurable latency reduction.' },
+      { name: 'enableWER',       default: 'true', what: 'Word Error Rate across all columns and transcript-only. Tokenizes on whitespace after stripping punctuation.', whenToDisable: 'Same conditions as enableCER. Typically disabled together with it.' },
+      { name: 'enableSegER',     default: 'true', what: 'Segmentation Error Rate: boundary events (splits + merges + added + deleted rows) / expected segment count. The structural quality signal — independent of text content.', whenToDisable: 'Only when your pipeline cares purely about lexical changes and structural events are irrelevant — uncommon in transcript QA.' },
+      { name: 'enableSER',       default: 'true', what: 'Sentence Error Rate: MODIFIED rows / (UNCHANGED + MODIFIED rows). Fraction of comparable rows with any edit. Returns null — not 0 — when the denominator is 0 (all rows are structural events with no comparable pairs).', whenToDisable: 'When you only need character/word error rates and a sentence-level signal adds no value.' },
+      { name: 'enableSACR',      default: 'true', what: 'Speaker Attribution Change Rate: rows where the speaker column changed / MODIFIED rows. Auto-detects columns named speaker, talker, or spk. Returns null automatically when no speaker column is found — enabling this on speakerless datasets costs nothing.', whenToDisable: 'Only when you want to explicitly suppress the SACR field from the response regardless of whether a speaker column is present.' },
+      { name: 'enableComposite', default: 'true', what: 'Averages the per-metric grades (1–5 scale) of enabled metrics that returned a non-null value. Only CER, WER, SegER, and SER contribute — SACR is excluded because many datasets lack a speaker column, making SACR-inclusive composites incomparable across batches.', whenToDisable: 'When your system reads individual metric fields directly and does not display an aggregate grade.' },
+    ],
+    compositeNote:
+      'The composite is dynamic: disable WER and the average re-normalizes over the remaining enabled metrics. The response includes an enabledMetrics array listing exactly which metrics contributed.',
+    sacrAutoNote:
+      'SACR does not need manual opt-out for speakerless datasets. If no column matches speaker, talker, or spk (case-insensitive), SACR is null regardless of the flag. The flag exists only to suppress the field when you want to exclude speaker data from the response entirely.',
   },
   structuralTransforms: {
     title: 'structuralTransforms',
@@ -273,6 +300,7 @@ const fr: ParametersGuideI18n = {
       { id: 'positionalMode',      title: 'positionalMode' },
       { id: 'ignoreColNames',       title: 'ignoreColNames' },
       { id: 'enableInlineDiff',     title: 'enableInlineDiff' },
+      { id: 'enableScoring',        title: 'Indicateurs de scoring' },
       { id: 'structuralTransforms', title: 'structuralTransforms' },
       { id: 'expert-thresholds',    title: 'Seuils experts' },
     ],
@@ -300,6 +328,8 @@ const fr: ParametersGuideI18n = {
       { flag: 'positionalMode',    reason: 'Débogage d\'alignements inattendus, ou traitement de grands ensembles de données uniformes' },
       { flag: 'enableSplits: false', reason: 'Les directives du projet interdisent les divisions à cette couche d\'annotation' },
       { flag: 'enableInlineDiff: false', reason: 'Grands lots où seuls les statuts et scores sont nécessaires — supprimer le calcul du diff de transcription pour la vitesse' },
+      { flag: 'enableCER / enableWER', reason: 'Optimisation des performances pour les grands lots — ignorer Levenshtein quand seules les métriques structurelles ou de phrase sont nécessaires' },
+      { flag: 'enableComposite: false', reason: 'Supprimer la note agrégée quand votre système consomme les valeurs individuelles directement' },
       { flag: 'structuralTransforms', reason: 'Les lignes ont des préfixes ID, URL ou formats téléphoniques qui varient entre les couches mais ne font pas partie du contenu de la transcription' },
     ],
   },
@@ -367,9 +397,26 @@ const fr: ParametersGuideI18n = {
     response:
       'Chaque segment transcriptDiff a la forme { type: "EQUAL" | "INSERT" | "DELETE", text: string }. Reconstruisez l\'original en joignant tous les spans non-INSERT ; le reworked en joignant tous les spans non-DELETE. Note : les valeurs de type sont en MAJUSCULES.',
     whenToUse:
-      'Désactivez (enableInlineDiff: false) pour le traitement de grands lots où vous n\'avez besoin que de scores CER/WER/SER et de comptages de statuts. Cela réduit à la fois le CPU serveur et la taille du payload réseau. Réactivez pour les interfaces de révision interactives.',
+      'Désactivez (enableInlineDiff: false) pour le traitement de grands lots où vous n\'avez besoin que de scores CER/WER/SegER/SER et de comptages de statuts. Cela réduit à la fois le CPU serveur et la taille du payload réseau. Réactivez pour les interfaces de révision interactives.',
     note:
       'Le diff utilise LCS (Plus Longue Sous-séquence Commune). Pour les très longs segments (longueur combinée > CHAR_DIFF_LIMIT), il bascule automatiquement du niveau caractère au niveau mot — retourné dans le même format de tableau.',
+  },
+  scoringFlags: {
+    title: 'Indicateurs de scoring',
+    intro:
+      'Six paramètres booléens contrôlent les métriques calculées par le moteur et si une note composite est renvoyée. Tous sont à true par défaut. Désactiver un indicateur ignore entièrement sa boucle de calcul — le champ est null dans la réponse, pas 0.',
+    flags: [
+      { name: 'enableCER',       default: 'true', what: 'Taux d\'erreur de caractère sur toutes les colonnes (overallCER) et colonne transcript uniquement (transcriptCER). Calculé via Levenshtein sur les chaînes de ligne sérialisées.', whenToDisable: 'Quand vous n\'avez besoin que de métriques structurelles ou de phrase. Levenshtein est O(m×n) — ignorer CER + WER sur les grands lots (5 000+ longs segments) réduit notablement la latence.' },
+      { name: 'enableWER',       default: 'true', what: 'Taux d\'erreur de mot sur toutes les colonnes et transcript uniquement. Tokenise par espace blanc après suppression de la ponctuation.', whenToDisable: 'Mêmes conditions qu\'enableCER. Généralement désactivé en même temps.' },
+      { name: 'enableSegER',     default: 'true', what: 'Taux d\'erreur de segmentation : événements limites (splits + merges + lignes ajoutées + supprimées) / nombre de segments attendus. Le signal de qualité structurelle — indépendant du contenu textuel.', whenToDisable: 'Uniquement si votre pipeline ne s\'intéresse qu\'aux changements lexicaux et que les événements de segmentation sont non pertinents — rare pour la QA de transcriptions.' },
+      { name: 'enableSER',       default: 'true', what: 'Taux d\'erreur de phrase : lignes MODIFIED / (lignes UNCHANGED + MODIFIED). Fraction des lignes comparables avec au moins une modification. Renvoie null — pas 0 — quand le dénominateur est 0 (toutes les lignes sont des événements structurels sans paires comparables).', whenToDisable: 'Quand vous n\'avez besoin que de taux d\'erreur caractère/mot sans signal au niveau phrase.' },
+      { name: 'enableSACR',      default: 'true', what: 'Taux de changement d\'attribution de locuteur : lignes où la colonne speaker a changé / lignes MODIFIED. Détection automatique des colonnes nommées speaker, talker ou spk. Renvoie null automatiquement sans colonne speaker — activer sur des données sans speaker ne coûte rien.', whenToDisable: 'Uniquement pour supprimer explicitement le champ SACR de la réponse quelle que soit la présence d\'une colonne speaker.' },
+      { name: 'enableComposite', default: 'true', what: 'Calcule la moyenne des notes par métrique (échelle 1–5) des métriques activées ayant produit une valeur non nulle. Seuls CER, WER, SegER et SER contribuent — SACR est exclu car de nombreux jeux de données n\'ont pas de colonne speaker, rendant un composite incluant SACR incomparable entre lots.', whenToDisable: 'Quand votre système lit directement les valeurs individuelles sans afficher de note agrégée.' },
+    ],
+    compositeNote:
+      'Le composite est dynamique : désactivez WER et la moyenne se recalcule sur les métriques activées restantes. La réponse inclut un tableau enabledMetrics listant exactement les métriques ayant contribué.',
+    sacrAutoNote:
+      'SACR ne nécessite pas d\'opt-out manuel pour les jeux de données sans speaker. Si aucune colonne ne correspond à speaker, talker ou spk (insensible à la casse), SACR est null quel que soit l\'indicateur. L\'indicateur existe uniquement pour supprimer le champ quand vous voulez exclure explicitement les données speaker de la réponse.',
   },
   structuralTransforms: {
     title: 'structuralTransforms',
@@ -433,6 +480,7 @@ const ar: ParametersGuideI18n = {
       { id: 'positionalMode',     title: 'positionalMode' },
       { id: 'ignoreColNames',       title: 'ignoreColNames' },
       { id: 'enableInlineDiff',     title: 'enableInlineDiff' },
+      { id: 'enableScoring',        title: 'إشارات التقييم' },
       { id: 'structuralTransforms', title: 'structuralTransforms' },
       { id: 'expert-thresholds',    title: 'عتبات الخبراء' },
     ],
@@ -460,6 +508,8 @@ const ar: ParametersGuideI18n = {
       { flag: 'positionalMode',     reason: 'تحديد أخطاء المحاذاة غير المتوقعة، أو معالجة مجموعات بيانات كبيرة ومتجانسة' },
       { flag: 'enableSplits: false', reason: 'إرشادات المشروع تحظر التقسيمات في هذه الطبقة' },
       { flag: 'enableInlineDiff: false', reason: 'دفعات كبيرة حيث تكفي الحالات والدرجات فقط — تعطيل حساب diff النص لتحسين الأداء' },
+      { flag: 'enableCER / enableWER', reason: 'تحسين الأداء للدفعات الكبيرة — تخطي Levenshtein عند الحاجة فقط إلى المقاييس الهيكلية أو على مستوى الجملة' },
+      { flag: 'enableComposite: false', reason: 'إخفاء الدرجة الإجمالية عندما يستهلك نظامك قيم المقاييس الفردية مباشرةً' },
       { flag: 'structuralTransforms', reason: 'الصفوف تحتوي على بادئات معرّف أو روابط أو تنسيقات تختلف بين الطبقات لكنها ليست محتوى النص' },
     ],
   },
@@ -527,11 +577,26 @@ const ar: ParametersGuideI18n = {
     response:
       'كل مقطع transcriptDiff له الشكل { type: "EQUAL" | "INSERT" | "DELETE", text: string }. أعد بناء الأصل بربط كل spans غير-INSERT؛ والمُعاد بربط كل spans غير-DELETE. ملاحظة: قيم type بالأحرف الكبيرة.',
     whenToUse:
-      'عطِّل (enableInlineDiff: false) عند معالجة دفعات كبيرة حيث تحتاج فقط إلى درجات CER/WER/SER وأعداد الحالات. هذا يُقلِّل CPU الخادم وحجم payload الشبكة. أعد التفعيل لواجهات المراجعة التفاعلية.',
+      'عطّل (enableInlineDiff: false) عند معالجة دفعات كبيرة حيث تحتاج فقط إلى درجات CER/WER/SegER/SER وأعداد الحالات. هذا يُقلّل CPU الخادم وحجم payload الشبكة. أعد التفعيل لواجهات المراجعة التفاعلية.',
     note:
       'يستخدم الـ diff خوارزمية LCS (أطول تسلسل مشترك). للمقاطع الطويلة جداً (الطول المشترك الأصل + المُعاد > CHAR_DIFF_LIMIT)، يتحول تلقائياً من مستوى الحرف إلى مستوى الكلمة — مُعاد بنفس تنسيق المصفوفة.',
-  },
-  structuralTransforms: {
+  },  scoringFlags: {
+    title: 'إشارات التقييم',
+    intro:
+      'ستة معاملات منطقية تتحكم في المقاييس التي يحسبها المحرك وفيما إذا كانت النتيجة المركبة تُرجَع. الافتراضي true لجميعها. تعطيل أي إشارة يتجاوز حلقة الحساب بأكملها — الحقل في الاستجابة null وليس 0.',
+    flags: [
+      { name: 'enableCER',       default: 'true', what: 'معدل أخطاء الأحرف على جميع الأعمدة (overallCER) وعمود النص فقط (transcriptCER). يُحسب عبر Levenshtein على سلاسل الصفوف المتسلسلة.', whenToDisable: 'عند الحاجة فقط إلى مقاييس هيكلية أو على مستوى الجملة. Levenshtein هو O(m×n) — تخطي CER + WER على الدفعات الكبيرة (5 000+ مقطع طويل) يُقلل زمن الاستجابة ملحوظاً.' },
+      { name: 'enableWER',       default: 'true', what: 'معدل أخطاء الكلمات على جميع الأعمدة وعمود النص فقط. يُرمِّز بالفراغات بعد حذف علامات الترقيم.', whenToDisable: 'نفس شروط enableCER. يُعطَّل عادةً معه.' },
+      { name: 'enableSegER',     default: 'true', what: 'معدل أخطاء التجزئة: الأحداث الحدودية (تقسيمات + دمجات + صفوف مضافة + محذوفة) / عدد الأجزاء المتوقعة. إشارة الجودة الهيكلية — مستقلة عن محتوى النص.', whenToDisable: 'فقط إذا كان سير عملك يهتم حصراً بالتغييرات المعجمية والأحداث الهيكلية غير ذات صلة — نادر في QA النصوص.' },
+      { name: 'enableSER',       default: 'true', what: 'معدل أخطاء الجمل: صفوف MODIFIED / (صفوف UNCHANGED + MODIFIED). نسبة الصفوف القابلة للمقارنة التي تحتوي أي تعديل. يُرجع null — لا 0 — عندما يكون المقام 0 (جميع الصفوف أحداث هيكلية بدون أزواج مقارنة).', whenToDisable: 'عند الاكتفاء بمعدلات أخطاء الأحرف/الكلمات دون الحاجة إلى إشارة على مستوى الجملة.' },
+      { name: 'enableSACR',      default: 'true', what: 'معدل تغيير نسب المتحدث: الصفوف التي تغيّر فيها عمود المتحدث / صفوف MODIFIED. اكتشاف تلقائي للأعمدة المسماة speaker أو talker أو spk. يُرجع null تلقائياً عند غياب عمود المتحدث — تفعيل هذا على بيانات بدون متحدث لا يكلف شيئاً.', whenToDisable: 'فقط لإخفاء حقل SACR من الاستجابة بشكل صريح بصرف النظر عن وجود عمود متحدث.' },
+      { name: 'enableComposite', default: 'true', what: 'يحسب متوسط درجات كل مقياس (مقياس 1–5) للمقاييس المفعَّلة التي أنتجت قيمة غير null. فقط CER وWER وSegER وSER تُغذّي المركّب — SACR مستبعد لأن كثيراً من مجموعات البيانات تفتقر إلى عمود متحدث مما يجعل المركّب غير قابل للمقارنة بين الدفعات.', whenToDisable: 'عندما يقرأ نظامك قيم المقاييس الفردية مباشرةً ولا يعرض درجة إجمالية.' },
+    ],
+    compositeNote:
+      'الدرجة المركبة ديناميكية: عطِّل WER ويُعاد حساب المتوسط على المقاييس المفعَّلة المتبقية. تتضمن الاستجابة مصفوفة enabledMetrics تُدرج بالضبط المقاييس التي أسهمت في النتيجة.',
+    sacrAutoNote:
+      'لا يحتاج SACR إلى إلغاء اشتراك يدوي لمجموعات البيانات بدون متحدث. إذا لم يطابق أي عمود speaker أو talker أو spk (غير حساس لحالة الأحرف)، يكون SACR null بصرف النظر عن الإشارة. الإشارة موجودة فقط لإخفاء الحقل عند الرغبة الصريحة في استبعاد بيانات المتحدث من الاستجابة.',
+  },  structuralTransforms: {
     title: 'structuralTransforms',
     what:
       'مصفوفة من قواعد البحث/الاستبدال تُطبَّق على نص النص قبل تشغيل خوارزمية حساب التشابه. يتيح هذا للمحرك محاذاة الصفوف التي تختلف فقط في بادئات أو تنسيقات متوقعة وغير محتوى (مثل: علامات ID، بادئات URL).',

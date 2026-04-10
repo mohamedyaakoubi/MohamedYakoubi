@@ -193,7 +193,7 @@ const response = await fetch('https://structural-diff-engine.onrender.com/v1/dif
 
 const data = await response.json()
 // data.data.results   — one entry per original row
-// data.data.scores    — CER / WER / SER
+// data.data.scores    — CER / WER / SegER / SER
 // data.data.composite — grade, score, label`
 
   const pythonDemoRequest = `# After adapting column names with the adapt() function above
@@ -214,7 +214,7 @@ response = requests.post(
 
 data = response.json()
 # data['data']['results']   — one entry per original row
-# data['data']['scores']    — CER / WER / SER
+# data['data']['scores']    — CER / WER / SegER / SER
 # data['data']['composite'] — grade, score, label`
 
   const requestTabs = [
@@ -242,7 +242,8 @@ data = response.json()
     "scores": {
       "CER": 0.09,
       "WER": 0.14,
-      "SER": 0.22,
+      "SegER": 0.22,
+      "SER": 0.44,
       "cerT": 0.09,
       "werT": 0.14
     },
@@ -419,11 +420,20 @@ data = response.json()
                   <p className="text-sm text-gray-600 dark:text-gray-400">{t.scores.werExplained}</p>
                 </div>
 
+                {/* SegER */}
+                <div className="px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">SegER</span>
+                    <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">≈ 0.22</span>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{t.scores.segerExplained}</p>
+                </div>
+
                 {/* SER */}
                 <div className="px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">SER</span>
-                    <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">≈ 0.22</span>
+                    <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">SER</span>
+                    <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">≈ 0.67</span>
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{t.scores.serExplained}</p>
                 </div>
