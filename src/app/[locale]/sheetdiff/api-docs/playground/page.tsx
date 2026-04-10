@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getSupportedLocales } from '@/lib/translations'
-import LiveSimulatorClient from '@/components/LiveSimulatorClient'
+import LiveSimulatorClient from '@/components/LiveSimulator'
 import { getLiveSimulatorI18n } from '@/data/live-simulator-i18n'
 
 export async function generateStaticParams() {
