@@ -748,7 +748,11 @@ print(data['data']['results'])`
           {/* Footer spacer */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-xs text-gray-400 flex items-center justify-between flex-wrap gap-3">
             <span>{t.footer.info} <a href={`/${language}/contact`} className="hover:text-gray-600 dark:hover:text-gray-300 underline">Mohamed Yaakoubi</a></span>
-            <Link href={`/${language}/sheetdiff`} className="hover:text-gray-600 dark:hover:text-gray-300">{t.footer.back}</Link>
+            <div className="flex items-center gap-4 flex-wrap">
+              <Link href={`/${language}/sheetdiff/api-docs/privacy-policy`} className="hover:text-gray-600 dark:hover:text-gray-300 underline">{t.footer.privacy}</Link>
+              <Link href={`/${language}/sheetdiff/api-docs/terms-of-service`} className="hover:text-gray-600 dark:hover:text-gray-300 underline">{t.footer.terms}</Link>
+              <Link href={`/${language}/sheetdiff`} className="hover:text-gray-600 dark:hover:text-gray-300">{t.footer.back}</Link>
+            </div>
           </div>
         </main>
 

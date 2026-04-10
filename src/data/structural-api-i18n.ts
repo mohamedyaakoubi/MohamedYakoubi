@@ -110,6 +110,22 @@ type StructuralApiI18n = {
   footer: {
     info: string
     back: string
+    privacy: string
+    terms: string
+  }
+  privacy: {
+    title: string
+    productLine: string
+    lastUpdated: string
+    backTo: string
+    sections: { heading: string; content: string }[]
+  }
+  terms: {
+    title: string
+    productLine: string
+    lastUpdated: string
+    backTo: string
+    sections: { heading: string; content: string }[]
   }
 }
 
@@ -303,10 +319,26 @@ const en: StructuralApiI18n = {
   footer: {
     info: 'Structural Diff API · v1.0 · Built by',
     back: '← Back to SheetDiff™',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+  },
+  privacy: {
+    title: 'Privacy Policy',
+    productLine: 'Structural Diff API',
+    lastUpdated: 'Last updated: April 10, 2026',
+    backTo: '← Back to API Docs',
+    sections: [],
+  },
+  terms: {
+    title: 'Terms of Service',
+    productLine: 'Structural Diff API',
+    lastUpdated: 'Last updated: April 10, 2026',
+    backTo: '\u2190 Back to API Docs',
+    sections: [],
   },
 }
 
-// ────────────────────── FRENCH ──────────────────────
+// \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 FRENCH \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 const fr: StructuralApiI18n = {
   meta: {
     title: 'Documentation API Structural Diff — SheetDiff™',
@@ -496,6 +528,45 @@ const fr: StructuralApiI18n = {
   footer: {
     info: 'API Structural Diff · v1.0 · Développé par',
     back: '← Retour à SheetDiff™',
+    privacy: 'Politique de confidentialité',
+    terms: "Conditions d'utilisation",
+  },
+  privacy: {
+    title: 'Politique de Confidentialité',
+    productLine: 'API Structural Diff',
+    lastUpdated: 'Dernière mise à jour : 10 avril 2026',
+    backTo: '← Retour à la documentation API',
+    sections: [
+      { heading: '1. Présentation', content: "L'API Structural Diff est un service REST développé par Mohamed Yaakoubi permettant de comparer des lignes de transcription et de tableur, et de générer des rapports de diff détaillés. Cette politique explique comment l'API traite et protège vos données." },
+      { heading: '2. Données que vous soumettez', content: "<p>Pour utiliser l'API, vous envoyez des contenus JSON contenant des lignes, des options de configuration et un en-tête d'authentification. Ces données sont :</p><ul><li><strong>Traitées uniquement en mémoire</strong> — les lignes sont comparées puis immédiatement ignorées. Aucun contenu n'est écrit dans une base de données persistante.</li><li><strong>Non partagées</strong> — le contenu de vos requêtes n'est jamais vendu ni partagé avec des tiers.</li><li><strong>Non liées à des identités</strong> — l'API n'exige aucune information personnelle dans les lignes elles-mêmes.</li></ul>" },
+      { heading: '3. Clés API et authentification', content: "<p>L'accès requiert un en-tête <code>x-api-key</code> valide. Les clés sont provisonnées individuellement et stockées dans la variable d'environnement <code>API_KEYS</code> du serveur. La comparaison est effectuée en temps constant via <code>crypto.timingSafeEqual</code> pour prévenir les attaques temporelles. Aucune clé n'est enregistrée dans les journaux. Gardez votre clé confidentielle et signalez toute compromission immédiatement.</p>" },
+      { heading: '4. Journaux serveur', content: "<p>L'infrastructure enregistre automatiquement :</p><ul><li>L'adresse IP entrante (pour la limitation de débit).</li><li>L'identifiant de requête (<code>x-request-id</code>) pour le débogage.</li><li>L'horodatage, le code HTTP et la latence.</li></ul><p>Les journaux sont écrits <strong>sur stdout uniquement</strong> via Winston. Aucune donnée n'est écrite dans une base de données. La durée de conservation dépend de la politique de la plateforme de déploiement.</p>" },
+      { heading: '5. Services tiers', content: "L'API n'utilise aucun service tiers de stockage. Dépendances de production : <code>express</code>, <code>helmet</code>, <code>cors</code>, <code>winston</code>, <code>morgan</code>, <code>joi</code>. Tout le traitement a lieu sur le serveur de Mohamed Yaakoubi." },
+      { heading: '6. Sécurité', content: "Toutes les communications se font via HTTPS/TLS. L'en-tête <code>x-api-key</code> est obligatoire pour les endpoints qui retournent des données. Les clés sont comparées en temps constant, jamais enregistrées. <code>helmet</code> applique des en-têtes de sécurité HTTP standard." },
+      { heading: '7. Modifications', content: 'Nous pouvons mettre à jour cette politique si nos pratiques changent. La date \u00ab Dernière mise à jour \u00bb sera révisée.' },
+      { heading: '8. Contact', content: "Pour toute question, contactez-nous via <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+    ],
+  },
+  terms: {
+    title: "Conditions d'utilisation",
+    productLine: 'API Structural Diff',
+    lastUpdated: 'Dernière mise à jour : 10 avril 2026',
+    backTo: '← Retour à la documentation API',
+    sections: [
+      { heading: '1. Acceptation', content: "En accédant à l'API ou en l'utilisant, vous acceptez ces conditions. Si vous l'utilisez au nom d'une organisation, vous déclarez avoir l'autorité pour la lier." },
+      { heading: '2. Accès et licence', content: "L'utilisation requiert une clé valide. Vous bénéficiez d'une licence limitée, non exclusive et non transférable pour utiliser l'API dans vos propres systèmes." },
+      { heading: '3. Utilisations autorisées', content: '<ul><li>Comparer des transcriptions, sous-titres ou lignes de tableur dans vos propres flux de travail.</li><li>Assurance qualité de la localisation, QA de la transcription et annotation de données.</li><li>Intégration dans vos outils internes, à condition de ne pas redistribuer les droits d’accès.</li></ul>' },
+      { heading: '4. Utilisations interdites', content: "<ul><li>Revendre, sous-licencier ou redistribuer l'accès à des tiers.</li><li>Construire un service concurrent aux fonctionnalités similaires.</li><li>Partager votre clé avec des personnes non autorisées.</li><li>Contourner les mécanismes d'authentification ou de limitation de débit.</li><li>Faire de l'ingénierie inverse sur le moteur.</li><li>Effectuer des tests de charge non autorisés ou des attaques de service.</li></ul>" },
+      { heading: '5. Clés API', content: "Chaque clé est provisonnée pour un seul utilisateur ou une seule organisation. Ne partagez pas votre clé. Signalez toute compromission immédiatement. Une seule clé par entité sans accord écrit préalable." },
+      { heading: '6. Limites de débit', content: 'Le niveau d’essai est limité à <strong>10 requêtes / minute</strong> (fenêtre de 1 minute) et <strong>60 requêtes / 15 minutes</strong>. Des niveaux supérieurs peuvent être provisonnés individuellement. Le dépassement répété peut entraîner la suspension de la clé.' },
+      { heading: '7. Disponibilité', content: "L'API est fournie \u00ab en l'état \u00bb sans garantie de disponibilité. Nous pouvons modifier, suspendre ou interrompre le service à tout moment." },
+      { heading: '8. Propriété intellectuelle', content: "Le moteur de diff, la conception de l'API, la documentation et tous les composants associés sont la propriété intellectuelle de Mohamed Yaakoubi." },
+      { heading: '9. Exclusion de garanties', content: "L'API EST FOURNIE \u00ab EN L'ÉTAT \u00bb SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU IMPLICITE." },
+      { heading: '10. Limitation de responsabilité', content: "Dans toute la mesure permise par la loi, Mohamed Yaakoubi ne saurait être tenu responsable de dommages indirects ou consécutifs découlant de l'utilisation ou de l'impossibilité d'utiliser l'API." },
+      { heading: '11. Résiliation', content: "Nous nous réservons le droit de révoquer votre clé et de résilier votre accès à tout moment en cas de violation ou d'abus." },
+      { heading: '12. Droit applicable', content: 'Ces conditions sont régies par les lois applicables en République de Tunisie.' },
+      { heading: '13. Contact', content: "Pour toute question, contactez-nous via <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+    ],
   },
 }
 
@@ -689,6 +760,45 @@ const ar: StructuralApiI18n = {
   footer: {
     info: 'Structural Diff API · v1.0 · تطوير',
     back: 'العودة إلى SheetDiff™',
+    privacy: 'سياسة الخصوصية',
+    terms: 'شروط الخدمة',
+  },
+  privacy: {
+    title: 'سياسة الخصوصية',
+    productLine: 'Structural Diff API',
+    lastUpdated: 'آخر تحديث: 10 أبريل 2026',
+    backTo: '→ العودة إلى وثائق API',
+    sections: [
+      { heading: '١. نظرة عامة', content: 'Structural Diff API خدمة REST طوّرها محمد يعقوبي، تقارن صفوف النصوص والجداول وتولّد تقارير diff تفصيلية. تشرح سياسة الخصوصية هذه كيفية معالجة الـ API لبياناتك وحمايتها.' },
+      { heading: '٢. البيانات التي تُرسَل', content: '<p>لاستخدام الـ API، تُرسَل حمولات JSON تحتوي على صفوف نصية، خيارات تهيئة، ورأس مصادقة. هذه البيانات:</p><ul><li><strong>تُعالَج في الذاكرة فقط</strong> — الصفوف تُقارَن ثم تُتجاهَل فوراً. لا تُكتَب بيانات في قاعدة دائمة.</li><li><strong>غير مشتركة</strong> — لا يُباع محتوى طلباتك أو يُشارَك مع أطراف ثالثة.</li><li><strong>غير مرتبطة بهويات</strong> — لا تتطلب الـ API أي معلومات تعريف شخصية في الصفوف ذاتها.</li></ul>' },
+      { heading: '٣. مفاتيح API والمصادقة', content: '<p>يتطلب الوصول رأس <code>x-api-key</code> صالحًا. تُخصّص المفاتيح بشكل فردي وتُخزّن كنص عادي في متغيّر البيئة <code>API_KEYS</code> على الخادم (يصل إليه المشغّل فقط). تُجرى المقارنة عبر <code>crypto.timingSafeEqual</code>. لا تُسجّل أي مفتاح. احتفظ بمفتاحك سريًا.</p>' },
+      { heading: '٤. سجلات الخادم', content: '<p>تُسجّل البنية التحتية تلقائيًا:</p><ul><li>عنوان IP (لتحديد المعدل).</li><li>معرّف الطلب (<code>x-request-id</code>) للتصحيح.</li><li>الطابع الزمني ورمز HTTP وطول الاستجابة.</li></ul><p>تُكتَب السجلات <strong>على stdout فقط</strong> عبر Winston. لا تُخزّن بيانات في قاعدة بيانات. مدة الاحتفاظ تتوقف على سياسة بيئة النشر.</p>' },
+      { heading: '٥. خدمات الطرف الثالث', content: 'لا تستخدم الـ API أي خدمة تخزين خارجية (لا Firebase، لا قاعدة بيانات، لا analytics). تبعيات الإنتاج: <code>express</code>، <code>helmet</code>، <code>cors</code>، <code>winston</code>، <code>morgan</code>، <code>joi</code>.' },
+      { heading: '٦. الأمان', content: 'جميع الاتصالات عبر HTTPS/TLS. رأس <code>x-api-key</code> إلزامي. تستخدم الـ API مكتبة <code>helmet</code> لتطبيق رؤوس أمان HTTP قياسية.' },
+      { heading: '٧. التغييرات', content: 'قد نحدّث هذه السياسة إذا تغيّرت ممارساتنا. سيُراجع تاريخ «آخر تحديث» وفقًا لذلك.' },
+      { heading: '٨. التواصل', content: "لأي استفسارات، تواصل عبر <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+    ],
+  },
+  terms: {
+    title: 'شروط الخدمة',
+    productLine: 'Structural Diff API',
+    lastUpdated: 'آخر تحديث: 10 أبريل 2026',
+    backTo: '→ العودة إلى وثائق API',
+    sections: [
+      { heading: '١. القبول', content: 'بالوصول إلى Structural Diff API أو استخدامها، توافق على الالتزام بهذه الشروط.' },
+      { heading: '٢. الوصول والترخيص', content: 'يتطلب استخدام الـ API مفتاحًا صالحًا. يُمنح لك حق وصول محدود وغير حصري وغير قابل للنقل لاستخدام الـ API ضمن أنظمتك الخاصة.' },
+      { heading: '٣. الاستخدامات المسموح بها', content: '<ul><li>مقارنة النصوص أو صفوف الجداول ضمن سير عملك الخاص.</li><li>ضمان جودة الترجمة والتعليق على البيانات.</li><li>التكامل في أدواتك الداخلية دون إعادة توزيع حقوق الوصول.</li></ul>' },
+      { heading: '٤. الاستخدامات المحظورة', content: '<ul><li>إعادة بيع أو ترخيص أو إعادة توزيع الوصول لأطراف ثالثة.</li><li>بناء خدمة منافسة.</li><li>مشاركة مفتاحك مع غير مصرح لهم.</li><li>تجاوز آليات المصادقة أو تحديد المعدل.</li><li>الهندسة العكسية على المحرك.</li><li>اختبار تحمل غير مصرح به أو الهجوم على الخدمة.</li></ul>' },
+      { heading: '٥. مفاتيح API', content: 'يُخصّص كل مفتاح لمستخدم أو منظمة واحدة. لا تشارك مفتاحك. مفتاح واحد لكل جهة دون اتفاقية مكتوبة مسبقة.' },
+      { heading: '٦. حدود المعدل', content: 'المستوى التجريبي محدّد بـ <strong>10 طلبات / دقيقة</strong> (نافذة 1 دقيقة) و <strong>60 طلبًا / 15 دقيقة</strong>. يُمكن تخصيص مستويات أعلى بشكل فردي.' },
+      { heading: '٧. توفّر الخدمة', content: 'تُقدّم الـ API «كما هي» دون ضمان التوفُر. يحق لنا تعديل أو تعليق أو إيقاف الخدمة في أي وقت.' },
+      { heading: '٨. الملكية الفكرية', content: 'محرك diff وتصميم الـ API والوثائق وجميع المكونات هي ملكية فكرية لمحمد يعقوبي.' },
+      { heading: '٩. إخلاء المسؤولية عن الضمانات', content: 'تُقدّم الـ API «كما هي» دون أي ضمان من أي نوع.' },
+      { heading: '٪٠. تحديد المسؤولية', content: 'لن يكون محمد يعقوبي مسؤولاً عن أي أضرار غير مباشرة ناجمة عن استخدام الـ API أو عدم تمكُنك من استخدامها.' },
+      { heading: '٪١. الإنهاء', content: 'نحتفظ بالحق في إلغاء مفتاحك وإنهاء وصولك في أي وقت لانتهاك هذه الشروط أو إساءة الاستخدام.' },
+      { heading: '٪٢. القانون المعمول به', content: 'تخضع هذه الشروط للقوانين السارية في الجمهورية التونسية.' },
+      { heading: '٪٣. التواصل', content: "لأي استفسارات، تواصل عبر <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+    ],
   },
 }
 

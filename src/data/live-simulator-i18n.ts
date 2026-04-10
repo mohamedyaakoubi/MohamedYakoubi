@@ -54,6 +54,7 @@ type LiveSimulatorI18n = {
     extraColsBody: string
     allExtra: string
     noneExtra: string
+    none: string
   }
   config: {
     title: string
@@ -213,6 +214,7 @@ const en: LiveSimulatorI18n = {
     extraColsBody: 'These columns are outside the standard schema. Check the ones you want included in the diff and column changes table.',
     allExtra: 'All',
     noneExtra: 'None',
+    none: '— none —',
   },
   config: {
     title: 'Config Parameters',
@@ -436,6 +438,7 @@ const fr: LiveSimulatorI18n = {
     extraColsBody: 'Ces colonnes se trouvent hors du sch\u00e9ma standard. Cochez celles \u00e0 inclure dans le diff et le tableau des modifications.',
     allExtra: 'Tout',
     noneExtra: 'Aucun',
+    none: '— aucun —',
   },
   config: {
     title: 'Paramètres de configuration',
@@ -618,6 +621,7 @@ const ar: LiveSimulatorI18n = {
     extraColsBody: 'هذه الأعمدة خارج المخطط القياسي. حدد ما تريد تضمينه في الـ diff وجدول التغييرات.',
     allExtra: 'الكل',
     noneExtra: 'لا شيء',
+    none: '— لا شيء —',
   },
   config: {
     title: 'معاملات الإعداد',

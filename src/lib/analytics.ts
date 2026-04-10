@@ -88,6 +88,19 @@ export const analytics = {
   sheetdiffBillingToggle: (plan: 'monthly' | 'annual') =>
     trackEvent({ action: 'toggle', category: 'sheetdiff', label: `billing_${plan}` }),
 
+  // Structural Diff API
+  structuralApiPageView: (page: 'docs' | 'privacy' | 'terms' | 'playground' | 'parameters' | 'diff-statuses' | 'demo') => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'structural_api_page_view', {
+        event_category: 'structural_api',
+        api_page: page,
+      })
+    }
+  },
+
+  structuralApiAccessClick: (source: string = 'access') =>
+    trackEvent({ action: 'click', category: 'structural_api', label: `request_access_${source}` }),
+
   // Services
   serviceCTAClick: (service: string) =>
     trackEvent({ action: 'click', category: 'service', label: service }),

@@ -32,7 +32,7 @@ export default function LiveSimulatorClient() {
   // ── State ─────────────────────────────────────────────────────
   const [originalText, setOriginalText]       = useState('')
   const [reworkedText, setReworkedText]       = useState('')
-  const [apiKey,       setApiKey]             = useState('')
+  const [apiKey,       setApiKey]             = useState('sdiff-acme-abc123')
   const [showKey,      setShowKey]            = useState(false)
   const [requestId,    setRequestId]          = useState('')
   const [config,       setConfig]             = useState<Config>(DEFAULT_CONFIG)
