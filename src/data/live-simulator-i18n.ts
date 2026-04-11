@@ -151,6 +151,8 @@ type LiveSimulatorI18n = {
     grade: string
     disabled: string
   }
+  samples: Record<string, { label: string; description: string }>
+  footer: { info: string; privacy: string; terms: string; back: string }
 }
 
 // ──────────────────────── ENGLISH ────────────────────────────────
@@ -406,7 +408,29 @@ const en: LiveSimulatorI18n = {
     grade: 'Grade',
     disabled: '—',
   },
-}
+  samples: {
+    'language-lab-basic':         { label: 'Language Lab — Basic',         description: 'Podcast excerpt · no timestamps · MODIFIED + SPLIT + MERGED' },
+    'language-lab-full':          { label: 'Language Lab — Full',          description: 'Same podcast with timestamps + non_speech_events · all statuses' },
+    'medical-consultation':       { label: 'Medical Consultation',         description: 'Doctor–patient exchange · timestamps · MODIFIED + ADDED' },
+    'job-interview-split':        { label: 'Job Interview — Split',        description: 'One long answer re-segmented into two · SPLIT + MODIFIED' },
+    'legal-deposition-delete':    { label: 'Legal Deposition — Delete',    description: 'Witness statement · a row struck from the record · DELETED + MODIFIED' },
+    'news-broadcast-merge':       { label: 'News Broadcast — Merge',       description: 'Anchor lines collapsed into single segment · MERGED + UNCHANGED' },
+    'customer-support-unchanged': { label: 'Customer Support — Unchanged', description: 'Clean approved call transcript · all rows UNCHANGED' },
+    'courtroom-hearing':          { label: 'Courtroom Hearing',            description: 'Speaker correction + wording edits · MODIFIED rows' },
+    'tech-conference-qa':         { label: 'Tech Conference Q&A',          description: 'Panel discussion · timestamps · SPLIT + MERGE + MODIFIED' },
+    'scientific-lecture':         { label: 'Scientific Lecture',           description: 'Dense technical rows · terminology corrections · MODIFIED' },
+    'product-launch-panel':       { label: 'Product Launch Panel',         description: 'Live event · non_speech_events · all statuses' },
+    'all-statuses':              { label: 'All-Statuses Showcase',        description: 'Minimal dataset engineered to produce every status' },
+    'arabic-subtitles':           { label: 'Arabic Subtitles',             description: 'Documentary clip · Arabic content · MODIFIED + MERGED' },
+    'french-broadcast':           { label: 'French Broadcast',             description: 'TV news segment · French · MODIFIED + SPLIT' },
+    'documentary-positional':     { label: 'Documentary — Positional',     description: 'Narration with tight timestamps · good for positionalMode · MODIFIED' },
+  },
+  footer: {
+    info: 'API Playground · Structural Diff API · Built by',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+    back: '← Back to Structural Diff API',
+  },}
 
 // ──────────────────────── FRENCH ─────────────────────────────────
 const fr: LiveSimulatorI18n = {
@@ -599,7 +623,29 @@ const fr: LiveSimulatorI18n = {
     grade: 'Note',
     disabled: '—',
   },
-}
+  samples: {
+    'language-lab-basic':         { label: 'Labo linguistique — Basique',           description: 'Extrait podcast · sans horodatage · MODIFIED + SPLIT + MERGED' },
+    'language-lab-full':          { label: 'Labo linguistique — Complet',           description: 'Même podcast avec horodatage + non_speech_events · tous les statuts' },
+    'medical-consultation':       { label: 'Consultation médicale',                 description: 'Échange médecin–patient · horodatage · MODIFIED + ADDED' },
+    'job-interview-split':        { label: "Entretien d'embauche — Scission",       description: 'Une longue réponse re-segmentée en deux · SPLIT + MODIFIED' },
+    'legal-deposition-delete':    { label: 'Déposition judiciaire — Suppression',   description: 'Déclaration de témoin · une ligne rayée du registre · DELETED + MODIFIED' },
+    'news-broadcast-merge':       { label: "Bulletin d'information — Fusion",       description: "Lignes d'ancrage regroupées en un segment · MERGED + UNCHANGED" },
+    'customer-support-unchanged': { label: 'Support client — Inchangé',             description: "Transcription d'appel validée · toutes les lignes UNCHANGED" },
+    'courtroom-hearing':          { label: 'Audience judiciaire',                   description: 'Correction de locuteur + modifications de formulation · lignes MODIFIED' },
+    'tech-conference-qa':         { label: 'Table ronde — Conférence tech',         description: 'Discussion en panel · horodatage · SPLIT + MERGE + MODIFIED' },
+    'scientific-lecture':         { label: 'Conférence scientifique',               description: 'Lignes techniques denses · corrections terminologiques · MODIFIED' },
+    'product-launch-panel':       { label: 'Panel de lancement produit',            description: 'Événement en direct · non_speech_events · tous les statuts' },
+    'all-statuses':              { label: 'Démonstration de tous les statuts',     description: 'Jeu de données minimal produisant chaque statut' },
+    'arabic-subtitles':           { label: 'Sous-titres arabes',                    description: 'Clip documentaire · contenu arabe · MODIFIED + MERGED' },
+    'french-broadcast':           { label: 'Émission française',                    description: 'Journal télévisé · français · MODIFIED + SPLIT' },
+    'documentary-positional':     { label: 'Documentaire — Positionnel',            description: 'Narration avec horodatage serré · idéal pour positionalMode · MODIFIED' },
+  },
+  footer: {
+    info: 'Playground API · API Structural Diff · Développé par',
+    privacy: 'Politique de confidentialité',
+    terms: "Conditions d'utilisation",
+    back: "← Retour à l'API Structural Diff",
+  },}
 
 // ──────────────────────── ARABIC ─────────────────────────────────
 const ar: LiveSimulatorI18n = {
@@ -791,6 +837,29 @@ const ar: LiveSimulatorI18n = {
     ser: 'SER',    transcriptSer: 'SER (النص)',    sacr: 'SACR',
     grade: 'التقييم',
     disabled: '—',
+  },
+  samples: {
+    'language-lab-basic':         { label: 'مختبر اللغة — أساسي',           description: 'مقتطف بودكاست · بدون طوابع زمنية · MODIFIED + SPLIT + MERGED' },
+    'language-lab-full':          { label: 'مختبر اللغة — كامل',            description: 'البودكاست نفسه مع طوابع زمنية + non_speech_events · جميع الحالات' },
+    'medical-consultation':       { label: 'استشارة طبية',                  description: 'حوار طبيب–مريض · طوابع زمنية · MODIFIED + ADDED' },
+    'job-interview-split':        { label: 'مقابلة عمل — تقسيم',           description: 'إعادة تقسيم إجابة طويلة إلى جزأين · SPLIT + MODIFIED' },
+    'legal-deposition-delete':    { label: 'إفادة قانونية — حذف',          description: 'شهادة شاهد · صف محذوف من السجل · DELETED + MODIFIED' },
+    'news-broadcast-merge':       { label: 'نشرة إخبارية — دمج',           description: 'أسطر المذيع مجمّعة في مقطع واحد · MERGED + UNCHANGED' },
+    'customer-support-unchanged': { label: 'دعم العملاء — بدون تغيير',     description: 'نسخ مكالمة معتمدة · جميع الصفوف UNCHANGED' },
+    'courtroom-hearing':          { label: 'جلسة محكمة',                   description: 'تصحيح المتحدث + تعديلات الصياغة · صفوف MODIFIED' },
+    'tech-conference-qa':         { label: 'سؤال وجواب — مؤتمر تقني',     description: 'نقاش لجنة · طوابع زمنية · SPLIT + MERGE + MODIFIED' },
+    'scientific-lecture':         { label: 'محاضرة علمية',                 description: 'صفوف تقنية مكثفة · تصحيحات مصطلحات · MODIFIED' },
+    'product-launch-panel':       { label: 'لجنة إطلاق منتج',              description: 'حدث مباشر · non_speech_events · جميع الحالات' },
+    'all-statuses':              { label: 'عرض جميع الحالات',             description: 'مجموعة بيانات بسيطة مصممة لإنتاج كل حالة' },
+    'arabic-subtitles':           { label: 'ترجمة عربية',                  description: 'مقطع وثائقي · محتوى عربي · MODIFIED + MERGED' },
+    'french-broadcast':           { label: 'بث فرنسي',                     description: 'نشرة إخبارية تلفزيونية · فرنسية · MODIFIED + SPLIT' },
+    'documentary-positional':     { label: 'وثائقي — وضعي',                description: 'سرد بطوابع زمنية ضيقة · مثالي للـ positionalMode · MODIFIED' },
+  },
+  footer: {
+    info: 'Playground API · Structural Diff API · تطوير',
+    privacy: 'سياسة الخصوصية',
+    terms: 'شروط الخدمة',
+    back: '← العودة إلى Structural Diff API',
   },
 }
 

@@ -346,7 +346,7 @@ const en: StructuralApiI18n = {
   terms: {
     title: 'Terms of Service',
     productLine: 'Structural Diff API',
-    lastUpdated: 'Last updated: April 10, 2026',
+    lastUpdated: 'Last updated: April 11, 2026',
     backTo: '\u2190 Back to API Docs',
     sections: [],
   },
@@ -571,13 +571,13 @@ const fr: StructuralApiI18n = {
   terms: {
     title: "Conditions d'utilisation",
     productLine: 'API Structural Diff',
-    lastUpdated: 'Dernière mise à jour : 10 avril 2026',
+    lastUpdated: 'Dernière mise à jour : 11 avril 2026',
     backTo: '← Retour à la documentation API',
     sections: [
       { heading: '1. Acceptation', content: "En accédant à l'API ou en l'utilisant, vous acceptez ces conditions. Si vous l'utilisez au nom d'une organisation, vous déclarez avoir l'autorité pour la lier." },
       { heading: '2. Accès et licence', content: "L'utilisation requiert une clé valide. Vous bénéficiez d'une licence limitée, non exclusive et non transférable pour utiliser l'API dans vos propres systèmes." },
-      { heading: '3. Utilisations autorisées', content: '<ul><li>Comparer des transcriptions, sous-titres ou lignes de tableur dans vos propres flux de travail.</li><li>Assurance qualité de la localisation, QA de la transcription et annotation de données.</li><li>Intégration dans vos outils internes, à condition de ne pas redistribuer les droits d’accès.</li></ul>' },
-      { heading: '4. Utilisations interdites', content: "<ul><li>Revendre, sous-licencier ou redistribuer l'accès à des tiers.</li><li>Construire un service concurrent aux fonctionnalités similaires.</li><li>Partager votre clé avec des personnes non autorisées.</li><li>Contourner les mécanismes d'authentification ou de limitation de débit.</li><li>Faire de l'ingénierie inverse sur le moteur.</li><li>Effectuer des tests de charge non autorisés ou des attaques de service.</li></ul>" },
+      { heading: '3. Utilisations autorisées', content: '<ul><li>Comparer des transcriptions, sous-titres ou lignes de tableur dans vos propres flux de travail.</li><li>Assurance qualité de la localisation, QA de la transcription et annotation de données.</li><li>Intégration dans vos outils internes, à condition de ne pas redistribuer les droits d’accès et de ne pas intégrer ou exploiter l’API depuis Google Sheets, Google Apps Script ou des automatisations liées à des feuilles de calcul.</li><li>Pour un usage dans Google Sheets, vous devez utiliser le module officiel SheetDiff disponible sur Google Workspace Marketplace, et non un accès direct à l’API.</li></ul>' },
+      { heading: '4. Utilisations interdites', content: "<ul><li>Revendre, sous-licencier ou redistribuer l'accès à des tiers.</li><li>Construire un service concurrent aux fonctionnalités similaires.</li><li>Utiliser l’API directement depuis Google Sheets, Google Apps Script, ou des modules/connecteurs personnalisés liés à des feuilles de calcul.</li><li>Partager votre clé avec des personnes non autorisées.</li><li>Contourner les mécanismes d'authentification ou de limitation de débit.</li><li>Faire de l'ingénierie inverse sur le moteur.</li><li>Effectuer des tests de charge non autorisés ou des attaques de service.</li></ul>" },
       { heading: '5. Clés API', content: "Chaque clé est provisonnée pour un seul utilisateur ou une seule organisation. Ne partagez pas votre clé. Signalez toute compromission immédiatement. Une seule clé par entité sans accord écrit préalable." },
       { heading: '6. Limites de débit', content: 'Le niveau d’essai est limité à <strong>10 requêtes / minute</strong> (fenêtre de 1 minute) et <strong>60 requêtes / 15 minutes</strong>. Des niveaux supérieurs peuvent être provisonnés individuellement. Le dépassement répété peut entraîner la suspension de la clé.' },
       { heading: '7. Disponibilité', content: "L'API est fournie \u00ab en l'état \u00bb sans garantie de disponibilité. Nous pouvons modifier, suspendre ou interrompre le service à tout moment." },
@@ -813,13 +813,13 @@ const ar: StructuralApiI18n = {
   terms: {
     title: 'شروط الخدمة',
     productLine: 'Structural Diff API',
-    lastUpdated: 'آخر تحديث: 10 أبريل 2026',
+    lastUpdated: 'آخر تحديث: 11 أبريل 2026',
     backTo: '→ العودة إلى وثائق API',
     sections: [
       { heading: '١. القبول', content: 'بالوصول إلى Structural Diff API أو استخدامها، توافق على الالتزام بهذه الشروط.' },
       { heading: '٢. الوصول والترخيص', content: 'يتطلب استخدام الـ API مفتاحًا صالحًا. يُمنح لك حق وصول محدود وغير حصري وغير قابل للنقل لاستخدام الـ API ضمن أنظمتك الخاصة.' },
-      { heading: '٣. الاستخدامات المسموح بها', content: '<ul><li>مقارنة النصوص أو صفوف الجداول ضمن سير عملك الخاص.</li><li>ضمان جودة الترجمة والتعليق على البيانات.</li><li>التكامل في أدواتك الداخلية دون إعادة توزيع حقوق الوصول.</li></ul>' },
-      { heading: '٤. الاستخدامات المحظورة', content: '<ul><li>إعادة بيع أو ترخيص أو إعادة توزيع الوصول لأطراف ثالثة.</li><li>بناء خدمة منافسة.</li><li>مشاركة مفتاحك مع غير مصرح لهم.</li><li>تجاوز آليات المصادقة أو تحديد المعدل.</li><li>الهندسة العكسية على المحرك.</li><li>اختبار تحمل غير مصرح به أو الهجوم على الخدمة.</li></ul>' },
+      { heading: '٣. الاستخدامات المسموح بها', content: '<ul><li>مقارنة النصوص أو صفوف الجداول ضمن سير عملك الخاص.</li><li>ضمان جودة الترجمة والتعليق على البيانات.</li><li>التكامل في أدواتك الداخلية دون إعادة توزيع حقوق الوصول، ودون تضمين الـ API أو تشغيلها من داخل Google Sheets أو Google Apps Script أو أي أتمتة مرتبطة بجداول البيانات.</li><li>إذا كنت تريد استخدام الخدمة داخل Google Sheets، فيجب استخدام إضافة SheetDiff الرسمية على Google Workspace Marketplace وليس الوصول المباشر إلى الـ API.</li></ul>' },
+      { heading: '٤. الاستخدامات المحظورة', content: '<ul><li>إعادة بيع أو ترخيص أو إعادة توزيع الوصول لأطراف ثالثة.</li><li>بناء خدمة منافسة.</li><li>استخدام الـ API مباشرةً من داخل Google Sheets أو Google Apps Script أو إضافات/موصلات مخصّصة مرتبطة بجداول البيانات.</li><li>مشاركة مفتاحك مع غير مصرح لهم.</li><li>تجاوز آليات المصادقة أو تحديد المعدل.</li><li>الهندسة العكسية على المحرك.</li><li>اختبار تحمل غير مصرح به أو الهجوم على الخدمة.</li></ul>' },
       { heading: '٥. مفاتيح API', content: 'يُخصّص كل مفتاح لمستخدم أو منظمة واحدة. لا تشارك مفتاحك. مفتاح واحد لكل جهة دون اتفاقية مكتوبة مسبقة.' },
       { heading: '٦. حدود المعدل', content: 'المستوى التجريبي محدّد بـ <strong>10 طلبات / دقيقة</strong> (نافذة 1 دقيقة) و <strong>60 طلبًا / 15 دقيقة</strong>. يُمكن تخصيص مستويات أعلى بشكل فردي.' },
       { heading: '٧. توفّر الخدمة', content: 'تُقدّم الـ API «كما هي» دون ضمان التوفُر. يحق لنا تعديل أو تعليق أو إيقاف الخدمة في أي وقت.' },

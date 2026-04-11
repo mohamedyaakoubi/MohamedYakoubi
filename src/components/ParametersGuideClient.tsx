@@ -479,9 +479,13 @@ export default function ParametersGuideClient() {
             </Collapsible>
 
             {/* Footer */}
-            <div className="mt-16 pt-6 border-t border-gray-200 dark:border-gray-800 flex items-center justify-between text-sm text-gray-400">
+            <div className="mt-16 pt-6 border-t border-gray-200 dark:border-gray-800 flex items-center justify-between text-sm text-gray-400 flex-wrap gap-3">
               <span>{t.footer.info} <Link href={`/${language}`} className="hover:text-gray-600 dark:hover:text-gray-200 transition-colors">Mohamed Yaakoubi</Link></span>
-              <Link href={`/${language}/sheetdiff/api-docs`} className="hover:text-gray-600 dark:hover:text-gray-200 transition-colors">{t.footer.back}</Link>
+              <div className="flex items-center gap-4 flex-wrap">
+                <a href={`/${language}/sheetdiff/api-docs/privacy-policy`} target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 dark:hover:text-gray-200 transition-colors underline">{t.footer.privacy}</a>
+                <a href={`/${language}/sheetdiff/api-docs/terms-of-service`} target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 dark:hover:text-gray-200 transition-colors underline">{t.footer.terms}</a>
+                <Link href={`/${language}/sheetdiff/api-docs`} className="hover:text-gray-600 dark:hover:text-gray-200 transition-colors">{t.footer.back}</Link>
+              </div>
             </div>
           </FadeIn>
         </main>

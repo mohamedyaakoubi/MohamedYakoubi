@@ -45,7 +45,7 @@ type DiffStatusesI18n = {
     headers: { status: string; countStrategy: string; note: string }
     rows: Array<{ status: string; strategy: string; note: string }>
   }
-  footer: { info: string; back: string }
+  footer: { info: string; privacy: string; terms: string; back: string }
 }
 
 type StatusEntry = {
@@ -215,6 +215,8 @@ const en: DiffStatusesI18n = {
   },
   footer: {
     info: 'Diff Statuses Guide · Structural Diff API · Built by',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
     back: '← Back to Structural Diff API',
   },
 }
@@ -346,6 +348,8 @@ const fr: DiffStatusesI18n = {
   },
   footer: {
     info: 'Guide des statuts · API Structural Diff · Développé par',
+    privacy: 'Politique de confidentialité',
+    terms: 'Conditions d\'utilisation',
     back: '← Retour à l\'API Structural Diff',
   },
 }
@@ -477,6 +481,8 @@ const ar: DiffStatusesI18n = {
   },
   footer: {
     info: 'دليل حالات الـ diff · Structural Diff API · تطوير',
+    privacy: 'سياسة الخصوصية',
+    terms: 'شروط الخدمة',
     back: '← العودة إلى Structural Diff API',
   },
 }

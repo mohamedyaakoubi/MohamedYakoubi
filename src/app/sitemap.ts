@@ -23,8 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/sheetdiff':    new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
   }
 
-  const apiDocsDate        = new Date('2026-04-09') // API docs section added Apr 9
-  const sheetdiffSubPageDate = new Date('2026-04-05')
+  const apiDocsDate        = new Date('2026-04-11') // API docs audit fixes Apr 11
+  const apiDocsLegalDate    = new Date('2026-04-10') // API-specific ToS + privacy added Apr 10
+  const sheetdiffSubPageDates: Record<string, Date> = {
+    '/sheetdiff/pricing':           new Date('2026-03-14'), // pricing FAQ fix Mar 14
+    '/sheetdiff/terms-of-service':  new Date('2026-03-01'), // add-on ToS created Mar 1
+    '/sheetdiff/privacy-policy':    new Date('2026-03-01'), // add-on privacy created Mar 1
+  }
 
   const projectPageDates: Record<string, Date> = {
     '/projects/potential':            new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
@@ -64,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     sheetdiffPages.forEach(page => {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${page}`,
-        lastModified: sheetdiffSubPageDate,
+        lastModified: sheetdiffSubPageDates[page],
         changeFrequency: 'yearly',
         priority: 0.5,
       })
@@ -89,6 +94,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: apiDocsDate,
         changeFrequency: 'monthly',
         priority: 0.7,
+      })
+    })
+
+    // API-specific legal pages
+    const apiLegalPages = [
+      '/sheetdiff/api-docs/terms-of-service',
+      '/sheetdiff/api-docs/privacy-policy',
+    ]
+    apiLegalPages.forEach(page => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${page}`,
+        lastModified: apiDocsLegalDate,
+        changeFrequency: 'yearly',
+        priority: 0.4,
       })
     })
 

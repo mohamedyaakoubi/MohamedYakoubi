@@ -93,7 +93,12 @@ export default function StructuralApiTermsClient() {
                   <li>Localization QA, transcription QA, and data annotation tasks.</li>
                   <li>
                     Integrate into your own internal tools or pipelines, provided you do not re-surface API access rights
-                    to others.
+                    to others and do not embed or operate the API from Google Sheets, Google Apps Script, or
+                    spreadsheet-bound automations.
+                  </li>
+                  <li>
+                    For Google Sheets usage, you must use the official SheetDiff Google Workspace Marketplace add-on,
+                    not direct API access.
                   </li>
                 </ul>
 
@@ -102,6 +107,7 @@ export default function StructuralApiTermsClient() {
                 <ul>
                   <li>Resell, sublicense, or redistribute API access to third parties.</li>
                   <li>Use the API to build a competing service offering substantially similar functionality.</li>
+                  <li>Use the API directly from Google Sheets, Google Apps Script, or custom spreadsheet add-ons/connectors.</li>
                   <li>Share or disclose your API key to unauthorized individuals.</li>
                   <li>Attempt to bypass authentication or rate-limiting mechanisms.</li>
                   <li>Reverse-engineer, disassemble, or otherwise attempt to derive the engine&apos;s source code.</li>

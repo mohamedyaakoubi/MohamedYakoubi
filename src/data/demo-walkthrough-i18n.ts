@@ -49,7 +49,7 @@ type DemoWalkthroughI18n = {
     gradeExplained: string
     gradeContext: string
   }
-  footer: { info: string; back: string }
+  footer: { info: string; privacy: string; terms: string; back: string }
 }
 
 // ─────────────────── ENGLISH ───────────────────
@@ -148,6 +148,8 @@ const en: DemoWalkthroughI18n = {
   },
   footer: {
     info: 'Demo Walkthrough · Structural Diff API · Built by',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
     back: '← Back to Structural Diff API',
   },
 }
@@ -248,6 +250,8 @@ const fr: DemoWalkthroughI18n = {
   },
   footer: {
     info: 'Démonstration complète · API Structural Diff · Développé par',
+    privacy: 'Politique de confidentialité',
+    terms: 'Conditions d\'utilisation',
     back: '← Retour à l\'API Structural Diff',
   },
 }
@@ -348,6 +352,8 @@ const ar: DemoWalkthroughI18n = {
   },
   footer: {
     info: 'درس تطبيقي كامل · Structural Diff API · تطوير',
+    privacy: 'سياسة الخصوصية',
+    terms: 'شروط الخدمة',
     back: '← العودة إلى Structural Diff API',
   },
 }

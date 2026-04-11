@@ -98,7 +98,7 @@ type ParametersGuideI18n = {
     timeTol: string
     splitMergeTol: string
   }
-  footer: { info: string; back: string }
+  footer: { info: string; privacy: string; terms: string; back: string }
 }
 
 // ─────────────────── ENGLISH ───────────────────
@@ -286,6 +286,8 @@ const en: ParametersGuideI18n = {
   },
   footer: {
     info: 'Config Parameters Guide · Structural Diff API · Built by',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
     back: '← Back to Structural Diff API',
   },
 }
@@ -475,6 +477,8 @@ const fr: ParametersGuideI18n = {
   },
   footer: {
     info: 'Guide des paramètres · API Structural Diff · Développé par',
+    privacy: 'Politique de confidentialité',
+    terms: 'Conditions d\'utilisation',
     back: '← Retour à l\'API Structural Diff',
   },
 }
@@ -662,6 +666,8 @@ const ar: ParametersGuideI18n = {
   },
   footer: {
     info: 'دليل معاملات الإعداد · Structural Diff API · تطوير',
+    privacy: 'سياسة الخصوصية',
+    terms: 'شروط الخدمة',
     back: '← العودة إلى Structural Diff API',
   },
 }
