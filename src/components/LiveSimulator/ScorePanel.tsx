@@ -12,6 +12,7 @@ interface ScorePanelI18n {
   wer: string
   seger: string
   ser: string
+  transcriptSer: string
   sacr: string
   grade: string
   disabled: string
@@ -43,6 +44,10 @@ interface Scores {
   SERPercent:          string | null
   SERGrade:            number | null
   SERLabel:            string | null
+  transcriptSER:       number | null
+  transcriptSERPercent: string | null
+  transcriptSERGrade:  number | null
+  transcriptSERLabel:  string | null
   SACR:                number | null
   SACRPercent:         string | null
   SACRGrade:           number | null
@@ -193,7 +198,7 @@ export function ScorePanel({ scores: rawScores, composite: rawComposite, t }: Pr
                     <MetricCell percent={s.SERPercent ?? null} grade={s.SERGrade ?? null} disabled={tp.disabled} />
                   </td>
                   <td className="py-2.5">
-                    <span className="text-gray-400 dark:text-gray-500 tabular-nums">{tp.disabled}</span>
+                    <MetricCell percent={s.transcriptSERPercent ?? null} grade={s.transcriptSERGrade ?? null} disabled={tp.disabled} />
                   </td>
                 </tr>
                 {/* SACR row — only shown when speaker data produced a result */}

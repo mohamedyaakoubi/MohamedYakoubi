@@ -17,8 +17,13 @@ export interface Config {
   enableTranscriptWER: boolean
   enableSegER: boolean
   enableSER: boolean
+  enableTranscriptSER: boolean
   enableSACR: boolean
   enableComposite: boolean
+  cerInComposite: boolean
+  werInComposite: boolean
+  segerInComposite: boolean
+  serInComposite: boolean
   stripDiacritics: boolean
   positionalMode: boolean
   ignoreColNames: string // comma-separated; converted to string[] on submit
@@ -80,8 +85,13 @@ export const DEFAULT_CONFIG: Config = {
   enableTranscriptWER: true,
   enableSegER: true,
   enableSER: true,
+  enableTranscriptSER: true,
   enableSACR: true,
   enableComposite: true,
+  cerInComposite: true,
+  werInComposite: true,
+  segerInComposite: true,
+  serInComposite: true,
   stripDiacritics: false,
   positionalMode: false,
   ignoreColNames: '',

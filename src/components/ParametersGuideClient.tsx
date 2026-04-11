@@ -410,6 +410,7 @@ export default function ParametersGuideClient() {
             <CodeBlock lang="json" code={scoringFlagsExample} />
             <Callout type="info">{t.scoringFlags.compositeNote}</Callout>
             <Callout type="info">{t.scoringFlags.sacrAutoNote}</Callout>
+            <Callout type="info">{t.scoringFlags.headerRowNote}</Callout>
 
             {/* ── structuralTransforms ───────────────────── */}
             <H2 id="structuralTransforms">{t.structuralTransforms.title}</H2>

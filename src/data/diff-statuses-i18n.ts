@@ -164,7 +164,7 @@ const en: DiffStatusesI18n = {
       inputNote:
         'The original row must be sufficiently similar to the combined text of the reworked rows. Timestamp plausibility is also checked if timestamps are present.',
       responseNote:
-        'The original row entry has status: "SPLIT". The reworked rows it maps to are enumerated in the result. SER (Segmentation Error Rate) is incremented by this row.',
+        'The original row entry has status: "SPLIT". The reworked rows it maps to are enumerated in the result. SegER (Segmentation Error Rate) is incremented by this row. transcriptSER also accumulates from SPLIT rows: the combined text of the reworked children is compared sentence-by-sentence against the original transcript.',
       workflowContext:
         'Splits are the most significant structural change between annotation layers. A high SPLIT count in Layer 1→Layer 2 indicates Layer 1 was under-segmenting. If this is expected, it\'s informational. If unexpected, it warrants review.',
     },
@@ -177,7 +177,7 @@ const en: DiffStatusesI18n = {
       inputNote:
         'The absorbed original rows must have sufficient combined text similarity to the merged reworked row. The absorbed rows are also present in the result as "Source row" entries with status MERGED.',
       responseNote:
-        'The primary merged result row (the reworked row) has status: "MERGED". Each absorbed original row also appears in the results with notes: "Source row 1/N · merged into reworked row X". Filter these out when counting statuses.',
+        'The primary merged result row (the reworked row) has status: "MERGED". Each absorbed original row also appears in the results with notes: "Source row 1/N · merged into reworked row X". Filter these out when counting statuses. SegER is incremented by this row. transcriptSER also accumulates: the combined text of the absorbed originals is compared sentence-by-sentence against the merged reworked transcript.',
       workflowContext:
         'A high MERGED count indicates the AI over-segmented. Combined with SPLIT, the ratio tells you whether the AI tends toward over- or under-segmentation relative to your annotation standard.',
     },
@@ -302,7 +302,7 @@ const fr: DiffStatusesI18n = {
       definition: 'Une ligne originale correspond à deux ou plusieurs lignes retravaillées consécutives dont la transcription combinée reconstruit l\'original.',
       whenYouSeeThis: 'L\'annotateur a déterminé que le segment IA était trop long et contenait deux utterances distinctes ou deux tours de parole, et l\'a divisé à une frontière naturelle.',
       inputNote: 'La ligne originale doit être suffisamment similaire au texte combiné des lignes retravaillées. La plausibilité temporelle est également vérifiée.',
-      responseNote: 'L\'entrée de ligne originale a status: "SPLIT". Le SER (taux d\'erreur de segmentation) est incrémenté par cette ligne.',
+      responseNote: 'L\'entrée de ligne originale a status: "SPLIT". Le SER (taux d\'erreur de segmentation) est incrémenté par cette ligne. transcriptSER accumule également les lignes SPLIT : le texte combiné des enfants reworked est comparé phrase par phrase au transcript original.',
       workflowContext: 'Les splits sont le changement structurel le plus significatif entre les couches d\'annotation. Un comptage élevé indique que la couche précédente sous-segmentait.',
     },
     MERGED: {
@@ -310,7 +310,7 @@ const fr: DiffStatusesI18n = {
       definition: 'Deux lignes originales ou plus correspondent à une ligne retravaillée dont la transcription est proche du texte combiné des originaux.',
       whenYouSeeThis: 'L\'annotateur a déterminé que des segments consécutifs devaient être joints. Courant quand l\'IA a sur-segmenté aux pauses respiratoires ou aux frontières de ponctuation.',
       inputNote: 'Les lignes originales absorbées doivent avoir une similarité textuelle combinée suffisante. Elles apparaissent aussi dans les résultats comme entrées "Source row".',
-      responseNote: 'La ligne résultat fusionnée a status: "MERGED". Chaque ligne originale absorbée apparaît avec notes: "Source row N/M · merged into reworked row X". Filtrez-les dans les comptages.',
+      responseNote: 'La ligne résultat fusionée a status: "MERGED". Chaque ligne originale absorbée apparaît avec notes: "Source row N/M \u00b7 merged into reworked row X". Filtrez-les dans les comptages. Le SegER est incrémenté par cette ligne. transcriptSER accumule également : le texte combiné des originaux absorbés est comparé phrase par phrase au transcript fusionné.',
       workflowContext: 'Un comptage MERGED élevé indique que l\'IA sur-segmentait. Combiné avec SPLIT, le ratio indique si l\'IA tend vers la sur- ou sous-segmentation.',
     },
   },
@@ -433,7 +433,7 @@ const ar: DiffStatusesI18n = {
       definition: 'يُقابل صف أصلي واحد صفّين أو أكثر من الصفوف المُعادة المتتالية التي تُعيد بناء النص الأصلي مجتمعةً.',
       whenYouSeeThis: 'قرر المُدقِّق أن مقطع الذكاء الاصطناعي كان طويلاً جداً ويحتوي على تعبيرين مختلفين أو التفافين للحديث، فقسّمه عند حد طبيعي.',
       inputNote: 'الصف الأصلي يجب أن يكون مشابهاً بما يكفي للنص المجمَّع للصفوف المُعادة. تُفحص أيضاً معقولية الطوابع الزمنية إن وُجدت.',
-      responseNote: 'إدخال الصف الأصلي له status: "SPLIT". SER (معدل خطأ التجزئة) يُزاد بهذا الصف.',
+      responseNote: 'إدخال الصف الأصلي له status: "SPLIT". SER (معدل خطأ التجزئة) يُزاد بهذا الصف. transcriptSER يتراكم أيضاً من صفوف SPLIT: النص المجمّع للأبناء المُعادين يُقارن جملة بجملة مع النص الأصلي.',
       workflowContext: 'التقسيمات هي أكثر التغييرات الهيكلية أهمية بين طبقات التدقيق. عدد مرتفع يُشير إلى أن الطبقة السابقة كانت تُجزِّئ بشكل ناقص.',
     },
     MERGED: {
@@ -441,7 +441,7 @@ const ar: DiffStatusesI18n = {
       definition: 'تُقابل صفّان أصليان أو أكثر صفاً مُعاداً واحداً حيث نصّه قريب من النص المجمَّع للأصليات.',
       whenYouSeeThis: 'قرر المُدقِّق أن المقاطع المتتالية يجب أن تُدمج. شائع عند الإفراط في التجزئة عند توقفات التنفس أو حدود الترقيم.',
       inputNote: 'الصفوف الأصلية الممتصة يجب أن يكون لها تشابه نصي مجمَّع كافٍ. تظهر أيضاً في النتائج كإدخالات "Source row".',
-      responseNote: 'صف النتيجة المدموجة الرئيسي له status: "MERGED". كل صف أصلي ممتص يظهر مع notes: "Source row N/M · merged into reworked row X". تصفيتها في العدود.',
+      responseNote: 'صف النتيجة المدموجة الرئيسي له status: "MERGED". كل صف أصلي ممتص يظهر مع notes: "Source row N/M \u00b7 merged into reworked row X". تصفيتها في العدود. SegER يُزاد بهذا الصف. transcriptSER يتراكم أيضاً: النص المجمّع للأصليات الممتصة يُقارن جملة بجملة مع نص الصف المدموج.',
       workflowContext: 'عدد MERGED مرتفع يُشير إلى الإفراط في تجزئة الذكاء الاصطناعي. مع SPLIT، يُخبرك نسبتهما ما إذا كان الذكاء الاصطناعي يميل نحو الإفراط أو التقصير في التجزئة.',
     },
   },

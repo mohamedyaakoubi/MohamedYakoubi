@@ -121,8 +121,13 @@ export function buildRequestConfig(cfg: Config): Record<string, unknown> {
     enableTranscriptWER: cfg.enableTranscriptWER,
     enableSegER:         cfg.enableSegER,
     enableSER:           cfg.enableSER,
+    enableTranscriptSER: cfg.enableTranscriptSER,
     enableSACR:          cfg.enableSACR,
     enableComposite:     cfg.enableComposite,
+    cerInComposite:      cfg.cerInComposite,
+    werInComposite:      cfg.werInComposite,
+    segerInComposite:    cfg.segerInComposite,
+    serInComposite:      cfg.serInComposite,
     stripDiacritics:  cfg.stripDiacritics,
     positionalMode:   cfg.positionalMode,
   }

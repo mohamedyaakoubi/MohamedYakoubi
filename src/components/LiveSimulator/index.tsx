@@ -146,12 +146,14 @@ export default function LiveSimulatorClient() {
           next.enableCER    = false;  next.enableTranscriptCER = false
           next.enableWER    = false;  next.enableTranscriptWER = false
           next.enableSegER  = false;  next.enableSER = false
+          next.enableTranscriptSER = false
           next.enableSACR   = false;  next.enableComposite     = false
         } else {
           next.enableSplits = true;   next.enableMerges = true
           next.enableCER    = true;   next.enableTranscriptCER = true
           next.enableWER    = true;   next.enableTranscriptWER = true
           next.enableSegER  = true;   next.enableSER = true
+          next.enableTranscriptSER = true
           next.enableSACR   = true;   next.enableComposite     = true
         }
       }
@@ -569,9 +571,18 @@ export default function LiveSimulatorClient() {
               <Toggle value={config.enableTranscriptWER} onChange={(v) => updateConfig('enableTranscriptWER', v)} label={t.config.enableTranscriptWER.label} desc={t.config.enableTranscriptWER.desc} disabled={werDisabled || !config.enableWER} />
               <Toggle value={config.enableSegER}          onChange={(v) => updateConfig('enableSegER', v)}          label={t.config.enableSegER.label}          desc={t.config.enableSegER.desc}          disabled={segerDisabled} />
               {showSegerHint && <p className="text-xs text-amber-600 dark:text-amber-500 ml-12">{t.config.segerHint}</p>}
-              <Toggle value={config.enableSER}            onChange={(v) => updateConfig('enableSER', v)}            label={t.config.enableSER.label}            desc={t.config.enableSER.desc} />
-              <Toggle value={config.enableSACR}           onChange={(v) => updateConfig('enableSACR', v)}           label={t.config.enableSACR.label}           desc={t.config.enableSACR.desc} />
-              <Toggle value={config.enableComposite}    onChange={(v) => updateConfig('enableComposite', v)}    label={t.config.enableComposite.label}    desc={t.config.enableComposite.desc} />
+              <Toggle value={config.enableSER}            onChange={(v) => updateConfig('enableSER', v)}            label={t.config.enableSER.label}            desc={t.config.enableSER.desc}            disabled={simpleOn} />
+              <Toggle value={config.enableTranscriptSER}  onChange={(v) => updateConfig('enableTranscriptSER', v)}  label={t.config.enableTranscriptSER.label}  desc={t.config.enableTranscriptSER.desc}  disabled={simpleOn || !config.enableSER} />
+              <Toggle value={config.enableSACR}           onChange={(v) => updateConfig('enableSACR', v)}           label={t.config.enableSACR.label}           desc={t.config.enableSACR.desc}           disabled={simpleOn} />
+              <Toggle value={config.enableComposite}    onChange={(v) => updateConfig('enableComposite', v)}    label={t.config.enableComposite.label}    desc={t.config.enableComposite.desc}    disabled={simpleOn} />
+              {config.enableComposite && (
+                <div className="ml-12 pl-3 border-l-2 border-gray-200 dark:border-gray-700 space-y-3">
+                  <Toggle value={config.cerInComposite}   onChange={(v) => updateConfig('cerInComposite', v)}   label={t.config.cerInComposite.label}   desc={t.config.cerInComposite.desc}   disabled={simpleOn || !config.enableCER} />
+                  <Toggle value={config.werInComposite}   onChange={(v) => updateConfig('werInComposite', v)}   label={t.config.werInComposite.label}   desc={t.config.werInComposite.desc}   disabled={simpleOn || !config.enableWER} />
+                  <Toggle value={config.segerInComposite} onChange={(v) => updateConfig('segerInComposite', v)} label={t.config.segerInComposite.label} desc={t.config.segerInComposite.desc} disabled={segerDisabled || !config.enableSegER} />
+                  <Toggle value={config.serInComposite}   onChange={(v) => updateConfig('serInComposite', v)}   label={t.config.serInComposite.label}   desc={t.config.serInComposite.desc}   disabled={simpleOn || !config.enableSER} />
+                </div>
+              )}
               <Toggle value={config.stripDiacritics} onChange={(v) => updateConfig('stripDiacritics', v)} label={t.config.stripDiacritics.label} desc={t.config.stripDiacritics.desc} />
               <Toggle value={config.positionalMode}  onChange={(v) => updateConfig('positionalMode', v)}  label={t.config.positionalMode.label}  desc={t.config.positionalMode.desc} />
             </div>

@@ -68,8 +68,13 @@ type LiveSimulatorI18n = {
     enableTranscriptWER: { label: string; desc: string }
     enableSegER: { label: string; desc: string }
     enableSER: { label: string; desc: string }
+    enableTranscriptSER: { label: string; desc: string }
     enableSACR: { label: string; desc: string }
     enableComposite: { label: string; desc: string }
+    cerInComposite: { label: string; desc: string }
+    werInComposite: { label: string; desc: string }
+    segerInComposite: { label: string; desc: string }
+    serInComposite: { label: string; desc: string }
     stripDiacritics: { label: string; desc: string }
     positionalMode: { label: string; desc: string }
     enableInlineDiff: { label: string; desc: string }
@@ -141,6 +146,7 @@ type LiveSimulatorI18n = {
     wer: string
     seger: string
     ser: string
+    transcriptSer: string
     sacr: string
     grade: string
     disabled: string
@@ -259,6 +265,10 @@ const en: LiveSimulatorI18n = {
       label: 'enableSER',
       desc: 'Compute Sentence Error Rate — fraction of comparable (UNCHANGED + MODIFIED) rows that contain at least one change.',
     },
+    enableTranscriptSER: {
+      label: 'enableTranscriptSER',
+      desc: 'Compute transcript-level SER — treats each sentence in the transcript column as a unit and counts how many changed. Analogous to how transcriptWER works at word level.',
+    },
     enableSACR: {
       label: 'enableSACR',
       desc: 'Compute Speaker Attribution Change Rate — fraction of MODIFIED rows where the speaker field changed. Only reported when a speaker column is detected.',
@@ -266,6 +276,22 @@ const en: LiveSimulatorI18n = {
     enableComposite: {
       label: 'enableComposite',
       desc: 'Compute the composite quality score — a weighted average of the enabled CER, WER, SegER, and SER metrics.',
+    },
+    cerInComposite: {
+      label: 'cerInComposite',
+      desc: 'Include CER in the composite score. Turn off to track CER separately without letting it affect the final grade.',
+    },
+    werInComposite: {
+      label: 'werInComposite',
+      desc: 'Include WER in the composite score. Turn off to monitor WER without it influencing the composite grade.',
+    },
+    segerInComposite: {
+      label: 'segerInComposite',
+      desc: 'Include SegER in the composite score. Useful when segmentation quality is a separate concern from content quality.',
+    },
+    serInComposite: {
+      label: 'serInComposite',
+      desc: 'Include SER in the composite score. Turn off to see the sentence error rate as a standalone diagnostic metric.',
     },
     stripDiacritics: {
       label: 'stripDiacritics',
@@ -375,6 +401,7 @@ const en: LiveSimulatorI18n = {
     wer: 'WER',
     seger: 'SegER',
     ser: 'SER',
+    transcriptSer: 'SER (transcript)',
     sacr: 'SACR',
     grade: 'Grade',
     disabled: '—',
@@ -475,8 +502,13 @@ const fr: LiveSimulatorI18n = {
     enableTranscriptWER: { label: 'enableTranscriptWER', desc: 'Calcule le WER sur la colonne de transcription uniquement. Donne une vue plus ciblée de la qualité de transcription.' },
     enableSegER: { label: 'enableSegER', desc: 'Calcule le taux d\'erreur de segmentation (SegER) — mesure le ratio d\'événements de changement de frontière (SPLIT/MERGE/AJOUT/SUPPRESSION) par rapport aux lignes comparables.' },
     enableSER: { label: 'enableSER', desc: 'Calcule le taux d\'erreur par phrase (SER) — fraction des lignes comparables (UNCHANGED + MODIFIED) comportant au moins un changement.' },
+    enableTranscriptSER: { label: 'enableTranscriptSER', desc: 'Calcule le SER au niveau de la transcription — traite chaque phrase du champ transcription comme une unité et compte celles qui ont changé. Analogue à transcriptWER mais au niveau de la phrase.' },
     enableSACR: { label: 'enableSACR', desc: 'Calcule le taux de changement d\'attribution locuteur (SACR) — fraction des lignes MODIFIED où le champ locuteur a changé. Affiché uniquement quand une colonne locuteur est détectée.' },
     enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne pondérée des métriques CER, WER, SegER et SER activées.' },
+    cerInComposite: { label: 'cerInComposite', desc: 'Inclure CER dans le score composite. Décochez pour suivre CER séparément sans qu\'il affecte la note finale.' },
+    werInComposite: { label: 'werInComposite', desc: 'Inclure WER dans le score composite. Décochez pour surveiller WER sans influencer le score composite.' },
+    segerInComposite: { label: 'segerInComposite', desc: 'Inclure SegER dans le score composite. Utile quand la qualité de segmentation est évaluée indépendamment du contenu.' },
+    serInComposite: { label: 'serInComposite', desc: 'Inclure SER dans le score composite. Décochez pour l\'utiliser comme métrique diagnostique indépendante.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'Normalise les diacritiques arabes avant la comparaison. Évite les comptes MODIFIED gonflés par les harakat.',
@@ -562,6 +594,7 @@ const fr: LiveSimulatorI18n = {
     wer: 'WER',
     seger: 'SegER',
     ser: 'SER',
+    transcriptSer: 'SER (transcription)',
     sacr: 'SACR',
     grade: 'Note',
     disabled: '—',
@@ -662,8 +695,13 @@ const ar: LiveSimulatorI18n = {
     enableTranscriptWER: { label: 'enableTranscriptWER', desc: 'احسب WER على عمود النص فقط. يعطي رؤية أكثر تركيزاً لجودة النص.' },
     enableSegER: { label: 'enableSegER', desc: 'احسب معدل خطأ التقطيع (SegER) — يقيس نسبة أحداث SPLIT/MERGE/إضافة/حذف إلى عدد الصفوف القابلة للمقارنة.' },
     enableSER: { label: 'enableSER', desc: 'احسب معدل خطأ الجمل (SER) — نسبة الصفوف القابلة للمقارنة (UNCHANGED + MODIFIED) التي تحتوي على تغيير واحد على الأقل.' },
-    enableSACR: { label: 'enableSACR', desc: 'احسب معدل تغيير عزو المتحدث (SACR) — نسبة صفوف MODIFIED حيث تغيّر حقل المتحدث. يُعرض فقط عند اكتشاف عمود المتحدث.' },
+    enableTranscriptSER: { label: 'enableTranscriptSER', desc: 'احسب SER على مستوى النص — يعامل كل جملة في عمود النص كوحدة ويحسب نسبة ما تغيّر. منطقي مثل transcriptWER لكن على مستوى الجمل.' },
+    enableSACR: { label: 'enableSACR', desc: 'احسب معدل تغيّر عزو المتحدث (SACR) — نسبة صفوف MODIFIED حيث تغيّر حقل المتحدث. يُعرض فقط عند اكتشاف عمود المتحدث.' },
     enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط موزّن من مقاييس CER وWER وSegER وSER المُفَعَّلة.' },
+    cerInComposite: { label: 'cerInComposite', desc: 'تضمين CER في الدرجة المركّبة. عطّله لتتابع CER بشكل مستقل دون أن يؤثّر في التقييم النهائي.' },
+    werInComposite: { label: 'werInComposite', desc: 'تضمين WER في الدرجة المركّبة. عطّله لمراقبة WER دون التأثير على الدرجة المركّبة.' },
+    segerInComposite: { label: 'segerInComposite', desc: 'تضمين SegER في الدرجة المركّبة. مفيد حين تكون جودة التقطيع مسألة منفصلة عن جودة المحتوى.' },
+    serInComposite: { label: 'serInComposite', desc: 'تضمين SER في الدرجة المركّبة. عطّله لاستخدامه كمعيار تشخيصي مستقل.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'تطبيع التشكيل العربي قبل المقارنة. يمنع تضخم عدد MODIFIED بسبب تغييرات الحركات.',
@@ -750,8 +788,7 @@ const ar: LiveSimulatorI18n = {
     cer: 'CER',
     wer: 'WER',
     seger: 'SegER',
-    ser: 'SER',
-    sacr: 'SACR',
+    ser: 'SER',    transcriptSer: 'SER (النص)',    sacr: 'SACR',
     grade: 'التقييم',
     disabled: '—',
   },
