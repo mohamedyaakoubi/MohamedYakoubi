@@ -91,15 +91,18 @@ function MetricCell({
   percent,
   grade,
   disabled,
+  tag,
 }: {
   percent: string | null
   grade:   number | null
   disabled: string
+  tag?:    string
 }) {
   if (percent == null && grade == null) {
     return <span className="text-gray-400 dark:text-gray-500 tabular-nums">{disabled}</span>
   }
-  return (
+
+  const value = (
     <span className="tabular-nums">
       <span className={`font-semibold ${gradeColor(grade)}`}>{percent ?? disabled}%</span>
       {grade != null && (
@@ -107,6 +110,17 @@ function MetricCell({
       )}
     </span>
   )
+
+  if (tag) {
+    return (
+      <span className="flex items-center justify-between w-full">
+        {value}
+        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono">{tag}</span>
+      </span>
+    )
+  }
+
+  return value
 }
 
 // ── Component ─────────────────────────────────────────────────────
@@ -162,7 +176,7 @@ export function ScorePanel({ scores: rawScores, composite: rawComposite, t }: Pr
                     <MetricCell percent={s.overallCERPercent ?? null} grade={s.overallCERGrade ?? null} disabled={tp.disabled} />
                   </td>
                   <td className="py-2.5">
-                    <MetricCell percent={s.transcriptCERPercent ?? null} grade={s.transcriptCERGrade ?? null} disabled={tp.disabled} />
+                    <MetricCell percent={s.transcriptCERPercent ?? null} grade={s.transcriptCERGrade ?? null} disabled={tp.disabled} tag="cerT" />
                   </td>
                 </tr>
                 {/* WER row */}
@@ -174,7 +188,7 @@ export function ScorePanel({ scores: rawScores, composite: rawComposite, t }: Pr
                     <MetricCell percent={s.overallWERPercent ?? null} grade={s.overallWERGrade ?? null} disabled={tp.disabled} />
                   </td>
                   <td className="py-2.5">
-                    <MetricCell percent={s.transcriptWERPercent ?? null} grade={s.transcriptWERGrade ?? null} disabled={tp.disabled} />
+                    <MetricCell percent={s.transcriptWERPercent ?? null} grade={s.transcriptWERGrade ?? null} disabled={tp.disabled} tag="werT" />
                   </td>
                 </tr>
                 {/* SegER row */}
@@ -198,7 +212,7 @@ export function ScorePanel({ scores: rawScores, composite: rawComposite, t }: Pr
                     <MetricCell percent={s.SERPercent ?? null} grade={s.SERGrade ?? null} disabled={tp.disabled} />
                   </td>
                   <td className="py-2.5">
-                    <MetricCell percent={s.transcriptSERPercent ?? null} grade={s.transcriptSERGrade ?? null} disabled={tp.disabled} />
+                    <MetricCell percent={s.transcriptSERPercent ?? null} grade={s.transcriptSERGrade ?? null} disabled={tp.disabled} tag="serT" />
                   </td>
                 </tr>
                 {/* SACR row — only shown when speaker data produced a result */}

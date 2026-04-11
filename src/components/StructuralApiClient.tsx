@@ -367,8 +367,8 @@ print(data['data']['results'])`
         "notes": "split into 2 rows"
       }
     ],
-    "scores": { "CER": 0.12, "WER": 0.18, "SER": 0.33, "cerT": 0.12, "werT": 0.18 },
-    "composite": { "score": 3.8, "grade": "B", "label": "Good" },
+    "scores": { "overallCER": 0.12, "overallWER": 0.18, "SegER": 0.33, "transcriptCER": 0.12, "transcriptWER": 0.18, "SER": 0.05, "transcriptSER": 0.04, "SACR": null },
+    "composite": { "grade": 3.8, "label": "Good", "percent": "12.3" },
     "meta": { "originalRows": 2, "reworkedRows": 3, "headers": [...] }
   }
 }`
@@ -571,6 +571,7 @@ print(data['data']['results'])`
             { name: 'language',          type: 'string',                        desc: t.request.rowFields[6] },
             { name: 'locale',            type: 'string',                        desc: t.request.rowFields[7] },
             { name: 'accent',            type: 'string',                        desc: t.request.rowFields[8] },
+            { name: 'file_name',         type: 'string',                        desc: t.request.rowFields[9] },
           ]} />
 
           {/* Response Shape */}
@@ -606,18 +607,29 @@ print(data['data']['results'])`
 
           <H3>{t.response.scoresTitle}</H3>
           <ParamTable rows={[
-            { name: 'CER',  type: 'number', desc: t.response.scores[0] },
-            { name: 'WER',  type: 'number', desc: t.response.scores[1] },
-            { name: 'SER',  type: 'number', desc: t.response.scores[2] },
-            { name: 'cerT', type: 'number', desc: t.response.scores[3] },
-            { name: 'werT', type: 'number', desc: t.response.scores[4] },
+            { name: 'overallCER',    type: 'number', desc: t.response.scores[0] },
+            { name: 'overallWER',    type: 'number', desc: t.response.scores[1] },
+            { name: 'SegER',         type: 'number', desc: t.response.scores[2] },
+            { name: 'transcriptCER', type: 'number', desc: t.response.scores[3] },
+            { name: 'transcriptWER', type: 'number', desc: t.response.scores[4] },
+            { name: 'SER',           type: 'number', desc: t.response.scores[5] },
+            { name: 'transcriptSER', type: 'number', desc: t.response.scores[6] },
+            { name: 'SACR',          type: 'number', desc: t.response.scores[7] },
           ]} />
 
           <H3>{t.response.compositeTitle}</H3>
           <ParamTable rows={[
-            { name: 'score', type: 'number', desc: t.response.composite[0] },
-            { name: 'grade', type: 'string', desc: t.response.composite[1] },
-            { name: 'label', type: 'string', desc: t.response.composite[2] },
+            { name: 'grade',          type: 'number',   desc: t.response.composite[0] },
+            { name: 'label',          type: 'string',   desc: t.response.composite[1] },
+            { name: 'percent',        type: 'string',   desc: t.response.composite[2] },
+            { name: 'enabledMetrics', type: 'string[]', desc: t.response.composite[3] },
+          ]} />
+
+          <H3>{t.response.metaTitle}</H3>
+          <ParamTable rows={[
+            { name: 'originalRows', type: 'number',   desc: t.response.meta[0] },
+            { name: 'reworkedRows', type: 'number',   desc: t.response.meta[1] },
+            { name: 'headers',      type: 'string[]', desc: t.response.meta[2] },
           ]} />
 
           {/* Config Options */}
@@ -631,12 +643,13 @@ print(data['data']['results'])`
             { name: 'enableMerges',          type: 'boolean',         desc: t.config.params[2] },
             { name: 'enableCER',             type: 'boolean',         desc: t.config.params[3] },
             { name: 'enableWER',             type: 'boolean',         desc: t.config.params[4] },
-            { name: 'enableSER',             type: 'boolean',         desc: t.config.params[5] },
-            { name: 'stripDiacritics',       type: 'boolean',         desc: t.config.params[6] },
-            { name: 'positionalMode',        type: 'boolean',         desc: t.config.params[7] },
-            { name: 'ignoreColNames',        type: 'string[]',        desc: t.config.params[8] },
-            { name: 'enableInlineDiff',      type: 'boolean',         desc: t.config.params[9] },
-            { name: 'structuralTransforms',  type: 'TransformRule[]', desc: t.config.params[10] },
+            { name: 'enableSegER',           type: 'boolean',         desc: t.config.params[5] },
+            { name: 'enableSER',             type: 'boolean',         desc: t.config.params[6] },
+            { name: 'stripDiacritics',       type: 'boolean',         desc: t.config.params[7] },
+            { name: 'positionalMode',        type: 'boolean',         desc: t.config.params[8] },
+            { name: 'ignoreColNames',        type: 'string[]',        desc: t.config.params[9] },
+            { name: 'enableInlineDiff',      type: 'boolean',         desc: t.config.params[10] },
+            { name: 'structuralTransforms',  type: 'TransformRule[]', desc: t.config.params[11] },
           ]} />
 
           <Collapsible title={t.config.expertTitle}>
@@ -701,7 +714,7 @@ print(data['data']['results'])`
                   ['413', 'PAYLOAD_TOO_LARGE',  t.errors.causes[3]],
                   ['422', 'VALIDATION_ERROR',   t.errors.causes[4]],
                   ['429', 'RATE_LIMIT_EXCEEDED',t.errors.causes[5]],
-                  ['500', 'INTERNAL_ERROR',     t.errors.causes[6]],
+                  ['500', 'INTERNAL_SERVER_ERROR', t.errors.causes[6]],
                 ].map(([code, name, cause]) => (
                   <tr key={code} className="bg-white dark:bg-gray-950 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors">
                     <td className="px-4 py-3 font-mono text-sm text-red-600 dark:text-red-400 font-bold">{code}</td>

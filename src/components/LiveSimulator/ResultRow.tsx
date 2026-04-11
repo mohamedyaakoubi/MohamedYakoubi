@@ -180,14 +180,14 @@ export function ResultRow({
           {/* MERGED: original parent rows */}
           {isMerged && mergedParents.length > 0 && (
             <div className="pt-1">
-              <p className="text-xs font-semibold uppercase tracking-wider text-amber-500 dark:text-amber-400 mb-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-blue-500 dark:text-blue-400 mb-2">
                 {t.results.mergedParentsLabel} ({mergedParents.length})
               </p>
-              <div className="overflow-x-auto rounded-lg border border-amber-200 dark:border-amber-800/50">
+              <div className="overflow-x-auto rounded-lg border border-blue-200 dark:border-blue-800/50">
                 <table className="w-full text-xs min-w-[360px]">
                   <thead>
-                    <tr className="bg-amber-50/60 dark:bg-amber-950/20 border-b border-amber-100 dark:border-amber-800/40">
-                      <th className="text-left py-2 px-3 font-medium text-amber-400 w-8">#</th>
+                    <tr className="bg-blue-50/60 dark:bg-blue-950/20 border-b border-blue-100 dark:border-blue-800/40">
+                      <th className="text-left py-2 px-3 font-medium text-blue-400 w-8">#</th>
                       {metaHeaders.length > 0
                         ? metaHeaders.map((h) => (
                             <th key={h} className="text-left py-2 px-3 font-medium text-gray-400">{h}</th>
@@ -196,13 +196,13 @@ export function ResultRow({
                       }
                     </tr>
                   </thead>
-                  <tbody className="bg-white dark:bg-gray-950 divide-y divide-amber-50 dark:divide-amber-900/20">
+                  <tbody className="bg-white dark:bg-gray-950 divide-y divide-blue-50 dark:divide-blue-900/20">
                     {mergedParents.map((parentData, pi) => (
-                      <tr key={pi} className="bg-amber-50/20 dark:bg-amber-950/10">
-                        <td className="py-1.5 px-3 text-amber-400 font-mono">{pi + 1}</td>
+                      <tr key={pi} className="bg-blue-50/20 dark:bg-blue-950/10">
+                        <td className="py-1.5 px-3 text-blue-400 font-mono">{pi + 1}</td>
                         {metaHeaders.length > 0
                           ? metaHeaders.map((h) => (
-                              <td key={h} className="py-1.5 px-3 font-mono text-gray-500 dark:text-gray-400 line-through opacity-70 break-all">
+                              <td key={h} className="py-1.5 px-3 font-mono text-gray-500 dark:text-gray-400 break-all">
                                 {trunc(posVal(parentData, h, metaHeaders), h === 'transcript' ? 200 : 60)}
                               </td>
                             ))

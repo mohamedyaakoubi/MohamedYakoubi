@@ -77,6 +77,8 @@ type StructuralApiI18n = {
     scores: string[]
     compositeTitle: string
     composite: string[]
+    metaTitle: string
+    meta: string[]
   }
   config: {
     title: string
@@ -221,6 +223,7 @@ const en: StructuralApiI18n = {
       'Language code (e.g. "en", "ar").',
       'Locale code (e.g. "en-US").',
       'Accent tag.',
+      'Source file name. Pass-through only — not used by the diff algorithm.',
     ],
   },
   response: {
@@ -243,12 +246,22 @@ const en: StructuralApiI18n = {
       'Segmentation Error Rate — proportion of rows that were split or merged.',
       'CER computed on the transcript column only.',
       'WER computed on the transcript column only.',
+      'Sentence Error Rate — MODIFIED rows / (UNCHANGED + MODIFIED). Fraction of comparable rows with any edit (0–1).',
+      'SER computed on sentences within the transcript column text.',
+      'Speaker Attribution Change Rate — speaker-changed rows / MODIFIED rows. null when no speaker column is detected.',
     ],
     compositeTitle: 'Composite grade',
     composite: [
-      'Weighted quality score (1.0–5.0, higher is better).',
-      'Letter grade: A, B, C, D, or F.',
-      'Human-readable label — e.g. "Excellent", "Good", "Needs Work".',
+      'Numeric score (1.0–5.0, higher is better) averaged across enabled metrics.',
+      'Human-readable label — one of: "Excellent", "Good", "Acceptable", "Below Average", "Poor", "Unacceptable".',
+      'Average error percentage across the enabled scoring metrics.',
+      'Array of metric names that contributed to this composite (e.g. ["CER", "WER", "SegER", "SER"]). Empty when all metrics are disabled.',
+    ],
+    metaTitle: 'Response meta',
+    meta: [
+      'Number of rows in the original array.',
+      'Number of rows in the reworked array.',
+      'Column header names used for this diff.',
     ],
   },
   config: {
@@ -260,7 +273,8 @@ const en: StructuralApiI18n = {
       'Enable merge row detection. Default: true.',
       'Compute Character Error Rate. Default: true.',
       'Compute Word Error Rate. Default: true.',
-      'Compute Segmentation Error Rate. Default: true.',
+      'Compute Segmentation Error Rate (splits, merges, boundary events). Default: true.',
+      'Compute Sentence Error Rate. Default: true.',
       'Normalise Arabic/accented characters before comparison. Default: true.',
       'Compare rows strictly by position, skipping alignment. Default: false.',
       'Column names excluded from MODIFIED detection. Default: [].',
@@ -452,12 +466,20 @@ const fr: StructuralApiI18n = {
       'Taux d\'erreur de segmentation — proportion de lignes divisées ou fusionnées.',
       'CER calculé uniquement sur la colonne de transcription.',
       'WER calculé uniquement sur la colonne de transcription.',
+      'Taux d\'erreur de phrase — lignes MODIFIED / (UNCHANGED + MODIFIED). Fraction des lignes comparables avec au moins une modification (0–1).',
+      'SER calculé sur les phrases du texte dans la colonne de transcription.',
+      'Taux de changement d\'attribution du locuteur — lignes où le locuteur a changé / lignes MODIFIED. null si aucune colonne de locuteur n\'est détectée.',
     ],
     compositeTitle: 'Note composite',
     composite: [
-      'Score de qualité pondéré (1,0–5,0, plus élevé = meilleur).',
-      'Note alphabétique : A, B, C, D ou F.',
-      'Étiquette lisible — ex. "Excellent", "Bon", "À améliorer".',
+      'Score numérique (1,0–5,0, plus élevé = meilleur) calculé en moyenne sur les métriques activées.',
+      'Étiquette lisible — parmi : "Excellent", "Good", "Acceptable", "Below Average", "Poor", "Unacceptable".',
+      'Pourcentage d\'erreur moyen sur les métriques de notation activées.',      'Tableau des noms de métriques ayant contribué à ce composite (ex. : ["CER", "WER", "SegER", "SER"]). Vide si toutes les métriques sont désactivées.',    ],
+    metaTitle: 'Méta de la réponse',
+    meta: [
+      'Nombre de lignes dans le tableau original.',
+      'Nombre de lignes dans le tableau reworked.',
+      'Noms des colonnes utilisés pour ce diff.',
     ],
   },
   config: {
@@ -468,8 +490,7 @@ const fr: StructuralApiI18n = {
       'Activer la détection des lignes divisées. Défaut : true.',
       'Activer la détection des lignes fusionnées. Défaut : true.',
       'Calculer le taux d\'erreur de caractères. Défaut : true.',
-      'Calculer le taux d\'erreur de mots. Défaut : true.',
-      'Calculer le taux d\'erreur de segmentation. Défaut : true.',
+      'Calculer le taux d\'erreur de mots. Défaut : true.',      'Calculer le taux d\'erreur de segmentation (divisions, fusions, événements de frontière). Défaut : true.',      'Calculer le taux d\'erreur de phrases. Défaut : true.',
       'Normaliser les caractères arabes/accentués avant la comparaison. Défaut : true.',
       'Comparer les lignes strictement par position, sans alignement. Défaut : false.',
       'Noms de colonnes exclus de la détection MODIFIED. Défaut : [].',
@@ -662,6 +683,7 @@ const ar: StructuralApiI18n = {
       'رمز اللغة (مثال: "ar"، "en").',
       'رمز اللهجة الإقليمية (مثال: "ar-MA").',
       'وسم اللكنة.',
+      'اسم الملف المصدر. حقل تمرير فقط — لا يستخدمه خوارزمية المقارنة.',
     ],
   },
   response: {
@@ -684,12 +706,20 @@ const ar: StructuralApiI18n = {
       'معدل خطأ التجزئة — نسبة الصفوف المقسّمة أو المدمجة.',
       'CER محسوب فقط على عمود النص المكتوب.',
       'WER محسوب فقط على عمود النص المكتوب.',
+      'معدل خطأ الجمل — صفوف MODIFIED / (UNCHANGED + MODIFIED). نسبة الصفوف القابلة للمقارنة التي تحتوي على أي تعديل (0–1).',
+      'SER محسوب على الجمل داخل نص عمود النص المكتوب.',
+      'معدل تغيير تنسيب المتحدث — الصفوف التي تغيّر فيها المتحدث / صفوف MODIFIED. قيمة null إذا لم يُكتشف عمود متحدث.',
     ],
     compositeTitle: 'الدرجة المركّبة',
     composite: [
-      'درجة الجودة الموزونة (1.0–5.0، الأعلى كلما كان أفضل).',
-      'الدرجة الحرفية: A، B، C، D، أو F.',
-      'وسم قابل للقراءة — مثال: "ممتاز"، "جيد"، "يحتاج تحسين".',
+      'درجة رقمية (1.0–5.0، الأعلى كلما كان أفضل) تُحسب بمعدل المقاييس الممكّنة.',
+      'وسم قابل للقراءة — أحد: "Excellent"، "Good"، "Acceptable"، "Below Average"، "Poor"، "Unacceptable".',
+      'متوسط نسبة الخطأ عبر مقاييس التقييم الممكّنة.',      'مصفوفة أسماء المقاييس التي ساهمت في هذا المركّب (مثال: ["CER"، "WER"، "SegER"، "SER"]). فارغة عند تعطيل جميع المقاييس.',    ],
+    metaTitle: 'بيانات الاستجابة',
+    meta: [
+      'عدد الصفوف في المصفوفة الأصلية.',
+      'عدد الصفوف في المصفوفة المُعادة.',
+      'أسماء أعمدة الرؤوس المستخدمة في هذا الـ diff.',
     ],
   },
   config: {
@@ -701,8 +731,9 @@ const ar: StructuralApiI18n = {
       'تفعيل كشف الصفوف المدمجة. الافتراضي: true.',
       'حساب معدل خطأ الأحرف. الافتراضي: true.',
       'حساب معدل خطأ الكلمات. الافتراضي: true.',
-      'حساب معدل خطأ التجزئة. الافتراضي: true.',
-      'توحيد الأحرف العربية/المعلَّمة قبل المقارنة. الافتراضي: true.',
+      'حساب معدل خطأ التجزئة (تقسيم، دمج، أحداث الحدود الهيكلية). الافتراضي: true.',
+      'حساب معدل خطأ الجمل. الافتراضي: true.',
+      'توحيد الأحرف العربية/المعلَّمة قبل المقارنة. الافتراضي: true.',
       'مقارنة الصفوف بالترتيب الحرفي مع تخطي المحاذاة. الافتراضي: false.',
       'أسماء الأعمدة المستبعدة من كشف MODIFIED. الافتراضي: [].',
       'تضمين transcriptDiff في صفوف MODIFIED. ضبطه false لتخطي حساب الفروق حرفاً بحرف وتقليل حجم الاستجابة. الافتراضي: true.',
