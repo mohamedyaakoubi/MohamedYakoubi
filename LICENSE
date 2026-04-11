@@ -31,6 +31,13 @@ The following content is NOT covered by the MIT License and is
 - Personal information, CV data, and biographical content (src/data/cv/)
 - Original images, logos, and media assets (public/profile.jpg, public/sheetdiff-logo.png, public/companies/)
 - Translation content containing personal/biographical information (src/translations/)
+- SheetDiff™ product content, including but not limited to: documentation, API
+  reference text, diff status descriptions, parameter guides, demo walkthrough
+  copy, playground UI text, and all associated i18n strings
+  (src/data/structural-api-i18n.ts, src/data/diff-statuses-i18n.ts,
+  src/data/parameters-guide-i18n.ts, src/data/demo-walkthrough-i18n.ts,
+  src/data/live-simulator-i18n.ts, and related components)
+- SheetDiff™ Terms of Service and Privacy Policy text
 
-This content may not be reproduced, distributed, or used without
-explicit written permission from Mohamed Yaakoubi.
+This content may not be reproduced, distributed, translated, or used in any
+form without explicit written permission from Mohamed Yaakoubi.
