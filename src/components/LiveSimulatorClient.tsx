@@ -7,6 +7,7 @@ import { useLanguage } from '@/context/language-context'
 import { getLiveSimulatorI18n } from '@/data/live-simulator-i18n'
 import { H2, IC, Callout, InlineDiff, StatusPill, FadeIn, HighlightedCode } from '@/components/ApiDocPrimitives'
 import { Menu, X, Upload, ChevronDown, ChevronRight, RotateCcw, Eye, EyeOff } from 'lucide-react'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const BASE = 'https://structural-diff-engine.onrender.com'
 
@@ -632,6 +633,7 @@ export default function LiveSimulatorClient() {
   const { language } = useLanguage()
   const t = getLiveSimulatorI18n(language)
   const pathname = usePathname()
+  const analytics = useAnalytics()
 
   // ── State ─────────────────────────────────────────────────────
   const [originalText, setOriginalText]   = useState('')
@@ -691,6 +693,7 @@ export default function LiveSimulatorClient() {
     setResults(null)
     setError(null)
     setSamplesOpen(false)
+    analytics.trackSampleLoaded({ sample_index: idx })
   }
 
   // Close samples dropdown on outside click
@@ -717,6 +720,7 @@ export default function LiveSimulatorClient() {
       }
       reader.readAsText(file)
       e.target.value = ''
+      analytics.trackFileUploaded({ side })
     }
 
   const updateConfig = <K extends keyof Config>(key: K, val: Config[K]) => {
@@ -781,6 +785,7 @@ export default function LiveSimulatorClient() {
     setConfig(DEFAULT_CONFIG)
     setTransformRules([])
     setColMap({ transcript: '', speaker: '', start_time: '', end_time: '' })
+    analytics.trackReset()
   }
 
   const submitDiff = async () => {
@@ -815,6 +820,12 @@ export default function LiveSimulatorClient() {
     sessionStorage.setItem('sim_api_key', apiKey)
     setLoading(true)
 
+    analytics.trackRunDiff({
+      row_count_original: original.length,
+      row_count_reworked: reworked.length,
+      has_api_key: !!apiKey.trim(),
+    })
+
     try {
       const body = {
         original: mappedOriginal,
@@ -840,9 +851,12 @@ export default function LiveSimulatorClient() {
       const data = await res.json() as { data?: { results?: unknown[] }; results?: unknown[] }
       const rows = (data?.data?.results ?? data?.results ?? []) as Record<string, unknown>[]
       setResults(rows)
+      analytics.trackDiffSuccess({ row_count_results: rows.length, status_code: res.status })
       setTimeout(() => scrollTo('results'), 100)
     } catch (err) {
-      setError(err instanceof Error ? err.message : t.errors.fetchFailed)
+      const msg = err instanceof Error ? err.message : t.errors.fetchFailed
+      analytics.trackDiffError({ error_message: msg })
+      setError(msg)
     } finally {
       setLoading(false)
     }

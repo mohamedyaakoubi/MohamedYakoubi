@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/context/language-context'
 import { getStructuralApiI18n } from '@/data/structural-api-i18n'
 import { TabbedCodeBlock, HighlightedCode } from '@/components/ApiDocPrimitives'
+import { useAnalytics } from '@/hooks/useAnalytics'
 import {
   ChevronDown,
   ChevronRight,
@@ -215,6 +216,7 @@ function Collapsible({ title, children }: { title: string; children: React.React
 export default function StructuralApiClient() {
   const { language } = useLanguage()
   const t = getStructuralApiI18n(language)
+  const analytics = useAnalytics()
 
   const navGroups = t.nav.groups.map((group, gi) => ({
     label: group.label,
@@ -778,12 +780,14 @@ print(data['data']['results'])`
           <div className="flex flex-wrap gap-3">
             <Link
               href={`/${language}/contact`}
+              onClick={() => analytics.trackRequestAccess()}
               className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               {t.access.requestBtn} <ArrowRight size={14} />
             </Link>
             <Link
               href={`/${language}/sheetdiff`}
+              onClick={() => analytics.trackViewAddon()}
               className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors"
             >
               {t.access.viewAddonBtn}
