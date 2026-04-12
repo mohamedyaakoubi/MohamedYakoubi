@@ -273,7 +273,7 @@ const en: LiveSimulatorI18n = {
     },
     enableSACR: {
       label: 'enableSACR',
-      desc: 'Compute Speaker Attribution Change Rate — speaker-changed rows (MODIFIED + SPLIT) / (MODIFIED + SPLIT rows). Only reported when a speaker column is detected.',
+      desc: 'Compute Speaker Attribution Change Rate — fraction of MODIFIED rows where the speaker field changed. Only reported when a speaker column is detected.',
     },
     enableComposite: {
       label: 'enableComposite',
@@ -527,7 +527,7 @@ const fr: LiveSimulatorI18n = {
     enableSegER: { label: 'enableSegER', desc: 'Calcule le taux d\'erreur de segmentation (SegER) — mesure le ratio d\'événements de changement de frontière (SPLIT/MERGE/AJOUT/SUPPRESSION) par rapport aux lignes comparables.' },
     enableSER: { label: 'enableSER', desc: 'Calcule le taux d\'erreur par phrase (SER) — fraction des lignes comparables (UNCHANGED + MODIFIED) comportant au moins un changement.' },
     enableTranscriptSER: { label: 'enableTranscriptSER', desc: 'Calcule le SER au niveau de la transcription — traite chaque phrase du champ transcription comme une unité et compte celles qui ont changé. Analogue à transcriptWER mais au niveau de la phrase.' },
-    enableSACR: { label: 'enableSACR', desc: 'Calcule le taux de changement d\'attribution locuteur (SACR) — lignes avec changement de locuteur (MODIFIED + SPLIT) / (lignes MODIFIED + SPLIT). Affiché uniquement quand une colonne locuteur est détectée.' },
+    enableSACR: { label: 'enableSACR', desc: 'Calcule le taux de changement d\'attribution locuteur (SACR) — fraction des lignes MODIFIED où le champ locuteur a changé. Affiché uniquement quand une colonne locuteur est détectée.' },
     enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne pondérée des métriques CER, WER, SegER et SER activées.' },
     cerInComposite: { label: 'cerInComposite', desc: 'Inclure CER dans le score composite. Décochez pour suivre CER séparément sans qu\'il affecte la note finale.' },
     werInComposite: { label: 'werInComposite', desc: 'Inclure WER dans le score composite. Décochez pour surveiller WER sans influencer le score composite.' },
@@ -742,7 +742,7 @@ const ar: LiveSimulatorI18n = {
     enableSegER: { label: 'enableSegER', desc: 'احسب معدل خطأ التقطيع (SegER) — يقيس نسبة أحداث SPLIT/MERGE/إضافة/حذف إلى عدد الصفوف القابلة للمقارنة.' },
     enableSER: { label: 'enableSER', desc: 'احسب معدل خطأ الجمل (SER) — نسبة الصفوف القابلة للمقارنة (UNCHANGED + MODIFIED) التي تحتوي على تغيير واحد على الأقل.' },
     enableTranscriptSER: { label: 'enableTranscriptSER', desc: 'احسب SER على مستوى النص — يعامل كل جملة في عمود النص كوحدة ويحسب نسبة ما تغيّر. منطقي مثل transcriptWER لكن على مستوى الجمل.' },
-    enableSACR: { label: 'enableSACR', desc: 'احسب معدل تغيّر عزو المتحدث (SACR) — صفوف تغيّر فيها المتحدث (MODIFIED + SPLIT) / (صفوف MODIFIED + SPLIT). يُعرض فقط عند اكتشاف عمود المتحدث.' },
+    enableSACR: { label: 'enableSACR', desc: 'احسب معدل تغيّر عزو المتحدث (SACR) — نسبة صفوف MODIFIED حيث تغيّر حقل المتحدث. يُعرض فقط عند اكتشاف عمود المتحدث.' },
     enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط موزّن من مقاييس CER وWER وSegER وSER المُفَعَّلة.' },
     cerInComposite: { label: 'cerInComposite', desc: 'تضمين CER في الدرجة المركّبة. عطّله لتتابع CER بشكل مستقل دون أن يؤثّر في التقييم النهائي.' },
     werInComposite: { label: 'werInComposite', desc: 'تضمين WER في الدرجة المركّبة. عطّله لمراقبة WER دون التأثير على الدرجة المركّبة.' },
