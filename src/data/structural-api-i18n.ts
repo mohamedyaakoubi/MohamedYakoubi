@@ -248,7 +248,7 @@ const en: StructuralApiI18n = {
       'WER computed on the transcript column only.',
       'Sentence Error Rate — MODIFIED rows / (UNCHANGED + MODIFIED). Fraction of comparable rows with any edit (0–1).',
       'SER computed on sentences within the transcript column text.',
-      'Speaker Attribution Change Rate — speaker-changed rows / MODIFIED rows. null when no speaker column is detected.',
+      'Speaker Attribution Change Rate — speaker-changed rows (MODIFIED + SPLIT) / (MODIFIED + SPLIT rows). null when no speaker column is detected.',
     ],
     compositeTitle: 'Composite grade',
     composite: [
@@ -468,7 +468,7 @@ const fr: StructuralApiI18n = {
       'WER calculé uniquement sur la colonne de transcription.',
       'Taux d\'erreur de phrase — lignes MODIFIED / (UNCHANGED + MODIFIED). Fraction des lignes comparables avec au moins une modification (0–1).',
       'SER calculé sur les phrases du texte dans la colonne de transcription.',
-      'Taux de changement d\'attribution du locuteur — lignes où le locuteur a changé / lignes MODIFIED. null si aucune colonne de locuteur n\'est détectée.',
+      'Taux de changement d\'attribution du locuteur — lignes avec changement de locuteur (MODIFIED + SPLIT) / (lignes MODIFIED + SPLIT). null si aucune colonne de locuteur n\'est détectée.',
     ],
     compositeTitle: 'Note composite',
     composite: [
@@ -708,7 +708,7 @@ const ar: StructuralApiI18n = {
       'WER محسوب فقط على عمود النص المكتوب.',
       'معدل خطأ الجمل — صفوف MODIFIED / (UNCHANGED + MODIFIED). نسبة الصفوف القابلة للمقارنة التي تحتوي على أي تعديل (0–1).',
       'SER محسوب على الجمل داخل نص عمود النص المكتوب.',
-      'معدل تغيير تنسيب المتحدث — الصفوف التي تغيّر فيها المتحدث / صفوف MODIFIED. قيمة null إذا لم يُكتشف عمود متحدث.',
+      'معدل تغيير تنسيب المتحدث — الصفوف التي تغيّر فيها المتحدث (MODIFIED + SPLIT) / (صفوف MODIFIED + SPLIT). قيمة null إذا لم يُكتشف عمود متحدث.',
     ],
     compositeTitle: 'الدرجة المركّبة',
     composite: [
