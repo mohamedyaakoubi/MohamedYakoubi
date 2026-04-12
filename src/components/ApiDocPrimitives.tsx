@@ -174,7 +174,7 @@ const LANG_ACCENT: Record<string, string> = {
 export function CodeBlock({ code, lang = 'bash' }: { code: string; lang?: string }) {
   const accentCls = LANG_ACCENT[lang.toLowerCase()] ?? 'text-gray-500 dark:text-gray-400'
   return (
-    <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
+    <div dir="ltr" className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
       <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
         <span className={`text-xs font-mono font-semibold uppercase tracking-widest select-none ${accentCls}`}>{lang}</span>
         <CopyButton text={code} />
@@ -193,7 +193,7 @@ export function TabbedCodeBlock({ tabs }: { tabs: CodeTab[] }) {
   const [active, setActive] = useState(0)
   const current = tabs[active]
   return (
-    <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
+    <div dir="ltr" className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
       <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center gap-1">
           {tabs.map((tab, i) => (
@@ -378,7 +378,7 @@ export function DiffCompare({
             </p>
             <CopyButton text={before} />
           </div>
-          <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div dir="ltr" className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
             <pre className="p-3 overflow-x-auto text-xs bg-red-50 dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
               <code><HighlightedCode code={before} lang={lang} /></code>
             </pre>
@@ -392,7 +392,7 @@ export function DiffCompare({
             </p>
             <CopyButton text={after} />
           </div>
-          <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div dir="ltr" className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
             <pre className="p-3 overflow-x-auto text-xs bg-emerald-50 dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
               <code><HighlightedCode code={after} lang={lang} /></code>
             </pre>
@@ -404,7 +404,7 @@ export function DiffCompare({
           <span className="inline-block w-2 h-2 rounded-full bg-blue-400" />
           API Result
         </p>
-        <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div dir="ltr" className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <span className={`text-xs font-mono font-semibold uppercase tracking-widest select-none ${LANG_ACCENT[lang.toLowerCase()] ?? 'text-gray-500 dark:text-gray-400'}`}>{lang}</span>
             <CopyButton text={result} />

@@ -70,7 +70,7 @@ const LANG_ACCENT: Record<string, string> = {
 function CodeBlock({ code, lang = 'bash' }: { code: string; lang?: string }) {
   const accentCls = LANG_ACCENT[lang.toLowerCase()] ?? 'text-gray-500 dark:text-gray-400'
   return (
-    <div className="relative rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
+    <div dir="ltr" className="relative rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
       <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
         <span className={`text-xs font-mono font-semibold uppercase tracking-widest select-none ${accentCls}`}>{lang}</span>
       </div>

@@ -617,7 +617,7 @@ function ResultRow({
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
               {t.results.rawJson}
             </p>
-            <pre className="text-xs font-mono overflow-x-auto bg-white dark:bg-[#1E1E1E] rounded-lg border border-gray-200 dark:border-gray-700 p-3 max-h-64">
+            <pre dir="ltr" className="text-xs font-mono overflow-x-auto bg-white dark:bg-[#1E1E1E] rounded-lg border border-gray-200 dark:border-gray-700 p-3 max-h-64">
               <HighlightedCode code={JSON.stringify(row, null, 2)} lang="json" />
             </pre>
           </div>
