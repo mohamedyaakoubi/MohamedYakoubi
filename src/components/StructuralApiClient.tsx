@@ -127,8 +127,9 @@ function MethodBadge({ method }: { method: string }) {
 
 /* ── Param table ─────────────────────────────────────────────── */
 function ParamTable({ rows }: {
-  rows: { name: string; type: string; required?: boolean; desc: React.ReactNode }[]
+  rows: { name: string; type: string; required?: boolean; default?: string; desc: React.ReactNode }[]
 }) {
+  const hasDefaults = rows.some(r => r.default !== undefined)
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800 my-4">
       <table className="w-full text-sm border-collapse">
@@ -136,6 +137,7 @@ function ParamTable({ rows }: {
           <tr className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
             <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide w-40">Name</th>
             <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide w-32">Type</th>
+            {hasDefaults && <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide w-24">Default</th>}
             <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Description</th>
           </tr>
         </thead>
@@ -149,6 +151,14 @@ function ParamTable({ rows }: {
               <td className="px-4 py-3 align-top">
                 <span className="text-xs font-mono text-purple-600 dark:text-purple-400">{r.type}</span>
               </td>
+              {hasDefaults && (
+                <td className="px-4 py-3 align-top">
+                  {r.default !== undefined
+                    ? <IC>{r.default}</IC>
+                    : <span className="text-gray-400 dark:text-gray-600">—</span>
+                  }
+                </td>
+              )}
               <td className="px-4 py-3 text-gray-600 dark:text-gray-400 leading-relaxed align-top">{r.desc}</td>
             </tr>
           ))}
@@ -650,18 +660,28 @@ print(data['data']['results'])`
             {t.config.desc}
           </p>
           <ParamTable rows={[
-            { name: 'simpleMode',            type: 'boolean',         desc: t.config.params[0] },
-            { name: 'enableSplits',          type: 'boolean',         desc: t.config.params[1] },
-            { name: 'enableMerges',          type: 'boolean',         desc: t.config.params[2] },
-            { name: 'enableCER',             type: 'boolean',         desc: t.config.params[3] },
-            { name: 'enableWER',             type: 'boolean',         desc: t.config.params[4] },
-            { name: 'enableSegER',           type: 'boolean',         desc: t.config.params[5] },
-            { name: 'enableSER',             type: 'boolean',         desc: t.config.params[6] },
-            { name: 'stripDiacritics',       type: 'boolean',         desc: t.config.params[7] },
-            { name: 'positionalMode',        type: 'boolean',         desc: t.config.params[8] },
-            { name: 'ignoreColNames',        type: 'string[]',        desc: t.config.params[9] },
-            { name: 'enableInlineDiff',      type: 'boolean',         desc: t.config.params[10] },
-            { name: 'structuralTransforms',  type: 'TransformRule[]', desc: t.config.params[11] },
+            { name: 'simpleMode',            type: 'boolean',         default: 'false',       desc: t.config.params[0] },
+            { name: 'enableSplits',          type: 'boolean',         default: 'true',        desc: t.config.params[1] },
+            { name: 'enableMerges',          type: 'boolean',         default: 'true',        desc: t.config.params[2] },
+            { name: 'enableCER',             type: 'boolean',         default: 'true',        desc: t.config.params[3] },
+            { name: 'enableWER',             type: 'boolean',         default: 'true',        desc: t.config.params[4] },
+            { name: 'enableSegER',           type: 'boolean',         default: 'true',        desc: t.config.params[5] },
+            { name: 'enableSER',             type: 'boolean',         default: 'true',        desc: t.config.params[6] },
+            { name: 'stripDiacritics',       type: 'boolean',         default: 'true',        desc: t.config.params[7] },
+            { name: 'positionalMode',        type: 'boolean',         default: 'false',       desc: t.config.params[8] },
+            { name: 'ignoreColNames',        type: 'string[]',        default: '[]',          desc: t.config.params[9] },
+            { name: 'enableInlineDiff',      type: 'boolean',         default: 'true',        desc: t.config.params[10] },
+            { name: 'structuralTransforms',  type: 'TransformRule[]', default: '[]',          desc: t.config.params[11] },
+            { name: 'enableTranscriptCER',   type: 'boolean',         default: 'true',        desc: t.config.params[12] },
+            { name: 'enableTranscriptWER',   type: 'boolean',         default: 'true',        desc: t.config.params[13] },
+            { name: 'enableTranscriptSER',   type: 'boolean',         default: 'true',        desc: t.config.params[14] },
+            { name: 'enableSACR',            type: 'boolean',         default: 'true',        desc: t.config.params[15] },
+            { name: 'speakerColName',        type: 'string',          default: 'auto-detect', desc: t.config.params[16] },
+            { name: 'enableComposite',       type: 'boolean',         default: 'true',        desc: t.config.params[17] },
+            { name: 'cerInComposite',        type: 'boolean',         default: 'true',        desc: t.config.params[18] },
+            { name: 'werInComposite',        type: 'boolean',         default: 'true',        desc: t.config.params[19] },
+            { name: 'segerInComposite',      type: 'boolean',         default: 'true',        desc: t.config.params[20] },
+            { name: 'serInComposite',        type: 'boolean',         default: 'true',        desc: t.config.params[21] },
           ]} />
 
           <Collapsible title={t.config.expertTitle}>
@@ -669,14 +689,14 @@ print(data['data']['results'])`
               {t.config.expertDesc}
             </p>
             <ParamTable rows={[
-              { name: 'SIM_CONFIDENT',      type: 'number (0–1)', desc: t.config.expertParams[0] },
-              { name: 'SIM_MODERATE',       type: 'number (0–1)', desc: t.config.expertParams[1] },
-              { name: 'SIM_WEAK',           type: 'number (0–1)', desc: t.config.expertParams[2] },
-              { name: 'TIME_EXACT_TOL',     type: 'number (s)',   desc: t.config.expertParams[3] },
-              { name: 'TIME_FUZZY_TOL',     type: 'number (s)',   desc: t.config.expertParams[4] },
-              { name: 'SPLIT_COMBINED_MIN', type: 'number (0–1)', desc: t.config.expertParams[5] },
-              { name: 'MERGE_COMBINED_MIN', type: 'number (0–1)', desc: t.config.expertParams[6] },
-              { name: 'CHAR_DIFF_LIMIT',    type: 'integer',      desc: t.config.expertParams[7] },
+              { name: 'SIM_CONFIDENT',      type: 'number (0–1)', default: '0.70', desc: t.config.expertParams[0] },
+              { name: 'SIM_MODERATE',       type: 'number (0–1)', default: '0.40', desc: t.config.expertParams[1] },
+              { name: 'SIM_WEAK',           type: 'number (0–1)', default: '0.20', desc: t.config.expertParams[2] },
+              { name: 'TIME_EXACT_TOL',     type: 'number (s)',   default: '0.05', desc: t.config.expertParams[3] },
+              { name: 'TIME_FUZZY_TOL',     type: 'number (s)',   default: '2.5',  desc: t.config.expertParams[4] },
+              { name: 'SPLIT_COMBINED_MIN', type: 'number (0–1)', default: '0.35', desc: t.config.expertParams[5] },
+              { name: 'MERGE_COMBINED_MIN', type: 'number (0–1)', default: '0.65', desc: t.config.expertParams[6] },
+              { name: 'CHAR_DIFF_LIMIT',    type: 'integer',      default: '1500', desc: t.config.expertParams[7] },
             ]} />
           </Collapsible>
 

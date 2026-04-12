@@ -164,7 +164,7 @@ const en: DiffStatusesI18n = {
       inputNote:
         'The original row must be sufficiently similar to the combined text of the reworked rows. Timestamp plausibility is also checked if timestamps are present.',
       responseNote:
-        'The original row entry has status: "SPLIT". The reworked rows it maps to are enumerated in the result. SegER (Segmentation Error Rate) is incremented by this row. transcriptSER also accumulates from SPLIT rows: the combined text of the reworked children is compared sentence-by-sentence against the original transcript.',
+        'The original row entry has status: "SPLIT". The reworked rows it maps to are enumerated in the result. SegER (Segmentation Error Rate) is incremented by this row. transcriptSER also accumulates from SPLIT rows: the combined text of the reworked children is compared sentence-by-sentence against the original transcript. When the transcript text changed, a transcriptDiff field is also included (original transcript vs combined children text).',
       workflowContext:
         'Splits are the most significant structural change between annotation layers. A high SPLIT count in Layer 1→Layer 2 indicates Layer 1 was under-segmenting. If this is expected, it\'s informational. If unexpected, it warrants review.',
     },
@@ -177,7 +177,7 @@ const en: DiffStatusesI18n = {
       inputNote:
         'The absorbed original rows must have sufficient combined text similarity to the merged reworked row. The absorbed rows are also present in the result as "Source row" entries with status MERGED.',
       responseNote:
-        'The primary merged result row (the reworked row) has status: "MERGED". Each absorbed original row also appears in the results with notes: "Source row 1/N · merged into reworked row X". Filter these out when counting statuses. SegER is incremented by this row. transcriptSER also accumulates: the combined text of the absorbed originals is compared sentence-by-sentence against the merged reworked transcript.',
+        'The primary merged result row (the reworked row) has status: "MERGED". Each absorbed original row also appears in the results with notes: "Source row 1/N · merged into reworked row X". Filter these out when counting statuses. SegER is incremented by this row. transcriptSER also accumulates: the combined text of the absorbed originals is compared sentence-by-sentence against the merged reworked transcript. When the transcript text changed, a transcriptDiff field is also included (combined parent text vs merged result transcript).',
       workflowContext:
         'A high MERGED count indicates the AI over-segmented. Combined with SPLIT, the ratio tells you whether the AI tends toward over- or under-segmentation relative to your annotation standard.',
     },
@@ -185,7 +185,7 @@ const en: DiffStatusesI18n = {
   transcriptDiff: {
     title: 'transcriptDiff: inline character-level diff',
     body:
-      'For MODIFIED rows where the transcript column changed, the response includes a transcriptDiff array. Each token in the array has a type ("EQUAL", "DELETE", or "INSERT") and a text field (the characters). Tokens of the same type may be merged: a single-word swap appears as one "DELETE" + one "INSERT" token, not character by character. Note: types are UPPERCASE. This field is absent when enableInlineDiff: false is set.',
+      'For MODIFIED, SPLIT, and MERGED rows where the transcript column changed, the response includes a transcriptDiff array. Each token in the array has a type ("EQUAL", "DELETE", or "INSERT") and a text field (the characters). Tokens of the same type may be merged: a single-word swap appears as one "DELETE" + one "INSERT" token, not character by character. Note: types are UPPERCASE. For SPLIT rows the diff is original vs combined children text; for MERGED rows it is combined parent text vs merged result. This field is absent when enableInlineDiff: false is set.',
     tokenTypes: [
       '"EQUAL" — characters present in both versions (render as plain text)',
       '"DELETE" — characters present only in original (render with strikethrough or red highlight)',
@@ -304,7 +304,7 @@ const fr: DiffStatusesI18n = {
       definition: 'Une ligne originale correspond à deux ou plusieurs lignes retravaillées consécutives dont la transcription combinée reconstruit l\'original.',
       whenYouSeeThis: 'L\'annotateur a déterminé que le segment IA était trop long et contenait deux utterances distinctes ou deux tours de parole, et l\'a divisé à une frontière naturelle.',
       inputNote: 'La ligne originale doit être suffisamment similaire au texte combiné des lignes retravaillées. La plausibilité temporelle est également vérifiée.',
-      responseNote: 'L\'entrée de ligne originale a status: "SPLIT". Le SER (taux d\'erreur de segmentation) est incrémenté par cette ligne. transcriptSER accumule également les lignes SPLIT : le texte combiné des enfants reworked est comparé phrase par phrase au transcript original.',
+      responseNote: 'L\'entrée de ligne originale a status: "SPLIT". Le SER (taux d\'erreur de segmentation) est incrémenté par cette ligne. transcriptSER accumule également les lignes SPLIT : le texte combiné des enfants reworked est comparé phrase par phrase au transcript original. Quand le texte du transcript a changé, un champ transcriptDiff est également inclus (transcript original vs texte combiné des enfants).',
       workflowContext: 'Les splits sont le changement structurel le plus significatif entre les couches d\'annotation. Un comptage élevé indique que la couche précédente sous-segmentait.',
     },
     MERGED: {
@@ -312,14 +312,14 @@ const fr: DiffStatusesI18n = {
       definition: 'Deux lignes originales ou plus correspondent à une ligne retravaillée dont la transcription est proche du texte combiné des originaux.',
       whenYouSeeThis: 'L\'annotateur a déterminé que des segments consécutifs devaient être joints. Courant quand l\'IA a sur-segmenté aux pauses respiratoires ou aux frontières de ponctuation.',
       inputNote: 'Les lignes originales absorbées doivent avoir une similarité textuelle combinée suffisante. Elles apparaissent aussi dans les résultats comme entrées "Source row".',
-      responseNote: 'La ligne résultat fusionée a status: "MERGED". Chaque ligne originale absorbée apparaît avec notes: "Source row N/M \u00b7 merged into reworked row X". Filtrez-les dans les comptages. Le SegER est incrémenté par cette ligne. transcriptSER accumule également : le texte combiné des originaux absorbés est comparé phrase par phrase au transcript fusionné.',
+      responseNote: 'La ligne résultat fusionée a status: "MERGED". Chaque ligne originale absorbée apparaît avec notes: "Source row N/M · merged into reworked row X". Filtrez-les dans les comptages. Le SegER est incrémenté par cette ligne. transcriptSER accumule également : le texte combiné des originaux absorbés est comparé phrase par phrase au transcript fusionné. Quand le texte du transcript a changé, un champ transcriptDiff est également inclus (texte combiné des parents vs transcript du résultat fusionné).',
       workflowContext: 'Un comptage MERGED élevé indique que l\'IA sur-segmentait. Combiné avec SPLIT, le ratio indique si l\'IA tend vers la sur- ou sous-segmentation.',
     },
   },
   transcriptDiff: {
     title: 'transcriptDiff : diff au niveau caractère',
     body:
-      'Pour les lignes MODIFIED où la colonne transcript a changé, la réponse inclut un tableau transcriptDiff. Chaque token a un type ("EQUAL", "DELETE", ou "INSERT") et un champ text (les caractères). Note : les types sont en MAJUSCULES. Ce champ est absent quand enableInlineDiff: false est défini.',
+      'Pour les lignes MODIFIED, SPLIT et MERGED où la colonne transcript a changé, la réponse inclut un tableau transcriptDiff. Chaque token a un type ("EQUAL", "DELETE", ou "INSERT") et un champ text (les caractères). Note : les types sont en MAJUSCULES. Pour les lignes SPLIT, le diff compare le transcript original au texte combiné des enfants ; pour MERGED, le texte combiné des parents au transcript fusionné. Ce champ est absent quand enableInlineDiff: false est défini.',
     tokenTypes: [
       '"EQUAL" — caractères présents dans les deux versions (afficher en texte normal)',
       '"DELETE" — caractères présents uniquement dans l\'original (barrer ou surligner en rouge)',
@@ -437,7 +437,7 @@ const ar: DiffStatusesI18n = {
       definition: 'يُقابل صف أصلي واحد صفّين أو أكثر من الصفوف المُعادة المتتالية التي تُعيد بناء النص الأصلي مجتمعةً.',
       whenYouSeeThis: 'قرر المُدقِّق أن مقطع الذكاء الاصطناعي كان طويلاً جداً ويحتوي على تعبيرين مختلفين أو التفافين للحديث، فقسّمه عند حد طبيعي.',
       inputNote: 'الصف الأصلي يجب أن يكون مشابهاً بما يكفي للنص المجمَّع للصفوف المُعادة. تُفحص أيضاً معقولية الطوابع الزمنية إن وُجدت.',
-      responseNote: 'إدخال الصف الأصلي له status: "SPLIT". SER (معدل خطأ التجزئة) يُزاد بهذا الصف. transcriptSER يتراكم أيضاً من صفوف SPLIT: النص المجمّع للأبناء المُعادين يُقارن جملة بجملة مع النص الأصلي.',
+      responseNote: 'إدخال الصف الأصلي له status: "SPLIT". SER (معدل خطأ التجزئة) يُزاد بهذا الصف. transcriptSER يتراكم أيضاً من صفوف SPLIT: النص المجمّع للأبناء المُعادين يُقارن جملة بجملة مع النص الأصلي. عند تغيّر نص الترانسكريبت، سيتضمّن الرد حقل transcriptDiff (النص الأصلي مقابل النص المجمّع للأبناء).',
       workflowContext: 'التقسيمات هي أكثر التغييرات الهيكلية أهمية بين طبقات التدقيق. عدد مرتفع يُشير إلى أن الطبقة السابقة كانت تُجزِّئ بشكل ناقص.',
     },
     MERGED: {
@@ -445,14 +445,14 @@ const ar: DiffStatusesI18n = {
       definition: 'تُقابل صفّان أصليان أو أكثر صفاً مُعاداً واحداً حيث نصّه قريب من النص المجمَّع للأصليات.',
       whenYouSeeThis: 'قرر المُدقِّق أن المقاطع المتتالية يجب أن تُدمج. شائع عند الإفراط في التجزئة عند توقفات التنفس أو حدود الترقيم.',
       inputNote: 'الصفوف الأصلية الممتصة يجب أن يكون لها تشابه نصي مجمَّع كافٍ. تظهر أيضاً في النتائج كإدخالات "Source row".',
-      responseNote: 'صف النتيجة المدموجة الرئيسي له status: "MERGED". كل صف أصلي ممتص يظهر مع notes: "Source row N/M \u00b7 merged into reworked row X". تصفيتها في العدود. SegER يُزاد بهذا الصف. transcriptSER يتراكم أيضاً: النص المجمّع للأصليات الممتصة يُقارن جملة بجملة مع نص الصف المدموج.',
+      responseNote: 'صف النتيجة المدموجة الرئيسي له status: "MERGED". كل صف أصلي ممتص يظهر مع notes: "Source row N/M · merged into reworked row X". تصفيتها في العدود. SegER يُزاد بهذا الصف. transcriptSER يتراكم أيضاً: النص المجمّع للأصليات الممتصة يُقارن جملة بجملة مع نص الصف المدموج. عند تغيّر نص الترانسكريبت، سيتضمّن الرد حقل transcriptDiff (النص المجمّع للآباء مقابل نص الضم النهائي).',
       workflowContext: 'عدد MERGED مرتفع يُشير إلى الإفراط في تجزئة الذكاء الاصطناعي. مع SPLIT، يُخبرك نسبتهما ما إذا كان الذكاء الاصطناعي يميل نحو الإفراط أو التقصير في التجزئة.',
     },
   },
   transcriptDiff: {
     title: 'transcriptDiff: diff على مستوى الحروف',
     body:
-      'لصفوف MODIFIED حيث تغير عمود transcript، تتضمن الاستجابة مصفوفة transcriptDiff. كل رمز يحمل type ("EQUAL" أو "DELETE" أو "INSERT") وحقل text (الحروف). ملاحظة: الأنواع بالأحرف الكبيرة. هذا الحقل غائب عند تعيين enableInlineDiff: false.',
+      'لصفوف MODIFIED وSPLIT وMERGED حيث تغيّر عمود transcript، تتضمّن الاستجابة مصفوفة transcriptDiff. كل رمز يحمل type ("EQUAL" أو "DELETE" أو "INSERT") وحقل text (الحروف). ملاحظة: الأنواع بالأحرف الكبيرة. في SPLIT: الفرق بين النص الأصلي والنص المجمّع للأبناء؛ في MERGED: النص المجمّع للآباء مقابل نص الضم النهائي. هذا الحقل غائب عند تعيين enableInlineDiff: false.',
     tokenTypes: [
       '"EQUAL" — حروف موجودة في كلتا النسختين (اعرضها كنص عادي)',
       '"DELETE" — حروف موجودة فقط في الأصل (اشطبها أو لوّن بالأحمر)',
