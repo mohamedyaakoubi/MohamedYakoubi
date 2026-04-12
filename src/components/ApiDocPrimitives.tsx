@@ -39,16 +39,148 @@ export function CopyButton({ text }: { text: string }) {
   )
 }
 
+/* ── Syntax highlighting ─────────────────────────────────────── */
+type TokenType =
+  | 'key' | 'string' | 'number' | 'boolean' | 'null'
+  | 'comment' | 'keyword' | 'function' | 'flag'
+  | 'variable' | 'punctuation' | 'plain'
+
+type RawToken = { type: TokenType; text: string }
+
+function tokenize(code: string, lang: string): RawToken[] {
+  const l = lang.toLowerCase()
+
+  if (l === 'json') {
+    const tokens: RawToken[] = []
+    // key strings are followed by ":", value strings are not
+    const re = /("(?:[^"\\]|\\.)*")\s*(?=:)|("(?:[^"\\]|\\.)*")|(true|false|null)|(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)|([{}\[\],:])/g
+    let last = 0, m: RegExpExecArray | null
+    while ((m = re.exec(code)) !== null) {
+      if (m.index > last) tokens.push({ type: 'plain', text: code.slice(last, m.index) })
+      if      (m[1] != null) tokens.push({ type: 'key',         text: m[1] })
+      else if (m[2] != null) tokens.push({ type: 'string',      text: m[2] })
+      else if (m[3] != null) tokens.push({ type: m[3] === 'null' ? 'null' : 'boolean', text: m[3] })
+      else if (m[4] != null) tokens.push({ type: 'number',      text: m[4] })
+      else if (m[5] != null) tokens.push({ type: 'punctuation', text: m[5] })
+      last = re.lastIndex
+    }
+    if (last < code.length) tokens.push({ type: 'plain', text: code.slice(last) })
+    return tokens
+  }
+
+  if (['bash', 'shell', 'sh', 'curl'].includes(l)) {
+    const tokens: RawToken[] = []
+    const re = /(#[^\n]*)|(--?[\w-]+)|(\$\{?[\w]+\}?)|(https?:\/\/[^\s"'\\]+)|("(?:[^"\\]|\\.)*"|'[^']*')|(\b(?:curl|wget|node|npm|npx|python|python3|cd|ls|export|echo|cat|mkdir|POST|GET|PUT|DELETE|PATCH)\b)/g
+    let last = 0, m: RegExpExecArray | null
+    while ((m = re.exec(code)) !== null) {
+      if (m.index > last) tokens.push({ type: 'plain', text: code.slice(last, m.index) })
+      if      (m[1] != null) tokens.push({ type: 'comment',  text: m[1] })
+      else if (m[2] != null) tokens.push({ type: 'flag',     text: m[2] })
+      else if (m[3] != null) tokens.push({ type: 'variable', text: m[3] })
+      else if (m[4] != null) tokens.push({ type: 'string',   text: m[4] })
+      else if (m[5] != null) tokens.push({ type: 'string',   text: m[5] })
+      else if (m[6] != null) tokens.push({ type: 'keyword',  text: m[6] })
+      last = re.lastIndex
+    }
+    if (last < code.length) tokens.push({ type: 'plain', text: code.slice(last) })
+    return tokens
+  }
+
+  if (['javascript', 'js', 'typescript', 'ts', 'jsx', 'tsx'].includes(l)) {
+    const tokens: RawToken[] = []
+    const re = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|(`(?:[^`\\]|\\.)*`|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(\b-?\d+(?:\.\d+)?\b)|(\b(?:const|let|var|function|return|if|else|for|while|class|import|export|default|from|as|async|await|new|this|typeof|instanceof|in|of|try|catch|finally|throw|true|false|null|undefined|void)\b)|(\b[a-zA-Z_$][\w$]*(?=\s*\())/g
+    let last = 0, m: RegExpExecArray | null
+    while ((m = re.exec(code)) !== null) {
+      if (m.index > last) tokens.push({ type: 'plain', text: code.slice(last, m.index) })
+      if      (m[1] != null) tokens.push({ type: 'comment',  text: m[1] })
+      else if (m[2] != null) tokens.push({ type: 'string',   text: m[2] })
+      else if (m[3] != null) tokens.push({ type: 'number',   text: m[3] })
+      else if (m[4] != null) tokens.push({ type: 'keyword',  text: m[4] })
+      else if (m[5] != null) tokens.push({ type: 'function', text: m[5] })
+      last = re.lastIndex
+    }
+    if (last < code.length) tokens.push({ type: 'plain', text: code.slice(last) })
+    return tokens
+  }
+
+  if (['python', 'py'].includes(l)) {
+    const tokens: RawToken[] = []
+    // triple-quoted strings must come before single-line strings
+    const re = /("""[\s\S]*?"""|'''[\s\S]*?''')|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(#[^\n]*)|(\b-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b)|(\b(?:def|class|return|if|elif|else|for|while|import|from|as|with|try|except|finally|raise|pass|break|continue|in|not|and|or|is|lambda|yield|global|nonlocal|del|assert|True|False|None|async|await)\b)|(\b[a-zA-Z_]\w*(?=\s*\())/g
+    let last = 0, m: RegExpExecArray | null
+    while ((m = re.exec(code)) !== null) {
+      if (m.index > last) tokens.push({ type: 'plain', text: code.slice(last, m.index) })
+      if      (m[1] != null) tokens.push({ type: 'string',   text: m[1] })
+      else if (m[2] != null) tokens.push({ type: 'string',   text: m[2] })
+      else if (m[3] != null) tokens.push({ type: 'comment',  text: m[3] })
+      else if (m[4] != null) tokens.push({ type: 'number',   text: m[4] })
+      else if (m[5] != null) tokens.push({ type: 'keyword',  text: m[5] })
+      else if (m[6] != null) tokens.push({ type: 'function', text: m[6] })
+      last = re.lastIndex
+    }
+    if (last < code.length) tokens.push({ type: 'plain', text: code.slice(last) })
+    return tokens
+  }
+
+  return [{ type: 'plain', text: code }]
+}
+
+// VS Code Dark+ / Light+ token colors
+function SyntaxToken({ type, text }: RawToken) {
+  switch (type) {
+    case 'key':         return <span className="text-[#0451A5] dark:text-[#9CDCFE]">{text}</span>
+    case 'string':      return <span className="text-[#A31515] dark:text-[#CE9178]">{text}</span>
+    case 'number':      return <span className="text-[#098658] dark:text-[#B5CEA8]">{text}</span>
+    case 'boolean':
+    case 'null':        return <span className="text-[#0000FF] dark:text-[#569CD6]">{text}</span>
+    case 'comment':     return <span className="text-[#008000] dark:text-[#6A9955] italic">{text}</span>
+    case 'keyword':     return <span className="text-[#AF00DB] dark:text-[#569CD6]">{text}</span>
+    case 'function':    return <span className="text-[#795E26] dark:text-[#DCDCAA]">{text}</span>
+    case 'flag':        return <span className="text-[#001080] dark:text-[#9CDCFE]">{text}</span>
+    case 'variable':    return <span className="text-[#001080] dark:text-[#9CDCFE]">{text}</span>
+    case 'punctuation': return <span className="text-[#767676] dark:text-[#D4D4D4]">{text}</span>
+    default:            return <>{text}</>
+  }
+}
+
+export function HighlightedCode({ code, lang }: { code: string; lang: string }) {
+  return (
+    <>
+      {tokenize(code, lang).map((tok, i) => (
+        <SyntaxToken key={i} type={tok.type} text={tok.text} />
+      ))}
+    </>
+  )
+}
+
+const LANG_ACCENT: Record<string, string> = {
+  json:       'text-amber-500 dark:text-amber-400',
+  bash:       'text-emerald-600 dark:text-emerald-400',
+  shell:      'text-emerald-600 dark:text-emerald-400',
+  sh:         'text-emerald-600 dark:text-emerald-400',
+  curl:       'text-emerald-600 dark:text-emerald-400',
+  javascript: 'text-yellow-500 dark:text-yellow-400',
+  js:         'text-yellow-500 dark:text-yellow-400',
+  typescript: 'text-blue-500 dark:text-blue-400',
+  ts:         'text-blue-500 dark:text-blue-400',
+  jsx:        'text-cyan-500 dark:text-cyan-400',
+  tsx:        'text-cyan-500 dark:text-cyan-400',
+  http:       'text-purple-500 dark:text-purple-400',
+  python:     'text-blue-600 dark:text-[#4EC9B0]',
+  py:         'text-blue-600 dark:text-[#4EC9B0]',
+}
+
 /* ── Code block ──────────────────────────────────────────────── */
 export function CodeBlock({ code, lang = 'bash' }: { code: string; lang?: string }) {
+  const accentCls = LANG_ACCENT[lang.toLowerCase()] ?? 'text-gray-500 dark:text-gray-400'
   return (
-    <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden my-4">
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-        <span className="text-xs text-gray-500 dark:text-gray-500 font-mono uppercase tracking-wide">{lang}</span>
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
+      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <span className={`text-xs font-mono font-semibold uppercase tracking-widest select-none ${accentCls}`}>{lang}</span>
         <CopyButton text={code} />
       </div>
-      <pre className="p-4 overflow-x-auto text-sm bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
-        <code>{code}</code>
+      <pre className="p-4 overflow-x-auto text-sm bg-white dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+        <code><HighlightedCode code={code} lang={lang} /></code>
       </pre>
     </div>
   )
@@ -61,8 +193,8 @@ export function TabbedCodeBlock({ tabs }: { tabs: CodeTab[] }) {
   const [active, setActive] = useState(0)
   const current = tabs[active]
   return (
-    <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden my-4">
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
+      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center gap-1">
           {tabs.map((tab, i) => (
             <button
@@ -80,8 +212,8 @@ export function TabbedCodeBlock({ tabs }: { tabs: CodeTab[] }) {
         </div>
         <CopyButton text={current.code} />
       </div>
-      <pre className="p-4 overflow-x-auto text-sm bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
-        <code>{current.code}</code>
+      <pre className="p-4 overflow-x-auto text-sm bg-white dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+        <code><HighlightedCode code={current.code} lang={current.lang} /></code>
       </pre>
     </div>
   )
@@ -247,8 +379,8 @@ export function DiffCompare({
             <CopyButton text={before} />
           </div>
           <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-            <pre className="p-3 overflow-x-auto text-xs bg-red-50 dark:bg-red-950/20 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
-              <code>{before}</code>
+            <pre className="p-3 overflow-x-auto text-xs bg-red-50 dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+              <code><HighlightedCode code={before} lang={lang} /></code>
             </pre>
           </div>
         </div>
@@ -261,8 +393,8 @@ export function DiffCompare({
             <CopyButton text={after} />
           </div>
           <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-            <pre className="p-3 overflow-x-auto text-xs bg-emerald-50 dark:bg-emerald-950/20 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
-              <code>{after}</code>
+            <pre className="p-3 overflow-x-auto text-xs bg-emerald-50 dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+              <code><HighlightedCode code={after} lang={lang} /></code>
             </pre>
           </div>
         </div>
@@ -272,13 +404,13 @@ export function DiffCompare({
           <span className="inline-block w-2 h-2 rounded-full bg-blue-400" />
           API Result
         </p>
-        <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-            <span className="text-xs text-gray-500 font-mono uppercase tracking-wide">{lang}</span>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+            <span className={`text-xs font-mono font-semibold uppercase tracking-widest select-none ${LANG_ACCENT[lang.toLowerCase()] ?? 'text-gray-500 dark:text-gray-400'}`}>{lang}</span>
             <CopyButton text={result} />
           </div>
-          <pre className="p-4 overflow-x-auto text-sm bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
-            <code>{result}</code>
+          <pre className="p-4 overflow-x-auto text-sm bg-white dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+            <code><HighlightedCode code={result} lang={lang} /></code>
           </pre>
         </div>
       </div>

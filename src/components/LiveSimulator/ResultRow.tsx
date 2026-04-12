@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { InlineDiff, StatusPill } from '@/components/ApiDocPrimitives'
+import { InlineDiff, StatusPill, HighlightedCode } from '@/components/ApiDocPrimitives'
 import type { Config, ColDiffEntry, ResultMeta } from './types'
 import type { getLiveSimulatorI18n } from '@/data/live-simulator-i18n'
 
@@ -254,8 +254,8 @@ export function ResultRow({
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
               {t.results.rawJson}
             </p>
-            <pre className="text-xs font-mono text-gray-700 dark:text-gray-300 overflow-x-auto bg-white dark:bg-gray-950 rounded-lg border border-gray-200 dark:border-gray-700 p-3 max-h-64">
-              {JSON.stringify(row, null, 2)}
+            <pre className="text-xs font-mono overflow-x-auto bg-white dark:bg-[#1E1E1E] rounded-lg border border-gray-200 dark:border-gray-700 p-3 max-h-64">
+              <HighlightedCode code={JSON.stringify(row, null, 2)} lang="json" />
             </pre>
           </div>
 

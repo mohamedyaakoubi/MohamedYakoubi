@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useLanguage } from '@/context/language-context'
 import { getStructuralApiI18n } from '@/data/structural-api-i18n'
-import { TabbedCodeBlock } from '@/components/ApiDocPrimitives'
+import { TabbedCodeBlock, HighlightedCode } from '@/components/ApiDocPrimitives'
 import {
   ChevronDown,
   ChevronRight,
@@ -56,14 +56,26 @@ function CopyButton({ text }: { text: string }) {
 }
 
 /* ── Code block ──────────────────────────────────────────────── */
+const LANG_ACCENT: Record<string, string> = {
+  json:       'text-amber-500 dark:text-amber-400',
+  bash:       'text-emerald-600 dark:text-emerald-400',
+  shell:      'text-emerald-600 dark:text-emerald-400',
+  curl:       'text-emerald-600 dark:text-emerald-400',
+  javascript: 'text-yellow-500 dark:text-yellow-400',
+  js:         'text-yellow-500 dark:text-yellow-400',
+  typescript: 'text-blue-500 dark:text-blue-400',
+  ts:         'text-blue-500 dark:text-blue-400',
+  http:       'text-purple-500 dark:text-purple-400',
+}
 function CodeBlock({ code, lang = 'bash' }: { code: string; lang?: string }) {
+  const accentCls = LANG_ACCENT[lang.toLowerCase()] ?? 'text-gray-500 dark:text-gray-400'
   return (
-    <div className="relative rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden my-4">
-      <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-        <span className="text-xs text-gray-500 dark:text-gray-500 font-mono uppercase tracking-wide">{lang}</span>
+    <div className="relative rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden my-4 shadow-sm">
+      <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <span className={`text-xs font-mono font-semibold uppercase tracking-widest select-none ${accentCls}`}>{lang}</span>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
-        <code>{code}</code>
+      <pre className="p-4 overflow-x-auto text-sm bg-white dark:bg-[#1E1E1E] text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+        <code><HighlightedCode code={code} lang={lang} /></code>
       </pre>
       <CopyButton text={code} />
     </div>
