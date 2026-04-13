@@ -1,0 +1,229 @@
+{
+  "fetched_at": "2026-04-13T07:58:23Z",
+  "clones": {
+  "count": 982,
+  "uniques": 268,
+  "clones": [
+    {
+      "timestamp": "2026-03-30T00:00:00Z",
+      "count": 31,
+      "uniques": 6
+    },
+    {
+      "timestamp": "2026-03-31T00:00:00Z",
+      "count": 5,
+      "uniques": 5
+    },
+    {
+      "timestamp": "2026-04-01T00:00:00Z",
+      "count": 187,
+      "uniques": 62
+    },
+    {
+      "timestamp": "2026-04-02T00:00:00Z",
+      "count": 94,
+      "uniques": 23
+    },
+    {
+      "timestamp": "2026-04-03T00:00:00Z",
+      "count": 68,
+      "uniques": 24
+    },
+    {
+      "timestamp": "2026-04-04T00:00:00Z",
+      "count": 113,
+      "uniques": 22
+    },
+    {
+      "timestamp": "2026-04-05T00:00:00Z",
+      "count": 27,
+      "uniques": 16
+    },
+    {
+      "timestamp": "2026-04-06T00:00:00Z",
+      "count": 9,
+      "uniques": 8
+    },
+    {
+      "timestamp": "2026-04-07T00:00:00Z",
+      "count": 35,
+      "uniques": 10
+    },
+    {
+      "timestamp": "2026-04-08T00:00:00Z",
+      "count": 10,
+      "uniques": 9
+    },
+    {
+      "timestamp": "2026-04-09T00:00:00Z",
+      "count": 115,
+      "uniques": 29
+    },
+    {
+      "timestamp": "2026-04-10T00:00:00Z",
+      "count": 48,
+      "uniques": 21
+    },
+    {
+      "timestamp": "2026-04-11T00:00:00Z",
+      "count": 125,
+      "uniques": 37
+    },
+    {
+      "timestamp": "2026-04-12T00:00:00Z",
+      "count": 115,
+      "uniques": 51
+    }
+  ]
+},
+  "views": {
+  "count": 104,
+  "uniques": 4,
+  "views": [
+    {
+      "timestamp": "2026-03-30T00:00:00Z",
+      "count": 13,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-03-31T00:00:00Z",
+      "count": 18,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-01T00:00:00Z",
+      "count": 11,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-02T00:00:00Z",
+      "count": 7,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-03T00:00:00Z",
+      "count": 9,
+      "uniques": 2
+    },
+    {
+      "timestamp": "2026-04-04T00:00:00Z",
+      "count": 7,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-05T00:00:00Z",
+      "count": 10,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-06T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-07T00:00:00Z",
+      "count": 3,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-08T00:00:00Z",
+      "count": 4,
+      "uniques": 3
+    },
+    {
+      "timestamp": "2026-04-09T00:00:00Z",
+      "count": 6,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-10T00:00:00Z",
+      "count": 5,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-11T00:00:00Z",
+      "count": 8,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-12T00:00:00Z",
+      "count": 3,
+      "uniques": 1
+    }
+  ]
+},
+  "referrers": [
+  {
+    "referrer": "github.com",
+    "count": 66,
+    "uniques": 2
+  },
+  {
+    "referrer": "Google",
+    "count": 1,
+    "uniques": 1
+  }
+],
+  "popular_paths": [
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi",
+    "title": "Overview",
+    "count": 72,
+    "uniques": 4
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/traffic-data/traffic-log.csv",
+    "title": "/blob/master/traffic-data/traffic-log.csv",
+    "count": 8,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/tree/master/traffic-data",
+    "title": "/tree/master/traffic-data",
+    "count": 7,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/graphs/traffic",
+    "title": "/graphs/traffic",
+    "count": 6,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/pulse",
+    "title": "/pulse",
+    "count": 6,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/actions",
+    "title": "/actions",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/actions/runs/23732859219",
+    "title": "/actions/runs/23732859219",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/actions/runs/23732859219/job/69130363060",
+    "title": "/actions/runs/23732859219/job/69130363060",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/issues",
+    "title": "/issues",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/tree/master/src",
+    "title": "/tree/master/src",
+    "count": 1,
+    "uniques": 1
+  }
+]
+}
