@@ -255,7 +255,7 @@ const en: StructuralApiI18n = {
       'Numeric score (1.0–5.0, higher is better) averaged across enabled metrics.',
       'Human-readable label — one of: "Excellent", "Good", "Acceptable", "Below Average", "Poor", "Unacceptable".',
       'Average error percentage across the enabled scoring metrics.',
-      'Array of metric names that contributed to this composite (e.g. ["CER", "WER", "SegER", "SER"]). Empty when all metrics are disabled.',
+      'Array of metric names that contributed to this composite (e.g. ["CER", "Transcript CER", "WER", "Transcript WER", "SegER", "SER", "Transcript SER"]). Empty when all metrics are disabled.',
     ],
     metaTitle: 'Response meta',
     meta: [
@@ -290,6 +290,9 @@ const en: StructuralApiI18n = {
       'Include overallWER in composite grade. WER is still computed and returned when false.',
       'Include SegER in composite grade. SegER is still computed and returned when false.',
       'Include SER in composite grade. SER is still computed and returned when false.',
+      'Include Transcript CER in composite grade. transcriptCER is still computed and returned when false.',
+      'Include Transcript WER in composite grade. transcriptWER is still computed and returned when false.',
+      'Include Transcript SER in composite grade. transcriptSER is still computed and returned when false.',
     ],
     expertTitle: 'Expert threshold overrides',
     expertDesc: 'Use only if you understand the matching algorithm. These control similarity and timing thresholds.',
@@ -485,7 +488,9 @@ const fr: StructuralApiI18n = {
     composite: [
       'Score numérique (1,0–5,0, plus élevé = meilleur) calculé en moyenne sur les métriques activées.',
       'Étiquette lisible — parmi : "Excellent", "Good", "Acceptable", "Below Average", "Poor", "Unacceptable".',
-      'Pourcentage d\'erreur moyen sur les métriques de notation activées.',      'Tableau des noms de métriques ayant contribué à ce composite (ex. : ["CER", "WER", "SegER", "SER"]). Vide si toutes les métriques sont désactivées.',    ],
+      'Pourcentage d\'erreur moyen sur les métriques de notation activées.',
+      'Tableau des noms de métriques ayant contribué à ce composite (ex. : ["CER", "Transcript CER", "WER", "Transcript WER", "SegER", "SER", "Transcript SER"]). Vide si toutes les métriques sont désactivées.',
+    ],
     metaTitle: 'Méta de la réponse',
     meta: [
       'Nombre de lignes dans le tableau original.',
@@ -517,6 +522,9 @@ const fr: StructuralApiI18n = {
       'Inclure overallWER dans la note composite. Le WER est toujours calculé quand false.',
       'Inclure SegER dans la note composite. SegER est toujours calculé quand false.',
       'Inclure SER dans la note composite. SER est toujours calculé quand false.',
+      'Inclure le CER de transcription dans la note composite. transcriptCER est toujours calculé quand false.',
+      'Inclure le WER de transcription dans la note composite. transcriptWER est toujours calculé quand false.',
+      'Inclure le SER de transcription dans la note composite. transcriptSER est toujours calculé quand false.',
     ],
     expertTitle: 'Réglages avancés des seuils',
     expertDesc: 'À utiliser uniquement si vous comprenez l\'algorithme de correspondance. Ces paramètres contrôlent les seuils de similarité et de timing.',
@@ -735,7 +743,7 @@ const ar: StructuralApiI18n = {
     composite: [
       'درجة رقمية (1.0–5.0، الأعلى كلما كان أفضل) تُحسب بمعدل المقاييس الممكّنة.',
       'وسم قابل للقراءة — أحد: "Excellent"، "Good"، "Acceptable"، "Below Average"، "Poor"، "Unacceptable".',
-      'متوسط نسبة الخطأ عبر مقاييس التقييم الممكّنة.',      'مصفوفة أسماء المقاييس التي ساهمت في هذا المركّب (مثال: ["CER"، "WER"، "SegER"، "SER"]). فارغة عند تعطيل جميع المقاييس.',    ],
+      'متوسط نسبة الخطأ عبر مقاييس التقييم الممكّنة.',      'مصفوفة أسماء المقاييس التي ساهمت في هذا المركّب (مثال: ["CER"، "Transcript CER"، "WER"، "Transcript WER"، "SegER"، "SER"، "Transcript SER"]). فارغة عند تعطيل جميع المقاييس.',    ],
     metaTitle: 'بيانات الاستجابة',
     meta: [
       'عدد الصفوف في المصفوفة الأصلية.',
@@ -768,7 +776,11 @@ const ar: StructuralApiI18n = {
       'تضمين overallCER في الدرجة المركّبة. يُحسَب CER ويُعاد حتى عند false.',
       'تضمين overallWER في الدرجة المركّبة. يُحسَب WER ويُعاد حتى عند false.',
       'تضمين SegER في الدرجة المركّبة. يُحسَب SegER ويُعاد حتى عند false.',
-      'تضمين SER في الدرجة المركّبة. يُحسَب SER ويُعاد حتى عند false.',    ],
+      'تضمين SER في الدرجة المركّبة. يُحسَب SER ويُعاد حتى عند false.',
+      'تضمين CER النص في الدرجة المركّبة. يُحسَب transcriptCER ويُعاد حتى عند false.',
+      'تضمين WER النص في الدرجة المركّبة. يُحسَب transcriptWER ويُعاد حتى عند false.',
+      'تضمين SER النص في الدرجة المركّبة. يُحسَب transcriptSER ويُعاد حتى عند false.',
+    ],
     expertTitle: 'تجاوزات عتبات الخبراء',
     expertDesc: 'استخدم فقط إذا كنت تفهم خوارزمية المطابقة. هذه المعاملات تتحكم في عتبات التشابه والتوقيت.',
     expertParams: [
