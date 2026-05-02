@@ -128,16 +128,19 @@ export function buildRequestConfig(cfg: Config): Record<string, unknown> {
     werInComposite:      cfg.werInComposite,
     segerInComposite:    cfg.segerInComposite,
     serInComposite:      cfg.serInComposite,
+    transcriptCerInComposite: cfg.transcriptCerInComposite,
+    transcriptWerInComposite: cfg.transcriptWerInComposite,
+    transcriptSerInComposite: cfg.transcriptSerInComposite,
     stripDiacritics:  cfg.stripDiacritics,
     positionalMode:   cfg.positionalMode,
   }
   if (cfg.ignoreColNames.trim()) {
     out.ignoreColNames = cfg.ignoreColNames.split(',').map((s) => s.trim()).filter(Boolean)
   }
-  if (cfg.SIM_CONFIDENT    !== 0.75)  out.SIM_CONFIDENT    = cfg.SIM_CONFIDENT
-  if (cfg.SIM_MODERATE     !== 0.5)   out.SIM_MODERATE     = cfg.SIM_MODERATE
-  if (cfg.SIM_WEAK         !== 0.3)   out.SIM_WEAK         = cfg.SIM_WEAK
-  if (cfg.TIME_EXACT_TOL   !== 1.0)   out.TIME_EXACT_TOL   = cfg.TIME_EXACT_TOL
+  if (cfg.SIM_CONFIDENT    !== 0.70)  out.SIM_CONFIDENT    = cfg.SIM_CONFIDENT
+  if (cfg.SIM_MODERATE     !== 0.40)  out.SIM_MODERATE     = cfg.SIM_MODERATE
+  if (cfg.SIM_WEAK         !== 0.20)  out.SIM_WEAK         = cfg.SIM_WEAK
+  if (cfg.TIME_EXACT_TOL   !== 0.05)  out.TIME_EXACT_TOL   = cfg.TIME_EXACT_TOL
   if (cfg.TIME_FUZZY_TOL   !== 2.5)   out.TIME_FUZZY_TOL   = cfg.TIME_FUZZY_TOL
   if (cfg.SPLIT_COMBINED_MIN !== 0.35) out.SPLIT_COMBINED_MIN = cfg.SPLIT_COMBINED_MIN
   if (cfg.MERGE_COMBINED_MIN !== 0.65) out.MERGE_COMBINED_MIN = cfg.MERGE_COMBINED_MIN

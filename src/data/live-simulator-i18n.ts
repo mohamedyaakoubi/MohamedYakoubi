@@ -75,6 +75,9 @@ type LiveSimulatorI18n = {
     werInComposite: { label: string; desc: string }
     segerInComposite: { label: string; desc: string }
     serInComposite: { label: string; desc: string }
+    transcriptCerInComposite: { label: string; desc: string }
+    transcriptWerInComposite: { label: string; desc: string }
+    transcriptSerInComposite: { label: string; desc: string }
     stripDiacritics: { label: string; desc: string }
     positionalMode: { label: string; desc: string }
     enableInlineDiff: { label: string; desc: string }
@@ -277,7 +280,7 @@ const en: LiveSimulatorI18n = {
     },
     enableComposite: {
       label: 'enableComposite',
-      desc: 'Compute the composite quality score — a weighted average of the enabled CER, WER, SegER, and SER metrics.',
+      desc: 'Compute the composite quality score — an average of per-metric grades across the enabled metrics (CER, Transcript CER, WER, Transcript WER, SegER, SER, Transcript SER). SACR is excluded from the composite.',
     },
     cerInComposite: {
       label: 'cerInComposite',
@@ -294,6 +297,18 @@ const en: LiveSimulatorI18n = {
     serInComposite: {
       label: 'serInComposite',
       desc: 'Include SER in the composite score. Turn off to see the sentence error rate as a standalone diagnostic metric.',
+    },
+    transcriptCerInComposite: {
+      label: 'transcriptCerInComposite',
+      desc: 'Include Transcript CER in the composite score. Turn off to track transcript-column CER separately without letting it affect the final grade.',
+    },
+    transcriptWerInComposite: {
+      label: 'transcriptWerInComposite',
+      desc: 'Include Transcript WER in the composite score. Turn off to monitor transcript-column WER without it influencing the composite grade.',
+    },
+    transcriptSerInComposite: {
+      label: 'transcriptSerInComposite',
+      desc: 'Include Transcript SER in the composite score. Turn off to use transcript-level sentence error rate as a standalone diagnostic metric.',
     },
     stripDiacritics: {
       label: 'stripDiacritics',
@@ -317,19 +332,19 @@ const en: LiveSimulatorI18n = {
     expertBody: 'Controls alignment sensitivity. Defaults are calibrated for 5–30 second segments. Only adjust after inspecting raw similarity scores.',
     SIM_CONFIDENT: {
       label: 'SIM_CONFIDENT (0–1)',
-      desc: 'Min similarity for a certain match. Default 0.75.',
+      desc: 'Min similarity for a certain match. Default 0.70.',
     },
     SIM_MODERATE: {
       label: 'SIM_MODERATE (0–1)',
-      desc: 'Plausible match requiring time confirmation. Default 0.50.',
+      desc: 'Plausible match requiring time confirmation. Default 0.40.',
     },
     SIM_WEAK: {
       label: 'SIM_WEAK (0–1)',
-      desc: 'Tentative match accepted with strong time signal. Default 0.30.',
+      desc: 'Tentative match accepted with strong time signal. Default 0.20.',
     },
     TIME_EXACT_TOL: {
       label: 'TIME_EXACT_TOL (seconds)',
-      desc: 'Timestamps ≤ this apart are treated as exact. Default 1.0.',
+      desc: 'Timestamps ≤ this apart are treated as exact. Default 0.05.',
     },
     TIME_FUZZY_TOL: {
       label: 'TIME_FUZZY_TOL (seconds)',
@@ -528,11 +543,14 @@ const fr: LiveSimulatorI18n = {
     enableSER: { label: 'enableSER', desc: 'Calcule le taux d\'erreur par phrase (SER) — fraction des lignes comparables (UNCHANGED + MODIFIED) comportant au moins un changement.' },
     enableTranscriptSER: { label: 'enableTranscriptSER', desc: 'Calcule le SER au niveau de la transcription — traite chaque phrase du champ transcription comme une unité et compte celles qui ont changé. Analogue à transcriptWER mais au niveau de la phrase.' },
     enableSACR: { label: 'enableSACR', desc: 'Calcule le taux de changement d\'attribution locuteur (SACR) — fraction des lignes MODIFIED où le champ locuteur a changé. Affiché uniquement quand une colonne locuteur est détectée.' },
-    enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne pondérée des métriques CER, WER, SegER et SER activées.' },
+    enableComposite: { label: 'enableComposite', desc: 'Calcule le score composite — une moyenne des notes par métrique des métriques activées (CER, Transcript CER, WER, Transcript WER, SegER, SER, Transcript SER). SACR est exclu du composite.' },
     cerInComposite: { label: 'cerInComposite', desc: 'Inclure CER dans le score composite. Décochez pour suivre CER séparément sans qu\'il affecte la note finale.' },
     werInComposite: { label: 'werInComposite', desc: 'Inclure WER dans le score composite. Décochez pour surveiller WER sans influencer le score composite.' },
     segerInComposite: { label: 'segerInComposite', desc: 'Inclure SegER dans le score composite. Utile quand la qualité de segmentation est évaluée indépendamment du contenu.' },
     serInComposite: { label: 'serInComposite', desc: 'Inclure SER dans le score composite. Décochez pour l\'utiliser comme métrique diagnostique indépendante.' },
+    transcriptCerInComposite: { label: 'transcriptCerInComposite', desc: 'Inclure le CER de transcription dans le score composite. Décochez pour suivre le CER de la colonne transcript séparément sans affecter la note finale.' },
+    transcriptWerInComposite: { label: 'transcriptWerInComposite', desc: 'Inclure le WER de transcription dans le score composite. Décochez pour surveiller le WER de la colonne transcript sans influencer le score composite.' },
+    transcriptSerInComposite: { label: 'transcriptSerInComposite', desc: 'Inclure le SER de transcription dans le score composite. Décochez pour utiliser le SER de phrase au niveau transcript comme métrique diagnostique indépendante.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'Normalise les diacritiques arabes avant la comparaison. Évite les comptes MODIFIED gonflés par les harakat.',
@@ -553,10 +571,10 @@ const fr: LiveSimulatorI18n = {
     },
     expertTitle: 'Seuils experts',
     expertBody: 'Contrôle la sensibilité de l\'alignement. Valeurs par défaut calibrées pour des segments de 5 à 30 secondes.',
-    SIM_CONFIDENT: { label: 'SIM_CONFIDENT (0–1)', desc: 'Similarité min pour une correspondance certaine. Défaut : 0,75.' },
-    SIM_MODERATE:  { label: 'SIM_MODERATE (0–1)',  desc: 'Correspondance plausible nécessitant la confirmation temporelle. Défaut : 0,50.' },
-    SIM_WEAK:      { label: 'SIM_WEAK (0–1)',       desc: 'Correspondance tentative acceptée avec fort signal temporel. Défaut : 0,30.' },
-    TIME_EXACT_TOL: { label: 'TIME_EXACT_TOL (s)',  desc: 'Timestamps ≤ cela apart = correspondance exacte. Défaut : 1,0.' },
+    SIM_CONFIDENT: { label: 'SIM_CONFIDENT (0–1)', desc: 'Similarité min pour une correspondance certaine. Défaut : 0,70.' },
+    SIM_MODERATE:  { label: 'SIM_MODERATE (0–1)',  desc: 'Correspondance plausible nécessitant la confirmation temporelle. Défaut : 0,40.' },
+    SIM_WEAK:      { label: 'SIM_WEAK (0–1)',       desc: 'Correspondance tentative acceptée avec fort signal temporel. Défaut : 0,20.' },
+    TIME_EXACT_TOL: { label: 'TIME_EXACT_TOL (s)',  desc: 'Timestamps ≤ cela apart = correspondance exacte. Défaut : 0,05.' },
     TIME_FUZZY_TOL: { label: 'TIME_FUZZY_TOL (s)',  desc: 'Écart max pour une correspondance temporelle floue. Défaut : 2,5.' },
     SPLIT_COMBINED_MIN: { label: 'SPLIT_COMBINED_MIN (0–1)', desc: 'Score combiné min pour accepter un candidat SPLIT. Défaut : 0,35.' },
     MERGE_COMBINED_MIN: { label: 'MERGE_COMBINED_MIN (0–1)', desc: 'Score combiné min pour accepter un candidat MERGE. Défaut : 0,65.' },    CHAR_DIFF_LIMIT: {
@@ -743,11 +761,14 @@ const ar: LiveSimulatorI18n = {
     enableSER: { label: 'enableSER', desc: 'احسب معدل خطأ الجمل (SER) — نسبة الصفوف القابلة للمقارنة (UNCHANGED + MODIFIED) التي تحتوي على تغيير واحد على الأقل.' },
     enableTranscriptSER: { label: 'enableTranscriptSER', desc: 'احسب SER على مستوى النص — يعامل كل جملة في عمود النص كوحدة ويحسب نسبة ما تغيّر. منطقي مثل transcriptWER لكن على مستوى الجمل.' },
     enableSACR: { label: 'enableSACR', desc: 'احسب معدل تغيّر عزو المتحدث (SACR) — نسبة صفوف MODIFIED حيث تغيّر حقل المتحدث. يُعرض فقط عند اكتشاف عمود المتحدث.' },
-    enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط موزّن من مقاييس CER وWER وSegER وSER المُفَعَّلة.' },
+    enableComposite: { label: 'enableComposite', desc: 'احسب درجة الجودة المركّبة — متوسط درجات المقاييس المُفَعَّلة (CER وTranscript CER وWER وTranscript WER وSegER وSER وTranscript SER). SACR مستبعد من المركّب.' },
     cerInComposite: { label: 'cerInComposite', desc: 'تضمين CER في الدرجة المركّبة. عطّله لتتابع CER بشكل مستقل دون أن يؤثّر في التقييم النهائي.' },
     werInComposite: { label: 'werInComposite', desc: 'تضمين WER في الدرجة المركّبة. عطّله لمراقبة WER دون التأثير على الدرجة المركّبة.' },
     segerInComposite: { label: 'segerInComposite', desc: 'تضمين SegER في الدرجة المركّبة. مفيد حين تكون جودة التقطيع مسألة منفصلة عن جودة المحتوى.' },
     serInComposite: { label: 'serInComposite', desc: 'تضمين SER في الدرجة المركّبة. عطّله لاستخدامه كمعيار تشخيصي مستقل.' },
+    transcriptCerInComposite: { label: 'transcriptCerInComposite', desc: 'تضمين CER النص في الدرجة المركّبة. عطّله لتتابع CER عمود النص بشكل مستقل دون التأثير في التقييم النهائي.' },
+    transcriptWerInComposite: { label: 'transcriptWerInComposite', desc: 'تضمين WER النص في الدرجة المركّبة. عطّله لمراقبة WER عمود النص دون التأثير على الدرجة المركّبة.' },
+    transcriptSerInComposite: { label: 'transcriptSerInComposite', desc: 'تضمين SER النص في الدرجة المركّبة. عطّله لاستخدام معدل خطأ الجمل على مستوى النص كمعيار تشخيصي مستقل.' },
     stripDiacritics: {
       label: 'stripDiacritics',
       desc: 'تطبيع التشكيل العربي قبل المقارنة. يمنع تضخم عدد MODIFIED بسبب تغييرات الحركات.',
@@ -768,10 +789,10 @@ const ar: LiveSimulatorI18n = {
     },
     expertTitle: 'عتبات خبراء',
     expertBody: 'يتحكم في حساسية المحاذاة. القيم الافتراضية مُعايَرة لمقاطع من 5 إلى 30 ثانية.',
-    SIM_CONFIDENT: { label: 'SIM_CONFIDENT (0–1)', desc: 'أدنى تشابه لمطابقة مؤكدة. الافتراضي: 0.75.' },
-    SIM_MODERATE:  { label: 'SIM_MODERATE (0–1)',  desc: 'مطابقة محتملة تتطلب تأكيداً زمنياً. الافتراضي: 0.50.' },
-    SIM_WEAK:      { label: 'SIM_WEAK (0–1)',       desc: 'مطابقة مؤقتة تُقبل مع إشارة زمنية قوية. الافتراضي: 0.30.' },
-    TIME_EXACT_TOL: { label: 'TIME_EXACT_TOL (ثانية)', desc: 'الطوابع الزمنية التي تفصلها ≤ هذه = مطابقة دقيقة. الافتراضي: 1.0.' },
+    SIM_CONFIDENT: { label: 'SIM_CONFIDENT (0–1)', desc: 'أدنى تشابه لمطابقة مؤكدة. الافتراضي: 0.70.' },
+    SIM_MODERATE:  { label: 'SIM_MODERATE (0–1)',  desc: 'مطابقة محتملة تتطلب تأكيداً زمنياً. الافتراضي: 0.40.' },
+    SIM_WEAK:      { label: 'SIM_WEAK (0–1)',       desc: 'مطابقة مؤقتة تُقبل مع إشارة زمنية قوية. الافتراضي: 0.20.' },
+    TIME_EXACT_TOL: { label: 'TIME_EXACT_TOL (ثانية)', desc: 'الطوابع الزمنية التي تفصلها ≤ هذه = مطابقة دقيقة. الافتراضي: 0.05.' },
     TIME_FUZZY_TOL: { label: 'TIME_FUZZY_TOL (ثانية)', desc: 'أقصى فجوة زمنية لمطابقة زمنية تقريبية. الافتراضي: 2.5.' },
     SPLIT_COMBINED_MIN: { label: 'SPLIT_COMBINED_MIN (0–1)', desc: 'أدنى درجة مجمعة لقبول مرشح SPLIT. الافتراضي: 0.35.' },
     MERGE_COMBINED_MIN: { label: 'MERGE_COMBINED_MIN (0–1)', desc: 'أدنى درجة مجمعة لقبول مرشح MERGE. الافتراضي: 0.65.' },

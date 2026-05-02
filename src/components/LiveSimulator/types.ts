@@ -24,6 +24,9 @@ export interface Config {
   werInComposite: boolean
   segerInComposite: boolean
   serInComposite: boolean
+  transcriptCerInComposite: boolean
+  transcriptWerInComposite: boolean
+  transcriptSerInComposite: boolean
   stripDiacritics: boolean
   positionalMode: boolean
   ignoreColNames: string // comma-separated; converted to string[] on submit
@@ -92,13 +95,16 @@ export const DEFAULT_CONFIG: Config = {
   werInComposite: true,
   segerInComposite: true,
   serInComposite: true,
+  transcriptCerInComposite: true,
+  transcriptWerInComposite: true,
+  transcriptSerInComposite: true,
   stripDiacritics: false,
   positionalMode: false,
   ignoreColNames: '',
-  SIM_CONFIDENT: 0.75,
-  SIM_MODERATE: 0.5,
-  SIM_WEAK: 0.3,
-  TIME_EXACT_TOL: 1.0,
+  SIM_CONFIDENT: 0.70,
+  SIM_MODERATE: 0.40,
+  SIM_WEAK: 0.20,
+  TIME_EXACT_TOL: 0.05,
   TIME_FUZZY_TOL: 2.5,
   SPLIT_COMBINED_MIN: 0.35,
   MERGE_COMBINED_MIN: 0.65,
