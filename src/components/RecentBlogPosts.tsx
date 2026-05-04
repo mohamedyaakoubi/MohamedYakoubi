@@ -34,12 +34,8 @@ export function RecentBlogPosts() {
           {recentPosts.map((post, index) => {
             const theme = post.theme
             return (
-              <motion.article
+              <article
                 key={post.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group"
               >
                 <Link href={`/${language}/blog/${post.slug}`} className="block h-full" aria-label={`${t('blog.readMore')} — ${post.title}`}>
@@ -86,19 +82,13 @@ export function RecentBlogPosts() {
                     </div>
                   </div>
                 </Link>
-              </motion.article>
+              </article>
             )
           })}
         </div>
 
         {/* View All Posts Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="text-center mt-8"
-        >
+        <div className="text-center mt-8">
           <Link
             href={`/${language}/blog`}
             className={`inline-flex items-center gap-2 text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 font-medium transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
@@ -106,7 +96,7 @@ export function RecentBlogPosts() {
             {t('blog.viewAllPosts')}
             <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

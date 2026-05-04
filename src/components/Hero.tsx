@@ -25,8 +25,7 @@ const SocialButtons = dynamic(
         <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
         <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
       </div>
-    ),
-    ssr: false
+    )
   }
 )
 
