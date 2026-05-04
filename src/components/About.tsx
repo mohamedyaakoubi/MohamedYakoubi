@@ -25,10 +25,7 @@ export function About() {
           </motion.div>
           
               {/* Image */}
-              <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+              <div
             className="group relative w-80 h-80 mx-auto"
           >
             {/* Decorative Background Elements */}
@@ -68,7 +65,7 @@ export function About() {
             <div className="absolute -left-3 -top-3 w-20 h-20 
                         bg-blue-500/10 rounded-full blur-xl">
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

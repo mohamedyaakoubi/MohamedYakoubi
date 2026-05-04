@@ -31,38 +31,21 @@ const SocialButtons = dynamic(
 
 type AnimatedContentProps = {
   typedText: string;
-  language: string;
   t: (key: string) => string;
 }
 
-// Separate animated content into a client component
-const AnimatedContent = ({ typedText, language, t }: AnimatedContentProps) => {
+// Separate animated content into a client component (typewriter text only)
+const AnimatedContent = ({ typedText, t }: AnimatedContentProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ delay: 0.7 }}
-      >
-        <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-700 mb-8 h-8">
-          {typedText}
-          <span className="animate-blink">|</span>
-        </p>
-        
-        {/* Replace the social buttons with the imported component */}
-        <Suspense fallback={
-          <div className="flex flex-wrap justify-center gap-4 mb-12 h-14 animate-pulse">
-            <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
-            <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
-          </div>
-        }>
-          <SocialButtons t={t} language={language} />
-        </Suspense>
-      </motion.div>
+      <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-700 mb-8 h-8">
+        {typedText}
+        <span className="animate-blink">|</span>
+      </p>
     </motion.div>
   );
 };
@@ -213,12 +196,22 @@ export function Hero() {
 </p>
             </div>
 
-            {/* Animated elements render after critical content loads */}
+            {/* Social buttons - rendered unconditionally for SEO crawlability */}
+            <Suspense fallback={
+              <div className="flex flex-wrap justify-center gap-4 mb-12 h-14 animate-pulse">
+                <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+                <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+                <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
+              </div>
+            }>
+              <SocialButtons t={t} language={language} />
+            </Suspense>
+
+            {/* Typewriter animation - client-only, no SEO value */}
             {mounted && (
-              <Suspense fallback={<div className="h-20"></div>}>
+              <Suspense fallback={<div className="h-8 mb-8"></div>}>
                 <AnimatedContent 
                   typedText={typedText}
-                  language={language}
                   t={t}
                 />
               </Suspense>
