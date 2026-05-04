@@ -26,6 +26,11 @@ const Analytics = dynamic(() => import('./Analytics'), {
   loading: () => null
 })
 
+const CookieConsent = dynamic(() => import('./CookieConsent'), {
+  ssr: false,
+  loading: () => null
+})
+
 interface ClientLayoutProps {
   children: ReactNode;
   footer: ReactNode;
@@ -82,6 +87,9 @@ export function ClientLayout({ children, footer }: ClientLayoutProps) {
             </Suspense>
             <Suspense fallback={null}>
               <Analytics />
+            </Suspense>
+            <Suspense fallback={null}>
+              <CookieConsent />
             </Suspense>
           </>
         )}

@@ -14,13 +14,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Per-page last-modified dates — sourced from git history, update when content changes
   const pageLastModified: Record<string, Date> = {
-    '':              new Date('2026-04-04'), // hero/home components updated Apr 4
-    '/experience':   new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/projects':     new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/services':     new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/contact':      new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/blog':         latestPostDate,
-    '/sheetdiff':    new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '':                  new Date('2026-04-04'), // hero/home components updated Apr 4
+    '/experience':       new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/projects':         new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/services':         new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/contact':          new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/blog':             latestPostDate,
+    '/sheetdiff':        new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/privacy-policy':   new Date('2026-05-04'), // portfolio privacy policy added May 4
+    '/terms-of-service': new Date('2026-05-04'), // portfolio terms of service added May 4
   }
 
   const apiDocsDate        = new Date('2026-04-11') // API docs audit fixes Apr 11
@@ -38,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   const locales = ['en', 'fr', 'ar']
-  const pages = ['', '/experience', '/projects', '/services', '/contact', '/blog', '/sheetdiff']
+  const pages = ['', '/experience', '/projects', '/services', '/contact', '/blog', '/sheetdiff', '/privacy-policy', '/terms-of-service']
 
   const sitemapEntries: MetadataRoute.Sitemap = []
 
@@ -50,7 +52,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const priority = page === '' ? 1.0 :
                      page === '/experience' || page === '/services' ? 0.9 :
                      page === '/projects' || page === '/blog' ? 0.8 :
-                     page === '/contact' ? 0.7 : 0.5
+                     page === '/contact' ? 0.7 :
+                     page === '/privacy-policy' || page === '/terms-of-service' ? 0.5 : 0.5
 
       const changeFrequency: "monthly" | "weekly" | "yearly" =
         page === '/experience' ? 'monthly' :

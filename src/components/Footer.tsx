@@ -117,10 +117,21 @@ export function Footer({ locale }: FooterProps) {
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
           <p>© {currentYear} {t.copyright}</p>
-          <div className="mt-3 flex justify-center gap-4 text-sm text-gray-400">
+          {/* Portfolio-wide legal links */}
+          <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-400">
+            <Link href={`/${locale}/privacy-policy`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+              {locale === 'fr' ? 'Politique de confidentialité' : locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
+            </Link>
+            <span aria-hidden="true">&middot;</span>
+            <Link href={`/${locale}/terms-of-service`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+              {locale === 'fr' ? "Conditions d\u2019utilisation" : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}
+            </Link>
+          </div>
+          {/* SheetDiff™ legal links */}
+          <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500">
             <a href={`/${locale}/sheetdiff`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-semibold transition-colors">SheetDiff™:</a>
             <a href={`/${locale}/sheetdiff/privacy-policy`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">{locale === 'fr' ? 'Politique de confidentialité' : locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}</a>
-            <span>·</span>
+            <span aria-hidden="true">&middot;</span>
             <a href={`/${locale}/sheetdiff/terms-of-service`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">{locale === 'fr' ? 'Conditions d\u2019utilisation' : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}</a>
           </div>
         </div>
