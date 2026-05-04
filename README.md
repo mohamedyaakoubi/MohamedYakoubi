@@ -9,7 +9,7 @@ Personal portfolio built with Next.js 15 App Router. Includes a multilingual blo
 
 **Live:** [https://www.mohamedyaakoubi.com/](https://www.mohamedyaakoubi.com/)
 
-The source code is MIT licensed — you're free to fork it and adapt it as your own portfolio. See the [Customization](#customization) section for what to change, and the [License](#license) section for what's not included under MIT (blog posts, CV data, images).
+See the [Customization](#customization) section for what to change, and the [License](#license) section for licensing details.
 
 ---
 
@@ -164,9 +164,9 @@ npm start
 
 ## License
 
-Source code is MIT licensed. See [`LICENSE`](LICENSE).
+See [`LICENSE`](LICENSE) for licensing details.
 
-Blog content, CV data, and media assets under `src/data/blog/`, `src/data/cv/`, and `public/` are **not** covered by the MIT license and remain © 2024–2026 Mohamed Yaakoubi. All rights reserved.
+Blog content, CV data, and media assets under `src/data/blog/`, `src/data/cv/`, and `public/` remain © 2024–2026 Mohamed Yaakoubi. All rights reserved.
 
 ---
 
