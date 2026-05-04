@@ -1,6 +1,6 @@
 # Mohamed Yaakoubi — Portfolio
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License: Other](https://img.shields.io/badge/License-Other-gray.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6)](https://www.typescriptlang.org/)
 [![Live](https://img.shields.io/badge/Live-mohamedyaakoubi.com-blue)](https://www.mohamedyaakoubi.com/)
