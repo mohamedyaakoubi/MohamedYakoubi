@@ -31,6 +31,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           src={project.image}
           alt={t(`projects.names.${project.name}`)}
           fill
+          priority={index === 0}
+          loading={index === 0 ? 'eager' : 'lazy'}
           className="object-cover transition-transform duration-700 
                    ease-in-out group-hover:scale-110 group-hover:rotate-1"
           sizes="(max-width: 768px) 100vw,
@@ -69,9 +71,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <Link
                 href={`/${language}${project.detailPage}`}
                 className="flex items-center text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
-                aria-label={`${t('projects.repository.links.readMore')} — ${t(`projects.names.${project.name}`)}`}
               >
                 <FaBookOpen className="mr-1" />
+                <span className="sr-only">{t(`projects.names.${project.name}`)} — </span>
                 {t('projects.repository.links.readMore')}
               </Link>
             </motion.div>

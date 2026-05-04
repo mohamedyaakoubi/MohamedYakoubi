@@ -228,9 +228,9 @@ function ExperienceContent({ experience }: ExperienceContentProps) {
 
   return (
     <div>
-      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
         {t(`experience.positions.${experience.title}`)}
-      </h3>
+      </h2>
       <div className="mt-2 text-gray-600 dark:text-gray-300">
         <p className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
           <Building2 className={language === 'ar' ? 'ml-2' : 'mr-2'} />

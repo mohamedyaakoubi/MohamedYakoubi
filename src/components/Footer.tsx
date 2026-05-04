@@ -128,7 +128,7 @@ export function Footer({ locale }: FooterProps) {
             </Link>
           </div>
           {/* SheetDiff™ legal links */}
-          <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500">
+          <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-400">
             <a href={`/${locale}/sheetdiff`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-semibold transition-colors">SheetDiff™:</a>
             <a href={`/${locale}/sheetdiff/privacy-policy`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">{locale === 'fr' ? 'Politique de confidentialité' : locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}</a>
             <span aria-hidden="true">&middot;</span>

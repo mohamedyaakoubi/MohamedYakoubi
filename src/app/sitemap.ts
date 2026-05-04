@@ -14,18 +14,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Per-page last-modified dates — sourced from git history, update when content changes
   const pageLastModified: Record<string, Date> = {
-    '':                  new Date('2026-04-04'), // hero/home components updated Apr 4
-    '/experience':       new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/projects':         new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/services':         new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/contact':          new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '':                  new Date('2026-05-05'), // SSR, ARIA, contrast, heading order, LCP, image quality, link text fixes May 5
+    '/experience':       new Date('2026-05-05'), // SSR fix, heading order, ARIA (global) May 5
+    '/projects':         new Date('2026-05-05'), // SSR fix, LCP, link text, ARIA (global) May 5
+    '/services':         new Date('2026-05-05'), // SSR fix, ARIA (global) May 5
+    '/contact':          new Date('2026-05-05'), // SSR fix, ARIA (global) May 5
     '/blog':             latestPostDate,
-    '/sheetdiff':        new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/sheetdiff':        new Date('2026-05-05'), // SSR fix, ARIA (global) May 5
     '/privacy-policy':   new Date('2026-05-04'), // portfolio privacy policy added May 4
     '/terms-of-service': new Date('2026-05-04'), // portfolio terms of service added May 4
   }
 
-  const apiDocsDate        = new Date('2026-04-11') // API docs audit fixes Apr 11
+  const apiDocsDate        = new Date('2026-05-05') // SSR, ARIA, contrast fixes May 5
   const apiDocsLegalDate    = new Date('2026-04-10') // API-specific ToS + privacy added Apr 10
   const sheetdiffSubPageDates: Record<string, Date> = {
     '/sheetdiff/pricing':           new Date('2026-03-14'), // pricing FAQ fix Mar 14
@@ -34,9 +34,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   const projectPageDates: Record<string, Date> = {
-    '/projects/potential':            new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/projects/documed':              new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
-    '/projects/internationalskills':  new Date('2026-04-07'), // JSON-LD script SSR fix Apr 7
+    '/projects/potential':            new Date('2026-05-05'), // SSR, ARIA, LCP, link text, heading order fixes May 5
+    '/projects/documed':              new Date('2026-05-05'), // SSR, ARIA, LCP, link text, heading order fixes May 5
+    '/projects/internationalskills':  new Date('2026-05-05'), // SSR, ARIA, LCP, link text, heading order fixes May 5
   }
 
   const locales = ['en', 'fr', 'ar']

@@ -47,7 +47,7 @@ export function RecentBlogPosts() {
                       <span className={`text-xs font-semibold uppercase tracking-wider ${theme.cardCategoryText} ${theme.cardCategoryBg} border ${theme.cardBorder} px-3 py-1 rounded`}>
                         {t(`blog.categories.${post.category}`) || post.category}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-xs text-gray-400 dark:text-[#666]">
+                      <span className="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-[#888]">
                         <Clock className="w-3 h-3" />
                         {post.readingTime} {t('blog.minRead')}
                       </span>
@@ -63,7 +63,7 @@ export function RecentBlogPosts() {
                     </div>
 
                     <div className="px-6 pb-5 pt-2 flex items-center justify-between mt-auto border-t border-gray-100 dark:border-[#1a1a1a]">
-                      <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-[#666]">
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-[#888]">
                         <Calendar className="w-3 h-3" />
                         <time dateTime={post.publishedAt} suppressHydrationWarning>
                           {(() => {

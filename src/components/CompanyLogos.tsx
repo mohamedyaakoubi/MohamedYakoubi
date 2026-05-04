@@ -131,6 +131,7 @@ export function CompanyLogos() {
                   <div
                     key={`${company.name}-${index}`}
                     className="flex-shrink-0 relative"
+                    aria-hidden={index >= companies.length ? true : undefined}
                     onMouseEnter={() => {
                       setHoveredCompany(`${company.name}-${index}`)
                     }}
