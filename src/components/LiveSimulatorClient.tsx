@@ -835,7 +835,7 @@ export default function LiveSimulatorClient() {
           ...(transformRules.length > 0 ? { structuralTransforms: transformRules } : {}),
         },
       }
-      const res = await fetch(`${BASE}/v1/diff`, {
+      const res = await fetch('/api/diff', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -917,7 +917,7 @@ export default function LiveSimulatorClient() {
       dir={language === 'ar' ? 'rtl' : 'ltr'}
     >
       {/* Mobile sidebar toggle */}
-      <div className="lg:hidden fixed bottom-6 right-6 z-50">
+      <div className="lg:hidden fixed bottom-6 left-6 z-50">
         <button
           className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gray-900 dark:bg-gray-800 border border-gray-700 text-sm text-gray-200 shadow-lg"
           onClick={() => setMobileSidebarOpen((o) => !o)}

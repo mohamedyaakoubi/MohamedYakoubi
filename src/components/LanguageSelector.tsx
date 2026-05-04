@@ -10,9 +10,10 @@ import { analytics } from '@/lib/analytics'
 interface LanguageSelectorProps {
   currentLang: Language
   onChange: (lang: Language) => void
+  forceVisible?: boolean
 }
 
-export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProps) {
+export function LanguageSelector({ currentLang, onChange, forceVisible = false }: LanguageSelectorProps) {
   const [isOpen, setIsOpen] = useState(false)
   const { isMenuOpen } = useMenu()
   const currentLanguage = languages.find(lang => lang.code === currentLang)
@@ -42,7 +43,7 @@ export function LanguageSelector({ currentLang, onChange }: LanguageSelectorProp
   }
 
   return (
-    <div className={`relative ${isMenuOpen ? 'hidden md:block' : 'block'}`}>
+    <div className={`relative ${!forceVisible && isMenuOpen ? 'hidden md:block' : 'block'}`}>
       <motion.div className="relative">
         <motion.button
           onClick={handleToggleDropdown}

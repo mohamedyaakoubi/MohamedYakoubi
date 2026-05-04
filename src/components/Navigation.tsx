@@ -7,6 +7,8 @@ import { useRouter, usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useMenu } from '@/context/useMenu'
+import { LanguageSelector } from './LanguageSelector'
+import { ThemeToggle } from './theme-toggle'
 
 // Types
 const createNavigationLinks = (t: (key: string) => string, lang: string) => [
@@ -78,7 +80,7 @@ const NavLink = ({ href, label, isActive, onClick }: NavLinkProps) => {
 
 export function Navigation() {
   const { isMenuOpen, setIsMenuOpen } = useMenu()
-  const { language } = useLanguage()
+  const { language, setLanguage } = useLanguage()
   const { t } = useTranslation(language)
   const pathname = usePathname()
   const router = useRouter()
@@ -378,6 +380,12 @@ export function Navigation() {
                   )
                 })}
               </ul>
+
+              {/* Language selector + theme toggle — mobile only */}
+              <div className="flex items-center gap-3 px-4 py-3 border-t border-gray-700 mt-1">
+                <LanguageSelector currentLang={language} onChange={setLanguage} forceVisible />
+                <ThemeToggle />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

@@ -61,7 +61,7 @@ export function ClientLayout({ children, footer }: ClientLayoutProps) {
         {footer}
         
         {/* Always render the container but conditionally show content */}
-        <div className="fixed top-20 left-6 z-50 flex flex-col items-start gap-4">
+        <div className="fixed top-20 left-6 z-50 hidden md:flex flex-col items-start gap-4">
           <div style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.3s' }}>
             <LanguageSelector currentLang={language} onChange={setLanguage} />
             <div className="mt-4">
