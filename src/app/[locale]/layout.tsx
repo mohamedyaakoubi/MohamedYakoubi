@@ -144,7 +144,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       google: 'lsgC7s3-ZPP7PrwkW1TntzfjbmfGCHCl8sTS4EvVqIY',
       other: {
         'msvalidate.01': '567F2213DA2A1DE09D5C5ADF16CDE77B',
-        'yandex-verification': '86d3754b6e757e9e',
+        'yandex-verification': '343cfebbc5470b37',
         'seznam-wmt': 'FGc8Y2lVQaYWgB32AOVXa87EUd4xiOAW',
       },
     },
