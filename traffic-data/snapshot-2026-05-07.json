@@ -1,0 +1,188 @@
+{
+  "fetched_at": "2026-05-07T08:29:01Z",
+  "clones": {
+  "count": 906,
+  "uniques": 271,
+  "clones": [
+    {
+      "timestamp": "2026-04-23T00:00:00Z",
+      "count": 94,
+      "uniques": 28
+    },
+    {
+      "timestamp": "2026-04-24T00:00:00Z",
+      "count": 25,
+      "uniques": 16
+    },
+    {
+      "timestamp": "2026-04-25T00:00:00Z",
+      "count": 82,
+      "uniques": 55
+    },
+    {
+      "timestamp": "2026-04-26T00:00:00Z",
+      "count": 26,
+      "uniques": 12
+    },
+    {
+      "timestamp": "2026-04-27T00:00:00Z",
+      "count": 16,
+      "uniques": 7
+    },
+    {
+      "timestamp": "2026-04-28T00:00:00Z",
+      "count": 27,
+      "uniques": 11
+    },
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "count": 23,
+      "uniques": 9
+    },
+    {
+      "timestamp": "2026-04-30T00:00:00Z",
+      "count": 50,
+      "uniques": 14
+    },
+    {
+      "timestamp": "2026-05-01T00:00:00Z",
+      "count": 38,
+      "uniques": 15
+    },
+    {
+      "timestamp": "2026-05-02T00:00:00Z",
+      "count": 96,
+      "uniques": 25
+    },
+    {
+      "timestamp": "2026-05-03T00:00:00Z",
+      "count": 48,
+      "uniques": 16
+    },
+    {
+      "timestamp": "2026-05-04T00:00:00Z",
+      "count": 195,
+      "uniques": 48
+    },
+    {
+      "timestamp": "2026-05-05T00:00:00Z",
+      "count": 156,
+      "uniques": 41
+    },
+    {
+      "timestamp": "2026-05-06T00:00:00Z",
+      "count": 30,
+      "uniques": 15
+    }
+  ]
+},
+  "views": {
+  "count": 17,
+  "uniques": 4,
+  "views": [
+    {
+      "timestamp": "2026-04-23T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-24T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-25T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-26T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-27T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-28T00:00:00Z",
+      "count": 2,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-30T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-05-01T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-05-02T00:00:00Z",
+      "count": 1,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-05-03T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-05-04T00:00:00Z",
+      "count": 12,
+      "uniques": 1
+    },
+    {
+      "timestamp": "2026-05-05T00:00:00Z",
+      "count": 2,
+      "uniques": 2
+    },
+    {
+      "timestamp": "2026-05-06T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    }
+  ]
+},
+  "referrers": [
+  {
+    "referrer": "github.com",
+    "count": 16,
+    "uniques": 3
+  }
+],
+  "popular_paths": [
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi",
+    "title": "Overview",
+    "count": 14,
+    "uniques": 4
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/LICENSE",
+    "title": "/blob/master/LICENSE",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/blob/master/traffic-data/traffic-log.csv",
+    "title": "/blob/master/traffic-data/traffic-log.csv",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/mohamedyaakoubi/MohamedYakoubi/tree/master/traffic-data",
+    "title": "/tree/master/traffic-data",
+    "count": 1,
+    "uniques": 1
+  }
+]
+}
