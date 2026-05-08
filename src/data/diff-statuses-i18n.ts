@@ -87,6 +87,7 @@ const en: DiffStatusesI18n = {
       { label: 'Diff Statuses',     slug: 'diff-statuses' },
       { label: 'Demo Walkthrough',  slug: 'demo' },
       { label: 'Playground',         slug: 'playground' },
+      { label: 'Engine Precision',  slug: 'engine-precision' },
     ],
   },
   hero: {
@@ -251,6 +252,7 @@ const fr: DiffStatusesI18n = {
       { label: 'Statuts de diff',             slug: 'diff-statuses' },
       { label: 'Démonstration complète',       slug: 'demo' },
       { label: 'Playground',                  slug: 'playground' },
+      { label: 'Précision du moteur',         slug: 'engine-precision' },
     ],
   },
   hero: {
@@ -384,6 +386,7 @@ const ar: DiffStatusesI18n = {
       { label: 'حالات الـ diff',   slug: 'diff-statuses' },
       { label: 'درس تطبيقي كامل', slug: 'demo' },
       { label: 'Playground',     slug: 'playground' },
+      { label: 'دقة المحرك',     slug: 'engine-precision' },
     ],
   },
   hero: {

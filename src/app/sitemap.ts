@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms-of-service': new Date('2026-05-04'), // portfolio terms of service added May 4
   }
 
-  const apiDocsDate        = new Date('2026-05-05') // SSR, ARIA, contrast fixes May 5
+  const apiDocsDate        = new Date('2026-05-08') // engine-precision page added May 8
   const apiDocsLegalDate    = new Date('2026-04-10') // API-specific ToS + privacy added Apr 10
   const sheetdiffSubPageDates: Record<string, Date> = {
     '/sheetdiff/pricing':           new Date('2026-03-14'), // pricing FAQ fix Mar 14
@@ -90,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/sheetdiff/api-docs/diff-statuses',
       '/sheetdiff/api-docs/demo',
       '/sheetdiff/api-docs/playground',
+      '/sheetdiff/api-docs/engine-precision',
     ]
     apiDocSubPages.forEach(page => {
       sitemapEntries.push({
