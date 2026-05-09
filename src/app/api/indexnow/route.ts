@@ -77,6 +77,15 @@ const ALL_URLS = [
   '/en/sheetdiff/api-docs/playground',
   '/fr/sheetdiff/api-docs/playground',
   '/ar/sheetdiff/api-docs/playground',
+  '/en/sheetdiff/api-docs/engine-precision',
+  '/fr/sheetdiff/api-docs/engine-precision',
+  '/ar/sheetdiff/api-docs/engine-precision',
+  '/en/sheetdiff/api-docs/terms-of-service',
+  '/fr/sheetdiff/api-docs/terms-of-service',
+  '/ar/sheetdiff/api-docs/terms-of-service',
+  '/en/sheetdiff/api-docs/privacy-policy',
+  '/fr/sheetdiff/api-docs/privacy-policy',
+  '/ar/sheetdiff/api-docs/privacy-policy',
 ];
 
 interface IndexNowPayload {
