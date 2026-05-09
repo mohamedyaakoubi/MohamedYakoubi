@@ -36,7 +36,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'freelance AI specialist', 'remote work experience', 'speech-to-text'
     ].join(', '),
     alternates: {
-      canonical: `https://www.mohamedyaakoubi.com/${locale}/experience`
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/experience`,
+      languages: {
+        en: 'https://www.mohamedyaakoubi.com/en/experience',
+        fr: 'https://www.mohamedyaakoubi.com/fr/experience',
+        ar: 'https://www.mohamedyaakoubi.com/ar/experience',
+        'x-default': 'https://www.mohamedyaakoubi.com/en/experience',
+      },
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,

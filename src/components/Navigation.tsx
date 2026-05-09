@@ -231,40 +231,38 @@ export function Navigation() {
                           />
                         )}
                       </motion.button>
-                      <AnimatePresence>
-                        {sheetdiffOpen && (
-                          <motion.ul
-                            initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -8, scale: 0.97 }}
-                            transition={{ duration: 0.15 }}
-                            role="menu"
-                            className="absolute top-full left-0 mt-1 w-52 bg-gray-900 border border-gray-700 rounded-lg shadow-xl overflow-hidden z-50"
-                          >
-                            {link.children.map(child => (
-                              <li key={child.href} role="none">
-                                <a
-                                  href={child.href}
-                                  role="menuitem"
-                                  onClick={(e) => {
-                                    e.preventDefault()
-                                    setSheetdiffOpen(false)
-                                    router.push(child.href)
-                                    setIsMenuOpen(false)
-                                  }}
-                                  className={`block px-4 py-3 text-sm transition-colors ${
-                                    isLinkActive(child.href)
-                                      ? 'text-blue-300 bg-blue-500/10'
-                                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
-                                  }`}
-                                >
-                                  {child.label}
-                                </a>
-                              </li>
-                            ))}
-                          </motion.ul>
-                        )}
-                      </AnimatePresence>
+                      {/* Always rendered in DOM for SSR/crawlability; CSS controls visibility */}
+                      <ul
+                        role="menu"
+                        aria-hidden={!sheetdiffOpen}
+                        className={`absolute top-full left-0 mt-1 w-52 bg-gray-900 border border-gray-700 rounded-lg shadow-xl overflow-hidden z-50 transition-[opacity,transform] duration-150 origin-top ${
+                          sheetdiffOpen
+                            ? 'opacity-100 scale-100 pointer-events-auto'
+                            : 'opacity-0 scale-95 pointer-events-none'
+                        }`}
+                      >
+                        {link.children.map(child => (
+                          <li key={child.href} role="none">
+                            <a
+                              href={child.href}
+                              role="menuitem"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                setSheetdiffOpen(false)
+                                router.push(child.href)
+                                setIsMenuOpen(false)
+                              }}
+                              className={`block px-4 py-3 text-sm transition-colors ${
+                                isLinkActive(child.href)
+                                  ? 'text-blue-300 bg-blue-500/10'
+                                  : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                              }`}
+                            >
+                              {child.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
                       </div>
                     </motion.li>
                   )

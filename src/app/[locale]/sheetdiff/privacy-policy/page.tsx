@@ -14,6 +14,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
     alternates: {
       canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/privacy-policy`,
+      languages: {
+        en: 'https://www.mohamedyaakoubi.com/en/sheetdiff/privacy-policy',
+        fr: 'https://www.mohamedyaakoubi.com/fr/sheetdiff/privacy-policy',
+        ar: 'https://www.mohamedyaakoubi.com/ar/sheetdiff/privacy-policy',
+        'x-default': 'https://www.mohamedyaakoubi.com/en/sheetdiff/privacy-policy',
+      },
     },
   }
 }

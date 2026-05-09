@@ -92,15 +92,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     creator: 'Mohamed Yaakoubi',
     publisher: 'Mohamed Yaakoubi',
     applicationName: 'Mohamed Yaakoubi Portfolio',
-    alternates: {
-      canonical: `https://www.mohamedyaakoubi.com/${locale}`,
-      languages: {
-        'en': 'https://www.mohamedyaakoubi.com/en',
-        'fr': 'https://www.mohamedyaakoubi.com/fr', 
-        'ar': 'https://www.mohamedyaakoubi.com/ar',
-        'x-default': 'https://www.mohamedyaakoubi.com/en',
-      }
-    },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
@@ -181,13 +172,10 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction} suppressHydrationWarning>
       <head suppressHydrationWarning>
         {/* 
-          Hreflang tags for homepage - child pages inherit these but override via their own metadata.alternates 
-          This ensures proper language targeting for international SEO (Google, Bing, Yandex)
+          Hreflang is set per-page via metadata.alternates.languages in each page's
+          generateMetadata(). Do NOT add hardcoded root-only hreflang here — it would
+          override page-specific alternates and send wrong cross-locale signals to crawlers.
         */}
-        <link rel="alternate" hrefLang="en" href="https://www.mohamedyaakoubi.com/en" />
-        <link rel="alternate" hrefLang="fr" href="https://www.mohamedyaakoubi.com/fr" />
-        <link rel="alternate" hrefLang="ar" href="https://www.mohamedyaakoubi.com/ar" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.mohamedyaakoubi.com/en" />
         
         {/* Performance optimizations */}
         <link rel="dns-prefetch" href="https://vercel.live" />

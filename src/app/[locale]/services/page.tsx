@@ -33,7 +33,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'resume writing', 'portfolio development', 'multilingual support'
     ].join(', '),
     alternates: {
-      canonical: `https://www.mohamedyaakoubi.com/${locale}/services`
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/services`,
+      languages: {
+        en: 'https://www.mohamedyaakoubi.com/en/services',
+        fr: 'https://www.mohamedyaakoubi.com/fr/services',
+        ar: 'https://www.mohamedyaakoubi.com/ar/services',
+        'x-default': 'https://www.mohamedyaakoubi.com/en/services',
+      },
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,

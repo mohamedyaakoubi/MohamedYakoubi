@@ -29,7 +29,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
-      canonical: `https://www.mohamedyaakoubi.com/${locale}/projects`
+      canonical: `https://www.mohamedyaakoubi.com/${locale}/projects`,
+      languages: {
+        en: 'https://www.mohamedyaakoubi.com/en/projects',
+        fr: 'https://www.mohamedyaakoubi.com/fr/projects',
+        ar: 'https://www.mohamedyaakoubi.com/ar/projects',
+        'x-default': 'https://www.mohamedyaakoubi.com/en/projects',
+      },
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,

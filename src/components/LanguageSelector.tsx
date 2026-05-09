@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { languages, type Language } from '@/types/language'
 import { Globe } from 'lucide-react'
 import { useMenu } from '@/context/useMenu'
+import { usePathname } from 'next/navigation'
 import { analytics } from '@/lib/analytics'
 
 interface LanguageSelectorProps {
@@ -16,7 +17,14 @@ interface LanguageSelectorProps {
 export function LanguageSelector({ currentLang, onChange, forceVisible = false }: LanguageSelectorProps) {
   const [isOpen, setIsOpen] = useState(false)
   const { isMenuOpen } = useMenu()
+  const pathname = usePathname()
   const currentLanguage = languages.find(lang => lang.code === currentLang)
+
+  const getLocaleUrl = (targetLocale: string) => {
+    const segments = pathname.split('/')
+    segments[1] = targetLocale
+    return segments.join('/')
+  }
   const Flag = currentLanguage?.FlagComponent
   
   // RTL support
@@ -81,18 +89,25 @@ export function LanguageSelector({ currentLang, onChange, forceVisible = false }
                   <motion.li 
                     key={lang.code}
                     whileHover={{ backgroundColor: 'rgba(0,0,0,0.05)' }}
-                    className={`px-4 py-2 cursor-pointer flex items-center ${
+                    className={`cursor-pointer flex items-center ${
                       isRTL ? 'flex-row-reverse gap-2' : 'gap-2'
                     }`}
-                    onClick={() => handleLanguageSelect(lang.code)}
                     role="option"
                     aria-selected={currentLang === lang.code}
                   >
-                    {lang.FlagComponent && <lang.FlagComponent className="w-5 h-5" />}
-                    <span className={`${currentLang === lang.code ? 'font-semibold' : ''} 
-                                    dark:text-white text-gray-800`}>
-                      {lang.name}
-                    </span>
+                    <a
+                      href={getLocaleUrl(lang.code)}
+                      onClick={(e) => { e.preventDefault(); handleLanguageSelect(lang.code) }}
+                      className={`flex items-center w-full px-4 py-2 no-underline ${
+                        isRTL ? 'flex-row-reverse gap-2' : 'gap-2'
+                      }`}
+                    >
+                      {lang.FlagComponent && <lang.FlagComponent className="w-5 h-5" />}
+                      <span className={`${currentLang === lang.code ? 'font-semibold' : ''} 
+                                      dark:text-white text-gray-800`}>
+                        {lang.name}
+                      </span>
+                    </a>
                   </motion.li>
                 ))}
               </ul>

@@ -14,29 +14,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Per-page last-modified dates — sourced from git history, update when content changes
   const pageLastModified: Record<string, Date> = {
-    '':                  new Date('2026-05-05'), // SSR, ARIA, contrast, heading order, LCP, image quality, link text fixes May 5
-    '/experience':       new Date('2026-05-05'), // SSR fix, heading order, ARIA (global) May 5
-    '/projects':         new Date('2026-05-05'), // SSR fix, LCP, link text, ARIA (global) May 5
-    '/services':         new Date('2026-05-05'), // SSR fix, ARIA (global) May 5
-    '/contact':          new Date('2026-05-05'), // SSR fix, ARIA (global) May 5
+    '':                  new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/experience':       new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/projects':         new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/services':         new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/contact':          new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
     '/blog':             latestPostDate,
-    '/sheetdiff':        new Date('2026-05-05'), // SSR fix, ARIA (global) May 5
-    '/privacy-policy':   new Date('2026-05-04'), // portfolio privacy policy added May 4
-    '/terms-of-service': new Date('2026-05-04'), // portfolio terms of service added May 4
+    '/sheetdiff':        new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/privacy-policy':   new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/terms-of-service': new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
   }
 
-  const apiDocsDate        = new Date('2026-05-08') // engine-precision page added May 8
+  const apiDocsDate        = new Date('2026-05-09') // hreflang duplicate entries + layout alternates fix May 9
   const apiDocsLegalDate    = new Date('2026-04-10') // API-specific ToS + privacy added Apr 10
   const sheetdiffSubPageDates: Record<string, Date> = {
-    '/sheetdiff/pricing':           new Date('2026-03-14'), // pricing FAQ fix Mar 14
-    '/sheetdiff/terms-of-service':  new Date('2026-03-01'), // add-on ToS created Mar 1
-    '/sheetdiff/privacy-policy':    new Date('2026-03-01'), // add-on privacy created Mar 1
+    '/sheetdiff/pricing':           new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9
+    '/sheetdiff/terms-of-service':  new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9
+    '/sheetdiff/privacy-policy':    new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9
   }
 
   const projectPageDates: Record<string, Date> = {
-    '/projects/potential':            new Date('2026-05-05'), // SSR, ARIA, LCP, link text, heading order fixes May 5
-    '/projects/documed':              new Date('2026-05-05'), // SSR, ARIA, LCP, link text, heading order fixes May 5
-    '/projects/internationalskills':  new Date('2026-05-05'), // SSR, ARIA, LCP, link text, heading order fixes May 5
+    '/projects/potential':            new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/projects/documed':              new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/projects/internationalskills':  new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
   }
 
   const locales = ['en', 'fr', 'ar']
