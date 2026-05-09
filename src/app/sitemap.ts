@@ -14,18 +14,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Per-page last-modified dates — sourced from git history, update when content changes
   const pageLastModified: Record<string, Date> = {
-    '':                  new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/experience':       new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/projects':         new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/services':         new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/contact':          new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '':                  new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/experience':       new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/projects':         new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/services':         new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/contact':          new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
     '/blog':             latestPostDate,
-    '/sheetdiff':        new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/privacy-policy':   new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/terms-of-service': new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/sheetdiff':        new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/privacy-policy':   new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/terms-of-service': new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
   }
 
-  const apiDocsDate        = new Date('2026-05-09') // hreflang duplicate entries + layout alternates fix May 9
+  const apiDocsDate        = new Date('2026-05-09') // Footer cross-locale links, hreflang + URL fixes May 9
   const apiDocsLegalDate    = new Date('2026-04-10') // API-specific ToS + privacy added Apr 10
   const sheetdiffSubPageDates: Record<string, Date> = {
     '/sheetdiff/pricing':           new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9

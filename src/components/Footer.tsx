@@ -165,7 +165,7 @@ export function Footer({ locale }: FooterProps) {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
+        <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-300">
           <p>© {currentYear} {t.copyright}</p>
           {/* Portfolio-wide legal links — internal links must NOT use target="_blank" */}
           <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-400">
@@ -176,6 +176,14 @@ export function Footer({ locale }: FooterProps) {
             <Link href={`/${locale}/terms-of-service`} className="hover:text-blue-400 transition-colors">
               {locale === 'fr' ? "Conditions d\u2019utilisation" : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}
             </Link>
+          </div>
+          {/* Language versions — static links so crawlers discover all locale variants */}
+          <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500">
+            <Link href="/en" hrefLang="en" className="hover:text-blue-400 transition-colors">English</Link>
+            <span aria-hidden="true">&middot;</span>
+            <Link href="/fr" hrefLang="fr" className="hover:text-blue-400 transition-colors">Français</Link>
+            <span aria-hidden="true">&middot;</span>
+            <Link href="/ar" hrefLang="ar" className="hover:text-blue-400 transition-colors">العربية</Link>
           </div>
         </div>
       </div>

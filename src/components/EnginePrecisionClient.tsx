@@ -503,10 +503,10 @@ export default function EnginePrecisionClient() {
                 </Link>
               </p>
               <div className="flex items-center gap-4">
-                <Link href={`/${language}/sheetdiff/privacy`} className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+                <Link href={`/${language}/sheetdiff/privacy-policy`} className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
                   {t.footer.privacy}
                 </Link>
-                <Link href={`/${language}/sheetdiff/terms`} className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+                <Link href={`/${language}/sheetdiff/terms-of-service`} className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
                   {t.footer.terms}
                 </Link>
               </div>
