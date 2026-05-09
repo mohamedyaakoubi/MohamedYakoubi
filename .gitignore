@@ -49,6 +49,11 @@ next-env.d.ts
 !README.md
 !.github/**/*.md
 
+# Screaming Frog SEO Spider exports
+*_overview_report.csv
+*_self_referencing.csv
+internal_all.csv
+
 # blog drafts
 blog-post.html
 blog_post_fr.html
