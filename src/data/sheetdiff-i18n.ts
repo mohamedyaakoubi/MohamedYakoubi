@@ -225,7 +225,7 @@ const en: SheetDiffI18n = {
     support: 'Support',
   },
   privacy: {
-    title: 'Privacy Policy',
+    title: 'SheetDiff™ Privacy Policy',
     productLine: 'SheetDiff™ \u00b7 Google Sheets™ Add-on',
     lastUpdated: 'Last updated: March 19, 2026',
     sections: [
@@ -247,7 +247,7 @@ const en: SheetDiffI18n = {
     backTo: 'Back to SheetDiff™',
   },
   terms: {
-    title: 'Terms of Service',
+    title: 'SheetDiff™ Terms of Service',
     productLine: 'SheetDiff™ \u00b7 Google Sheets™ Add-on',
     lastUpdated: 'Last updated: March 19, 2026',
     pricingTable: {
@@ -417,7 +417,7 @@ const fr: SheetDiffI18n = {
     support: 'Assistance',
   },
   privacy: {
-    title: 'Politique de confidentialité',
+    title: 'Politique de confidentialité — SheetDiff™',
     productLine: 'SheetDiff™ \u00b7 Module Google Sheets™',
     lastUpdated: 'Dernière mise à jour : 19 mars 2026',
     sections: [
@@ -439,7 +439,7 @@ const fr: SheetDiffI18n = {
     backTo: 'Retour à SheetDiff™',
   },
   terms: {
-    title: 'Conditions d\u2019utilisation',
+    title: 'Conditions d\u2019utilisation \u2014 SheetDiff™',
     productLine: 'SheetDiff™ \u00b7 Module Google Sheets™',
     lastUpdated: 'Dernière mise à jour : 19 mars 2026',
     pricingTable: {
@@ -609,7 +609,7 @@ const ar: SheetDiffI18n = {
     support: 'الدعم',
   },
   privacy: {
-    title: 'سياسة الخصوصية',
+    title: 'سياسة الخصوصية — SheetDiff™',
     productLine: 'SheetDiff™ \u00b7 إضافة Google Sheets™',
     lastUpdated: 'آخر تحديث: 19 مارس 2026',
     sections: [
@@ -631,7 +631,7 @@ const ar: SheetDiffI18n = {
     backTo: 'العودة إلى SheetDiff™',
   },
   terms: {
-    title: 'شروط الخدمة',
+    title: 'شروط الخدمة — SheetDiff™',
     productLine: 'SheetDiff™ \u00b7 إضافة Google Sheets™',
     lastUpdated: 'آخر تحديث: 19 مارس 2026',
     pricingTable: {

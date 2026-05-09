@@ -8,9 +8,19 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
+  const titles: Record<string, string> = {
+    en: 'Privacy Policy — SheetDiff™ | Mohamed Yaakoubi',
+    fr: 'Politique de confidentialité — SheetDiff™ | Mohamed Yaakoubi',
+    ar: 'سياسة الخصوصية — SheetDiff™ | محمد يعقوبي',
+  }
+  const descriptions: Record<string, string> = {
+    en: 'Privacy Policy for the SheetDiff™ Google Sheets™ add-on by Mohamed Yaakoubi.',
+    fr: 'Politique de confidentialité du module Google Sheets™ SheetDiff™ par Mohamed Yaakoubi.',
+    ar: 'سياسة الخصوصية لإضافة Google Sheets™ SheetDiff™ من محمد يعقوبي.',
+  }
   return {
-    title: 'Privacy Policy — SheetDiff™ | Mohamed Yaakoubi',
-    description: 'Privacy Policy for the SheetDiff™ Google Sheets™ add-on by Mohamed Yaakoubi.',
+    title: titles[locale] ?? titles.en,
+    description: descriptions[locale] ?? descriptions.en,
 
     alternates: {
       canonical: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/privacy-policy`,

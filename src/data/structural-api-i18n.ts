@@ -351,14 +351,14 @@ const en: StructuralApiI18n = {
     terms: 'Terms of Service',
   },
   privacy: {
-    title: 'Privacy Policy',
+    title: 'Privacy Policy — Structural Diff API',
     productLine: 'Structural Diff API',
     lastUpdated: 'Last updated: April 10, 2026',
     backTo: '← Back to API Docs',
     sections: [],
   },
   terms: {
-    title: 'Terms of Service',
+    title: 'Terms of Service — Structural Diff API',
     productLine: 'Structural Diff API',
     lastUpdated: 'Last updated: April 11, 2026',
     backTo: '\u2190 Back to API Docs',
@@ -584,7 +584,7 @@ const fr: StructuralApiI18n = {
     terms: "Conditions d'utilisation",
   },
   privacy: {
-    title: 'Politique de Confidentialité',
+    title: 'Politique de confidentialité — API Structural Diff',
     productLine: 'API Structural Diff',
     lastUpdated: 'Dernière mise à jour : 10 avril 2026',
     backTo: '← Retour à la documentation API',
@@ -600,7 +600,7 @@ const fr: StructuralApiI18n = {
     ],
   },
   terms: {
-    title: "Conditions d'utilisation",
+    title: "Conditions d'utilisation — API Structural Diff",
     productLine: 'API Structural Diff',
     lastUpdated: 'Dernière mise à jour : 11 avril 2026',
     backTo: '← Retour à la documentation API',
@@ -840,7 +840,7 @@ const ar: StructuralApiI18n = {
     terms: 'شروط الخدمة',
   },
   privacy: {
-    title: 'سياسة الخصوصية',
+    title: 'سياسة الخصوصية — Structural Diff API',
     productLine: 'Structural Diff API',
     lastUpdated: 'آخر تحديث: 10 أبريل 2026',
     backTo: '→ العودة إلى وثائق API',
@@ -856,7 +856,7 @@ const ar: StructuralApiI18n = {
     ],
   },
   terms: {
-    title: 'شروط الخدمة',
+    title: 'شروط الخدمة — Structural Diff API',
     productLine: 'Structural Diff API',
     lastUpdated: 'آخر تحديث: 11 أبريل 2026',
     backTo: '→ العودة إلى وثائق API',
