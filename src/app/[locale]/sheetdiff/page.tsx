@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   const title = 'SheetDiff\u2122 \u2014 Compare Google Sheets\u2122 | Spreadsheet Diff & QA Add-on'
   const description =
-    'Compare two Google Sheets\u2122 versions and detect every change \u2014 modified, split, merged, added & deleted rows. Color-coded diff reports with WER/CER/SER metrics. Used by transcription and localization teams. Free 7-day trial, no credit card required.'
+    'Compare two Google Sheets\u2122 versions and detect modified, moved, split, merged, added & deleted rows. Use SKU-based matching for product catalogs, inventory updates, supplier price lists, localization QA, and spreadsheet audits. Free 7-day trial.'
 
   return {
     title,
@@ -23,6 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'compare google sheets',
       'compare two google sheets',
       'spreadsheet comparison tool',
+      'compare product catalogs in google sheets',
+      'sku based spreadsheet comparison',
+      'supplier price list comparison',
+      'inventory spreadsheet comparison',
       'google sheets add-on',
       'localization QA',
       'transcription QA',
@@ -32,6 +36,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'data quality assurance',
       'google sheets compare versions',
       'detect changes in google sheets',
+      'detect moved rows in google sheets',
+      'find added deleted modified rows spreadsheet',
       'google workspace add-on',
       'spreadsheet diff tool',
     ],
@@ -67,7 +73,7 @@ const softwareAppJsonLd = {
   applicationSubCategory: 'Productivity',
   operatingSystem: 'Google Workspace',
   description:
-    'SheetDiff\u2122 compares two versions of any Google Sheets\u2122 spreadsheet and generates a color-coded diff report \u2014 detecting modified, split, merged, added, and deleted rows. Includes WER/CER/SER quality metrics, inline character diffs, duplicate finder, and multi-script normalization.',
+    'SheetDiff\u2122 compares two versions of any Google Sheets\u2122 spreadsheet and generates a color-coded diff report \u2014 detecting modified, moved, split, merged, added, and deleted rows. It supports SKU-based product catalog comparison, inventory updates, supplier price list reviews, WER/CER/SER quality metrics, inline character diffs, duplicate finder, and multi-script normalization.',
   url: MARKETPLACE_URL,
   image: 'https://www.mohamedyaakoubi.com/sheetdiff-logo.png',
   offers: [
@@ -100,7 +106,8 @@ const softwareAppJsonLd = {
     sameAs: 'https://www.linkedin.com/in/yaakoubi-mohamed/',
   },
   featureList: [
-    'Structural Diff \u2014 detect modified, split, merged, added, deleted rows',
+    'Structural Diff \u2014 detect modified, moved, split, merged, added, deleted rows',
+    'Simple Mode \u2014 compare product catalogs, inventory updates, and supplier price lists by SKU or another ID column',
     'Cell-by-Cell Comparison \u2014 granular column-aligned diff',
     'Duplicate Finder \u2014 column-by-column and full-sheet deduplication',
     'WER, CER, SER quality metrics for transcription and localization QA',
@@ -137,7 +144,7 @@ const faqJsonLd = {
       name: 'What comparison modes does SheetDiff\u2122 support?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'SheetDiff\u2122 includes three comparison modes: Structural Diff (row-level with split/merge detection), Cell-by-Cell Comparison (granular column-aligned diff), and Duplicate Finder (detect duplicate rows within a sheet). Each mode has independent settings and custom transform rules.',
+        text: 'SheetDiff\u2122 includes Structural Diff (row-level comparison with modified, moved, split, merged, added, and deleted rows), Cell-by-Cell Comparison (granular column-aligned diff), Duplicate Finder, and Grid Diff. Simple Mode supports ID-based comparison for product catalogs, SKU lists, inventories, and supplier updates.',
       },
     },
     {
@@ -159,6 +166,17 @@ const faqJsonLd = {
   ],
 }
 
+const simpleModeVideoJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'SheetDiff Simple Mode product catalog comparison demo',
+  description:
+    'A SheetDiff use case video showing how to compare product catalogs in Google Sheets by SKU, highlight modified fields, find added and deleted products, and avoid false differences when supplier rows are reordered.',
+  thumbnailUrl: 'https://i.ytimg.com/vi/9NITyMjfIdw/hqdefault.jpg',
+  embedUrl: 'https://www.youtube-nocookie.com/embed/9NITyMjfIdw',
+  contentUrl: 'https://www.youtube.com/watch?v=9NITyMjfIdw',
+}
+
 export default function SheetDiffPage() {
   return (
     <>
@@ -171,6 +189,11 @@ export default function SheetDiffPage() {
         id="sheetdiff-faq"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        id="sheetdiff-simple-mode-video"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(simpleModeVideoJsonLd) }}
       />
       <SheetDiffClient />
     </>

@@ -19,6 +19,7 @@ import {
   CreditCard,
   Mail,
   ArrowRight,
+  ArrowUpDown,
   TrendingUp,
   Rows,
   Sparkles,
@@ -46,6 +47,43 @@ const staggerContainer = {
 export default function SheetDiffClient() {
   const { language } = useLanguage()
   const t = getSheetDiffI18n(language).main
+  const diffCategoryVisuals: Record<string, { row: string; text: string; icon: React.ReactNode }> = {
+    gray: {
+      row: 'bg-gray-50 dark:bg-gray-800',
+      text: 'text-gray-600 dark:text-gray-400',
+      icon: <CircleCheckBig className="w-5 h-5 text-gray-400 shrink-0 ml-4" />,
+    },
+    yellow: {
+      row: 'bg-yellow-50 dark:bg-yellow-900/20',
+      text: 'text-yellow-700 dark:text-yellow-400',
+      icon: <Zap className="w-5 h-5 text-yellow-600 dark:text-yellow-500 shrink-0 ml-4" />,
+    },
+    cyan: {
+      row: 'bg-cyan-50 dark:bg-cyan-900/20',
+      text: 'text-cyan-700 dark:text-cyan-400',
+      icon: <ArrowUpDown className="w-5 h-5 text-cyan-600 dark:text-cyan-500 shrink-0 ml-4" />,
+    },
+    purple: {
+      row: 'bg-purple-50 dark:bg-purple-900/20',
+      text: 'text-purple-700 dark:text-purple-400',
+      icon: <SplitSquareHorizontal className="w-5 h-5 text-purple-600 dark:text-purple-500 shrink-0 ml-4" />,
+    },
+    indigo: {
+      row: 'bg-indigo-50 dark:bg-indigo-900/20',
+      text: 'text-indigo-700 dark:text-indigo-400',
+      icon: <GitMerge className="w-5 h-5 text-indigo-600 dark:text-indigo-500 shrink-0 ml-4" />,
+    },
+    green: {
+      row: 'bg-green-50 dark:bg-green-900/20',
+      text: 'text-green-700 dark:text-green-400',
+      icon: <div className="w-5 h-5 rounded-md bg-green-500 text-white flex items-center justify-center font-bold text-sm shrink-0 ml-4">+</div>,
+    },
+    red: {
+      row: 'bg-red-50 dark:bg-red-900/20',
+      text: 'text-red-700 dark:text-red-400',
+      icon: <div className="w-5 h-5 rounded-md bg-red-500 text-white flex items-center justify-center font-bold text-sm shrink-0 ml-4">-</div>,
+    },
+  }
 
   useEffect(() => {
     analytics.sheetdiffPageView('main')
@@ -168,6 +206,41 @@ export default function SheetDiffClient() {
           </motion.div>
         </motion.div>
 
+        {/* Simple Mode Use Case Video */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-8 border border-gray-100 dark:border-gray-800 shadow-sm"
+        >
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 items-center">
+            <div className="space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-medium">
+                <FileSpreadsheet className="w-4 h-4" />
+                <span>{t.simpleUseCaseEyebrow}</span>
+              </div>
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold tracking-tight">{t.simpleUseCaseTitle}</h2>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t.simpleUseCaseDesc}
+                </p>
+              </div>
+              <ul className="space-y-3">
+                {t.simpleUseCaseBullets.map((item, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <CircleCheckBig className="w-5 h-5 text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+              <LazyYouTube videoId="9NITyMjfIdw" title={t.simpleUseCaseVideoTitle} />
+            </div>
+          </div>
+        </motion.div>
+
         {/* Use Cases Section */}
         <motion.div
           initial="hidden"
@@ -182,9 +255,10 @@ export default function SheetDiffClient() {
               const icons = [
                 <Mic key={0} className="w-6 h-6" />,
                 <Globe2 key={1} className="w-6 h-6" />,
-                <Database key={2} className="w-6 h-6" />,
-                <Bot key={3} className="w-6 h-6" />,
-                <GitBranch key={4} className="w-6 h-6" />,
+                <FileSpreadsheet key={2} className="w-6 h-6" />,
+                <Database key={3} className="w-6 h-6" />,
+                <Bot key={4} className="w-6 h-6" />,
+                <GitBranch key={5} className="w-6 h-6" />,
               ]
               const colorClasses = [
                 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
@@ -192,6 +266,7 @@ export default function SheetDiffClient() {
                 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400',
                 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400',
                 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400',
+                'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400',
               ]
               return (
                 <motion.div
@@ -249,30 +324,15 @@ export default function SheetDiffClient() {
               <TrendingUp className="text-blue-500" /> {t.diffTitle}
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
-                <span className="font-medium text-gray-600 dark:text-gray-400">{t.diffCats[0].label}</span>
-                <CircleCheckBig className="w-5 h-5 text-gray-400 shrink-0 ml-4" />
-              </li>
-              <li className="flex items-center justify-between p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20">
-                <span className="font-medium text-yellow-700 dark:text-yellow-400">{t.diffCats[1].label}</span>
-                <Zap className="w-5 h-5 text-yellow-600 dark:text-yellow-500 shrink-0 ml-4" />
-              </li>
-              <li className="flex items-center justify-between p-3 rounded-lg bg-purple-50 dark:bg-purple-900/20">
-                <span className="font-medium text-purple-700 dark:text-purple-400">{t.diffCats[2].label}</span>
-                <SplitSquareHorizontal className="w-5 h-5 text-purple-600 dark:text-purple-500 shrink-0 ml-4" />
-              </li>
-              <li className="flex items-center justify-between p-3 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
-                <span className="font-medium text-indigo-700 dark:text-indigo-400">{t.diffCats[3].label}</span>
-                <GitMerge className="w-5 h-5 text-indigo-600 dark:text-indigo-500 shrink-0 ml-4" />
-              </li>
-              <li className="flex items-center justify-between p-3 rounded-lg bg-green-50 dark:bg-green-900/20">
-                <span className="font-medium text-green-700 dark:text-green-400">{t.diffCats[4].label}</span>
-                <div className="w-5 h-5 rounded-md bg-green-500 text-white flex items-center justify-center font-bold text-sm shrink-0 ml-4">+</div>
-              </li>
-              <li className="flex items-center justify-between p-3 rounded-lg bg-red-50 dark:bg-red-900/20">
-                <span className="font-medium text-red-700 dark:text-red-400">{t.diffCats[5].label}</span>
-                <div className="w-5 h-5 rounded-md bg-red-500 text-white flex items-center justify-center font-bold text-sm shrink-0 ml-4">-</div>
-              </li>
+              {t.diffCats.map((cat, i) => {
+                const visual = diffCategoryVisuals[cat.color] || diffCategoryVisuals.gray
+                return (
+                  <li key={i} className={`flex items-center justify-between p-3 rounded-lg ${visual.row}`}>
+                    <span className={`font-medium ${visual.text}`}>{cat.label}</span>
+                    {visual.icon}
+                  </li>
+                )
+              })}
             </ul>
           </motion.div>
         </div>

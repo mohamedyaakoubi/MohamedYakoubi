@@ -39,6 +39,11 @@ type SheetDiffI18n = {
     trademark: string
     useCasesTitle: string
     useCases: { title: string; desc: string }[]
+    simpleUseCaseEyebrow: string
+    simpleUseCaseTitle: string
+    simpleUseCaseDesc: string
+    simpleUseCaseBullets: string[]
+    simpleUseCaseVideoTitle: string
   }
   pricing: {
     title: string
@@ -100,7 +105,7 @@ const en: SheetDiffI18n = {
     viewPricing: 'View Pricing',
     modesTitle: 'Comparison Modes',
     structuralTitle: 'Structural Diff',
-    structuralDesc: 'Row-level comparison with advanced algorithms to detect splits and merges across your data rows.',
+    structuralDesc: 'Row-level comparison with advanced algorithms to detect modified, moved, split, merged, added, and deleted rows.',
     cellTitle: 'Cell-by-Cell',
     cellDesc: 'Column-aligned granular comparison for pinpointing exact character or formatting changes.',
     dupTitle: 'Duplicate Finder',
@@ -108,7 +113,7 @@ const en: SheetDiffI18n = {
     howTitle: 'How It Works',
     steps: [
       'Open any spreadsheet in Google Sheets™',
-      'The add-on auto-detects column roles (speaker, timestamps, transcript, sound events)',
+      'Map or auto-detect the columns that identify your records',
       'Commit a snapshot of the original data',
       'Make edits or import the reworked version',
       'Run the diff — every row is categorized and color-coded',
@@ -117,6 +122,7 @@ const en: SheetDiffI18n = {
     diffCats: [
       { label: 'Unchanged — identical rows between versions', color: 'gray' },
       { label: 'Modified — rows with text or timing changes', color: 'yellow' },
+      { label: 'Moved — same ID or record found in a different row position', color: 'cyan' },
       { label: 'Split — one original row split into multiple', color: 'purple' },
       { label: 'Merged — multiple original rows merged into one', color: 'indigo' },
       { label: 'Added — new rows in the reworked version', color: 'green' },
@@ -128,7 +134,7 @@ const en: SheetDiffI18n = {
       'Auto-detect column roles via flexible header pattern matching',
       'Color-coded Diff Viewer sheet',
       'Summary QA Report with per-category counts and WER/CER/SER metrics',
-      'Configurable similarity threshold',
+      'ID-based matching for product catalogs, inventory sheets, and supplier updates',
       'Multi-script normalization (Arabic, Cyrillic, CJK, Thai, Devanagari, Bengali)',
       'Optional reviewer and transcriptionist metadata',
       'Settings sidebar for full control',
@@ -159,6 +165,10 @@ const en: SheetDiffI18n = {
         desc: 'Track changes across translated spreadsheets with multi-script normalization — supporting Arabic, Cyrillic, CJK, Thai, Devanagari, and more.',
       },
       {
+        title: 'Product Catalog & Inventory Updates',
+        desc: 'Compare product catalogs, supplier price lists, stock sheets, and SKU-based records. Find modified fields, added products, deleted items, and reordered rows in Google Sheets™.',
+      },
+      {
         title: 'Data Quality Assurance',
         desc: 'Validate dataset integrity between two versions. Every modification, addition, deletion, split, and merge is automatically categorized and color-coded.',
       },
@@ -171,6 +181,15 @@ const en: SheetDiffI18n = {
         desc: 'Commit a snapshot, make edits, then run the diff — a lightweight version comparison workflow entirely within Google Sheets™.',
       },
     ],
+    simpleUseCaseEyebrow: 'Use case video: Simple Mode for product catalogs',
+    simpleUseCaseTitle: 'Compare product catalogs in Google Sheets by SKU',
+    simpleUseCaseDesc: 'Watch SheetDiff compare an approved product catalog against a supplier update, then highlight modified product fields, added SKUs, and deleted products even when the supplier file changes row order.',
+    simpleUseCaseBullets: [
+      'Built for searches like “compare two product catalogs in Google Sheets”, “find added and deleted rows in spreadsheets”, and “SKU-based spreadsheet comparison”.',
+      'Simple Mode uses an ID column, such as SKU, so changed row order does not turn the whole sheet into false differences.',
+      'Moved-row detection is available as a dedicated Structural Diff category when you want row repositioning called out explicitly.',
+    ],
+    simpleUseCaseVideoTitle: 'SheetDiff Simple Mode product catalog comparison demo',
   },
   pricing: {
     title: 'SheetDiff™ Pricing',
@@ -292,7 +311,7 @@ const fr: SheetDiffI18n = {
     viewPricing: 'Voir les tarifs',
     modesTitle: 'Modes de comparaison',
     structuralTitle: 'Diff structurel',
-    structuralDesc: 'Comparaison ligne par ligne avec des algorithmes avancés pour détecter les divisions et fusions dans vos données.',
+    structuralDesc: 'Comparaison ligne par ligne avec des algorithmes avancés pour détecter les lignes modifiées, déplacées, divisées, fusionnées, ajoutées et supprimées.',
     cellTitle: 'Cellule par cellule',
     cellDesc: 'Comparaison granulaire alignée par colonne pour repérer les modifications exactes de caractères ou de format.',
     dupTitle: 'Détecteur de doublons',
@@ -300,7 +319,7 @@ const fr: SheetDiffI18n = {
     howTitle: 'Comment ça fonctionne',
     steps: [
       'Ouvrez n\u2019importe quelle feuille de calcul dans Google Sheets™',
-      'Le module détecte automatiquement les rôles des colonnes (locuteur, horodatages, transcription, événements sonores)',
+      'Mappez ou détectez automatiquement les colonnes qui identifient vos enregistrements',
       'Enregistrez un instantané des données d\u2019origine',
       'Effectuez vos modifications ou importez la version révisée',
       'Lancez le diff — chaque ligne est catégorisée et colorée',
@@ -309,6 +328,7 @@ const fr: SheetDiffI18n = {
     diffCats: [
       { label: 'Inchangé — lignes identiques entre les versions', color: 'gray' },
       { label: 'Modifié — lignes avec des changements de texte ou de timing', color: 'yellow' },
+      { label: 'Déplacé — même ID ou enregistrement retrouvé à une autre position', color: 'cyan' },
       { label: 'Divisé — une ligne d\u2019origine divisée en plusieurs', color: 'purple' },
       { label: 'Fusionné — plusieurs lignes d\u2019origine fusionnées en une', color: 'indigo' },
       { label: 'Ajouté — nouvelles lignes dans la version révisée', color: 'green' },
@@ -320,7 +340,7 @@ const fr: SheetDiffI18n = {
       'Détection automatique des rôles de colonnes via correspondance flexible d\u2019en-têtes',
       'Feuille de visualisation des différences avec code couleur',
       'Rapport QA avec compteurs par catégorie et métriques WER/CER/SER',
-      'Seuil de similarité configurable',
+      'Correspondance par ID pour catalogues produits, inventaires et mises à jour fournisseurs',
       'Normalisation multi-script (arabe, cyrillique, CJK, thaï, devanagari, bengali)',
       'Métadonnées optionnelles du réviseur et du transcripteur',
       'Barre latérale de paramètres pour un contrôle total',
@@ -351,6 +371,10 @@ const fr: SheetDiffI18n = {
         desc: 'Suivez les modifications dans les feuilles de calcul traduites avec normalisation multi-scripts — arabe, cyrillique, CJK, thaï, devanagari et plus.',
       },
       {
+        title: 'Catalogues produits & inventaire',
+        desc: 'Comparez des catalogues produits, listes de prix fournisseurs, stocks et enregistrements par SKU. Repérez les champs modifiés, produits ajoutés, éléments supprimés et lignes réordonnées dans Google Sheets™.',
+      },
+      {
         title: 'Assurance qualité des données',
         desc: 'Validez l’intégrité des données entre deux versions. Chaque modification, ajout, suppression, division et fusion est automatiquement catégorisé.',
       },
@@ -363,6 +387,15 @@ const fr: SheetDiffI18n = {
         desc: 'Enregistrez un instantané, effectuez des modifications, puis comparez — un workflow de contrôle de version léger entièrement dans Google Sheets™.',
       },
     ],
+    simpleUseCaseEyebrow: 'Vidéo use case : Simple Mode pour catalogues produits',
+    simpleUseCaseTitle: 'Comparer des catalogues produits dans Google Sheets par SKU',
+    simpleUseCaseDesc: 'Regardez SheetDiff comparer un catalogue produit approuvé avec une mise à jour fournisseur, puis mettre en évidence les champs modifiés, les nouveaux SKU et les produits supprimés, même si le fichier fournisseur change l’ordre des lignes.',
+    simpleUseCaseBullets: [
+      'Pensé pour des recherches comme « comparer deux catalogues produits dans Google Sheets », « trouver les lignes ajoutées et supprimées dans une feuille de calcul » et « comparaison par SKU ».',
+      'Le Simple Mode utilise une colonne ID, comme SKU, afin qu’un changement d’ordre des lignes ne crée pas de fausses différences.',
+      'La détection de lignes déplacées existe aussi comme catégorie Structural Diff dédiée quand vous voulez signaler explicitement le repositionnement des lignes.',
+    ],
+    simpleUseCaseVideoTitle: 'Démo SheetDiff Simple Mode pour comparer un catalogue produit',
   },
   pricing: {
     title: 'Tarifs SheetDiff™',
@@ -484,7 +517,7 @@ const ar: SheetDiffI18n = {
     viewPricing: 'عرض الأسعار',
     modesTitle: 'أوضاع المقارنة',
     structuralTitle: 'الفرق الهيكلي',
-    structuralDesc: 'مقارنة على مستوى الصفوف بخوارزميات متقدمة لاكتشاف التقسيمات والدمج عبر بياناتك.',
+    structuralDesc: 'مقارنة على مستوى الصفوف بخوارزميات متقدمة لاكتشاف الصفوف المعدّلة والمنقولة والمقسّمة والمدمجة والمضافة والمحذوفة.',
     cellTitle: 'خلية بخلية',
     cellDesc: 'مقارنة دقيقة محاذية للأعمدة لتحديد التغييرات الدقيقة في الأحرف أو التنسيق.',
     dupTitle: 'كاشف التكرارات',
@@ -492,7 +525,7 @@ const ar: SheetDiffI18n = {
     howTitle: 'كيف تعمل',
     steps: [
       'افتح أي جدول بيانات في Google Sheets™',
-      'تكتشف الإضافة تلقائياً أدوار الأعمدة (المتحدث، الطوابع الزمنية، النص، الأحداث الصوتية)',
+      'اربط الأعمدة التي تعرّف سجلاتك أو دع الإضافة تكتشفها تلقائياً',
       'احفظ لقطة من البيانات الأصلية',
       'أجرِ التعديلات أو استورد النسخة المعدّلة',
       'شغّل المقارنة — كل صف يُصنَّف ويُلوَّن',
@@ -501,6 +534,7 @@ const ar: SheetDiffI18n = {
     diffCats: [
       { label: 'دون تغيير — صفوف متطابقة بين النسختين', color: 'gray' },
       { label: 'معدّل — صفوف بها تغييرات في النص أو التوقيت', color: 'yellow' },
+      { label: 'منقول — نفس المعرّف أو السجل ظهر في موضع صف مختلف', color: 'cyan' },
       { label: 'مقسّم — صف أصلي واحد قُسّم إلى عدة صفوف', color: 'purple' },
       { label: 'مدمج — عدة صفوف أصلية دُمجت في صف واحد', color: 'indigo' },
       { label: 'مضاف — صفوف جديدة في النسخة المعدّلة', color: 'green' },
@@ -512,7 +546,7 @@ const ar: SheetDiffI18n = {
       'اكتشاف تلقائي لأدوار الأعمدة عبر مطابقة مرنة للعناوين',
       'ورقة عرض الفروقات بالألوان',
       'تقرير ضمان الجودة مع عدّادات لكل فئة ومقاييس WER/CER/SER',
-      'حد تشابه قابل للتعديل',
+      'مطابقة حسب المعرّف لكتالوجات المنتجات وجداول المخزون وتحديثات الموردين',
       'تطبيع متعدد الخطوط (العربية، السيريلية، CJK، التايلندية، الديفاناغري، البنغالية)',
       'بيانات وصفية اختيارية للمراجع والناسخ',
       'شريط جانبي للإعدادات للتحكم الكامل',
@@ -543,6 +577,10 @@ const ar: SheetDiffI18n = {
         desc: 'تتبع التغييرات في جداول البيانات المترجمة بتطبيع متعدد النصوص — العربية والسيريلية واليابانية/الصينية والتايلاندية والديفاناغاري والمزيد.',
       },
       {
+        title: 'كتالوجات المنتجات والمخزون',
+        desc: 'قارن كتالوجات المنتجات وقوائم أسعار الموردين وجداول المخزون والسجلات المعتمدة على SKU. اكتشف الحقول المعدّلة والمنتجات المضافة والعناصر المحذوفة والصفوف المعاد ترتيبها داخل Google Sheets™.',
+      },
+      {
         title: 'ضمان جودة البيانات',
         desc: 'تحقق من سلامة البيانات بين نسختين. كل تعديل وإضافة وحذف وتقسيم ودمج يُصنَّف ويُلوَّن تلقائياً.',
       },
@@ -555,6 +593,15 @@ const ar: SheetDiffI18n = {
         desc: 'احفظ لقطة، أجرِ التعديلات، ثم قارن — سير عمل مقارنة إصدارات خفيف الوزن بالكامل داخل Google Sheets™.',
       },
     ],
+    simpleUseCaseEyebrow: 'فيديو حالة استخدام: الوضع البسيط لكتالوجات المنتجات',
+    simpleUseCaseTitle: 'قارن كتالوجات المنتجات في Google Sheets حسب SKU',
+    simpleUseCaseDesc: 'شاهد SheetDiff يقارن كتالوج منتجات معتمد مع تحديث مورّد، ثم يبرز الحقول المعدّلة والـ SKU الجديدة والمنتجات المحذوفة حتى إذا تغيّر ترتيب الصفوف في ملف المورد.',
+    simpleUseCaseBullets: [
+      'مناسب لمن يبحث عن: مقارنة كتالوجين في Google Sheets، اكتشاف الصفوف المضافة والمحذوفة في جدول بيانات، أو مقارنة حسب SKU.',
+      'يستخدم الوضع البسيط عمود معرّف مثل SKU حتى لا يتحول تغيير ترتيب الصفوف إلى فروقات خاطئة.',
+      'تتوفر فئة مستقلة لاكتشاف الصفوف المنقولة ضمن Structural Diff عندما تريد إظهار تغيّر موضع الصف بوضوح.',
+    ],
+    simpleUseCaseVideoTitle: 'عرض SheetDiff Simple Mode لمقارنة كتالوج منتجات',
   },
   pricing: {
     title: 'أسعار SheetDiff™',
