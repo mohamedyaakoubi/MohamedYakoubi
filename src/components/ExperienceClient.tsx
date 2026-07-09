@@ -7,6 +7,21 @@ import { useTranslation } from '@/hooks/useTranslation'
 
 const experiences: Experience[] = [
   {
+    title: "External QA",
+    company: "DATAmundi",
+    companyUrl: "https://datamundi.ai/",
+    location: "Sfax (Remote)",
+    period: "Jun 2026 - Present",
+    description: [
+      "datamundi_desc_1",
+      "datamundi_desc_2",
+      "datamundi_desc_3",
+      "datamundi_desc_4",
+      "datamundi_desc_5",
+      "datamundi_desc_6"
+    ],
+  },
+  {
     title: "AI Data Annotator & Search Relevance Evaluator",
     company: "Lionbridge",
     companyUrl: "https://www.lionbridge.com",

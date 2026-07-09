@@ -10,6 +10,7 @@ import { FileText } from "lucide-react"
 
 // Company logo data with names, image paths, and URLs
 const companies = [
+  { name: "DATAmundi", logo: "/companies/datamundi_logo.png", url: "https://datamundi.ai/" },
   { name: "DeepL", logo: "/companies/DeepL_logo.svg", url: "https://www.deepl.com/" },
   { name: "Meta AI", logo: "/companies/Meta_AI_logo.png", url: "https://ai.meta.com/" },
   { name: "Premise", logo: "/companies/premise_logo.png", url: "https://premise.com/" },
@@ -51,7 +52,7 @@ export function CompanyLogos() {
   
   // Function to determine logo size category
   const getLogoSizeClass = (companyName: string) => {
-    if (["Translated", "Meta AI"].includes(companyName)) {
+    if (["Translated", "Meta AI", "DATAmundi"].includes(companyName)) {
       return "extra-large";
     } else if (companyName === "Toloka") {
       return "medium";

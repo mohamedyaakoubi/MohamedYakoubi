@@ -14,25 +14,25 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   
   const titles = {
-    en: 'Professional Experience | Mohamed Yaakoubi | Wirestock, Prosessor.AI, DeepL, Meta AI (RWS), Uber, UbiAi | Transcription, Video Metadata, Translation, AI Evaluation',
-    fr: 'Expérience Professionnelle | Mohamed Yaakoubi | Wirestock, Prosessor.AI, DeepL, Meta AI (RWS), Uber, UbiAi | Transcription, Métadonnées Vidéo, Traduction, Évaluation IA',
-    ar: 'الخبرة المهنية | محمد يعقوبي | Wirestock، Prosessor.AI، DeepL، Meta AI (RWS)، Uber، UbiAi | النسخ، البيانات الوصفية للفيديو، الترجمة، تقييم الذكاء الاصطناعي'
+    en: 'Professional Experience | Mohamed Yaakoubi | DATAmundi, Wirestock, Prosessor.AI, DeepL, Meta AI (RWS), Uber, UbiAi | QA, Transcription, Video Metadata, Translation, AI Evaluation',
+    fr: 'Expérience Professionnelle | Mohamed Yaakoubi | DATAmundi, Wirestock, Prosessor.AI, DeepL, Meta AI (RWS), Uber, UbiAi | QA, Transcription, Métadonnées Vidéo, Traduction, Évaluation IA',
+    ar: 'الخبرة المهنية | محمد يعقوبي | DATAmundi، Wirestock، Prosessor.AI، DeepL، Meta AI (RWS)، Uber، UbiAi | ضمان الجودة، النسخ، البيانات الوصفية للفيديو، الترجمة، تقييم الذكاء الاصطناعي'
   }
   
   const descriptions = {
-    en: 'Comprehensive work experience of Mohamed Yaakoubi: Media Content & Metadata Specialist at Wirestock (Full-time), Arabic Maghrebi Transcriber at Prosessor.AI, Linguistic AI Evaluator at RWS/Meta AI (Llama 4), Localization Coordinator at Uber via Volga Partners, Linguistic Editor at DeepL, Technical Writer at UbiAi, and 5+ years as Freelance Editor at Unbabel (1.6M+ words translated). Specializing in Arabic transcription & annotation, AI content evaluation, machine translation post-editing, and localization quality assurance.',
-    fr: 'Expérience professionnelle complète de Mohamed Yaakoubi : Spécialiste Contenu & Métadonnées Médias chez Wirestock (Temps plein), Transcripteur Arabe Maghrébin chez Prosessor.AI, Évaluateur IA Linguistique chez RWS/Meta AI (Llama 4), Coordinateur Localisation chez Uber via Volga Partners, Éditeur Linguistique chez DeepL, Rédacteur Technique chez UbiAi, et 5+ ans comme Éditeur Freelance chez Unbabel (1,6M+ mots traduits). Spécialisé en transcription & annotation arabe, évaluation contenu IA, post-édition traduction automatique, et assurance qualité localisation.',
-    ar: 'الخبرة المهنية الشاملة لمحمد يعقوبي: متخصص محتوى وبيانات وصفية للوسائط في Wirestock (دوام كامل)، ناسخ عربية مغاربية في Prosessor.AI، مقيم ذكاء اصطناعي لغوي في RWS/Meta AI (Llama 4)، منسق توطين في Uber عبر Volga Partners، محرر لغوي في DeepL، كاتب تقني في UbiAi، و5+ سنوات كمحرر مستقل في Unbabel (1.6 مليون+ كلمة مترجمة). متخصص في النسخ والتعليق العربي، تقييم محتوى الذكاء الاصطناعي، مراجعة الترجمة الآلية، وضمان جودة التوطين.'
+    en: 'Comprehensive work experience of Mohamed Yaakoubi: External QA at DATAmundi, Media Content & Metadata Specialist at Wirestock, Arabic Maghrebi Transcriber at Prosessor.AI, Linguistic AI Evaluator at RWS/Meta AI (Llama 4), Localization Coordinator at Uber via Volga Partners, Linguistic Editor at DeepL, Technical Writer at UbiAi, and 5+ years as Freelance Editor at Unbabel (1.6M+ words translated). Specializing in multilingual QA, Arabic transcription & annotation, AI content evaluation, machine translation post-editing, and localization quality assurance.',
+    fr: 'Expérience professionnelle complète de Mohamed Yaakoubi : QA externe chez DATAmundi, Spécialiste Contenu & Métadonnées Médias chez Wirestock, Transcripteur Arabe Maghrébin chez Prosessor.AI, Évaluateur IA Linguistique chez RWS/Meta AI (Llama 4), Coordinateur Localisation chez Uber via Volga Partners, Éditeur Linguistique chez DeepL, Rédacteur Technique chez UbiAi, et 5+ ans comme Éditeur Freelance chez Unbabel (1,6M+ mots traduits). Spécialisé en QA multilingue, transcription & annotation arabe, évaluation contenu IA, post-édition traduction automatique, et assurance qualité localisation.',
+    ar: 'الخبرة المهنية الشاملة لمحمد يعقوبي: مراجع جودة خارجي في DATAmundi، متخصص محتوى وبيانات وصفية للوسائط في Wirestock، ناسخ عربية مغاربية في Prosessor.AI، مقيم ذكاء اصطناعي لغوي في RWS/Meta AI (Llama 4)، منسق توطين في Uber عبر Volga Partners، محرر لغوي في DeepL، كاتب تقني في UbiAi، و5+ سنوات كمحرر مستقل في Unbabel (1.6 مليون+ كلمة مترجمة). متخصص في ضمان الجودة متعدد اللغات، النسخ والتعليق العربي، تقييم محتوى الذكاء الاصطناعي، مراجعة الترجمة الآلية، وضمان جودة التوطين.'
   }
 
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     keywords: [
-      'Mohamed Yaakoubi experience', 'Wirestock', 'Prosessor.AI', 'UbiAi', 'DeepL', 'RWS Meta AI',
+      'Mohamed Yaakoubi experience', 'DATAmundi', 'External QA', 'Wirestock', 'Prosessor.AI', 'UbiAi', 'DeepL', 'RWS Meta AI',
       'Arabic transcriber', 'Maghrebi Arabic', 'audio transcription',
       'video metadata writer', 'technical content writer', 'linguistic editor',
-      'AI evaluator', 'machine translation', 'Arabic English translation',
+      'AI evaluator', 'data annotation QA', 'machine translation', 'Arabic English translation',
       'freelance AI specialist', 'remote work experience', 'speech-to-text'
     ].join(', '),
     alternates: {

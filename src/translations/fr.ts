@@ -497,6 +497,7 @@ export default {
         pageTitle: "Expérience Professionnelle — IA, Localisation & Technologie du Langage",
         current: "Présent",
         positions: {
+          "External QA": "QA externe",
           "AI Data Annotator & Search Relevance Evaluator": "Annotateur de données IA & Évaluateur de pertinence de recherche",
           "Media Content & Metadata Specialist": "Spécialiste en Contenu Média et Métadonnées",
           "Transcriber – Arabic (Maghrebi)": "Transcripteur – Arabe (Maghrébin)",
@@ -515,6 +516,7 @@ export default {
           "Freelance Editor (Arabic to English & English to Arabic)": "Éditeur freelance (Arabe vers Anglais & Anglais vers Arabe)"
         },
         companies: {
+          "DATAmundi": "DATAmundi",
           "Lionbridge": "Lionbridge",
           "Wirestock": "Wirestock",
           "ProsessorAI Data & Language Services": "Prosessor.AI Data & Language Services",
@@ -535,6 +537,7 @@ export default {
           "Sfax (Remote)": "Sfax (Télétravail)"
         },
         periods: {
+          "Jun 2026 - Present": "Juin 2026 - Présent",
           "Dec 2025 - Present": "Déc 2025 - Présent",
           "Apr 2025 - Present": "Avr 2025 - Présent",
           "Sep 2025 - Present": "Sept 2025 - Présent",
@@ -555,6 +558,14 @@ export default {
           nonConfidential: "(non confidentiel)"
         },
         descriptions: {
+          // DATAmundi - 6 descriptions
+          "datamundi_desc_1": "Révision et audit des livrables d'annotation de données produits par des annotateurs freelance dans plusieurs langues, en assurant cohérence, exactitude et respect des standards de qualité propres aux projets",
+          "datamundi_desc_2": "Évaluation de réponses générées par IA selon des critères de qualité structurés, notamment pertinence, exactitude factuelle, complétude et actualité, contribuant à l'amélioration des performances des systèmes de recherche et d'IA",
+          "datamundi_desc_3": "Identification et catégorisation des erreurs d'annotation, transmission de retours structurés aux freelances et remontée des problèmes qualité récurrents aux chefs de projet et responsables qualité via des flux de feedback formels",
+          "datamundi_desc_4": "Application de compétences d'évaluation qualité interlinguistique pour réviser du travail dans plusieurs locales linguistiques, en maintenant des standards élevés même dans des langues hors compétence native",
+          "datamundi_desc_5": "Gestion de volumes de travail importants avec un engagement de disponibilité quotidienne constant, respectant les délais de livraison tout en maintenant une revue qualité rigoureuse",
+          "datamundi_desc_6": "Collaboration au sein d'une équipe distribuée et multilingue pour maintenir les benchmarks de qualité d'annotation et garantir la fiabilité des datasets d'entraînement et d'évaluation IA",
+
           // Lionbridge - 9 descriptions
           "lionbridge_desc_1": "Contribution à l'amélioration des modèles d'apprentissage automatique et des algorithmes de recherche par l'évaluation et la création de données multimodales",
           "lionbridge_desc_2": "Analyse et annotation des requêtes de recherche pour affiner les algorithmes, en respectant strictement les directives du Marketplace Relevance Project (MRP)",

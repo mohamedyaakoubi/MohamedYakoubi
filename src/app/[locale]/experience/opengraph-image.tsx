@@ -51,7 +51,7 @@ export default async function Image() {
             Professional Experience
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '26px', margin: 0 }}>
-            Wirestock - DeepL - Meta AI (RWS) - Uber - Unbabel
+            DATAmundi - Wirestock - DeepL - Meta AI (RWS) - Uber
           </p>
         </div>
 

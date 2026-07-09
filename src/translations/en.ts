@@ -428,6 +428,7 @@ projects: {
     pageTitle: "Professional Experience — AI, Localization & Language Technology",
     current: "Present",
     positions: {
+      "External QA": "External QA",
       "AI Data Annotator & Search Relevance Evaluator": "AI Data Annotator & Search Relevance Evaluator",
       "Media Content & Metadata Specialist": "Media Content & Metadata Specialist",
       "Transcriber – Arabic (Maghrebi)": "Transcriber – Arabic (Maghrebi)",
@@ -445,6 +446,7 @@ projects: {
       "Freelance Editor (Arabic to English & English to Arabic)": "Freelance Editor (Arabic to English & English to Arabic)"
     },
     companies: {
+      "DATAmundi": "DATAmundi",
       "Lionbridge": "Lionbridge",
       "Wirestock": "Wirestock",
       "ProsessorAI Data & Language Services": "Prosessor.AI Data & Language Services",
@@ -465,6 +467,7 @@ projects: {
       "Sfax (Remote)": "Sfax (Remote)"
     },
     periods: {
+      "Jun 2026 - Present": "Jun 2026 - Present",
       "Dec 2025 - Present": "Dec 2025 - Present",
       "Apr 2025 - Present": "Apr 2025 - Present",
       "Sep 2025 - Present": "Sep 2025 - Present",
@@ -485,6 +488,14 @@ projects: {
       nonConfidential: "(non-confidential)"
     },
     descriptions: {
+      // DATAmundi - 6 descriptions
+      "datamundi_desc_1": "Reviewed and audited data annotation outputs produced by freelance annotators across multiple languages, ensuring consistency, accuracy, and adherence to project-specific quality standards",
+      "datamundi_desc_2": "Evaluated AI-generated responses against structured quality criteria including relevance, factual accuracy, completeness, and timeliness, contributing to the improvement of search and AI system performance",
+      "datamundi_desc_3": "Identified and categorized annotation errors, provided structured feedback to freelancers, and escalated recurring quality issues to project managers and quality leads through formal feedback workflows",
+      "datamundi_desc_4": "Applied cross-linguistic quality assessment skills to review work across multiple language locales, maintaining high standards even in languages outside native proficiency",
+      "datamundi_desc_5": "Managed high-volume workloads with a consistent daily availability commitment, meeting delivery deadlines while maintaining thorough quality review standards",
+      "datamundi_desc_6": "Collaborated within a distributed, multilingual team to uphold annotation quality benchmarks and ensure the reliability of AI training and evaluation datasets",
+
       // Lionbridge - 9 descriptions
       "lionbridge_desc_1": "Contributing to the improvement of machine learning models and search algorithms through multimodal data evaluation and creation",
       "lionbridge_desc_2": "Analyzed and annotated search queries to refine search algorithms, ensuring strict adherence to Marketplace Relevance Project (MRP) guidelines",

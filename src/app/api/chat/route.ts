@@ -149,7 +149,7 @@ function getFallbackResponse(language: Language, query: string): string {
         en: {
             greeting: "Hello! I'm Mohamed Yaakoubi's AI assistant. I'm currently in demo mode. I specialize in AI/ML, web development, and language services. How can I help you today?",
             services: "I offer AI solutions, web development, translation services, and consulting. I have experience with React, Next.js, Python, and various AI frameworks.",
-            experience: "I have experience working with companies like DeepL, RWS (Meta AI), Uber, and Volga Partners in various AI and technology roles.",
+            experience: "I have experience working with companies like DATAmundi, DeepL, RWS (Meta AI), Uber, and Volga Partners in AI quality, evaluation, and language technology roles.",
             projects: "Some of my key projects include NotYet (AI career guidance), DocuMed (healthcare platform), and Potential (AI search engine).",
             contact: "You can reach me through the contact form on this website, or connect with me on LinkedIn. I'm always open to discussing new opportunities and collaborations.",
             skills: "My core skills include AI/ML development, web development with React and Next.js, translation and localization services, and consulting on technology solutions.",
@@ -158,7 +158,7 @@ function getFallbackResponse(language: Language, query: string): string {
         fr: {
             greeting: "Bonjour ! Je suis l'assistant IA de Mohamed Yaakoubi. Je suis actuellement en mode démo. Je me spécialise dans l'IA/ML, le développement web et les services linguistiques. Comment puis-je vous aider ?",
             services: "J'offre des solutions IA, développement web, services de traduction et consulting. J'ai de l'expérience avec React, Next.js, Python et divers frameworks IA.",
-            experience: "J'ai de l'expérience avec des entreprises comme DeepL, RWS (Meta AI), Uber et Volga Partners dans divers rôles technologiques et IA.",
+            experience: "J'ai de l'expérience avec des entreprises comme DATAmundi, DeepL, RWS (Meta AI), Uber et Volga Partners dans des rôles de qualité IA, d'évaluation et de technologie linguistique.",
             projects: "Mes projets clés incluent NotYet (orientation IA), DocuMed (plateforme santé) et Potential (moteur de recherche IA).",
             contact: "Vous pouvez me contacter via le formulaire de contact sur ce site, ou me joindre sur LinkedIn. Je suis toujours ouvert aux discussions sur de nouvelles opportunités.",
             skills: "Mes compétences principales incluent le développement IA/ML, le développement web avec React et Next.js, les services de traduction et localisation, et le conseil en solutions technologiques.",
@@ -167,7 +167,7 @@ function getFallbackResponse(language: Language, query: string): string {
         ar: {
             greeting: "مرحباً! أنا المساعد الذكي لمحمد يعقوبي. أعمل حالياً في وضع التجريب. أتخصص في الذكاء الاصطناعي وتطوير الويب والخدمات اللغوية. كيف يمكنني مساعدتك؟",
             services: "أقدم حلول الذكاء الاصطناعي وتطوير الويب وخدمات الترجمة والاستشارات. لدي خبرة في React و Next.js و Python وأطر عمل الذكاء الاصطناعي.",
-            experience: "لدي خبرة مع شركات مثل DeepL و RWS (Meta AI) و Uber و Volga Partners في أدوار متنوعة في التكنولوجيا والذكاء الاصطناعي.",
+            experience: "لدي خبرة مع شركات مثل DATAmundi و DeepL و RWS (Meta AI) و Uber و Volga Partners في أدوار ضمان جودة الذكاء الاصطناعي والتقييم وتكنولوجيا اللغة.",
             projects: "مشاريعي الرئيسية تشمل NotYet (توجيه مهني بالذكاء الاصطناعي) و DocuMed (منصة صحية) و Potential (محرك بحث ذكي).",
             contact: "يمكنك التواصل معي عبر نموذج الاتصال في هذا الموقع، أو التواصل معي على LinkedIn. أنا دائماً مفتوح لمناقشة الفرص الجديدة.",
             skills: "مهاراتي الأساسية تشمل تطوير الذكاء الاصطناعي والتعلم الآلي، تطوير الويب باستخدام React و Next.js، خدمات الترجمة والتوطين، والاستشارات التقنية.",

@@ -22,6 +22,20 @@
   ],
   "experience": [
     {
+      "role": "External QA",
+      "company": "DATAmundi",
+      "location": "Remote, Sfax",
+      "period": "Since June 2026",
+      "responsibilities": [
+        "Reviewed and audited data annotation outputs produced by freelance annotators across multiple languages, ensuring consistency, accuracy, and adherence to project-specific quality standards",
+        "Evaluated AI-generated responses against structured quality criteria including relevance, factual accuracy, completeness, and timeliness",
+        "Identified and categorized annotation errors, provided structured feedback to freelancers, and escalated recurring quality issues through formal feedback workflows",
+        "Applied cross-linguistic quality assessment skills to review work across multiple language locales",
+        "Managed high-volume workloads with consistent daily availability while maintaining thorough quality review standards",
+        "Collaborated within a distributed, multilingual team to uphold annotation quality benchmarks for AI training and evaluation datasets"
+      ]
+    },
+    {
       "role": "Localization Vendor Coordinator",
       "company": "Uber",
       "location": "Remote, Sfax",

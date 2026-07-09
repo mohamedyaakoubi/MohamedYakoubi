@@ -42,9 +42,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
   
   const descriptions = {
-    en: 'Mohamed Yaakoubi: AI Language Technology Specialist at Wirestock, DeepL, RWS (Meta AI), Uber, and UbiAi. Expert in Arabic-English machine translation post-editing, LLM evaluation (Llama 4), AI annotation, localization coordination, and multilingual content creation. 5+ years experience with 1.6M+ words translated.',
-    fr: 'Mohamed Yaakoubi : Spécialiste en technologie linguistique IA chez Wirestock, DeepL, RWS (Meta AI), Uber et UbiAi. Expert en post-édition de traduction automatique arabe-anglais, évaluation de LLM (Llama 4), annotation IA et coordination de localisation. Plus de 1,6M de mots traduits.',
-    ar: 'محمد يعقوبي: متخصص تكنولوجيا اللغة بالذكاء الاصطناعي في Wirestock و DeepL و RWS (Meta AI) و Uber و UbiAi. خبير في مراجعة الترجمة الآلية عربي-إنجليزي، تقييم نماذج اللغة الكبيرة (Llama 4)، التعليق التوضيحي للذكاء الاصطناعي وتنسيق التوطين. أكثر من 1.6 مليون كلمة مترجمة.'
+    en: 'Mohamed Yaakoubi: AI Language Technology Specialist at DATAmundi, Wirestock, DeepL, RWS (Meta AI), Uber, and UbiAi. Expert in AI quality assurance, Arabic-English machine translation post-editing, LLM evaluation (Llama 4), AI annotation, localization coordination, and multilingual content creation. 5+ years experience with 1.6M+ words translated.',
+    fr: 'Mohamed Yaakoubi : Spécialiste en technologie linguistique IA chez DATAmundi, Wirestock, DeepL, RWS (Meta AI), Uber et UbiAi. Expert en assurance qualité IA, post-édition de traduction automatique arabe-anglais, évaluation de LLM (Llama 4), annotation IA et coordination de localisation. Plus de 1,6M de mots traduits.',
+    ar: 'محمد يعقوبي: متخصص تكنولوجيا اللغة بالذكاء الاصطناعي في DATAmundi و Wirestock و DeepL و RWS (Meta AI) و Uber و UbiAi. خبير في ضمان جودة الذكاء الاصطناعي، مراجعة الترجمة الآلية عربي-إنجليزي، تقييم نماذج اللغة الكبيرة (Llama 4)، التعليق التوضيحي للذكاء الاصطناعي وتنسيق التوطين. أكثر من 1.6 مليون كلمة مترجمة.'
   }
 
   return {
@@ -63,6 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'multilingual content writer', 'technical content writer',
       
       // Key current employers (for credibility & brand association)
+      'DATAmundi External QA', 'data annotation quality auditor',
       'Wirestock metadata specialist', 'DeepL linguistic editor', 'Meta AI evaluator',
       'Uber localization coordinator', 'RWS linguistic evaluator', 'Llama 4 evaluator',
       'UbiAi technical writer', 'Unbabel post-editor', 'Volga Partners quality reviewer',
@@ -209,9 +210,18 @@ export default async function LocaleLayout({
                 "width": 1200,
                 "height": 630
               },
-              "description": "Freelance AI Language Technology Specialist with expertise in machine translation post-editing, LLM evaluation, AI annotation, and localization coordination. Currently working with multiple companies: Wirestock (Media Content & Metadata Specialist), DeepL (Linguistic Editor), RWS/Meta AI (Linguistic AI Evaluator), Uber/Volga Partners (Localization Coordinator & Quality Reviewer), and UbiAi (Technical Content Writer).",
+              "description": "Freelance AI Language Technology Specialist with expertise in AI quality assurance, machine translation post-editing, LLM evaluation, AI annotation, and localization coordination. Currently working with multiple companies: DATAmundi (External QA), Wirestock (Media Content & Metadata Specialist), DeepL (Linguistic Editor), RWS/Meta AI (Linguistic AI Evaluator), Uber/Volga Partners (Localization Coordinator & Quality Reviewer), and UbiAi (Technical Content Writer).",
               "jobTitle": ["AI Language Technology Specialist", "Machine Translation Post-Editor", "LLM Evaluator", "Localization Coordinator", "AI Annotator"],
               "hasOccupation": [
+                {
+                  "@type": "Occupation",
+                  "name": "External QA",
+                  "occupationLocation": {
+                    "@type": "Place",
+                    "name": "DATAmundi"
+                  },
+                  "skills": ["Data Annotation QA", "AI Response Evaluation", "Multilingual Quality Assessment", "Freelancer Feedback"]
+                },
                 {
                   "@type": "Occupation",
                   "name": "Media Content & Metadata Specialist",
@@ -268,6 +278,13 @@ export default async function LocaleLayout({
                 }
               ],
               "worksFor": [
+                {
+                  "@type": "Organization",
+                  "name": "DATAmundi",
+                  "url": "https://datamundi.ai/",
+                  "sameAs": "https://datamundi.ai/",
+                  "description": "External QA auditing multilingual data annotation outputs and AI-generated responses for AI training and evaluation datasets"
+                },
                 {
                   "@type": "Organization",
                   "name": "Wirestock",
@@ -588,9 +605,15 @@ export default async function LocaleLayout({
                 "width": 1200,
                 "height": 630
               },
-              "description": "Freelance AI Language Technology Specialist with expertise in machine translation post-editing, LLM evaluation, AI annotation, and localization coordination. Currently working with multiple companies: Wirestock (Media Content & Metadata Specialist), DeepL (Linguistic Editor), RWS/Meta AI (Linguistic AI Evaluator), Uber/Volga Partners (Localization Coordinator & Quality Reviewer), and UbiAi (Technical Content Writer).",
+              "description": "Freelance AI Language Technology Specialist with expertise in AI quality assurance, machine translation post-editing, LLM evaluation, AI annotation, and localization coordination. Currently working with multiple companies: DATAmundi (External QA), Wirestock (Media Content & Metadata Specialist), DeepL (Linguistic Editor), RWS/Meta AI (Linguistic AI Evaluator), Uber/Volga Partners (Localization Coordinator & Quality Reviewer), and UbiAi (Technical Content Writer).",
               "jobTitle": ["AI Language Technology Specialist", "Machine Translation Post-Editor", "LLM Evaluator", "Localization Coordinator", "AI Annotator"],
               "hasOccupation": [
+                {
+                  "@type": "Occupation",
+                  "name": "External QA",
+                  "occupationLocation": { "@type": "Place", "name": "DATAmundi" },
+                  "skills": ["Data Annotation QA", "AI Response Evaluation", "Multilingual Quality Assessment", "Freelancer Feedback"]
+                },
                 {
                   "@type": "Occupation",
                   "name": "Media Content & Metadata Specialist",
@@ -629,6 +652,13 @@ export default async function LocaleLayout({
                 }
               ],
               "worksFor": [
+                {
+                  "@type": "Organization",
+                  "name": "DATAmundi",
+                  "url": "https://datamundi.ai/",
+                  "sameAs": "https://datamundi.ai/",
+                  "description": "External QA auditing multilingual data annotation outputs and AI-generated responses for AI training and evaluation datasets"
+                },
                 {
                   "@type": "Organization",
                   "name": "Wirestock",

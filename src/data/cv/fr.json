@@ -22,6 +22,20 @@
     ],
     "experience": [
       {
+        "role": "QA externe",
+        "company": "DATAmundi",
+        "location": "Télétravail, Sfax",
+        "period": "Depuis Juin 2026",
+        "responsibilities": [
+          "Révision et audit des livrables d'annotation de données produits par des annotateurs freelance dans plusieurs langues, en assurant cohérence, exactitude et respect des standards de qualité propres aux projets",
+          "Évaluation de réponses générées par IA selon des critères de qualité structurés, notamment pertinence, exactitude factuelle, complétude et actualité",
+          "Identification et catégorisation des erreurs d'annotation, transmission de retours structurés aux freelances et remontée des problèmes qualité récurrents via des flux de feedback formels",
+          "Application de compétences d'évaluation qualité interlinguistique pour réviser du travail dans plusieurs locales linguistiques",
+          "Gestion de volumes de travail importants avec une disponibilité quotidienne constante tout en maintenant une revue qualité rigoureuse",
+          "Collaboration au sein d'une équipe distribuée et multilingue pour maintenir les benchmarks de qualité d'annotation des datasets d'entraînement et d'évaluation IA"
+        ]
+      },
+      {
         "role": "Coordinateur de Localisation",
         "company": "Uber",
         "location": "Télétravail, Sfax",
