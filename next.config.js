@@ -221,6 +221,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/automated_workflows_case_studies.pdf',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive, nosnippet',
+          },
+        ],
+      },
       // Static assets can be cached longer
       {
         source: '/_next/static/:path*',
