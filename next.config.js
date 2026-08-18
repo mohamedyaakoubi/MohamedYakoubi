@@ -230,6 +230,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/ai_coding_agents_case_studies.pdf',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive, nosnippet',
+          },
+        ],
+      },
       // Static assets can be cached longer
       {
         source: '/_next/static/:path*',
