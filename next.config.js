@@ -239,6 +239,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/Mohamed__Yaakoubi.pdf',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive, nosnippet',
+          },
+        ],
+      },
       // Static assets can be cached longer
       {
         source: '/_next/static/:path*',
