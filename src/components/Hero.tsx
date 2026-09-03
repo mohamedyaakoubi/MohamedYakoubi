@@ -7,27 +7,7 @@ import { useTypewriter } from "@/hooks/useTypewriter"
 import { useLanguage } from "@/context/language-context"
 import { useTranslation } from "@/hooks/useTranslation"
 import Image from "next/image"
-import dynamic from 'next/dynamic'
-
-// Types for Navigator.connection
-interface NetworkInformation {
-  saveData: boolean
-  // Add other properties if needed
-}
-
-// Dynamically import SocialButtons to reduce initial JS bundle
-const SocialButtons = dynamic(
-  () => import('@/components/ui/SocialButtons'),
-  {
-    loading: () => (
-      <div className="flex flex-wrap justify-center gap-4 mb-12 h-14 animate-pulse">
-        <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
-        <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
-        <div className="bg-gray-200 dark:bg-gray-700 w-32 h-12 rounded-full"></div>
-      </div>
-    )
-  }
-)
+import SocialButtons from '@/components/ui/SocialButtons'
 
 type AnimatedContentProps = {
   typedText: string;
@@ -71,36 +51,8 @@ export function Hero() {
     }
   }, [theme, mounted])
 
-  // Eagerly load critical content
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMounted(true)
-    }, 100) // Deferred mounting like in ClientLayout
-    
-    // Preload the background images with low priority
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-      (window as Window).requestIdleCallback(() => {
-        const darkImage = new window.Image();
-        darkImage.src = '/hero-dark.webp';
-        // Use a standard property instead of a non-standard attribute
-        darkImage.loading = 'lazy';
-      });
-    }
-    
-    // Prefetch CV with low priority during idle time
-    // Type-safe check for navigator.connection
-    if (typeof navigator !== 'undefined' && 
-      'connection' in navigator && 
-      (!navigator.connection?.saveData)) {
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.as = 'document';
-    link.href = '/Mohamed_Yaakoubi.pdf';
-    // Standard attributes only
-    document.head.appendChild(link);
-  }
-  
-  return () => clearTimeout(timer)
+    setMounted(true)
   }, [])
 
   const handleScroll = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -120,52 +72,37 @@ export function Hero() {
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center">
         {/* Background Elements with Next.js Image */}
         <div className="hero-background">
-          {/* Light theme background - high priority */}
-          <div
-            className="absolute inset-0"
-            style={{
-              opacity: currentTheme === "light" ? 1 : 0,
-              transition: "opacity 1000ms ease"
-            }}
-          >
+          {/* Light theme background */}
+          <div className="absolute inset-0 dark:hidden transition-opacity duration-1000">
             <div className="absolute inset-0 overflow-hidden">
-            <Image 
-  src="/hero-light.webp"
-  alt=""
-  fill
-  priority
-  sizes="100vw"
-  quality={65}
-  className="object-cover fixed-bg"
-/>
+              <Image 
+                src="/hero-light.webp"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                quality={65}
+                className="object-cover fixed-bg"
+              />
             </div>
             <div className="absolute inset-0 bg-white/15" />
           </div>
 
-          {/* Dark theme background - lower priority */}
-          {mounted && (
-            <div
-              className="absolute inset-0"
-              style={{
-                opacity: currentTheme === "dark" ? 1 : 0,
-                transition: "opacity 1000ms ease"
-              }}
-            >
-              <div className="absolute inset-0 overflow-hidden">
-                <Image 
-                  src="/hero-dark.webp"
-                  alt=""
-                  fill
-                  priority={false}
-                  sizes="100vw"
-                  quality={60}
-                  loading="lazy"
-                  className="object-cover fixed-bg"
-                />
-              </div>
-              <div className="absolute inset-0 bg-black/15" />
+          {/* Dark theme background */}
+          <div className="absolute inset-0 hidden dark:block transition-opacity duration-1000">
+            <div className="absolute inset-0 overflow-hidden">
+              <Image 
+                src="/hero-dark.webp"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                quality={60}
+                className="object-cover fixed-bg"
+              />
             </div>
-          )}
+            <div className="absolute inset-0 bg-black/15" />
+          </div>
         </div>
 
         {/* Content - Optimize for LCP */}

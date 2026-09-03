@@ -50,7 +50,6 @@ export function About() {
                 className="object-cover object-top transition-all duration-500 
                       group-hover:scale-110 group-hover:rotate-1"
                 sizes="(max-width: 768px) 100vw, 320px"
-                priority
               />
 
               {/* Hover Overlay */}

@@ -171,7 +171,7 @@ const nextConfig = {
   
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['react-icons', 'framer-motion'],
+    optimizePackageImports: ['react-icons', 'framer-motion', 'lucide-react', 'country-flag-icons'],
     webpackBuildWorker: true,
     optimizeServerReact: true,
   },

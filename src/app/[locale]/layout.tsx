@@ -3,7 +3,6 @@ import { Inter, IBM_Plex_Sans_Arabic } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/context/language-context'
 import { ClientLayout } from '@/components/ClientLayout'
-import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer } from '@/components/Footer'
 
@@ -20,7 +19,7 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
   display: 'swap',
   variable: '--font-ibm-plex',
-  preload: true,
+  preload: false,
   fallback: ['Arial', 'sans-serif']
 })
 
@@ -576,7 +575,6 @@ export default async function LocaleLayout({
             </ClientLayout>
           </LanguageProvider>
         </ThemeProvider>
-        <Analytics />
         <SpeedInsights />
 
         {/* ── JSON-LD structured data in <body> ──────────────────────────────
