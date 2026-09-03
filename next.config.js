@@ -259,11 +259,29 @@ const nextConfig = {
         ],
       },
       {
-        source: '/images/:path*',
+        source: '/companies/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/projects/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/:file(hero-light\\.webp|hero-dark\\.webp|profile\\.jpg|sheetdiff-logo\\.png|mohamed-yaakoubi\\.jpg|mohamed-yaakoubi-square\\.jpg|DocuMed\\.webp|NotYet\\.webp|Potential\\.webp)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, stale-while-revalidate=86400',
           },
         ],
       },

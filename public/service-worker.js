@@ -1,6 +1,6 @@
 // Service Worker for caching static assets
 // IMPORTANT: Increment version number on each deployment to force cache refresh
-const CACHE_NAME = 'mohamed-portfolio-cache-v89b5042';
+const CACHE_NAME = 'mohamed-portfolio-cache-v05b2974';
 
 // Check if we're in development mode
 const isDev = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';

@@ -56,9 +56,9 @@ export function ServiceCard({ service, index, locale, translations }: ServiceCar
 
         {/* Features */}
         <div className="mb-6">
-          <h3 className={`font-semibold text-gray-800 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+          <h4 className={`font-semibold text-gray-800 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
             {translations?.services?.sections?.features || 'Features'}
-          </h3>
+          </h4>
           <ul className={`service-list ${isRTL ? 'rtl-list' : ''}`}>
             {service.features.map((feature, featureIndex) => (
               <li key={featureIndex} className={`service-item ${isRTL ? 'rtl-item' : ''}`}>
@@ -76,9 +76,9 @@ export function ServiceCard({ service, index, locale, translations }: ServiceCar
         {/* Process */}
         {service.process && (
           <div className="mb-6">
-            <h3 className={`font-semibold text-gray-800 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h4 className={`font-semibold text-gray-800 dark:text-white mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>
               {translations?.services?.sections?.workProcess || 'Work Process'}
-            </h3>
+            </h4>
             <ol className={`service-list ${isRTL ? 'rtl-list' : ''}`}>
               {service.process?.map((step, i) => (
                 <li key={i} className={`service-item ${isRTL ? 'rtl-item' : ''}`}>

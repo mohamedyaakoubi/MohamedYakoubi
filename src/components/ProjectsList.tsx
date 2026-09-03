@@ -42,7 +42,6 @@ const GithubReposList = dynamic(() => import('@/components/GithubRepoList'), {
       </div>
     </div>
   ),
-  ssr: false
 })
 
 interface ProjectsListProps {

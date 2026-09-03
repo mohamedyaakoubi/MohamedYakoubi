@@ -586,18 +586,22 @@ export default async function LocaleLayout({
              all subsequent script positions. JSON-LD is fully valid in <body>
              and is crawled by Google, Bing, and all major search engines.    */}
 
-        {/* ── Person Schema ── */}
+        {/* ── ProfilePage & Person Schema ── */}
         <script
-          id="person-schema"
+          id="profile-page-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Mohamed Yaakoubi",
-              "givenName": "Mohamed",
-              "familyName": "Yaakoubi",
-              "alternateName": ["Yaakoubi Mohamed", "محمد يعقوبي", "Mohamed Yakoubi"],
+              "@type": "ProfilePage",
+              "dateCreated": "2024-01-01T00:00:00+00:00",
+              "dateModified": "2026-05-09T00:00:00+00:00",
+              "mainEntity": {
+                "@type": "Person",
+                "name": "Mohamed Yaakoubi",
+                "givenName": "Mohamed",
+                "familyName": "Yaakoubi",
+                "alternateName": ["Yaakoubi Mohamed", "محمد يعقوبي", "Mohamed Yakoubi"],
               "url": "https://www.mohamedyaakoubi.com",
               "image": {
                 "@type": "ImageObject",
@@ -847,29 +851,10 @@ export default async function LocaleLayout({
                   "url": "https://www.ted.com/participate/translate"
                 }
               ]
-            }).replace(/</g, '\\u003c')
-          }}
-        />
-
-        {/* ── BreadcrumbList Schema ── */}
-        <script
-          id="breadcrumb-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": `https://www.mohamedyaakoubi.com/${locale}`
-                }
-              ]
-            }).replace(/</g, '\\u003c')
-          }}
-        />
+            }
+          }).replace(/</g, '\\u003c')
+        }}
+      />
 
         {/* ── WebSite Schema ── */}
         <script

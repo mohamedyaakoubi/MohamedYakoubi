@@ -173,6 +173,7 @@ const simpleModeVideoJsonLd = {
   description:
     'A SheetDiff use case video showing how to compare product catalogs in Google Sheets by SKU, highlight modified fields, find added and deleted products, and avoid false differences when supplier rows are reordered.',
   thumbnailUrl: 'https://i.ytimg.com/vi/9NITyMjfIdw/hqdefault.jpg',
+  uploadDate: '2025-01-15T00:00:00+00:00',
   embedUrl: 'https://www.youtube-nocookie.com/embed/9NITyMjfIdw',
   contentUrl: 'https://www.youtube.com/watch?v=9NITyMjfIdw',
 }

@@ -22,7 +22,7 @@ const companies = [
     name: "Unbabel", 
     logo: "/companies/Unbabel_logo.webp", 
     url: "https://unbabel.com/",
-    referenceLetter: "/companies/docuemnts/Unbabel Reference letter_Mohamed Yakoubi.pdf"
+    referenceLetter: "/companies/docuemnts/Unbabel%20Reference%20letter_Mohamed%20Yakoubi.pdf"
   },
   { name: "Volga", logo: "/companies/volga_logo.png", url: "https://volgapartners.com/" },
   { name: "Ubiai", logo: "/companies/ubi.png", url: "https://ubiai.tools/" },

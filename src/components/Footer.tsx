@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { getTranslations } from '@/lib/translations'
 import { blogPosts } from '@/data/blog'
+import { FooterLocaleLinks } from './FooterLocaleLinks'
 
 interface FooterProps {
   locale: string;
@@ -177,14 +178,8 @@ export function Footer({ locale }: FooterProps) {
               {locale === 'fr' ? "Conditions d\u2019utilisation" : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}
             </Link>
           </div>
-          {/* Language versions — static links so crawlers discover all locale variants */}
-          <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500">
-            <Link href="/en" hrefLang="en" className="hover:text-blue-400 transition-colors">English</Link>
-            <span aria-hidden="true">&middot;</span>
-            <Link href="/fr" hrefLang="fr" className="hover:text-blue-400 transition-colors">Français</Link>
-            <span aria-hidden="true">&middot;</span>
-            <Link href="/ar" hrefLang="ar" className="hover:text-blue-400 transition-colors">العربية</Link>
-          </div>
+          {/* Language versions — dynamic localized links so crawlers discover all locale variants */}
+          <FooterLocaleLinks />
         </div>
       </div>
       <div className="absolute bottom-12" style={{ left: '7rem' }}>

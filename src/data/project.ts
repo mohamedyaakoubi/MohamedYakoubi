@@ -27,7 +27,7 @@ export const featuredProjects: Project[] = [
     technologies: ["Google Apps Script", "Google Sheets API", "CardService", "HtmlService"],
     image: "/sheetdiff-logo.png",
     detailPage: "/sheetdiff",
-    marketplaceUrl: "https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_qa/51917286120",
+    marketplaceUrl: "https://workspace.google.com/marketplace/app/sheetdiff_%E2%80%94_compare_diff_qa_for_sheets/51917286120",
     features: [
       "Auto-detect column roles via flexible header pattern matching",
       "Snapshot-based comparison workflow (original → reworked)",

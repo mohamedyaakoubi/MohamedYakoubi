@@ -31,6 +31,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'x-default': 'https://www.mohamedyaakoubi.com/en/sheetdiff/terms-of-service',
       },
     },
+    openGraph: {
+      title: titles[locale] ?? titles.en,
+      description: descriptions[locale] ?? descriptions.en,
+      url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/terms-of-service`,
+      type: 'website',
+      siteName: 'SheetDiff™ by Mohamed Yaakoubi',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale] ?? titles.en,
+      description: descriptions[locale] ?? descriptions.en,
+    },
   }
 }
 

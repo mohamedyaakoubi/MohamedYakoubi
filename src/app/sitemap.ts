@@ -44,6 +44,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sitemapEntries: MetadataRoute.Sitemap = []
 
+  const getAlternates = (path: string) => ({
+    languages: {
+      en: `${baseUrl}/en${path}`,
+      fr: `${baseUrl}/fr${path}`,
+      ar: `${baseUrl}/ar${path}`,
+    }
+  })
+
   // DON'T add root URL - only add localized versions
   locales.forEach(locale => {
     pages.forEach(page => {
@@ -64,6 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: pageLastModified[page],
         changeFrequency,
         priority,
+        alternates: getAlternates(page),
       })
     })
 
@@ -75,6 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: sheetdiffSubPageDates[page],
         changeFrequency: 'yearly',
         priority: 0.5,
+        alternates: getAlternates(page),
       })
     })
 
@@ -84,6 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: apiDocsDate,
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: getAlternates('/sheetdiff/api-docs'),
     })
     const apiDocSubPages = [
       '/sheetdiff/api-docs/parameters',
@@ -98,6 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: apiDocsDate,
         changeFrequency: 'monthly',
         priority: 0.7,
+        alternates: getAlternates(page),
       })
     })
 
@@ -112,6 +124,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: apiDocsLegalDate,
         changeFrequency: 'yearly',
         priority: 0.4,
+        alternates: getAlternates(page),
       })
     })
 
@@ -121,18 +134,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: projectPageDates['/projects/potential'],
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: getAlternates('/projects/potential'),
     })
     sitemapEntries.push({
       url: `${baseUrl}/${locale}/projects/documed`,
       lastModified: projectPageDates['/projects/documed'],
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: getAlternates('/projects/documed'),
     })
     sitemapEntries.push({
       url: `${baseUrl}/${locale}/projects/internationalskills`,
       lastModified: projectPageDates['/projects/internationalskills'],
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: getAlternates('/projects/internationalskills'),
     })
 
     // Add individual blog posts
@@ -142,6 +158,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.updatedAt || post.publishedAt),
         changeFrequency: 'monthly',
         priority: 0.7,
+        alternates: getAlternates(`/blog/${post.slug}`),
       })
     })
   })
