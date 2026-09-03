@@ -41,7 +41,7 @@ const SocialButton = memo(({
     title={title || label}
     {...(type ? { type } : {})}
   >
-    <Icon className="w-5 h-5" />
+    <Icon className="w-5 h-5" aria-hidden="true" focusable="false" />
     <span>{label}</span>
   </motion.a>
 ));

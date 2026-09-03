@@ -1,0 +1,20 @@
+# Mohamed Yaakoubi - AI Language Technology Specialist & Portfolio
+
+> Portfolio, software engineering work, and AI innovations of Mohamed Yaakoubi.
+
+## Overview
+Mohamed Yaakoubi is an AI Language Technology Specialist, Full-Stack Developer, and Founder based in Sousse, Tunisia. He specializes in natural language processing (NLP), Arabic dialectal computing, agentic workflows, and high-performance web applications built with Next.js, TypeScript, and Tailwind CSS.
+
+## Primary Projects
+- **SheetDiff™** (https://www.mohamedyaakoubi.com/en/sheetdiff): A Google Sheets add-on and high-precision tabular data comparison engine. Features cell-level diffing, fuzzy matching, and REST API integration.
+- **Potential** (https://www.mohamedyaakoubi.com/en/projects/potential): Human potential and career exploration platform.
+- **DocuMed** (https://www.mohamedyaakoubi.com/en/projects/documed): Medical documentation and patient record management system.
+- **InternationalSkills** (https://www.mohamedyaakoubi.com/en/projects/internationalskills): Global competency assessment and talent discovery engine.
+
+## Key Links
+- Portfolio: https://www.mohamedyaakoubi.com/en
+- SheetDiff: https://www.mohamedyaakoubi.com/en/sheetdiff
+- API Documentation: https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs
+- GitHub: https://github.com/mohamedyaakoubi
+- LinkedIn: https://www.linkedin.com/in/yaakoubi-mohamed/
+- Contact: amirrak8@gmail.com

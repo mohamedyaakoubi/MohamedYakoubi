@@ -1,6 +1,6 @@
 // Service Worker for caching static assets
 // IMPORTANT: Increment version number on each deployment to force cache refresh
-const CACHE_NAME = 'mohamed-portfolio-cache-v34c42c5';
+const CACHE_NAME = 'mohamed-portfolio-cache-vb2d9666';
 
 // Check if we're in development mode
 const isDev = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
@@ -11,8 +11,7 @@ const urlsToCache = [
   '/hero-dark.webp',
   '/favicon.ico',
   '/icon-192.png',
-  '/icon-512.png',
-  '/sounds/notification.mp3'
+  '/icon-512.png'
 ];
 
 // Install event - cache critical assets

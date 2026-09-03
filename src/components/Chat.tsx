@@ -20,7 +20,6 @@ export default function Chat() {
   const [error, setError] = useState<Error | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [showNotification, setShowNotification] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [hasOpenedChat, setHasOpenedChat] = useState(false);
   const [hasPlayedNotification, setHasPlayedNotification] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -35,11 +34,6 @@ export default function Chat() {
   useEffect(() => {
     if (!hasMounted) return;
     
-    // Create and set up audio element
-    const audio = new Audio('/sounds/notification.mp3');
-    audio.preload = 'auto';
-    audioRef.current = audio;
-    
     const timer = setTimeout(() => {
       setShowNotification(true);
       setMessages([{
@@ -50,12 +44,13 @@ export default function Chat() {
       // Try to play audio after user interaction
       const playAudio = async () => {
         try {
-          if (audioRef.current && !hasPlayedNotification) {
-            await audioRef.current.play();
+          if (!hasPlayedNotification) {
+            const audio = new Audio('/sounds/notification.mp3');
+            await audio.play();
             setHasPlayedNotification(true);
           }
-        } catch (error) {
-          console.log('Audio playback failed:', error);
+        } catch {
+          // Audio playback failed or blocked by policy
         }
       };
 
@@ -74,7 +69,7 @@ export default function Chat() {
         document.removeEventListener('click', handleInteraction);
         document.removeEventListener('touchstart', handleInteraction);
       };
-    }, 1500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [hasMounted, t, hasPlayedNotification]);
@@ -181,12 +176,6 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 9999 }}>
-   <audio 
-  ref={audioRef} 
-  src="/sounds/notification.mp3" 
-  preload="auto"
-  style={{ display: 'none' }}
-/>
       <div className="fixed bottom-6 right-6 pointer-events-auto">
       <button
   onClick={handleChatToggle}

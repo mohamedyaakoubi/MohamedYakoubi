@@ -112,22 +112,22 @@ export function Footer({ locale }: FooterProps) {
                 </ul>
               </li>
               <li>
-                <Link href={getLocalizedUrl('/sheetdiff/privacy-policy')} className="hover:text-blue-400 transition-colors text-gray-400">
+                <Link href={getLocalizedUrl('/sheetdiff/privacy-policy')} aria-label="SheetDiff Privacy Policy" className="hover:text-blue-400 transition-colors text-gray-400">
                   {locale === 'fr' ? 'Politique de confidentialité' : locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedUrl('/sheetdiff/terms-of-service')} className="hover:text-blue-400 transition-colors text-gray-400">
+                <Link href={getLocalizedUrl('/sheetdiff/terms-of-service')} aria-label="SheetDiff Terms of Service" className="hover:text-blue-400 transition-colors text-gray-400">
                   {locale === 'fr' ? 'Conditions d\u2019utilisation' : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedUrl('/sheetdiff/api-docs/privacy-policy')} className="hover:text-blue-400 transition-colors text-gray-400">
+                <Link href={getLocalizedUrl('/sheetdiff/api-docs/privacy-policy')} aria-label="SheetDiff API Privacy Policy" className="hover:text-blue-400 transition-colors text-gray-400">
                   {locale === 'fr' ? 'Confidentialité API' : locale === 'ar' ? 'خصوصية API' : 'API Privacy Policy'}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedUrl('/sheetdiff/api-docs/terms-of-service')} className="hover:text-blue-400 transition-colors text-gray-400">
+                <Link href={getLocalizedUrl('/sheetdiff/api-docs/terms-of-service')} aria-label="SheetDiff API Terms of Service" className="hover:text-blue-400 transition-colors text-gray-400">
                   {locale === 'fr' ? 'CGU API' : locale === 'ar' ? 'شروط API' : 'API Terms of Service'}
                 </Link>
               </li>
@@ -170,11 +170,11 @@ export function Footer({ locale }: FooterProps) {
           <p>© {currentYear} {t.copyright}</p>
           {/* Portfolio-wide legal links — internal links must NOT use target="_blank" */}
           <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-400">
-            <Link href={`/${locale}/privacy-policy`} className="hover:text-blue-400 transition-colors">
+            <Link href={`/${locale}/privacy-policy`} aria-label="Portfolio Privacy Policy" className="hover:text-blue-400 transition-colors">
               {locale === 'fr' ? 'Politique de confidentialité' : locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
             </Link>
             <span aria-hidden="true">&middot;</span>
-            <Link href={`/${locale}/terms-of-service`} className="hover:text-blue-400 transition-colors">
+            <Link href={`/${locale}/terms-of-service`} aria-label="Portfolio Terms of Service" className="hover:text-blue-400 transition-colors">
               {locale === 'fr' ? "Conditions d\u2019utilisation" : locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}
             </Link>
           </div>

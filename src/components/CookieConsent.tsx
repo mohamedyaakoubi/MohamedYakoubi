@@ -79,14 +79,49 @@ export default function CookieConsent() {
 
     try {
       const stored = localStorage.getItem(CONSENT_KEY)
-      if (!stored) {
-        // Show after a short delay so it doesn't compete with initial paint
-        const id = setTimeout(() => setVisible(true), 1200)
-        return () => clearTimeout(id)
-      }
+      if (stored) return
     } catch {
-      // localStorage not available — show banner so user can decide
+      // localStorage not available
+    }
+
+    let timerId: ReturnType<typeof setTimeout> | undefined
+
+    const showBanner = () => {
       setVisible(true)
+      window.removeEventListener('scroll', showBanner)
+      window.removeEventListener('pointerdown', showBanner)
+      window.removeEventListener('touchstart', showBanner)
+      window.removeEventListener('keydown', showBanner)
+      if (timerId) clearTimeout(timerId)
+    }
+
+    window.addEventListener('scroll', showBanner, { passive: true, once: true })
+    window.addEventListener('pointerdown', showBanner, { passive: true, once: true })
+    window.addEventListener('touchstart', showBanner, { passive: true, once: true })
+    window.addEventListener('keydown', showBanner, { passive: true, once: true })
+
+    // Fallback timer during idle so real non-interacting users still get prompted
+    if ('requestIdleCallback' in window) {
+      const idleId = (window as Window).requestIdleCallback(() => {
+        timerId = setTimeout(showBanner, 3000)
+      })
+      return () => {
+        if ('cancelIdleCallback' in window) (window as Window).cancelIdleCallback(idleId)
+        if (timerId) clearTimeout(timerId)
+        window.removeEventListener('scroll', showBanner)
+        window.removeEventListener('pointerdown', showBanner)
+        window.removeEventListener('touchstart', showBanner)
+        window.removeEventListener('keydown', showBanner)
+      }
+    } else {
+      timerId = setTimeout(showBanner, 4000)
+      return () => {
+        if (timerId) clearTimeout(timerId)
+        window.removeEventListener('scroll', showBanner)
+        window.removeEventListener('pointerdown', showBanner)
+        window.removeEventListener('touchstart', showBanner)
+        window.removeEventListener('keydown', showBanner)
+      }
     }
   }, [])
 
@@ -110,6 +145,7 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', damping: 22, stiffness: 220 }}
+          style={{ contain: 'layout' }}
           className="fixed bottom-0 inset-x-0 z-[60] p-4"
           dir={language === 'ar' ? 'rtl' : 'ltr'}
           role="dialog"
@@ -124,6 +160,7 @@ export default function CookieConsent() {
                 href={`/${language}/privacy-policy`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Cookie Consent Privacy Policy"
                 className="text-blue-600 dark:text-blue-400 underline underline-offset-2 hover:text-blue-700 dark:hover:text-blue-300"
               >
                 {t.policy}

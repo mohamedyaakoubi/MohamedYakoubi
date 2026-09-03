@@ -18,13 +18,13 @@ type AnimatedContentProps = {
 const AnimatedContent = ({ typedText, t }: AnimatedContentProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-700 mb-8 h-8">
-        {typedText}
-        <span className="animate-blink">|</span>
+      <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-700 mb-8 h-8 flex items-center justify-center">
+        <span>{typedText}</span>
+        <span className="animate-blink inline-block w-[1ch]" aria-hidden="true">|</span>
       </p>
     </motion.div>
   );
@@ -80,8 +80,8 @@ export function Hero() {
                 alt=""
                 fill
                 priority
-                sizes="100vw"
-                quality={65}
+                sizes="(max-width: 768px) 100vw, (max-width: 1400px) 100vw, 1600px"
+                quality={55}
                 className="object-cover fixed-bg"
               />
             </div>
@@ -96,8 +96,8 @@ export function Hero() {
                 alt=""
                 fill
                 priority
-                sizes="100vw"
-                quality={60}
+                sizes="(max-width: 768px) 100vw, (max-width: 1400px) 100vw, 1600px"
+                quality={55}
                 className="object-cover fixed-bg"
               />
             </div>

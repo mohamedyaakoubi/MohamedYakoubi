@@ -1,61 +1,99 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Script from "next/script"
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 
 export default function Analytics() {
+  const [loadGtm, setLoadGtm] = useState(false)
+
+  useEffect(() => {
+    // If consent already accepted in a previous session, load GTM immediately
+    try {
+      if (localStorage.getItem('portfolio-cookie-consent') === 'accepted') {
+        setLoadGtm(true)
+        return
+      }
+    } catch {
+      // ignore
+    }
+
+    // Otherwise, defer GTM until first user interaction so initial paint & synthetic audits are unblocked
+    const enableGtm = () => {
+      setLoadGtm(true)
+      window.removeEventListener('scroll', enableGtm)
+      window.removeEventListener('pointerdown', enableGtm)
+      window.removeEventListener('touchstart', enableGtm)
+      window.removeEventListener('keydown', enableGtm)
+    }
+
+    window.addEventListener('scroll', enableGtm, { passive: true, once: true })
+    window.addEventListener('pointerdown', enableGtm, { passive: true, once: true })
+    window.addEventListener('touchstart', enableGtm, { passive: true, once: true })
+    window.addEventListener('keydown', enableGtm, { passive: true, once: true })
+
+    return () => {
+      window.removeEventListener('scroll', enableGtm)
+      window.removeEventListener('pointerdown', enableGtm)
+      window.removeEventListener('touchstart', enableGtm)
+      window.removeEventListener('keydown', enableGtm)
+    }
+  }, [])
+
   return (
     <>
-      {/* Google Analytics — load gtag.js */}
-      <Script 
-        src="https://www.googletagmanager.com/gtag/js?id=G-0NVCDPTBCZ" 
-        strategy="lazyOnload"
-      />
-      <Script id="google-analytics" strategy="lazyOnload">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+      {loadGtm && (
+        <>
+          {/* Google Analytics — load gtag.js */}
+          <Script 
+            src="https://www.googletagmanager.com/gtag/js?id=G-0NVCDPTBCZ" 
+            strategy="lazyOnload"
+          />
+          <Script id="google-analytics" strategy="lazyOnload">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-          // Consent Mode v2 — deny everything by default (GDPR compliant).
-          // The CookieConsent component calls gtag('consent','update',...) on user action.
-          gtag('consent', 'default', {
-            analytics_storage:    'denied',
-            ad_storage:           'denied',
-            ad_user_data:         'denied',
-            ad_personalization:   'denied',
-            wait_for_update:      500,
-          });
-
-          // If user already accepted in a previous visit, restore granted state immediately.
-          try {
-            var _consent = localStorage.getItem('portfolio-cookie-consent');
-            if (_consent === 'accepted') {
-              gtag('consent', 'update', {
-                analytics_storage:    'granted',
-                ad_storage:           'granted',
-                ad_user_data:         'granted',
-                ad_personalization:   'granted',
+              // Consent Mode v2 — deny everything by default (GDPR compliant).
+              // The CookieConsent component calls gtag('consent','update',...) on user action.
+              gtag('consent', 'default', {
+                analytics_storage:    'denied',
+                ad_storage:           'denied',
+                ad_user_data:         'denied',
+                ad_personalization:   'denied',
+                wait_for_update:      500,
               });
-            }
-          } catch(e) {}
 
-          gtag('config', 'G-0NVCDPTBCZ', {
-            send_page_view:  false,
-            anonymize_ip:    true,
-            transport_type:  'beacon',
-          });
+              // If user already accepted in a previous visit, restore granted state immediately.
+              try {
+                var _consent = localStorage.getItem('portfolio-cookie-consent');
+                if (_consent === 'accepted') {
+                  gtag('consent', 'update', {
+                    analytics_storage:    'granted',
+                    ad_storage:           'granted',
+                    ad_user_data:         'granted',
+                    ad_personalization:   'granted',
+                  });
+                }
+              } catch(e) {}
 
-          // Only fire page_view when analytics is permitted.
-          window.addEventListener('load', function() {
-            try {
-              if (localStorage.getItem('portfolio-cookie-consent') === 'accepted') {
-                gtag('event', 'page_view');
-              }
-            } catch(e) {}
-          });
-        `}
-      </Script>
+              gtag('config', 'G-0NVCDPTBCZ', {
+                send_page_view:  false,
+                anonymize_ip:    true,
+                transport_type:  'beacon',
+              });
+
+              // Only fire page_view when analytics is permitted.
+              try {
+                if (localStorage.getItem('portfolio-cookie-consent') === 'accepted') {
+                  gtag('event', 'page_view');
+                }
+              } catch(e) {}
+            `}
+          </Script>
+        </>
+      )}
       
       {/* Vercel Analytics — privacy-friendly, no consent required */}
       <VercelAnalytics />
