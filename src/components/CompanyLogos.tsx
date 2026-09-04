@@ -89,10 +89,19 @@ export function CompanyLogos() {
         {/* Logos container with continuous horizontal scroll */}
         <div className="relative">
           <div className="flex overflow-hidden overflow-y-visible">
-            <div
-              className={`gap-12 items-center py-4 pb-20 ${
-                language === 'ar' ? 'animate-marquee-rtl' : 'animate-marquee-ltr'
-              }`}
+            <motion.div
+              className="flex gap-12 items-center py-4 pb-20"
+              animate={{
+                x: [0, language === 'ar' ? '50%' : '-50%']
+              }}
+              transition={{
+                x: {
+                  duration: 30,
+                  repeat: Infinity,
+                  ease: "linear",
+                  repeatType: "loop"
+                }
+              }}
             >
               {duplicatedCompanies.map((company, index) => {
                 // Get the appropriate size class for this logo
@@ -192,7 +201,7 @@ export function CompanyLogos() {
                   </div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
           
           {/* Gradient overlays for smooth transition */}
