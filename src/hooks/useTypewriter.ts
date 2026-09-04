@@ -1,24 +1,12 @@
 import { useState, useEffect } from 'react';
 
 export function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 75, pauseTime = 2000) {
-  const initialPhrase = phrases && phrases.length > 0 ? phrases[0] : '';
-  const [displayedText, setDisplayedText] = useState(initialPhrase);
+  const [displayedText, setDisplayedText] = useState('');
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(false);
-  const [hasInitialPaused, setHasInitialPaused] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    if (!phrases || phrases.length === 0) return;
-
     let timeout: NodeJS.Timeout;
-
-    if (!hasInitialPaused) {
-      // Pause on the initial phrase before starting deletion
-      timeout = setTimeout(() => {
-        setHasInitialPaused(true);
-      }, pauseTime);
-      return () => clearTimeout(timeout);
-    }
     
     if (isTyping) {
       if (displayedText === phrases[phraseIndex]) {
@@ -46,7 +34,7 @@ export function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpee
     }
 
     return () => clearTimeout(timeout);
-  }, [displayedText, isTyping, phraseIndex, phrases, typingSpeed, deletingSpeed, pauseTime, hasInitialPaused]);
+  }, [displayedText, isTyping, phraseIndex, phrases, typingSpeed, deletingSpeed, pauseTime]);
 
   return displayedText;
 }
