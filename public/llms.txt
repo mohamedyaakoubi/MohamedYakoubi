@@ -1,20 +1,24 @@
 # Mohamed Yaakoubi - AI Language Technology Specialist & Portfolio
 
-> Portfolio, software engineering work, and AI innovations of Mohamed Yaakoubi.
+> AI-Powered Solutions & Language Technology Specialist, Machine Translation Post-Editor, and AI Annotator & Evaluator based in Sfax, Tunisia.
 
 ## Overview
-Mohamed Yaakoubi is an AI Language Technology Specialist, Full-Stack Developer, and Founder based in Sousse, Tunisia. He specializes in natural language processing (NLP), Arabic dialectal computing, agentic workflows, and high-performance web applications built with Next.js, TypeScript, and Tailwind CSS.
+Mohamed Yaakoubi is an AI Language Technology Specialist and system builder based in Sfax, Tunisia. He works at the intersection of language, AI, and localization to help models and products scale across cultures. With hands-on evaluation experience for global clients (including Meta AI via RWS, Uber via Volga Partners, Unbabel, and Lionbridge), he specializes in Arabic-English AI evaluation, LLM prompt testing, multimodal annotation, and building high-performance web systems.
 
 ## Primary Projects
-- **SheetDiff™** (https://www.mohamedyaakoubi.com/en/sheetdiff): A Google Sheets add-on and high-precision tabular data comparison engine. Features cell-level diffing, fuzzy matching, and REST API integration.
-- **Potential** (https://www.mohamedyaakoubi.com/en/projects/potential): Human potential and career exploration platform.
-- **DocuMed** (https://www.mohamedyaakoubi.com/en/projects/documed): Medical documentation and patient record management system.
-- **InternationalSkills** (https://www.mohamedyaakoubi.com/en/projects/internationalskills): Global competency assessment and talent discovery engine.
+- [SheetDiff™](https://www.mohamedyaakoubi.com/en/sheetdiff): High-precision Google Sheets data comparison add-on and diffing engine featuring cell-level diffing, fuzzy matching, and REST API integration.
+- [Potential](https://www.mohamedyaakoubi.com/en/projects/potential): AI-driven career guidance and human potential discovery platform.
+- [DocuMed](https://www.mohamedyaakoubi.com/en/projects/documed): Healthcare documentation and clinical record management system.
+- [InternationalSkills](https://www.mohamedyaakoubi.com/en/projects/internationalskills): Global competency assessment and talent discovery platform.
 
-## Key Links
-- Portfolio: https://www.mohamedyaakoubi.com/en
-- SheetDiff: https://www.mohamedyaakoubi.com/en/sheetdiff
-- API Documentation: https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs
-- GitHub: https://github.com/mohamedyaakoubi
-- LinkedIn: https://www.linkedin.com/in/yaakoubi-mohamed/
-- Contact: amirrak8@gmail.com
+## Key Resources
+- [Portfolio Home](https://www.mohamedyaakoubi.com/en): Interactive portfolio, case studies, and engineering showcase.
+- [SheetDiff API Documentation](https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs): REST API parameters, engine precision benchmarks, and diff statuses.
+- [SheetDiff Pricing](https://www.mohamedyaakoubi.com/en/sheetdiff/pricing): Tier structure, usage quotas, and Google Sheets add-on plans.
+- [SheetDiff Playground](https://www.mohamedyaakoubi.com/en/sheetdiff/api-docs/playground): Interactive tabular comparison demo and test console.
+- [Engineering Blog](https://www.mohamedyaakoubi.com/en/blog): Technical articles on AI engineering, RAG architecture, and NLP evaluation.
+
+## External Profiles
+- [GitHub Profile](https://github.com/mohamedyaakoubi): Open-source repositories and software development activity.
+- [LinkedIn Profile](https://www.linkedin.com/in/yaakoubi-mohamed/): Professional experience, enterprise clients, and localization background.
+- [Upwork Profile](https://www.upwork.com/freelancers/~0118c281163fef05cb): Top-rated freelance AI evaluation and language technology services.
