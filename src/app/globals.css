@@ -12,7 +12,7 @@
     /* Existing base styles... */
     
     .font-arabic {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans Arabic Fallback', sans-serif;
       font-feature-settings: "ss01" 1, "ss02" 1, "ss03" 1, "ss04" 1;
       font-variant-ligatures: common-ligatures;
       -webkit-font-smoothing: antialiased;
@@ -259,7 +259,7 @@
   .gradient-name {
     position: relative;
     display: inline-block;
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans Arabic Fallback', sans-serif;
     font-size: clamp(1.875rem, 5vw, 4.5rem);
     font-weight: 700;
     line-height: 1.4; /* Increased line height */

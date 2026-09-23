@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales, getTranslations } from '@/lib/translations'
+import { getSupportedLocales, getTranslations, assertSupportedLocale } from '@/lib/translations'
 import { getPotentialI18n } from '@/data/potential-i18n'
 import PotentialProjectClient from '@/components/PotentialProjectClient'
 
@@ -55,13 +55,13 @@ export async function generateMetadata({
       url: `https://www.mohamedyaakoubi.com/${locale}/projects/potential`,
       type: 'website',
       siteName: 'Mohamed Yaakoubi Portfolio',
-      locale: locale === 'ar' ? 'ar_AE' : locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      creator: '@mohamedyaakoubi',
+      creator: '@Mohamed0Yakoubi',
     },
   }
 }
@@ -72,6 +72,7 @@ export default async function PotentialProjectPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  assertSupportedLocale(locale)
   const translations = getTranslations(locale)
   const t = getPotentialI18n(locale)
 

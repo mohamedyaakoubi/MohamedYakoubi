@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import ContactClient from '@/components/ContactClient'
-import { getTranslations } from '@/lib/translations'
+import { getTranslations, assertSupportedLocale } from '@/lib/translations'
 
 export async function generateStaticParams() {
   return [
@@ -38,10 +38,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       type: 'website',
       url: `https://www.mohamedyaakoubi.com/${locale}/contact`,
+      siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      site: '@Mohamed0Yakoubi',
+      creator: '@Mohamed0Yakoubi',
     },
   }
 }
@@ -53,6 +62,7 @@ interface ContactPageProps {
 export default async function ContactPage(props: ContactPageProps) {
   const params = await props.params
   const { locale } = params
+  assertSupportedLocale(locale)
   const translations = getTranslations(locale)
   
   // Add breadcrumb schema

@@ -7,8 +7,6 @@ const isDev = self.location.hostname === 'localhost' || self.location.hostname =
 
 const urlsToCache = [
   '/en',
-  '/hero-light.webp',
-  '/hero-dark.webp',
   '/favicon.ico',
   '/icon-192.png',
   '/icon-512.png'

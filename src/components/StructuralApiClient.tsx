@@ -446,7 +446,7 @@ print(data['data']['results'])`
         </aside>
 
         {/* ── Main content ─────────────────────────────────── */}
-        <main ref={contentRef} className="flex-1 min-w-0 px-6 xl:px-12 pt-24 pb-10 max-w-3xl">
+        <div ref={contentRef} className="flex-1 min-w-0 px-6 xl:px-12 pt-24 pb-10 max-w-3xl">
 
           {/* Overview */}
           <motion.div initial="hidden" animate="visible" variants={fadeIn}>
@@ -803,7 +803,7 @@ print(data['data']['results'])`
               <Link href={`/${language}/sheetdiff`} className="hover:text-gray-600 dark:hover:text-gray-300">{t.footer.back}</Link>
             </div>
           </div>
-        </main>
+        </div>
 
         {/* ── Right TOC sidebar ─────────────────────────────── */}
         <aside className="hidden xl:block w-52 shrink-0 sticky top-16 self-start h-[calc(100vh-4rem)] overflow-y-auto pl-6 py-8 border-l border-gray-200 dark:border-gray-800">

@@ -1,17 +1,21 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 export const alt = 'SheetDiff™ - Compare, QA for Google Sheets™'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
+
+// Only the three real locales get a card; anything else 404s instead of rendering on demand.
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'fr' }, { locale: 'ar' }]
 }
 
 export default async function Image() {
-  const logoRes = await fetch('https://www.mohamedyaakoubi.com/sheetdiff-logo.png')
-  const logoBuffer = await logoRes.arrayBuffer()
-  const logoSrc = `data:image/png;base64,${Buffer.from(logoBuffer).toString('base64')}`
+  const logoBuffer = await readFile(join(process.cwd(), 'public', 'sheetdiff-logo.png'))
+  const logoSrc = `data:image/png;base64,${logoBuffer.toString('base64')}`
 
   return new ImageResponse(
     (

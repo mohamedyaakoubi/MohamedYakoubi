@@ -670,7 +670,7 @@ const fr: LiveSimulatorI18n = {
 // ──────────────────────── ARABIC ─────────────────────────────────
 const ar: LiveSimulatorI18n = {
   meta: {
-    title: 'Playground API — Structural Diff API',
+    title: 'ساحة تجربة الـ API — Structural Diff API',
     description:
       'اختبر Structural Diff API بشكل تفاعلي. الصق أو أرفع مصفوفتي JSON لنصوص مكتوبة، وضبط جميع المعاملات، وشغّل diff حقيقياً وافحص النتائج صفاً بصف.',
   },

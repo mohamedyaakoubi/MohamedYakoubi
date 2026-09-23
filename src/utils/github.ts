@@ -62,7 +62,7 @@ export async function getGithubRepos(username: string): Promise<Repository[]> {
         full_name: `${username}/MohamedYakoubi`,
         description: "Personal portfolio website built with Next.js",
         html_url: `https://github.com/${username}/MohamedYakoubi`,
-        homepage: "https://www.mohamedyaakoubi.com",
+        homepage: "https://www.mohamedyaakoubi.com/en",
         language: "TypeScript",
         stargazers_count: 5,
         watchers_count: 5,

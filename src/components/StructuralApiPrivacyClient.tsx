@@ -147,7 +147,7 @@ export default function StructuralApiPrivacyClient() {
                 <h2>8. Contact</h2>
                 <p>
                   For any questions about this Privacy Policy, reach out via{' '}
-                  <a href="https://www.mohamedyaakoubi.com/contact">mohamedyaakoubi.com/contact</a>.
+                  <a href="https://www.mohamedyaakoubi.com/en/contact">mohamedyaakoubi.com/contact</a>.
                 </p>
               </>
             ) : (

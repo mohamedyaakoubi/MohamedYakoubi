@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations, getSupportedLocales } from '@/lib/translations'
+import { getTranslations, getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 import { getGithubRepos } from '@/utils/github'
 import type { Repository } from '@/utils/github'
 import ProjectsClient from '@/components/ProjectsClient'
@@ -38,10 +38,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       url: `https://www.mohamedyaakoubi.com/${locale}/projects`,
       type: 'website',
+      siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      site: '@Mohamed0Yakoubi',
+      creator: '@Mohamed0Yakoubi',
     },
   }
 }
@@ -53,6 +62,7 @@ export default async function ProjectsPage(props: ProjectsPageProps) {
   // Fix: Properly await params
   const params = await props.params
   const { locale } = params
+  assertSupportedLocale(locale)
   const translations = getTranslations(locale)
 
   // Pre-fetch GitHub repos for SSG

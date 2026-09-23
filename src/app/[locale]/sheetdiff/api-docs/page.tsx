@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales } from '@/lib/translations'
+import { getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 import StructuralApiClient from '@/components/StructuralApiClient'
 import { getStructuralApiI18n } from '@/data/structural-api-i18n'
 
@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title,
       description,
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs`,
@@ -56,6 +57,7 @@ const BASE_URL = 'https://www.mohamedyaakoubi.com'
 
 export default async function StructuralApiPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  assertSupportedLocale(locale)
 
   const techArticleJsonLd = {
     '@context': 'https://schema.org',

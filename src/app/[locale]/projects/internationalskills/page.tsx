@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales, getTranslations } from '@/lib/translations'
+import { getSupportedLocales, getTranslations, assertSupportedLocale } from '@/lib/translations'
 import { getInternationalSkillsI18n } from '@/data/internationalskills-i18n'
 import InternationalSkillsClient from '@/components/InternationalSkillsClient'
 
@@ -55,21 +55,13 @@ export async function generateMetadata({
       url: `https://www.mohamedyaakoubi.com/${locale}/projects/internationalskills`,
       type: 'website',
       siteName: 'Mohamed Yaakoubi Portfolio',
-      locale: locale === 'ar' ? 'ar_AE' : locale === 'fr' ? 'fr_FR' : 'en_US',
-      images: [
-        {
-          url: `https://www.mohamedyaakoubi.com/${locale}/projects/internationalskills/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: 'InternationalSkills.fi — Recruiting Management System',
-        },
-      ],
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      creator: '@mohamedyaakoubi',
+      creator: '@Mohamed0Yakoubi',
     },
   }
 }
@@ -80,6 +72,7 @@ export default async function InternationalSkillsProjectPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  assertSupportedLocale(locale)
   const translations = getTranslations(locale)
   const t = getInternationalSkillsI18n(locale)
 

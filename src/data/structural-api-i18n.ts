@@ -596,7 +596,7 @@ const fr: StructuralApiI18n = {
       { heading: '5. Services tiers', content: "L'API n'utilise aucun service tiers de stockage. Dépendances de production : <code>express</code>, <code>helmet</code>, <code>cors</code>, <code>winston</code>, <code>morgan</code>, <code>joi</code>. Tout le traitement a lieu sur le serveur de Mohamed Yaakoubi." },
       { heading: '6. Sécurité', content: "Toutes les communications se font via HTTPS/TLS. L'en-tête <code>x-api-key</code> est obligatoire pour les endpoints qui retournent des données. Les clés sont comparées en temps constant, jamais enregistrées. <code>helmet</code> applique des en-têtes de sécurité HTTP standard." },
       { heading: '7. Modifications', content: 'Nous pouvons mettre à jour cette politique si nos pratiques changent. La date \u00ab Dernière mise à jour \u00bb sera révisée.' },
-      { heading: '8. Contact', content: "Pour toute question, contactez-nous via <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+      { heading: '8. Contact', content: "Pour toute question, contactez-nous via <a href='https://www.mohamedyaakoubi.com/en/contact'>mohamedyaakoubi.com/contact</a>." },
     ],
   },
   terms: {
@@ -617,7 +617,7 @@ const fr: StructuralApiI18n = {
       { heading: '10. Limitation de responsabilité', content: "Dans toute la mesure permise par la loi, Mohamed Yaakoubi ne saurait être tenu responsable de dommages indirects ou consécutifs découlant de l'utilisation ou de l'impossibilité d'utiliser l'API." },
       { heading: '11. Résiliation', content: "Nous nous réservons le droit de révoquer votre clé et de résilier votre accès à tout moment en cas de violation ou d'abus." },
       { heading: '12. Droit applicable', content: 'Ces conditions sont régies par les lois applicables en République de Tunisie.' },
-      { heading: '13. Contact', content: "Pour toute question, contactez-nous via <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+      { heading: '13. Contact', content: "Pour toute question, contactez-nous via <a href='https://www.mohamedyaakoubi.com/en/contact'>mohamedyaakoubi.com/contact</a>." },
     ],
   },
 }
@@ -852,7 +852,7 @@ const ar: StructuralApiI18n = {
       { heading: '٥. خدمات الطرف الثالث', content: 'لا تستخدم الـ API أي خدمة تخزين خارجية (لا Firebase، لا قاعدة بيانات، لا analytics). تبعيات الإنتاج: <code>express</code>، <code>helmet</code>، <code>cors</code>، <code>winston</code>، <code>morgan</code>، <code>joi</code>.' },
       { heading: '٦. الأمان', content: 'جميع الاتصالات عبر HTTPS/TLS. رأس <code>x-api-key</code> إلزامي. تستخدم الـ API مكتبة <code>helmet</code> لتطبيق رؤوس أمان HTTP قياسية.' },
       { heading: '٧. التغييرات', content: 'قد نحدّث هذه السياسة إذا تغيّرت ممارساتنا. سيُراجع تاريخ «آخر تحديث» وفقًا لذلك.' },
-      { heading: '٨. التواصل', content: "لأي استفسارات، تواصل عبر <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+      { heading: '٨. التواصل', content: "لأي استفسارات، تواصل عبر <a href='https://www.mohamedyaakoubi.com/en/contact'>mohamedyaakoubi.com/contact</a>." },
     ],
   },
   terms: {
@@ -873,7 +873,7 @@ const ar: StructuralApiI18n = {
       { heading: '٪٠. تحديد المسؤولية', content: 'لن يكون محمد يعقوبي مسؤولاً عن أي أضرار غير مباشرة ناجمة عن استخدام الـ API أو عدم تمكُنك من استخدامها.' },
       { heading: '٪١. الإنهاء', content: 'نحتفظ بالحق في إلغاء مفتاحك وإنهاء وصولك في أي وقت لانتهاك هذه الشروط أو إساءة الاستخدام.' },
       { heading: '٪٢. القانون المعمول به', content: 'تخضع هذه الشروط للقوانين السارية في الجمهورية التونسية.' },
-      { heading: '٪٣. التواصل', content: "لأي استفسارات، تواصل عبر <a href='https://www.mohamedyaakoubi.com/contact'>mohamedyaakoubi.com/contact</a>." },
+      { heading: '٪٣. التواصل', content: "لأي استفسارات، تواصل عبر <a href='https://www.mohamedyaakoubi.com/en/contact'>mohamedyaakoubi.com/contact</a>." },
     ],
   },
 }

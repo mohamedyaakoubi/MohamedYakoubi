@@ -1,219 +1,107 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createHash, timingSafeEqual } from 'node:crypto';
+import sitemap from '@/app/sitemap';
 
-// IndexNow configuration
+// IndexNow configuration. The key is public by design: the file /<key>.txt proves ownership.
 const INDEXNOW_KEY = '77da1e9fc3fe46049b0fa484eb89f26e';
 const SITE_HOST = 'www.mohamedyaakoubi.com';
 
-// Primary IndexNow endpoint - all IndexNow-enabled search engines share URLs automatically
-// So we only need to submit to ONE endpoint (Yandex works reliably)
-// Other engines (Bing, Seznam, Naver, Amazon, Yep) will receive URLs automatically
-const PRIMARY_ENDPOINT = 'yandex.com';
+// Submit to ONE endpoint only: IndexNow shares every submission with all participating engines
+// (Bing, Yandex, Seznam, Naver, Yep, Internet Archive, Amazon). Google does not use IndexNow.
+const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
+const MAX_URLS_PER_REQUEST = 10_000;
 
-// All pages on your site
-const ALL_URLS = [
-  '/en',
-  '/fr',
-  '/ar',
-  '/en/experience',
-  '/fr/experience',
-  '/ar/experience',
-  '/en/projects',
-  '/fr/projects',
-  '/ar/projects',
-  '/en/services',
-  '/fr/services',
-  '/ar/services',
-  '/en/contact',
-  '/fr/contact',
-  '/ar/contact',
-  '/en/blog',
-  '/fr/blog',
-  '/ar/blog',
-  '/en/blog/ai-built-it-i-broke-it-ai-helped-me-break-it',
-  '/fr/blog/ai-built-it-i-broke-it-ai-helped-me-break-it',
-  '/ar/blog/ai-built-it-i-broke-it-ai-helped-me-break-it',
-  '/en/blog/rag-challenge-technical-comparison',
-  '/fr/blog/rag-challenge-technical-comparison',
-  '/ar/blog/rag-challenge-technical-comparison',
-  '/en/sheetdiff',
-  '/fr/sheetdiff',
-  '/ar/sheetdiff',
-  '/en/sheetdiff/pricing',
-  '/fr/sheetdiff/pricing',
-  '/ar/sheetdiff/pricing',
-  '/en/sheetdiff/terms-of-service',
-  '/fr/sheetdiff/terms-of-service',
-  '/ar/sheetdiff/terms-of-service',
-  '/en/sheetdiff/privacy-policy',
-  '/fr/sheetdiff/privacy-policy',
-  '/ar/sheetdiff/privacy-policy',
-  '/en/projects/potential',
-  '/fr/projects/potential',
-  '/ar/projects/potential',
-  '/en/projects/documed',
-  '/fr/projects/documed',
-  '/ar/projects/documed',
-  '/en/projects/internationalskills',
-  '/fr/projects/internationalskills',
-  '/ar/projects/internationalskills',
-  '/en/privacy-policy',
-  '/fr/privacy-policy',
-  '/ar/privacy-policy',
-  '/en/terms-of-service',
-  '/fr/terms-of-service',
-  '/ar/terms-of-service',
-  '/en/sheetdiff/api-docs',
-  '/fr/sheetdiff/api-docs',
-  '/ar/sheetdiff/api-docs',
-  '/en/sheetdiff/api-docs/diff-statuses',
-  '/fr/sheetdiff/api-docs/diff-statuses',
-  '/ar/sheetdiff/api-docs/diff-statuses',
-  '/en/sheetdiff/api-docs/parameters',
-  '/fr/sheetdiff/api-docs/parameters',
-  '/ar/sheetdiff/api-docs/parameters',
-  '/en/sheetdiff/api-docs/demo',
-  '/fr/sheetdiff/api-docs/demo',
-  '/ar/sheetdiff/api-docs/demo',
-  '/en/sheetdiff/api-docs/playground',
-  '/fr/sheetdiff/api-docs/playground',
-  '/ar/sheetdiff/api-docs/playground',
-  '/en/sheetdiff/api-docs/engine-precision',
-  '/fr/sheetdiff/api-docs/engine-precision',
-  '/ar/sheetdiff/api-docs/engine-precision',
-  '/en/sheetdiff/api-docs/terms-of-service',
-  '/fr/sheetdiff/api-docs/terms-of-service',
-  '/ar/sheetdiff/api-docs/terms-of-service',
-  '/en/sheetdiff/api-docs/privacy-policy',
-  '/fr/sheetdiff/api-docs/privacy-policy',
-  '/ar/sheetdiff/api-docs/privacy-policy',
-];
-
-interface IndexNowPayload {
-  host: string;
-  key: string;
-  keyLocation: string;
-  urlList: string[];
+// This route makes the site submit URLs under its IndexNow key, so it must not be callable by
+// anyone: requests need `Authorization: Bearer <INDEXNOW_SECRET>`. Without the env var it is off.
+function authorize(request: NextRequest): NextResponse | null {
+  const secret = process.env.INDEXNOW_SECRET;
+  if (!secret) {
+    return NextResponse.json(
+      { error: 'IndexNow submission is disabled: set INDEXNOW_SECRET in the environment.' },
+      { status: 503 }
+    );
+  }
+  const header = request.headers.get('authorization') ?? '';
+  const given = header.startsWith('Bearer ') ? header.slice('Bearer '.length) : '';
+  // Hash both sides so the comparison is constant-time and length-independent.
+  const digest = (value: string) => createHash('sha256').update(value).digest();
+  if (!timingSafeEqual(digest(given), digest(secret))) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  return null;
 }
 
-async function submitToSearchEngine(
-  searchEngine: string,
-  payload: IndexNowPayload
-): Promise<{ engine: string; status: number; success: boolean }> {
+// Accepts site-relative paths ("/en/blog") or absolute URLs on this host only.
+function toSiteUrl(value: unknown): string | null {
+  if (typeof value !== 'string' || value.length === 0) return null;
   try {
-    const response = await fetch(`https://${searchEngine}/indexnow`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: JSON.stringify(payload),
-    });
-
-    return {
-      engine: searchEngine,
-      status: response.status,
-      success: response.status === 200 || response.status === 202,
-    };
-  } catch (error) {
-    console.error(`Error submitting to ${searchEngine}:`, error);
-    return {
-      engine: searchEngine,
-      status: 500,
-      success: false,
-    };
+    const url = new URL(value, `https://${SITE_HOST}`);
+    return url.protocol === 'https:' && url.host === SITE_HOST ? url.toString() : null;
+  } catch {
+    return null;
   }
 }
 
-// POST handler - submit URLs to IndexNow
 export async function POST(request: NextRequest) {
+  const denied = authorize(request);
+  if (denied) return denied;
+
+  let body: { urls?: unknown; submitAll?: unknown };
   try {
-    const body = await request.json();
-    const { urls, submitAll } = body;
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Body must be JSON: { "submitAll": true } or { "urls": [...] }' }, { status: 400 });
+  }
 
-    // Determine which URLs to submit
-    let urlsToSubmit: string[];
-    if (submitAll) {
-      urlsToSubmit = ALL_URLS.map(path => `https://${SITE_HOST}${path}`);
-    } else if (urls && Array.isArray(urls)) {
-      urlsToSubmit = urls.map((url: string) => 
-        url.startsWith('http') ? url : `https://${SITE_HOST}${url}`
-      );
-    } else {
-      return NextResponse.json(
-        { error: 'Please provide urls array or set submitAll: true' },
-        { status: 400 }
-      );
+  let urlList: string[];
+  if (body.submitAll === true) {
+    // Derived from the sitemap so new pages and blog posts are never missed.
+    urlList = sitemap().map((entry) => entry.url);
+  } else if (Array.isArray(body.urls) && body.urls.length > 0) {
+    const rejected = body.urls.filter((u) => toSiteUrl(u) === null);
+    if (rejected.length > 0) {
+      return NextResponse.json({ error: `Only URLs on https://${SITE_HOST} are accepted`, rejected }, { status: 400 });
     }
+    urlList = [...new Set(body.urls.map((u) => toSiteUrl(u) as string))];
+  } else {
+    return NextResponse.json({ error: 'Provide { "submitAll": true } or a non-empty "urls" array' }, { status: 400 });
+  }
 
-    // Prepare payload
-    const payload: IndexNowPayload = {
-      host: SITE_HOST,
-      key: INDEXNOW_KEY,
-      keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
-      urlList: urlsToSubmit,
-    };
+  if (urlList.length > MAX_URLS_PER_REQUEST) {
+    return NextResponse.json({ error: `IndexNow accepts at most ${MAX_URLS_PER_REQUEST} URLs per request` }, { status: 400 });
+  }
 
-    // Submit to single endpoint - IndexNow shares URLs across all participating search engines
-    const result = await submitToSearchEngine(PRIMARY_ENDPOINT, payload);
-    
-    return NextResponse.json({
-      success: result.success,
-      message: result.success 
-        ? 'URLs submitted successfully - shared with all IndexNow search engines (Bing, Yandex, Seznam, Naver, Amazon, Yep)' 
-        : `Submission failed with status ${result.status}. Try again later if rate limited (429).`,
-      urlsSubmitted: urlsToSubmit,
-      endpoint: PRIMARY_ENDPOINT,
-      status: result.status,
+  let upstream: Response;
+  try {
+    upstream = await fetch(INDEXNOW_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({
+        host: SITE_HOST,
+        key: INDEXNOW_KEY,
+        keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
+        urlList,
+      }),
     });
   } catch (error) {
-    console.error('IndexNow submission error:', error);
-    return NextResponse.json(
-      { error: 'Failed to submit URLs', details: String(error) },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Could not reach IndexNow', details: String(error) }, { status: 502 });
   }
+
+  // 200 = submitted, 202 = accepted while the key is validated. Anything else is a real failure
+  // (400 bad request, 403 key not valid, 422 URL/host mismatch, 429 rate limited) and is passed on.
+  if (upstream.status === 200 || upstream.status === 202) {
+    return NextResponse.json({ success: true, indexNowStatus: upstream.status, urlsSubmitted: urlList.length, urls: urlList });
+  }
+  return NextResponse.json(
+    { success: false, indexNowStatus: upstream.status, details: (await upstream.text()).slice(0, 500) },
+    { status: 502 }
+  );
 }
 
-// GET handler - submit a single URL via query parameter
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const url = searchParams.get('url');
-  const submitAll = searchParams.get('all') === 'true';
-
-  if (!url && !submitAll) {
-    return NextResponse.json(
-      { 
-        error: 'Missing url parameter',
-        usage: {
-          singleUrl: '/api/indexnow?url=/en/experience',
-          allUrls: '/api/indexnow?all=true',
-        }
-      },
-      { status: 400 }
-    );
-  }
-
-  // Prepare URLs
-  const urlsToSubmit = submitAll 
-    ? ALL_URLS.map(path => `https://${SITE_HOST}${path}`)
-    : [`https://${SITE_HOST}${url}`];
-
-  const payload: IndexNowPayload = {
-    host: SITE_HOST,
-    key: INDEXNOW_KEY,
-    keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
-    urlList: urlsToSubmit,
-  };
-
-  // Submit to single endpoint - IndexNow shares URLs across all participating search engines
-  const result = await submitToSearchEngine(PRIMARY_ENDPOINT, payload);
-
-  return NextResponse.json({
-    success: result.success,
-    message: result.success 
-      ? 'URLs submitted successfully - shared with all IndexNow search engines (Bing, Yandex, Seznam, Naver, Amazon, Yep)' 
-      : `Submission failed with status ${result.status}. Try again later if rate limited (429).`,
-    urlsSubmitted: urlsToSubmit,
-    endpoint: PRIMARY_ENDPOINT,
-    status: result.status,
-  });
+// Submitting has side effects, so GET does nothing.
+export function GET() {
+  return NextResponse.json(
+    { error: 'Use POST with Authorization: Bearer <INDEXNOW_SECRET> and { "submitAll": true } or { "urls": [...] }' },
+    { status: 405, headers: { Allow: 'POST' } }
+  );
 }

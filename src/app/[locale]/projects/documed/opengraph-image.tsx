@@ -1,17 +1,23 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 export const alt = 'DocuMed — Healthcare Management Platform'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
+
+// Only the three real locales get a card; anything else 404s instead of rendering on demand.
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'fr' }, { locale: 'ar' }]
 }
 
 export default async function Image() {
-  const imgRes = await fetch('https://www.mohamedyaakoubi.com/DocuMed.PNG')
-  const imgBuffer = await imgRes.arrayBuffer()
-  const imgSrc = `data:image/png;base64,${Buffer.from(imgBuffer).toString('base64')}`
+  // Case matters: git tracks this file as "Documed.PNG" (lowercase m). Windows shows it as
+  // "DocuMed.PNG", but Vercel builds on case-sensitive Linux, where that name does not exist.
+  const imgBuffer = await readFile(join(process.cwd(), 'public', 'Documed.PNG'))
+  const imgSrc = `data:image/png;base64,${imgBuffer.toString('base64')}`
 
   return new ImageResponse(
     (

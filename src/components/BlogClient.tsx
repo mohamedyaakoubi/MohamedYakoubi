@@ -32,7 +32,7 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <main className={`min-h-screen py-24 md:py-32 bg-[#fafafa] dark:bg-[#0a0a0a] ${isRTL ? 'rtl' : 'ltr'}`}>
+    <div className={`min-h-screen py-24 md:py-32 bg-[#fafafa] dark:bg-[#0a0a0a] ${isRTL ? 'rtl' : 'ltr'}`}>
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <motion.div
@@ -152,6 +152,6 @@ export default function BlogClient({ locale, translations, posts }: BlogClientPr
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 }

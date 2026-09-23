@@ -77,7 +77,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: 15,
     author: {
       name: "Mohamed Yaakoubi",
-      url: "https://www.mohamedyaakoubi.com",
+      url: "https://www.mohamedyaakoubi.com/en",
     },
     theme: aiCyberTheme,
     content: enContent.content,
@@ -93,7 +93,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: 25,
     author: {
       name: "Mohamed Yaakoubi",
-      url: "https://www.mohamedyaakoubi.com",
+      url: "https://www.mohamedyaakoubi.com/en",
     },
     theme: ragChallengeTheme,
     content: ragEnContent.content,

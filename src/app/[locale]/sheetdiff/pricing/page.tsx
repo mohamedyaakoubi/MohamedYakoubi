@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales } from '@/lib/translations'
+import { getSupportedLocales, assertSupportedLocale, getTranslations } from '@/lib/translations'
+import { getSheetDiffI18n } from '@/data/sheetdiff-i18n'
 import SheetDiffPricingClient from '@/components/SheetDiffPricingClient'
 
 export async function generateStaticParams() {
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title: titles[locale] ?? titles.en,
       description: descriptions[locale] ?? descriptions.en,
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/pricing`,
@@ -45,6 +47,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function SheetDiffPricingPage() {
-  return <SheetDiffPricingClient />
+export default async function SheetDiffPricingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  assertSupportedLocale(locale)
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: getTranslations(locale).navigation?.links.home || 'Home', item: `https://www.mohamedyaakoubi.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: 'SheetDiff\u2122', item: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff` },
+      { '@type': 'ListItem', position: 3, name: getSheetDiffI18n(locale).pricing.title, item: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/pricing` },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        id="sheetdiff-pricing-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <SheetDiffPricingClient />
+    </>
+  )
 }

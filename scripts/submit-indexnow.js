@@ -1,80 +1,68 @@
 /**
  * IndexNow Submission Script
- * 
- * Usage:
- *   node scripts/submit-indexnow.js              # Submit all URLs
- *   node scripts/submit-indexnow.js /en/experience  # Submit single URL
- * 
- * Or via API:
- *   curl "https://mohamedyaakoubi.vercel.app/api/indexnow?all=true"
- *   curl "https://mohamedyaakoubi.vercel.app/api/indexnow?url=/en/experience"
+ *
+ * Calls the site's /api/indexnow route, which submits to IndexNow (shared with Bing, Yandex,
+ * Seznam, Naver, Yep, Internet Archive and Amazon; Google does not use IndexNow).
+ *
+ * Requires INDEXNOW_SECRET to match the value set in the Vercel project's environment variables.
+ *
+ * Usage (PowerShell):
+ *   $env:INDEXNOW_SECRET = "<secret>"; node scripts/submit-indexnow.js                 # every sitemap URL
+ *   $env:INDEXNOW_SECRET = "<secret>"; node scripts/submit-indexnow.js /en/experience  # specific paths
+ *
+ * Submit only after real content changes: IndexNow asks not to resubmit unchanged URLs.
  */
 
 const SITE_URL = process.env.SITE_URL || 'https://www.mohamedyaakoubi.com';
+const SECRET = process.env.INDEXNOW_SECRET;
 
-async function submitToIndexNow(urls = null, submitAll = false) {
-  const endpoint = `${SITE_URL}/api/indexnow`;
-  
-  try {
-    let response;
-    
-    if (submitAll || !urls) {
-      // Submit all URLs
-      console.log('📤 Submitting all URLs to IndexNow...\n');
-      response = await fetch(`${endpoint}?all=true`);
-    } else {
-      // Submit specific URLs
-      console.log(`📤 Submitting ${urls.length} URL(s) to IndexNow...\n`);
-      response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ urls }),
-      });
-    }
-
-    const result = await response.json();
-    
-    if (result.success) {
-      console.log('✅ Success!\n');
-      console.log(`Endpoint: ${result.endpoint}`);
-      console.log(`Status: ${result.status}`);
-      console.log(`URLs submitted: ${result.urlsSubmitted?.length || 0}`);
-      console.log('\n💡 Note: IndexNow shares URLs across ALL participating search engines automatically!');
-      console.log('   (Bing, Yandex, Seznam, Naver, Amazon, Yep)\n');
-    } else {
-      console.log('⚠️  Submission failed\n');
-      console.log('Results:', JSON.stringify(result, null, 2));
-      console.log('\n💡 Tip: If you got status 429 (rate limited), wait a few minutes and try again.');
-    }
-    
-    return result;
-  } catch (error) {
-    console.error('❌ Error submitting to IndexNow:', error.message);
+async function submitToIndexNow(urls) {
+  if (!SECRET) {
+    console.error('❌ INDEXNOW_SECRET is not set. Use the same value as in the Vercel environment variables.');
     process.exit(1);
   }
+
+  const body = urls ? { urls } : { submitAll: true };
+  console.log(urls ? `📤 Submitting ${urls.length} URL(s) to IndexNow...\n` : '📤 Submitting every sitemap URL to IndexNow...\n');
+
+  let response;
+  let result;
+  try {
+    response = await fetch(`${SITE_URL}/api/indexnow`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${SECRET}` },
+      body: JSON.stringify(body),
+    });
+    result = await response.json();
+  } catch (error) {
+    console.error('❌ Error calling /api/indexnow:', error.message);
+    process.exit(1);
+  }
+
+  if (response.ok && result.success) {
+    console.log(`✅ Submitted ${result.urlsSubmitted} URL(s) (IndexNow status ${result.indexNowStatus}).`);
+    return;
+  }
+
+  console.error(`⚠️  Submission failed (HTTP ${response.status}).`);
+  console.error(JSON.stringify(result, null, 2));
+  if (result.indexNowStatus === 429) console.error('\n💡 Rate limited: wait before retrying.');
+  if (result.indexNowStatus === 403) console.error('\n💡 Key rejected: check that /<key>.txt is served with the key as its only content.');
+  process.exit(1);
 }
 
-// Run from command line
 const args = process.argv.slice(2);
 
-if (args.length === 0) {
-  // Submit all URLs
-  submitToIndexNow(null, true);
-} else if (args[0] === '--help' || args[0] === '-h') {
+if (args[0] === '--help' || args[0] === '-h') {
   console.log(`
 IndexNow Submission Script
 
 Usage:
-  node scripts/submit-indexnow.js              Submit all site URLs
-  node scripts/submit-indexnow.js /path        Submit a single URL path
-  node scripts/submit-indexnow.js /p1 /p2      Submit multiple URL paths
+  node scripts/submit-indexnow.js              Submit every URL in the sitemap
+  node scripts/submit-indexnow.js /p1 /p2      Submit specific paths on ${SITE_URL}
 
-Examples:
-  node scripts/submit-indexnow.js
-  node scripts/submit-indexnow.js /en/experience
-  node scripts/submit-indexnow.js /en/experience /fr/experience /ar/experience
+Requires the INDEXNOW_SECRET environment variable.
 `);
 } else {
-  // Submit specific URLs
-  submitToIndexNow(args, false);
+  submitToIndexNow(args.length > 0 ? args : null);
 }

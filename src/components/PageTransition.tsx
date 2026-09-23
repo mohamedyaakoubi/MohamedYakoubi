@@ -14,7 +14,8 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   }, [])
 
   // SSR and first client render: plain <main> so crawlers see full opacity content
-  // and hydration matches server output (no inline opacity:0)
+  // and hydration matches server output (no inline opacity:0).
+  // This is every page's only <main> landmark: page components must use a <div> root.
   if (!mounted) {
     return <main>{children}</main>
   }

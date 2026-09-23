@@ -25,7 +25,7 @@ export default function HomeClient({ locale, translations }: HomeClientProps) {
   }, [])
   
   return (
-    <main className={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <div className={locale === 'ar' ? 'rtl' : 'ltr'}>
       <section id="home" className="min-h-screen">
         <Hero />
       </section>
@@ -43,7 +43,7 @@ export default function HomeClient({ locale, translations }: HomeClientProps) {
       
       {/* Skills section */}
       <Skills />
-    </main>
+    </div>
   )
 }
 

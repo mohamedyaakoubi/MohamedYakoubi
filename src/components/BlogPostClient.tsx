@@ -59,7 +59,7 @@ export default function BlogPostClient({ post, locale, translations }: BlogPostC
   } as React.CSSProperties
 
   return (
-    <main className={`blog-post ${isRTL ? 'rtl' : 'ltr'}`} style={themeVars}>
+    <div className={`blog-post ${isRTL ? 'rtl' : 'ltr'}`} style={themeVars}>
       {/* ── Hero ── */}
       <motion.div
         className="blog-hero"
@@ -132,7 +132,7 @@ export default function BlogPostClient({ post, locale, translations }: BlogPostC
           </Link>
         </div>
       </footer>
-    </main>
+    </div>
   )
 }
 

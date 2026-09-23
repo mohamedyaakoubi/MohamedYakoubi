@@ -12,7 +12,7 @@ import { ThemeToggle } from './theme-toggle'
 
 // Types
 const createNavigationLinks = (t: (key: string) => string, lang: string) => [
-  { href: `/${lang}/#home`, label: t('navigation.links.home'), isSection: true, priority: 1 },
+  { href: `/${lang}#home`, label: t('navigation.links.home'), isSection: true, priority: 1 },
   { href: `/${lang}/projects`, label: t('navigation.links.projects'), isSection: false, priority: 2 },
   { href: `/${lang}/experience`, label: t('navigation.links.experience'), isSection: false, priority: 3 },
   { href: `/${lang}/services`, label: t('navigation.links.services'), isSection: false, priority: 4 },
@@ -27,7 +27,7 @@ const createNavigationLinks = (t: (key: string) => string, lang: string) => [
     ],
   },
   { href: `/${lang}/blog`, label: t('blog.title'), isSection: false, priority: 6 },
-  { href: `/${lang}/#about`, label: t('navigation.links.about'), isSection: true, priority: 7 },
+  { href: `/${lang}#about`, label: t('navigation.links.about'), isSection: true, priority: 7 },
   { href: `/${lang}/contact`, label: t('navigation.links.contact'), isSection: false, priority: 8 },
 ]
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales } from '@/lib/translations'
+import { getSupportedLocales, assertSupportedLocale, getTranslations } from '@/lib/translations'
+import { getSheetDiffI18n } from '@/data/sheetdiff-i18n'
 import SheetDiffClient from '@/components/SheetDiffClient'
 
 export async function generateStaticParams() {
@@ -11,9 +12,16 @@ const MARKETPLACE_URL =
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const title = 'SheetDiff\u2122 \u2014 Compare Google Sheets\u2122 | Spreadsheet Diff & QA Add-on'
-  const description =
-    'Compare two Google Sheets\u2122 versions and detect modified, moved, split, merged, added & deleted rows. Use SKU-based matching for product catalogs, inventory updates, supplier price lists, localization QA, and spreadsheet audits. Free 7-day trial.'
+  // fr/ar reuse the page's own translated hero copy so the <title>, meta description and
+  // og:/twitter: text match the language of the body and of hreflang. Previously every
+  // locale shipped the English strings below.
+  const t = getSheetDiffI18n(locale).main
+  const title = locale === 'en'
+    ? 'SheetDiff\u2122 \u2014 Compare Google Sheets\u2122 | Spreadsheet Diff & QA Add-on'
+    : `${t.heroTitle} \u2014 ${t.badge}`
+  const description = locale === 'en'
+    ? 'Compare two Google Sheets\u2122 versions and detect modified, moved, split, merged, added & deleted rows. Use SKU-based matching for product catalogs, inventory updates, supplier price lists, localization QA, and spreadsheet audits. Free 7-day trial.'
+    : t.heroDesc
 
   return {
     title,
@@ -51,6 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title,
       description,
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff`,
@@ -119,52 +128,6 @@ const softwareAppJsonLd = {
   ],
 }
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How does the 7-day trial work?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'When you first install SheetDiff\u2122, you get 7 days of full, unlimited access \u2014 no credit card required. After the trial, you can continue using SheetDiff\u2122 for free (50 rows, 10 comparisons/month) or upgrade to Pro.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is my spreadsheet data safe and private?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Your spreadsheet data never leaves Google Sheets\u2122. The only data sent externally is your Google account email for license verification. No cell content, row data, or file contents are ever transmitted to outside servers.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What comparison modes does SheetDiff\u2122 support?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'SheetDiff\u2122 includes Structural Diff (row-level comparison with modified, moved, split, merged, added, and deleted rows), Cell-by-Cell Comparison (granular column-aligned diff), Duplicate Finder, and Grid Diff. Simple Mode supports ID-based comparison for product catalogs, SKU lists, inventories, and supplier updates.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can SheetDiff\u2122 handle large datasets?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "SheetDiff\u2122 includes a chunked execution engine that processes large datasets in time-budgeted batches, bypassing Google Apps Script's 6-minute execution limit. Datasets with 100,000+ rows are supported.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the refund policy?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "We offer a 14-day refund policy for all purchases. Contact amirrak8@gmail.com and we'll process your refund within 5\u201310 business days.",
-      },
-    },
-  ],
-}
 
 const simpleModeVideoJsonLd = {
   '@context': 'https://schema.org',
@@ -173,23 +136,37 @@ const simpleModeVideoJsonLd = {
   description:
     'A SheetDiff use case video showing how to compare product catalogs in Google Sheets by SKU, highlight modified fields, find added and deleted products, and avoid false differences when supplier rows are reordered.',
   thumbnailUrl: 'https://i.ytimg.com/vi/9NITyMjfIdw/hqdefault.jpg',
-  uploadDate: '2025-01-15T00:00:00+00:00',
+  uploadDate: '2026-06-01T15:56:53-07:00',
   embedUrl: 'https://www.youtube-nocookie.com/embed/9NITyMjfIdw',
-  contentUrl: 'https://www.youtube.com/watch?v=9NITyMjfIdw',
+  // No contentUrl: Google defines it as a link to the video MEDIA FILE, not the watch
+  // page. https://www.youtube.com/watch?v=... is a web page, so the property was invalid.
+  // YouTube exposes no direct file URL, so embedUrl alone is the correct annotation.
 }
 
-export default function SheetDiffPage() {
+export default async function SheetDiffPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  assertSupportedLocale(locale)
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: getTranslations(locale).navigation?.links.home || 'Home', item: `https://www.mohamedyaakoubi.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: 'SheetDiff\u2122', item: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff` },
+    ],
+  }
+
   return (
     <>
+      <script
+        id="sheetdiff-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         id="sheetdiff-software-app"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
-      />
-      <script
-        id="sheetdiff-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <script
         id="sheetdiff-simple-mode-video"

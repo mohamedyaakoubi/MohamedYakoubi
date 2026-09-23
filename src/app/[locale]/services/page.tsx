@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import ServicesClient from '@/components/ServicesClient'
-import { getTranslations, getSupportedLocales } from '@/lib/translations'
+import { getTranslations, getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 
 export async function generateStaticParams() {
   const locales = getSupportedLocales();
@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       type: 'website',
@@ -64,6 +65,7 @@ export default async function ServicesPage(props: ServicesPageProps) {
   // Fix: Properly await params
   const params = await props.params
   const { locale } = params
+  assertSupportedLocale(locale)
   const translations = getTranslations(locale)
   // Breadcrumb schema for services
   const breadcrumbSchema = {
@@ -85,77 +87,17 @@ export default async function ServicesPage(props: ServicesPageProps) {
     ]
   }
 
-  // FAQ schema for services - multilingual
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": locale === 'ar' 
-          ? "ما هي خدمات الذكاء الاصطناعي التي يقدمها محمد يعقوبي؟"
-          : locale === 'fr' 
-            ? "Quels services IA propose Mohamed Yaakoubi ?"
-            : "What AI services does Mohamed Yaakoubi offer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": locale === 'ar'
-            ? "يقدم محمد خدمات تعليق البيانات بالذكاء الاصطناعي وتقييم الترجمة الآلية وتطوير الويب المدعوم بالذكاء الاصطناعي."
-            : locale === 'fr'
-              ? "Mohamed propose des services d'annotation de données IA, d'évaluation de traduction automatique et de développement web alimenté par l'IA."
-              : "Mohamed offers AI data annotation, machine translation evaluation, and AI-powered web development services."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": locale === 'ar'
-          ? "ما هي اللغات التي يدعمها محمد في خدمات الترجمة؟"
-          : locale === 'fr'
-            ? "Quelles langues Mohamed prend-il en charge pour les services de traduction ?"
-            : "What languages does Mohamed support for translation services?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": locale === 'ar'
-            ? "يتخصص محمد في الترجمة بين العربية والإنجليزية والفرنسية، مع خبرة خاصة في الترجمة التقنية والتوطين."
-            : locale === 'fr'
-              ? "Mohamed se spécialise dans la traduction arabe-anglais-français, avec une expertise particulière en traduction technique et localisation."
-              : "Mohamed specializes in Arabic-English-French translation, with particular expertise in technical translation and localization."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": locale === 'ar'
-          ? "كيف يمكنني طلب خدمات تطوير الويب؟"
-          : locale === 'fr'
-            ? "Comment puis-je demander des services de développement web ?"
-            : "How can I request web development services?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": locale === 'ar'
-            ? "يمكنك التواصل مع محمد عبر نموذج الاتصال أو البريد الإلكتروني أو منصات العمل الحر مثل Upwork وFiverr للحصول على استشارة مجانية."
-            : locale === 'fr'
-              ? "Vous pouvez contacter Mohamed via le formulaire de contact, email, ou plateformes freelance comme Upwork et Fiverr pour une consultation gratuite."
-              : "You can contact Mohamed through the contact form, email, or freelance platforms like Upwork and Fiverr for a free consultation."
-        }
-      }
-    ]
-  }
   return (
     <>
-          {/* Add both schemas */}
+      {/* FAQPage schema removed: its 3 Q&A pairs were rendered nowhere on this page.
+          Marking up content not visible to users violates Google's structured-data
+          general guidelines, and FAQ rich results were retired from Search on
+          2026-05-07, so the markup carried risk with no upside. */}
       <script
         id="services-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema)
-        }}
-      />
-      
-      <script
-        id="services-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema)
         }}
       />
       <ServicesClient locale={locale} translations={translations} />

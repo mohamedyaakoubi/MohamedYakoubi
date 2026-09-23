@@ -12,31 +12,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return d > latest ? d : latest
   }, new Date('2026-04-05'))
 
-  // Per-page last-modified dates — sourced from git history, update when content changes
+  // Per-page last-modified dates. Google uses <lastmod> ONLY if it is "consistently and
+  // verifiably accurate" — an inaccurate date makes it ignore the signal site-wide, so
+  // these must track real main-content changes, not deploy dates.
+  // Each value = the newest git date across that route's page.tsx, its client component,
+  // and the i18n/translation module supplying its copy. Re-derive when content changes:
+  //   git log -1 --format=%ad --date=short -- <file>
   const pageLastModified: Record<string, Date> = {
-    '':                  new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
-    '/experience':       new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
-    '/projects':         new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
-    '/services':         new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
-    '/contact':          new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '':                  new Date('2026-09-03'), // page.tsx + HomeClient/Hero, Sep 3
+    '/experience':       new Date('2026-07-09'), // ExperienceClient + translations, Jul 9
+    '/projects':         new Date('2026-07-09'), // ProjectsClient + translations, Jul 9
+    '/services':         new Date('2026-07-09'), // ServicesClient + translations, Jul 9
+    '/contact':          new Date('2026-07-09'), // ContactClient + translations, Jul 9
     '/blog':             latestPostDate,
-    '/sheetdiff':        new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
-    '/privacy-policy':   new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
-    '/terms-of-service': new Date('2026-05-09'), // Footer cross-locale links, hreflang fixes May 9
+    '/sheetdiff':        new Date('2026-09-03'), // SheetDiffClient, Sep 3
+    '/privacy-policy':   new Date('2026-05-04'), // portfolio-legal-i18n.ts, May 4
+    '/terms-of-service': new Date('2026-05-04'), // portfolio-legal-i18n.ts, May 4
   }
 
   const apiDocsDate        = new Date('2026-05-09') // Footer cross-locale links, hreflang + URL fixes May 9
   const apiDocsLegalDate    = new Date('2026-04-10') // API-specific ToS + privacy added Apr 10
   const sheetdiffSubPageDates: Record<string, Date> = {
-    '/sheetdiff/pricing':           new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9
-    '/sheetdiff/terms-of-service':  new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9
-    '/sheetdiff/privacy-policy':    new Date('2026-05-09'), // hreflang duplicate entries + layout alternates fix May 9
+    '/sheetdiff/pricing':           new Date('2026-09-03'), // SheetDiffPricingClient, Sep 3
+    '/sheetdiff/terms-of-service':  new Date('2026-09-03'), // SheetDiffTermsClient, Sep 3
+    '/sheetdiff/privacy-policy':    new Date('2026-09-03'), // SheetDiffPrivacyClient, Sep 3
   }
 
   const projectPageDates: Record<string, Date> = {
-    '/projects/potential':            new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/projects/documed':              new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
-    '/projects/internationalskills':  new Date('2026-05-09'), // LanguageSelector hreflang + crawler discovery fixes May 9
+    '/projects/potential':            new Date('2026-04-07'), // PotentialProjectClient, Apr 7
+    '/projects/documed':              new Date('2026-04-07'), // DocuMedProjectClient, Apr 7
+    '/projects/internationalskills':  new Date('2026-04-07'), // InternationalSkillsClient, Apr 7
   }
 
   const locales = ['en', 'fr', 'ar']
@@ -44,11 +49,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sitemapEntries: MetadataRoute.Sitemap = []
 
+  // Must mirror the per-page metadata.alternates.languages block exactly, x-default
+  // included — Google reads sitemap hreflang and on-page hreflang as one set, and an
+  // x-default present in the HTML but absent here is an inconsistent annotation.
   const getAlternates = (path: string) => ({
     languages: {
       en: `${baseUrl}/en${path}`,
       fr: `${baseUrl}/fr${path}`,
       ar: `${baseUrl}/ar${path}`,
+      'x-default': `${baseUrl}/en${path}`,
     }
   })
 

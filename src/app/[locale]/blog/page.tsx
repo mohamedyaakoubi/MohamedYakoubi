@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations, getSupportedLocales } from '@/lib/translations'
+import { getTranslations, getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 import { blogCategories, getLocalizedBlogPosts } from '@/data/blog'
 import BlogClient from '@/components/BlogClient'
 
@@ -58,6 +58,7 @@ interface BlogPageProps {
 export default async function BlogPage(props: BlogPageProps) {
   const params = await props.params
   const { locale } = params
+  assertSupportedLocale(locale)
   const translations = getTranslations(locale)
   const localizedPosts = getLocalizedBlogPosts(locale)
 
@@ -74,7 +75,7 @@ export default async function BlogPage(props: BlogPageProps) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Blog',
+        name: translations.blog?.title || 'Blog',
         item: `https://www.mohamedyaakoubi.com/${locale}/blog`,
       },
     ],
@@ -83,8 +84,8 @@ export default async function BlogPage(props: BlogPageProps) {
   const blogListSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Blog - Mohamed Yaakoubi',
-    description: 'Articles on AI, cybersecurity, and language technology.',
+    name: `${translations.blog?.title || 'Blog'} - ${locale === 'ar' ? 'محمد يعقوبي' : 'Mohamed Yaakoubi'}`,
+    description: translations.blog?.subtitle || 'Articles on AI, cybersecurity, and language technology.',
     url: `https://www.mohamedyaakoubi.com/${locale}/blog`,
     mainEntity: {
       '@type': 'ItemList',

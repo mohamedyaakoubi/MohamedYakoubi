@@ -100,6 +100,58 @@ const nextConfig = {
         source: '/terms-of-service/sheetdiff',
         destination: '/en/sheetdiff/terms-of-service',
         permanent: true,
+      },
+
+      // Locale-less URLs for routes that previously relied on middleware.ts.
+      // middleware.ts sits at the repo root while the App Router lives in src/app, so
+      // Next.js never compiles it (verified: .next/server/middleware-manifest.json is
+      // empty). Without these rules the paths below hard-404, and the two /sheetdiff
+      // legal paths were worse: [locale] matched the literal string "sheetdiff", so they
+      // returned 200 serving the PORTFOLIO legal pages instead of SheetDiff's.
+      {
+        source: '/blog',
+        destination: '/en/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/en/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/privacy-policy',
+        destination: '/en/privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/terms-of-service',
+        destination: '/en/terms-of-service',
+        permanent: true,
+      },
+      {
+        source: '/projects/:project(potential|documed|internationalskills)',
+        destination: '/en/projects/:project',
+        permanent: true,
+      },
+      {
+        source: '/sheetdiff/privacy-policy',
+        destination: '/en/sheetdiff/privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/sheetdiff/terms-of-service',
+        destination: '/en/sheetdiff/terms-of-service',
+        permanent: true,
+      },
+      {
+        source: '/sheetdiff/api-docs',
+        destination: '/en/sheetdiff/api-docs',
+        permanent: true,
+      },
+      {
+        source: '/sheetdiff/api-docs/:page(parameters|diff-statuses|demo|playground|engine-precision|privacy-policy|terms-of-service)',
+        destination: '/en/sheetdiff/api-docs/:page',
+        permanent: true,
       }
     ]
   },

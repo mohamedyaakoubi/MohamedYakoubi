@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales } from '@/lib/translations'
+import { getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 import DemoWalkthroughClient from '@/components/DemoWalkthroughClient'
 import { getDemoWalkthroughI18n } from '@/data/demo-walkthrough-i18n'
 
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title: t.meta.title,
       description: t.meta.description,
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs/demo`,
@@ -51,6 +52,7 @@ const BASE_URL = 'https://www.mohamedyaakoubi.com'
 
 export default async function DemoPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  assertSupportedLocale(locale)
   const t = getDemoWalkthroughI18n(locale)
 
   const techArticleJsonLd = {

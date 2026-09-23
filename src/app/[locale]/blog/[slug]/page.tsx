@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getTranslations, getSupportedLocales } from '@/lib/translations'
+import { getTranslations, getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 import { blogPosts, getLocalizedBlogPost } from '@/data/blog'
 import BlogPostClient from '@/components/BlogPostClient'
 
@@ -17,6 +17,9 @@ export async function generateStaticParams() {
   return params
 }
 
+// Localized suffix for post <title>s; en keeps its original wording.
+const blogTitleSuffix = { en: 'Mohamed Yaakoubi Blog', fr: 'Blog de Mohamed Yaakoubi', ar: 'مدونة محمد يعقوبي' }
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params
   const post = getLocalizedBlogPost(slug, locale)
@@ -26,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 
   return {
-    title: `${post.title} | Mohamed Yaakoubi Blog`,
+    title: `${post.title} | ${blogTitleSuffix[locale as keyof typeof blogTitleSuffix] ?? blogTitleSuffix.en}`,
     description: post.description,
     authors: [{ name: post.author.name, url: post.author.url }],
     alternates: {
@@ -49,14 +52,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [
-        {
-          url: `https://www.mohamedyaakoubi.com/${locale}/blog/${slug}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -73,6 +68,7 @@ interface BlogPostPageProps {
 export default async function BlogPostPage(props: BlogPostPageProps) {
   const params = await props.params
   const { locale, slug } = params
+  assertSupportedLocale(locale)
   const post = getLocalizedBlogPost(slug, locale)
 
   if (!post) {
@@ -94,7 +90,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Blog',
+        name: translations.blog?.title || 'Blog',
         item: `https://www.mohamedyaakoubi.com/${locale}/blog`,
       },
       {
@@ -119,13 +115,9 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
       url: post.author.url,
     },
     publisher: {
-      '@type': 'Organization',
+      '@type': 'Person',
       name: 'Mohamed Yaakoubi',
-      url: 'https://www.mohamedyaakoubi.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://www.mohamedyaakoubi.com/profile.jpg',
-      },
+      url: 'https://www.mohamedyaakoubi.com/en',
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -134,7 +126,12 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     keywords: post.tags.join(', '),
     articleSection: post.category,
     wordCount: post.content.split(/\s+/).length,
-    image: post.image || 'https://www.mohamedyaakoubi.com/profile.jpg',
+    image: post.image || {
+      '@type': 'ImageObject',
+      url: `https://www.mohamedyaakoubi.com/${locale}/blog/${slug}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
     url: `https://www.mohamedyaakoubi.com/${locale}/blog/${slug}`,
     inLanguage: locale === 'ar' ? 'ar' : locale === 'fr' ? 'fr' : 'en',
   }
@@ -151,17 +148,6 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-
-      {/* Static SEO content — no heading here; the visible <h1> is in BlogPostClient */}
-      <div className="sr-only" aria-hidden="false">
-        <p><strong>{post.title}</strong></p>
-        <p>{post.description}</p>
-        <p>Author: {post.author.name}</p>
-        <p>Published: {post.publishedAt}</p>
-        <p>Category: {post.category}</p>
-        <p>Tags: {post.tags.join(', ')}</p>
-        <p>Reading time: {post.readingTime} minutes</p>
-      </div>
 
       <BlogPostClient post={post} locale={locale} translations={translations} />
     </>

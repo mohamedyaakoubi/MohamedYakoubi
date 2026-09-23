@@ -410,7 +410,7 @@ export default function SheetDiffClient() {
               <a href="mailto:amirrak8@gmail.com" onClick={() => analytics.sheetdiffContactClick('email')} className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
                 <Mail className="w-4 h-4" /> amirrak8@gmail.com
               </a>
-              <a href="https://mohamedyaakoubi.com/en" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
+              <a href="https://www.mohamedyaakoubi.com/en" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
                 <Globe2 className="w-4 h-4" /> mohamedyaakoubi.com
               </a>
               <a href="https://www.linkedin.com/in/yaakoubi-mohamed/" target="_blank" rel="noopener noreferrer" onClick={() => analytics.sheetdiffContactClick('linkedin')} className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">

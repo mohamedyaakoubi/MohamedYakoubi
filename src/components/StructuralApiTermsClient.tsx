@@ -175,7 +175,7 @@ export default function StructuralApiTermsClient() {
                 <h2>14. Contact</h2>
                 <p>
                   For any questions regarding these Terms, reach out via{' '}
-                  <a href="https://www.mohamedyaakoubi.com/contact">mohamedyaakoubi.com/contact</a>.
+                  <a href="https://www.mohamedyaakoubi.com/en/contact">mohamedyaakoubi.com/contact</a>.
                 </p>
               </>
             ) : (

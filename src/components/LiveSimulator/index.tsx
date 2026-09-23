@@ -340,7 +340,7 @@ export default function LiveSimulatorClient() {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 min-w-0 px-6 lg:px-10 pt-24 pb-12 max-w-3xl">
+        <div className="flex-1 min-w-0 px-6 lg:px-10 pt-24 pb-12 max-w-3xl">
           <FadeIn>
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
@@ -737,7 +737,7 @@ export default function LiveSimulatorClient() {
               </div>
             </div>
           </FadeIn>
-        </main>
+        </div>
 
         {/* Right TOC sidebar */}
         <aside className="hidden xl:block w-52 shrink-0 sticky top-16 self-start h-[calc(100vh-4rem)] overflow-y-auto pl-6 py-8 border-l border-gray-200 dark:border-gray-800">

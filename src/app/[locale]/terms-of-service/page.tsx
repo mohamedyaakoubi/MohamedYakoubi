@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales } from '@/lib/translations'
+import { getSupportedLocales, assertSupportedLocale, getTranslations } from '@/lib/translations'
+import { getPortfolioLegalI18n } from '@/data/portfolio-legal-i18n'
 import PortfolioTermsClient from '@/components/PortfolioTermsClient'
 
 export async function generateStaticParams() {
@@ -37,10 +38,45 @@ export async function generateMetadata({
         'x-default': 'https://www.mohamedyaakoubi.com/en/terms-of-service',
       },
     },
-    robots: { index: true, follow: true },
+    openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
+      title: titles[locale] ?? titles.en,
+      description: descriptions[locale] ?? descriptions.en,
+      url: `https://www.mohamedyaakoubi.com/${locale}/terms-of-service`,
+      type: 'website',
+      siteName: 'Mohamed Yaakoubi - AI Language Technology Portfolio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale] ?? titles.en,
+      description: descriptions[locale] ?? descriptions.en,
+      site: '@Mohamed0Yakoubi',
+      creator: '@Mohamed0Yakoubi',
+    },
   }
 }
 
-export default function TermsOfServicePage() {
-  return <PortfolioTermsClient />
+export default async function TermsOfServicePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  assertSupportedLocale(locale)
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: getTranslations(locale).navigation?.links.home || 'Home', item: `https://www.mohamedyaakoubi.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: getPortfolioLegalI18n(locale).terms.title, item: `https://www.mohamedyaakoubi.com/${locale}/terms-of-service` },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        id="terms-of-service-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <PortfolioTermsClient />
+    </>
+  )
 }

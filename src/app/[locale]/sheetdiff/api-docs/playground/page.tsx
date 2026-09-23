@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSupportedLocales } from '@/lib/translations'
+import { getSupportedLocales, assertSupportedLocale } from '@/lib/translations'
 import LiveSimulatorClient from '@/components/LiveSimulator'
 import { getLiveSimulatorI18n } from '@/data/live-simulator-i18n'
 
@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
+      locale: locale === 'ar' ? 'ar_TN' : locale === 'fr' ? 'fr_FR' : 'en_US',
       title: t.meta.title,
       description: t.meta.description,
       url: `https://www.mohamedyaakoubi.com/${locale}/sheetdiff/api-docs/playground`,
@@ -52,6 +53,7 @@ const BASE_URL = 'https://www.mohamedyaakoubi.com'
 
 export default async function LiveDemoPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  assertSupportedLocale(locale)
   const t = getLiveSimulatorI18n(locale)
 
   const webAppJsonLd = {
