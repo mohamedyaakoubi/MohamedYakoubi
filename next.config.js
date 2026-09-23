@@ -4,7 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove the root redirect - let middleware handle it
   async redirects() {
     return [
       // Keep non-www to www domain redirect
@@ -19,31 +18,8 @@ const nextConfig = {
         destination: 'https://www.mohamedyaakoubi.com/:path*',
         permanent: true,
       },
-      // Old .live domain → new .com domain (301 permanent)
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.mohamedyaakoubi.live',
-          },
-        ],
-        destination: 'https://www.mohamedyaakoubi.com/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'mohamedyaakoubi.live',
-          },
-        ],
-        destination: 'https://www.mohamedyaakoubi.com/:path*',
-        permanent: true,
-      },
-      // Remove the root '/' redirect - middleware will handle this
-      // Keep other path redirects
+      // The root '/' → '/en' redirect lives in src/app/page.tsx (permanentRedirect).
+      // Legacy locale-less paths:
       {
         source: '/experience',
         destination: '/en/experience',
@@ -102,12 +78,11 @@ const nextConfig = {
         permanent: true,
       },
 
-      // Locale-less URLs for routes that previously relied on middleware.ts.
-      // middleware.ts sits at the repo root while the App Router lives in src/app, so
-      // Next.js never compiles it (verified: .next/server/middleware-manifest.json is
-      // empty). Without these rules the paths below hard-404, and the two /sheetdiff
-      // legal paths were worse: [locale] matched the literal string "sheetdiff", so they
-      // returned 200 serving the PORTFOLIO legal pages instead of SheetDiff's.
+      // Locale-less URLs for routes that used to rely on a middleware.ts that Next.js
+      // never compiled (it sat at the repo root while the App Router lives in src/app;
+      // it has since been removed). Without these rules the paths below hard-404, and the
+      // two /sheetdiff legal paths were worse: [locale] matched the literal "sheetdiff",
+      // serving the PORTFOLIO legal pages with 200 instead of SheetDiff's.
       {
         source: '/blog',
         destination: '/en/blog',
